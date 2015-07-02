@@ -1,0 +1,55 @@
+.Select.semantic-theme .Select-control {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+  border: none;
+  background-color: transparent;
+  box-shadow: none !important
+}
+
+.Select.semantic-theme .Select-control .Select-input > input {
+  width: inherit;
+  background: none transparent !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.Select.semantic-theme .Select-control .Select-input {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.Select.semantic-theme.has-value .Select-control .Select-input {
+  /*display: none;*/
+}
+
+.Select.semantic-theme .Select-control .Select-clear {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.Select.semantic-theme .Select-control .Select-arrow {
+  top: 50%;
+  margin-top: -2.5px;
+}
+
+.Select.semantic-theme .Select-control .Select-placeholder {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.Select.semantic-theme .Select-menu-outer {
+  left: 0;
+  box-sizing: content-box;
+  margin: -1px;
+}
