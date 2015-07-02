@@ -15,7 +15,7 @@ import CookieBanner from 'package-name-to-define/cookie-banner';
 ```
 
 ###Components
-[Kitchen Sink](https://rawgit.com/buildo/react-components/master/examples/index.html)
+[Kitchen Sink](https://rawgit.com/buildo/react-components/master/kitchen-sink/index.html)
 
 |npm name|folder name|
 | ---------------- | ------------- |
