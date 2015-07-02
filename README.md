@@ -1,11 +1,26 @@
-[![codecov.io](http://codecov.io/github/buildo/web-lib-seed/coverage.svg?branch=master)](http://codecov.io/github/buildo/web-lib-seed?branch=master)
+#React Components
+This is a collection of every reusable React component used in [Buildo](http://buildo.io/).
 
-**development**
+Its purpose is to give access to all these components through a single npm dependency so to improve the development experience and make eventual changes of library easier, faster and centralized.
 
-- `npm test`: run tests (files placed in `test/tests` are included)
-- `npm run lint`: run `eslint`
+###Install
+the npm package is yet to be defined :)
 
-**publishing to npm**
+###Usage
+Each component is stored inside its own folder (useful for small bundles).
+The import works as documented on the third party library:
+```
+import {DatePickerInput} from 'package-name-to-define/datepicker';
+import CookieBanner from 'package-name-to-define/cookie-banner';
+```
 
-- `npm version`: bump version, `preversion` also runs `lint` and `test`
-- `npm publish`: publish the updated version to npm, `prepublish` also runs `build`
+###Components
+[Kitchen Sink](https://rawgit.com/buildo/react-components/master/examples/index.html)
+
+|npm name|folder name|
+| ---------------- | ------------- |
+|rc-datepicker|datepicker|
+|react-cookie-banner|cookie-banner|
+|react-input-link|input-link|
+|react-autosize-textarea|textarea-autosize|
+|react-select|dropdown|
