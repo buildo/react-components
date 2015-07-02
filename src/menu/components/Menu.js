@@ -13,7 +13,7 @@ const Menu = React.createClass({
   },
 
   getMenuTitle(option, i) {
-    return <div className='menu-separator' key={i}>{option.title}</div>;
+    return <div className='menu-title' key={i}>{option.title}</div>;
   },
 
   getDivider(i) {

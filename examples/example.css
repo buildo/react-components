@@ -4,4 +4,33 @@
 
 .dropdown-menu {
   width: 200px;
+  background-color: white;
+  padding: 8px;
+  box-shadow: 0 2px 1px 1px #EAEAEA;
+}
+
+.dropdown-menu-icon {
+  cursor: pointer;
+}
+
+.menu-row {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.menu-divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.menu-title {
+  color: #BDC2CA;
+}
+
+.menu-item-title {
+  color: #6F7681;
+}
+
+.menu-item-metadata {
+  color: #BDC2CA;
 }
