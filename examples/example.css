@@ -1,4 +1,5 @@
 .grid {
+  padding: 20px;
   font-family: 'Raleway';
 }
 
@@ -16,6 +17,7 @@
 }
 
 .example-view {
+  background-color: white;
   padding: 10px;
   border: 2px solid #F0F0F0;
   border-radius: 4px;

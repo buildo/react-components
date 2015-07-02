@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select from './SelectChildren';
 import omit from 'lodash/object/omit';
 
 const SelectMenu = React.createClass({
