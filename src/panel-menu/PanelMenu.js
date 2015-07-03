@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from './components/Menu';
 
-const MenuComponent = React.createClass({
+const PanelMenu = React.createClass({
 
   propTypes: {
     children: React.PropTypes.oneOfType([
@@ -48,4 +48,4 @@ const MenuComponent = React.createClass({
 
 });
 
-export default MenuComponent;
+export default PanelMenu;
