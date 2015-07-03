@@ -1,10 +1,11 @@
 import React from 'react';
-import Dropdown from './components/Dropdown'
-import Menu from './components/Menu'
+import DropdownTest from './components/Dropdown'
+import MenuTest from './components/Menu'
+import ModalTest from './components/Modal'
 
 const modules = [
-  // Dropdown,
-  Menu
+  // DropdownTest,
+  // MenuTest
 ];
 
 const template = (
@@ -14,3 +15,5 @@ const template = (
 );
 
 React.render(template, document.getElementById('container'));
+
+React.render(<ModalTest />, document.getElementById('modal'));

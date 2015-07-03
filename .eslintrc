@@ -12,6 +12,9 @@
     "modules": true,
     "jsx": true
   },
+  "globals": {
+    "$": true
+  },
   "rules": {
     "eol-last": 0,
     "new-cap": 0,
