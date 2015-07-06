@@ -1,5 +1,5 @@
 {
-  "name": "web-lib-seed",
+  "name": "buildo-react-components",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:buildo/web-lib-seed"
+    "url": "git@github.com:buildo/react-components"
   },
   "keywords": [],
   "author": "Giovanni Gonzaga <giovanni@buildo.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/buildo/web-lib-seed/issues"
+    "url": "https://github.com/buildo/react-components/issues"
   },
-  "homepage": "https://github.com/buildo/web-lib-seed",
+  "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
     "rc-datepicker": "1.0.3",
     "react-autosize-textarea": "0.2.4",
