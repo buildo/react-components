@@ -4,7 +4,7 @@ This is a collection of every reusable React component used in [Buildo](http://b
 Its purpose is to give access to all these components through a single npm dependency so to improve the development experience and make eventual changes of library easier, faster and centralized.
 
 ###Install
-the npm package is yet to be defined :)
+```npm install --save buildo-react-components```
 
 ###Usage
 Each component is stored inside its own folder (useful for small bundles).
@@ -24,3 +24,4 @@ import CookieBanner from 'package-name-to-define/cookie-banner';
 |react-input-link|input-link|
 |react-autosize-textarea|textarea-autosize|
 |react-select|dropdown|
+|react-popover|popover|
