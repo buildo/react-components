@@ -3,11 +3,13 @@ import DropdownTest from './components/Dropdown'
 import MenuTest from './components/Menu'
 import ModalTest from './components/Modal'
 import PopoverTest from './components/Popover'
+import CheckboxTest from './components/Checkbox'
 
 const modules = [
   // DropdownTest,
   // MenuTest,
-  PopoverTest
+  // PopoverTest,
+  CheckboxTest
 ];
 
 const template = (
