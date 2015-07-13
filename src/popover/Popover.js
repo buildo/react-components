@@ -80,7 +80,7 @@ const Popover = React.createClass({
         <div className='react-popover-children' ref='children' style={{display: 'inline-block'}}>
           {this.props.children}
         </div>
-        <div className={`react-popover ui popup ${this.props.popoverClassName}`} ref='popover'>
+        <div className={`react-popover ${this.props.popoverClassName}`} ref='popover'>
           {this.props.content}
         </div>
       </div>
