@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../../src/menu'
+import Menu from '../../src/panel-menu'
 
 const onClick = (option) => {
   console.log(option.title);
