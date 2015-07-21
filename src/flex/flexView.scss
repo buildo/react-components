@@ -1,0 +1,34 @@
+@import '../../node_modules/sass-flex-mixins/src/sass-flex-mixins.scss';
+
+.react-flex-view {
+  box-sizing: 'border-box';
+  @include display_flex();
+  @include flex_flex-wrap(nowrap);
+  @include flex_align-items(stretch);
+
+  &.flex-vertically-centered {
+    @include flex_align-items(center);
+  }
+
+  &.flex-column {
+    @include flex_flex-direction(column);
+  }
+
+  &.flex-row {
+    @include flex_flex-direction(row);
+  }
+
+  &.flex-auto {
+    @include flex_flex(0 0 auto);
+  }
+
+  &.flex-grow {
+    @include flex_flex(1 1 100%);
+  }
+
+}
+
+.react-flex-view.react-flex-cell {
+  @include flex_justify-content(space-between);
+  @include flex_align-content(space-between);
+}

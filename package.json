@@ -31,7 +31,8 @@
     "react-autosize-textarea": "0.2.4",
     "react-cookie-banner": "0.0.7",
     "react-input-link": "0.0.3",
-    "react-select": "0.5.2"
+    "react-select": "0.5.2",
+    "sass-flex-mixins": "^0.1.0"
   },
   "devDependencies": {
     "babel": "^5.4.7",
