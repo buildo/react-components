@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
 
   propTypes: {
-    children: React.PropType.node,
+    children: React.PropTypes.node,
     row: React.PropTypes.bool,
     column: React.PropTypes.bool,
     auto: React.PropTypes.bool,
