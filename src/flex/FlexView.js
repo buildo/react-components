@@ -10,7 +10,7 @@ export default React.createClass({
     centerVertically: React.PropTypes.bool,
     grow: React.PropTypes.oneOfType([
       React.PropTypes.number,
-      React.PropTypes.string
+      React.PropTypes.bool
     ]),
     height: React.PropTypes.oneOfType([
       React.PropTypes.number,
