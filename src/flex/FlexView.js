@@ -128,10 +128,7 @@ export default React.createClass({
     const vAlignContent = vAlignContentClasses[this.props.vAlignContent];
     const hAlignContent = hAlignContentClasses[this.props.hAlignContent];
 
-    const hAlignSelf = this.props.hAlignSelf ? `h-align-self-${this.props.hAlignSelf}` : null;
-    const vAlignSelf = this.props.vAlignSelf ? `v-align-self-${this.props.vAlignSelf}` : null;
-
-    return cx(vAlignContent, hAlignContent, vAlignSelf, hAlignSelf);
+    return cx(vAlignContent, hAlignContent);
   },
 
   getClasses() {
