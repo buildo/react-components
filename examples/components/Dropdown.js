@@ -9,10 +9,7 @@ const Example = React.createClass({
   getTemplate() {
     return (
       <div>
-        <SelectChildren
-          theme='semantic'
-          className='ui selection dropdown'
-          searchable={false}>
+        <SelectChildren>
           <p>one</p>
           <p>deux</p>
           <p>tres</p>
