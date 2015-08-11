@@ -18,8 +18,6 @@ const template = (
     </div>
     <h1>Custom Wrappers</h1>
     <SelectChildren
-      theme='semantic'
-      className='ui selection dropdown'
       searchable={false}>
       <p>one</p>
       <p>deux</p>
