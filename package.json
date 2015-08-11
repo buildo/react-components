@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
-    "rc-datepicker": "1.0.3",
-    "react-autosize-textarea": "0.2.4",
-    "react-cookie-banner": "0.0.7",
-    "react-input-link": "0.0.3",
-    "react-select": "0.5.2",
+    "rc-datepicker": "^2.0.0",
+    "react-autosize-textarea": "^0.2.4",
+    "react-cookie-banner": "^0.0.9",
+    "react-input-link": "^0.0.3",
+    "react-select": "^0.6.1",
     "sass-flex-mixins": "^0.1.0"
   },
   "devDependencies": {
