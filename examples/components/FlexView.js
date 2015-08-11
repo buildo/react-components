@@ -8,9 +8,28 @@ const Example = React.createClass({
   getTemplate() {
     return (
       <div>
-        <FlexView className='hello' style={{backgroundColor: 'blue'}}>
-          <div className='ui segment' style={{backgroundColor: 'red'}}/>
-          <div className='ui segment' style={{backgroundColor: 'green'}}/>
+        <FlexView
+          className='hello'
+          style={{backgroundColor: 'blue', height: 120}}
+          column
+          hAlignContent='center'
+          vAlignContent='center'>
+            <div style={{backgroundColor: 'red', height: 30, width: 30}}/>
+            <div style={{backgroundColor: 'green', height: 30, width: 30}}/>
+        </FlexView>
+        <br/>
+        <FlexView
+          className='hello'
+          style={{backgroundColor: 'blue', height: 120}}>
+            <FlexView
+              style={{backgroundColor: 'red', height: 30, width: 30}}
+              marginTop='auto'
+              marginBottom='auto'
+              />
+            <FlexView
+              style={{backgroundColor: 'green', height: 30, width: 30}}
+              marginLeft='auto'
+              />
         </FlexView>
       </div>
     );

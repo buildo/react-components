@@ -1,4 +1,6 @@
 import React from 'react';
+import cx from 'classnames';
+import pick from 'lodash/object/pick';
 
 export default React.createClass({
 
@@ -7,7 +9,24 @@ export default React.createClass({
     row: React.PropTypes.bool,
     column: React.PropTypes.bool,
     auto: React.PropTypes.bool,
-    centerVertically: React.PropTypes.bool,
+    vAlignContent: React.PropTypes.oneOf(['top', 'center', 'bottom']),
+    hAlignContent: React.PropTypes.oneOf(['left', 'center', 'right']),
+    marginLeft: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
+    marginTop: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
+    marginRight: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
+    marginBottom: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
     grow: React.PropTypes.oneOfType([
       React.PropTypes.number,
       React.PropTypes.bool
@@ -79,17 +98,43 @@ export default React.createClass({
   },
 
   getStyle() {
-    const sizeStyle = {
-      width: this.props.width,
-      height: this.props.height
+    const style = pick(this.props, [
+      'width',
+      'height',
+      'marginLeft',
+      'marginTop',
+      'marginRight',
+      'marginBottom'
+    ]);
+    return {...this.getFlexStyle(), ...style, ...this.props.style};
+  },
+
+  getContentAlignmentClasses() {
+    const vPrefix = this.props.column ? 'justify-content-' : 'align-content-';
+    const hPrefix = this.props.column ? 'align-content-' : 'justify-content-';
+
+    const vAlignContentClasses = {
+      top: `${vPrefix}start`,
+      center: `${vPrefix}center`,
+      bottom: `${vPrefix}end`
     };
-    return {...this.getFlexStyle(), ...sizeStyle, ...this.props.style};
+
+    const hAlignContentClasses = {
+      top: `${hPrefix}start`,
+      center: `${hPrefix}center`,
+      bottom: `${hPrefix}end`
+    };
+
+    const vAlignContent = vAlignContentClasses[this.props.vAlignContent];
+    const hAlignContent = hAlignContentClasses[this.props.hAlignContent];
+
+    return cx(vAlignContent, hAlignContent);
   },
 
   getClasses() {
     const direction = this.props.column ? 'flex-column' : 'flex-row';
-    const centerVertically = this.props.centerVertically === true ? 'flex-vertically-centered' : '';
-    return `react-flex-view ${direction} ${centerVertically} ${this.props.className}`;
+    const contentAlignment = this.getContentAlignmentClasses();
+    return cx('react-flex-view', direction, contentAlignment, this.props.className);
   },
 
   render() {

@@ -6,10 +6,10 @@ import PopoverTest from './components/Popover'
 import FlexViewTest from './components/FlexView'
 
 const modules = [
-  DropdownTest,
+  // DropdownTest,
   // MenuTest,
   // PopoverTest,
-  // FlexViewTest
+  FlexViewTest
 ];
 
 const template = (
