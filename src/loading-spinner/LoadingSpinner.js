@@ -30,6 +30,10 @@ const LoadingSpinner = React.createClass({
     };
   },
 
+  componentDidMount() {
+    this.logWarnings();
+  },
+
   getMessage() {
     if (this.props.message) {
       const {message, size} = this.props;
@@ -47,6 +51,13 @@ const LoadingSpinner = React.createClass({
     }
   },
 
+  logWarnings() {
+    const {position} = this.refs.loadingSpinner.getDOMNode().parentNode.style;
+    if (process.env.NODE_ENV !== 'production' && position !== 'relative') {
+      console.warn('LoadingSpinner\'s parent node style should have "position: relative"');
+    }
+  },
+
   render() {
     const {size, color, overlayColor, className, style} = this.props;
 
@@ -57,7 +68,7 @@ const LoadingSpinner = React.createClass({
     };
 
     return (
-      <div className={cx('loading-spinner', className)} style={style}>
+      <div ref='loadingSpinner' className={cx('loading-spinner', className)} style={style}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
           <div className='spinner' style={spinnerStyle}/>
           {this.getMessage()}
