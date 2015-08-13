@@ -19,7 +19,7 @@ const ExampleView = React.createClass({
           <img src={this.props.image} />
           <div className='links'>
             <a href={this.props.github}>GitHub</a>
-            <a href={this.props.demo}> Demo</a>
+            {this.props.demo && <a href={this.props.demo}> Demo</a>}
           </div>
         </div>
       </div>
