@@ -1,13 +1,17 @@
 import React from 'react';
+// CARDS
 import Datepicker from './components/datepicker';
 import InputLink from './components/inputLink';
 import CookieBanner from './components/cookieBanner';
 import TextareaAutosize from './components/autosizeTextarea';
-import SelectChildren from '../src/dropdown'
+import Flex from './components/flex';
+import LoadingSpinner from './components/loadingSpinner';
+// COMPONENTS
+import DropdownLive from '../src/dropdown'
+import LoadingSpinnerLive from '../src/loading-spinner'
 
 const template = (
   <div className='grid'>
-    <h1>Simple exports</h1>
     <div className='row'>
       {InputLink}
       {Datepicker}
@@ -15,15 +19,22 @@ const template = (
     </div>
     <div className='row'>
       {TextareaAutosize}
+      {Flex}
+      {LoadingSpinner}
     </div>
-    <h1>Custom Wrappers</h1>
-    <SelectChildren
+    <h1>Live demos</h1>
+    <h3>Dropdown</h3>
+    <DropdownLive
       searchable={false}>
       <p>one</p>
       <p>deux</p>
       <p>tres</p>
       <p>quattro</p>
-    </SelectChildren>
+    </DropdownLive>
+    <h3>LoadingSpinner</h3>
+    <div style={{position: 'relative', height: 80}}>
+      <LoadingSpinnerLive />
+    </div>
   </div>
 );
 
