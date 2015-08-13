@@ -4,12 +4,14 @@ import MenuTest from './components/Menu'
 import ModalTest from './components/Modal'
 import PopoverTest from './components/Popover'
 import FlexViewTest from './components/FlexView'
+import LoadingSpinnerTest from './components/LoadingSpinner'
 
 const modules = [
   // DropdownTest,
   // MenuTest,
   // PopoverTest,
-  FlexViewTest
+  // FlexViewTest,
+  LoadingSpinnerTest
 ];
 
 const template = (
