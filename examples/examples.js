@@ -1,10 +1,10 @@
 import React from 'react';
-import DropdownTest from './components/Dropdown'
-import MenuTest from './components/Menu'
-import ModalTest from './components/Modal'
-import PopoverTest from './components/Popover'
-import FlexViewTest from './components/FlexView'
-import LoadingSpinnerTest from './components/LoadingSpinner'
+import DropdownTest from './components/Dropdown';
+import MenuTest from './components/Menu';
+import ModalTest from './components/Modal';
+import PopoverTest from './components/Popover';
+import FlexViewTest from './components/FlexView';
+import LoadingSpinnerTest from './components/LoadingSpinner';
 
 const modules = [
   // DropdownTest,

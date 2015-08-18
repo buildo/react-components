@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlexView, FlexCell} from '../../src/flex';
+import { FlexView, FlexCell } from '../../src';
 
 const Example = React.createClass({
 

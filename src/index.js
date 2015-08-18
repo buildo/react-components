@@ -1,11 +1,8 @@
-import * as CookieBanner from './cookie-banner';
-import * as DatePicker from './datepicker';
-import InputLink from './input-link';
-import TextareaAutosize from './textarea-autosize';
-
-export default {
-  CookieBanner,
-  DatePicker,
-  InputLink,
-  TextareaAutosize
-};
+export { CookieBanner, cookie } from './cookie-banner';
+export * from './datepicker';
+export Dropdown from './dropdown';
+export { FlexView, FlexCell } from './flex';
+export InputLink from './input-link';
+export LoadingSpinner from './loading-spinner';
+export Popover from './popover';
+export TextareaAutosize from './textarea-autosize';

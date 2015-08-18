@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingSpinner from '../../src/loading-spinner'
+import { LoadingSpinner } from '../../src';
 
 
 const Example = React.createClass({
