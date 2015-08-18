@@ -1,6 +1,5 @@
 import React from 'react';
-import SelectChildren from '../../src/dropdown'
-
+import { Dropdown } from '../../src';
 
 const Example = React.createClass({
 
@@ -9,12 +8,12 @@ const Example = React.createClass({
   getTemplate() {
     return (
       <div>
-        <SelectChildren>
+        <Dropdown>
           <p>one</p>
           <p>deux</p>
           <p>tres</p>
           <p>quattro</p>
-        </SelectChildren>
+        </Dropdown>
       </div>
     );
   },

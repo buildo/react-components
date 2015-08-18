@@ -1,5 +1,5 @@
 import React from 'react';
-import Popover from '../../src/popover'
+import { Popover } from '../../src';
 
 
 const Example = React.createClass({
