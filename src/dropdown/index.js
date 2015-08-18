@@ -1,5 +1,5 @@
-import SelectChildren from './SelectChildren';
-import SelectMenu from './SelectMenu';
+import Dropdown from './Dropdown';
+import DropdownMenu from './DropdownMenu';
 
-export default SelectChildren;
-export {SelectChildren, SelectMenu};
+export default Dropdown;
+export { Dropdown, DropdownMenu };
