@@ -8,11 +8,13 @@ Its purpose is to give access to all these components through a single npm depen
 
 ###Usage
 Each component is stored inside its own folder (useful for small bundles).
-The import works as documented on the third party library:
-```
-import {DatePickerInput} from 'buildo-react-components/lib/datepicker';
-import CookieBanner from 'buildo-react-components/lib/cookie-banner';
-```
+You can import each package directly from the main lib:
+
+`import { FlexView, Dropdown, DatePicker } from 'buildo-react-components';`
+
+Or from the package folder:
+
+`import { DatePickerInput } from 'buildo-react-components/lib/datepicker';`
 
 ###Components
 [Kitchen Sink](https://rawgit.com/buildo/react-components/master/kitchen-sink/index.html)
