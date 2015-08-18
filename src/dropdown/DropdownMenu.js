@@ -1,8 +1,8 @@
 import React from 'react';
-import Select from './SelectChildren';
+import Dropdown from './Dropdown';
 import omit from 'lodash/object/omit';
 
-const SelectMenu = React.createClass({
+const DropdownMenu = React.createClass({
 
   propTypes: {
     children: React.PropTypes.oneOfType([
@@ -45,7 +45,7 @@ const SelectMenu = React.createClass({
     const isOpenClass = this.state.isOpen ? 'is-open' : '';
     return (
       <div>
-        <Select {...omit(this.props, 'children')} className={isOpenClass} ref='select'/>
+        <Dropdown {...omit(this.props, 'children')} className={isOpenClass} ref='select'/>
         {this.state.isOpen ? this.props.children : null}
       </div>
     );
@@ -53,4 +53,4 @@ const SelectMenu = React.createClass({
 
 });
 
-export default SelectMenu;
+export default DropdownMenu;
