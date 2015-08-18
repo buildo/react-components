@@ -19,7 +19,7 @@ const PropTypes = {
   })
 };
 
-const SelectChildren = React.createClass({
+const Dropdown = React.createClass({
 
   propTypes: PropTypes,
 
@@ -88,4 +88,4 @@ const SelectChildren = React.createClass({
 
 });
 
-export default SelectChildren;
+export default Dropdown;
