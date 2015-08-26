@@ -6,6 +6,7 @@ import PopoverTest from './components/Popover';
 import FlexViewTest from './components/FlexView';
 import LoadingSpinnerTest from './components/LoadingSpinner';
 import MobileDetectorTest from './components/MobileDetector';
+import LinkStateTest from './components/LinkState';
 
 const modules = [
   // DropdownTest,
@@ -13,7 +14,8 @@ const modules = [
   // PopoverTest,
   // FlexViewTest,
   // LoadingSpinnerTest,
-  MobileDetectorTest
+  MobileDetectorTest,
+  LinkStateTest
 ];
 
 const template = (
