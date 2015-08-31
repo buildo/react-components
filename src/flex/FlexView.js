@@ -43,6 +43,7 @@ export default React.createClass({
       React.PropTypes.number,
       React.PropTypes.string
     ]),
+    events: React.PropTypes.object,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
@@ -51,7 +52,8 @@ export default React.createClass({
   getDefaultProps() {
     return {
       className: '',
-      style: {}
+      style: {},
+      events: {}
     };
   },
 
@@ -141,7 +143,11 @@ export default React.createClass({
   render() {
     const className = this.getClasses();
     const style = this.getStyle();
-    return <div id={this.props.id} className={className} style={style}>{this.props.children}</div>;
+    return (
+      <div id={this.props.id} className={className} style={style} {...this.props.events}>
+        {this.props.children}
+      </div>
+    );
   }
 
 });
