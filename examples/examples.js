@@ -5,13 +5,15 @@ import ModalTest from './components/Modal';
 import PopoverTest from './components/Popover';
 import FlexViewTest from './components/FlexView';
 import LoadingSpinnerTest from './components/LoadingSpinner';
+import MobileDetectorTest from './components/MobileDetector';
 
 const modules = [
   // DropdownTest,
   // MenuTest,
   // PopoverTest,
   // FlexViewTest,
-  LoadingSpinnerTest
+  // LoadingSpinnerTest,
+  MobileDetectorTest
 ];
 
 const template = (
