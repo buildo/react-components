@@ -1,5 +1,5 @@
 #React Components
-This is a collection of every reusable React component used in [Buildo](http://buildo.io/).
+This is a collection of every reusable React component used in [buildo](http://buildo.io/).
 
 Its purpose is to give access to all these components through a single npm dependency so to improve the development experience and make eventual changes of library easier, faster and centralized.
 

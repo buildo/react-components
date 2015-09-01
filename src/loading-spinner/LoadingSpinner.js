@@ -18,6 +18,7 @@ const LoadingSpinner = React.createClass({
       ])
     }),
     overlayColor: React.PropTypes.string,
+    id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
   },
@@ -59,7 +60,7 @@ const LoadingSpinner = React.createClass({
   },
 
   render() {
-    const {size, color, overlayColor, className, style} = this.props;
+    const {size, color, overlayColor, id, className, style} = this.props;
 
     const overlayStyle = {backgroundColor: overlayColor};
     const spinnerStyle = {
@@ -68,7 +69,7 @@ const LoadingSpinner = React.createClass({
     };
 
     return (
-      <div ref='loadingSpinner' className={cx('loading-spinner', className)} style={style}>
+      <div ref='loadingSpinner' className={cx('loading-spinner', className)} {...{ style, id }}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
           <div className='spinner' style={spinnerStyle}/>
           {this.getMessage()}
