@@ -11,11 +11,11 @@ import LinkStateTest from './components/LinkState';
 const modules = [
   // DropdownTest,
   // MenuTest,
-  // PopoverTest,
+  PopoverTest,
   // FlexViewTest,
   // LoadingSpinnerTest,
-  MobileDetectorTest,
-  LinkStateTest
+  // MobileDetectorTest,
+  // LinkStateTest
 ];
 
 const template = (
