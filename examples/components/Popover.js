@@ -31,7 +31,7 @@ const Example = React.createClass({
     );
     return (
       <div>
-        <Popover isOpen={this.state.isOpen} content={content} position='bottom center'>
+        <Popover popover={{content, position: 'bottom', anchor: 'center'}}>
           <button ref='target' onClick={this.toggle} style={{backgroundColor: 'blue', display: 'inline-block'}}>
             CLICK ME
           </button>

@@ -5,18 +5,21 @@ const Popover = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
-    content: React.PropTypes.node.isRequired,
-    event: React.PropTypes.oneOf(['click', 'hover']),
-    position: React.PropTypes.oneOf(['top', 'bottom']),
-    anchor: React.PropTypes.oneOf(['left', 'center', 'right']),
-    onShow: React.PropTypes.func,
-    onHide: React.PropTypes.func,
-    popoverClassName: React.PropTypes.string,
-    popoverMaxWidth: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ]),
-    dismissOnScroll: React.PropTypes.bool,
+    popover: React.PropTypes.shape({
+      content: React.PropTypes.node.isRequired,
+      position: React.PropTypes.oneOf(['top', 'bottom']),
+      anchor: React.PropTypes.oneOf(['left', 'center', 'right']),
+      event: React.PropTypes.oneOf(['click', 'hover']),
+      onShow: React.PropTypes.func,
+      onHide: React.PropTypes.func,
+      dismissOnScroll: React.PropTypes.bool,
+      className: React.PropTypes.string,
+      id: React.PropTypes.string,
+      maxWidth: React.PropTypes.oneOfType([
+        React.PropTypes.number,
+        React.PropTypes.string
+      ])
+    }).isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
@@ -24,13 +27,6 @@ const Popover = React.createClass({
 
   getDefaultProps() {
     return {
-      event: 'hover',
-      position: 'top',
-      anchor: 'center',
-      onShow: () => {},
-      onHide: () => {},
-      popoverClassName: '',
-      dismissOnScroll: true,
       id: '',
       className: '',
       style: {}
@@ -40,6 +36,22 @@ const Popover = React.createClass({
   getInitialState() {
     return {
       isOpen: false
+    };
+  },
+
+  // extend with default values
+  getPopoverProps() {
+    return {
+      ...{
+        event: 'hover',
+        position: 'top',
+        anchor: 'center',
+        onShow: () => {},
+        onHide: () => {},
+        className: '',
+        dismissOnScroll: true
+      },
+      ...this.props.popover
     };
   },
 
@@ -69,15 +81,16 @@ const Popover = React.createClass({
   },
 
   appendPopover() {
-    const positionClass = `position-${this.props.position}`;
-    const anchorClass = `anchor-${this.props.anchor}`;
-    const className = `popover-content ${positionClass} ${anchorClass} ${this.props.popoverClassName}`;
+    const { position, anchor, className, content } = this.getPopoverProps();
+    const positionClass = `position-${position}`;
+    const anchorClass = `anchor-${anchor}`;
+    const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
 
     const hiddenPopover = (
       <div
-        className={className}
+        className={_className}
         style={{position: 'absolute', visibility: 'hidden'}}>
-        {this.props.content}
+        {content}
       </div>
     );
     this.containerNode = document.createElement('div');
@@ -89,9 +102,9 @@ const Popover = React.createClass({
     const style = this.computePopoverStyle();
     const popover = (
       <div
-        className={className}
+        className={_className}
         style={style}>
-        {this.props.content}
+        {content}
       </div>
     );
 
@@ -108,7 +121,7 @@ const Popover = React.createClass({
   },
 
   addOnScrollListener() {
-    if (this.props.dismissOnScroll) {
+    if (this.getPopoverProps().dismissOnScroll) {
       if (window.attachEvent) {
         //Internet Explorer
         window.attachEvent('onmousewheel', this.onScroll);
@@ -119,7 +132,7 @@ const Popover = React.createClass({
   },
 
   removeOnScrollListener() {
-    if (this.props.dismissOnScroll) {
+    if (this.getPopoverProps().dismissOnScroll) {
       if (window.detachEvent) {
         //Internet Explorer
         window.detachEvent('onmousewheel', this.onScroll);
@@ -130,11 +143,12 @@ const Popover = React.createClass({
   },
 
   onPopoverStateChange() {
+    const { onShow, onHide } = this.getPopoverProps();
     if (this.state.isOpen) {
-      this.props.onShow();
+      onShow();
       this.appendPopover();
     } else {
-      this.props.onHide();
+      onHide();
       this.removePopover();
     }
   },
@@ -165,8 +179,9 @@ const Popover = React.createClass({
   },
 
   getEventCallbacks() {
-    const onHover = this.props.event === 'hover';
-    const onClick = this.props.event === 'click';
+    const { event } = this.getPopoverProps();
+    const onHover = event === 'hover';
+    const onClick = event === 'click';
     return {
       onMouseEnter: onHover ? this.showPopover : undefined,
       onMouseLeave: onHover ? this.hidePopover : undefined,
@@ -178,9 +193,10 @@ const Popover = React.createClass({
     const { clientWidth: childWidth, clientHeight: childHeight } = this.refs.children.getDOMNode();
     const { clientHeight: popoverHeight, clientWidth: popoverWidth } = this.popoverNode;
     const { top, left } = this.getOffsetRect();
+    const { anchor, position, maxWidth } = this.getPopoverProps();
 
     let deltaX;
-    switch (this.props.anchor) {
+    switch (anchor) {
       case 'left':
         deltaX = 0;
         break;
@@ -193,7 +209,7 @@ const Popover = React.createClass({
     }
 
     let deltaY;
-    switch (this.props.position) {
+    switch (position) {
       case 'top':
         deltaY = -(popoverHeight + 5);
         break;
@@ -206,7 +222,7 @@ const Popover = React.createClass({
       position: 'absolute',
       top: top + deltaY,
       left: left + deltaX,
-      maxWidth: this.props.popoverMaxWidth
+      maxWidth: maxWidth
     };
   },
 
