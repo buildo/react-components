@@ -81,7 +81,9 @@ const Popover = React.createClass({
   },
 
   componentWillUnmount() {
-    this.isAbsolute() && this.removePopover();
+    if (this.isAbsolute()) {
+      this.removePopover();
+    }
     this.removeOnScrollListener();
   },
 
@@ -173,11 +175,15 @@ const Popover = React.createClass({
     const isAbsolute = this.isAbsolute();
     if (this.state.isOpen) {
       onShow();
-      isAbsolute && this.appendPopover();
+      if (isAbsolute) {
+        this.appendPopover();
+      }
       this.addOnScrollListener();
     } else {
       onHide();
-      isAbsolute && this.removePopover();
+      if (isAbsolute) {
+        this.removePopover();
+      }
       this.removeOnScrollListener();
     }
   },
