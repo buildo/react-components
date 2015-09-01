@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import pick from 'lodash/object/pick';
+import omit from 'lodash/object/omit';
 
 export default React.createClass({
 
@@ -143,8 +144,9 @@ export default React.createClass({
   render() {
     const className = this.getClasses();
     const style = this.getStyle();
+    const events = omit(this.props.events, ['className', 'id', 'style']);
     return (
-      <div id={this.props.id} className={className} style={style} {...this.props.events}>
+      <div id={this.props.id} className={className} style={style} {...events}>
         {this.props.children}
       </div>
     );
