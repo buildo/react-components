@@ -18,7 +18,7 @@ const Example = React.createClass({
 
   getTemplate() {
     const content = (
-      <div>
+      <div style={{backgroundColor: 'yellow', width: 200}}>
         <div>
           Popover Title
         </div>
@@ -31,11 +31,20 @@ const Example = React.createClass({
     );
     return (
       <div>
-        <Popover popover={{content, position: 'bottom', anchor: 'center'}}>
-          <button ref='target' onClick={this.toggle} style={{backgroundColor: 'blue', display: 'inline-block'}}>
-            CLICK ME
-          </button>
-        </Popover>
+        <div style={{marginTop: 200, marginLeft: 130}}>
+          <Popover popover={{content, position: 'bottom', anchor: 'left', type: 'absolute'}}>
+            <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
+              ABSOLUTE
+            </button>
+          </Popover>
+        </div>
+        <div style={{marginTop: 200, marginLeft: 130}}>
+          <Popover popover={{content, position: 'top', anchor: 'right', type: 'relative'}}>
+            <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
+              RELATIVE
+            </button>
+          </Popover>
+        </div>
       </div>
     );
   },
