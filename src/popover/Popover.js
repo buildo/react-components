@@ -80,34 +80,27 @@ const Popover = React.createClass({
     };
   },
 
-  appendPopover() {
+  getPopover(style) {
     const { position, anchor, className, content } = this.getPopoverProps();
     const positionClass = `position-${position}`;
     const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
-
-    const hiddenPopover = (
-      <div
-        className={_className}
-        style={{position: 'absolute', visibility: 'hidden'}}>
+    style = style || this.computePopoverStyle();
+    return (
+      <div className={_className} style={style}>
         {content}
       </div>
     );
+  },
+
+  appendPopover() {
+    const hiddenPopover = this.getPopover({position: 'absolute', visibility: 'hidden'});
     this.containerNode = document.createElement('div');
     this.containerNode.innerHTML = React.renderToString(hiddenPopover);
     this.popoverNode = this.containerNode.childNodes[0];
-
     document.body.appendChild(this.containerNode);
 
-    const style = this.computePopoverStyle();
-    const popover = (
-      <div
-        className={_className}
-        style={style}>
-        {content}
-      </div>
-    );
-
+    const popover = this.getPopover();
     this.containerNode.innerHTML = React.renderToString(popover);
     this.addOnScrollListener();
   },
@@ -227,22 +220,27 @@ const Popover = React.createClass({
   },
 
   getLocals() {
+    const isRelative = this.props.popover.type === 'relative';
     return {
       ...this.props,
+      isRelative,
       style: {
         display: 'inline-block',
+        position: isRelative ? 'relative' : undefined,
         ...this.props.style
       },
       className: cx('react-popover', this.props.className),
-      eventCallbacks: this.getEventCallbacks()
+      eventCallbacks: this.getEventCallbacks(),
+      getPopover: this.getPopover
     };
   },
 
   render() {
-    const { children, style, className, id, eventCallbacks } = this.getLocals();
+    const { children, style, className, id, eventCallbacks, isRelative, getPopover } = this.getLocals();
     return (
       <div {...{ id, className, style }} {...eventCallbacks} ref='children'>
         {children}
+        {isRelative && getPopover()}
       </div>
     );
   }
