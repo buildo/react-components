@@ -11,6 +11,7 @@ Improvements
 New
 - `MobileDetector`: pass mobile info as context to children and grandchildren
 - `Popover`: complete refactor, finally **semantic free**!
+
 ###0.0.7
 Improvements
 - components are easier to import (added `index.js` in main folder)
