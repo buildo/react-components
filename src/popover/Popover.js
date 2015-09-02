@@ -66,16 +66,14 @@ const Popover = React.createClass({
   // extend with default values
   getPopoverProps() {
     return {
-      ...{
-        type: 'relative',
-        position: 'top',
-        anchor: 'center',
-        event: 'hover',
-        onShow: () => {},
-        onHide: () => {},
-        dismissOnScroll: true,
-        className: ''
-      },
+      type: 'relative',
+      position: 'top',
+      anchor: 'center',
+      event: 'hover',
+      onShow: () => {},
+      onHide: () => {},
+      dismissOnScroll: true,
+      className: '',
       ...this.props.popover
     };
   },
