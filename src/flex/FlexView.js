@@ -3,58 +3,57 @@ import cx from 'classnames';
 import pick from 'lodash/object/pick';
 import omit from 'lodash/object/omit';
 
+const propTypes = {
+  children: React.PropTypes.node,
+  row: React.PropTypes.bool,
+  column: React.PropTypes.bool,
+  auto: React.PropTypes.bool,
+  vAlignContent: React.PropTypes.oneOf(['top', 'center', 'bottom']),
+  hAlignContent: React.PropTypes.oneOf(['left', 'center', 'right']),
+  marginLeft: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number
+  ]),
+  marginTop: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number
+  ]),
+  marginRight: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number
+  ]),
+  marginBottom: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number
+  ]),
+  grow: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.bool
+  ]),
+  height: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
+  width: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
+  flexBasis: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
+  className: React.PropTypes.string,
+  style: React.PropTypes.object
+};
+
 export default React.createClass({
 
-  propTypes: {
-    children: React.PropTypes.node,
-    row: React.PropTypes.bool,
-    column: React.PropTypes.bool,
-    auto: React.PropTypes.bool,
-    vAlignContent: React.PropTypes.oneOf(['top', 'center', 'bottom']),
-    hAlignContent: React.PropTypes.oneOf(['left', 'center', 'right']),
-    marginLeft: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
-    marginTop: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
-    marginRight: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
-    marginBottom: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
-    grow: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.bool
-    ]),
-    height: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ]),
-    width: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ]),
-    flexBasis: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ]),
-    events: React.PropTypes.object,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  },
+  propTypes: propTypes,
 
   getDefaultProps() {
     return {
       className: '',
-      style: {},
-      events: {}
+      style: {}
     };
   },
 
@@ -144,9 +143,9 @@ export default React.createClass({
   render() {
     const className = this.getClasses();
     const style = this.getStyle();
-    const events = omit(this.props.events, ['className', 'id', 'style']);
+    const props = omit(this.props, Object.keys(propTypes));
     return (
-      <div id={this.props.id} className={className} style={style} {...events}>
+      <div className={className} style={style} { ...props }>
         {this.props.children}
       </div>
     );
