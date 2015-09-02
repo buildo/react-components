@@ -11,11 +11,11 @@ import LinkStateTest from './components/LinkState';
 const modules = [
   // DropdownTest,
   // MenuTest,
-  // PopoverTest,
+  PopoverTest,
   // FlexViewTest,
   // LoadingSpinnerTest,
-  MobileDetectorTest,
-  LinkStateTest
+  // MobileDetectorTest,
+  // LinkStateTest
 ];
 
 const template = (
@@ -24,6 +24,8 @@ const template = (
   </div>
 );
 
+document.getElementById('iso-container').innerHTML = React.renderToString(template);
+React.render(template, document.getElementById('iso-container'));
 React.render(template, document.getElementById('container'));
 
 // React.render(<ModalTest />, document.getElementById('modal'));
