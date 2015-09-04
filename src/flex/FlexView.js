@@ -123,9 +123,9 @@ export default React.createClass({
     };
 
     const hAlignContentClasses = {
-      top: `${hPrefix}start`,
+      left: `${hPrefix}start`,
       center: `${hPrefix}center`,
-      bottom: `${hPrefix}end`
+      right: `${hPrefix}end`
     };
 
     const vAlignContent = vAlignContentClasses[this.props.vAlignContent];
