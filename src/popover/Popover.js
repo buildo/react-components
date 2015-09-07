@@ -235,7 +235,7 @@ const Popover = React.createClass({
       offsetTop,
       offsetLeft
     } = this.state;
-    const { anchor, position, maxWidth, type } = this.getPopoverProps();
+    const { anchor, position, maxWidth } = this.getPopoverProps();
     const isAbsolute = this.isAbsolute();
 
     let deltaX;
@@ -254,7 +254,7 @@ const Popover = React.createClass({
     let deltaY;
     switch (position) {
       case 'top':
-        deltaY = isAbsolute ? -(popoverHeight + 5) : (childHeight + 5);
+        deltaY = isAbsolute ? -(popoverHeight + 5) : (childHeight + 5); //eslint-disable-line space-infix-ops
         break;
       case 'bottom':
         deltaY = childHeight + 5;
