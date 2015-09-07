@@ -26,7 +26,6 @@ const LoadingSpinner = React.createClass({
   getDefaultProps() {
     return {
       size: '3em',
-      color: 'grey',
       overlayColor: 'rgba(255, 255, 255, .9)'
     };
   },
