@@ -30,6 +30,10 @@ const propTypes = {
     React.PropTypes.number,
     React.PropTypes.bool
   ]),
+  shrink: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.bool
+  ]),
   height: React.PropTypes.oneOfType([
     React.PropTypes.number,
     React.PropTypes.string
@@ -68,6 +72,12 @@ export default React.createClass({
   },
 
   getShrink() {
+    if (typeof this.props.shrink === 'number') {
+      return this.props.shrink;
+    } else if (this.props.shrink) {
+      return 1;
+    }
+
     if (this.props.flexBasis || this.props.auto) {
       return 0;
     } else {
