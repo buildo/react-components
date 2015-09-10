@@ -86,13 +86,15 @@ export default React.createClass({
   },
 
   getBasis() {
-    if (this.props.flexBasis) {
-      const suffix = typeof this.props.flexBasis === 'number' ? 'px' : '';
-      return this.props.flexBasis + suffix;
-    } else if (this.props.grow) {
+    const { flexBasis, grow, shrink, auto } = this.props;
+
+    if (flexBasis) {
+      const suffix = typeof flexBasis === 'number' ? 'px' : '';
+      return flexBasis + suffix;
+    } else if (grow && !shrink && !auto) {
       return '100%';
     } else {
-      return 'auto'; // auto === true or default
+      return 'auto'; // safe default
     }
   },
 
