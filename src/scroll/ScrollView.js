@@ -1,55 +1,71 @@
 import React from 'react';
+import omit from 'lodash/object/omit';
+
+const propTypes = {
+  children: React.PropTypes.func.isRequired,
+  scrollX: React.PropTypes.bool,
+  scrollY: React.PropTypes.bool,
+  scrollPropagation: React.PropTypes.bool,
+  style: React.PropTypes.object
+};
 
 export default React.createClass({
 
-  propTypes: {
-    children: React.PropTypes.func.isRequired,
-    scrollX: React.PropTypes.bool,
-    scrollY: React.PropTypes.bool,
-    scrollPropagation: React.PropTypes.bool
-  },
+  propTypes: propTypes,
 
   getDefaultProps() {
     return {
       scrollX: true,
       scrollY: true,
-      scrollPropagation: false
+      scrollPropagation: true,
+      style: {}
     };
   },
 
   componentDidMount() {
+    this.scrollView = this.refs.scrollView.getDOMNode();
     if (!this.props.scrollPropagation) {
       this.disableScrollPropagation();
     }
   },
 
   enableScrollPropagation() {
-    const scroll = this.refs.scroll.getDOMNode();
-    const unbindEvent = scroll.removeEventListener || scroll.detachEvent;
-    const event = (scroll.removeEventListener ? '' : 'on') + 'mousewheel';
+    const unbindEvent = this.scrollView.removeEventListener || this.scrollView.detachEvent;
+    const event = (this.scrollView.removeEventListener ? '' : 'on') + 'mousewheel';
 
     unbindEvent(event, this.stopScrollPropagation);
   },
 
   disableScrollPropagation() {
-    const scroll = this.refs.scroll.getDOMNode();
-    const bindEvent = scroll.addEventListener || scroll.attachEvent;
-    const event = (scroll.addEventListener ? '' : 'on') + 'mousewheel';
+    const bindEvent = this.scrollView.addEventListener || this.scrollView.attachEvent;
+    const event = (this.scrollView.addEventListener ? '' : 'on') + 'mousewheel';
 
     bindEvent(event, this.stopScrollPropagation);
   },
 
   stopScrollPropagation(e) {
-    const up = e.originalEvent.wheelDelta > 0;
-    const down = e.originalEvent.wheelDelta < 0;
+    if (e.srcElement === this.scrollView) {
+      const up = e.wheelDelta > 0;
+      const down = e.wheelDelta < 0;
 
-    const scrollTop = scroll.get(0).scrollTop;
-    const scrollHeight = scroll.get(0).scrollHeight;
-    const offsetHeight = scroll.get(0).offsetHeight;
+      const scrollTop = this.scrollView.scrollTop;
+      const scrollHeight = this.scrollView.scrollHeight;
+      const offsetHeight = this.scrollView.offsetHeight;
 
-    if((scrollTop + offsetHeight === scrollHeight && down) || (scrollTop === 0 && up)) {
-      e.preventDefault();
+      if((scrollTop + offsetHeight === scrollHeight && down) || (scrollTop === 0 && up)) {
+        e.preventDefault();
+      }
     }
+  },
+
+  computeStyle() {
+    const { scrollX, scrollY, style } = this.props;
+    return {
+      overflowY: scrollY ? 'scroll' : undefined, /* has to be scroll for iOS, not auto */
+      overflowX: scrollX ? 'scroll' : undefined, /* has to be scroll for iOS, not auto */
+      WebkitOverflowScrolling: 'touch',
+      ...style
+    };
   },
 
   // scrollTo(x, y, time) {
@@ -57,8 +73,9 @@ export default React.createClass({
   // },
 
   render() {
+    const props = omit(this.props, Object.keys(propTypes));
     return (
-      <div ref='scroll'>
+      <div { ...props } style={this.computeStyle()} ref='scrollView'>
         {this.props.children(this.scrollTo)}
       </div>
     );
