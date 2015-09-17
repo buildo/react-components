@@ -68,9 +68,46 @@ export default React.createClass({
     };
   },
 
-  // scrollTo(x, y, time) {
+  scrollTo(x, y, scrollDuration) {
+    const { scrollTop, scrollLeft } = this.scrollView;
+    x = x === null ? scrollLeft : x;
+    y = y === null ? scrollTop : y;
 
-  // },
+    const deltaX = scrollLeft > x ? (x - scrollLeft) : (scrollLeft - x);
+    const deltaY = scrollTop > y ? (y - scrollTop) : (scrollTop - y);
+
+    this._scrollTo(x, y, scrollDuration, Date.now(), deltaX, deltaY);
+  },
+
+  _scrollTo(x, y, scrollDuration, startTime, deltaX, deltaY) {
+    if (scrollDuration > 0) {
+      const { scrollTop, scrollLeft } = this.scrollView;
+      const currentTime = Date.now();
+      const time = Math.min(1, (Math.max(1, currentTime - startTime) / scrollDuration));
+      // const easingFunction = easing[this.props.easing];
+      const easingFunction = (time) => {
+        if (time <= 0.5) { // the first half of the animation)
+          return Math.pow(2 * time) / 2;
+        } else { // the second half
+          return (2 - Math.pow(2 * (1 - time))) / 2;
+        }
+      };
+      const easedT = easingFunction(time);
+
+      if ((typeof x === 'number' && scrollLeft !== x) || (typeof y === 'number' && scrollTop !== y)) {
+        // const deltaX = scrollLeft > x ? (x - scrollLeft) : (scrollLeft - x);
+        // const deltaY = scrollTop > y ? (y - scrollTop) : (scrollTop - y);
+        console.log((easedT * deltaX), (easedT * deltaY));
+        this.scrollView.scrollLeft += (easedT * deltaX);
+        this.scrollView.scrollTop += (easedT * deltaY);
+
+        requestAnimationFrame(() => this._scrollTo(x, y, scrollDuration, startTime, deltaX, deltaY));
+      }
+    } else {
+      this.scrollView.scrollLeft = x;
+      this.scrollView.scrollTop = y;
+    }
+  },
 
   render() {
     const props = omit(this.props, Object.keys(propTypes));
