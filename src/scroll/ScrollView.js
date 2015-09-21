@@ -82,14 +82,14 @@ export default React.createClass({
   _scrollTo(x, y, scrollDuration, startTime, startX, startY) {
     if (scrollDuration > 0) {
       const { scrollTop, scrollLeft } = this.scrollView;
-      const time = Math.min(1, (Math.max(1, Date.now() - startTime) / scrollDuration));
       const easingFunction = easing[this.props.easing];
 
       if ((typeof x === 'number' && scrollLeft !== x) || (typeof y === 'number' && scrollTop !== y)) {
-        const distanceX = startX > x ? (x - startX) : (startX - x);
-        const distanceY = startY > y ? (y - startY) : (startY - y);
-        this.scrollView.scrollLeft = startX + easingFunction(time, distanceX);
-        this.scrollView.scrollTop = startY + easingFunction(time, distanceY);
+        const currentTime = Math.min(scrollDuration, (Date.now() - startTime));
+        const distanceX = (x - startX);
+        const distanceY = (y - startY);
+        this.scrollView.scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
+        this.scrollView.scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
 
         requestAnimationFrame(() => this._scrollTo(x, y, scrollDuration, startTime, startX, startY));
       }
