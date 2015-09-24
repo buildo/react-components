@@ -29,28 +29,25 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    this.scrollView = this.refs.scrollView.getDOMNode();
     if (!this.props.scrollPropagation) {
       this.disableScrollPropagation();
     }
   },
 
-  enableScrollPropagation() {
-    const unbindEvent = this.scrollView.removeEventListener || this.scrollView.detachEvent;
-    const event = (this.scrollView.removeEventListener ? '' : 'on') + 'mousewheel';
+  getScrollView() {
+    return this.refs.scrollView.getDOMNode();
+  },
 
-    unbindEvent(event, this.stopScrollPropagation);
+  enableScrollPropagation() {
+    this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
   },
 
   disableScrollPropagation() {
-    const bindEvent = this.scrollView.addEventListener || this.scrollView.attachEvent;
-    const event = (this.scrollView.addEventListener ? '' : 'on') + 'mousewheel';
-
-    bindEvent(event, this.stopScrollPropagation);
+    this.getScrollView().addEventListener('wheel', this.stopScrollPropagation);
   },
 
   isEventInsideScrollView(el) {
-    if (el === this.scrollView) {
+    if (el === this.getScrollView()) {
       return true;
     } else if (el.parentNode) {
       return this.isEventInsideScrollView(el.parentNode);
@@ -65,9 +62,9 @@ export default React.createClass({
       const up = e.wheelDelta > 0;
       const down = e.wheelDelta < 0;
 
-      const scrollTop = this.scrollView.scrollTop;
-      const scrollHeight = this.scrollView.scrollHeight;
-      const offsetHeight = this.scrollView.offsetHeight;
+      const scrollTop = this.getScrollView().scrollTop;
+      const scrollHeight = this.getScrollView().scrollHeight;
+      const offsetHeight = this.getScrollView().offsetHeight;
 
       if((scrollTop + offsetHeight === scrollHeight && down) || (scrollTop === 0 && up)) {
         e.preventDefault();
@@ -86,7 +83,7 @@ export default React.createClass({
   },
 
   scrollTo(x, y, scrollDuration) {
-    const { scrollTop, scrollLeft } = this.scrollView;
+    const { scrollTop, scrollLeft } = this.getScrollView();
     x = x === null ? scrollLeft : x;
     y = y === null ? scrollTop : y;
 
@@ -95,21 +92,21 @@ export default React.createClass({
 
   _scrollTo(x, y, scrollDuration, startTime, startX, startY) {
     if (scrollDuration > 0) {
-      const { scrollTop, scrollLeft } = this.scrollView;
+      const { scrollTop, scrollLeft } = this.getScrollView();
       const easingFunction = easing[this.props.easing];
 
       if ((typeof x === 'number' && scrollLeft !== x) || (typeof y === 'number' && scrollTop !== y)) {
         const currentTime = Math.min(scrollDuration, (Date.now() - startTime));
         const distanceX = (x - startX);
         const distanceY = (y - startY);
-        this.scrollView.scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
-        this.scrollView.scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
+        this.getScrollView().scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
+        this.getScrollView().scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
 
         requestAnimationFrame(() => this._scrollTo(x, y, scrollDuration, startTime, startX, startY));
       }
     } else {
-      this.scrollView.scrollLeft = x;
-      this.scrollView.scrollTop = y;
+      this.getScrollView().scrollLeft = x;
+      this.getScrollView().scrollTop = y;
     }
   },
 
