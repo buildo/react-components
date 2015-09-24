@@ -7,7 +7,7 @@ const Popover = React.createClass({
     children: React.PropTypes.node.isRequired,
     popover: React.PropTypes.shape({
       content: React.PropTypes.node.isRequired,
-      type: React.PropTypes.oneOf(['absolute', 'relative']),
+      attachToBody: React.PropTypes.bool,
       position: React.PropTypes.oneOf(['top', 'bottom']),
       anchor: React.PropTypes.oneOf(['left', 'center', 'right']),
       event: React.PropTypes.oneOf(['click', 'hover']),
@@ -223,7 +223,7 @@ const Popover = React.createClass({
   },
 
   isAbsolute() {
-    return this.getPopoverProps().type === 'absolute';
+    return this.getPopoverProps().attachToBody === true;
   },
 
   computePopoverStyle() {
@@ -273,7 +273,7 @@ const Popover = React.createClass({
   },
 
   getLocals() {
-    const isRelative = this.getPopoverProps().type === 'relative';
+    const isRelative = !this.isAbsolute();
     const { isOpen } = this.state;
     const popover = isRelative && (isOpen ? this.getVisiblePopover() : this.getHiddenPopover());
     return {
