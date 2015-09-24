@@ -32,14 +32,14 @@ const Example = React.createClass({
     return (
       <div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'bottom', anchor: 'left', type: 'absolute', event: 'click'}}>
+          <Popover popover={{content, position: 'bottom', anchor: 'left', attachToBody: true, event: 'click'}}>
             <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
               ABSOLUTE
             </button>
           </Popover>
         </div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'top', anchor: 'right', type: 'relative'}}>
+          <Popover popover={{content, position: 'top', anchor: 'right'}}>
             <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
               RELATIVE
             </button>
