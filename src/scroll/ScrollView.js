@@ -3,7 +3,10 @@ import omit from 'lodash/object/omit';
 import easing from './easingFunctions';
 
 const propTypes = {
-  children: React.PropTypes.func.isRequired,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.node
+  ]).isRequired,
   scrollX: React.PropTypes.bool,
   scrollY: React.PropTypes.bool,
   scrollPropagation: React.PropTypes.bool,
@@ -101,9 +104,11 @@ export default React.createClass({
 
   render() {
     const props = omit(this.props, Object.keys(propTypes));
+    const { children } = this.props;
+    const isFunction = typeof children === 'function';
     return (
       <div { ...props } style={this.computeStyle()} ref='scrollView'>
-        {this.props.children(this.scrollTo)}
+        {isFunction ? children(this.scrollTo) : children}
       </div>
     );
   },
