@@ -49,8 +49,19 @@ export default React.createClass({
     bindEvent(event, this.stopScrollPropagation);
   },
 
+  isEventInsideScrollView(el) {
+    if (el === this.scrollView) {
+      return true;
+    } else if (el.parentNode) {
+      return this.isEventInsideScrollView(el.parentNode);
+    } else {
+      return false;
+    }
+  },
+
   stopScrollPropagation(e) {
-    if (e.srcElement === this.scrollView) {
+    const isEventInsideScrollView = this.isEventInsideScrollView(e.srcElement);
+    if (isEventInsideScrollView) {
       const up = e.wheelDelta > 0;
       const down = e.wheelDelta < 0;
 
