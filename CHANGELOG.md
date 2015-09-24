@@ -1,4 +1,11 @@
 #Changelog
+###0.2.0
+Breaking Changes
+- replaced prop `type` in `Popover` with `attachToBody` which can be `true` or `false`
+
+New
+- `ScrollView`: wrapper component to make scrolling easy (also on mobile)
+
 ###0.1.0
 Breaking Changes
 - renamed `SelectMenu` in `DropdownMenu`
