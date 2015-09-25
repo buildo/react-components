@@ -40,10 +40,16 @@ export default React.createClass({
 
   enableScrollPropagation() {
     this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
+    this.getScrollView().removeEventListener('touchstart', this.initializeTouchEventDirection);
+    this.getScrollView().removeEventListener('touchend', this.clearTouchEventDirection);
+    this.getScrollView().removeEventListener('touchmove', this.stopScrollPropagation);
   },
 
   disableScrollPropagation() {
     this.getScrollView().addEventListener('wheel', this.stopScrollPropagation);
+    this.getScrollView().addEventListener('touchstart', this.initializeTouchEventDirection);
+    this.getScrollView().addEventListener('touchend', this.clearTouchEventDirection);
+    this.getScrollView().addEventListener('touchmove', this.stopScrollPropagation);
   },
 
   isEventInsideScrollView(el) {
@@ -56,20 +62,46 @@ export default React.createClass({
     }
   },
 
+  initializeTouchEventDirection(e) {
+    this.lastY = e.touches[0].clientY;
+  },
+
+  clearTouchEventDirection() {
+    this.lastY = null;
+  },
+
   stopScrollPropagation(e) {
-    const isEventInsideScrollView = this.isEventInsideScrollView(e.srcElement);
+    const el = e.target || e.srcElement;
+    const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
-      const up = e.wheelDelta > 0;
-      const down = e.wheelDelta < 0;
 
-      const scrollTop = this.getScrollView().scrollTop;
-      const scrollHeight = this.getScrollView().scrollHeight;
-      const offsetHeight = this.getScrollView().offsetHeight;
+      const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
 
-      if((scrollTop + offsetHeight === scrollHeight && down) || (scrollTop === 0 && up)) {
+      let up;
+      let down;
+
+      if (e instanceof TouchEvent) {
+        const {clientY} = e.touches[0];
+        up = clientY > this.lastY;
+        this.lastY = clientY;
+      } else if (e instanceof WheelEvent) {
+        up = e.wheelDelta > 0;
+      }
+      down = !up;
+
+      if((down && this.isAtBottom()) || (up && this.isAtTop())) {
         e.preventDefault();
       }
     }
+  },
+
+  isAtTop() {
+    return this.getScrollView().scrollTop === 0;
+  },
+
+  isAtBottom() {
+    const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
+    return scrollTop + offsetHeight === scrollHeight;
   },
 
   computeStyle() {
