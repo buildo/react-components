@@ -1,6 +1,6 @@
 {
   "name": "buildo-react-components",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "dependencies": {
     "babel": {
       "version": "5.8.23",
