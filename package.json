@@ -60,5 +60,8 @@
     "require-dir": "^0.3.0",
     "webpack": "^1.9.12",
     "webpack-dev-server": "^1.9.0"
+  },
+  "peerDependencies": {
+    "react": "^0.13.3"
   }
 }
