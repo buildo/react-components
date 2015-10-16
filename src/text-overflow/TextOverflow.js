@@ -4,7 +4,7 @@ import Popover from '../Popover';
 const TextOverflow = React.createClass({
 
   propTypes: {
-    children: React.PropTypes.string.isRequired,
+    children: React.PropTypes.node.isRequired,
     popover: React.PropTypes.shape({
       attachToBody: React.PropTypes.bool,
       position: React.PropTypes.oneOf(['top', 'bottom']),
