@@ -21,7 +21,8 @@ module.exports = assign(webpackBase, {
     contentBase: paths.EXAMPLES,
     hot: true,
     inline: true,
-    port: '8080'
+    port: '8080',
+    host: '0.0.0.0'
   },
 
   plugins: [
