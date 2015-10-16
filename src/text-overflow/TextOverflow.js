@@ -78,8 +78,8 @@ const TextOverflow = React.createClass({
     }
   },
 
-  componentWillUpdate(nextProps, nextState) {
-    this.verifyOverflow(nextState);
+  componentDidUpdate() {
+    this.verifyOverflow();
   }
 
 });
