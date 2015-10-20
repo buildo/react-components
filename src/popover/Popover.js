@@ -8,8 +8,8 @@ const Popover = React.createClass({
     popover: React.PropTypes.shape({
       content: React.PropTypes.node.isRequired,
       attachToBody: React.PropTypes.bool,
-      position: React.PropTypes.oneOf(['top', 'bottom']),
-      anchor: React.PropTypes.oneOf(['left', 'center', 'right']),
+      position: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+      anchor: React.PropTypes.oneOf(['start', 'center', 'end']),
       event: React.PropTypes.oneOf(['click', 'hover']),
       onShow: React.PropTypes.func,
       onHide: React.PropTypes.func,
@@ -242,39 +242,48 @@ const Popover = React.createClass({
       offsetLeft
     } = this.state;
     const { anchor, position, maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
-    const isAbsolute = this.isAbsolute();
 
-    let deltaX;
+    const isAbsolute = this.isAbsolute();
+    const isHorizontal = position === 'top' || position === 'bottom';
+    const isVertical = position === 'right' || position === 'left';
+
+    const anchorOffset = { top: 0, left: 0 };
+    const positionOffset = { top: 0, left: 0 };
+
     switch (anchor) {
-      case 'left':
-        deltaX = 0;
+      case 'start':
+        // default -> { top: 0, left: 0 }
         break;
       case 'center':
-        deltaX = (childWidth - popoverWidth) / 2;
+        anchorOffset.left = isHorizontal ? (childWidth - popoverWidth) / 2 : 0;
+        anchorOffset.top = isVertical ? (childHeight - popoverHeight) / 2 : 0;
         break;
-      case 'right':
-        deltaX = childWidth - popoverWidth;
+      case 'end':
+        anchorOffset.left = isHorizontal ? (childWidth - popoverWidth) : 0;
+        anchorOffset.top = isVertical ? (childHeight - popoverHeight) : 0;
         break;
     }
 
-    let deltaY;
     switch (position) {
       case 'top':
-        deltaY = isAbsolute ? -(popoverHeight + distance - offsetY) : (childHeight + distance - offsetY); //eslint-disable-line space-infix-ops
+        positionOffset.top = -(popoverHeight + distance);
         break;
       case 'bottom':
-        deltaY = childHeight + distance + offsetY;
+        positionOffset.top = childHeight + distance;
+        break;
+      case 'left':
+        positionOffset.left = -(popoverWidth + distance);
+        break;
+      case 'right':
+        positionOffset.left = childWidth + distance;
         break;
     }
 
-    const valueY = (isAbsolute ? offsetTop : 0) + deltaY;
-    const valueX = (isAbsolute ? offsetLeft : 0) + deltaX + offsetX;
     return {
       position: 'absolute',
-      top: isAbsolute || position === 'bottom' ? valueY : undefined,
-      bottom: !isAbsolute && position === 'top' ? valueY : undefined,
-      left: valueX,
-      maxWidth: maxWidth
+      top: (isAbsolute ? offsetTop : 0) + (positionOffset.top + anchorOffset.top + offsetY),
+      left: (isAbsolute ? offsetLeft : 0) + (positionOffset.left + anchorOffset.left + offsetX),
+      maxWidth
     };
   },
 
