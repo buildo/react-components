@@ -19,7 +19,10 @@ const Popover = React.createClass({
       maxWidth: React.PropTypes.oneOfType([
         React.PropTypes.number,
         React.PropTypes.string
-      ])
+      ]),
+      distance: React.PropTypes.number,
+      offsetX: React.PropTypes.number,
+      offsetY: React.PropTypes.number
     }).isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
@@ -74,6 +77,9 @@ const Popover = React.createClass({
       onHide: () => {},
       dismissOnScroll: true,
       className: '',
+      distance: 5,
+      offsetX: 0,
+      offsetY: 0,
       ...this.props.popover
     };
   },
@@ -235,7 +241,7 @@ const Popover = React.createClass({
       offsetTop,
       offsetLeft
     } = this.state;
-    const { anchor, position, maxWidth } = this.getPopoverProps();
+    const { anchor, position, maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
     const isAbsolute = this.isAbsolute();
 
     let deltaX;
@@ -254,15 +260,15 @@ const Popover = React.createClass({
     let deltaY;
     switch (position) {
       case 'top':
-        deltaY = isAbsolute ? -(popoverHeight + 5) : (childHeight + 5); //eslint-disable-line space-infix-ops
+        deltaY = isAbsolute ? -(popoverHeight + distance - offsetY) : (childHeight + distance - offsetY); //eslint-disable-line space-infix-ops
         break;
       case 'bottom':
-        deltaY = childHeight + 5;
+        deltaY = childHeight + distance + offsetY;
         break;
     }
 
     const valueY = (isAbsolute ? offsetTop : 0) + deltaY;
-    const valueX = (isAbsolute ? offsetLeft : 0) + deltaX;
+    const valueX = (isAbsolute ? offsetLeft : 0) + deltaX + offsetX;
     return {
       position: 'absolute',
       top: isAbsolute || position === 'bottom' ? valueY : undefined,
