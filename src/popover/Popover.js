@@ -22,7 +22,8 @@ const Popover = React.createClass({
       ]),
       distance: React.PropTypes.number,
       offsetX: React.PropTypes.number,
-      offsetY: React.PropTypes.number
+      offsetY: React.PropTypes.number,
+      isOpen: React.PropTypes.bool
     }).isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
@@ -67,7 +68,8 @@ const Popover = React.createClass({
   },
 
   // extend with default values
-  getPopoverProps() {
+  getPopoverProps(props) {
+    props = props || this.props;
     return {
       type: 'relative',
       position: 'top',
@@ -80,7 +82,7 @@ const Popover = React.createClass({
       distance: 5,
       offsetX: 0,
       offsetY: 0,
-      ...this.props.popover
+      ...props.popover
     };
   },
 
@@ -174,22 +176,36 @@ const Popover = React.createClass({
     }
   },
 
-  onPopoverStateChange() {
-    const { onShow, onHide } = this.getPopoverProps();
-    const isAbsolute = this.isAbsolute();
-    if (this.state.isOpen) {
-      onShow();
-      if (isAbsolute) {
+  isStatefull(props) {
+    return typeof this.getPopoverProps(props).isOpen === 'undefined';
+  },
+
+  isOpen(props) {
+    return this.isStatefull() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
+  },
+
+  onPopoverOpenChange(props) {
+    if (this.isOpen(props)) {
+      if (this.isAbsolute()) {
         this.appendPopover();
       }
       this.addOnScrollListener();
     } else {
-      onHide();
-      if (isAbsolute) {
+      if (this.isAbsolute()) {
         this.removePopover();
       }
       this.removeOnScrollListener();
     }
+  },
+
+  onPopoverStateChange() {
+    const { onShow, onHide } = this.getPopoverProps();
+    if (this.state.isOpen) {
+      onShow();
+    } else {
+      onHide();
+    }
+    this.onPopoverOpenChange();
   },
 
   showPopover() {
@@ -289,8 +305,7 @@ const Popover = React.createClass({
 
   getLocals() {
     const isRelative = !this.isAbsolute();
-    const { isOpen } = this.state;
-    const popover = isRelative && (isOpen ? this.getVisiblePopover() : this.getHiddenPopover());
+    const popover = isRelative && (this.isOpen() ? this.getVisiblePopover() : this.getHiddenPopover());
     return {
       ...this.props,
       style: {
@@ -299,7 +314,7 @@ const Popover = React.createClass({
         ...this.props.style
       },
       className: cx('react-popover', this.props.className),
-      eventCallbacks: this.getEventCallbacks(),
+      eventCallbacks: this.isStatefull() && this.getEventCallbacks(),
       popover
     };
   },
@@ -314,8 +329,11 @@ const Popover = React.createClass({
     );
   },
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     this.saveValuesFromNodeTree();
+    if (!this.isStatefull() && this.isAbsolute() && this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen) {
+      this.onPopoverOpenChange(nextProps);
+    }
   }
 
 });
