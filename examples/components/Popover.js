@@ -32,7 +32,7 @@ const Example = React.createClass({
     return (
       <div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'bottom', anchor: 'end', attachToBody: true, event: 'click', offsetX: 0, distance: 15, offsetY: -15}}>
+          <Popover popover={{content, position: 'bottom', anchor: 'end', attachToBody: true, event: 'hover', offsetX: 0, distance: 15, offsetY: -15, isOpen:this.state.isOpen}}>
             <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
               ABSOLUTE
             </button>
@@ -40,7 +40,7 @@ const Example = React.createClass({
         </div>
         <div style={{marginTop: 200, marginLeft: 130}}>
           <Popover popover={{content, position: 'right', anchor: 'center', distance: 15, offsetY: 0, offsetX: -15}}>
-            <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
+            <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
               RELATIVE
             </button>
           </Popover>
