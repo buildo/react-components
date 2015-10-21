@@ -204,6 +204,16 @@ const Popover = React.createClass({
     this.onPopoverOpenChange();
   },
 
+  eventWrapper(cb) {
+    return (e) => {
+      const { pageX: x, pageY: y } = e;
+      const { childWidth, childHeight, offsetTop, offsetLeft } = this.state;
+      if (x > offsetLeft && x < offsetLeft + childWidth && y > offsetTop && y < offsetTop + childHeight) {
+        cb();
+      }
+    };
+  },
+
   showPopover() {
     this.setIsOpen(true);
   },
