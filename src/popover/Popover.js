@@ -205,24 +205,26 @@ const Popover = React.createClass({
   },
 
   showPopover() {
-    this.setState(
-      {isOpen: true},
-      this.onPopoverStateChange
-    );
+    this.setIsOpen(true);
   },
 
   hidePopover() {
-    this.setState(
-      {isOpen: false},
-      this.onPopoverStateChange
-    );
+    this.setIsOpen(false);
   },
 
   togglePopover() {
-    this.setState(
-      {isOpen: !this.state.isOpen},
-      this.onPopoverStateChange
-    );
+    this.setIsOpen(!this.isOpen());
+  },
+
+  setIsOpen(isOpen) {
+    console.log(isOpen);
+    if (this.isStatefull()) {
+      this.setState({ isOpen }, this.onPopoverStateChange);
+    } else {
+      const { onShow, onHide } = this.getPopoverProps();
+      const cb = isOpen ? onShow : onHide;
+      cb();
+    }
   },
 
   onScroll() {
@@ -233,10 +235,11 @@ const Popover = React.createClass({
     const { event } = this.getPopoverProps();
     const onHover = event === 'hover';
     const onClick = event === 'click';
+    const { eventWrapper, showPopover, hidePopover, togglePopover } = this;
     return {
-      onMouseEnter: onHover ? this.showPopover : undefined,
-      onMouseLeave: onHover ? this.hidePopover : undefined,
-      onClick: onClick ? this.togglePopover : undefined
+      onMouseEnter: onHover ? eventWrapper(showPopover) : undefined,
+      onMouseLeave: onHover ? eventWrapper(hidePopover) : undefined,
+      onClick: onClick ? eventWrapper(togglePopover) : undefined
     };
   },
 
@@ -310,7 +313,7 @@ const Popover = React.createClass({
         ...this.props.style
       },
       className: cx('react-popover', this.props.className),
-      eventCallbacks: this.isStatefull() && this.getEventCallbacks(),
+      eventCallbacks: this.getEventCallbacks(),
       popover
     };
   },
