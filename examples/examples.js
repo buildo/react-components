@@ -12,9 +12,9 @@ import LinkStateTest from './components/LinkState';
 const modules = [
   // DropdownTest,
   // MenuTest,
-  // PopoverTest,
+  PopoverTest,
   // FlexViewTest,
-  ScrollViewTest,
+  // ScrollViewTest,
   // LoadingSpinnerTest,
   // MobileDetectorTest,
   // LinkStateTest
