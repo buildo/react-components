@@ -78,8 +78,11 @@ const Popover = React.createClass({
   },
 
   onClickOutside(e) {
-    const { child, popover } = this.state;
-    if (!this.isEventInsideTarget(child, e) && !this.isEventInsideTarget(popover, e)) {
+    const childrenNode = this.refs.children.getDOMNode();
+    const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
+    console.log(!this.isEventInsideTarget(el, childrenNode), (!popoverNode || !this.isEventInsideTarget(el, popoverNode)));
+    const el = e.target || e.srcElement;
+    if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
       this.hidePopover();
     }
   },
@@ -185,9 +188,16 @@ const Popover = React.createClass({
     return this.isStatefull() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
   },
 
-  isEventInsideTarget(target, e) {
-    const { pageX: x, pageY: y } = e;
-    return (x >= target.x && x <= target.x + target.width && y >= target.y && y <= target.y + target.height);
+  isEventInsideTarget(el, target) {
+    if (!el) {
+      return false;
+    } else if (el === target) {
+      return true;
+    } else if (el.parentNode) {
+      return this.isEventInsideTarget(el.parentNode, target);
+    } else {
+      return false;
+    }
   },
 
   // VISIBILITY CHANGE
