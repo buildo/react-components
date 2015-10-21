@@ -5,20 +5,6 @@ const TextOverflow = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
-    popover: React.PropTypes.shape({
-      attachToBody: React.PropTypes.bool,
-      position: React.PropTypes.oneOf(['top', 'bottom']),
-      anchor: React.PropTypes.oneOf(['left', 'center', 'right']),
-      onShow: React.PropTypes.func,
-      onHide: React.PropTypes.func,
-      dismissOnScroll: React.PropTypes.bool,
-      className: React.PropTypes.string,
-      id: React.PropTypes.string,
-      maxWidth: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string
-      ])
-    }),
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
