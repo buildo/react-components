@@ -249,7 +249,9 @@ const Popover = React.createClass({
   eventWrapper(cb) {
     return (e) => {
       const { event } = this.getPopoverProps();
-      if (this.isAbsolute() || event === 'hover' || this.isEventInsideTarget(this.state.child, e)) {
+      const childrenNode = this.refs.children.getDOMNode().childNodes[0];
+      const el = e.target || e.srcElement;
+      if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
         cb();
       }
     };
@@ -280,12 +282,14 @@ const Popover = React.createClass({
   // LOCALES
 
   popoverTemplate(style) {
-    const { position, anchor, className, content, id } = this.getPopoverProps();
+    const { position, anchor, className, content, id, event } = this.getPopoverProps();
+    const { eventWrapper, hidePopover, isAbsolute } = this;
     const positionClass = `position-${position}`;
     const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
+    const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(hidePopover) } : undefined;
     return (
-      <div className={_className} id={id} style={style}>
+      <div className={_className} id={id} style={style} {...events}>
         {content}
       </div>
     );
