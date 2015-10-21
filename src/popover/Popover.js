@@ -206,9 +206,10 @@ const Popover = React.createClass({
 
   eventWrapper(cb) {
     return (e) => {
+      const { event } = this.getPopoverProps();
       const { pageX: x, pageY: y } = e;
       const { childWidth, childHeight, offsetTop, offsetLeft } = this.state;
-      if (x > offsetLeft && x < offsetLeft + childWidth && y > offsetTop && y < offsetTop + childHeight) {
+      if (this.isAbsolute() || event === 'hover' || (x >= offsetLeft && x <= offsetLeft + childWidth && y >= offsetTop && y <= offsetTop + childHeight)) {
         cb();
       }
     };
