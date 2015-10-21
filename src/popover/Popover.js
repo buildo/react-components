@@ -80,7 +80,6 @@ const Popover = React.createClass({
   onClickOutside(e) {
     const childrenNode = this.refs.children.getDOMNode();
     const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
-    console.log(!this.isEventInsideTarget(el, childrenNode), (!popoverNode || !this.isEventInsideTarget(el, popoverNode)));
     const el = e.target || e.srcElement;
     if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
       this.hidePopover();
