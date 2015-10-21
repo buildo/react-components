@@ -87,9 +87,7 @@ const Popover = React.createClass({
   },
 
   componentWillUnmount() {
-    if (this.isAbsolute()) {
-      this.removePopover();
-    }
+    this.removePopover();
     this.removeOnScrollListener();
   },
 
@@ -108,10 +106,8 @@ const Popover = React.createClass({
 
     const top = Math.round(box.top + scrollTop - clientTop);
     const left = Math.round(box.left + scrollLeft - clientLeft);
-    return {
-      top,
-      left
-    };
+
+    return { top, left };
   },
 
   popoverTemplate(style) {
@@ -131,7 +127,7 @@ const Popover = React.createClass({
   },
 
   getHiddenPopover() {
-    return this.popoverTemplate({position: 'absolute', visibility: 'hidden'});
+    return this.popoverTemplate({ position: 'absolute', visibility: 'hidden' });
   },
 
   appendPopover() {
