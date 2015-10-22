@@ -1,5 +1,6 @@
 import React from 'react';
 import { Popover } from '../../src';
+import { partial } from 'lodash';
 
 
 const Example = React.createClass({
@@ -12,8 +13,8 @@ const Example = React.createClass({
     };
   },
 
-  toggle() {
-    this.setState({isOpen: !this.state.isOpen});
+  toggle(isOpen) {
+    this.setState({ isOpen });
   },
 
   getTemplate() {
@@ -32,15 +33,15 @@ const Example = React.createClass({
     return (
       <div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'bottom', anchor: 'end', attachToBody: true, event: 'click', offsetX: 0, distance: 15, offsetY: -15}}>
-            <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
+          <Popover popover={{content, position: 'bottom', anchor: 'end', attachToBody: false, event: 'click', offsetX: 0, distance: 15, offsetY: -15, isOpen:this.state.isOpen, onShow:partial(this.toggle, true), onHide:partial(this.toggle, false)}}>
+            <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
               ABSOLUTE
             </button>
           </Popover>
         </div>
         <div style={{marginTop: 200, marginLeft: 130}}>
           <Popover popover={{content, position: 'right', anchor: 'center', distance: 15, offsetY: 0, offsetX: -15}}>
-            <button ref='target' onClick={this.toggle} style={{backgroundColor: 'green', display: 'inline-block'}}>
+            <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
               RELATIVE
             </button>
           </Popover>
