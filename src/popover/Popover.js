@@ -13,7 +13,7 @@ const Popover = React.createClass({
       event: React.PropTypes.oneOf(['click', 'hover']),
       onShow: React.PropTypes.func,
       onHide: React.PropTypes.func,
-      onToggle: React.PropType.func,
+      onToggle: React.PropTypes.func,
       dismissOnScroll: React.PropTypes.bool,
       dismissOnClickOutside: React.PropTypes.bool,
       className: React.PropTypes.string,
