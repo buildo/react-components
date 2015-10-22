@@ -49,6 +49,10 @@ const Popover = React.createClass({
 
   componentDidMount() {
     this.saveValuesFromNodeTree();
+    this.initialized = true;
+    if (this.isOpen()) {
+      this.forceUpdate();
+    }
   },
 
   componentWillReceiveProps(nextProps) {
@@ -368,7 +372,7 @@ const Popover = React.createClass({
 
   getLocals() {
     const isRelative = !this.isAbsolute();
-    const popover = isRelative && (this.isOpen() ? this.getVisiblePopover() : this.getHiddenPopover());
+    const popover = isRelative && (this.initialized && this.isOpen() ? this.getVisiblePopover() : this.getHiddenPopover());
     return {
       ...this.props,
       style: {
