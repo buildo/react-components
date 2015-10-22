@@ -13,6 +13,7 @@ const Popover = React.createClass({
       event: React.PropTypes.oneOf(['click', 'hover']),
       onShow: React.PropTypes.func,
       onHide: React.PropTypes.func,
+      onToggle: React.PropType.func,
       dismissOnScroll: React.PropTypes.bool,
       dismissOnClickOutside: React.PropTypes.bool,
       className: React.PropTypes.string,
@@ -129,6 +130,7 @@ const Popover = React.createClass({
       event: 'hover',
       onShow: () => {},
       onHide: () => {},
+      onToggle: () => {},
       dismissOnScroll: true,
       className: '',
       distance: 5,
@@ -241,12 +243,13 @@ const Popover = React.createClass({
   },
 
   onPopoverStateChange() {
-    const { onShow, onHide } = this.getPopoverProps();
+    const { onShow, onHide, onToggle } = this.getPopoverProps();
     if (this.state.isOpen) {
       onShow();
     } else {
       onHide();
     }
+    onToggle();
     this.onPopoverOpenChange();
   },
 
@@ -277,9 +280,10 @@ const Popover = React.createClass({
     if (this.isStateful()) {
       this.setState({ isOpen }, this.onPopoverStateChange);
     } else {
-      const { onShow, onHide } = this.getPopoverProps();
+      const { onShow, onHide, onToggle } = this.getPopoverProps();
       const cb = isOpen ? onShow : onHide;
       cb();
+      onToggle();
     }
   },
 
