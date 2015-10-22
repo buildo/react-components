@@ -59,7 +59,7 @@ const Popover = React.createClass({
 
   componentWillReceiveProps(nextProps) {
     this.saveValuesFromNodeTree();
-    if (!this.isStateful() && this.isAbsolute() && this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen) {
+    if (!this.isStateful() && this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen) {
       this.onPopoverOpenChange(nextProps);
     }
   },
