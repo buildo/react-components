@@ -131,6 +131,7 @@ const Popover = React.createClass({
       onShow: () => {},
       onHide: () => {},
       onToggle: () => {},
+      dismissOnClickOutside: true,
       dismissOnScroll: true,
       className: '',
       distance: 5,
