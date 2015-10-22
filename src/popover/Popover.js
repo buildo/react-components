@@ -51,6 +51,7 @@ const Popover = React.createClass({
     this.saveValuesFromNodeTree();
     this.initialized = true;
     if (this.isOpen()) {
+      this.addListeners();
       this.forceUpdate();
     }
   },
@@ -76,7 +77,7 @@ const Popover = React.createClass({
   },
 
   removeOnClickListener() {
-    if (this.getPopoverProps().dismissOnScroll) {
+    if (this.getPopoverProps().dismissOnClickOutside) {
       window.removeEventListener('click', this.onClickOutside, false);
     }
   },
