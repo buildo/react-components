@@ -2,6 +2,18 @@ import React from 'react';
 import { Popover } from '../../src';
 import { partial } from 'lodash';
 
+const content = (
+  <div style={{backgroundColor: 'yellow', width: 200}}>
+    <div>
+      Popover Title
+    </div>
+    <div>
+      <p>SONO</p>
+      <p>UN</p>
+      <p>POPOVER</p>
+    </div>
+  </div>
+);
 
 const Example = React.createClass({
 
@@ -17,30 +29,46 @@ const Example = React.createClass({
     this.setState({ isOpen });
   },
 
+  getAbsoluteProps() {
+    return {
+      content,
+      position: 'bottom',
+      anchor: 'end',
+      attachToBody: true,
+      dismissOnClickOutside: true,
+      dismissOnScroll: true,
+      event: 'click',
+      offsetX: 0,
+      distance: 15,
+      offsetY: -15,
+      onShow:partial(this.toggle,true),
+      onHide:partial(this.toggle, false)
+    };
+  },
+
+  getRelativeProps() {
+    return {
+      content,
+      position: 'right',
+      anchor: 'center',
+      distance: 15,
+      offsetY: 0,
+      offsetX: -15
+    };
+  },
+
   getTemplate() {
-    const content = (
-      <div style={{backgroundColor: 'yellow', width: 200}}>
-        <div>
-          Popover Title
-        </div>
-        <div>
-          <p>SONO</p>
-          <p>UN</p>
-          <p>POPOVER</p>
-        </div>
-      </div>
-    );
     return (
       <div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'bottom', anchor: 'end', attachToBody: false, event: 'click', offsetX: 0, distance: 15, offsetY: -15, isOpen:this.state.isOpen, onShow:partial(this.toggle, true), onHide:partial(this.toggle, false)}}>
+          <Popover popover={this.getAbsoluteProps()}>
             <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
               ABSOLUTE
             </button>
           </Popover>
         </div>
         <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={{content, position: 'right', anchor: 'center', distance: 15, offsetY: 0, offsetX: -15}}>
+          <Popover popover={this.getRelativeProps()}>
             <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
               RELATIVE
             </button>
