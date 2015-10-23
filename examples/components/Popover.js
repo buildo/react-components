@@ -41,8 +41,9 @@ const Example = React.createClass({
       offsetX: 0,
       distance: 15,
       offsetY: -15,
-      onShow:partial(this.toggle,true),
-      onHide:partial(this.toggle, false)
+      onToggle: this.toggle,
+      // onShow:partial(this.toggle,true),
+      // onHide:partial(this.toggle, false)
     };
   },
 
