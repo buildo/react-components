@@ -1,10 +1,17 @@
 #Changelog
 ###0.2.0
 Breaking Changes
-- replaced prop `type` in `Popover` with `attachToBody` which can be `true` or `false`
+- `Popover`:
+  - replaced `type` with `attachToBody` which can be `true` or `false`
+  - `anchor` now accepts one of `[ "start", "center", "end" ]`
 
 New
 - `ScrollView`: wrapper component to make scrolling easy (also on mobile)
+- `Popover`:
+  - added `"left"` and `"right"` to `position`
+  - added `dismissOnClickOutside`
+  - added `isOpen` -> `Popover` can now be stateless
+  - added `distance` and `offsetX / offsetY` to better customize `Popover` position
 
 ###0.1.0
 Breaking Changes
