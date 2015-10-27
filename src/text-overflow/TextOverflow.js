@@ -4,7 +4,8 @@ import Popover from '../popover/Popover';
 const TextOverflow = React.createClass({
 
   propTypes: {
-    children: React.PropTypes.node.isRequired,
+    children: React.PropTypes.func,
+    label: React.PropTypes.string.isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
@@ -31,7 +32,7 @@ const TextOverflow = React.createClass({
   },
 
   getTextSpan() {
-    const { children } = this.props;
+    const { label } = this.props;
     const style = {
       display: 'block',
       whiteSpace: 'nowrap',
@@ -40,28 +41,46 @@ const TextOverflow = React.createClass({
       OTextOverflow: 'ellipsis', // Opera
       textOverflow: 'ellipsis'
     };
-    return <span ref='text' style={style}>{children}</span>;
+    return <span ref='text' style={style}>{label}</span>;
+  },
+
+  templateOverflow() {
+    const { children, label, style, ...other } = this.props;
+
+    if (children) {
+      return children(this.getTextSpan());
+    } else {
+      const props = {
+        ...other,
+        popover: {
+          content: label,
+          event: 'hover'
+        },
+        style: {
+          width: '100%',
+          ...style
+        }
+      };
+
+      return <Popover { ...props }>{this.getTextSpan()}</Popover>;
+    }
+  },
+
+  templeteStandard() {
+    const { children, label, style, ...other } = this.props;
+    const props = {
+      ...other,
+      style: {
+        width: '100%',
+        ...style
+      }
+    };
+
+    return <div { ...props }>{this.getTextSpan()}</div>;
   },
 
   render() {
-    const { children, ...props } = this.props;
-    const { isOverflowing } = this.state;
-    props.popover = {
-      ...props.popover,
-      content: children,
-      event: 'hover'
-    };
-    props.style = {
-      width: '100%',
-      ...props.style
-    };
-
-    const text = this.getTextSpan();
-    if (isOverflowing) {
-      return <Popover { ...props }>{text}</Popover>;
-    } else {
-      return <div { ...props }>{text}</div>;
-    }
+    return this.state.isOverflowing ? this.templateOverflow() : this.templeteStandard();
   },
 
   componentDidUpdate() {
