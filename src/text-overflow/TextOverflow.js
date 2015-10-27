@@ -21,9 +21,17 @@ const TextOverflow = React.createClass({
     this.verifyOverflow();
   },
 
+  logWarnings() {
+    const { width } = this.refs.text.getDOMNode().parentNode.style;
+    if (process.env.NODE_ENV !== 'production' && width !== '100%') {
+      console.warn(`TextOverflow's parent doesn't have "width: 100%". This might cause a stack overflow.`);
+    }
+  },
+
   verifyOverflow(state) {
     state = state || this.state;
     const text = this.refs.text.getDOMNode();
+    this.logWarnings();
     if(text.offsetWidth < text.scrollWidth && !state.isOverflowing){
       this.setState({ isOverflowing: true });
     } else if (text.offsetWidth >= text.scrollWidth && state.isOverflowing){
