@@ -1,5 +1,5 @@
 import React from 'react';
-import Popover from '../Popover';
+import Popover from '../popover/Popover';
 
 const TextOverflow = React.createClass({
 
