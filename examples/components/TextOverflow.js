@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextOverflow } from '../../src';
+import { TextOverflow, Popover, FlexView } from '../../src';
 
 const Example = React.createClass({
 
@@ -17,19 +17,16 @@ const Example = React.createClass({
 
   getTemplate() {
     return (
-      <div>
-        <button style={{maxWidth: 100}} onClick={this.toggleTextVersion}>
-          <TextOverflow style={{color: 'blue'}} popover={{position: 'bottom', anchor: 'left'}}>
-            {this.state.text}
-          </TextOverflow>
+      <FlexView style={{marginTop: 100}}>
+        <button style={{maxWidth: 100, marginRight: 100}} onClick={this.toggleTextVersion}>
+          <TextOverflow style={{color: 'blue'}} label={this.state.text} popover={{position: 'bottom', anchor: 'left'}} />
         </button>
-        <TextOverflow style={{color: 'blue', width: 150}}>
-          sono un testo lungo lungo lungo
-        </TextOverflow>
-        <TextOverflow style={{color: 'blue', width: 150}}>
-          <span>sono un testo lungo lungo lungo</span>
-        </TextOverflow>
-      </div>
+        <div style={{maxWidth: 150}}>
+          <TextOverflow style={{color: 'blue'}} label='sono un testo lungo lungo lungo'>
+            {(self) => <Popover popover={{content: 'sono un testo lungo lungo lungo'}} style={{color: 'red', width:'100%'}}>{self}</Popover>}
+          </TextOverflow>
+        </div>
+      </FlexView>
     );
   },
 
