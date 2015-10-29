@@ -378,7 +378,8 @@ const Popover = React.createClass({
 
   getLocals() {
     const isRelative = !this.isAbsolute();
-    const popover = isRelative && (this.initialized && this.isOpen() ? this.getVisiblePopover() : this.getHiddenPopover());
+    const isOpen = this.isOpen();
+    const popover = isRelative && (this.initialized && isOpen ? this.getVisiblePopover() : this.getHiddenPopover());
     return {
       ...this.props,
       style: {
@@ -386,7 +387,7 @@ const Popover = React.createClass({
         position: isRelative ? 'relative' : undefined,
         ...this.props.style
       },
-      className: cx('react-popover', this.props.className),
+      className: cx('react-popover', this.props.className, { 'is-open': isOpen, 'is-closed': !isOpen }),
       eventCallbacks: this.getEventCallbacks(),
       popover
     };
