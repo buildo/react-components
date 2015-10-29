@@ -39,3 +39,23 @@
 .menu-item-metadata {
   color: #BDC2CA;
 }
+
+.toaster-anim-enter {
+  opacity: 0.3;
+  -webkit-transition: opacity 8s ease-in;
+  transition: opacity 8s ease-in;
+}
+
+.toaster-anim-enter.toaster-anim-enter-active {
+  opacity: 1;
+}
+
+.toaster-anim-leave {
+    opacity: 1;
+    -webkit-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+}
+
+.toaster-anim-leave.toaster-anim-leave-active {
+    opacity: 0.01;
+}

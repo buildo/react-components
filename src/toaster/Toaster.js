@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react/addons';
 import cx from 'classnames';
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 const Toaster = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
     attachTo: React.PropTypes.string.isRequired,
-    animationClassNames: React.PropTypes.shape({
-      onEnter: React.PropTypes.string,
-      onLeave: React.PropTypes.string,
-      onMove: React.PropTypes.string
+    transitionGroup: React.PropTypes.object,
+    moveTransition: React.PropTypes.shape({
+      duration: React.PropTypes.number.isRequired,
+      ease: React.PropTypes.string
     }),
     id: React.PropTypes.string,
     className: React.PropTypes.string,
@@ -18,12 +19,16 @@ const Toaster = React.createClass({
 
   getDefaultProps() {
     return {
-      animationClassNames: {}
+      animationClassNames: {},
+      moveTransition: {
+        duration: 0
+      }
     };
   },
 
   componentWillMount() {
     this.appendToaster();
+    this.renderToaster();
   },
 
   componentDidMount() {
@@ -38,18 +43,24 @@ const Toaster = React.createClass({
   },
 
   getTranslationStyle(i) {
+    const { duration, ease } = this.props.moveTransition;
+    const transition = `transform ${duration}ms ${ease || ''}`;
+    console.log(transition);
+
     return {
       transform: `translate3d(0,${100 * i}%,0)`,
       position: 'absolute',
       top: 0,
-      right: 0
+      right: 0,
+      WebkitTransition: transition,
+      transition
     };
   },
 
   getToasts() {
-    const children = [].concat(this.props.children).map((el, i) => {
+    const children = React.Children.map(this.props.children, (el, i) => {
       return (
-        <div style={this.getTranslationStyle(i)} key={i}>
+        <div style={this.getTranslationStyle(i)} key={el.key}>
           {el}
         </div>
       );
@@ -68,7 +79,7 @@ const Toaster = React.createClass({
     }
   },
 
-  renderToaster() {
+  getToaster() {
     const { style: styleProp, id, className } = this.props;
     const style = {
       position: 'absolute',
@@ -79,17 +90,26 @@ const Toaster = React.createClass({
     };
 
     const toaster = (
-      <div ref='toaster' className={cx('toaster', className)} {...{ style, id }}>
-        {this.getToasts()}
+      <div className={cx('toaster', className)} {...{ style, id }}>
+        <ReactCSSTransitionGroup transitionName='toaster-anim'>
+          {this.getToasts()}
+        </ReactCSSTransitionGroup>
       </div>
     );
 
-    this.toaster.innerHTML = React.renderToString(toaster);
+    return toaster;
+  },
+
+  renderToaster() {
+    React.render(this.getToaster(), this.toaster);
   },
 
   render() {
-    this.renderToaster();
     return null;
+  },
+
+  componentDidUpdate() {
+    this.renderToaster();
   }
 
 });
