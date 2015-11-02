@@ -13,32 +13,34 @@ const TimerToast = React.createClass({
   },
 
   getInitialState() {
-    return { active: false, completed: false };
+    return { completed: false };
   },
 
   componentDidMount() {
     this.resetTimer();
   },
 
+  componentWillUnmount() {
+    this.clearTimer();
+  },
+
   resetTimer() {
-    const { active, completed } = this.state;
-    if (!active && !completed) {
-      this.setState({ active: true });
+    if (!this.timer && !this.state.completed) {
       this.timer = setTimeout(this.onTimeOut, this.props.duration);
     }
   },
 
   clearTimer() {
-    const { active, completed } = this.state;
-    if (active && !completed) {
-      this.setState({ active: false });
+    if (this.timer && !this.state.completed) {
       clearTimeout(this.timer);
+      this.timer = null;
     }
   },
 
   onTimeOut() {
     const { onTimeOut, uniqueKey } = this.props;
-    this.setState({ active: false, completed: true }, () => onTimeOut(uniqueKey));
+    this.timer = null;
+    this.setState({ completed: true }, () => onTimeOut(uniqueKey));
   },
 
   render() {
