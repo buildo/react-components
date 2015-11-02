@@ -1,17 +1,18 @@
 import React from 'react/addons';
 import cx from 'classnames';
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+const { CSSTransitionGroup: ReactCSSTransitionGroup, cloneWithProps } = React.addons;
 
 const Toaster = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
     attachTo: React.PropTypes.string.isRequired,
-    transitionGroup: React.PropTypes.object,
-    moveTransition: React.PropTypes.shape({
-      duration: React.PropTypes.number.isRequired,
-      ease: React.PropTypes.string
-    }),
+    transitionGroup: React.PropTypes.shape({
+      transitionName: React.PropTypes.oneOfType([
+        React.PropTypes.string,
+        React.PropTypes.object
+      ]).isRequired
+    }).isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
@@ -19,10 +20,7 @@ const Toaster = React.createClass({
 
   getDefaultProps() {
     return {
-      animationClassNames: {},
-      moveTransition: {
-        duration: 0
-      }
+      transitionGroup: {}
     };
   },
 
@@ -43,30 +41,28 @@ const Toaster = React.createClass({
   },
 
   getTranslationStyle(i) {
-    const { duration, ease } = this.props.moveTransition;
-    const transition = `transform ${duration}ms ${ease || ''}`;
-    console.log(transition);
-
+    // const { duration, ease } = this.props.moveTransition;
+    // const transition = `transform ${duration / 1000}s ${ease || ''}`;
     return {
       transform: `translate3d(0,${100 * i}%,0)`,
       position: 'absolute',
       top: 0,
-      right: 0,
-      WebkitTransition: transition,
-      transition
+      right: 0
+      // WebkitTransition: transition, //THESE WOULD OVERWRITE CSS TRANSITIONS...
+      // transition
     };
   },
 
   getToasts() {
-    const children = React.Children.map(this.props.children, (el, i) => {
+    const { children, transitionGroup } = this.props;
+    const className = transitionGroup.transitionName;
+    return React.Children.map(children, (el, i) => {
       return (
-        <div style={this.getTranslationStyle(i)} key={el.key}>
-          {el}
+        <div className={className} style={this.getTranslationStyle(i)} key={el.key}>
+          {cloneWithProps(el, { uniqueKey: el.key })}
         </div>
       );
     });
-
-    return children;
   },
 
   appendToaster() {
@@ -89,15 +85,13 @@ const Toaster = React.createClass({
       ...styleProp
     };
 
-    const toaster = (
+    return (
       <div className={cx('toaster', className)} {...{ style, id }}>
-        <ReactCSSTransitionGroup transitionName='toaster-anim'>
+        <ReactCSSTransitionGroup {...this.props.transitionGroup}>
           {this.getToasts()}
         </ReactCSSTransitionGroup>
       </div>
     );
-
-    return toaster;
   },
 
   renderToaster() {
