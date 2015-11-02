@@ -1,6 +1,7 @@
 import React from 'react/addons';
-import { range } from 'lodash';
+import { range, reject } from 'lodash';
 import Toaster from '../../src/toaster/Toaster';
+import TimerToast from '../../src/toaster/TimerToast';
 
 const errors = [
  { id: 1, msg: 1},
@@ -35,9 +36,18 @@ const Example = React.createClass({
     };
   },
 
+  onTimeOut(key) {
+    this.setState({
+      toasts: reject(this.state.toasts, { key })
+    });
+  },
+
   addToast() {
     const key = Math.random() + '';
-    const toast = <div key={key} style={this.getToastStyle()}>{key}</div>;
+    const toast = {
+      key,
+      el :<TimerToast onTimeOut={this.onTimeOut} duration={5000} key={key}><div style={this.getToastStyle()}>{key}</div></TimerToast>
+    };
 
     const { toasts } = this.state;
     if (toasts.length > 5) {
@@ -45,16 +55,16 @@ const Example = React.createClass({
       // toasts.pop();
     }
     this.setState({
-      // toasts: [toast].concat(toasts)
-      toasts: toasts.concat(toast)
+      toasts: [toast].concat(toasts)
+      // toasts: toasts.concat(toast)
     });
   },
 
   getTemplate() {
 
     const toaster = (
-      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} moveTransition={{duration: 1000, ease: 'ease-in-out'}}>
-        {this.state.toasts}
+      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionGroup={{ transitionName: 'toaster-anim' }}>
+        {this.state.toasts.map(t => t.el)}
       </Toaster>
     );
 
