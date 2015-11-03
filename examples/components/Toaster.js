@@ -1,14 +1,8 @@
 import React from 'react/addons';
 import { range, reject } from 'lodash';
-import Toaster from '../../src/toaster/Toaster';
-import TimerToast from '../../src/toaster/TimerToast';
+import Toaster from '../../src/toaster';
+import { TimerToast } from '../../src';
 
-const errors = [
- { id: 1, msg: 1},
- { id: 2, msg: 2},
- { id: 3, msg: 3},
- { id: 4, msg: 4}
-];
 
 const Example = React.createClass({
 
@@ -42,6 +36,35 @@ const Example = React.createClass({
     });
   },
 
+  getTransitionStyles() {
+    return {
+      enter: {
+        opacity: '0.2',
+        transform: 'translateX(100%)',
+        WebkitTransition: 'opacity .8s ease-out, -webkit-transform .8s ease-out',
+        transition: 'opacity .8s ease-out, transform .8s ease-out'
+      },
+      enterActive: {
+        opacity: '1',
+        transform: 'translateX(0)'
+      },
+      leave: {
+        opacity: '1',
+        transform: 'translateX(0)',
+        WebkitTransition: 'opacity .8s ease-out, -webkit-transform .8s ease-out',
+        transition: 'opacity .8s ease-out, transform .8s ease-out'
+      },
+      leaveActive: {
+        opacity: '0.01',
+        transform: 'translateX(100%)'
+      },
+      default: {
+        WebkitTransition: '-webkit-transform 0.3s ease-in-out',
+        transition: 'transform 0.3s ease-in-out'
+      }
+    }
+  },
+
   addToast() {
     const key = Math.random() + '';
     const toast = {
@@ -63,7 +86,7 @@ const Example = React.createClass({
   getTemplate() {
 
     const toaster = (
-      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionGroup={{ transitionName: 'toaster-anim' }}>
+      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionStyles={this.getTransitionStyles()} transitionEnterTimeout={800} transitionLeaveTimeout={800}>
         {this.state.toasts.map(t => t.el)}
       </Toaster>
     );
