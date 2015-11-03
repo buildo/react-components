@@ -1,18 +1,16 @@
 import React from 'react/addons';
 import cx from 'classnames';
-const { CSSTransitionGroup: ReactCSSTransitionGroup, cloneWithProps } = React.addons;
+import ToastWrapper from './ToastWrapper';
+const { TransitionGroup: ReactTransitionGroup, cloneWithProps } = React.addons;
 
 const Toaster = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
     attachTo: React.PropTypes.string.isRequired,
-    transitionGroup: React.PropTypes.shape({
-      transitionName: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
-      ]).isRequired
-    }).isRequired,
+    transitionStyles: React.PropTypes.object,
+    transitionEnterTimeout: React.PropTypes.number.isRequired,
+    transitionLeaveTimeout: React.PropTypes.number.isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
@@ -41,26 +39,24 @@ const Toaster = React.createClass({
   },
 
   getTranslationStyle(i) {
-    // const { duration, ease } = this.props.moveTransition;
-    // const transition = `transform ${duration / 1000}s ${ease || ''}`;
     return {
-      transform: `translate3d(0,${100 * i}%,0)`,
+      transform: `translateY(${100 * i}%)`,
       position: 'absolute',
       top: 0,
       right: 0
-      // WebkitTransition: transition, //THESE WOULD OVERWRITE CSS TRANSITIONS...
-      // transition
     };
   },
 
   getToasts() {
-    const { children, transitionGroup } = this.props;
-    const className = transitionGroup.transitionName;
+    const { children, transitionStyles, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
     return React.Children.map(children, (el, i) => {
       return (
-        <div className={className} style={this.getTranslationStyle(i)} key={el.key}>
-          {cloneWithProps(el, { uniqueKey: el.key })}
-        </div>
+        <ToastWrapper
+          {...{ transitionStyles, transitionEnterTimeout, transitionLeaveTimeout }}
+          style={this.getTranslationStyle(i)}
+          key={el.key}>
+            {cloneWithProps(el, { uniqueKey: el.key })}
+        </ToastWrapper>
       );
     });
   },
@@ -87,9 +83,9 @@ const Toaster = React.createClass({
 
     return (
       <div className={cx('toaster', className)} {...{ style, id }}>
-        <ReactCSSTransitionGroup {...this.props.transitionGroup}>
+        <ReactTransitionGroup {...this.props.transitionGroup}>
           {this.getToasts()}
-        </ReactCSSTransitionGroup>
+        </ReactTransitionGroup>
       </div>
     );
   },
