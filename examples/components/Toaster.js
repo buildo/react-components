@@ -84,18 +84,26 @@ const Example = React.createClass({
   },
 
   getTemplate() {
+    const toasts = this.state.toasts.map(t => t.el);
+    const inlineToaster = (
+      <Toaster className='hello' style={{backgroundColor: 'blue'}} transitionStyles={this.getTransitionStyles()} transitionEnterTimeout={800} transitionLeaveTimeout={800}>
+        {toasts}
+      </Toaster>
+    );
 
-    const toaster = (
+    const attachedToaster = (
       <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionStyles={this.getTransitionStyles()} transitionEnterTimeout={800} transitionLeaveTimeout={800}>
-        {this.state.toasts.map(t => t.el)}
+        {toasts}
       </Toaster>
     );
 
     return (
       <div>
-        {this.state.initialized && toaster}
-        <div style={{ width: '100%', height: 500, position: 'relative' }} id='toaster'>
+        <div style={{ width: '100%', height: 350, position: 'relative' }}>
+          {inlineToaster}
         </div>
+        {this.state.initialized && attachedToaster}
+        <div style={{ width: '100%', height: 350, position: 'relative' }} id='toaster' />
       </div>
     );
   },
