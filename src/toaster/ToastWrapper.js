@@ -63,7 +63,6 @@ const ToastWrapper = React.createClass({
   },
 
   render() {
-    // console.log(this.state.animationState);
     if (!this.state) {
       return null;
     }

@@ -7,7 +7,7 @@ const Toaster = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
-    attachTo: React.PropTypes.string.isRequired,
+    attachTo: React.PropTypes.string,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number.isRequired,
     transitionLeaveTimeout: React.PropTypes.number.isRequired,
@@ -28,14 +28,20 @@ const Toaster = React.createClass({
   },
 
   componentDidMount() {
-    const { position } = this.toaster.style;
-    if (process.env.NODE_ENV !== 'production' && (position !== 'relative' && position !== 'absolute')) {
-      console.warn('Toaster\'s parent node should have "position: relative/absolute"');
+    const { position } = this.props.attachTo ? this.toaster.style : this.getDOMNode().parentNode.style;
+    if (position !== 'relative' && position !== 'absolute') {
+      this.logWarning('Toaster\'s parent node should have "position: relative/absolute"');
     }
   },
 
   componentWillUnmount() {
     this.removeToaster();
+  },
+
+  logWarning(log) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(log);
+    }
   },
 
   getTranslationStyle(i) {
@@ -62,11 +68,13 @@ const Toaster = React.createClass({
   },
 
   appendToaster() {
-    this.toaster = document.getElementById(this.props.attachTo);
+    if (this.props.attachTo) {
+      this.toaster = document.getElementById(this.props.attachTo);
+    }
   },
 
   removeToaster() {
-    if (this.toaster) {
+    if (this.toaster && this.props.attachTo) {
       this.toaster.innerHTML = ''; // stupid??
     }
   },
@@ -91,15 +99,27 @@ const Toaster = React.createClass({
   },
 
   renderToaster() {
-    React.render(this.getToaster(), this.toaster);
+    if (this.props.attachTo) {
+      React.render(this.getToaster(), this.toaster);
+    }
   },
 
   render() {
-    return null;
+    if (this.props.attachTo) {
+      return null;
+    } else {
+      return this.getToaster();
+    }
   },
 
   componentDidUpdate() {
     this.renderToaster();
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.attachTo !== nextProps.attachTo) {
+      this.logWarning('You can\'t change "attachTo" prop after the first render!');
+    }
   }
 
 });
