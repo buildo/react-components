@@ -8,16 +8,18 @@ import ScrollViewTest from './components/ScrollView';
 import LoadingSpinnerTest from './components/LoadingSpinner';
 import MobileDetectorTest from './components/MobileDetector';
 import LinkStateTest from './components/LinkState';
+import TextOverflowTest from './components/TextOverflow';
 
 const modules = [
   // DropdownTest,
   // MenuTest,
-  PopoverTest,
+  // PopoverTest,
   // FlexViewTest,
   // ScrollViewTest,
   // LoadingSpinnerTest,
   // MobileDetectorTest,
-  // LinkStateTest
+  // LinkStateTest,
+  TextOverflowTest
 ];
 
 const template = (
