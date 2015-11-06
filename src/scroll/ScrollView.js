@@ -75,7 +75,7 @@ export default React.createClass({
     const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
 
-      const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
+      // const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
 
       let up;
       let down;
