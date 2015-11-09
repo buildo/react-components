@@ -39,3 +39,34 @@
 .menu-item-metadata {
   color: #BDC2CA;
 }
+
+.toaster-anim {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toaster-anim-enter {
+  opacity: 0.2;
+  right: -240px !important;
+  -webkit-transition: opacity .8s ease-out, right .8s ease-out;
+  transition: opacity .8s ease-out, right .8s ease-out;
+}
+
+.toaster-anim-enter.toaster-anim-enter-active {
+  opacity: 1;
+  right: 0 !important;
+  /*-webkit-transition: transform 0.3s ease-in-out*/
+  /*transition: transform 0.3s ease-in-out;*/
+}
+
+.toaster-anim-leave {
+    opacity: 1;
+    right: 0 !important;
+    -webkit-transition: opacity .8s ease-out, right .8s ease-out;
+    transition: opacity .8s ease-out, right .8s ease-out;
+}
+
+.toaster-anim-leave.toaster-anim-leave-active {
+    opacity: 0.01;
+    right: -240px !important;
+}

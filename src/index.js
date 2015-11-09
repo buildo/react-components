@@ -10,3 +10,4 @@ export TextOverflow from './text-overflow';
 export TextareaAutosize from './textarea-autosize';
 export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './link-state';
 export ScrollView from './scroll';
+export { Toaster, TimerToast } from './toaster';
