@@ -11,6 +11,7 @@ import LinkStateTest from './components/LinkState';
 import TextOverflowTest from './components/TextOverflow';
 import ToasterTest from './components/Toaster';
 import BackgroundDimmerTest from './components/BackgroundDimmer';
+import ModalManagerTest from './components/ModalManager';
 
 const modules = [
   // DropdownTest,
@@ -24,6 +25,7 @@ const modules = [
   // TextOverflowTest,
   // ToasterTest,
   BackgroundDimmerTest,
+  ModalManagerTest
 ];
 
 const template = (
