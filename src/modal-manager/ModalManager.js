@@ -1,5 +1,4 @@
 import React from 'react/addons';
-import cx from 'classnames';
 import ModalWrapper from './ModalWrapper';
 const { TransitionGroup: ReactTransitionGroup, cloneWithProps } = React.addons;
 
@@ -8,16 +7,50 @@ const ModalManager = React.createClass({
   propTypes: {
     activeModal: React.PropTypes.string,
     data: React.PropTypes.object,
-    modals: React.PropTypes.array.isRequired
+    modals: React.PropTypes.array.isRequired,
+    onClickOutside: React.PropTypes.func
   },
+
+
 
   componentDidMount() {
     this.appendModalContainer();
     this.renderModals();
+    this.disableScrollPropagation();
   },
 
   componentWillUnmount() {
     this.removeModalContainer();
+  },
+
+  getModalManagerNode() {
+    if (this.containerNode) {
+      return this.containerNode.children[0];
+    }
+  },
+
+  isEventOutsideModal(e) {
+    const target = e.target.parentNode ? e.target.parentNode.parentNode : null;
+    const modalManager = this.containerNode.children[0];
+    return target === modalManager;
+  },
+
+  onClick(e) {
+    const { onClickOutside, activeModal } = this.props;
+    if (onClickOutside && activeModal && this.isEventOutsideModal(e)) {
+      onClickOutside(e);
+    }
+  },
+
+  disableScrollPropagation() {
+    this.getModalManagerNode().addEventListener('wheel', this.stopScrollPropagation);
+    this.getModalManagerNode().addEventListener('touchmove', this.stopScrollPropagation);
+  },
+
+  stopScrollPropagation(e) {
+    if (this.isEventOutsideModal(e)) {
+      e.preventDefault();
+    }
   },
 
   getModals() {
@@ -29,11 +62,8 @@ const ModalManager = React.createClass({
       transitionLeaveTimeout
     };
     const style = {
-      position: 'fixed',
-      right: 0,
-      left: 0,
-      top: 0,
-      bottom: 0
+      height: '100%',
+      width: '100%'
     };
     return modals.filter(m => m.id === activeModal).map(m => {
       return (
@@ -59,9 +89,16 @@ const ModalManager = React.createClass({
   },
 
   getModalManager() {
-    const { style, id, className } = this.props;
+    const { onClick, onScroll } = this;
+    const style = {
+      position: 'fixed',
+      right: 0,
+      left: 0,
+      top: 0,
+      bottom: 0
+    };
     return (
-      <div className={cx('modal-manager', className)} {...{ style, id }}>
+      <div {...{ style, onClick, onScroll }}>
         <ReactTransitionGroup>
           {this.getModals()}
         </ReactTransitionGroup>
