@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import cx from 'classnames';
-import ToastWrapper from './ToastWrapper';
+import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 const { TransitionGroup: ReactTransitionGroup, cloneWithProps } = React.addons;
 
 const Toaster = React.createClass({
@@ -57,12 +57,12 @@ const Toaster = React.createClass({
     const { children, transitionStyles, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
     return React.Children.map(children, (el, i) => {
       return (
-        <ToastWrapper
+        <TransitionWrapper
           {...{ transitionStyles, transitionEnterTimeout, transitionLeaveTimeout }}
           style={this.getTranslationStyle(i)}
           key={el.key}>
             {cloneWithProps(el, { uniqueKey: el.key })}
-        </ToastWrapper>
+        </TransitionWrapper>
       );
     });
   },
