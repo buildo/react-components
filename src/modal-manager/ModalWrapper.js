@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import FlexView from '../flex/FlexView';
 
 const ModalWrapper = React.createClass({
 
@@ -29,12 +30,20 @@ const ModalWrapper = React.createClass({
     }, 30); // if the render is too fast the animation fails... 30ms is an empiric value.
   },
 
+  componentWillAppear(callback) {
+    this.componentWillEnter(callback);
+  },
+
+  componentDidAppear(callback) {
+    this.componentDidEnter(callback);
+  },
+
   componentWillEnter(callback) {
     this.startAnimation('enter', this.props.transitionEnterTimeout, callback);
   },
 
   componentDidEnter() {
-    this.replaceState({ defaultStyle: this.props.transitionStyles.default });
+    this.replaceState({ defaultStyle: this.props.transitionStyles.default || {} });
   },
 
   componentWillLeave(callback) {
@@ -62,9 +71,9 @@ const ModalWrapper = React.createClass({
     }
     const { children, className } = this.props;
     return (
-      <div className={className} style={this.getStyle()}>
+      <FlexView className={className} style={this.getStyle()} vAlignContent='center' hAlignContent='center'>
         {children}
-      </div>
+      </FlexView>
     );
   }
 
