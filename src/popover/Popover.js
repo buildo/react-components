@@ -4,7 +4,7 @@ import cx from 'classnames';
 const Popover = React.createClass({
 
   propTypes: {
-    children: React.PropTypes.array.isRequired,
+    children: React.PropTypes.node.isRequired,
     popover: React.PropTypes.shape({
       content: React.PropTypes.node.isRequired,
       attachToBody: React.PropTypes.bool,
