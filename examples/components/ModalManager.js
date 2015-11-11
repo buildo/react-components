@@ -34,33 +34,31 @@ const Example = React.createClass({
   },
 
   componentDidMount() {
-    setTimeout(() => this.setState({ activeModal: '1' }), 500);
-    setTimeout(() => this.setState({ activeModal: '2' }), 2000);
-    setTimeout(() => this.setState({ activeModal: undefined }), 4000);
+    setTimeout(() => this.setState({ activeModal: '1' }), 1000);
+    setTimeout(() => this.setState({ activeModal: '2' }), 2500);
+    // setTimeout(() => this.setState({ activeModal: undefined }), 4500);
   },
 
   getTransitionStyles() {
     return {
       enter: {
-        backgroundColor: 'rgba(0,0,0,0.01)',
-        transition: 'background-color .8s ease-out, transform .8s ease-out'
+        opacity: '0.01',
+        transform: 'scale(0.01)',
+        transition: 'opacity .8s ease-in-out, transform .5s ease-out'
       },
       enterActive: {
+        opacity: '1',
+        transform: 'scale(1)',
         backgroundColor: 'rgba(0,0,0,0.5)'
       },
       leave: {
         opacity: '1',
-        transform: 'translateX(0)',
-        WebkitTransition: 'opacity .8s ease-out, -webkit-transform .8s ease-out',
-        transition: 'opacity .8s ease-out, transform .8s ease-out'
+        transform: 'scale(1)',
+        transition: 'opacity .8s ease-in-out, transform .5s ease-out'
       },
       leaveActive: {
-        opacity: '0.01',
-        transform: 'translateX(100%)'
-      },
-      default: {
-        WebkitTransition: '-webkit-transform 0.3s ease-in-out',
-        transition: 'transform 0.3s ease-in-out'
+        transform: 'scale(0.01)',
+        opacity: '0.01'
       }
     }
   },
