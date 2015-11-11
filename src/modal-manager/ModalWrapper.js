@@ -43,7 +43,7 @@ const ModalWrapper = React.createClass({
   },
 
   componentDidEnter() {
-    this.replaceState({ defaultStyle: this.props.transitionStyles.default || {} });
+    this.replaceState({ defaultStyle: this.props.transitionStyles.default});
   },
 
   componentWillLeave(callback) {
@@ -54,7 +54,7 @@ const ModalWrapper = React.createClass({
   getStyle() {
     const { style } = this.props;
     const { animationStart, animationEnd, defaultStyle } = this.state;
-    const userTransform = (animationEnd || animationStart || defaultStyle).transform;
+    const userTransform = (animationEnd || animationStart || defaultStyle || {}).transform;
 
     return {
       ...style,

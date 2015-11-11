@@ -11,8 +11,6 @@ const ModalManager = React.createClass({
     onClickOutside: React.PropTypes.func
   },
 
-
-
   componentDidMount() {
     this.appendModalContainer();
     this.renderModals();
