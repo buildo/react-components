@@ -68,18 +68,24 @@ const BackgroundDimmer = React.createClass({
       left: 0,
       right: 0,
       bottom: 0,
-      color,
-      opacity: alpa + ''
+      backgroundColor: color,
+      opacity: alpha + ''
     };
-    return <div style={style} onClick={this.onClick} ref='dimmedBackground' />
+    return <div style={style} onClick={this.onClick} ref='dimmedBackground' />;
   },
 
   render() {
     const { style, className, id, children } = this.props;
+    const mergedStyle = {
+      position: 'relative',
+      ...style
+    };
     return (
-      <div {...{ style, className, id }}>
+      <div {...{ style: mergedStyle, className, id }}>
         {this.getDimmedBackground()}
-        {children}
+        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+          {children}
+        </div>
       </div>
     );
   },
