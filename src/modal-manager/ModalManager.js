@@ -33,14 +33,11 @@ const ModalManager = React.createClass({
       right: 0,
       left: 0,
       top: 0,
-      bottom: 0,
-      height: '100%',
-      width: '100%',
-      backgroundColor: 'rgba(0,0,0,0.5)'
+      bottom: 0
     };
     return modals.filter(m => m.id === activeModal).map(m => {
       return (
-        <ModalWrapper {...transitionProps} style={style} key={m.id}>
+        <ModalWrapper {...transitionProps} style={style} className='modal-wrapper' key={m.id}>
           <m.modal {...data} />
         </ModalWrapper>
       );
