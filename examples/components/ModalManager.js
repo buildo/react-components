@@ -1,13 +1,16 @@
 import React from 'react/addons';
 import { range, reject } from 'lodash';
 import ModalManager from '../../src/modal-manager';
+import { ScrollView } from '../../src';
 
 const FakeModal = React.createClass({
   render() {
     return (
-      <div style={{ width: 300, height: 500, backgroundColor: 'yellow' }}>
-        CIAO, sono una modale!
-      </div>
+      <ScrollView style={{ width: 300, height: 500, backgroundColor: 'yellow', overflow: 'scroll' }} scrollPropagation={false}>
+        <div style={{ height: 1000 }}>
+          CIAO, sono una modale...che scrolla!
+        </div>
+      </ScrollView>
     );
   }
 });
@@ -69,13 +72,18 @@ const Example = React.createClass({
 
   getTemplate() {
     return (
-      <ModalManager
-        activeModal={this.state.activeModal}
-        modals={modals}
-        transitionStyles={this.getTransitionStyles()}
-        transitionEnterTimeout={800}
-        transitionLeaveTimeout={800}
-        />
+      <div style={{ height: 2000 }}>
+        <button>You shouldn't be able to click me</button>
+        <p>Also, you shouldn't be able to scroll!</p>
+        <ModalManager
+          activeModal={this.state.activeModal}
+          modals={modals}
+          transitionStyles={this.getTransitionStyles()}
+          transitionEnterTimeout={800}
+          transitionLeaveTimeout={800}
+          onClickOutside={() => this.setState({ activeModal: undefined })}
+          />
+      </div>
     );
   },
 
