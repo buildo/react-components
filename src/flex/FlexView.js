@@ -46,6 +46,7 @@ const propTypes = {
     React.PropTypes.number,
     React.PropTypes.string
   ]),
+  wrap: React.PropTypes.bool,
   className: React.PropTypes.string,
   style: React.PropTypes.object
 };
@@ -149,7 +150,8 @@ export default React.createClass({
   getClasses() {
     const direction = this.props.column ? 'flex-column' : 'flex-row';
     const contentAlignment = this.getContentAlignmentClasses();
-    return cx('react-flex-view', direction, contentAlignment, this.props.className);
+    const wrap = this.props.wrap && 'flex-wrap';
+    return cx('react-flex-view', direction, contentAlignment, wrap, this.props.className);
   },
 
   render() {

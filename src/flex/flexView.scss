@@ -52,6 +52,10 @@
     @include flex_justify-content(flex-end);
   }
 
+  &.flex-wrap {
+    @include flex_flex-wrap(wrap);
+  }
+
 }
 
 .react-flex-view.react-flex-cell {
