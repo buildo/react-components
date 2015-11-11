@@ -24,8 +24,12 @@ const TransitionWrapper = React.createClass({
 
   startAnimation(anim, timeout, callback) {
     const { transitionStyles } = this.props;
-    const initState = { animationStart: transitionStyles[anim] };
-    const activeState = { animationEnd: transitionStyles[`${anim}Active`] };
+    const animationStart = transitionStyles[anim];
+    const animationEnd = transitionStyles[`${anim}Active`];
+
+    const initState = { animationStart, transitionClassName: anim };
+    const activeState = { animationEnd, transitionClassName: cx(anim, `${anim}-active`) };
+
     this.replaceState(initState);
     setTimeout(() => {
       this.setState(activeState);
@@ -73,10 +77,12 @@ const TransitionWrapper = React.createClass({
       return null;
     }
     const { children, className, component } = this.props;
+    const { transitionClassName } = this.state;
+
     const Component = component || React.createFactory('div');
     const additionalProps = omit(this.props, propTypes);
     return (
-      <Component {...additionalProps} className={className} style={this.getStyle()}>
+      <Component {...additionalProps} className={cx(className, transitionClassName)} style={this.getStyle()}>
         {children}
       </Component>
     );
