@@ -4,7 +4,7 @@ import omit from 'lodash/object/omit';
 
 const propTypes = {
   children: React.PropTypes.node.isRequired,
-  component: React.PropTypes.func,
+  component: React.PropTypes.any,
   transitionStyles: React.PropTypes.shape({
     enter: React.PropTypes.object,
     enterActive: React.PropTypes.object,
@@ -21,6 +21,12 @@ const propTypes = {
 const TransitionWrapper = React.createClass({
 
   propTypes: propTypes,
+
+  getDefaultProps() {
+    return {
+      component: 'div'
+    };
+  },
 
   startAnimation(anim, timeout, callback) {
     const { transitionStyles } = this.props;
@@ -79,12 +85,16 @@ const TransitionWrapper = React.createClass({
     const { children, className, component } = this.props;
     const { transitionClassName } = this.state;
 
-    const Component = component || React.createFactory('div');
-    const additionalProps = omit(this.props, propTypes);
-    return (
-      <Component {...additionalProps} className={cx(className, transitionClassName)} style={this.getStyle()}>
-        {children}
-      </Component>
+    const props = {
+      className: cx(className, transitionClassName),
+      style: this.getStyle(),
+      ...omit(this.props, Object.keys(propTypes))
+    };
+
+    return React.createElement(
+      component,
+      props,
+      children
     );
   }
 
