@@ -11,3 +11,4 @@ export TextareaAutosize from './textarea-autosize';
 export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './link-state';
 export ScrollView from './scroll';
 export { Toaster, TimerToast } from './toaster';
+export ModalManager from './modal-manager';
