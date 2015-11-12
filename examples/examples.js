@@ -10,6 +10,7 @@ import MobileDetectorTest from './components/MobileDetector';
 import LinkStateTest from './components/LinkState';
 import TextOverflowTest from './components/TextOverflow';
 import ToasterTest from './components/Toaster';
+import BackgroundDimmerTest from './components/BackgroundDimmer';
 
 const modules = [
   // DropdownTest,
@@ -21,7 +22,8 @@ const modules = [
   // MobileDetectorTest,
   // LinkStateTest,
   // TextOverflowTest,
-  ToasterTest
+  // ToasterTest,
+  BackgroundDimmerTest,
 ];
 
 const template = (
