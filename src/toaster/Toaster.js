@@ -9,6 +9,7 @@ const Toaster = React.createClass({
   propTypes: {
     children: React.PropTypes.node.isRequired,
     attachTo: React.PropTypes.string,
+    transitionGroup: React.PropTypes.object,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number.isRequired,
     transitionLeaveTimeout: React.PropTypes.number.isRequired,
