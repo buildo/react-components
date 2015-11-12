@@ -35,7 +35,7 @@ const template = (
 );
 
 document.getElementById('iso-container').innerHTML = React.renderToString(template);
-// React.render(template, document.getElementById('iso-container'));
+React.render(template, document.getElementById('iso-container'));
 React.render(template, document.getElementById('container'));
 
 // React.render(<ModalTest />, document.getElementById('modal'));
