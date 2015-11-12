@@ -13,3 +13,4 @@ export ScrollView from './scroll';
 export { Toaster, TimerToast } from './toaster';
 export ModalManager from './modal-manager';
 export TransitionWrapper from './transition-wrapper';
+export BackgroundDimmer from './background-dimmer';
