@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalWrapper from './ModalWrapper';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
+import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
 const ModalManager = React.createClass({
 
@@ -8,65 +9,61 @@ const ModalManager = React.createClass({
     activeModal: React.PropTypes.string,
     data: React.PropTypes.object,
     modals: React.PropTypes.array.isRequired,
-    onClickOutside: React.PropTypes.func
+    onClickOutside: React.PropTypes.func,
+    stopScrollPropagation: React.PropTypes.bool,
+    transitionStyles: React.PropTypes.object,
+    transitionEnterTimeout: React.PropTypes.number,
+    transitionLeaveTimeout: React.PropTypes.number
+  },
+
+  getDefaultProps() {
+    return {
+      transitionEnterTimeout: 0,
+      transitionLeaveTimeout: 0,
+      stopScrollPropagation: true
+    };
   },
 
   componentDidMount() {
     this.appendModalContainer();
     this.renderModals();
-    this.disableScrollPropagation();
   },
 
   componentWillUnmount() {
     this.removeModalContainer();
   },
 
-  getModalManagerNode() {
-    if (this.containerNode) {
-      return this.containerNode.children[0];
-    }
-  },
-
-  isEventOutsideModal(e) {
-    const target = e.target.parentNode ? e.target.parentNode.parentNode : null;
-    const modalManager = this.containerNode.children[0];
-    return target === modalManager;
-  },
-
-  onClick(e) {
-    const { onClickOutside, activeModal } = this.props;
-    if (onClickOutside && activeModal && this.isEventOutsideModal(e)) {
-      onClickOutside(e);
-    }
-  },
-
-  disableScrollPropagation() {
-    this.getModalManagerNode().addEventListener('wheel', this.stopScrollPropagation);
-    this.getModalManagerNode().addEventListener('touchmove', this.stopScrollPropagation);
-  },
-
-  stopScrollPropagation(e) {
-    if (this.isEventOutsideModal(e)) {
-      e.preventDefault();
-    }
-  },
-
   getModals() {
-    const { transitionStyles, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
-    const { activeModal, data, modals } = this.props;
+    const {
+      transitionStyles,
+      transitionEnterTimeout,
+      transitionLeaveTimeout,
+      activeModal,
+      data,
+      modals,
+      onClickOutside,
+      stopScrollPropagation
+    } = this.props;
+
     const transitionProps = {
       transitionStyles,
       transitionEnterTimeout,
       transitionLeaveTimeout
     };
     const style = {
-      height: '100%',
-      width: '100%'
+      position: 'fixed',
+      right: 0,
+      left: 0,
+      top: 0,
+      bottom: 0
     };
+
     return modals.filter(m => m.id === activeModal).map(m => {
       return (
         <ModalWrapper {...transitionProps} style={style} className='modal-wrapper' key={m.id}>
-          <m.modal {...data} />
+          <BackgroundDimmer {...{ stopScrollPropagation, onClickOutside }}>
+            <m.modal {...data} />
+          </BackgroundDimmer>
         </ModalWrapper>
       );
     });
@@ -88,15 +85,8 @@ const ModalManager = React.createClass({
 
   getModalManager() {
     const { onClick, onScroll } = this;
-    const style = {
-      position: 'fixed',
-      right: 0,
-      left: 0,
-      top: 0,
-      bottom: 0
-    };
     return (
-      <div {...{ style, onClick, onScroll }}>
+      <div {...{ onClick, onScroll }}>
         <ReactTransitionGroup>
           {this.getModals()}
         </ReactTransitionGroup>
