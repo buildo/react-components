@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 
 const BackgroundDimmer = React.createClass({
 
@@ -16,10 +16,7 @@ const BackgroundDimmer = React.createClass({
   getDefaultProps() {
     return {
       color: 'black',
-      alpha: 0.5,
-      id: '',
-      className: '',
-      style: {}
+      alpha: 0.5
     };
   },
 
