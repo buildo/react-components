@@ -1,6 +1,6 @@
-import React from 'react/addons';
+import React from 'react';
 import ModalWrapper from './ModalWrapper';
-const { TransitionGroup: ReactTransitionGroup, cloneWithProps } = React.addons;
+import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 
 const ModalManager = React.createClass({
 
