@@ -1,7 +1,8 @@
-import React from 'react/addons';
+import React from 'react';
 import cx from 'classnames';
+import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
+import cloneWithProps from 'react/lib/cloneWithProps';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
-const { TransitionGroup: ReactTransitionGroup, cloneWithProps } = React.addons;
 
 const Toaster = React.createClass({
 
