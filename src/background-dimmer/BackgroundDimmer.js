@@ -80,7 +80,8 @@ const BackgroundDimmer = React.createClass({
     return (
       <div {...{ style: mergedStyle, className, id }}>
         {this.getDimmedBackground()}
-        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+        <div style={{ visibility: 'hidden' }}>{children}</div>
+        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}>
           {children}
         </div>
       </div>
