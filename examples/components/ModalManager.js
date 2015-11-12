@@ -48,20 +48,20 @@ const Example = React.createClass({
         opacity: '0.01',
         transform: 'scale(0.01)',
         transition: 'opacity .8s ease-in-out, transform .5s ease-out',
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        // backgroundColor: 'rgba(0,0,0,0.5)'
       },
       enterActive: {
         opacity: '1',
         transform: 'scale(1)'
       },
       default: {
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        // backgroundColor: 'rgba(0,0,0,0.5)'
       },
       leave: {
         opacity: '1',
         transform: 'scale(1)',
         transition: 'opacity .8s ease-in-out, transform .5s ease-out',
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        // backgroundColor: 'rgba(0,0,0,0.5)'
       },
       leaveActive: {
         transform: 'scale(0.01)',
@@ -70,10 +70,15 @@ const Example = React.createClass({
     }
   },
 
+  onClickOutside() {
+    console.log('CLICK_OUTSIDE');
+    this.setState({ activeModal: undefined });
+  },
+
   getTemplate() {
     return (
       <div style={{ height: 2000 }}>
-        <button>You shouldn't be able to click me</button>
+        <button onClick={() => console.log('click')}>You shouldn't be able to click me</button>
         <p>Also, you shouldn't be able to scroll!</p>
         <ModalManager
           activeModal={this.state.activeModal}
@@ -81,7 +86,7 @@ const Example = React.createClass({
           transitionStyles={this.getTransitionStyles()}
           transitionEnterTimeout={800}
           transitionLeaveTimeout={800}
-          onClickOutside={() => this.setState({ activeModal: undefined })}
+          onClickOutside={this.onClickOutside}
           />
       </div>
     );

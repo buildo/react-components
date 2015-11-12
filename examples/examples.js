@@ -24,7 +24,7 @@ const modules = [
   // LinkStateTest,
   // TextOverflowTest,
   // ToasterTest,
-  BackgroundDimmerTest,
+  // BackgroundDimmerTest,
   ModalManagerTest
 ];
 
