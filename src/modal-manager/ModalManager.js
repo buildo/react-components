@@ -1,6 +1,7 @@
 import React from 'react';
-import ModalWrapper from './ModalWrapper';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
+import FlexView from '../flex/FlexView';
+import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
 const ModalManager = React.createClass({
@@ -45,26 +46,32 @@ const ModalManager = React.createClass({
       stopScrollPropagation
     } = this.props;
 
-    const transitionProps = {
+    const props = {
       transitionStyles,
       transitionEnterTimeout,
-      transitionLeaveTimeout
-    };
-    const style = {
-      position: 'fixed',
-      right: 0,
-      left: 0,
-      top: 0,
-      bottom: 0
+      transitionLeaveTimeout,
+      style: {
+        height: '100%',
+        width: '100%',
+        position: 'fixed',
+        right: 0,
+        left: 0,
+        top: 0,
+        bottom: 0
+      },
+      className: 'modal-wrapper',
+      component: FlexView,
+      vAlignContent: 'center',
+      hAlignContent: 'center'
     };
 
     return modals.filter(m => m.id === activeModal).map(m => {
       return (
-        <ModalWrapper {...transitionProps} style={style} className='modal-wrapper' key={m.id}>
+        <TransitionWrapper {...props} key={m.id}>
           <BackgroundDimmer {...{ stopScrollPropagation, onClickOutside }}>
             <m.modal {...data} />
           </BackgroundDimmer>
-        </ModalWrapper>
+        </TransitionWrapper>
       );
     });
   },
