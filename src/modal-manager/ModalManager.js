@@ -2,16 +2,11 @@ import React from 'react';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
-import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
 const ModalManager = React.createClass({
 
   propTypes: {
-    activeModal: React.PropTypes.string,
-    data: React.PropTypes.object,
-    modals: React.PropTypes.array.isRequired,
-    onClickOutside: React.PropTypes.func,
-    stopScrollPropagation: React.PropTypes.bool,
+    children: React.PropTypes.element,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number,
     transitionLeaveTimeout: React.PropTypes.number
@@ -19,9 +14,9 @@ const ModalManager = React.createClass({
 
   getDefaultProps() {
     return {
+      transitionStyles: {},
       transitionEnterTimeout: 0,
-      transitionLeaveTimeout: 0,
-      stopScrollPropagation: true
+      transitionLeaveTimeout: 0
     };
   },
 
@@ -34,16 +29,18 @@ const ModalManager = React.createClass({
     this.removeModalContainer();
   },
 
-  getModals() {
+  logWarning(log) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(log);
+    }
+  },
+
+  getModal() {
     const {
       transitionStyles,
       transitionEnterTimeout,
       transitionLeaveTimeout,
-      activeModal,
-      data,
-      modals,
-      onClickOutside,
-      stopScrollPropagation
+      children
     } = this.props;
 
     const props = {
@@ -57,7 +54,8 @@ const ModalManager = React.createClass({
         right: 0,
         left: 0,
         top: 0,
-        bottom: 0
+        bottom: 0,
+        zIndex: 999
       },
       className: 'modal-wrapper',
       component: FlexView,
@@ -65,12 +63,13 @@ const ModalManager = React.createClass({
       hAlignContent: 'center'
     };
 
-    return modals.filter(m => m.id === activeModal).map(m => {
+    return React.Children.map(children, el => {
+      if (!el.key) {
+        this.logWarning('Each modal should have a unique "key" prop');
+      }
       return (
-        <TransitionWrapper {...props} key={m.id}>
-          <BackgroundDimmer {...{ stopScrollPropagation, onClickOutside }}>
-            <m.modal {...data} />
-          </BackgroundDimmer>
+        <TransitionWrapper {...props} key={el.key}>
+            {children}
         </TransitionWrapper>
       );
     });
@@ -91,11 +90,10 @@ const ModalManager = React.createClass({
   },
 
   getModalManager() {
-    const { onClick, onScroll } = this;
     return (
-      <div {...{ onClick, onScroll }}>
+      <div>
         <ReactTransitionGroup>
-          {this.getModals()}
+          {this.getModal()}
         </ReactTransitionGroup>
       </div>
     );
