@@ -19,6 +19,7 @@ const ModalManager = React.createClass({
 
   getDefaultProps() {
     return {
+      transitionStyles: {},
       transitionEnterTimeout: 0,
       transitionLeaveTimeout: 0,
       stopScrollPropagation: true
@@ -91,9 +92,8 @@ const ModalManager = React.createClass({
   },
 
   getModalManager() {
-    const { onClick, onScroll } = this;
     return (
-      <div {...{ onClick, onScroll }}>
+      <div>
         <ReactTransitionGroup>
           {this.getModals()}
         </ReactTransitionGroup>
