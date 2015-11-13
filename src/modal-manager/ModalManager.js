@@ -6,9 +6,8 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 const ModalManager = React.createClass({
 
   propTypes: {
+    children: React.PropTypes.element,
     activeModal: React.PropTypes.string,
-    data: React.PropTypes.object,
-    modals: React.PropTypes.array.isRequired,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number,
     transitionLeaveTimeout: React.PropTypes.number
@@ -31,14 +30,13 @@ const ModalManager = React.createClass({
     this.removeModalContainer();
   },
 
-  getModals() {
+  getModal() {
     const {
       transitionStyles,
       transitionEnterTimeout,
       transitionLeaveTimeout,
       activeModal,
-      data,
-      modals
+      children
     } = this.props;
 
     const props = {
@@ -61,13 +59,11 @@ const ModalManager = React.createClass({
       hAlignContent: 'center'
     };
 
-    return modals.filter(m => m.id === activeModal).map(m => {
-      return (
-        <TransitionWrapper {...props} key={m.id}>
-          <m.modal {...data} />
-        </TransitionWrapper>
-      );
-    });
+    return (
+      <TransitionWrapper {...props} key={activeModal}>
+        {children}
+      </TransitionWrapper>
+    );
   },
 
   appendModalContainer() {
@@ -88,7 +84,7 @@ const ModalManager = React.createClass({
     return (
       <div>
         <ReactTransitionGroup>
-          {this.getModals()}
+          {this.getModal()}
         </ReactTransitionGroup>
       </div>
     );
