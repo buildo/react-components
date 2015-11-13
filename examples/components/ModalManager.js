@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import { range, reject, find } from 'lodash';
 import ModalManager from '../../src/modal-manager';
-import { ScrollView } from '../../src';
+import { ScrollView, BackgroundDimmer } from '../../src';
 
 const FakeModal = React.createClass({
   render() {
@@ -48,20 +48,16 @@ const Example = React.createClass({
         opacity: '0.01',
         transform: 'scale(0.01)',
         transition: 'opacity .8s ease-in-out, transform .5s ease-out',
-        // backgroundColor: 'rgba(0,0,0,0.5)'
       },
       enterActive: {
         opacity: '1',
         transform: 'scale(1)'
       },
-      default: {
-        // backgroundColor: 'rgba(0,0,0,0.5)'
-      },
+      default: {},
       leave: {
         opacity: '1',
         transform: 'scale(1)',
         transition: 'opacity .8s ease-in-out, transform .5s ease-out',
-        // backgroundColor: 'rgba(0,0,0,0.5)'
       },
       leaveActive: {
         transform: 'scale(0.01)',
@@ -70,11 +66,19 @@ const Example = React.createClass({
     }
   },
 
+  onClickOutside() {
+    console.log('ON_CLICK_OUTSIDE');
+  },
+
   getActiveModal() {
     const { activeModal } = this.state;
     const modal = find(modals, { id: activeModal });
     if (modal) {
-      return <modal.modal key={modal.id}/>
+      return (
+        <BackgroundDimmer alpha={0.5} onClickOutside={this.onClickOutside} key={modal.id} stopScrollPropagation>
+          <modal.modal />
+        </BackgroundDimmer>
+      );
     }
   },
 
