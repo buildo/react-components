@@ -7,7 +7,6 @@ const ModalManager = React.createClass({
 
   propTypes: {
     children: React.PropTypes.element,
-    activeModal: React.PropTypes.string,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number,
     transitionLeaveTimeout: React.PropTypes.number
@@ -30,12 +29,17 @@ const ModalManager = React.createClass({
     this.removeModalContainer();
   },
 
+  logWarning(log) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(log);
+    }
+  },
+
   getModal() {
     const {
       transitionStyles,
       transitionEnterTimeout,
       transitionLeaveTimeout,
-      activeModal,
       children
     } = this.props;
 
@@ -59,11 +63,16 @@ const ModalManager = React.createClass({
       hAlignContent: 'center'
     };
 
-    return (
-      <TransitionWrapper {...props} key={activeModal}>
-        {children}
-      </TransitionWrapper>
-    );
+    return React.Children.map(children, el => {
+      if (!el.key) {
+        this.logWarning('Each modal should have a unique "key" prop');
+      }
+      return (
+        <TransitionWrapper {...props} key={el.key}>
+            {children}
+        </TransitionWrapper>
+      );
+    });
   },
 
   appendModalContainer() {
