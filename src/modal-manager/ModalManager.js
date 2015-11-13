@@ -58,7 +58,8 @@ const ModalManager = React.createClass({
         right: 0,
         left: 0,
         top: 0,
-        bottom: 0
+        bottom: 0,
+        zIndex: 999
       },
       className: 'modal-wrapper',
       component: FlexView,
