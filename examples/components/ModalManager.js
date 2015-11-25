@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import { range, reject, find } from 'lodash';
 import ModalManager from '../../src/modal-manager';
-import BasicModal from '../../src/modal-manager/BasicModal';
+import { BasicModal } from '../../src/modal-manager';
 import { ScrollView } from '../../src';
 
 const FakeModal = React.createClass({
