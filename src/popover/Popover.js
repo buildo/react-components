@@ -1,6 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 
+const NO_SIZE_WRAPPER = 'no-size-wrapper';
+
 const Popover = React.createClass({
 
   propTypes: {
@@ -141,6 +143,17 @@ const Popover = React.createClass({
     };
   },
 
+  getPopoverNode() {
+    let popover;
+    if (this.isAbsolute()) {
+      popover = this.popoverNode;
+    } else {
+      const childrenNode = this.refs.children.getDOMNode();
+      popover = childrenNode.childNodes[1];
+    }
+    return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.childNodes[0] : popover;
+  },
+
   getOffsetRect(target) {
     target = this.refs.children.getDOMNode();
     const box = target.getBoundingClientRect();
@@ -162,7 +175,7 @@ const Popover = React.createClass({
 
   saveValuesFromNodeTree(cb) {
     const childrenNode = this.refs.children.getDOMNode();
-    const popoverNode = this.isAbsolute() ? this.popoverNode : childrenNode.childNodes[1];
+    const popoverNode = this.getPopoverNode();
 
     if (popoverNode) {
       const { clientWidth: childWidth, clientHeight: childHeight } = childrenNode;
@@ -309,7 +322,11 @@ const Popover = React.createClass({
   },
 
   getHiddenPopover() {
-    return this.popoverTemplate({ position: 'absolute', visibility: 'hidden' });
+    return (
+      <div id={NO_SIZE_WRAPPER} style={{ width: 0, height: 0, position: 'absolute', overflow: 'hidden' }}>
+        {this.popoverTemplate({ position: 'absolute', visibility: 'hidden' })}
+      </div>
+    );
   },
 
   isAbsolute() {
