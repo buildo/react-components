@@ -13,7 +13,13 @@ const shouldExportComponent = [
   'LoadingSpinner',
   'Popover',
   'TextareaAutosize',
-  'MobileDetector'
+  'MobileDetector',
+  'TextOverflow',
+  'ScrollView',
+  'ModalManager', 'BasicModal',
+  'TransitionWrapper',
+  'Toaster', 'TimerToast',
+  'BackgroundDimmer'
 ];
 const expectExport = k => () => {
   expect(exportz[k].name).toExist();
