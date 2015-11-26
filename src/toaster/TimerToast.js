@@ -4,7 +4,7 @@ const TimerToast = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node.isRequired,
-    onTimeOut: React.PropTypes.func.isRequired,
+    onTimeout: React.PropTypes.func.isRequired,
     duration: React.PropTypes.number.isRequired,
     uniqueKey: React.PropTypes.string,
     className: React.PropTypes.string,
@@ -26,7 +26,7 @@ const TimerToast = React.createClass({
 
   resetTimer() {
     if (!this.timer && !this.state.completed) {
-      this.timer = setTimeout(this.onTimeOut, this.props.duration);
+      this.timer = setTimeout(this.onTimeout, this.props.duration);
     }
   },
 
@@ -37,14 +37,14 @@ const TimerToast = React.createClass({
     }
   },
 
-  onTimeOut() {
-    const { onTimeOut, uniqueKey } = this.props;
+  onTimeout() {
+    const { onTimeout, uniqueKey } = this.props;
     this.timer = null;
-    this.setState({ completed: true }, () => onTimeOut(uniqueKey));
+    this.setState({ completed: true }, () => onTimeout(uniqueKey));
   },
 
   render() {
-    const { children, onTimeOut, duration, ...props } = this.props;
+    const { children, onTimeout, duration, ...props } = this.props;
     return (
       <div {...props} onMouseEnter={this.clearTimer} onMouseLeave={this.resetTimer}>
         {children}
