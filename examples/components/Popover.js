@@ -33,7 +33,7 @@ const Example = React.createClass({
     return {
       content,
       position: 'bottom',
-      anchor: 'end',
+      anchor: 'center',
       attachToBody: true,
       dismissOnClickOutside: true,
       dismissOnScroll: true,
