@@ -11,11 +11,11 @@ const propTypes = {
     default: React.PropTypes.object,
     leave: React.PropTypes.object,
     leaveActive: React.PropTypes.object
-  }).isRequired,
+  }),
   transitionEnterTimeout: React.PropTypes.number.isRequired,
   transitionLeaveTimeout: React.PropTypes.number.isRequired,
   className: React.PropTypes.string,
-  style: React.PropTypes.object.isRequired
+  style: React.PropTypes.object
 };
 
 const TransitionWrapper = React.createClass({
@@ -24,6 +24,8 @@ const TransitionWrapper = React.createClass({
 
   getDefaultProps() {
     return {
+      transitionStyles: {},
+      style: {},
       component: 'div'
     };
   },
@@ -56,7 +58,7 @@ const TransitionWrapper = React.createClass({
   },
 
   componentDidEnter() {
-    this.replaceState({ defaultStyle: this.props.transitionStyles.default});
+    this.replaceState({ defaultStyle: this.props.transitionStyles.default });
   },
 
   componentWillLeave(callback) {
