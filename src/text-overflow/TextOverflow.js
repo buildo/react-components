@@ -21,21 +21,36 @@ const TextOverflow = React.createClass({
     this.verifyOverflow();
   },
 
+  componentDidUpdate() {
+    this.verifyOverflow();
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.label !== this.props.label) {
+      this.reset();
+    }
+  },
+
+  reset() {
+    this.setState({ isOverflowing: false });
+  },
+
   logWarnings() {
-    const { width } = this.refs.text.getDOMNode().parentNode.style;
-    if (process.env.NODE_ENV !== 'production' && width !== '100%') {
-      console.warn(`TextOverflow's parent doesn't have "width: 100%". This might cause a stack overflow.`);
+    const { width, flex } = this.refs.text.getDOMNode().parentNode.style;
+    const flexBasis = flex ? flex.split(' ')[2] : null;
+    if (process.env.NODE_ENV !== 'production' && width !== '100%' && flexBasis !== '100%') {
+      console.warn(`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`);
     }
   },
 
   verifyOverflow(state) {
     state = state || this.state;
-    const text = this.refs.text.getDOMNode();
-    this.logWarnings();
-    if(text.offsetWidth < text.scrollWidth && !state.isOverflowing){
-      this.setState({ isOverflowing: true });
-    } else if (text.offsetWidth >= text.scrollWidth && state.isOverflowing){
-      this.setState({ isOverflowing: false });
+    if (state.isOverflowing === false) {
+      const text = this.refs.text.getDOMNode();
+      if(text.offsetWidth < text.scrollWidth){
+        this.setState({ isOverflowing: true });
+      }
+      setTimeout(this.logWarnings);
     }
   },
 
@@ -89,10 +104,6 @@ const TextOverflow = React.createClass({
 
   render() {
     return this.state.isOverflowing ? this.templateOverflow() : this.templeteStandard();
-  },
-
-  componentDidUpdate() {
-    this.verifyOverflow();
   }
 
 });
