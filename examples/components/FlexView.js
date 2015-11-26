@@ -25,10 +25,12 @@ const Example = React.createClass({
               style={{backgroundColor: 'red', height: 30, width: 30}}
               marginTop='auto'
               marginBottom='auto'
+              basis={200}
               />
             <FlexView
               style={{backgroundColor: 'green', height: 30, width: 30}}
               marginLeft='auto'
+              flexBasis={200}
               />
         </FlexView>
       </div>
