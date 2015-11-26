@@ -62,7 +62,6 @@ const TransitionWrapper = React.createClass({
   },
 
   componentWillLeave(callback) {
-    this.leaving = true;
     this.startAnimation('leave', this.props.transitionLeaveTimeout, callback);
   },
 
