@@ -23,7 +23,7 @@ const Example = React.createClass({
         </button>
         <div style={{maxWidth: 150}}>
           <TextOverflow style={{color: 'blue'}} label='sono un testo lungo lungo lungo'>
-            {(self) => <Popover popover={{content: 'sono un testo lungo lungo lungo'}} style={{color: 'red', width:'100%'}}>{self}</Popover>}
+            {(self) => <Popover popover={{content: 'sono un testo lungo lungo lungo'}} style={{color: 'red', flex: '0 0 100%'}}>{self}</Popover>}
           </TextOverflow>
         </div>
       </FlexView>
