@@ -34,6 +34,10 @@ const propTypes = {
     React.PropTypes.number,
     React.PropTypes.bool
   ]),
+  basis: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
   height: React.PropTypes.oneOfType([
     React.PropTypes.number,
     React.PropTypes.string
@@ -42,7 +46,7 @@ const propTypes = {
     React.PropTypes.number,
     React.PropTypes.string
   ]),
-  flexBasis: React.PropTypes.oneOfType([
+  flexBasis: React.PropTypes.oneOfType([ // deprecated
     React.PropTypes.number,
     React.PropTypes.string
   ]),
@@ -63,9 +67,10 @@ export default React.createClass({
   },
 
   getGrow() {
-    if (typeof this.props.grow === 'number') {
-      return this.props.grow;
-    } else if (this.props.grow) {
+    const { grow } = this.props;
+    if (typeof grow === 'number') {
+      return grow;
+    } else if (grow) {
       return 1;
     } else {
       return 0; // auto === true or default
@@ -73,13 +78,14 @@ export default React.createClass({
   },
 
   getShrink() {
-    if (typeof this.props.shrink === 'number') {
-      return this.props.shrink;
-    } else if (this.props.shrink) {
+    const { shrink, basis, flexBasis, auto } = this.props;
+    if (typeof shrink === 'number') {
+      return shrink;
+    } else if (shrink) {
       return 1;
     }
 
-    if (this.props.flexBasis || this.props.auto) {
+    if (basis || flexBasis || auto) {
       return 0;
     } else {
       return 1; // grow === true or default
@@ -87,11 +93,11 @@ export default React.createClass({
   },
 
   getBasis() {
-    const { flexBasis, grow, shrink, auto } = this.props;
-
-    if (flexBasis) {
-      const suffix = typeof flexBasis === 'number' ? 'px' : '';
-      return flexBasis + suffix;
+    const { grow, shrink, basis, flexBasis, auto } = this.props;
+    const _basis = basis || flexBasis;
+    if (_basis) {
+      const suffix = typeof _basis === 'number' ? 'px' : '';
+      return _basis + suffix;
     } else if (grow && !shrink && !auto) {
       return '100%';
     } else {
