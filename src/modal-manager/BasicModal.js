@@ -48,7 +48,7 @@ const BasicModal = React.createClass({
   },
 
   render() {
-    const { children, iconClose, onDismiss, className, id, style } = this.props;
+    const { children, onDismiss, className, id, style } = this.props;
     return (
       <BackgroundDimmer
         {...this.getBackgroundProp()}
