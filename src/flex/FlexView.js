@@ -83,7 +83,10 @@ export default React.createClass({
       return shrink;
     } else if (shrink) {
       return 1;
+    } else if (shrink === false) {
+      return 0;
     }
+
 
     if (basis || flexBasis || auto) {
       return 0;
