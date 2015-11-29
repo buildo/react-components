@@ -1,7 +1,8 @@
 import React from 'react/addons';
 import { range, reject, find } from 'lodash';
 import ModalManager from '../../src/modal-manager';
-import { ScrollView, BackgroundDimmer } from '../../src';
+import { BasicModal } from '../../src/modal-manager';
+import { ScrollView } from '../../src';
 
 const FakeModal = React.createClass({
   render() {
@@ -75,9 +76,9 @@ const Example = React.createClass({
     const modal = find(modals, { id: activeModal });
     if (modal) {
       return (
-        <BackgroundDimmer alpha={0.5} onClickOutside={this.onClickOutside} key={modal.id} stopScrollPropagation>
+        <BasicModal onDismiss={this.onClickOutside} key={modal.id}>
           <modal.modal />
-        </BackgroundDimmer>
+        </BasicModal>
       );
     }
   },
