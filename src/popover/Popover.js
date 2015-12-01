@@ -322,8 +322,9 @@ const Popover = React.createClass({
   },
 
   getHiddenPopover() {
+    const style = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
     return (
-      <div id={NO_SIZE_WRAPPER} style={{ width: 0, height: 0, position: 'absolute', overflow: 'hidden' }}>
+      <div id={NO_SIZE_WRAPPER} style={style}>
         {this.popoverTemplate({ position: 'absolute', visibility: 'hidden' })}
       </div>
     );
