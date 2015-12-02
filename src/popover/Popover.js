@@ -1,4 +1,5 @@
 import React from 'react';
+import BackgroundDimmer from '../background-dimmer';
 import cx from 'classnames';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
@@ -36,25 +37,14 @@ const Popover = React.createClass({
 
   // LIFECYCLE
 
-  getDefaultProps() {
-    return {
-      id: '',
-      className: '',
-      style: {}
-    };
-  },
-
   getInitialState() {
-    return {
-      isOpen: false
-    };
+    return { isOpen: false };
   },
 
   componentDidMount() {
     this.saveValuesFromNodeTree();
     this.initialized = true;
     if (this.isOpen()) {
-      this.addListeners();
       this.forceUpdate();
     }
   },
@@ -68,56 +58,6 @@ const Popover = React.createClass({
 
   componentWillUnmount() {
     this.removePopover();
-    this.removeListeners();
-  },
-
-  // LISTENERS
-
-  addOnClickListener() {
-    if (this.getPopoverProps().dismissOnClickOutside) {
-      window.addEventListener('click', this.onClickOutside, false);
-    }
-  },
-
-  removeOnClickListener() {
-    if (this.getPopoverProps().dismissOnClickOutside) {
-      window.removeEventListener('click', this.onClickOutside, false);
-    }
-  },
-
-  onClickOutside(e) {
-    const childrenNode = this.refs.children.getDOMNode();
-    const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
-    const el = e.target || e.srcElement;
-    if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
-      this.hidePopover();
-    }
-  },
-
-  addOnScrollListener() {
-    if (this.getPopoverProps().dismissOnScroll) {
-      window.addEventListener('mousewheel', this.onScroll, false);
-    }
-  },
-
-  removeOnScrollListener() {
-    if (this.getPopoverProps().dismissOnScroll) {
-      window.removeEventListener('mousewheel', this.onScroll, false);
-    }
-  },
-
-  onScroll() {
-    this.hidePopover();
-  },
-
-  addListeners() {
-    this.addOnScrollListener();
-    this.addOnClickListener();
-  },
-
-  removeListeners() {
-    this.removeOnScrollListener();
-    this.removeOnClickListener();
   },
 
   // UTILS
@@ -223,15 +163,13 @@ const Popover = React.createClass({
   // VISIBILITY CHANGE
 
   appendPopover() {
-    const hiddenPopover = this.getHiddenPopover();
     this.containerNode = document.createElement('div');
-    this.containerNode.innerHTML = React.renderToString(hiddenPopover);
+    React.render(this.getHiddenPopover(), this.containerNode);
     this.popoverNode = this.containerNode.childNodes[0];
     document.body.appendChild(this.containerNode);
 
     this.saveValuesFromNodeTree(() => {
-      const popover = this.getVisiblePopover();
-      this.containerNode.innerHTML = React.renderToString(popover);
+      React.render(this.getVisiblePopover(), this.containerNode);
     });
   },
 
@@ -243,16 +181,10 @@ const Popover = React.createClass({
   },
 
   onPopoverOpenChange(props) {
-    if (this.isOpen(props)) {
-      if (this.isAbsolute()) {
-        this.appendPopover();
-      }
-      this.addListeners();
-    } else {
-      if (this.isAbsolute()) {
-        this.removePopover();
-      }
-      this.removeListeners();
+    if (this.isAbsolute() && this.isOpen(props)) {
+      this.appendPopover();
+    } else if (this.isAbsolute()) {
+      this.removePopover();
     }
   },
 
@@ -304,16 +236,25 @@ const Popover = React.createClass({
   // LOCALES
 
   popoverTemplate(style) {
-    const { position, anchor, className, content, id, event } = this.getPopoverProps();
+    const { position, anchor, className: propsClassName, content, id, event, dismissOnScroll, dismissOnClickOutside } = this.getPopoverProps();
     const { eventWrapper, hidePopover, isAbsolute } = this;
+
     const positionClass = `position-${position}`;
     const anchorClass = `anchor-${anchor}`;
-    const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
+    const className = `popover-content ${positionClass} ${anchorClass} ${propsClassName}`;
+
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(hidePopover) } : undefined;
-    return (
-      <div className={_className} id={id} style={style} {...events}>
-        {content}
-      </div>
+    const backgroundDimmerProps = {
+      alpha: 0,
+      onScrollOutside: dismissOnScroll ? this.hidePopover : undefined,
+      onClickOutside: dismissOnClickOutside ? this.hidePopover : undefined
+    };
+    const component = event === 'hover' ? 'div' : BackgroundDimmer;
+
+    return React.createElement(
+      component,
+      { className, id, style, ...backgroundDimmerProps, ...events },
+      content
     );
   },
 

@@ -36,7 +36,7 @@ const Example = React.createClass({
       anchor: 'center',
       attachToBody: true,
       dismissOnClickOutside: true,
-      dismissOnScroll: true,
+      dismissOnScroll: false,
       event: 'click',
       offsetX: 0,
       distance: 15,

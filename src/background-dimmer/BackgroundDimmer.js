@@ -1,17 +1,21 @@
 import React from 'react';
+import omit from 'lodash/object/omit';
+
+const propTypes = {
+  children: React.PropTypes.node.isRequired,
+  color: React.PropTypes.string,
+  alpha: React.PropTypes.number,
+  stopScrollPropagation: React.PropTypes.bool,
+  onScrollOutside: React.PropTypes.func,
+  onClickOutside: React.PropTypes.func,
+  className: React.PropTypes.string,
+  id: React.PropTypes.string,
+  style: React.PropTypes.object
+};
 
 const BackgroundDimmer = React.createClass({
 
-  propTypes: {
-    children: React.PropTypes.node.isRequired,
-    color: React.PropTypes.string,
-    alpha: React.PropTypes.number,
-    stopScrollPropagation: React.PropTypes.bool,
-    onClickOutside: React.PropTypes.func,
-    className: React.PropTypes.string,
-    id: React.PropTypes.string,
-    style: React.PropTypes.object
-  },
+  propTypes: propTypes,
 
   getDefaultProps() {
     return {
@@ -21,21 +25,19 @@ const BackgroundDimmer = React.createClass({
   },
 
   componentDidMount() {
-    if (this.props.stopScrollPropagation) {
-      this.disableScrollPropagation();
-    }
+    this.addScrollListener();
   },
 
-  enableScrollPropagation() {
+  addScrollListener() {
     const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
-    dimmedBackground.removeEventListener('wheel', this.stopScrollPropagation);
-    dimmedBackground.removeEventListener('touchmove', this.stopScrollPropagation);
+    dimmedBackground.addEventListener('wheel', this.onScroll);
+    dimmedBackground.addEventListener('touchmove', this.onScroll);
   },
 
-  disableScrollPropagation() {
+  removeScrollListener() {
     const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
-    dimmedBackground.addEventListener('wheel', this.stopScrollPropagation);
-    dimmedBackground.addEventListener('touchmove', this.stopScrollPropagation);
+    dimmedBackground.removeEventListener('wheel', this.onScroll);
+    dimmedBackground.removeEventListener('touchmove', this.onScroll);
   },
 
   isEventOutsideChildren(e) {
@@ -50,10 +52,15 @@ const BackgroundDimmer = React.createClass({
     }
   },
 
-  stopScrollPropagation(e) {
-    const { stopScrollPropagation } = this.props;
-    if (stopScrollPropagation && this.isEventOutsideChildren(e)) {
-      e.preventDefault();
+  onScroll(e) {
+    const { stopScrollPropagation, onScrollOutside } = this.props;
+    if (this.isEventOutsideChildren(e)) {
+      if (stopScrollPropagation) {
+        e.preventDefault();
+      }
+      if (onScrollOutside) {
+        onScrollOutside(e);
+      }
     }
   },
 
@@ -73,12 +80,13 @@ const BackgroundDimmer = React.createClass({
 
   render() {
     const { style, className, id, children } = this.props;
+    const other = omit(this.props, Object.keys(propTypes));
     const mergedStyle = {
       position: 'relative',
       ...style
     };
     return (
-      <div {...{ style: mergedStyle, className, id }}>
+      <div {...{ style: mergedStyle, className, id, ...other }}>
         {this.getDimmedBackground()}
         <div style={{ visibility: 'hidden' }}>{children}</div>
         <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}>
@@ -88,18 +96,8 @@ const BackgroundDimmer = React.createClass({
     );
   },
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.stopScrollPropagation && this.props.stopScrollPropagation) {
-      this.enableScrollPropagation();
-    } else if (nextProps.stopScrollPropagation && !this.props.stopScrollPropagation) {
-      this.disableScrollPropagation();
-    }
-  },
-
   componentWillUnmount() {
-    if (this.props.stopScrollPropagation) {
-      this.enableScrollPropagation();
-    }
+    this.removeScrollListener();
   }
 
 });
