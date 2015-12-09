@@ -63,7 +63,7 @@ const ModalManager = React.createClass({
       hAlignContent: 'center'
     };
 
-    return React.Children.map(children, el => {
+    return [].concat(children).filter(e => !!e).map(el => {
       if (!el.key) {
         this.logWarning('Each modal should have a unique "key" prop');
       }
