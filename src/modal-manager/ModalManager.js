@@ -112,7 +112,7 @@ const ModalManager = React.createClass({
         return Modal;
       }
     });
-    React.render(ContextWrapper, this.containerNode);
+    React.render(<ContextWrapper />, this.containerNode);
   },
 
   render() {
