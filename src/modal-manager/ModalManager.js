@@ -9,14 +9,18 @@ const ModalManager = React.createClass({
     children: React.PropTypes.element,
     transitionStyles: React.PropTypes.object,
     transitionEnterTimeout: React.PropTypes.number,
-    transitionLeaveTimeout: React.PropTypes.number
+    transitionLeaveTimeout: React.PropTypes.number,
+    getChildContext: React.PropTypes.func,
+    childContextTypes: React.PropTypes.object
   },
 
   getDefaultProps() {
     return {
       transitionStyles: {},
       transitionEnterTimeout: 0,
-      transitionLeaveTimeout: 0
+      transitionLeaveTimeout: 0,
+      childContextTypes: {},
+      getChildContext: () => ({})
     };
   },
 
@@ -100,7 +104,15 @@ const ModalManager = React.createClass({
   },
 
   renderModals() {
-    React.render(this.getModalManager(), this.containerNode);
+    const Modal = this.getModalManager();
+    const ContextWrapper = React.createClass({
+      childContextTypes: this.props.childContextTypes,
+      getChildContext: this.props.getChildContext,
+      render() {
+        return Modal;
+      }
+    });
+    React.render(ContextWrapper, this.containerNode);
   },
 
   render() {
