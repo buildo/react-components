@@ -3,6 +3,10 @@
   background-color: #EAEAEA;
 }
 
+.playground {
+  display: none;
+}
+
 .dropdown-menu-component {
   margin-left: 300px;
 }
