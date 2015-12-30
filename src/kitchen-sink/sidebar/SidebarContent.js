@@ -4,7 +4,8 @@ import Item from './Item';
 export default class SidebarContent extends React.Component {
 
   static propTypes = {
-    components: React.PropTypes.array.isRequired,
+    sections: React.PropTypes.array,
+    components: React.PropTypes.array,
     componentId: React.PropTypes.string,
     onSelectItem: React.PropTypes.func.isRequired
   }
@@ -12,10 +13,16 @@ export default class SidebarContent extends React.Component {
   isActive = (id) => id === this.props.componentId
 
   render() {
-    const { components, onSelectItem } = this.props;
+    const { sections, components, onSelectItem } = this.props;
+    const getItems = (sectionId, components) => components.map(c =>
+      <Item {...c} onClick={onSelectItem} indent active={this.isActive(c.id)} key={c.id} />
+    );
+
+    const getSections = (sections) => sections.map(({ id, components, title }) => [title].concat(getItems(id, components)));
+
     return (
       <div className='sidebar-content'>
-        {components.map(c => <Item {...c} onClick={onSelectItem} active={this.isActive(c.id)} key={c.id} />)}
+        {sections ? getSections(sections) : getItems(components)}
       </div>
     );
   }

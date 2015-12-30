@@ -6,7 +6,8 @@ export default class Sidebar extends React.Component {
 
   static propTypes = {
     children: React.PropTypes.node.isRequired,
-    components: React.PropTypes.array.isRequired,
+    sections: React.PropTypes.array,
+    components: React.PropTypes.array,
     componentId: React.PropTypes.string,
     onSelectItem: React.PropTypes.func.isRequired
   }

@@ -18,61 +18,73 @@ import ToasterTest from 'raw!./components/Toaster.example';
 import BackgroundDimmerTest from 'raw!./components/BackgroundDimmer.example';
 import ModalManagerTest from 'raw!./components/ModalManager.example';
 
-const components = [
+const sections = [
   {
-    example: DropdownTest,
-    id: 'Dropdown',
-    title: 'Dropdown'
+    title: 'Section 1',
+    id: 'section-1',
+    components: [
+      {
+        examples: [DropdownTest],
+        id: 'Dropdown',
+        title: 'Dropdown'
+      },
+      {
+        examples: [PopoverTest],
+        id: 'Popover',
+        title: 'Popover'
+      }
+    ]
   },
   {
-    example: PopoverTest,
-    id: 'Popover',
-    title: 'Popover'
-  },
-  {
-    example: FlexViewTest,
-    id: 'FlexView',
-    title: 'FlexView'
-  },
-  {
-    example: ScrollViewTest,
-    id: 'ScrollView',
-    title: 'ScrollView'
-  },
-  {
-    example: LoadingSpinnerTest,
-    id: 'LoadingSpinner',
-    title: 'LoadingSpinner'
-  },
-  {
-    example: MobileDetectorTest,
-    id: 'MobileDetector',
-    title: 'MobileDetector'
-  },
-  {
-    example: LinkStateTest,
-    id: 'LinkState',
-    title: 'LinkState'
-  },
-  {
-    example: TextOverflowTest,
-    id: 'TextOverflow',
-    title: 'TextOverflow'
-  },
-  {
-    example: ToasterTest,
-    id: 'Toaster',
-    title: 'Toaster'
-  },
-  {
-    example: BackgroundDimmerTest,
-    id: 'BackgroundDimmer',
-    title: 'BackgroundDimmer'
-  },
-  {
-    example: ModalManagerTest,
-    id: 'ModalManager',
-    title: 'ModalManager'
+    title: 'Section 2',
+    id: 'section-2',
+    components: [
+      {
+        examples: [FlexViewTest],
+        id: 'FlexView',
+        title: 'FlexView'
+      },
+      {
+        examples: [ScrollViewTest],
+        id: 'ScrollView',
+        title: 'ScrollView'
+      },
+      {
+        examples: [LoadingSpinnerTest],
+        id: 'LoadingSpinner',
+        title: 'LoadingSpinner'
+      },
+      {
+        examples: [MobileDetectorTest],
+        id: 'MobileDetector',
+        title: 'MobileDetector'
+      },
+      {
+        examples: [LinkStateTest],
+        id: 'LinkState',
+        title: 'LinkState'
+      },
+      {
+        examples: [TextOverflowTest],
+        id: 'TextOverflow',
+        title: 'TextOverflow'
+      },
+      {
+        examples: [ToasterTest],
+        id: 'Toaster',
+        title: 'Toaster'
+      },
+      {
+        examples: [BackgroundDimmerTest],
+        id: 'BackgroundDimmer',
+        title: 'BackgroundDimmer'
+      },
+      {
+        examples: [ModalManagerTest],
+        id: 'ModalManager',
+        title: 'ModalManager'
+      }
+    ]
   }
 ];
 
@@ -93,7 +105,7 @@ const Examples = React.createClass({
   },
 
   onSelectItem(componentId) {
-    return this.setState({ componentId });
+    this.setState({ componentId });
   },
 
   render() {
@@ -101,10 +113,11 @@ const Examples = React.createClass({
       state: { componentId },
       onSelectItem
     } = this;
-    const codeText = find(components, { id: componentId }).example;
+
+    const { examples } = sections.reduce((acc, s) => acc || find(s.components, { id: componentId }), null);
     return (
       <div style={{margin: 20}}>
-        <KitchenSink {...{ scope, components, componentId, codeText, onSelectItem }} iso />
+        <KitchenSink {...{ scope, sections, componentId, examples, onSelectItem }} iso />
       </div>
     );
   }
