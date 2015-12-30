@@ -1,5 +1,6 @@
 import React from 'react';
 import Playground from 'component-playground';
+import ScrollView from '../../scroll';
 
 const footer = '\n__render(Example);';
 const footerISO = '\n__renderISO(Example);';
@@ -60,7 +61,11 @@ export default class LiveDemo extends React.Component {
     const __render = this.__render;
     return (
       <div className='live-demo'>
-        {this.contentNode && <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console />}
+        {this.contentNode &&
+          <ScrollView scrollPropagation={false}>
+            <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console />
+          </ScrollView>
+        }
         <div className='component' ref='contentNode' />
         {iso && <div className='iso-demo component' ref='contentNodeISO' />}
       </div>
