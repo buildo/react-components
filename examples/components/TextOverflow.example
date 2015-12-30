@@ -1,6 +1,3 @@
-import React from 'react';
-import { TextOverflow, Popover, FlexView } from '../../src';
-
 const Example = React.createClass({
 
   propTypes: {},
@@ -35,5 +32,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;

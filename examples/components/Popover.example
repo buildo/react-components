@@ -1,7 +1,3 @@
-import React from 'react';
-import { Popover } from '../../src';
-import { partial } from 'lodash';
-
 const content = (
   <div style={{backgroundColor: 'yellow', width: 200}}>
     <div>
@@ -84,5 +80,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;

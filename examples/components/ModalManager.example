@@ -1,9 +1,3 @@
-import React from 'react/addons';
-import { range, reject, find } from 'lodash';
-import ModalManager from '../../src/modal-manager';
-import { BasicModal } from '../../src/modal-manager';
-import { ScrollView } from '../../src';
-
 const FakeModal = React.createClass({
   render() {
     return (
@@ -103,5 +97,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;
