@@ -5,19 +5,44 @@
     height: 100%;
     margin-left: 2px;
 
-    .playground .playgroundPreview {
-      display: none;
+    > h1 {
+      margin: 50px;
     }
 
-    #content {
-      padding: 15px;
-      font-family: Consolas, Courier, monospace;
+    .example-card {
+      margin: 50px;
+      border: 1px solid #EAEAEA;
+      border-radius: 3px;
+      background-color: #F5F5F5;
+
+      .live-demo {
+
+        .playground .playgroundPreview {
+          display: none;
+        }
+
+        .content {
+          padding: 15px;
+          font-family: Consolas, Courier, monospace;
+        }
+      }
     }
   }
 
   .sidebar {
     .sidebar-content {
       width: 270px;
+
+      .section {
+        padding: 10px;
+        background-color: #242424;
+        color: white;
+
+        * {
+          display: block;
+          margin: auto;
+        }
+      }
 
       .item {
         width: 100%;

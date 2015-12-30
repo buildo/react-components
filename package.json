@@ -12,7 +12,8 @@
     "build-kitchen-sink": "npm run clean && webpack --config kitchen-sink/webpack.config.build.js --progress",
     "kitchen-sink": "npm run clean && webpack-dev-server --config kitchen-sink/webpack.config.js --progress --hot --inline",
     "build-examples": "npm run clean && webpack --config examples/webpack.config.build.js --progress",
-    "start": "npm run clean && node-sass src --importer sass-importer.js --include-path node_modules -o examples && webpack-dev-server --config examples/webpack.config.js --progress --hot --inline",
+    "sass-examples": "node-sass src --importer sass-importer.js --include-path node_modules -o examples",
+    "start": "npm run clean && npm run sass-examples && webpack-dev-server --config examples/webpack.config.js --progress --hot --inline",
     "clean": "rm -f examples/bundle.js examples/bundle.js.map"
   },
   "repository": {

@@ -61,8 +61,8 @@ export default class LiveDemo extends React.Component {
     return (
       <div className='live-demo'>
         {this.contentNode && <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console />}
-        <div ref='contentNode' />
-        {iso && <div className='iso-demo' ref='contentNodeISO' />}
+        <div className='component' ref='contentNode' />
+        {iso && <div className='iso-demo component' ref='contentNodeISO' />}
       </div>
     );
   }

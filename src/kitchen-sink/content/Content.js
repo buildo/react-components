@@ -15,6 +15,7 @@ export default class Content extends React.Component {
     const { examples, title } = component || {};
     return (
       <div className='content'>
+        <h1>{title}</h1>
         {examples ? examples.map(codeText => <ExampleCard {...{ codeText, iso, scope }} />) : <LoadingSpinner />}
       </div>
     );

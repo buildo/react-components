@@ -115,7 +115,7 @@ const Examples = React.createClass({
     } = this;
 
     return (
-      <div style={{margin: 20}}>
+      <div>
         <KitchenSink {...{ scope, sections, componentId, onSelectItem }} iso />
       </div>
     );
