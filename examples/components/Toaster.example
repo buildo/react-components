@@ -1,9 +1,3 @@
-import React from 'react/addons';
-import { range, reject } from 'lodash';
-import Toaster from '../../src/toaster';
-import { TimerToast } from '../../src';
-
-
 const Example = React.createClass({
 
   propTypes: {},
@@ -30,7 +24,7 @@ const Example = React.createClass({
     };
   },
 
-  onTimeOut(key) {
+  onTimeout(key) {
     this.setState({
       toasts: reject(this.state.toasts, { key })
     });
@@ -69,7 +63,7 @@ const Example = React.createClass({
     const key = Math.random() + '';
     const toast = {
       key,
-      el :<TimerToast onTimeOut={this.onTimeOut} duration={5000} key={key}><div style={this.getToastStyle()}>{key}</div></TimerToast>
+      el :<TimerToast onTimeout={this.onTimeout} duration={5000} key={key}><div style={this.getToastStyle()}>{key}</div></TimerToast>
     };
 
     const { toasts } = this.state;
@@ -113,5 +107,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;

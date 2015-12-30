@@ -1,7 +1,3 @@
-import React from 'react';
-import { ScrollView } from '../../src';
-import partial from 'lodash/function/partial';
-
 const Example = React.createClass({
 
   propTypes: {},
@@ -49,5 +45,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;

@@ -1,6 +1,3 @@
-import React from 'react';
-import { Dropdown } from '../../src';
-
 const Example = React.createClass({
 
   propTypes: {},
@@ -23,5 +20,3 @@ const Example = React.createClass({
   }
 
 });
-
-export default Example;
