@@ -7,11 +7,12 @@ export default class Content extends React.Component {
   static propTypes = {
     iso: React.PropTypes.bool,
     scope: React.PropTypes.object.isRequired,
-    examples: React.PropTypes.array
+    component: React.PropTypes.object
   }
 
   render() {
-    const { scope, examples, iso } = this.props;
+    const { scope, component, iso } = this.props;
+    const { examples, title } = component || {};
     return (
       <div className='content'>
         {examples ? examples.map(codeText => <ExampleCard {...{ codeText, iso, scope }} />) : <LoadingSpinner />}

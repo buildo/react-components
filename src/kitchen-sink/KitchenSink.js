@@ -1,4 +1,5 @@
 import React from 'react';
+import find from 'lodash/collection/find';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 
@@ -6,7 +7,6 @@ export default class KitchenSink extends React.Component {
 
   static propTypes = {
     componentId: React.PropTypes.string.isRequired,
-    examples: React.PropTypes.array,
     sections: React.PropTypes.array,
     components: React.PropTypes.array,
     onSelectItem: React.PropTypes.func.isRequired,
@@ -17,7 +17,7 @@ export default class KitchenSink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      examples: props.examples
+      component: this.findComponent(props.componentId)
     };
   }
 
@@ -27,6 +27,15 @@ export default class KitchenSink extends React.Component {
     const { sections } = this.props;
     if (sections) {
       return find(sections, (section) => find(section.components, { id: componentId })).id;
+    }
+  }
+
+  findComponent = (componentId) => {
+    const { sections, components } = this.props;
+    if (components) {
+      return find(components, { id: componentId });
+    } else {
+      return sections.reduce((acc, s) => acc || find(s.components, { id: componentId }), null);
     }
   }
 
@@ -40,24 +49,24 @@ export default class KitchenSink extends React.Component {
         scope,
         iso
       },
-      state: { examples }
+      state: { component }
     } = this;
 
     return (
       <div className='kitchen-sink'>
         <Sidebar {...{ sections, components, componentId, onSelectItem }} >
-          <Content {...{ examples, scope, iso }} />
+          <Content {...{ component, scope, iso }} />
         </Sidebar>
       </div>
     );
   }
 
   componentWillReceiveProps(nextProps) {
-    const { componentId, examples } = nextProps;
+    const { componentId } = nextProps;
     if (componentId !== this.props.componentId) {
       this.setState(
-        { examples: null },
-        () => this.setState({ examples })
+        { component: null },
+        () => this.setState({ component: this.findComponent(componentId) })
       );
     }
   }

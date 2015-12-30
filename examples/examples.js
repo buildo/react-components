@@ -114,10 +114,9 @@ const Examples = React.createClass({
       onSelectItem
     } = this;
 
-    const { examples } = sections.reduce((acc, s) => acc || find(s.components, { id: componentId }), null);
     return (
       <div style={{margin: 20}}>
-        <KitchenSink {...{ scope, sections, componentId, examples, onSelectItem }} iso />
+        <KitchenSink {...{ scope, sections, componentId, onSelectItem }} iso />
       </div>
     );
   }
