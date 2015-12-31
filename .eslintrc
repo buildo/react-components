@@ -26,7 +26,6 @@
     "quotes": [2, "single"],
     "comma-dangle": 2,
     "react/jsx-boolean-value": 1,
-    "react/jsx-quotes": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
