@@ -1,0 +1,63 @@
+.kitchen-sink {
+
+  .content {
+    position: relative;
+    margin-left: 2px;
+
+    > .header {
+      margin: 30px 50px;
+    }
+
+    .example-card {
+      margin: 50px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 1px 4px 1px rgba(0,0,0,.1);
+
+      .live-demo {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        overflow: hidden;
+
+        .playground .playgroundPreview {
+          display: none;
+        }
+
+        .component {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          padding: 15px;
+          font-family: Consolas, Courier, monospace;
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    .sidebar-content {
+      width: 270px;
+
+      .section {
+        padding: 10px;
+        background-color: #242424;
+        color: white;
+
+        * {
+          display: block;
+          margin: auto;
+        }
+      }
+
+      .item {
+        width: 100%;
+        padding: 20px;
+        border-bottom: 1px solid #EAEAEA;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #F0F0F0;
+        }
+      }
+    }
+  }
+}

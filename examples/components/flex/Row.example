@@ -7,17 +7,7 @@ const Example = React.createClass({
       <div>
         <FlexView
           className='hello'
-          style={{backgroundColor: 'blue', height: 120}}
-          column
-          hAlignContent='center'
-          vAlignContent='center'>
-            <div style={{backgroundColor: 'red', height: 30, width: 30}}/>
-            <div style={{backgroundColor: 'green', height: 30, width: 30}}/>
-        </FlexView>
-        <br/>
-        <FlexView
-          className='hello'
-          style={{backgroundColor: 'blue', height: 120}}>
+          style={{backgroundColor: 'white', height: 120}}>
             <FlexView
               style={{backgroundColor: 'red', height: 30, width: 30}}
               marginTop='auto'

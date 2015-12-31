@@ -25,24 +25,6 @@ const Example = React.createClass({
     this.setState({ isOpen });
   },
 
-  getAbsoluteProps() {
-    return {
-      content,
-      position: 'bottom',
-      anchor: 'center',
-      attachToBody: true,
-      dismissOnClickOutside: true,
-      dismissOnScroll: true,
-      event: 'click',
-      offsetX: 0,
-      distance: 15,
-      offsetY: -15,
-      onToggle: this.toggle,
-      // onShow:partial(this.toggle,true),
-      // onHide:partial(this.toggle, false)
-    };
-  },
-
   getRelativeProps() {
     return {
       content,
@@ -57,13 +39,6 @@ const Example = React.createClass({
   getTemplate() {
     return (
       <div>
-        <div style={{marginTop: 200, marginLeft: 130}}>
-          <Popover popover={this.getAbsoluteProps()}>
-            <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>
-              ABSOLUTE
-            </button>
-          </Popover>
-        </div>
         <div style={{marginTop: 200, marginLeft: 130}}>
           <Popover popover={this.getRelativeProps()}>
             <button ref='target' style={{backgroundColor: 'green', display: 'inline-block'}}>

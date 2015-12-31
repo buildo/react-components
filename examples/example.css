@@ -1,10 +1,10 @@
-#iso-container {
+.iso-demo {
   padding: 20px 0;
   background-color: #EAEAEA;
 }
 
 .playground {
-  display: none;
+  /*display: none;*/
 }
 
 .dropdown-menu-component {

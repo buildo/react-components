@@ -1,38 +1,91 @@
 import React from 'react/addons';
-import Playground from 'component-playground';
 import * as brc from '../src';
 import lodash from 'lodash';
+import KitchenSink from '../src/kitchen-sink/KitchenSink';
 
 // EXAMPLES
 import DropdownTest from 'raw!./components/Dropdown.example';
-import MenuTest from 'raw!./components/Menu.example'; // not used!
-import PopoverTest from 'raw!./components/Popover.example';
-import FlexViewTest from 'raw!./components/FlexView.example';
-import ScrollViewTest from 'raw!./components/ScrollView.example';
+// import MenuTest from 'raw!./components/Menu.example'; // not used!
+import PopoverTest from './components/popover';
+import FlexViewTest from './components/flex';
+import ScrollViewTest from './components/scroll';
 import LoadingSpinnerTest from 'raw!./components/LoadingSpinner.example';
 import MobileDetectorTest from 'raw!./components/MobileDetector.example';
 import LinkStateTest from 'raw!./components/LinkState.example';
-import TextOverflowTest from 'raw!./components/TextOverflow.example';
-import ToasterTest from 'raw!./components/Toaster.example';
+import TextOverflowTest from './components/text-overflow';
+import ToasterTest from './components/toaster';
 import BackgroundDimmerTest from 'raw!./components/BackgroundDimmer.example';
 import ModalManagerTest from 'raw!./components/ModalManager.example';
 
-const modules = [
-  DropdownTest,
-  // PopoverTest,
-  // FlexViewTest,
-  // ScrollViewTest,
-  // LoadingSpinnerTest,
-  // MobileDetectorTest,
-  // LinkStateTest,
-  // TextOverflowTest,
-  // ToasterTest,
-  // BackgroundDimmerTest,
-  // ModalManagerTest
+const sections = [
+  {
+    title: 'Section 1',
+    id: 'section-1',
+    components: [
+      {
+        examples: [DropdownTest],
+        id: 'Dropdown',
+        title: 'Dropdown'
+      },
+      {
+        examples: PopoverTest,
+        id: 'Popover',
+        title: 'Popover'
+      }
+    ]
+  },
+  {
+    title: 'Section 2',
+    id: 'section-2',
+    components: [
+      {
+        examples: FlexViewTest,
+        id: 'FlexView',
+        title: 'FlexView'
+      },
+      {
+        examples: ScrollViewTest,
+        id: 'ScrollView',
+        title: 'ScrollView'
+      },
+      {
+        examples: [LoadingSpinnerTest],
+        id: 'LoadingSpinner',
+        title: 'LoadingSpinner'
+      },
+      {
+        examples: [MobileDetectorTest],
+        id: 'MobileDetector',
+        title: 'MobileDetector'
+      },
+      {
+        examples: [LinkStateTest],
+        id: 'LinkState',
+        title: 'LinkState'
+      },
+      {
+        examples: TextOverflowTest,
+        id: 'TextOverflow',
+        title: 'TextOverflow'
+      },
+      {
+        examples: ToasterTest,
+        id: 'Toaster',
+        title: 'Toaster'
+      },
+      {
+        examples: [BackgroundDimmerTest],
+        id: 'BackgroundDimmer',
+        title: 'BackgroundDimmer'
+      },
+      {
+        examples: [ModalManagerTest],
+        id: 'ModalManager',
+        title: 'ModalManager'
+      }
+    ]
+  }
 ];
-
-const footer = (i) => `\n\nReact.render(<Example${i} />, document.getElementById("content${i}"));`;
-const codeText = modules.map((Module, i) => Module.replace('Example', `Example${i}`) + footer(i));
 
 const scope = {
   React,
@@ -40,13 +93,33 @@ const scope = {
   ...brc
 };
 
-const template = (
-  <div style={{margin: 20}}>
-    <Playground codeText={codeText.join('\n')} scope={scope} es6Console />
-    {modules.map((_, i) => <div id={`content${i}`} key={i} />)}
-  </div>
-);
+const defaultComponent = 'ModalManager';
 
-document.getElementById('iso-container').innerHTML = React.renderToString(template);
-React.render(template, document.getElementById('iso-container'));
-React.render(template, document.getElementById('container'));
+const Examples = React.createClass({
+
+  getInitialState() {
+    return {
+      componentId: defaultComponent
+    };
+  },
+
+  onSelectItem(componentId) {
+    this.setState({ componentId });
+  },
+
+  render() {
+    const {
+      state: { componentId },
+      onSelectItem
+    } = this;
+
+    return (
+      <div>
+        <KitchenSink {...{ scope, sections, componentId, onSelectItem }} />
+      </div>
+    );
+  }
+});
+
+
+React.render(<Examples />, document.getElementById('container'));
