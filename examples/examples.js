@@ -6,9 +6,9 @@ import KitchenSink from '../src/kitchen-sink/KitchenSink';
 // EXAMPLES
 import DropdownTest from 'raw!./components/Dropdown.example';
 // import MenuTest from 'raw!./components/Menu.example'; // not used!
-import PopoverTest from 'raw!./components/Popover.example';
-import FlexViewTest from 'raw!./components/FlexView.example';
-import ScrollViewTest from 'raw!./components/ScrollView.example';
+import PopoverTest from './components/popover';
+import FlexViewTest from './components/flex';
+import ScrollViewTest from './components/scroll';
 import LoadingSpinnerTest from 'raw!./components/LoadingSpinner.example';
 import MobileDetectorTest from 'raw!./components/MobileDetector.example';
 import LinkStateTest from 'raw!./components/LinkState.example';
@@ -28,7 +28,7 @@ const sections = [
         title: 'Dropdown'
       },
       {
-        examples: [PopoverTest],
+        examples: PopoverTest,
         id: 'Popover',
         title: 'Popover'
       }
