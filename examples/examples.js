@@ -1,7 +1,6 @@
 import React from 'react/addons';
 import * as brc from '../src';
 import lodash from 'lodash';
-import { find } from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
 
 // EXAMPLES
@@ -40,7 +39,7 @@ const sections = [
     id: 'section-2',
     components: [
       {
-        examples: [FlexViewTest],
+        examples: FlexViewTest,
         id: 'FlexView',
         title: 'FlexView'
       },
