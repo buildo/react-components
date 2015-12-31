@@ -1,16 +1,12 @@
 const Example = React.createClass({
 
-  propTypes: {},
-
   getInitialState() {
     return {
-      initialized: false,
       toasts: []
     };
   },
 
   componentDidMount() {
-    this.setState({ initialized: true });
     setInterval(this.addToast, 1000);
   },
 
@@ -69,11 +65,9 @@ const Example = React.createClass({
     const { toasts } = this.state;
     if (toasts.length > 5) {
       return;
-      // toasts.pop();
     }
     this.setState({
       toasts: [toast].concat(toasts)
-      // toasts: toasts.concat(toast)
     });
   },
 
@@ -85,19 +79,11 @@ const Example = React.createClass({
       </Toaster>
     );
 
-    const attachedToaster = (
-      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionStyles={this.getTransitionStyles()} transitionEnterTimeout={800} transitionLeaveTimeout={800}>
-        {toasts}
-      </Toaster>
-    );
-
     return (
       <div>
         <div style={{ width: '100%', height: 350, position: 'relative' }}>
           {inlineToaster}
         </div>
-        {this.state.initialized && attachedToaster}
-        <div style={{ width: '100%', height: 350, position: 'relative' }} id='toaster' />
       </div>
     );
   },
