@@ -93,7 +93,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'ScrollView';
+const defaultComponent = 'ModalManager';
 
 const Examples = React.createClass({
 
