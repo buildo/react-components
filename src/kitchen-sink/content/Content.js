@@ -12,10 +12,13 @@ export default class Content extends React.Component {
 
   render() {
     const { scope, component, iso } = this.props;
-    const { examples, title } = component || {};
+    const { examples, title, desc } = component || {};
     return (
       <div className='content'>
-        <h1>{title}</h1>
+        <div className='header'>
+          <h1>{title}</h1>
+          {desc && <p>{desc}</p>}
+        </div>
         {examples ? examples.map(codeText => <ExampleCard {...{ codeText, iso, scope }} />) : <LoadingSpinner />}
       </div>
     );
