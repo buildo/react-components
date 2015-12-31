@@ -44,7 +44,7 @@ const sections = [
         title: 'FlexView'
       },
       {
-        examples: [ScrollViewTest],
+        examples: ScrollViewTest,
         id: 'ScrollView',
         title: 'ScrollView'
       },
@@ -93,7 +93,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'FlexView';
+const defaultComponent = 'ScrollView';
 
 const Examples = React.createClass({
 
@@ -115,7 +115,7 @@ const Examples = React.createClass({
 
     return (
       <div>
-        <KitchenSink {...{ scope, sections, componentId, onSelectItem }} iso />
+        <KitchenSink {...{ scope, sections, componentId, onSelectItem }} />
       </div>
     );
   }
