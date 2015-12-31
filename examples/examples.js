@@ -12,7 +12,7 @@ import ScrollViewTest from './components/scroll';
 import LoadingSpinnerTest from 'raw!./components/LoadingSpinner.example';
 import MobileDetectorTest from 'raw!./components/MobileDetector.example';
 import LinkStateTest from 'raw!./components/LinkState.example';
-import TextOverflowTest from 'raw!./components/TextOverflow.example';
+import TextOverflowTest from './components/text-overflow';
 import ToasterTest from 'raw!./components/Toaster.example';
 import BackgroundDimmerTest from 'raw!./components/BackgroundDimmer.example';
 import ModalManagerTest from 'raw!./components/ModalManager.example';
@@ -64,7 +64,7 @@ const sections = [
         title: 'LinkState'
       },
       {
-        examples: [TextOverflowTest],
+        examples: TextOverflowTest,
         id: 'TextOverflow',
         title: 'TextOverflow'
       },

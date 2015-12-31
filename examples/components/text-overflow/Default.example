@@ -1,0 +1,29 @@
+const Example = React.createClass({
+
+  getInitialState() {
+    return {
+      text: 'short text'
+    };
+  },
+
+  toggleTextVersion() {
+    this.setState({text: this.state.text === 'short text' ? 'very long text translation' : 'short text'});
+  },
+
+  getTemplate() {
+    return (
+      <button style={{ maxWidth: 100 }} onClick={this.toggleTextVersion}>
+        <TextOverflow
+          style={{ color: 'blue' }}
+          label={this.state.text}
+          popover={{ position: 'bottom', anchor: 'left' }}
+        />
+      </button>
+    );
+  },
+
+  render() {
+    return this.getTemplate();
+  }
+
+});
