@@ -1,9 +1,10 @@
 const FakeModal = React.createClass({
   render() {
     return (
-      <ScrollView style={{ width: 300, height: 500, backgroundColor: 'yellow', overflow: 'scroll' }} scrollPropagation={false}>
+      <ScrollView style={{ width: 300, height: 500, backgroundColor: 'yellow' }} scrollPropagation={false}>
         <div style={{ height: 1000 }}>
-          CIAO, sono una modale...che scrolla!
+          <p>Hi, I'm modal number {this.props.id}</p>
+          <button onClick={this.props.openOtherModal}>Open other modal</button>
         </div>
       </ScrollView>
     );
@@ -27,14 +28,20 @@ const Example = React.createClass({
 
   getInitialState() {
     return {
-      activeModal: undefined
+      activeModal: null
     };
   },
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ activeModal: '1' }), 1000);
-    setTimeout(() => this.setState({ activeModal: '2' }), 2500);
-    // setTimeout(() => this.setState({ activeModal: undefined }), 4500);
+  openModal() {
+    if (this.state.activeModal === '1') {
+      this.setState({ activeModal: '2' });
+    } else {
+      this.setState({ activeModal: '1' });
+    }
+  },
+
+  closeModal() {
+    this.setState({ activeModal: null });
   },
 
   getTransitionStyles() {
@@ -61,17 +68,13 @@ const Example = React.createClass({
     }
   },
 
-  onClickOutside() {
-    console.log('ON_CLICK_OUTSIDE');
-  },
-
   getActiveModal() {
     const { activeModal } = this.state;
     const modal = find(modals, { id: activeModal });
     if (modal) {
       return (
-        <BasicModal onDismiss={this.onClickOutside} key={modal.id}>
-          <modal.modal />
+        <BasicModal onDismiss={this.closeModal} key={modal.id}>
+          <modal.modal id={modal.id} openOtherModal={this.openModal} />
         </BasicModal>
       );
     }
@@ -79,9 +82,8 @@ const Example = React.createClass({
 
   getTemplate() {
     return (
-      <div style={{ height: 2000 }}>
-        <button>You shouldn't be able to click me</button>
-        <p>Also, you shouldn't be able to scroll!</p>
+      <div>
+        <button onClick={this.openModal}>Open modal</button>
         <ModalManager
           transitionStyles={this.getTransitionStyles()}
           transitionEnterTimeout={800}
