@@ -24,6 +24,20 @@ const ModalManager = React.createClass({
     };
   },
 
+  componentWillMount() {
+    const { childContextTypes, getChildContext } = this.props;
+    this.ContextWrapper = React.createClass({ // eslint-disable-line react/no-multi-comp
+      propTypes: {
+        children: React.PropTypes.element.isRequired
+      },
+      childContextTypes,
+      getChildContext,
+      render() {
+        return this.props.children;
+      }
+    });
+  },
+
   componentDidMount() {
     this.appendModalContainer();
     this.renderModals();
@@ -105,14 +119,7 @@ const ModalManager = React.createClass({
 
   renderModals() {
     const Modal = this.getModalManager();
-    const ContextWrapper = React.createClass({
-      childContextTypes: this.props.childContextTypes,
-      getChildContext: this.props.getChildContext,
-      render() {
-        return Modal;
-      }
-    });
-    React.render(<ContextWrapper />, this.containerNode);
+    React.render(<this.ContextWrapper>{Modal}</this.ContextWrapper>, this.containerNode);
   },
 
   render() {
