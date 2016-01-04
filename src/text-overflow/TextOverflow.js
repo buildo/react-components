@@ -48,9 +48,10 @@ const TextOverflow = React.createClass({
     if (state.isOverflowing === false) {
       const text = this.refs.text.getDOMNode();
       if(text.offsetWidth < text.scrollWidth){
-        this.setState({ isOverflowing: true });
+        this.setState({ isOverflowing: true }, this.logWarnings);
+      } else {
+        this.logWarnings();
       }
-      this.logWarnings();
     }
   },
 
