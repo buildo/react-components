@@ -50,7 +50,7 @@ const TextOverflow = React.createClass({
       if(text.offsetWidth < text.scrollWidth){
         this.setState({ isOverflowing: true });
       }
-      setTimeout(this.logWarnings);
+      this.logWarnings();
     }
   },
 
