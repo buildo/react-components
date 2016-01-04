@@ -36,10 +36,12 @@ const TextOverflow = React.createClass({
   },
 
   logWarnings() {
-    const { width, flex } = this.refs.text.getDOMNode().parentNode.style;
-    const flexBasis = flex ? flex.split(' ')[2] : null;
-    if (process.env.NODE_ENV !== 'production' && width !== '100%' && flexBasis !== '100%') {
-      console.warn(`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`);
+    if (process.env.NODE_ENV !== 'production') {
+      const { width, flex } = this.refs.text.getDOMNode().parentNode.style;
+      const flexBasis = flex ? flex.split(' ')[2] : null;
+      if (width !== '100%' && flexBasis !== '100%') {
+        console.warn(`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`);
+      }
     }
   },
 
@@ -48,9 +50,10 @@ const TextOverflow = React.createClass({
     if (state.isOverflowing === false) {
       const text = this.refs.text.getDOMNode();
       if(text.offsetWidth < text.scrollWidth){
-        this.setState({ isOverflowing: true });
+        this.setState({ isOverflowing: true }, this.logWarnings);
+      } else {
+        this.logWarnings();
       }
-      this.logWarnings();
     }
   },
 
