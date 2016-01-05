@@ -19,7 +19,7 @@ export default class Content extends React.Component {
           <h1>{title}</h1>
           {desc && <p>{desc}</p>}
         </div>
-        {examples ? examples.map(codeText => <ExampleCard {...{ codeText, iso, scope }} />) : <LoadingSpinner />}
+        {examples ? examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />) : <LoadingSpinner />}
       </div>
     );
   }

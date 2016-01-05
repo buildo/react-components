@@ -6,7 +6,7 @@ import Content from './content/Content';
 export default class KitchenSink extends React.Component {
 
   static propTypes = {
-    componentId: React.PropTypes.string.isRequired,
+    componentId: React.PropTypes.string,
     sections: React.PropTypes.array,
     components: React.PropTypes.array,
     onSelectItem: React.PropTypes.func.isRequired,
