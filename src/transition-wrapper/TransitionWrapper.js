@@ -2,9 +2,21 @@ import React from 'react';
 import cx from 'classnames';
 import omit from 'lodash/object/omit';
 
+/**
+ * ### To be used with `ReactTransitionGroup` to show transitions for a component
+ */
 const propTypes = {
+  /**
+   * the component you want to animate (it must have a unique "key")
+   */
   children: React.PropTypes.node.isRequired,
+  /**
+   * custom component to be used as wrapper for `children`
+   */
   component: React.PropTypes.any,
+  /**
+   * object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case)
+   */
   transitionStyles: React.PropTypes.shape({
     enter: React.PropTypes.object,
     enterActive: React.PropTypes.object,
@@ -12,7 +24,13 @@ const propTypes = {
     leave: React.PropTypes.object,
     leaveActive: React.PropTypes.object
   }),
+  /**
+   * duration of enter transition in milliseconds
+   */
   transitionEnterTimeout: React.PropTypes.number.isRequired,
+  /**
+   * duration of leave transition in milliseconds
+   */
   transitionLeaveTimeout: React.PropTypes.number.isRequired,
   className: React.PropTypes.string,
   style: React.PropTypes.object
