@@ -10,11 +10,11 @@ import TextOverflow from './text-overflow';
 import Toaster from './toaster';
 import BackgroundDimmer from 'raw!./BackgroundDimmer.example';
 import ModalManager from 'raw!./ModalManager.example';
-import Divider from './revenge/Divider';
-import Icon from './revenge/Icon';
-import Panel from './revenge/Panel';
-import DropdownMenu from 'raw!./revenge/DropdownMenu/default.example';
-import Tooltip from 'raw!./revenge/Tooltip/default.example';
+import Divider from './Divider';
+import Icon from './Icon';
+import Panel from './Panel';
+import DropdownMenu from 'raw!./DropdownMenu/default.example';
+import Tooltip from 'raw!./Tooltip/default.example';
 
 export default [
   {

@@ -1,6 +1,5 @@
 import React from 'react/addons';
 import * as brc from '../src';
-import * as rrc from '../src/revenge';
 import lodash from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
 import sections from './components';
@@ -12,8 +11,7 @@ import '../src/kitchen-sink/style.scss';
 const scope = {
   React,
   ...lodash,
-  ...brc,
-  ...rrc
+  ...brc
 };
 
 const defaultComponent = 'ModalManager';
