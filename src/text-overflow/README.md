@@ -10,6 +10,6 @@ Props
 |----|----|-------|-----------
 |**children**|<code>func</code>||*optional*. In case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
 |**label**|<code>string</code>||**required**. This is the full string
-|**id**|<code>string</code>||*optional*. 
-|**className**|<code>string</code>||*optional*. 
-|**style**|<code>object</code>||*optional*. 
+|**id**|<code>string</code>||*optional*. Custom `id` for wrapper element
+|**className**|<code>string</code>||*optional*. Additional `className` for wrapper element
+|**style**|<code>object</code>||*optional*. Inline-style overrides for wrapper element

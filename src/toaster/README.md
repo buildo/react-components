@@ -14,6 +14,6 @@ Props
 |**transitionStyles**|<code>object</code>||*optional*. Object with style for each transition event (used by `TransitionWrapper`)
 |**transitionEnterTimeout**|<code>number</code>||**required**. Duration of enter transition in milliseconds (used by `TransitionWrapper`)
 |**transitionLeaveTimeout**|<code>number</code>||**required**. Duration of leave transition in milliseconds (used by `TransitionWrapper`)
-|**id**|<code>string</code>||*optional*. 
-|**className**|<code>string</code>||*optional*. 
-|**style**|<code>object</code>||*optional*. 
+|**id**|<code>string</code>||*optional*. Custom `id` for wrapper element
+|**className**|<code>string</code>||*optional*. Additional `className` for wrapper element
+|**style**|<code>object</code>||*optional*. Inline-style overrides for wrapper element

@@ -24,5 +24,5 @@ Props
 |**height**|<code>union(string&#124;number)</code>||*optional*. Height property (for parent secondary axis)
 |**width**|<code>union(string&#124;number)</code>||*optional*. Width property (for parent secondary axis)
 |**flexBasis**|<code>union(string&#124;number)</code>||*optional*. **DEPRECATED**: use "basis" instead
-|**className**|<code>string</code>|`''`|*optional*. 
-|**style**|<code>object</code>|`{}`|*optional*. 
+|**className**|<code>string</code>|`''`|*optional*. Additional `className` for wrapper element
+|**style**|<code>object</code>|`{}`|*optional*. Inline-style overrides for wrapper element

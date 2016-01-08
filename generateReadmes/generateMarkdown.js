@@ -48,12 +48,31 @@ function generatePropDefaultValue(value) {
   return value.value ? '`' + value.value + '`' : '';
 }
 
+function generatePropDescription(propName, prop) {
+  var prefix = (prop.required ? '**required**' : '*optional*');
+  var desc;
+  switch (propName) {
+    case 'className':
+      desc = 'additional `className` for wrapper element'
+      break;
+    case 'id':
+      desc = 'custom `id` for wrapper element'
+      break;
+    case 'style':
+      desc = 'inline-style overrides for wrapper element'
+      break;
+    default:
+      desc = prop.description || '';
+  }
+  return [prefix, capitalize(desc)].join('. ').replace(/DEPRECATED/g, '**DEPRECATED**');
+}
+
 function generateProp(propName, prop) {
   var fields = [
     ('**' + propName + '**'),
     (prop.type ? generatePropType(prop.type) : ''),
     (prop.defaultValue ? generatePropDefaultValue(prop.defaultValue) : ''),
-    (prop.required ? '**required**' : '*optional*') + '. ' + capitalize((prop.description || '')).replace(/DEPRECATED/g, '**DEPRECATED**')
+    generatePropDescription(propName, prop)
   ];
   return '|' + fields.join('|');
 }

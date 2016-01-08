@@ -12,6 +12,6 @@ Props
 |**color**|<code>string</code>||*optional*. Spinner main color
 |**message**|<code>shape[object Object]</code>||*optional*. Spinner message
 |**overlayColor**|<code>string</code>|`'rgba(255, 255, 255, .9)'`|*optional*. Dimmed-overlay color
-|**id**|<code>string</code>||*optional*. 
-|**className**|<code>string</code>||*optional*. 
-|**style**|<code>object</code>||*optional*. 
+|**id**|<code>string</code>||*optional*. Custom `id` for wrapper element
+|**className**|<code>string</code>||*optional*. Additional `className` for wrapper element
+|**style**|<code>object</code>||*optional*. Inline-style overrides for wrapper element

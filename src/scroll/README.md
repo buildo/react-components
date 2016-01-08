@@ -13,4 +13,4 @@ Props
 |**scrollY**|<code>bool</code>|`true`|*optional*. Enable vertical scrolling
 |**scrollPropagation**|<code>bool</code>|`true`|*optional*. Enable scroll propagation
 |**easing**|<code>enumObject.keys(easing)</code>|`'easeInOutQuad'`|*optional*. Easing function used when scrolling with `scrollTo`
-|**style**|<code>object</code>|`{}`|*optional*. 
+|**style**|<code>object</code>|`{}`|*optional*. Inline-style overrides for wrapper element

@@ -10,6 +10,6 @@ Props
 |----|----|-------|-----------
 |**children**|<code>node</code>||**required**. The trigger node. It's always visible
 |**popover**|<code>shape[object Object]</code>||**required**. Popover settings. The popover is **not** always visible
-|**id**|<code>string</code>||*optional*. 
-|**className**|<code>string</code>||*optional*. 
-|**style**|<code>object</code>|`{}`|*optional*. 
+|**id**|<code>string</code>||*optional*. Custom `id` for wrapper element
+|**className**|<code>string</code>||*optional*. Additional `className` for wrapper element
+|**style**|<code>object</code>|`{}`|*optional*. Inline-style overrides for wrapper element
