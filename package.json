@@ -31,7 +31,9 @@
     "lodash": "^3.10.1",
     "mobile-detect": "^1.2.1",
     "react-select": "^0.6.1",
-    "sass-flex-mixins": "^0.1.0"
+    "revenge": "^0.3.4",
+    "sass-flex-mixins": "^0.1.0",
+    "tcomb-react": "^0.8.9"
   },
   "devDependencies": {
     "axios": "^0.8.1",
