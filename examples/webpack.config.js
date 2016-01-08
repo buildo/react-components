@@ -2,6 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 var webpackBase = require('./webpack.base');
 var assign = require('object-assign');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var indexHtml = require('fs').readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
+
 
 var paths = {
   SRC: path.resolve(__dirname, '../src'),
@@ -29,6 +33,7 @@ module.exports = assign(webpackBase, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     })
+    // new ExtractTextPlugin('style', 'style.css')
   ]
 
 });
