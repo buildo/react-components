@@ -67,7 +67,7 @@ function generateProps(props) {
     '\n' +
     '|Name|Type|Default|Description' + '\n' +
     '|-|-|-|-' + '\n' +
-    Object.keys(props).sort().map(function(propName) {
+    Object.keys(props).map(function(propName) {
       return generateProp(propName, props[propName]);
     }).join('\n')
   );
