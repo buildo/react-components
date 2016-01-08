@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>node</code>||**required**. The trigger node. It's always visible
 |**popover**|<code>shape[object Object]</code>||**required**. Popover settings. The popover is **not** always visible
 |**id**|<code>string</code>||*optional*. 

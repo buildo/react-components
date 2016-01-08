@@ -10,7 +10,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>element</code>||*optional*. Active modal component
 |**transitionStyles**|<code>object</code>|`{}`|*optional*. Object with style for each transition event (used by TransitionWrapper)
 |**transitionEnterTimeout**|<code>number</code>|`0`|*optional*. Duration of enter transition in milliseconds (used by TransitionWrapper)

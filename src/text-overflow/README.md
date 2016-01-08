@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>func</code>||*optional*. In case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
 |**label**|<code>string</code>||**required**. This is the full string
 |**id**|<code>string</code>||*optional*. 

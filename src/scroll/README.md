@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>union(func&#124;node)</code>||**required**. Components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }`
 |**scrollX**|<code>bool</code>|`true`|*optional*. Enable horizontal scrolling
 |**scrollY**|<code>bool</code>|`true`|*optional*. Enable vertical scrolling

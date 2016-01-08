@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>node</code>||**required**. Children nodes/elements
 |**color**|<code>string</code>|`'black'`|*optional*. Background-color
 |**alpha**|<code>number</code>|`0.5`|*optional*. Opacity

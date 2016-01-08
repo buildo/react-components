@@ -66,7 +66,7 @@ function generateProps(props) {
     stringOfLength('-', title.length) + '\n' +
     '\n' +
     '|Name|Type|Default|Description' + '\n' +
-    '|-|-|-|-' + '\n' +
+    '|----|----|-------|-----------' + '\n' +
     Object.keys(props).map(function(propName) {
       return generateProp(propName, props[propName]);
     }).join('\n')

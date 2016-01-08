@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>node</code>||*optional*. FlexView content
 |**column**|<code>bool</code>||*optional*. Flex-direction: column
 |**auto**|<code>bool</code>||*optional*. Set flex: 0 0 100% NOTE: each property may be overwritten by their own props (grow, shrink, basis)

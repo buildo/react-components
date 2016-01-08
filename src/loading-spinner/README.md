@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**size**|<code>union(string&#124;number)</code>|`'3em'`|*optional*. Spinner size
 |**color**|<code>string</code>||*optional*. Spinner main color
 |**message**|<code>shape[object Object]</code>||*optional*. Spinner message

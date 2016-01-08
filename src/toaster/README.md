@@ -7,7 +7,7 @@ Props
 -----
 
 |Name|Type|Default|Description
-|-|-|-|-
+|----|----|-------|-----------
 |**children**|<code>node</code>||**required**. List of toasts (any node with a unique key)
 |**attachTo**|<code>string</code>||*optional*. Id of the element you want to render the `Toaster` in
 |**transitionGroup**|<code>object</code>|`{}`|*optional*. Custom settings for `ReactTransitionGroup`
