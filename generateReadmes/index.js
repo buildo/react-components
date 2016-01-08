@@ -11,11 +11,16 @@ var generateMarkdown = require('./generateMarkdown');
 var path = require('path');
 
 var paths = [
-  // 'background-dimmer/BackgroundDimmer',
-  // 'dropdown/Dropdown',
-  // 'loading-spinner/LoadingSpinner',
-  // 'mobile-detector/MobileDetector',
-  ['flex','FlexView']
+  ['background-dimmer', 'BackgroundDimmer'],
+  ['dropdown', 'Dropdown'],
+  ['loading-spinner', 'LoadingSpinner'],
+  ['mobile-detector', 'MobileDetector'],
+  ['flex','FlexView'],
+  ['modal-manager','ModalManager'],
+  ['popover','Popover'],
+  ['scroll','ScrollView'],
+  ['text-overflow','TextOverflow'],
+  ['toaster','Toaster']
 ];
 
 function getComponentName(filepath) {
