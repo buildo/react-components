@@ -12,7 +12,7 @@ var path = require('path');
 
 var paths = [
   ['background-dimmer', 'BackgroundDimmer'],
-  ['dropdown', 'Dropdown'],
+  ['transition-wrapper', 'TransitionWrapper'],
   ['loading-spinner', 'LoadingSpinner'],
   ['mobile-detector', 'MobileDetector'],
   ['flex','FlexView'],

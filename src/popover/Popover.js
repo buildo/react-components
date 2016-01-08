@@ -3,10 +3,19 @@ import cx from 'classnames';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
 
+/**
+ * ### Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
+ */
 const Popover = React.createClass({
 
   propTypes: {
+    /**
+     * the trigger node. It's always visible
+     */
     children: React.PropTypes.node.isRequired,
+    /**
+     * popover settings. The popover is **not** always visible
+     */
     popover: React.PropTypes.shape({
       content: React.PropTypes.node.isRequired,
       attachToBody: React.PropTypes.bool,
@@ -38,8 +47,6 @@ const Popover = React.createClass({
 
   getDefaultProps() {
     return {
-      id: '',
-      className: '',
       style: {}
     };
   },
