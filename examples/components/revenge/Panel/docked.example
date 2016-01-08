@@ -1,0 +1,36 @@
+class Example extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isCollapsed: false };
+  }
+
+  onExpand = () => this.setState({ isCollapsed: false })
+
+  onCollapse = () => this.setState({ isCollapsed: true })
+
+  render() {
+    const { onExpand, onCollapse, state: { isCollapsed } } = this;
+    const panelProps = {
+      type: 'docked-top',
+      header: {
+        title: 'Collapsable panel!',
+        collapse: {
+          direction: 'up',
+          onExpand,
+          onCollapse,
+          isCollapsed
+        }
+      }
+    }
+
+    return (
+      <Panel {...panelProps}>
+        <div className='my-panel-content' style={{ height: 200 }}>
+          <p>HELLO!</p>
+        </div>
+      </Panel>
+    );
+  }
+
+}
