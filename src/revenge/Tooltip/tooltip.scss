@@ -1,0 +1,49 @@
+@import '../theme/variables.scss';
+$arrow-size: 5px;
+$tooltip-border-radius: 5px;
+
+.tooltip {
+  background-color: $charcoal;
+  padding: 4px 9px;
+  border-radius: $tooltip-border-radius;
+  color: $white;
+  box-shadow: 0px 0px 4px 0px rgba(255,255,255,0.4);
+  max-width: 260px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 300;
+  z-index: 102;
+
+  &:after {
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-width: $arrow-size;
+  }
+
+  &.position-bottom:after {
+    border-bottom-color: $charcoal;
+    bottom: 100%;
+  }
+
+  &.position-top:after {
+    border-top-color: $charcoal;
+    top: 100%;
+  }
+
+  &.anchor-start:after {
+    left: $tooltip-border-radius;
+  }
+
+  &.anchor-center:after {
+    left: 50%;
+    margin-left: -$arrow-size;
+  }
+
+  &.anchor-end:after {
+    right: $tooltip-border-radius;
+  }
+}
