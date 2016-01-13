@@ -1,20 +1,27 @@
-@import '~theme/variables.scss';
-@import '~theme/flex.scss';
+$button-horizontal-padding: 16px !default;
+$button-font-weight: semibold !default;
+$button-background: lightgray !default;
+$button-color: black !default;
+$button-border-radius: 3px !default;
 
-$horizontalPadding: 16px;
-$largeHorizontalPadding: 18px;
+$button-large-horizontal-padding: 18px !default;
+
+$button-ready-hover-color: white !default;
+$button-ready-hover-background: lightgray !default;
+
 
 .button {
-  font-weight: $semibold;
+  font-weight: $button-font-weight;
   position: relative;
   display: block;
-  padding: 3px $horizontalPadding;
+  padding: 3px $button-horizontal-padding;
   height: 36px;
   cursor: pointer;
   text-align: center;
-  background: $alabaster;
-  color: $grayChateau;
+  background: $button-background;
+  color: $button-color;
   font-size: 14px;
+  border-radius: $button-border-radius;
 
   &.tiny {
     font-size: 14px;
@@ -24,8 +31,8 @@ $largeHorizontalPadding: 18px;
   &.large {
     font-size: 16px;
     height: 38px;
-    padding-left: $largeHorizontalPadding;
-    padding-right: $largeHorizontalPadding;
+    padding-left: $button-large-horizontal-padding;
+    padding-right: $button-large-horizontal-padding;
   }
 
   .button-icon, .button-loading {
@@ -44,18 +51,18 @@ $largeHorizontalPadding: 18px;
 
   &.ready {
     &:hover {
-      color: $charcoal;
-      background: $paleGrey;
+      color: $button-ready-hover-color;
+      background: $button-ready-hover-background;
     }
   }
 
   &.destructive {
-    color: $white;
-    background: $vermillion80;
+    color: white;
+    background: red;
 
     &:hover {
-      color: $white;
-      background: $vermillion;
+      color: white;
+      background: red;
     }
   }
 
@@ -63,11 +70,11 @@ $largeHorizontalPadding: 18px;
     // color: $aquamarine;
   }
   &.error {
-    color: $white;
-    background: $pinkish;
+    color: white;
+    background: purple;
   }
   &.processing, &.not-allowed {
-    color: $silver;
+    color: lightgray;
   }
   &.not-allowed {
     opacity: .7;
@@ -75,17 +82,17 @@ $largeHorizontalPadding: 18px;
   }
 
   &.primary {
-    background: $aquamarine;
-    color: $white;
+    background: blue;
+    color: white;
 
     &.ready:hover {
-      color: $white;
-      background: $dirtyBlue;
+      color: white;
+      background: lightblue;
     }
 
     &.error {
-      color: $white;
-      background: $pinkish;
+      color: white;
+      background: purple;
     }
   }
 }
