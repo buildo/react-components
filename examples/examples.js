@@ -14,7 +14,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'ModalManager';
+const defaultComponent = 'Button';
 
 const Examples = React.createClass({
 
