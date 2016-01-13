@@ -9,9 +9,14 @@ import './moreOrLess.scss';
 @skinnable()
 @props({
   children: t.ReactNode,
-  className: t.maybe(t.Str),
-  expanded: t.Bool,
-  onExpandedChange: t.Func
+  expanded: t.Boolean,
+  onExpandedChange: t.Function,
+  icons: t.struct({
+    expanded: t.String,
+    collapsed: t.String
+  }),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
 })
 export default class MoreOrLess extends React.Component {
 
@@ -20,13 +25,18 @@ export default class MoreOrLess extends React.Component {
   }
 
   getLocals() {
-    const panelState = this.props.expanded ? 'more' : 'less';
-    const className = `more-or-less ${panelState} ${this.props.className}`;
-    const { toggleExpanded } = this;
-    const icon = this.props.expanded ? 'angle-up' : 'angle-down';
+    const {
+      props: { children, className, style, expanded, icons },
+      toggleExpanded
+    } = this;
+
+    const panelState = expanded ? 'more' : 'less';
+    const icon = expanded ? icons.expanded : icons.collapsed;
     return {
-      content: this.props.children,
+      children,
       className,
+      style,
+      panelState,
       icon,
       toggleExpanded
     };
@@ -34,16 +44,16 @@ export default class MoreOrLess extends React.Component {
 
   templateExpandButton = ({ icon, toggleExpanded }) => {
     return (
-      <div className="expand-button" onClick={toggleExpanded}>
-        <Icon icon={icon} className="expand-button-icon" />
+      <div className='expand-button' onClick={toggleExpanded}>
+        <Icon icon={icon} className='expand-button-icon' />
       </div>
     );
   }
 
-  template({ className, content, icon, toggleExpanded }) {
+  template({ children, className, style, panelState, icon, toggleExpanded }) {
     return (
-      <div className={className}>
-        {content}
+      <div className={cx('more-or-less', panelState, className)} style={style}>
+        {children}
         {this.templateExpandButton({ icon, toggleExpanded })}
       </div>
     );
