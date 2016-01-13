@@ -1,0 +1,20 @@
+$alabaster: #F1F2F3 !default;
+$silver: #B7BCC5 !default;
+
+.more-or-less {
+  .expand-button {
+    width: 100%;
+    height: 15px;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      background-color: $alabaster;
+    }
+
+    .expand-button-icon {
+      font-size: 17px;
+      color: $silver;
+    }
+  }
+}
