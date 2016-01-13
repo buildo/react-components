@@ -1,0 +1,98 @@
+$button-horizontal-padding: 16px !default;
+$button-font-weight: semibold !default;
+$button-background: lightgray !default;
+$button-color: black !default;
+$button-border-radius: 3px !default;
+
+$button-large-horizontal-padding: 18px !default;
+
+$button-ready-hover-color: white !default;
+$button-ready-hover-background: lightgray !default;
+
+
+.button {
+  font-weight: $button-font-weight;
+  position: relative;
+  display: block;
+  padding: 3px $button-horizontal-padding;
+  height: 36px;
+  cursor: pointer;
+  text-align: center;
+  background: $button-background;
+  color: $button-color;
+  font-size: 14px;
+  border-radius: $button-border-radius;
+
+  &.tiny {
+    font-size: 14px;
+    height: 30px;
+  }
+
+  &.large {
+    font-size: 16px;
+    height: 38px;
+    padding-left: $button-large-horizontal-padding;
+    padding-right: $button-large-horizontal-padding;
+  }
+
+  .button-icon, .button-loading {
+    width: 14px;
+    display: inline-block;
+  }
+  .button-loading {
+    height: 1em;
+    width: 14px;
+    margin: 5px;
+  }
+  &.simple {
+    border-width: 0;
+    padding: 0;
+  }
+
+  &.ready {
+    &:hover {
+      color: $button-ready-hover-color;
+      background: $button-ready-hover-background;
+    }
+  }
+
+  &.destructive {
+    color: white;
+    background: red;
+
+    &:hover {
+      color: white;
+      background: red;
+    }
+  }
+
+  &.success {
+    // color: $aquamarine;
+  }
+  &.error {
+    color: white;
+    background: purple;
+  }
+  &.processing, &.not-allowed {
+    color: lightgray;
+  }
+  &.not-allowed {
+    opacity: .7;
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background: blue;
+    color: white;
+
+    &.ready:hover {
+      color: white;
+      background: lightblue;
+    }
+
+    &.error {
+      color: white;
+      background: purple;
+    }
+  }
+}

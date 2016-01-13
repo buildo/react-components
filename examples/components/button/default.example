@@ -1,0 +1,9 @@
+class Example extends React.Component {
+  render() {
+    return (
+      <Button onClick={() => alert('clicked button')}>
+        Click me!
+      </Button>
+    );
+  }
+}

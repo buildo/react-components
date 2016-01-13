@@ -15,6 +15,7 @@ import Icon from './Icon';
 import Panel from './Panel';
 import DropdownMenu from 'raw!./DropdownMenu/default.example';
 import Tooltip from 'raw!./Tooltip/default.example';
+import Button from 'raw!./button/default.example';
 
 export default [
   {
@@ -45,6 +46,11 @@ export default [
         examples: [Tooltip],
         id: 'Tooltip',
         title: 'Tooltip'
+      },
+      {
+        examples: [Button],
+        id: 'Button',
+        title: 'Button'
       }
     ]
   },
