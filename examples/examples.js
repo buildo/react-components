@@ -14,7 +14,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'Button';
+const defaultComponent = 'MoreOrLess';
 
 const Examples = React.createClass({
 

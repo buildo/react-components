@@ -16,6 +16,7 @@ import Panel from './Panel';
 import DropdownMenu from 'raw!./DropdownMenu/default.example';
 import Tooltip from 'raw!./Tooltip/default.example';
 import Button from 'raw!./button/default.example';
+import MoreOrLess from 'raw!./more-or-less/default.example';
 
 export default [
   {
@@ -51,6 +52,11 @@ export default [
         examples: [Button],
         id: 'Button',
         title: 'Button'
+      },
+      {
+        examples: [MoreOrLess],
+        id: 'MoreOrLess',
+        title: 'MoreOrLess'
       }
     ]
   },
