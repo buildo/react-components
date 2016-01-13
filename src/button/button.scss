@@ -1,0 +1,91 @@
+@import '~theme/variables.scss';
+@import '~theme/flex.scss';
+
+$horizontalPadding: 16px;
+$largeHorizontalPadding: 18px;
+
+.button {
+  font-weight: $semibold;
+  position: relative;
+  display: block;
+  padding: 3px $horizontalPadding;
+  height: 36px;
+  cursor: pointer;
+  text-align: center;
+  background: $alabaster;
+  color: $grayChateau;
+  font-size: 14px;
+
+  &.tiny {
+    font-size: 14px;
+    height: 30px;
+  }
+
+  &.large {
+    font-size: 16px;
+    height: 38px;
+    padding-left: $largeHorizontalPadding;
+    padding-right: $largeHorizontalPadding;
+  }
+
+  .button-icon, .button-loading {
+    width: 14px;
+    display: inline-block;
+  }
+  .button-loading {
+    height: 1em;
+    width: 14px;
+    margin: 5px;
+  }
+  &.simple {
+    border-width: 0;
+    padding: 0;
+  }
+
+  &.ready {
+    &:hover {
+      color: $charcoal;
+      background: $paleGrey;
+    }
+  }
+
+  &.destructive {
+    color: $white;
+    background: $vermillion80;
+
+    &:hover {
+      color: $white;
+      background: $vermillion;
+    }
+  }
+
+  &.success {
+    // color: $aquamarine;
+  }
+  &.error {
+    color: $white;
+    background: $pinkish;
+  }
+  &.processing, &.not-allowed {
+    color: $silver;
+  }
+  &.not-allowed {
+    opacity: .7;
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background: $aquamarine;
+    color: $white;
+
+    &.ready:hover {
+      color: $white;
+      background: $dirtyBlue;
+    }
+
+    &.error {
+      color: $white;
+      background: $pinkish;
+    }
+  }
+}
