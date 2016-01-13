@@ -16,3 +16,4 @@ export { Panel, PanelHeader, PanelMenu, TabbedPanel } from './Panel';
 export { Menu, DropdownMenu } from './DropdownMenu';
 export Tooltip from './Tooltip';
 export Button from './button';
+export MoreOrLess from './more-or-less';
