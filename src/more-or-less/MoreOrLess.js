@@ -1,6 +1,7 @@
 import React from 'react';
-import { pure, props, t, skinnable } from 'revenge';
-import { Icon } from 'Basic';
+import cx from 'classnames';
+import { pure, props, t, skinnable } from '../utils';
+import { Icon } from '../Icon';
 
 import './moreOrLess.scss';
 
