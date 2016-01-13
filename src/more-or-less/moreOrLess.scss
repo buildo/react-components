@@ -1,5 +1,6 @@
-$alabaster: #F1F2F3 !default;
-$silver: #B7BCC5 !default;
+$expand-button-background: #EAEAEA !default;
+$expand-button-hover-background: #F1F2F3 !default;
+$expand-button-icon-color: #999 !default;
 
 .more-or-less {
   .expand-button {
@@ -7,14 +8,15 @@ $silver: #B7BCC5 !default;
     height: 15px;
     cursor: pointer;
     text-align: center;
+    background: $expand-button-background;
 
     &:hover {
-      background-color: $alabaster;
+      background-color: $expand-button-hover-background;
     }
 
     .expand-button-icon {
       font-size: 17px;
-      color: $silver;
+      color: $expand-button-icon-color;
     }
   }
 }
