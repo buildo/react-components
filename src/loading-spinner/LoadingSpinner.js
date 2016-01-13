@@ -1,14 +1,26 @@
 import React from 'react';
 import cx from 'classnames';
 
+/**
+ * ### Absolute dimmed layer with loading spinner in the center
+ */
 const LoadingSpinner = React.createClass({
 
   propTypes: {
+    /**
+     * spinner size
+     */
     size: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number
     ]),
+    /**
+     * spinner main color
+     */
     color: React.PropTypes.string,
+    /**
+     * spinner message
+     */
     message: React.PropTypes.shape({
       content: React.PropTypes.string.isRequired,
       color: React.PropTypes.string,
@@ -17,6 +29,9 @@ const LoadingSpinner = React.createClass({
         React.PropTypes.number
       ])
     }),
+    /**
+     * dimmed-overlay color
+     */
     overlayColor: React.PropTypes.string,
     id: React.PropTypes.string,
     className: React.PropTypes.string,

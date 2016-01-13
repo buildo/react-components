@@ -3,14 +3,38 @@ import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
+/**
+ * ### Component to manage modals flow/animations inside an app:
+ * - creates a portal `div` on the page `body`
+ * - renders one modal at a time
+ * - supports animations (by using `TransitionWrapper`)
+ */
 const ModalManager = React.createClass({
 
   propTypes: {
+    /**
+     * active modal component
+     */
     children: React.PropTypes.element,
+    /**
+     * object with style for each transition event (used by TransitionWrapper)
+     */
     transitionStyles: React.PropTypes.object,
+    /**
+     * duration of enter transition in milliseconds (used by TransitionWrapper)
+     */
     transitionEnterTimeout: React.PropTypes.number,
+    /**
+     * duration of leave transition in milliseconds (used by TransitionWrapper)
+     */
     transitionLeaveTimeout: React.PropTypes.number,
+    /**
+     * callback to get custom context for modals. Can't be updated
+     */
     getChildContext: React.PropTypes.func,
+    /**
+     * static object to describe custom context object for modals. Can't be updated
+     */
     childContextTypes: React.PropTypes.object
   },
 
@@ -87,7 +111,7 @@ const ModalManager = React.createClass({
       }
       return (
         <TransitionWrapper {...props} key={el.key}>
-            {children}
+          {children}
         </TransitionWrapper>
       );
     });

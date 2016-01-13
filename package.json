@@ -13,7 +13,8 @@
     "kitchen-sink": "npm run clean && webpack-dev-server --config kitchen-sink/webpack.config.js --progress --hot --inline",
     "build-examples": "npm run clean && webpack --config examples/webpack.config.build.js --progress",
     "start": "npm run clean && webpack-dev-server --config examples/webpack.config.js --progress --hot --inline && cp examples/index.html examples/build/index.html",
-    "clean": "rm -rf examples/build"
+    "clean": "rm -rf examples/build",
+    "generate-readmes": "node generateReadmes/index.js"
   },
   "repository": {
     "type": "git",
@@ -66,12 +67,13 @@
     "react": "^0.13.3 <0.14.0",
     "react-autosize-textarea": "buildo/react-autosize-textarea",
     "react-cookie-banner": "buildo/react-cookie-banner",
+    "react-docgen": "^2.6.0",
     "react-input-link": "buildo/react-input-link",
     "react-router-transition-context": "^0.13.3",
     "react-sidebar": "^1.1.0",
+    "require-dir": "^0.3.0",
     "revenge": "^0.3.4",
     "revenge-react-components": "buildo/revenge-react-components",
-    "require-dir": "^0.3.0",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "tcomb-react": "^0.8.9",

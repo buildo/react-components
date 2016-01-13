@@ -1,58 +1,75 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import pick from 'lodash/object/pick';
 import omit from 'lodash/object/omit';
 
 const propTypes = {
-  children: React.PropTypes.node,
-  row: React.PropTypes.bool,
-  column: React.PropTypes.bool,
-  auto: React.PropTypes.bool,
-  vAlignContent: React.PropTypes.oneOf(['top', 'center', 'bottom']),
-  hAlignContent: React.PropTypes.oneOf(['left', 'center', 'right']),
-  marginLeft: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  marginTop: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  marginRight: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  marginBottom: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  grow: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.bool
-  ]),
-  shrink: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.bool
-  ]),
-  basis: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  height: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  width: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  flexBasis: React.PropTypes.oneOfType([ // deprecated
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  wrap: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  style: React.PropTypes.object
+  /**
+   * FlexView content
+   */
+  children: PropTypes.node,
+  /**
+   * flex-direction: column
+   */
+  column: PropTypes.bool,
+  /**
+   * set flex: 0 0 100% NOTE: each property may be overwritten by their own props (grow, shrink, basis)
+   */
+  auto: PropTypes.bool,
+  /**
+   * align content vertically
+   */
+  vAlignContent: PropTypes.oneOf(['top', 'center', 'bottom']),
+  /**
+   * align content horizontally
+   */
+  hAlignContent: PropTypes.oneOf(['left', 'center', 'right']),
+  /**
+   * margin-left property ("auto" to align self right)
+   */
+  marginLeft: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * margin-top property ("auto" to align self bottom)
+   */
+  marginTop: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * margin-right property ("auto" to align self left)
+   */
+  marginRight: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * margin-bottom property ("auto" to align self top)
+   */
+  marginBottom: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * flex-grow property (for parent primary axis)
+   */
+  grow: PropTypes.oneOfType([ PropTypes.bool, PropTypes.number ]),
+  /**
+   * flex-shrink property
+   */
+  shrink: PropTypes.oneOfType([ PropTypes.bool, PropTypes.number ]),
+  /**
+   * flex-basis property
+   */
+  basis: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * wrap content
+   */
+  wrap: PropTypes.bool,
+  /**
+   * height property (for parent secondary axis)
+   */
+  height: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * width property (for parent secondary axis)
+   */
+  width: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  /**
+   * DEPRECATED: use "basis" instead
+   */
+  flexBasis: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  className: PropTypes.string,
+  style: PropTypes.object
 };
 
 export default React.createClass({

@@ -1,12 +1,30 @@
 import React from 'react';
 
+/**
+ * ### Creates a full-page dimmed background for its children nodes
+ */
 const BackgroundDimmer = React.createClass({
 
   propTypes: {
+    /**
+     * children nodes/elements
+     */
     children: React.PropTypes.node.isRequired,
+    /**
+     * background-color
+     */
     color: React.PropTypes.string,
+    /**
+     * opacity
+     */
     alpha: React.PropTypes.number,
+    /**
+     * avoid propagation for scroll events
+     */
     stopScrollPropagation: React.PropTypes.bool,
+    /**
+     * called when user clicks outside children
+     */
     onClickOutside: React.PropTypes.func,
     className: React.PropTypes.string,
     id: React.PropTypes.string,

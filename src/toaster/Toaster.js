@@ -4,14 +4,35 @@ import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import cloneWithProps from 'react/lib/cloneWithProps';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
+/**
+ * ### Renders and animates toasts (children) inline or in a portal
+ */
 const Toaster = React.createClass({
 
   propTypes: {
+    /**
+     * list of toasts (any node with a unique key)
+     */
     children: React.PropTypes.node.isRequired,
+    /**
+     * id of the element you want to render the `Toaster` in
+     */
     attachTo: React.PropTypes.string,
+    /**
+     * custom settings for `ReactTransitionGroup`
+     */
     transitionGroup: React.PropTypes.object,
+    /**
+     * object with style for each transition event (used by `TransitionWrapper`)
+     */
     transitionStyles: React.PropTypes.object,
+    /**
+     * duration of enter transition in milliseconds (used by `TransitionWrapper`)
+     */
     transitionEnterTimeout: React.PropTypes.number.isRequired,
+    /**
+     * duration of leave transition in milliseconds (used by `TransitionWrapper`)
+     */
     transitionLeaveTimeout: React.PropTypes.number.isRequired,
     id: React.PropTypes.string,
     className: React.PropTypes.string,

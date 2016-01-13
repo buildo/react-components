@@ -1,11 +1,23 @@
 import React from 'react';
 import MobileDetect from 'mobile-detect';
 
+/**
+ * ### Top-level component which detects device type and passes this info to children as context
+ */
 const MobileDetector = React.createClass({
 
   propTypes: {
+    /**
+     * children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback
+     */
     children: React.PropTypes.func.isRequired,
+    /**
+     * ignores real device type and considers it as desktop
+     */
     forceDesktop: React.PropTypes.bool,
+    /**
+     * custom user-agent
+     */
     userAgent: React.PropTypes.string
   },
 

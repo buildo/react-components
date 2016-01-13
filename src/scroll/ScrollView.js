@@ -2,16 +2,37 @@ import React from 'react';
 import omit from 'lodash/object/omit';
 import easing from './easingFunctions';
 
+/**
+ * ### Utility component to make scrolling easier:
+ * - can stop scroll propagation
+ * - smooth programmatic scroll with 22 easing functions (see `easingFunctions.js`)
+ * - out of the box momentum scrolling on iOS
+ */
 const propTypes = {
+  /**
+   * components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }`
+   */
   children: React.PropTypes.oneOfType([
     React.PropTypes.func,
     React.PropTypes.node
   ]).isRequired,
+  /**
+   * enable horizontal scrolling
+   */
   scrollX: React.PropTypes.bool,
+  /**
+   * enable vertical scrolling
+   */
   scrollY: React.PropTypes.bool,
+  /**
+   * enable scroll propagation
+   */
   scrollPropagation: React.PropTypes.bool,
-  style: React.PropTypes.object,
-  easing: React.PropTypes.oneOf(Object.keys(easing))
+  /**
+   * easing function used when scrolling with `scrollTo`
+   */
+  easing: React.PropTypes.oneOf(Object.keys(easing)),
+  style: React.PropTypes.object
 };
 
 export default React.createClass({
