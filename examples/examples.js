@@ -4,6 +4,7 @@ import lodash from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
 import sections from './components';
 
+import '../src/more-or-less/moreOrLess.scss';
 import '../src/flex/flexView.scss';
 import '../src/loading-spinner/style.scss';
 import '../src/kitchen-sink/style.scss';
@@ -14,7 +15,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'Button';
+const defaultComponent = 'MoreOrLess';
 
 const Examples = React.createClass({
 
