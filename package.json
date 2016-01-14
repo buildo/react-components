@@ -65,6 +65,7 @@
     "react-input-link": "buildo/react-input-link",
     "react-router-transition-context": "^0.13.3",
     "react-sidebar": "^1.1.0",
+    "react-vdom": "^0.5.0",
     "require-dir": "^0.3.0",
     "require-noop": "0.0.2",
     "sass-loader": "^3.1.2",
