@@ -1,8 +1,5 @@
-'use strict';
-
 var path = require('path');
 var webpack = require('webpack');
-
 var paths = {
   SRC: path.resolve(__dirname, 'src'),
   TEST: path.resolve(__dirname, 'test')
@@ -24,21 +21,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'karma.js': [ 'webpack' ],
-    },
-
-    reporters: process.env.CONTINUOUS_INTEGRATION ? [ 'bamboo', 'coverage' ] : [ 'dots', 'coverage' ],
-
-    bambooReporter: {
-      filename: 'mocha.json',
-    },
-
-    coverageReporter: {
-      reporters: [
-        process.env.CONTINUOUS_INTEGRATION ?
-        { type: 'lcov', subdir: 'lcov-report' } :
-        { type: 'html', subdir: 'html-report' }
-      ],
+      'karma.js': [ 'webpack' ]
     },
 
     webpack: {
@@ -47,21 +30,17 @@ module.exports = function (config) {
           {
             test: /\.jsx?$/,
             loader: 'babel?stage=0&loose',
-            include: [paths.SRC, paths.TEST],
-            exclude: /node_modules/
-          }
-        ],
-        preLoaders: [
+            include: [paths.SRC, paths.TEST]
+          },
+          // style!css loaders
           {
-            test: /\.jsx?$/,
-            loader: 'isparta?{babel: {stage: 0, loose: true}}',
-            include: paths.SRC,
-            exclude: /node_modules/
-          }, {
-            test: /\.jsx?$/,
-            loader: 'eslint',
-            include: paths.SRC,
-            exclude: /node_modules/
+            test: /\.css?$/,
+            loaders: ['style', 'css']
+          },
+          // SASS loaders
+          {
+            test: /\.scss?$/,
+            loaders: ['style', 'css', 'sass?sourceMap']
           }
         ]
       },
