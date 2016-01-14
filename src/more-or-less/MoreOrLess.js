@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import { Icon } from '../Icon';
+import { FlexView } from '../flex';
 
 
 @pure
@@ -42,9 +43,14 @@ export default class MoreOrLess extends React.Component {
 
   templateExpandButton = ({ icon, toggleExpanded }) => {
     return (
-      <div className='expand-button' onClick={toggleExpanded}>
-        <Icon icon={icon} className='expand-button-icon' />
-      </div>
+      <FlexView
+        hAlignContent="center"
+        vAlignContent="center"
+        className="expand-button"
+        onClick={toggleExpanded}
+      >
+        <Icon icon={icon} className="expand-button-icon" />
+      </FlexView>
     );
   }
 
