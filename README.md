@@ -1,3 +1,5 @@
+[![](https://travis-ci.org/buildo/react-components.svg)](https://travis-ci.org/buildo/react-components)
+
 #React Components
 This is a collection of reusable React components used at [buildo](http://buildo.io/).
 
