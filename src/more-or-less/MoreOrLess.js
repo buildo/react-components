@@ -33,11 +33,10 @@ export default class MoreOrLess extends React.Component {
     const icon = expanded ? icons.expanded : icons.collapsed;
     return {
       children,
-      className,
       style,
-      panelState,
       icon,
-      toggleExpanded
+      toggleExpanded,
+      className: cx('more-or-less', panelState, className)
     };
   }
 
@@ -49,9 +48,9 @@ export default class MoreOrLess extends React.Component {
     );
   }
 
-  template({ children, className, style, panelState, icon, toggleExpanded }) {
+  template({ children, className, style, icon, toggleExpanded }) {
     return (
-      <div className={cx('more-or-less', panelState, className)} style={style}>
+      <div {...{ className, style }}>
         {children}
         {this.templateExpandButton({ icon, toggleExpanded })}
       </div>
