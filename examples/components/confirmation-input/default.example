@@ -1,0 +1,20 @@
+class Example extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  onConfirm = (value) => this.setState({ value })
+
+  render() {
+    const { state: { value }, onConfirm } = this;
+    const text = { confirmed: 'confirmed', toConfirm: 'to confirm' };
+    const icon = { confirmed: 'check', toConfirm: undefined };
+    return (
+      <form className='ui form'>
+        <ConfirmationInput {...{ initialValue: value, onConfirm, text, icon }} />
+      </form>
+    );
+  }
+}

@@ -15,7 +15,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'MoreOrLess';
+const defaultComponent = 'ConfirmationInput';
 
 const Examples = React.createClass({
 
