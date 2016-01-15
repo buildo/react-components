@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel --loose --stage 0 --out-dir lib src",
-    "lint": "eslint src",
+    "lint": "eslint src --fix",
     "preversion": "npm run lint && npm run test && npm run build-examples",
     "prepublish": "npm run build",
     "build-kitchen-sink": "npm run clean && webpack --config kitchen-sink/webpack.config.build.js --progress",
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
     "classnames": "^2.2.1",
+    "eslint-config-buildo": "github:buildo/eslint-config",
     "lodash": "^3.10.1",
     "mobile-detect": "^1.2.1",
     "react-input-link": "^0.0.4",
