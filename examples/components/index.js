@@ -20,6 +20,12 @@ import MoreOrLess from 'raw!./more-or-less/default.example';
 import ConfirmationInput from 'raw!./confirmation-input/default.example';
 import Badge from 'raw!./badge/default.example';
 
+import '../../src/more-or-less/moreOrLess.scss';
+import '../../src/flex/flexView.scss';
+import '../../src/loading-spinner/style.scss';
+import '../../src/confirmation-input/confirmationInput.scss';
+import '../../src/badge/badge.scss';
+
 export default [
   {
     title: 'Revenge',
