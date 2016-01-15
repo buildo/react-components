@@ -9,6 +9,7 @@ $active-color: white !default;
 $active-background-color: lightblue !default;
 
 .badge {
+  display: inline-block;
   border-radius: $border-radius;
   padding: $padding;
   color: $color;
