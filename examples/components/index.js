@@ -19,6 +19,7 @@ import Button from 'raw!./button/default.example';
 import MoreOrLess from 'raw!./more-or-less/default.example';
 import ConfirmationInput from 'raw!./confirmation-input/default.example';
 import Badge from 'raw!./badge/default.example';
+import NavBar from 'raw!./nav-bar/default.example';
 
 import '../../src/more-or-less/moreOrLess.scss';
 import '../../src/flex/flexView.scss';
@@ -82,6 +83,11 @@ export default [
     title: 'Buildo',
     id: 'section-2',
     components: [
+      {
+        examples: [NavBar],
+        id: 'NavBar',
+        title: 'NavBar'
+      },
       {
         examples: [Dropdown],
         id: 'Dropdown',
