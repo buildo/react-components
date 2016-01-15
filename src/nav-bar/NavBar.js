@@ -55,15 +55,15 @@ export default class NavBar extends React.Component {
 
   template({ content: { left, center, right, maxWidth }, className, style, flexProps }) {
     return (
-      <FlexView {...{ className, style }} {...flexProps}>
-        <FlexView grow style={{ maxWidth }} className='content' {...flexProps}>
-          <FlexView className='left' marginRight='auto' shrink={false} {...flexProps}>
+      <FlexView {...{ className, style, ...flexProps }}>
+        <FlexView {...flexProps} className='content' style={{ maxWidth }} grow>
+          <FlexView {...flexProps} className='left' marginRight='auto' shrink={false}>
             {left}
           </FlexView>
-          <FlexView className='center' grow {...flexProps}>
+          <FlexView {...flexProps} className='center' grow>
             {center}
           </FlexView>
-          <FlexView className='right' marginLeft='auto' shrink={false} {...flexProps}>
+          <FlexView {...flexProps} className='right' marginLeft='auto' shrink={false}>
             {right}
           </FlexView>
         </FlexView>
