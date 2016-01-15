@@ -6,7 +6,6 @@ import { linkState } from '../link-state';
 import { FlexView } from '../flex';
 import { Icon } from '../Icon';
 
-import './confirmationInput.scss';
 
 @skinnable()
 @props({
