@@ -19,3 +19,4 @@ export Button from './button';
 export MoreOrLess from './more-or-less';
 export ConfirmationInput from './confirmation-input';
 export Badge from './badge';
+export NavBar from './nav-bar';
