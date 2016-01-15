@@ -18,3 +18,4 @@ export Tooltip from './Tooltip';
 export Button from './button';
 export MoreOrLess from './more-or-less';
 export ConfirmationInput from './confirmation-input';
+export Badge from './badge';
