@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import omit from 'lodash/object/omit';
+import { warn } from '../utils/log';
 
 const themes = {
   semantic: 'semantic-theme'
@@ -37,7 +38,7 @@ const Dropdown = React.createClass({
 
   getGeneralProps() {
     if (this.props.children && this.props.options) {
-      console.warn('You\'re passing both children and options. Children will override options!');
+      warn('You\'re passing both children and options. Children will override options!');
     }
     return omit(this.props, Object.keys(PropTypes));
   },

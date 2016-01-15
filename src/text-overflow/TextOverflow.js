@@ -1,4 +1,5 @@
 import React from 'react';
+import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
 
 /**
@@ -45,13 +46,13 @@ const TextOverflow = React.createClass({
   },
 
   logWarnings() {
-    if (process.env.NODE_ENV !== 'production') {
+    warn(() => {
       const { width, flex } = this.refs.text.getDOMNode().parentNode.style;
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
-        console.warn(`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`);
+        return `WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`;
       }
-    }
+    });
   },
 
   verifyOverflow(state) {

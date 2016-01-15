@@ -1,5 +1,6 @@
 import React from 'react';
 import partial from 'lodash/function/partial';
+import { warn } from '../utils/log';
 
 const Menu = React.createClass({
 
@@ -50,7 +51,7 @@ const Menu = React.createClass({
         return this.getDivider(i);
 
       default:
-        console.warn(`Option with invalid type at index ${i}`);
+        warn(`Option with invalid type at index ${i}`);
         return 'INVALID TYPE';
     }
   },
@@ -66,7 +67,7 @@ const Menu = React.createClass({
 
   getContent() {
     if (this.props.children && this.props.options) {
-      console.warn('You\'re passing both Children and options: Children will override options!');
+      warn('You\'re passing both Children and options: Children will override options!');
     }
     return this.props.children || this.getRenderedOptions();
   },

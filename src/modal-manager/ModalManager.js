@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
+import { warn } from '../utils/log';
 import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
@@ -71,12 +72,6 @@ const ModalManager = React.createClass({
     this.removeModalContainer();
   },
 
-  logWarning(log) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn(log);
-    }
-  },
-
   getModal() {
     const {
       transitionStyles,
@@ -107,7 +102,7 @@ const ModalManager = React.createClass({
 
     return [].concat(children).filter(e => !!e).map(el => {
       if (!el.key) {
-        this.logWarning('Each modal should have a unique "key" prop');
+        warn('Each modal should have a unique "key" prop');
       }
       return (
         <TransitionWrapper {...props} key={el.key}>
