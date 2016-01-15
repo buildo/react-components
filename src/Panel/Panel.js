@@ -110,7 +110,7 @@ export default class Panel extends React.Component {
     const collapsable = header && header.collapse;
     const isExpanded = !collapsable || !header.collapse.isCollapsed;
     const panelState = isExpanded ? 'expanded' : 'collapsed';
-    const directionClass = collapsable ? ('collapse-' + header.collapse.direction) : '';
+    const directionClass = collapsable ? (`collapse-${header.collapse.direction}`) : '';
     const verticalDirection = collapsable && (collapsable.direction === 'up' || collapsable.direction === 'down');
 
     return {
@@ -144,9 +144,10 @@ export default class Panel extends React.Component {
         menu={header.menu}
         collapse={header.collapse ? {
           direction: header.collapse.direction,
-          isExpanded: isExpanded,
+          isExpanded,
           onToggleExpanded: toggleExpanded
-        } : null} />
+        } : null}
+      />
     : null );
   }
 

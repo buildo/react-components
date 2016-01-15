@@ -87,7 +87,7 @@ export default class DropdownMenu extends React.Component {
     );
   }
 
-  templateIconButton = ({ iconClassName, toggleMenu, isOpen }) => {
+  templateIconButton = ({ iconClassName, isOpen }) => {
     return (
       <FlexView vAlignContent="center" className={cx('dropdown-menu-icon-container', { isOpen })}>
         <Icon icon={iconClassName} className='dropdown-menu-icon' />

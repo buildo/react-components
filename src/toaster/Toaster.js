@@ -83,8 +83,9 @@ const Toaster = React.createClass({
         <TransitionWrapper
           {...{ transitionStyles, transitionEnterTimeout, transitionLeaveTimeout }}
           style={this.getTranslationStyle(i)}
-          key={el.key}>
-            {cloneWithProps(el, { uniqueKey: el.key })}
+          key={el.key}
+        >
+          {cloneWithProps(el, { uniqueKey: el.key })}
         </TransitionWrapper>
       );
     });

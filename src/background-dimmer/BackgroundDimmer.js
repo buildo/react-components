@@ -84,7 +84,7 @@ const BackgroundDimmer = React.createClass({
       right: 0,
       bottom: 0,
       backgroundColor: color,
-      opacity: alpha + ''
+      opacity: String(alpha)
     };
     return <div style={style} onClick={this.onClick} ref='dimmedBackground' />;
   },

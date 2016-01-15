@@ -52,7 +52,7 @@ const Dropdown = React.createClass({
       });
 
       return {
-        options: options,
+        options,
         valueRenderer: this.renderValue,
         optionRenderer: this.renderOption
       };

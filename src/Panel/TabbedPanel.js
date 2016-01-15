@@ -15,7 +15,7 @@ import './tabbedPanel.scss';
     activeIndex: t.maybe(t.Num),
     onSetActiveTab: t.maybe(t.Func)
   })
-}), ({ tabs, children }) => tabs.headers.length > 0))
+}), ({ tabs }) => tabs.headers.length > 0))
 export default class TabbedPanel extends React.Component {
 
   onSetActiveTab = activeTabIndex => {
