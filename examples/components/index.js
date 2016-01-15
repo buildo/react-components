@@ -18,6 +18,7 @@ import Tooltip from 'raw!./Tooltip/default.example';
 import Button from 'raw!./button/default.example';
 import MoreOrLess from 'raw!./more-or-less/default.example';
 import ConfirmationInput from 'raw!./confirmation-input/default.example';
+import Badge from 'raw!./badge/default.example';
 
 export default [
   {
@@ -63,6 +64,11 @@ export default [
         examples: [ConfirmationInput],
         id: 'ConfirmationInput',
         title: 'ConfirmationInput'
+      },
+      {
+        examples: [Badge],
+        id: 'Badge',
+        title: 'Badge'
       }
     ]
   },
