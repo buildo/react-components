@@ -28,6 +28,10 @@ export const stringForButtonStates = t.struct({
 })
 export default class ButtonRenderer extends React.Component {
 
+  static defaultProps = {
+    textOverflow: _TextOverflow
+  }
+
   getLocals() {
     const { buttonState, label: labelProp, icon: iconProp, textOverflow } = this.props;
     const label = labelProp[buttonState];
@@ -40,7 +44,7 @@ export default class ButtonRenderer extends React.Component {
       icon,
       loading,
       style,
-      TextOverflow: textOverflow || _TextOverflow
+      TextOverflow: textOverflow
     };
   }
 
