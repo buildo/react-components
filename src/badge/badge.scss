@@ -1,0 +1,26 @@
+$background-color: lightblue !default;
+$border-radius: 15px !default;
+$padding: 3px 15px !default;
+$color: gray !default;
+$font-size: 13px !default;
+$font-weight: bold !default;
+
+$active-color: white !default;
+$active-background-color: lightblue !default;
+
+.badge {
+  display: inline-block;
+  border-radius: $border-radius;
+  padding: $padding;
+  color: $color;
+  background-color: $background-color;
+
+  &.active {
+    color: $active-color;
+    background-color: $active-background-color;
+  }
+  .badge-label {
+    font-size: $font-size;
+    font-weight: $font-weight;
+  }
+}
