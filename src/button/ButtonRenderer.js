@@ -5,7 +5,7 @@ import { buttonState } from './ButtonLogic';
 import { FlexView } from '../flex';
 import { Icon } from '../Icon';
 import LoadingSpinner from '../loading-spinner';
-import TextOverflow from '../text-overflow';
+import _TextOverflow from '../text-overflow';
 
 export const stringForButtonStates = t.struct({
   ready: t.maybe(t.Str),
@@ -23,12 +23,17 @@ export const stringForButtonStates = t.struct({
   label: stringForButtonStates,
   icon: stringForButtonStates,
   className: t.Str,
-  style: t.Obj
+  style: t.Obj,
+  textOverflow: t.maybe(t.Function)
 })
 export default class ButtonRenderer extends React.Component {
 
+  static defaultProps = {
+    textOverflow: _TextOverflow
+  }
+
   getLocals() {
-    const { buttonState, label: labelProp, icon: iconProp } = this.props;
+    const { buttonState, label: labelProp, icon: iconProp, textOverflow } = this.props;
     const label = labelProp[buttonState];
     const icon = iconProp[buttonState];
     const loading = buttonState === 'processing';
@@ -38,7 +43,8 @@ export default class ButtonRenderer extends React.Component {
       label,
       icon,
       loading,
-      style
+      style,
+      TextOverflow: textOverflow
     };
   }
 
@@ -54,18 +60,18 @@ export default class ButtonRenderer extends React.Component {
     </FlexView>
   )
 
-  templateLabel = ({ label }) => (
+  templateLabel = ({ label, TextOverflow }) => (
     <FlexView className="button-label" column grow basis="100%">
       <TextOverflow label={label} popover={{ offsetY: -8 }}/>
     </FlexView>
   )
 
-  template({ onClick, buttonState, icon, label, loading, className, style }) {
+  template({ onClick, buttonState, icon, label, loading, className, style, TextOverflow }) {
     return (
       <FlexView className={cx('button', className, buttonState)} {...{ onClick, style }} vAlignContent="center" hAlignContent='center'>
         {loading && this.templateLoading()}
         {icon && this.templateIcon({ icon })}
-        {label && this.templateLabel({ label })}
+        {label && this.templateLabel({ label, TextOverflow })}
       </FlexView>
     );
   }

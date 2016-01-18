@@ -23,7 +23,8 @@ const ButtonProps = t.subtype(t.struct({
   style: t.maybe(t.Obj),
   className: t.maybe(t.Str),
   primary: t.maybe(t.Bool),
-  size: t.enums.of(['tiny', 'small', 'large'])
+  size: t.enums.of(['tiny', 'small', 'large']),
+  textOverflow: t.maybe(t.Function)
 }), ({ label, children }) => notBoth(label, children), 'ButtonProps');
 
 const defaultProps = {
@@ -78,6 +79,7 @@ export default class Button extends React.Component {
         primary: this.props.primary,
         [this.props.size]: true
       }, this.props.className),
+      textOverflow: this.props.textOverflow,
       label,
       icon
     };
