@@ -54,11 +54,12 @@ const BasicModal = React.createClass({
         {...this.getBackgroundProp()}
         {...{ id, style }}
         className={cx('modal', className, { 'is-dismissable': !!onDismiss })}
-        onClickOutside={onDismiss}>
-          {onDismiss && this.getIconClose()}
-          <div className='modal-body'>
-            {children}
-          </div>
+        onClickOutside={onDismiss}
+      >
+        {onDismiss && this.getIconClose()}
+        <div className='modal-body'>
+          {children}
+        </div>
       </BackgroundDimmer>
     );
   }

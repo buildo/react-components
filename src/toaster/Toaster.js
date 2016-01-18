@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import cloneWithProps from 'react/lib/cloneWithProps';
+import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
 /**
@@ -53,18 +54,12 @@ const Toaster = React.createClass({
   componentDidMount() {
     const { position } = this.props.attachTo ? this.toaster.style : this.getDOMNode().parentNode.style;
     if (position !== 'relative' && position !== 'absolute') {
-      this.logWarning('Toaster\'s parent node should have "position: relative/absolute"');
+      warn('Toaster\'s parent node should have "position: relative/absolute"');
     }
   },
 
   componentWillUnmount() {
     this.removeToaster();
-  },
-
-  logWarning(log) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn(log);
-    }
   },
 
   getTranslationStyle(i) {
@@ -83,8 +78,9 @@ const Toaster = React.createClass({
         <TransitionWrapper
           {...{ transitionStyles, transitionEnterTimeout, transitionLeaveTimeout }}
           style={this.getTranslationStyle(i)}
-          key={el.key}>
-            {cloneWithProps(el, { uniqueKey: el.key })}
+          key={el.key}
+        >
+          {cloneWithProps(el, { uniqueKey: el.key })}
         </TransitionWrapper>
       );
     });
@@ -141,7 +137,7 @@ const Toaster = React.createClass({
 
   componentWillReceiveProps(nextProps) {
     if (this.props.attachTo !== nextProps.attachTo) {
-      this.logWarning('You can\'t change "attachTo" prop after the first render!');
+      warn('You can\'t change "attachTo" prop after the first render!');
     }
   }
 

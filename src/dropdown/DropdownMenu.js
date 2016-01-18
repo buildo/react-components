@@ -32,13 +32,13 @@ const DropdownMenu = React.createClass({
   openMenu(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.setState({isOpen: true});
+    this.setState({ isOpen: true });
   },
 
   toggleMenu(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.setState({isOpen: !this.state.isOpen});
+    this.setState({ isOpen: !this.state.isOpen });
   },
 
   render() {

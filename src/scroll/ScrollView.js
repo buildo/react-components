@@ -37,7 +37,7 @@ const propTypes = {
 
 export default React.createClass({
 
-  propTypes: propTypes,
+  propTypes,
 
   getDefaultProps() {
     return {
@@ -102,7 +102,7 @@ export default React.createClass({
       let down;
 
       if (e instanceof TouchEvent) {
-        const {clientY} = e.touches[0];
+        const { clientY } = e.touches[0];
         up = clientY > this.lastY;
         this.lastY = clientY;
       } else if (e instanceof WheelEvent) {

@@ -38,7 +38,7 @@ const propTypes = {
 
 const TransitionWrapper = React.createClass({
 
-  propTypes: propTypes,
+  propTypes,
 
   getDefaultProps() {
     return {

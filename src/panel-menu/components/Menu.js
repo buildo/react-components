@@ -1,5 +1,6 @@
 import React from 'react';
 import partial from 'lodash/function/partial';
+import { warn } from '../utils/log';
 
 const Menu = React.createClass({
 
@@ -27,11 +28,11 @@ const Menu = React.createClass({
 
   getMenuItem(option, i) {
     return (
-      <div className='menu-item' key={i} style={{position: 'relative'}} onClick={partial(option.onClick, option)}>
+      <div className='menu-item' key={i} style={{ position: 'relative' }} onClick={partial(option.onClick, option)}>
         <span className='menu-item-title'>
           {option.title}
         </span>
-        <span className='menu-item-metadata' style={{right: 0, position: 'absolute'}}>
+        <span className='menu-item-metadata' style={{ right: 0, position: 'absolute' }}>
           {option.metadata}
         </span>
       </div>
@@ -50,7 +51,7 @@ const Menu = React.createClass({
         return this.getDivider(i);
 
       default:
-        console.warn('Option with invalid type at index ' + i);
+        warn(`Option with invalid type at index ${i}`);
         return 'INVALID TYPE';
     }
   },
@@ -66,14 +67,14 @@ const Menu = React.createClass({
 
   getContent() {
     if (this.props.children && this.props.options) {
-      console.warn('You\'re passing both Children and options: Children will override options!');
+      warn('You\'re passing both Children and options: Children will override options!');
     }
     return this.props.children || this.getRenderedOptions();
   },
 
   render() {
     return (
-      <div className='dropdown-menu' style={{position: 'absolute', right: 0}}>
+      <div className='dropdown-menu' style={{ position: 'absolute', right: 0 }}>
         {this.getContent()}
       </div>
     );

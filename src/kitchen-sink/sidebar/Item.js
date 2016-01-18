@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-export default class SidebarContent extends React.Component {
+export default class Item extends React.Component {
 
   static propTypes = {
     id: React.PropTypes.string.isRequired,

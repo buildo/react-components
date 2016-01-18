@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { warn } from '../utils/log';
 
 /**
  * ### Absolute dimmed layer with loading spinner in the center
@@ -51,7 +52,7 @@ const LoadingSpinner = React.createClass({
 
   getMessage() {
     if (this.props.message) {
-      const {message, size} = this.props;
+      const { message, size } = this.props;
       const messageStyle = {
         marginTop: size,
         fontSize: message.size || 16,
@@ -67,19 +68,21 @@ const LoadingSpinner = React.createClass({
   },
 
   logWarnings() {
-    const {position} = this.refs.loadingSpinner.getDOMNode().parentNode.style;
-    if (process.env.NODE_ENV !== 'production' && position !== 'relative') {
-      console.warn('LoadingSpinner\'s parent node style should have "position: relative"');
-    }
+    warn(() => {
+      const { position } = this.refs.loadingSpinner.getDOMNode().parentNode.style;
+      if (position !== 'relative') {
+        return 'LoadingSpinner\'s parent node style should have "position: relative"';
+      }
+    });
   },
 
   render() {
-    const {size, color, overlayColor, id, className, style} = this.props;
+    const { size, color, overlayColor, id, className, style } = this.props;
 
-    const overlayStyle = {backgroundColor: overlayColor};
+    const overlayStyle = { backgroundColor: overlayColor };
     const spinnerStyle = {
       fontSize: size,
-      color: color
+      color
     };
 
     return (

@@ -74,7 +74,7 @@ const propTypes = {
 
 export default React.createClass({
 
-  propTypes: propTypes,
+  propTypes,
 
   getDefaultProps() {
     return {
@@ -148,7 +148,7 @@ export default React.createClass({
       'marginRight',
       'marginBottom'
     ]);
-    return {...this.getFlexStyle(), ...style, ...this.props.style};
+    return { ...this.getFlexStyle(), ...style, ...this.props.style };
   },
 
   getContentAlignmentClasses() {

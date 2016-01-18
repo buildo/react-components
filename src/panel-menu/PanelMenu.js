@@ -20,7 +20,7 @@ const PanelMenu = React.createClass({
   },
 
   toggleMenu() {
-    this.setState({isOpen: !this.state.isOpen});
+    this.setState({ isOpen: !this.state.isOpen });
   },
 
   getIconButton() {

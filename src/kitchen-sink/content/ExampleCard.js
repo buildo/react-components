@@ -1,7 +1,7 @@
 import React from 'react';
 import LiveDemo from './LiveDemo';
 
-export default class Content extends React.Component {
+export default class ExampleCard extends React.Component {
 
   static propTypes = {
     iso: React.PropTypes.bool,
