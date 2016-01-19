@@ -12,7 +12,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'NavBar';
+const defaultComponent = 'Toggle';
 
 const Examples = React.createClass({
 
@@ -33,7 +33,7 @@ const Examples = React.createClass({
     } = this;
 
     return (
-      <div>
+      <div style={{ padding: 100 }}>
         <KitchenSink {...{ scope, sections, componentId, onSelectItem }} />
       </div>
     );

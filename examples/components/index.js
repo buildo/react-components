@@ -20,12 +20,14 @@ import MoreOrLess from 'raw!./more-or-less/default.example';
 import ConfirmationInput from 'raw!./confirmation-input/default.example';
 import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
+import Toggle from 'raw!./toggle/default.example';
 
 import '../../src/more-or-less/moreOrLess.scss';
 import '../../src/flex/flexView.scss';
 import '../../src/loading-spinner/style.scss';
 import '../../src/confirmation-input/confirmationInput.scss';
 import '../../src/badge/badge.scss';
+import '../../src/toggle/toggle.scss';
 
 export default [
   {
@@ -76,6 +78,11 @@ export default [
         examples: [Badge],
         id: 'Badge',
         title: 'Badge'
+      },
+      {
+        examples: [Toggle],
+        id: 'Toggle',
+        title: 'Toggle'
       }
     ]
   },
