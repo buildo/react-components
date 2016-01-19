@@ -1,4 +1,4 @@
-function warn(content) {
+export function warn(content) {
   if (process.env.NODE_ENV !== 'production') {
     const message = (typeof content === 'function') ? content() : content;
     if (message) {
@@ -6,5 +6,3 @@ function warn(content) {
     }
   }
 }
-
-export default { warn }

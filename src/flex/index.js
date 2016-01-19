@@ -1,4 +1,2 @@
-import FlexView from './FlexView';
-import FlexCell from './FlexCell';
-
-export default { FlexView, FlexCell };
+export FlexView from './FlexView';
+export FlexCell from './FlexCell';
