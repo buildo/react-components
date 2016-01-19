@@ -1,15 +1,18 @@
 import React from 'react';
 import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
+import { getValueLink } from '../link-state';
 
-
-import './toggle.scss';
 
 @pure
 @skinnable()
 @props({
-  value: t.Boolean,
-  onChange: t.Function,
+  valueLink: t.maybe(t.struct({
+    value: t.Boolean,
+    requestChange: t.Function
+  })),
+  value: t.maybe(t.Boolean),
+  onChange: t.maybe(t.Function),
   size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -20,7 +23,8 @@ export default class Toggle extends React.Component {
     this.updateCheckbox(this.props);
   }
 
-  updateCheckbox = ({ value }) => {
+  updateCheckbox = (props) => {
+    const { value } = getValueLink(this, props);
     const { checkbox } = this.refs;
     const checkboxNode = checkbox.nodeType === 1 ?
       checkbox :
@@ -41,12 +45,22 @@ export default class Toggle extends React.Component {
     }
   }
 
+  onButtonClick = () => {
+    const { value, requestChange } = getValueLink(this);
+    requestChange(!value);
+  }
+
   getLocals() {
-    const { className, size, onChange, ...props } = this.props;
+    const {
+      props: { className, size, style },
+      onButtonClick
+    } = this;
+    const { value } = getValueLink(this);
     return {
-      ...props,
+      style,
+      value,
       buttonProps: {
-        onClick: onChange,
+        onClick: onButtonClick,
         style: size ? { width: size, height: this.getHalfSize(size) } : undefined
       },
       className: cx('toggle', className)
