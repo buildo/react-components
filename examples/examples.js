@@ -12,7 +12,7 @@ const scope = {
   ...brc
 };
 
-const defaultComponent = 'ConfirmationInput';
+const defaultComponent = 'NavBar';
 
 const Examples = React.createClass({
 
