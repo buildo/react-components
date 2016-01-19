@@ -105,13 +105,16 @@ export default class Toaster extends React.Component {
   };
 
   getToaster = () => {
-    const { style: styleProp, id, className } = this.props;
+    const { style: styleProp, id, className, position } = this.props;
+    const isTop = position.indexOf('top') !== -1;
+    const isRight = position.indexOf('right') !== -1;
     const style = {
       position: 'absolute',
-      right: 0,
-      top: 0,
-      width: 0,
-      height: 0,
+      right: isRight ? 0 : undefined,
+      left: isRight ? undefined : 0,
+      bottom: isTop ? undefined : 0,
+      top: isTop ? 0 : undefined,
+      height: '100%',
       ...styleProp
     };
 
