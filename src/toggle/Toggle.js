@@ -45,14 +45,13 @@ export default class Toggle extends React.Component {
 
   getHalfSize(size) {
     if (t.String.is(size)) {
-      const numberMatch = (/\d+/).exec(size);
       const unitMatch = (/[a-z]+/).exec(size);
 
-      const number = numberMatch ? parseInt(numberMatch[0], 10) : '';
+      const number = parseFloat(size, 10);
       const unit = unitMatch ? unitMatch[0] : '';
       return `${number / 2}${unit}`;
     } else {
-      return size / 2
+      return size / 2;
     }
   }
 
