@@ -4,15 +4,25 @@ import cx from 'classnames';
 import { getValueLink } from '../link-state';
 
 
+/**
+ * A nice animated Toggle rendered using only CSS
+ */
 @pure
 @skinnable()
 @props({
+  /** The current value (`true` if checked) */
+  value: t.maybe(t.Boolean),
+  /** Callback called when user clicks on the Toggle */
+  onChange: t.maybe(t.Function),
+  /** To be used together with `linkState` */
   valueLink: t.maybe(t.struct({
     value: t.Boolean,
     requestChange: t.Function
   })),
-  value: t.maybe(t.Boolean),
-  onChange: t.maybe(t.Function),
+  /**
+   * The size for the Toggle in whatever unit (px, em, rem ...).
+   * It will be used to compute `width` and `height` as follows: `width: size`, `height: size / 2`
+   */
   size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
