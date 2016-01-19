@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { pure, skinnable, props, t } from '../utils';
 import { buttonState } from './ButtonLogic';
 import { FlexView } from '../flex';
-import { Icon } from '../Icon';
+import Icon from '../Icon/Icon';
 import LoadingSpinner from '../loading-spinner';
 import _TextOverflow from '../text-overflow';
 
