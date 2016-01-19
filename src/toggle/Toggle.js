@@ -10,6 +10,7 @@ import './toggle.scss';
 @props({
   value: t.Boolean,
   onChange: t.Function,
+  size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 })
@@ -27,19 +28,36 @@ export default class Toggle extends React.Component {
     checkboxNode.checked = value;
   }
 
+  getHalfSize(size) {
+    if (t.String.is(size)) {
+      const numberMatch = (/\d+/).exec(size);
+      const unitMatch = (/[a-z]+/).exec(size);
+
+      const number = numberMatch ? parseInt(numberMatch[0], 10) : '';
+      const unit = unitMatch ? unitMatch[0] : '';
+      return `${number / 2}${unit}`;
+    } else {
+      return size / 2
+    }
+  }
+
   getLocals() {
-    const { className, ...props } = this.props;
+    const { className, size, onChange, ...props } = this.props;
     return {
       ...props,
+      buttonProps: {
+        onClick: onChange,
+        style: size ? { width: size, height: this.getHalfSize(size) } : undefined
+      },
       className: cx('toggle', className)
     };
   }
 
-  template({ value, onChange, className, style }) {
+  template({ value, className, style, buttonProps }) {
     return (
       <div {...{ className, style }}>
         <input className='toggle-input' type='checkbox' ref='checkbox' value={value} readOnly />
-        <label className='toggle-button' onClick={onChange} />
+        <label className='toggle-button' {...buttonProps} />
       </div>
     );
   }

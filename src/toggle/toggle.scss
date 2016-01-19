@@ -1,3 +1,7 @@
+$size: 3em !default;
+$background: #F0F0F0 !default;
+$checked-background: #9FD6AE !default;
+
 .toggle-input{
 	display: none;
 	// add default box-sizing for this scope
@@ -12,8 +16,8 @@
 	+ .toggle-button{
 		outline: 0;
 		display: block;
-		width: 4em;
-		height: 2em;
+		width: $size;
+		height: $size / 2;
 		position: relative;
 		cursor: pointer;
     user-select: none;
@@ -40,21 +44,21 @@
 	}
 }
 
-.toggle-input{
-	+ .toggle-button{
-		background: #f0f0f0;
+.toggle-input {
+	+ .toggle-button {
+		background: $background;
 		border-radius: 2em;
 		padding: 2px;
 		transition: all .4s ease;
-		&:after{
+		&:after {
 			border-radius: 50%;
-			background: #fff;
+			background: #FFF;
 			transition: all .2s ease;
 		}
 	}
-	&:checked{
-		+ .toggle-button{
-			background: #9FD6AE;
+	&:checked {
+		+ .toggle-button {
+			background: $checked-background;
 		}
 	}
 }
