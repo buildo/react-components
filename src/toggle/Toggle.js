@@ -38,7 +38,7 @@ export default class Toggle extends React.Component {
   template({ value, onChange, className, style }) {
     return (
       <div {...{ className, style }}>
-        <input className='toggle-light' type='checkbox' ref='checkbox' value={value} readOnly />
+        <input className='toggle-input' type='checkbox' ref='checkbox' value={value} readOnly />
         <label className='toggle-button' onClick={onChange} />
       </div>
     );
