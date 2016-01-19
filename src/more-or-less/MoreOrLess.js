@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
-import { Icon } from '../Icon';
+import Icon from '../Icon/Icon';
 import { FlexView } from '../flex';
 
 

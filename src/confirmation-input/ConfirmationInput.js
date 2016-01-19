@@ -4,7 +4,7 @@ import { props, skinnable, t } from '../utils';
 import InputLink from 'react-input-link';
 import { linkState } from '../link-state';
 import { FlexView } from '../flex';
-import { Icon } from '../Icon';
+import Icon from '../Icon/Icon';
 
 
 @skinnable()

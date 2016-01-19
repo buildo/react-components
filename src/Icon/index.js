@@ -1,2 +1,1 @@
-export Icon from './Icon';
-export TooltippedIcon from './TooltippedIcon';
+export default from './Icon';

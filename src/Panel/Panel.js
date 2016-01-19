@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable, pure } from '../utils';
 import PanelHeader from './PanelHeader';
-import { Props as panelMenuProps } from './PanelMenu';
 import capitalize from 'lodash/string/capitalize';
 import LoadingSpinner from '../loading-spinner';
 import { FlexView } from '../flex';
@@ -21,9 +20,7 @@ export const Props = {
     content: t.maybe(t.ReactNode),
     title: t.maybe(t.ReactNode),
     hideTitleWhenExpanded: t.maybe(t.Bool),
-    menu: t.maybe(t.struct({
-      ...panelMenuProps
-    }))
+    menu: t.maybe(t.ReactNode)
   })),
   loading: t.maybe(t.Bool),
   softLoading: t.maybe(t.Bool),
