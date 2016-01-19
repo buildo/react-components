@@ -1,7 +1,6 @@
 import React from 'react';
 import { props, t, pure, skinnable } from '../utils';
 import { FlexView } from '../flex';
-import PanelMenu, { Props as panelMenuProps } from './PanelMenu';
 import Icon from '../Icon/Icon';
 
 const icons = {
@@ -21,9 +20,7 @@ const icons = {
   })),
   title: t.maybe(t.ReactNode),
   content: t.maybe(t.ReactNode),
-  menu: t.maybe(t.struct({
-    ...panelMenuProps
-  }))
+  menu: t.maybe(t.ReactNode)
 })
 export default class PanelHeader extends React.Component {
 
@@ -94,21 +91,13 @@ export default class PanelHeader extends React.Component {
     );
   }
 
-  templateMenu = ({ renderMenu, menu }) => {
-    return (
-      renderMenu ?
-      <PanelMenu {...menu} />
-      : null
-    );
-  }
-
   template({ collapse, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
     return (
       <FlexView className='panel-header' flexBasis={40}>
         {this.templateExpandIcon({ renderExpandIcon, collapse })}
         {this.templateTitle({ renderTitle, title })}
         {this.templateContent({ renderContent, content })}
-        {this.templateMenu({ renderMenu, menu })}
+        {renderMenu && menu}
       </FlexView>
     );
   }
