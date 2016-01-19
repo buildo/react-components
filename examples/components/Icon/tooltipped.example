@@ -1,7 +1,0 @@
-class Example extends React.Component {
-
-  render() {
-    return <TooltippedIcon icon='user' label='user icon!' />;
-  }
-
-}
