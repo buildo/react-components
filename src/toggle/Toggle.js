@@ -21,7 +21,8 @@ import { getValueLink } from '../link-state';
   })),
   /**
    * The size for the Toggle in whatever unit (px, em, rem ...).
-   * It will be used to compute `width` and `height` as follows: `width: size`, `height: size / 2`
+   * It will be used to compute `width`, `height` and `border-radius` as follows:
+   * `width: size`, `height: size / 2`, `border-radius: size / 2`
    */
   size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
@@ -71,7 +72,9 @@ export default class Toggle extends React.Component {
       value,
       buttonProps: {
         onClick: onButtonClick,
-        style: size ? { width: size, height: this.getHalfSize(size) } : undefined
+        style: size ?
+          { width: size, height: this.getHalfSize(size), borderRadius: this.getHalfSize(size) } :
+          undefined
       },
       className: cx('toggle', className)
     };

@@ -47,7 +47,7 @@ $checked-background: #9FD6AE !default;
 .toggle-input {
 	+ .toggle-button {
 		background: $background;
-		border-radius: 2em;
+		border-radius: $size / 2;
 		padding: 2px;
 		transition: all .4s ease;
 		&:after {
