@@ -1,4 +1,5 @@
 import React from 'react/addons';
+import { Route, create } from 'react-router-transition-context';
 import * as brc from '../src';
 import lodash from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
@@ -16,19 +17,13 @@ const defaultComponent = 'Toggle';
 
 const Examples = React.createClass({
 
-  getInitialState() {
-    return {
-      componentId: defaultComponent
-    };
-  },
-
   onSelectItem(componentId) {
-    this.setState({ componentId });
+    this.props.router.transitionTo('/', null, { componentId });
   },
 
   render() {
     const {
-      state: { componentId },
+      props: { query: { componentId = defaultComponent } },
       onSelectItem
     } = this;
 
@@ -41,4 +36,13 @@ const Examples = React.createClass({
 });
 
 
-React.render(<Examples />, document.getElementById('container'));
+const routes = (
+  <Route path='/' handler={Examples} />
+);
+
+const router = create({ routes });
+
+router.run((Handler, { query }) => {
+  // RENDERS
+  React.render(<Examples router={router} query={query} />, document.getElementById('container'));
+});
