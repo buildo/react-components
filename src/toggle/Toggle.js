@@ -2,6 +2,7 @@ import React from 'react';
 import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
 import { getValueLink } from '../link-state';
+import { warn } from '../utils/log';
 
 
 /**
@@ -45,11 +46,15 @@ export default class Toggle extends React.Component {
 
   getHalfSize(size) {
     if (t.String.is(size)) {
-      const unitMatch = (/[a-z]+/).exec(size);
-
+      const unitMatch = (/[a-z]+$/).exec(size); // only match characters at the end
       const number = parseFloat(size, 10);
       const unit = unitMatch ? unitMatch[0] : '';
-      return `${number / 2}${unit}`;
+      if (isFinite(number)) { // we can still get NaN from parseFloat
+        return `${number / 2}${unit}`;
+      } else {
+        warn('Invalid size');
+        return 0;
+      }
     } else {
       return size / 2;
     }
