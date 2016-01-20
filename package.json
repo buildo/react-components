@@ -32,7 +32,7 @@
     "eslint-config-buildo": "github:buildo/eslint-config",
     "lodash": "^3.10.1",
     "mobile-detect": "^1.2.1",
-    "react-input-link": "^0.0.4",
+    "react-input-link": "^0.0.5",
     "react-select": "^0.6.1",
     "revenge": "^0.3.4",
     "sass-flex-mixins": "^0.1.0",

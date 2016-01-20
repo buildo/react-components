@@ -117,7 +117,9 @@ export default class ConfirmationInput extends React.Component {
         onKeyUp: this.onEnter,
         onBlur: this.onBlur,
         onFocus: this.onFocus,
-        wrapperClassName: cx('confirmation-input', { focused }, className)
+        wrapper: {
+          className: cx('confirmation-input', { focused }, className)
+        }
       }
     }
   }
