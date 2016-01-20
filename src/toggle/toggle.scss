@@ -50,11 +50,13 @@ $checked-background: #9FD6AE !default;
 		background: $background;
 		border-radius: $size / 2;
 		padding: 2px;
-		transition: all .4s ease;
+		-webkit-transition: background 0.4s ease;
+		transition: background 0.4s ease;
 		&:after {
 			border-radius: 50%;
 			background: #FFF;
-			transition: all .2s ease;
+			-webkit-transition: -webkit-transform 0.2s linear;
+			transition: transform 0.2s linear;
 		}
 	}
 	&:checked {
