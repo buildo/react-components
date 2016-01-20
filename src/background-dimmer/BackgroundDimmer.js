@@ -52,14 +52,20 @@ const BackgroundDimmer = React.createClass({
 
   enableScrollPropagation() {
     const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
+    const childrenWrapper = this.refs.childrenWrapper.getDOMNode();
     dimmedBackground.removeEventListener('wheel', this.stopScrollPropagation);
     dimmedBackground.removeEventListener('touchmove', this.stopScrollPropagation);
+    childrenWrapper.removeEventListener('wheel', this.preventDefault);
+    childrenWrapper.removeEventListener('touchmove', this.preventDefault);
   },
 
   disableScrollPropagation() {
     const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
+    const childrenWrapper = this.refs.childrenWrapper.getDOMNode();
     dimmedBackground.addEventListener('wheel', this.stopScrollPropagation);
     dimmedBackground.addEventListener('touchmove', this.stopScrollPropagation);
+    childrenWrapper.addEventListener('wheel', this.preventDefault);
+    childrenWrapper.addEventListener('touchmove', this.preventDefault);
   },
 
   isEventOutsideChildren(e) {
@@ -74,10 +80,14 @@ const BackgroundDimmer = React.createClass({
     }
   },
 
+  preventDefault(e) {
+    e.preventDefault();
+  },
+
   stopScrollPropagation(e) {
     const { stopScrollPropagation } = this.props;
     if (stopScrollPropagation && this.isEventOutsideChildren(e)) {
-      e.preventDefault();
+      this.preventDefault(e);
     }
   },
 
