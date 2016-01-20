@@ -104,7 +104,8 @@ const Toaster = React.createClass({
       position: 'absolute',
       right: 0,
       top: 0,
-      height: '100%',
+      width: 0,
+      height: 0,
       ...styleProp
     };
 
