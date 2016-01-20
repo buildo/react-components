@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlexView } from '../flex';
 
 /**
  * ### Creates a full-page dimmed background for its children nodes
@@ -19,6 +20,10 @@ const BackgroundDimmer = React.createClass({
      */
     alpha: React.PropTypes.number,
     /**
+     * z-index (BackgroundDimmer has `position: fixed`)
+     */
+    zIndex: React.PropTypes.number,
+    /**
      * avoid propagation for scroll events
      */
     stopScrollPropagation: React.PropTypes.bool,
@@ -34,7 +39,8 @@ const BackgroundDimmer = React.createClass({
   getDefaultProps() {
     return {
       color: 'black',
-      alpha: 0.5
+      alpha: 0.5,
+      zIndex: 99999
     };
   },
 
@@ -76,7 +82,7 @@ const BackgroundDimmer = React.createClass({
   },
 
   getDimmedBackground() {
-    const { color, alpha } = this.props;
+    const { color, alpha, zIndex } = this.props;
     const style = {
       position: 'fixed',
       top: 0,
@@ -84,24 +90,39 @@ const BackgroundDimmer = React.createClass({
       right: 0,
       bottom: 0,
       backgroundColor: color,
-      opacity: String(alpha)
+      opacity: String(alpha),
+      zIndex
     };
     return <div style={style} onClick={this.onClick} ref='dimmedBackground' />;
   },
 
   render() {
-    const { style, className, id, children } = this.props;
-    const mergedStyle = {
-      position: 'relative',
-      ...style
+    const { style, className, id, children, zIndex } = this.props;
+    const props = {
+      style: { position: 'relative', ...style },
+      className,
+      id
     };
+    const flexViewProps = {
+      style: {
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: (zIndex + 1), pointerEvents: 'none'
+      },
+      vAlignContent: 'center',
+      hAlignContent: 'center'
+    };
+    const childrenWrapperProps = {
+      style: { pointerEvents: 'auto' },
+      ref: 'childrenWrapper'
+    };
+
     return (
-      <div {...{ style: mergedStyle, className, id }}>
+      <div {...props}>
         {this.getDimmedBackground()}
-        <div style={{ visibility: 'hidden' }}>{children}</div>
-        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}>
-          {children}
-        </div>
+        <FlexView {...flexViewProps}>
+          <div {...childrenWrapperProps}>
+            {children}
+          </div>
+        </FlexView>
       </div>
     );
   },
