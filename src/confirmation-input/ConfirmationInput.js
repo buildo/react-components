@@ -11,13 +11,14 @@ import Icon from '../Icon/Icon';
 @props({
   initialValue: t.maybe(t.String),
   onConfirm: t.Function,
+  onClear: t.Function,
   placeholder: t.maybe(t.String),
   text: t.struct({
-    confirmed: t.maybe(t.String),
+    clear: t.maybe(t.String),
     toConfirm: t.maybe(t.String)
   }),
   icon: t.struct({
-    confirmed: t.maybe(t.String),
+    clear: t.maybe(t.String),
     toConfirm: t.maybe(t.String)
   }),
   className: t.maybe(t.String),
@@ -30,6 +31,7 @@ export default class ConfirmationInput extends React.Component {
     super(props);
     this.state = {
       focused: false,
+      hoveringConfirm: false,
       value: props.initialValue
     };
   }
@@ -49,7 +51,10 @@ export default class ConfirmationInput extends React.Component {
   }
 
   onBlur = () => {
-    this.props.onConfirm(this.state.value);
+    const { hoveringConfirm } = this.state;
+    if (!hoveringConfirm) {
+      this.onConfirm();
+    }
     this.setState({ focused: false });
   }
 
@@ -57,48 +62,85 @@ export default class ConfirmationInput extends React.Component {
     this.setState({ focused: true });
   }
 
+  onConfirm = () => {
+    const {
+      props: { initialValue, onConfirm },
+      state: { value },
+      onMouseLeave
+    } = this;
+    const confirmed = (value === initialValue) || (!value && !initialValue);
+    if (!confirmed) {
+      onConfirm(value);
+      if (!value) {
+        onMouseLeave(); // on confirm, if value is empty, `templateConfirm` disappears -> onMouseLeave never called
+      }
+    }
+  }
+
+  onMouseEnter = () => this.setState({ hoveringConfirm: true })
+
+  onMouseLeave = () => this.setState({ hoveringConfirm: false })
+
+  onClear = () => {
+    this.props.onClear();
+    this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
+  }
+
   getLocals() {
     const {
-      className,
-      initialValue,
-      onConfirm,
-      text,
-      icon,
-      ...props
-    } = this.props;
-    const { value , focused } = this.state;
+      props: {
+        className,
+        initialValue,
+        text,
+        icon,
+        ...props
+      },
+      state: { value , focused },
+      onClear, onConfirm,
+      onMouseEnter, onMouseLeave
+    } = this;
     const confirmed = (value === initialValue) || (!value && !initialValue);
+    const showToConfirm = !confirmed;
+    const showClear = (value && confirmed && !focused);
 
     return {
-      className,
-      focused,
-      confirmProps: {
-        text: text[confirmed ? 'confirmed' : 'toConfirm'],
-        icon: icon[confirmed ? 'confirmed' : 'toConfirm']
+      confirmProps: (showToConfirm || showClear) && {
+        text: text[confirmed ? 'clear' : 'toConfirm'],
+        icon: icon[confirmed ? 'clear' : 'toConfirm'],
+        onMouseDown: showClear ? onClear : onConfirm,
+        onMouseEnter,
+        onMouseLeave
       },
       inputProps: {
         ...props,
         valueLink: linkState(this, 'value'),
         onKeyUp: this.onEnter,
         onBlur: this.onBlur,
-        onFocus: this.onFocus
+        onFocus: this.onFocus,
+        wrapperClassName: cx('confirmation-input', { focused }, className)
       }
     }
   }
 
-  templateConfirm({ text, icon }) {
+  templateConfirm({ text, icon, ...confirmProps }) {
+    const props = {
+      style: { cursor: 'pointer' },
+      className: 'confirmation',
+      vAlignContent: 'center',
+      ...confirmProps
+    };
     return (
-      <FlexView className="confirmation" vAlignContent="center">
+      <FlexView {...props}>
         {icon && <Icon icon={icon} />}
         {text}
       </FlexView>
     )
   }
 
-  template({ className, focused, confirmProps, inputProps }) {
+  template({ inputProps, confirmProps }) {
     return (
-      <InputLink {...inputProps} wrapperClassName={cx('confirmation-input', { focused }, className)}>
-        {this.templateConfirm(confirmProps)}
+      <InputLink {...inputProps}>
+        {confirmProps && this.templateConfirm(confirmProps)}
       </InputLink>
     );
   }
