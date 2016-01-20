@@ -38,7 +38,8 @@ $checked-background: #9FD6AE !default;
 	&:checked{
 		+ .toggle-button{
 			&:after{
-				left: 50%;
+				-webkit-transform: translate3d(100%, 0, 0);
+				transform: translate3d(100%, 0, 0);
 			}
 		}
 	}
