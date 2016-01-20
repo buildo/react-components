@@ -17,7 +17,7 @@ import { warn } from '../utils/log';
   onChange: t.maybe(t.Function),
   /** To be used together with `linkState` */
   valueLink: t.maybe(t.struct({
-    value: t.Boolean,
+    value: t.maybe(t.Boolean),
     requestChange: t.Function
   })),
   /**
