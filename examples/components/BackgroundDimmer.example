@@ -4,16 +4,39 @@ const Example = React.createClass({
 
   getInitialState() {
     return {
-      alpha: 0.5
+      isShow: true
     };
   },
 
-  getTemplate() {
+  show() {
+    this.setState({ isShow: true });
+  },
+
+  hide() {
+    this.setState({ isShow: false });
+  },
+
+  getBackgroundDimmer() {
     return (
-      <div style={{ height: 2000, width: '100%' }}>
-        <BackgroundDimmer color='gray' alpha={this.state.alpha} stopScrollPropagation onClickOutside={() => this.setState({ alpha: 0 })}>
-          <div style={{ backgroundColor: 'white', height: 120, width: 200 }} />
-        </BackgroundDimmer>
+      <BackgroundDimmer color='black' alpha={0.5} stopScrollPropagation onClickOutside={this.hide}>
+        <div style={{ backgroundColor: 'yellow', height: 120, width: 200 }}>
+          CONTENT
+        </div>
+      </BackgroundDimmer>
+    );
+  },
+
+  getTemplate() {
+    const {
+      state: { isShow },
+      getBackgroundDimmer, show
+    } = this;
+    return (
+      <div style={{ height: 50, width: '100%' }}>
+        {isShow ?
+          getBackgroundDimmer() :
+          <button onClick={show}>SHOW</button>
+        }
       </div>
     );
   },
