@@ -5,9 +5,9 @@ import Popover from '../popover/Popover';
 /**
  * ### Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
  */
-const TextOverflow = React.createClass({
+export default class TextOverflow extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
      */
@@ -19,44 +19,37 @@ const TextOverflow = React.createClass({
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
-  },
+  }
 
-  getInitialState() {
-    return {
-      isOverflowing: false
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.state = { isOverflowing: false };
+  }
 
-  componentDidMount() {
-    this.verifyOverflow();
-  },
+  componentDidMount = () => this.verifyOverflow()
 
-  componentDidUpdate() {
-    this.verifyOverflow();
-  },
+  componentDidUpdate = () => this.verifyOverflow()
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps = (nextProps) => {
     if (nextProps.label !== this.props.label) {
       this.reset();
     }
-  },
+  }
 
-  reset() {
-    this.setState({ isOverflowing: false });
-  },
+  reset = () => this.setState({ isOverflowing: false })
 
-  logWarnings() {
+  logWarnings = () => {
     warn(() => {
       const node = this.refs.text.getDOMNode().parentNode;
-      const { width, flex } = window.getComputedStyle(node);
+      const { width, flex } = node.style;
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
         return [`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`, node];
       }
     });
-  },
+  }
 
-  verifyOverflow(_state) {
+  verifyOverflow = (_state) => {
     const state = _state || this.state;
     if (state.isOverflowing === false) {
       const text = this.refs.text.getDOMNode();
@@ -66,9 +59,9 @@ const TextOverflow = React.createClass({
         this.logWarnings();
       }
     }
-  },
+  }
 
-  getTextSpan() {
+  getTextSpan = () => {
     const { label } = this.props;
     const style = {
       display: 'block',
@@ -79,9 +72,9 @@ const TextOverflow = React.createClass({
       textOverflow: 'ellipsis'
     };
     return <span ref='text' style={style}>{label}</span>;
-  },
+  }
 
-  templateOverflow() {
+  templateOverflow = () => {
     const { children, label, style, ...other } = this.props;
 
     if (children) {
@@ -101,9 +94,9 @@ const TextOverflow = React.createClass({
 
       return <Popover { ...props }>{this.getTextSpan()}</Popover>;
     }
-  },
+  }
 
-  templeteStandard() {
+  templeteStandard = () => {
     const { children, label, style, ...other } = this.props;
     const props = {
       ...other,
@@ -114,12 +107,10 @@ const TextOverflow = React.createClass({
     };
 
     return <div { ...props }>{this.getTextSpan()}</div>;
-  },
+  }
 
   render() {
     return this.state.isOverflowing ? this.templateOverflow() : this.templeteStandard();
   }
 
-});
-
-export default TextOverflow;
+}
