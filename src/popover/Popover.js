@@ -130,8 +130,8 @@ const Popover = React.createClass({
   // UTILS
 
   // extend with default values
-  getPopoverProps(props) {
-    props = props || this.props;
+  getPopoverProps(_props) {
+    const props = _props || this.props;
     return {
       type: 'relative',
       position: 'top',

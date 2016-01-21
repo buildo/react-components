@@ -135,10 +135,10 @@ export default React.createClass({
     };
   },
 
-  scrollTo(x, y, scrollDuration) {
+  scrollTo(_x, _y, scrollDuration) {
     const { scrollTop, scrollLeft } = this.getScrollView();
-    x = x === null ? scrollLeft : x;
-    y = y === null ? scrollTop : y;
+    const x = _x === null ? scrollLeft : _x;
+    const y = _y === null ? scrollTop : _y;
 
     this._scrollTo(x, y, scrollDuration, Date.now(), scrollLeft, scrollTop);
   },
