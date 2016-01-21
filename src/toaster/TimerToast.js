@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TimerToast = React.createClass({
+export default class TimerToast extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     children: React.PropTypes.node.isRequired,
     onTimeout: React.PropTypes.func.isRequired,
     duration: React.PropTypes.number.isRequired,
@@ -10,38 +10,35 @@ const TimerToast = React.createClass({
     className: React.PropTypes.string,
     id: React.PropTypes.string,
     style: React.PropTypes.object
-  },
+  }
 
-  getInitialState() {
-    return { completed: false };
-  },
+  constructor(props) {
+    super(props);
+    this.state = { completed: false };
+  }
 
-  componentDidMount() {
-    this.resetTimer();
-  },
+  componentDidMount = () => this.resetTimer()
 
-  componentWillUnmount() {
-    this.clearTimer();
-  },
+  componentWillUnmount = () => this.clearTimer()
 
-  resetTimer() {
+  resetTimer = () => {
     if (!this.timer && !this.state.completed) {
       this.timer = setTimeout(this.onTimeout, this.props.duration);
     }
-  },
+  }
 
-  clearTimer() {
+  clearTimer = () => {
     if (this.timer && !this.state.completed) {
       clearTimeout(this.timer);
       this.timer = null;
     }
-  },
+  }
 
-  onTimeout() {
+  onTimeout = () => {
     const { onTimeout, uniqueKey } = this.props;
     this.timer = null;
     this.setState({ completed: true }, () => onTimeout(uniqueKey));
-  },
+  }
 
   render() {
     const { children, onTimeout, duration, ...props } = this.props;
@@ -52,6 +49,4 @@ const TimerToast = React.createClass({
     );
   }
 
-});
-
-export default TimerToast;
+}
