@@ -162,7 +162,6 @@ const Popover = React.createClass({
   },
 
   getOffsetRect(target) {
-    target = this.refs.children.getDOMNode();
     const box = target.getBoundingClientRect();
 
     const body = document.body;
