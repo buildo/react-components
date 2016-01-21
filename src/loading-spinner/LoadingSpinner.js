@@ -5,9 +5,9 @@ import { warn } from '../utils/log';
 /**
  * ### Absolute dimmed layer with loading spinner in the center
  */
-const LoadingSpinner = React.createClass({
+export default class LoadingSpinner extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * spinner size
      */
@@ -37,20 +37,18 @@ const LoadingSpinner = React.createClass({
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
-  },
+  }
 
-  getDefaultProps() {
-    return {
+  static defaultProps = {
       size: '3em',
       overlayColor: 'rgba(255, 255, 255, .9)'
-    };
-  },
+  }
 
   componentDidMount() {
     this.logWarnings();
-  },
+  }
 
-  getMessage() {
+  getMessage = () => {
     if (this.props.message) {
       const { message, size } = this.props;
       const messageStyle = {
@@ -65,9 +63,9 @@ const LoadingSpinner = React.createClass({
         </div>
       );
     }
-  },
+  }
 
-  logWarnings() {
+  logWarnings = () => {
     warn(() => {
       const { parentNode } = this.refs.loadingSpinner.getDOMNode();
       const { position } = window.getComputedStyle(parentNode);
@@ -75,7 +73,7 @@ const LoadingSpinner = React.createClass({
         return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];
       }
     });
-  },
+  }
 
   render() {
     const { size, color, overlayColor, id, className, style } = this.props;
@@ -96,6 +94,4 @@ const LoadingSpinner = React.createClass({
     );
   }
 
-});
-
-export default LoadingSpinner;
+}
