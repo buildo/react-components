@@ -2,20 +2,19 @@ import React from 'react';
 import Dropdown from './Dropdown';
 import omit from 'lodash/object/omit';
 
-const DropdownMenu = React.createClass({
+export default class DropdownMenu extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     children: React.PropTypes.oneOfType([
       React.PropTypes.node,
       React.PropTypes.element
     ]).isRequired
-  },
+  }
 
-  getInitialState() {
-    return {
-      isOpen: false
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false };
+  }
 
   componentDidMount() {
     const control = this.refs.select.getDOMNode().getElementsByClassName('Select-control')[0];
@@ -27,19 +26,19 @@ const DropdownMenu = React.createClass({
     control.ontouchend = this.openMenu;
     arrowZone.onmousedown = this.toggleMenu;
     arrow.onmousedown = this.toggleMenu;
-  },
+  }
 
-  openMenu(e) {
+  openMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ isOpen: true });
-  },
+  }
 
-  toggleMenu(e) {
+  toggleMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ isOpen: !this.state.isOpen });
-  },
+  }
 
   render() {
     const isOpenClass = this.state.isOpen ? 'is-open' : '';
@@ -51,6 +50,4 @@ const DropdownMenu = React.createClass({
     );
   }
 
-});
-
-export default DropdownMenu;
+}
