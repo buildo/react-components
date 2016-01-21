@@ -6,9 +6,9 @@ const NO_SIZE_WRAPPER = 'no-size-wrapper';
 /**
  * ### Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
  */
-const Popover = React.createClass({
+export default class Popover extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * the trigger node. It's always visible
      */
@@ -41,21 +41,14 @@ const Popover = React.createClass({
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
-  },
+  }
 
   // LIFECYCLE
 
-  getDefaultProps() {
-    return {
-      style: {}
-    };
-  },
-
-  getInitialState() {
-    return {
-      isOpen: false
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false };
+  }
 
   componentDidMount() {
     this.saveValuesFromNodeTree();
@@ -64,73 +57,71 @@ const Popover = React.createClass({
       this.addListeners();
       this.forceUpdate();
     }
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     this.saveValuesFromNodeTree();
     if (!this.isStateful() && this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen) {
       this.onPopoverOpenChange(nextProps);
     }
-  },
+  }
 
   componentWillUnmount() {
     this.removePopover();
     this.removeListeners();
-  },
+  }
 
   // LISTENERS
 
-  addOnClickListener() {
+  addOnClickListener = () => {
     if (this.getPopoverProps().dismissOnClickOutside) {
       window.addEventListener('click', this.onClickOutside, false);
     }
-  },
+  }
 
-  removeOnClickListener() {
+  removeOnClickListener = () => {
     if (this.getPopoverProps().dismissOnClickOutside) {
       window.removeEventListener('click', this.onClickOutside, false);
     }
-  },
+  }
 
-  onClickOutside(e) {
+  onClickOutside = (e) => {
     const childrenNode = this.refs.children.getDOMNode();
     const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
     const el = e.target || e.srcElement;
     if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
       this.hidePopover();
     }
-  },
+  }
 
-  addOnScrollListener() {
+  addOnScrollListener = () => {
     if (this.getPopoverProps().dismissOnScroll) {
       window.addEventListener('mousewheel', this.onScroll, false);
     }
-  },
+  }
 
-  removeOnScrollListener() {
+  removeOnScrollListener = () => {
     if (this.getPopoverProps().dismissOnScroll) {
       window.removeEventListener('mousewheel', this.onScroll, false);
     }
-  },
+  }
 
-  onScroll() {
-    this.hidePopover();
-  },
+  onScroll = () => this.hidePopover()
 
-  addListeners() {
+  addListeners = () => {
     this.addOnScrollListener();
     this.addOnClickListener();
-  },
+  }
 
-  removeListeners() {
+  removeListeners = () => {
     this.removeOnScrollListener();
     this.removeOnClickListener();
-  },
+  }
 
   // UTILS
 
   // extend with default values
-  getPopoverProps(_props) {
+  getPopoverProps = (_props) => {
     const props = _props || this.props;
     return {
       type: 'relative',
@@ -148,9 +139,9 @@ const Popover = React.createClass({
       offsetY: 0,
       ...props.popover
     };
-  },
+  }
 
-  getPopoverNode() {
+  getPopoverNode = () => {
     let popover;
     if (this.isAbsolute()) {
       popover = this.popoverNode;
@@ -159,9 +150,9 @@ const Popover = React.createClass({
       popover = childrenNode.childNodes[1];
     }
     return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.childNodes[0] : popover;
-  },
+  }
 
-  getOffsetRect(target) {
+  getOffsetRect = (target) => {
     const box = target.getBoundingClientRect();
 
     const body = document.body;
@@ -177,9 +168,9 @@ const Popover = React.createClass({
     const left = Math.round(box.left + scrollLeft - clientLeft);
 
     return { top, left };
-  },
+  }
 
-  saveValuesFromNodeTree(cb) {
+  saveValuesFromNodeTree = (cb) => {
     const childrenNode = this.refs.children.getDOMNode();
     const popoverNode = this.getPopoverNode();
 
@@ -204,17 +195,13 @@ const Popover = React.createClass({
         }
       }, cb);
     }
-  },
+  }
 
-  isStateful(props) {
-    return typeof this.getPopoverProps(props).isOpen === 'undefined';
-  },
+  isStateful = (props) => typeof this.getPopoverProps(props).isOpen === 'undefined'
 
-  isOpen(props) {
-    return this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
-  },
+  isOpen = (props) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen
 
-  isEventInsideTarget(el, target) {
+  isEventInsideTarget = (el, target) => {
     if (!el) {
       return false;
     } else if (el === target) {
@@ -224,11 +211,11 @@ const Popover = React.createClass({
     } else {
       return false;
     }
-  },
+  }
 
   // VISIBILITY CHANGE
 
-  appendPopover() {
+  appendPopover = () => {
     const hiddenPopover = this.getHiddenPopover();
     this.containerNode = document.createElement('div');
     this.containerNode.innerHTML = React.renderToString(hiddenPopover);
@@ -239,16 +226,16 @@ const Popover = React.createClass({
       const popover = this.getVisiblePopover();
       this.containerNode.innerHTML = React.renderToString(popover);
     });
-  },
+  }
 
-  removePopover() {
+  removePopover = () => {
     if (this.containerNode) {
       document.body.removeChild(this.containerNode);
       this.containerNode = null;
     }
-  },
+  }
 
-  onPopoverOpenChange(props) {
+  onPopoverOpenChange = (props) => {
     if (this.isOpen(props)) {
       if (this.isAbsolute()) {
         this.appendPopover();
@@ -260,9 +247,9 @@ const Popover = React.createClass({
       }
       this.removeListeners();
     }
-  },
+  }
 
-  onPopoverStateChange() {
+  onPopoverStateChange = () => {
     const { onShow, onHide, onToggle } = this.getPopoverProps();
     if (this.state.isOpen) {
       onShow();
@@ -271,9 +258,9 @@ const Popover = React.createClass({
     }
     onToggle();
     this.onPopoverOpenChange();
-  },
+  }
 
-  eventWrapper(cb) {
+  eventWrapper = (cb) => {
     return (e) => {
       const { event } = this.getPopoverProps();
       const childrenNode = this.refs.children.getDOMNode().childNodes[0];
@@ -282,21 +269,15 @@ const Popover = React.createClass({
         cb();
       }
     };
-  },
+  }
 
-  showPopover() {
-    this.setIsOpen(true);
-  },
+  showPopover = () => this.setIsOpen(true)
 
-  hidePopover() {
-    this.setIsOpen(false);
-  },
+  hidePopover = () => this.setIsOpen(false)
 
-  togglePopover() {
-    this.setIsOpen(!this.isOpen());
-  },
+  togglePopover = () => this.setIsOpen(!this.isOpen())
 
-  setIsOpen(isOpen) {
+  setIsOpen = (isOpen) => {
     if (this.isStateful()) {
       this.setState({ isOpen }, this.onPopoverStateChange);
     } else {
@@ -305,11 +286,11 @@ const Popover = React.createClass({
       cb();
       onToggle();
     }
-  },
+  }
 
   // LOCALES
 
-  popoverTemplate(style) {
+  popoverTemplate = (style) => {
     const { position, anchor, className, content, id, event } = this.getPopoverProps();
     const { eventWrapper, hidePopover, isAbsolute } = this;
     const positionClass = `position-${position}`;
@@ -321,26 +302,22 @@ const Popover = React.createClass({
         {content}
       </div>
     );
-  },
+  }
 
-  getVisiblePopover() {
-    return this.popoverTemplate(this.computePopoverStyle());
-  },
+  getVisiblePopover = () => this.popoverTemplate(this.computePopoverStyle())
 
-  getHiddenPopover() {
+  getHiddenPopover = () => {
     const style = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
     return (
       <div id={NO_SIZE_WRAPPER} style={style}>
         {this.popoverTemplate({ position: 'absolute', visibility: 'hidden' })}
       </div>
     );
-  },
+  }
 
-  isAbsolute() {
-    return this.getPopoverProps().attachToBody === true;
-  },
+  isAbsolute = () => this.getPopoverProps().attachToBody === true
 
-  getEventCallbacks() {
+  getEventCallbacks = () => {
     const { event } = this.getPopoverProps();
     const onHover = event === 'hover';
     const onClick = event === 'click';
@@ -350,9 +327,9 @@ const Popover = React.createClass({
       onMouseLeave: onHover ? eventWrapper(hidePopover) : undefined,
       onClick: onClick ? eventWrapper(togglePopover) : undefined
     };
-  },
+  }
 
-  computePopoverStyle() {
+  computePopoverStyle = () => {
     const { child, popover } = this.state;
     const { anchor, position, maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
 
@@ -398,7 +375,7 @@ const Popover = React.createClass({
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
       maxWidth
     };
-  },
+  }
 
   getLocals() {
     const isRelative = !this.isAbsolute();
@@ -415,7 +392,7 @@ const Popover = React.createClass({
       eventCallbacks: this.getEventCallbacks(),
       popover
     };
-  },
+  }
 
   // RENDER
 
@@ -429,6 +406,4 @@ const Popover = React.createClass({
     );
   }
 
-});
-
-export default Popover;
+}
