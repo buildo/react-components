@@ -1,6 +1,3 @@
 {
-  "extends": "buildo",
-  "rules": {
-    "jsx-quotes": 0 // for now let's disable this :( (waiting for https://github.com/eslint/eslint/pull/4932)
-  }
+  "extends": "buildo"
 }
