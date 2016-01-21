@@ -28,15 +28,14 @@
   },
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
-    "classnames": "^2.2.1",
-    "eslint-config-buildo": "github:buildo/eslint-config",
+    "classnames": "^2.2.3",
     "lodash": "^3.10.1",
     "mobile-detect": "^1.2.1",
     "react-input-link": "^0.0.5",
     "react-select": "^0.6.1",
     "revenge": "^0.3.4",
     "sass-flex-mixins": "^0.1.0",
-    "tcomb-react": "^0.8.9"
+    "tcomb-react": "^0.8.11"
   },
   "devDependencies": {
     "axios": "^0.8.1",
@@ -46,9 +45,9 @@
     "component-playground": "^0.1.2",
     "compression-webpack-plugin": "^0.2.0",
     "css-loader": "^0.23.1",
-    "eslint": "^1.9.0",
+    "eslint": "^1.10.3",
+    "eslint-config-buildo": "github:buildo/eslint-config",
     "eslint-loader": "^1.1.1",
-    "eslint-plugin-react": "^3.8.0",
     "expect": "^1.13.4",
     "extract-text-webpack-plugin": "^0.9.1",
     "html-webpack-plugin": "^1.7.0",

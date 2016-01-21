@@ -121,7 +121,7 @@ export default class ConfirmationInput extends React.Component {
           className: cx('confirmation-input', { focused }, className)
         }
       }
-    }
+    };
   }
 
   templateConfirm({ text, icon, ...confirmProps }) {
@@ -136,7 +136,7 @@ export default class ConfirmationInput extends React.Component {
         {icon && <Icon icon={icon} />}
         {text}
       </FlexView>
-    )
+    );
   }
 
   template({ inputProps, confirmProps }) {

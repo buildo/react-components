@@ -64,7 +64,7 @@ export default class Panel extends React.Component {
   }
 
   isSoftLoading({ softLoading, softLoadingDelay }) {
-    return this._softLoadingActive || (softLoading && softLoadingDelay === 0) // optimization for the default delay === 0;
+    return this._softLoadingActive || (softLoading && softLoadingDelay === 0); // optimization for the default delay === 0;
   }
 
   componentDidMount() {
