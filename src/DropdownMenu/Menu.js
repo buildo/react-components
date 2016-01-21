@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import partial from 'lodash/function/partial';
 import Divider from '../Divider/Divider';
@@ -7,6 +8,8 @@ export const optionType = t.struct({
   type: t.enums.of(['title', 'item', 'divider']),
   title: t.maybe(t.ReactNode),
   metadata: t.Any,
+  selected: t.maybe(t.Bool),
+  disabled: t.maybe(t.Bool),
   onClick: t.maybe(t.Func)
 }, 'optionType');
 
@@ -61,7 +64,7 @@ export default class Menu extends React.Component {
 
   menuItemTemplate = (option, onOptionClick) => {
     return (
-      <div className='menu-item' onClick={partial(onOptionClick, option)}>
+      <div className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)}>
         <span className='menu-item-title'>
           {option.title}
         </span>
