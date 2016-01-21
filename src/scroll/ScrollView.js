@@ -35,45 +35,40 @@ const propTypes = {
   style: React.PropTypes.object
 };
 
-export default React.createClass({
+export default class ScrollView extends React.Component {
 
-  propTypes,
+  static propTypes = propTypes
 
-  getDefaultProps() {
-    return {
-      scrollX: true,
-      scrollY: true,
-      scrollPropagation: true,
-      easing: 'easeInOutQuad',
-      style: {}
-    };
-  },
+  static defaultProps = {
+    scrollX: true,
+    scrollY: true,
+    scrollPropagation: true,
+    easing: 'easeInOutQuad'
+  }
 
   componentDidMount() {
     if (!this.props.scrollPropagation) {
       this.disableScrollPropagation();
     }
-  },
+  }
 
-  getScrollView() {
-    return this.refs.scrollView.getDOMNode();
-  },
+  getScrollView = () => this.refs.scrollView.getDOMNode()
 
-  enableScrollPropagation() {
+  enableScrollPropagation = () => {
     this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
     this.getScrollView().removeEventListener('touchstart', this.initializeTouchEventDirection);
     this.getScrollView().removeEventListener('touchend', this.clearTouchEventDirection);
     this.getScrollView().removeEventListener('touchmove', this.stopScrollPropagation);
-  },
+  }
 
-  disableScrollPropagation() {
+  disableScrollPropagation = () => {
     this.getScrollView().addEventListener('wheel', this.stopScrollPropagation);
     this.getScrollView().addEventListener('touchstart', this.initializeTouchEventDirection);
     this.getScrollView().addEventListener('touchend', this.clearTouchEventDirection);
     this.getScrollView().addEventListener('touchmove', this.stopScrollPropagation);
-  },
+  }
 
-  isEventInsideScrollView(el) {
+  isEventInsideScrollView = (el) => {
     if (el === this.getScrollView()) {
       return true;
     } else if (el.parentNode) {
@@ -81,17 +76,17 @@ export default React.createClass({
     } else {
       return false;
     }
-  },
+  }
 
-  initializeTouchEventDirection(e) {
+  initializeTouchEventDirection = (e) => {
     this.lastY = e.touches[0].clientY;
-  },
+  }
 
-  clearTouchEventDirection() {
+  clearTouchEventDirection = () => {
     this.lastY = null;
-  },
+  }
 
-  stopScrollPropagation(e) {
+  stopScrollPropagation = (e) => {
     const el = e.target || e.srcElement;
     const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
@@ -114,18 +109,16 @@ export default React.createClass({
         e.preventDefault();
       }
     }
-  },
+  }
 
-  isAtTop() {
-    return this.getScrollView().scrollTop === 0;
-  },
+  isAtTop = () => this.getScrollView().scrollTop === 0
 
-  isAtBottom() {
+  isAtBottom = () => {
     const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
     return scrollTop + offsetHeight === scrollHeight;
-  },
+  }
 
-  computeStyle() {
+  computeStyle = () => {
     const { scrollX, scrollY, style } = this.props;
     return {
       overflowY: scrollY ? 'scroll' : undefined, /* has to be scroll for iOS, not auto */
@@ -133,17 +126,17 @@ export default React.createClass({
       WebkitOverflowScrolling: 'touch',
       ...style
     };
-  },
+  }
 
-  scrollTo(_x, _y, scrollDuration) {
+  scrollTo = (_x, _y, scrollDuration) => {
     const { scrollTop, scrollLeft } = this.getScrollView();
     const x = _x === null ? scrollLeft : _x;
     const y = _y === null ? scrollTop : _y;
 
     this._scrollTo(x, y, scrollDuration, Date.now(), scrollLeft, scrollTop);
-  },
+  }
 
-  _scrollTo(x, y, scrollDuration, startTime, startX, startY) {
+  _scrollTo = (x, y, scrollDuration, startTime, startX, startY) => {
     if (scrollDuration > 0) {
       const { scrollTop, scrollLeft } = this.getScrollView();
       const easingFunction = easing[this.props.easing];
@@ -161,7 +154,7 @@ export default React.createClass({
       this.getScrollView().scrollLeft = x;
       this.getScrollView().scrollTop = y;
     }
-  },
+  }
 
   render() {
     const props = omit(this.props, Object.keys(propTypes));
@@ -172,7 +165,7 @@ export default React.createClass({
         {isFunction ? children(this.scrollTo) : children}
       </div>
     );
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.scrollPropagation && !this.props.scrollPropagation) {
@@ -180,7 +173,7 @@ export default React.createClass({
     } else if (!nextProps.scrollPropagation && this.props.scrollPropagation) {
       this.disableScrollPropagation();
     }
-  },
+  }
 
   componentWillUnmount() {
     if (!this.props.scrollPropagation) {
@@ -188,4 +181,4 @@ export default React.createClass({
     }
   }
 
-});
+}
