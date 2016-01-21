@@ -50,7 +50,7 @@ export default class Toaster extends React.Component {
   }
 
   componentDidMount() {
-    const node = this.props.attachTo ? this.toaster : this.getDOMNode().parentNode;
+    const node = this.props.attachTo ? this.toaster : React.findDOMNode(this).parentNode;
     const { position } = window.getComputedStyle(node);
     if (position !== 'relative' && position !== 'absolute') {
       warn(['Toaster\'s parent node should have "position: relative/absolute"', node]);
