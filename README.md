@@ -8,6 +8,9 @@ Its purpose is to give access to all these components through a single npm depen
 ###Install
 ```npm install --save buildo-react-components```
 
+###Showroom
+http://buildo.github.io/react-components
+
 ###Usage
 Each component is stored inside its own folder (useful for small bundles).
 You can import each package directly from the main lib:
