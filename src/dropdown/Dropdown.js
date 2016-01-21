@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import omit from 'lodash/object/omit';
+import cx from 'classnames';
 import { warn } from '../utils/log';
 
 const themes = {
@@ -20,30 +21,24 @@ const PropTypes = {
   })
 };
 
-const Dropdown = React.createClass({
+export default class Dropdown extends React.Component {
 
-  propTypes: PropTypes,
+  static propTypes = PropTypes
 
-  getChildren() {
-    return [].concat(this.props.children || []);
-  },
+  getChildren = () => [].concat(this.props.children || [])
 
-  renderOption(option) {
-    return this.getChildren()[option.value];
-  },
+  renderOption = (option) => this.getChildren()[option.value]
 
-  renderValue(option) {
-    return this.getChildren()[option.value];
-  },
+  renderValue = (option) => this.getChildren()[option.value]
 
-  getGeneralProps() {
+  getGeneralProps = () => {
     if (this.props.children && this.props.options) {
       warn('You\'re passing both children and options. Children will override options!');
     }
     return omit(this.props, Object.keys(PropTypes));
-  },
+  }
 
-  getChildrenProps() {
+  getChildrenProps = () => {
     if (this.props.children) {
       const options = this.getChildren().map((c, index) => {
         return {
@@ -58,22 +53,18 @@ const Dropdown = React.createClass({
         optionRenderer: this.renderOption
       };
     }
-  },
+  }
 
-  getValueLinkProps() {
+  getValueLinkProps = () => {
     if (this.props.valueLink) {
       return {
         value: this.props.valueLink.value,
         onChange: this.props.valueLink.requestChange
       };
     }
-  },
+  }
 
-  getClassName() {
-    return {
-      className: [this.props.className, themes[this.props.theme]].join(' ')
-    };
-  },
+  getClassName = () => cx(this.props.className, themes[this.props.theme])
 
   render() {
     // The order is important: props may override previous ones
@@ -87,6 +78,4 @@ const Dropdown = React.createClass({
     );
   }
 
-});
-
-export default Dropdown;
+}
