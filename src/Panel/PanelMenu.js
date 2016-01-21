@@ -52,7 +52,7 @@ export default class PanelMenu extends React.Component {
       if (typeof action.selected !== 'undefined') {
         return this.makeSelectableAction(action);
       } else {
-        return action.disabled ? this.makeDisabledAction(action) : action.name
+        return action.disabled ? this.makeDisabledAction(action) : action.name;
       }
     })(),
     onClick: action.disabled ? () => {} : action.callBack,
