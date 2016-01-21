@@ -36,17 +36,20 @@ const propTypes = {
   style: React.PropTypes.object
 };
 
-const TransitionWrapper = React.createClass({
+export default class TransitionWrapper extends React.Component {
 
-  propTypes,
+  static propTypes = propTypes
 
-  getDefaultProps() {
-    return {
-      transitionStyles: {},
-      style: {},
-      component: 'div'
-    };
-  },
+  static defaultProps = {
+    transitionStyles: {},
+    style: {},
+    component: 'div'
+  }
+
+  _replaceState = (state) => {
+    this.state = state;
+    this.forceUpdate();
+  }
 
   startAnimation(anim, timeout, callback) {
     const { transitionStyles } = this.props;
@@ -56,34 +59,30 @@ const TransitionWrapper = React.createClass({
     const initState = { animationStart, transitionClassName: anim };
     const activeState = { animationEnd, transitionClassName: cx(anim, `${anim}-active`) };
 
-    this.replaceState(initState);
+    this._replaceState(initState);
     setTimeout(() => {
       this.setState(activeState);
       setTimeout(callback, timeout);
     }, 30); // if the render is too fast the animation fails... 30ms is an empiric value.
-  },
+  }
 
-  componentWillAppear(callback) {
-    this.componentWillEnter(callback);
-  },
+  componentWillAppear = (callback) => this.componentWillEnter(callback)
 
-  componentDidAppear(callback) {
-    this.componentDidEnter(callback);
-  },
+  componentDidAppear = (callback) => this.componentDidEnter(callback)
 
-  componentWillEnter(callback) {
-    this.startAnimation('enter', this.props.transitionEnterTimeout, callback);
-  },
+  componentWillEnter = (callback) => (
+    this.startAnimation('enter', this.props.transitionEnterTimeout, callback)
+  )
 
-  componentDidEnter() {
-    this.replaceState({ defaultStyle: this.props.transitionStyles.default });
-  },
+  componentDidEnter = () => (
+    this._replaceState({ defaultStyle: this.props.transitionStyles.default })
+  )
 
-  componentWillLeave(callback) {
-    this.startAnimation('leave', this.props.transitionLeaveTimeout, callback);
-  },
+  componentWillLeave = (callback) => (
+    this.startAnimation('leave', this.props.transitionLeaveTimeout, callback)
+  )
 
-  getStyle() {
+  getStyle = () => {
     const { style } = this.props;
     const { animationStart, animationEnd, defaultStyle } = this.state;
     const userTransform = (animationEnd || animationStart || defaultStyle || {}).transform;
@@ -95,7 +94,7 @@ const TransitionWrapper = React.createClass({
       ...animationEnd,
       transform: cx(userTransform, style.transform)
     };
-  },
+  }
 
   render() {
     if (!this.state) {
@@ -117,6 +116,4 @@ const TransitionWrapper = React.createClass({
     );
   }
 
-});
-
-export default TransitionWrapper;
+}
