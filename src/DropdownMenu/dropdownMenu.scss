@@ -64,7 +64,7 @@
         right: 0;
       }
 
-      &:hover .menu-item-title {
+      &:hover:not(.disabled) .menu-item-title {
         color: $lynch;
       }
     }
