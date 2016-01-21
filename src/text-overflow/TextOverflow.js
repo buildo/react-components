@@ -47,16 +47,17 @@ const TextOverflow = React.createClass({
 
   logWarnings() {
     warn(() => {
-      const { width, flex } = this.refs.text.getDOMNode().parentNode.style;
+      const node = this.refs.text.getDOMNode().parentNode;
+      const { width, flex } = window.getComputedStyle(node);
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
-        return `WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`;
+        return [`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`, node];
       }
     });
   },
 
-  verifyOverflow(state) {
-    state = state || this.state;
+  verifyOverflow(_state) {
+    const state = _state || this.state;
     if (state.isOverflowing === false) {
       const text = this.refs.text.getDOMNode();
       if(text.offsetWidth < text.scrollWidth){
