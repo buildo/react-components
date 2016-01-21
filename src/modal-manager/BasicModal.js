@@ -2,9 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 import BackgroundDimmer from '../background-dimmer';
 
-const BasicModal = React.createClass({
+export default class BasicModal extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     children: React.PropTypes.element.isRequired,
     iconClose: React.PropTypes.element,
     onDismiss: React.PropTypes.func,
@@ -16,18 +16,18 @@ const BasicModal = React.createClass({
     style: React.PropTypes.object,
     className: React.PropTypes.string,
     id: React.PropTypes.string
-  },
+  }
 
-  getBackgroundProp() {
+  getBackgroundProp = () => {
     return {
       color: 'black',
       alpha: 0.8,
       stopScrollPropagation: true,
       ...this.props.background
     };
-  },
+  }
 
-  getIconClose() {
+  getIconClose = () => {
     const { iconClose, onDismiss } = this.props;
     if (iconClose) {
       return iconClose;
@@ -45,7 +45,7 @@ const BasicModal = React.createClass({
       fontSize: 25
     };
     return <i className='icon-close' style={style} onClick={onDismiss} />;
-  },
+  }
 
   render() {
     const { children, onDismiss, className, id, style } = this.props;
@@ -64,6 +64,4 @@ const BasicModal = React.createClass({
     );
   }
 
-});
-
-export default BasicModal;
+}
