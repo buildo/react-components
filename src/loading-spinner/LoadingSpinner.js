@@ -69,9 +69,10 @@ const LoadingSpinner = React.createClass({
 
   logWarnings() {
     warn(() => {
-      const { position } = this.refs.loadingSpinner.getDOMNode().parentNode.style;
+      const { parentNode } = this.refs.loadingSpinner.getDOMNode();
+      const { position } = window.getComputedStyle(parentNode);
       if (position !== 'relative' && position !== 'absolute') {
-        return 'LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"';
+        return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];
       }
     });
   },
