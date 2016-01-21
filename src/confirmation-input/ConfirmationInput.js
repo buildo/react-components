@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { props, skinnable, t } from '../utils';
 import InputChildren from 'react-input-children';
 import { linkState } from '../link-state';
-import { FlexView } from '../flex';
+import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
 

@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import { pure, skinnable, props, t } from '../utils';
 import { buttonState } from './ButtonLogic';
-import { FlexView } from '../flex';
+import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
-import LoadingSpinner from '../loading-spinner';
-import _TextOverflow from '../text-overflow';
+import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import _TextOverflow from '../text-overflow/TextOverflow';
 
 export const stringForButtonStates = t.struct({
   ready: t.maybe(t.Str),

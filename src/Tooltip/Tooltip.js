@@ -1,6 +1,6 @@
 import React from 'react';
 import { pure, props, skinnable, t } from '../utils';
-import Popover from '../popover';
+import Popover from '../popover/Popover';
 import cx from 'classnames';
 
 import './tooltip.scss';

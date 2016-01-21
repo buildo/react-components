@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { pure, skinnable, props, t } from '../utils';
-import { FlexView } from '../flex';
+import FlexView from '../flex/FlexView';
 
 @pure
 @skinnable()
