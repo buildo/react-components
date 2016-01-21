@@ -8,9 +8,9 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 /**
  * ### Renders and animates toasts (children) inline or in a portal
  */
-const Toaster = React.createClass({
+export default class Toaster extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * list of toasts (any node with a unique key)
      */
@@ -38,18 +38,16 @@ const Toaster = React.createClass({
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     style: React.PropTypes.object
-  },
+  }
 
-  getDefaultProps() {
-    return {
-      transitionGroup: {}
-    };
-  },
+  static defaultProps = {
+    transitionGroup: {}
+  }
 
   componentWillMount() {
     this.appendToaster();
     this.renderToaster();
-  },
+  }
 
   componentDidMount() {
     const node = this.props.attachTo ? this.toaster : this.getDOMNode().parentNode;
@@ -57,11 +55,11 @@ const Toaster = React.createClass({
     if (position !== 'relative' && position !== 'absolute') {
       warn(['Toaster\'s parent node should have "position: relative/absolute"', node]);
     }
-  },
+  }
 
   componentWillUnmount() {
     this.removeToaster();
-  },
+  }
 
   getTranslationStyle(i) {
     return {
@@ -70,9 +68,9 @@ const Toaster = React.createClass({
       top: 0,
       right: 0
     };
-  },
+  }
 
-  getToasts() {
+  getToasts = () => {
     const { children, transitionStyles, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
     return React.Children.map(children, (el, i) => {
       return (
@@ -85,21 +83,21 @@ const Toaster = React.createClass({
         </TransitionWrapper>
       );
     });
-  },
+  }
 
-  appendToaster() {
+  appendToaster = () => {
     if (this.props.attachTo) {
       this.toaster = document.getElementById(this.props.attachTo);
     }
-  },
+  }
 
-  removeToaster() {
+  removeToaster = () => {
     if (this.toaster && this.props.attachTo) {
       this.toaster.innerHTML = ''; // stupid??
     }
-  },
+  }
 
-  getToaster() {
+  getToaster = () => {
     const { style: styleProp, id, className } = this.props;
     const style = {
       position: 'absolute',
@@ -117,13 +115,13 @@ const Toaster = React.createClass({
         </ReactTransitionGroup>
       </div>
     );
-  },
+  }
 
-  renderToaster() {
+  renderToaster = () => {
     if (this.props.attachTo) {
       React.render(this.getToaster(), this.toaster);
     }
-  },
+  }
 
   render() {
     if (this.props.attachTo) {
@@ -131,11 +129,11 @@ const Toaster = React.createClass({
     } else {
       return this.getToaster();
     }
-  },
+  }
 
   componentDidUpdate() {
     this.renderToaster();
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.attachTo !== nextProps.attachTo) {
@@ -143,6 +141,4 @@ const Toaster = React.createClass({
     }
   }
 
-});
-
-export default Toaster;
+}
