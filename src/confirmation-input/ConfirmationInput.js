@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, skinnable, t } from '../utils';
-import InputLink from 'react-input-link';
+import InputChildren from 'react-input-children';
 import { linkState } from '../link-state';
 import { FlexView } from '../flex';
 import Icon from '../Icon/Icon';
@@ -141,9 +141,9 @@ export default class ConfirmationInput extends React.Component {
 
   template({ inputProps, confirmProps }) {
     return (
-      <InputLink {...inputProps}>
+      <InputChildren {...inputProps}>
         {confirmProps && this.templateConfirm(confirmProps)}
-      </InputLink>
+      </InputChildren>
     );
   }
 
