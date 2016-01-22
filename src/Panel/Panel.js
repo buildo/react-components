@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { props, t, skinnable, pure } from '../utils';
 import PanelHeader from './PanelHeader';
 import capitalize from 'lodash/string/capitalize';
-import LoadingSpinner from '../loading-spinner';
-import { FlexView } from '../flex';
+import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import FlexView from '../flex/FlexView';
 
 import './panel.scss';
 

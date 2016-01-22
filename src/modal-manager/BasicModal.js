@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import BackgroundDimmer from '../background-dimmer';
+import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
 export default class BasicModal extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexView } from '../flex';
+import FlexView from '../flex/FlexView';
 
 /**
  * ### Creates a full-page dimmed background for its children nodes

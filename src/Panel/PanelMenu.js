@@ -8,7 +8,7 @@ import DropdownMenu, { Props as dropdownMenuProps } from '../DropdownMenu/Dropdo
 import Divider from '../Divider/Divider';
 import TooltippedIcon from '../Icon/TooltippedIcon';
 import Tooltip from '../Tooltip/Tooltip';
-import { FlexView } from '../flex';
+import FlexView from '../flex/FlexView';
 import cx from 'classnames';
 
 import './panelMenu.scss';
