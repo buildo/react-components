@@ -1,22 +1,23 @@
 import React from 'react';
 import cx from 'classnames';
+import { props, t } from '../utils';
 import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
-export default class BasicModal extends React.Component {
 
-  static propTypes = {
-    children: React.PropTypes.element.isRequired,
-    iconClose: React.PropTypes.element,
-    onDismiss: React.PropTypes.func,
-    background: React.PropTypes.shape({
-      color: React.PropTypes.string,
-      alpha: React.PropTypes.number,
-      stopScrollPropagation: React.PropTypes.bool
-    }),
-    style: React.PropTypes.object,
-    className: React.PropTypes.string,
-    id: React.PropTypes.string
-  }
+@props({
+  children: t.ReactElement,
+  iconClose: t.maybe(t.ReactElement),
+  onDismiss: t.maybe(t.Function),
+  background: t.maybe(t.struct({
+    color: t.maybe(t.String),
+    alpha: t.maybe(t.Number),
+    stopScrollPropagation: t.maybe(t.Boolean)
+  })),
+  style: t.maybe(t.Object),
+  className: t.maybe(t.String),
+  id: t.maybe(t.String)
+})
+export default class BasicModal extends React.Component {
 
   getBackgroundProp = () => {
     return {
