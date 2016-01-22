@@ -1,6 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import omit from 'lodash/object/omit';
+import { props, t } from '../utils';
+
+const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.prototype instanceof React.Component || t.Function.is(x.prototype.render)));
 
 /**
  * ### To be used with `ReactTransitionGroup` to show transitions for a component
@@ -14,7 +17,7 @@ const PropTypes = {
    * custom component to be used as wrapper for `children`.
    * Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`)
    */
-  component: React.PropTypes.any,
+  component: t.maybe(t.union([ ReactClass, t.String ])),
   /**
    * object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case)
    */
