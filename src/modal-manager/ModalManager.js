@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import { warn } from '../utils/log';
+import { props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
@@ -10,34 +11,33 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
  * - renders one modal at a time
  * - supports animations (by using `TransitionWrapper`)
  */
+@props({
+  /**
+   * active modal component
+   */
+  children: t.maybe(t.ReactElement),
+  /**
+   * object with style for each transition event (used by TransitionWrapper)
+   */
+  transitionStyles: t.maybe(t.Object),
+  /**
+   * duration of enter transition in milliseconds (used by TransitionWrapper)
+   */
+  transitionEnterTimeout: t.maybe(t.Number),
+  /**
+   * duration of leave transition in milliseconds (used by TransitionWrapper)
+   */
+  transitionLeaveTimeout: t.maybe(t.Number),
+  /**
+   * callback to get custom context for modals. Can't be updated
+   */
+  getChildContext: t.maybe(t.Function),
+  /**
+   * static object to describe custom context object for modals. Can't be updated
+   */
+  childContextTypes: t.maybe(t.Object)
+})
 export default class ModalManager extends React.Component {
-
-  static propTypes = {
-    /**
-     * active modal component
-     */
-    children: React.PropTypes.element,
-    /**
-     * object with style for each transition event (used by TransitionWrapper)
-     */
-    transitionStyles: React.PropTypes.object,
-    /**
-     * duration of enter transition in milliseconds (used by TransitionWrapper)
-     */
-    transitionEnterTimeout: React.PropTypes.number,
-    /**
-     * duration of leave transition in milliseconds (used by TransitionWrapper)
-     */
-    transitionLeaveTimeout: React.PropTypes.number,
-    /**
-     * callback to get custom context for modals. Can't be updated
-     */
-    getChildContext: React.PropTypes.func,
-    /**
-     * static object to describe custom context object for modals. Can't be updated
-     */
-    childContextTypes: React.PropTypes.object
-  }
 
   static defaultProps = {
     transitionStyles: {},
