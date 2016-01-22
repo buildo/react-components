@@ -1,16 +1,17 @@
 import React from 'react';
+import { props, t } from '../utils';
 
+
+@props({
+  children: t.ReactNode,
+  onTimeout: t.Function,
+  duration: t.Number,
+  uniqueKey: t.maybe(t.String),
+  className: t.maybe(t.String),
+  id: t.maybe(t.String),
+  style: t.maybe(t.Object)
+})
 export default class TimerToast extends React.Component {
-
-  static propTypes = {
-    children: React.PropTypes.node.isRequired,
-    onTimeout: React.PropTypes.func.isRequired,
-    duration: React.PropTypes.number.isRequired,
-    uniqueKey: React.PropTypes.string,
-    className: React.PropTypes.string,
-    id: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
 
   constructor(props) {
     super(props);
