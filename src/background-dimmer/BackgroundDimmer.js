@@ -1,40 +1,40 @@
 import React from 'react';
+import { props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 
 /**
  * ### Creates a full-page dimmed background for its children nodes
  */
+@props({
+  /**
+   * children nodes/elements
+   */
+  children: t.ReactNode,
+  /**
+   * background-color
+   */
+  color: t.maybe(t.String),
+  /**
+   * opacity
+   */
+  alpha: t.maybe(t.Number),
+  /**
+   * z-index (BackgroundDimmer has `position: fixed`)
+   */
+  zIndex: t.maybe(t.Number),
+  /**
+   * avoid propagation for scroll events
+   */
+  stopScrollPropagation: t.maybe(t.Boolean),
+  /**
+   * called when user clicks outside children
+   */
+  onClickOutside: t.maybe(t.Function),
+  className: t.maybe(t.String),
+  id: t.maybe(t.String),
+  style: t.maybe(t.Object)
+})
 export default class BackgroundDimmer extends React.Component {
-
-  static propTypes = {
-    /**
-     * children nodes/elements
-     */
-    children: React.PropTypes.node.isRequired,
-    /**
-     * background-color
-     */
-    color: React.PropTypes.string,
-    /**
-     * opacity
-     */
-    alpha: React.PropTypes.number,
-    /**
-     * z-index (BackgroundDimmer has `position: fixed`)
-     */
-    zIndex: React.PropTypes.number,
-    /**
-     * avoid propagation for scroll events
-     */
-    stopScrollPropagation: React.PropTypes.bool,
-    /**
-     * called when user clicks outside children
-     */
-    onClickOutside: React.PropTypes.func,
-    className: React.PropTypes.string,
-    id: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
 
   static defaultProps = {
     color: 'black',
