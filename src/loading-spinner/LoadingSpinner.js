@@ -67,7 +67,7 @@ export default class LoadingSpinner extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const { parentNode } = this.refs.loadingSpinner.getDOMNode();
+      const { parentNode } = React.findDOMNode(this.refs.loadingSpinner);
       const { position } = window.getComputedStyle(parentNode);
       if (position !== 'relative' && position !== 'absolute') {
         return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];

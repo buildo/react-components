@@ -40,7 +40,7 @@ export default class TextOverflow extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const node = this.refs.text.getDOMNode().parentNode;
+      const node = React.findDOMNode(this.refs.text).parentNode;
       const { width, flex } = node.style;
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
@@ -52,7 +52,7 @@ export default class TextOverflow extends React.Component {
   verifyOverflow = (_state) => {
     const state = _state || this.state;
     if (state.isOverflowing === false) {
-      const text = this.refs.text.getDOMNode();
+      const text = React.findDOMNode(this.refs.text);
       if(text.offsetWidth < text.scrollWidth){
         this.setState({ isOverflowing: true }, this.logWarnings);
       } else {
