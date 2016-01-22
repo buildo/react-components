@@ -28,6 +28,7 @@ import '../../src/loading-spinner/style.scss';
 import '../../src/confirmation-input/confirmationInput.scss';
 import '../../src/badge/badge.scss';
 import '../../src/toggle/toggle.scss';
+import '../../node_modules/react-select/dist/default.css';
 
 export default [
   {
