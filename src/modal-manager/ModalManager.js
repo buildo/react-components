@@ -49,14 +49,15 @@ export default class ModalManager extends React.Component {
 
   componentWillMount() {
     const { childContextTypes, getChildContext } = this.props;
-    this.ContextWrapper = class ContextWrapper extends React.Component { // eslint-disable-line react/no-multi-comp
-      static propTypes = {
-        children: React.PropTypes.element.isRequired
-      }
+
+    @props({ children: t.ReactElement })
+    class ContextWrapper extends React.Component { // eslint-disable-line react/no-multi-comp
       static childContextTypes = childContextTypes
       static getChildContext = getChildContext
       render = () => this.props.children
-    };
+    }
+
+    this.ContextWrapper = ContextWrapper;
   }
 
   componentDidMount() {
