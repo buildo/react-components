@@ -1,47 +1,41 @@
 import React from 'react';
 import cx from 'classnames';
+import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
 /**
  * ### Absolute dimmed layer with loading spinner in the center
  */
+@props({
+  /**
+  * spinner size
+  */
+  size: t.maybe(t.union([t.String, t.Number])),
+  /**
+  * spinner main color
+  */
+  color: t.maybe(t.String),
+  /**
+  * spinner message
+  */
+  message: t.maybe(t.struct({
+   content: t.String,
+   color: t.maybe(t.String),
+   size: t.maybe(t.union([t.String, t.Number]))
+  })),
+  /**
+  * dimmed-overlay color
+  */
+  overlayColor: t.maybe(t.String),
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+})
 export default class LoadingSpinner extends React.Component {
 
-  static propTypes = {
-    /**
-     * spinner size
-     */
-    size: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
-    /**
-     * spinner main color
-     */
-    color: React.PropTypes.string,
-    /**
-     * spinner message
-     */
-    message: React.PropTypes.shape({
-      content: React.PropTypes.string.isRequired,
-      color: React.PropTypes.string,
-      size: React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.number
-      ])
-    }),
-    /**
-     * dimmed-overlay color
-     */
-    overlayColor: React.PropTypes.string,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
-
   static defaultProps = {
-      size: '3em',
-      overlayColor: 'rgba(255, 255, 255, .9)'
+    size: '3em',
+    overlayColor: 'rgba(255, 255, 255, .9)'
   }
 
   componentDidMount() {
