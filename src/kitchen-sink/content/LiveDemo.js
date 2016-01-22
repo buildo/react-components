@@ -15,11 +15,11 @@ export default class LiveDemo extends React.Component {
 
   componentDidMount() {
     if (this.props.iso) {
-      this.contentNodeISO = this.refs.contentNodeISO.getDOMNode();
+      this.contentNodeISO = React.findDOMNode(this.refs.contentNodeISO);
       this.contentNodeISO.innerHTML = React.renderToString(this.getContentISO());
       React.render(this.getContentISO(), this.contentNodeISO);
     }
-    this.contentNode = this.refs.contentNode.getDOMNode();
+    this.contentNode = React.findDOMNode(this.refs.contentNode);
     this.forceUpdate();
   }
 

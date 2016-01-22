@@ -86,7 +86,7 @@ export default class Popover extends React.Component {
   }
 
   onClickOutside = (e) => {
-    const childrenNode = this.refs.children.getDOMNode();
+    const childrenNode = React.findDOMNode(this.refs.children);
     const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
     const el = e.target || e.srcElement;
     if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
@@ -146,7 +146,7 @@ export default class Popover extends React.Component {
     if (this.isAbsolute()) {
       popover = this.popoverNode;
     } else {
-      const childrenNode = this.refs.children.getDOMNode();
+      const childrenNode = React.findDOMNode(this.refs.children);
       popover = childrenNode.childNodes[1];
     }
     return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.childNodes[0] : popover;
@@ -171,7 +171,7 @@ export default class Popover extends React.Component {
   }
 
   saveValuesFromNodeTree = (cb) => {
-    const childrenNode = this.refs.children.getDOMNode();
+    const childrenNode = React.findDOMNode(this.refs.children);
     const popoverNode = this.getPopoverNode();
 
     if (popoverNode) {
@@ -263,7 +263,7 @@ export default class Popover extends React.Component {
   eventWrapper = (cb) => {
     return (e) => {
       const { event } = this.getPopoverProps();
-      const childrenNode = this.refs.children.getDOMNode().childNodes[0];
+      const childrenNode = React.findDOMNode(this.refs.children).childNodes[0];
       const el = e.target || e.srcElement;
       if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
         cb();

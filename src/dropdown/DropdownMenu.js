@@ -17,7 +17,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   componentDidMount() {
-    const control = this.refs.select.getDOMNode().getElementsByClassName('Select-control')[0];
+    const control = React.findDOMNode(this.refs.select).getElementsByClassName('Select-control')[0];
     const arrowZone = control.getElementsByClassName('Select-arrow-zone')[0];
     const arrow = control.getElementsByClassName('Select-arrow')[0];
 

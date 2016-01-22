@@ -37,10 +37,7 @@ export default class Toggle extends React.Component {
 
   updateCheckbox = (props) => {
     const { value } = getValueLink(this, props);
-    const { checkbox } = this.refs;
-    const checkboxNode = checkbox.nodeType === 1 ?
-      checkbox :
-      checkbox.getDOMNode();
+    const checkboxNode = React.findDOMNode(this.refs.checkbox);
     checkboxNode.checked = value;
   }
 

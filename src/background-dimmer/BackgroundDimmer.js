@@ -49,8 +49,8 @@ export default class BackgroundDimmer extends React.Component {
   }
 
   enableScrollPropagation = () => {
-    const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
-    const childrenWrapper = this.refs.childrenWrapper.getDOMNode();
+    const dimmedBackground = React.findDOMNode(this.refs.dimmedBackground);
+    const childrenWrapper = React.findDOMNode(this.refs.childrenWrapper);
     dimmedBackground.removeEventListener('wheel', this.stopScrollPropagation);
     dimmedBackground.removeEventListener('touchmove', this.stopScrollPropagation);
     childrenWrapper.removeEventListener('wheel', this.preventDefault);
@@ -58,8 +58,8 @@ export default class BackgroundDimmer extends React.Component {
   }
 
   disableScrollPropagation = () => {
-    const dimmedBackground = this.refs.dimmedBackground.getDOMNode();
-    const childrenWrapper = this.refs.childrenWrapper.getDOMNode();
+    const dimmedBackground = React.findDOMNode(this.refs.dimmedBackground);
+    const childrenWrapper = React.findDOMNode(this.refs.childrenWrapper);
     dimmedBackground.addEventListener('wheel', this.stopScrollPropagation);
     dimmedBackground.addEventListener('touchmove', this.stopScrollPropagation);
     childrenWrapper.addEventListener('wheel', this.preventDefault);
@@ -68,7 +68,7 @@ export default class BackgroundDimmer extends React.Component {
 
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
-    return el === this.refs.dimmedBackground.getDOMNode();
+    return el === React.findDOMNode(this.refs.dimmedBackground);
   }
 
   onClick = (e) => {

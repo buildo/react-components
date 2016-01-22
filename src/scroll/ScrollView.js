@@ -52,7 +52,7 @@ export default class ScrollView extends React.Component {
     }
   }
 
-  getScrollView = () => this.refs.scrollView.getDOMNode()
+  getScrollView = () => React.findDOMNode(this.refs.scrollView)
 
   enableScrollPropagation = () => {
     this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
