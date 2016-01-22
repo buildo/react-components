@@ -10,9 +10,9 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
  * - renders one modal at a time
  * - supports animations (by using `TransitionWrapper`)
  */
-const ModalManager = React.createClass({
+export default class ModalManager extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * active modal component
      */
@@ -37,42 +37,38 @@ const ModalManager = React.createClass({
      * static object to describe custom context object for modals. Can't be updated
      */
     childContextTypes: React.PropTypes.object
-  },
+  }
 
-  getDefaultProps() {
-    return {
-      transitionStyles: {},
-      transitionEnterTimeout: 0,
-      transitionLeaveTimeout: 0,
-      childContextTypes: {},
-      getChildContext: () => ({})
-    };
-  },
+  static defaultProps = {
+    transitionStyles: {},
+    transitionEnterTimeout: 0,
+    transitionLeaveTimeout: 0,
+    childContextTypes: {},
+    getChildContext: () => ({})
+  }
 
   componentWillMount() {
     const { childContextTypes, getChildContext } = this.props;
-    this.ContextWrapper = React.createClass({ // eslint-disable-line react/no-multi-comp
-      propTypes: {
+    this.ContextWrapper = class ContextWrapper extends React.Component { // eslint-disable-line react/no-multi-comp
+      static propTypes = {
         children: React.PropTypes.element.isRequired
-      },
-      childContextTypes,
-      getChildContext,
-      render() {
-        return this.props.children;
       }
-    });
-  },
+      static childContextTypes = childContextTypes
+      static getChildContext = getChildContext
+      render = () => this.props.children
+    };
+  }
 
   componentDidMount() {
     this.appendModalContainer();
     this.renderModals();
-  },
+  }
 
   componentWillUnmount() {
     this.removeModalContainer();
-  },
+  }
 
-  getModal() {
+  getModal = () => {
     const {
       transitionStyles,
       transitionEnterTimeout,
@@ -110,23 +106,23 @@ const ModalManager = React.createClass({
         </TransitionWrapper>
       );
     });
-  },
+  }
 
-  appendModalContainer() {
+  appendModalContainer = () => {
     if (!this.containerNode) {
       this.containerNode = document.createElement('div');
       document.body.appendChild(this.containerNode);
     }
-  },
+  }
 
-  removeModalContainer() {
+  removeModalContainer = () => {
     if (this.containerNode) {
       document.body.removeChild(this.containerNode);
       this.containerNode = null;
     }
-  },
+  }
 
-  getModalManager() {
+  getModalManager = () => {
     return (
       <div>
         <ReactTransitionGroup>
@@ -134,21 +130,19 @@ const ModalManager = React.createClass({
         </ReactTransitionGroup>
       </div>
     );
-  },
+  }
 
-  renderModals() {
+  renderModals = () => {
     const Modal = this.getModalManager();
     React.render(<this.ContextWrapper>{Modal}</this.ContextWrapper>, this.containerNode);
-  },
+  }
 
   render() {
     return null;
-  },
+  }
 
   componentDidUpdate() {
     this.renderModals();
   }
 
-});
-
-export default ModalManager;
+}

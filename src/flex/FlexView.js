@@ -72,18 +72,11 @@ const propTypes = {
   style: PropTypes.object
 };
 
-export default React.createClass({
+export default class FlexView extends React.Component {
 
-  propTypes,
+  static propTypes = propTypes
 
-  getDefaultProps() {
-    return {
-      className: '',
-      style: {}
-    };
-  },
-
-  getGrow() {
+  getGrow = () => {
     const { grow } = this.props;
     if (typeof grow === 'number') {
       return grow;
@@ -92,9 +85,9 @@ export default React.createClass({
     } else {
       return 0; // auto === true or default
     }
-  },
+  }
 
-  getShrink() {
+  getShrink = () => {
     const { shrink, basis, flexBasis, auto } = this.props;
     if (typeof shrink === 'number') {
       return shrink;
@@ -110,9 +103,9 @@ export default React.createClass({
     } else {
       return 1; // grow === true or default
     }
-  },
+  }
 
-  getBasis() {
+  getBasis = () => {
     const { grow, shrink, basis, flexBasis, auto } = this.props;
     const _basis = basis || flexBasis;
     if (_basis) {
@@ -123,9 +116,9 @@ export default React.createClass({
     } else {
       return 'auto'; // safe default
     }
-  },
+  }
 
-  getFlexStyle() {
+  getFlexStyle = () => {
     const grow = this.getGrow();
     const shrink = this.getShrink();
     const basis = this.getBasis();
@@ -137,9 +130,9 @@ export default React.createClass({
       WebkitFlex: values,
       flex: values
     };
-  },
+  }
 
-  getStyle() {
+  getStyle = () => {
     const style = pick(this.props, [
       'width',
       'height',
@@ -149,9 +142,9 @@ export default React.createClass({
       'marginBottom'
     ]);
     return { ...this.getFlexStyle(), ...style, ...this.props.style };
-  },
+  }
 
-  getContentAlignmentClasses() {
+  getContentAlignmentClasses = () => {
     const vPrefix = this.props.column ? 'justify-content-' : 'align-content-';
     const hPrefix = this.props.column ? 'align-content-' : 'justify-content-';
 
@@ -171,14 +164,14 @@ export default React.createClass({
     const hAlignContent = hAlignContentClasses[this.props.hAlignContent];
 
     return cx(vAlignContent, hAlignContent);
-  },
+  }
 
-  getClasses() {
+  getClasses = () => {
     const direction = this.props.column ? 'flex-column' : 'flex-row';
     const contentAlignment = this.getContentAlignmentClasses();
     const wrap = this.props.wrap && 'flex-wrap';
     return cx('react-flex-view', direction, contentAlignment, wrap, this.props.className);
-  },
+  }
 
   render() {
     const className = this.getClasses();
@@ -191,4 +184,4 @@ export default React.createClass({
     );
   }
 
-});
+}

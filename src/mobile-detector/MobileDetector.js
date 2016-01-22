@@ -4,9 +4,9 @@ import MobileDetect from 'mobile-detect';
 /**
  * ### Top-level component which detects device type and passes this info to children as context
  */
-const MobileDetector = React.createClass({
+export default class MobileDetector extends React.Component {
 
-  propTypes: {
+  static propTypes = {
     /**
      * children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback
      */
@@ -19,20 +19,18 @@ const MobileDetector = React.createClass({
      * custom user-agent
      */
     userAgent: React.PropTypes.string
-  },
+  }
 
-  childContextTypes: {
+  static childContextTypes = {
     isDesktop: React.PropTypes.bool.isRequired,
     isMobile: React.PropTypes.bool.isRequired,
     isPhone: React.PropTypes.bool.isRequired,
     isTablet: React.PropTypes.bool.isRequired
-  },
+  }
 
-  getChildContext() {
-    return this.getEnvironmentInfo();
-  },
+  getChildContext = () => this.getEnvironmentInfo()
 
-  getEnvironmentInfo() {
+  getEnvironmentInfo = () => {
     const md = new MobileDetect(this.props.userAgent || window.navigator.userAgent);
     return {
       isDesktop: !this.isMobile(md),
@@ -40,24 +38,16 @@ const MobileDetector = React.createClass({
       isPhone: this.isPhone(md),
       isTablet: this.isTablet(md)
     };
-  },
+  }
 
-  isPhone(md) {
-    return !this.props.forceDesktop && !!md.phone();
-  },
+  isPhone = (md) => !this.props.forceDesktop && !!md.phone()
 
-  isTablet(md) {
-    return !this.props.forceDesktop && !!md.tablet();
-  },
+  isTablet = (md) => !this.props.forceDesktop && !!md.tablet()
 
-  isMobile(md) {
-    return !this.props.forceDesktop && !!md.mobile();
-  },
+  isMobile = (md) => !this.props.forceDesktop && !!md.mobile()
 
   render() {
     return this.props.children(this.getEnvironmentInfo());
   }
 
-});
-
-module.exports = MobileDetector;
+}
