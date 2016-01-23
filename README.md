@@ -9,7 +9,7 @@ Its purpose is to give access to all these components through a single npm depen
 ```npm install --save buildo-react-components```
 
 ### Showroom
-http://buildo.github.io/react-components
+[http://buildo.github.io/react-components](http://buildo.github.io/react-components)
 
 ### Usage
 Each component is stored inside its own folder (useful for small bundles).
