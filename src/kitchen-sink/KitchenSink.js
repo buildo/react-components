@@ -2,73 +2,65 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
+import Component from './content/Component';
 
 export default class KitchenSink extends React.Component {
 
   static propTypes = {
     componentId: React.PropTypes.string,
-    sections: React.PropTypes.array,
+    contentId: React.PropTypes.string,
+    sectionId: React.PropTypes.string,
+    sections: React.PropTypes.array.isRequired,
+    openSections: React.PropTypes.array,
     components: React.PropTypes.array,
     onSelectItem: React.PropTypes.func.isRequired,
-    scope: React.PropTypes.object.isRequired,
-    iso: React.PropTypes.bool
+    onToggleSection: React.PropTypes.func.isRequired,
+    scope: React.PropTypes.object,
+    iso: React.PropTypes.bool,
+    header: React.PropTypes.node,
+    footer: React.PropTypes.node,
+    loading: React.PropTypes.bool
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      component: this.findComponent(props.componentId)
-    };
+  static defaultProps = {
+    openSections: []
   }
 
-  onSelectItem = (componentId) => this.props.onSelectItem(componentId, this.findSectionId(componentId))
+  findSection = () => find(this.props.sections, { id: this.props.sectionId }) || {}
 
-  findSectionId = (componentId) => {
-    const { sections } = this.props;
-    if (sections) {
-      return find(sections, (section) => find(section.components, { id: componentId })).id;
-    }
-  }
+  findComponent = () => find(this.findSection().components, { id: this.props.componentId })
 
-  findComponent = (componentId) => {
-    const { sections, components } = this.props;
-    if (components) {
-      return find(components, { id: componentId });
-    } else {
-      return sections.reduce((acc, s) => acc || find(s.components, { id: componentId }), null);
-    }
-  }
+  findContent = () => find(this.findSection().contents, { id: this.props.contentId })
 
   render() {
     const {
       props: {
         componentId,
+        contentId,
         sections,
-        components,
+        openSections,
         onSelectItem,
+        onToggleSection,
         scope,
-        iso
-      },
-      state: { component }
+        iso,
+        header,
+        footer,
+        loading
+      }
     } = this;
+
+    const children = componentId ?
+      <Component {...{ component: this.findComponent(), scope, iso, header, footer }} />
+      :
+      <Content content={this.findContent()} />;
 
     return (
       <div className='kitchen-sink'>
-        <Sidebar {...{ sections, components, componentId, onSelectItem }} >
-          <Content {...{ component, scope, iso }} />
+        <Sidebar {...{ sections, openSections, onToggleSection, componentId, contentId, onSelectItem, loading }} >
+          {!loading && children}
         </Sidebar>
       </div>
     );
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { componentId } = nextProps;
-    if (componentId !== this.props.componentId) {
-      this.setState(
-        { component: null },
-        () => this.setState({ component: this.findComponent(componentId) })
-      );
-    }
   }
 
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Playground from 'component-playground';
-import ScrollView from '../../scroll';
+import MoreOrLess from '../../more-or-less/MoreOrLess';
 
 const footer = '\n__render(Example);';
 const footerISO = '\n__renderISO(Example);';
@@ -11,6 +11,11 @@ export default class LiveDemo extends React.Component {
     iso: React.PropTypes.bool,
     scope: React.PropTypes.object.isRequired,
     codeText: React.PropTypes.string.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = { showCode: false };
   }
 
   componentDidMount() {
@@ -24,6 +29,10 @@ export default class LiveDemo extends React.Component {
   }
 
   componentDidUpdate() {
+    const playground = React.findDOMNode(this.refs.playground);
+    if (playground) {
+      playground.click();
+    }
     if (this.props.iso) {
       React.render(this.getContentISO(), this.contentNodeISO);
     }
@@ -35,7 +44,7 @@ export default class LiveDemo extends React.Component {
         <Example />
       </div>
     );
-    React.render(content, this.contentNode);
+    setTimeout(() => React.render(content, this.contentNode));
   }
 
   __renderISO = (Example) => {
@@ -47,7 +56,7 @@ export default class LiveDemo extends React.Component {
         </div>
       </div>
     );
-    React.render(content, this.contentNodeISO);
+    setTimeout(() => React.render(content, this.contentNodeISO));
   }
 
   getContentISO = () => {
@@ -56,18 +65,27 @@ export default class LiveDemo extends React.Component {
     return <Playground codeText={codeText + footerISO} scope={{ ...scope, __renderISO }} es6Console />;
   }
 
+  toggleCode = () => this.setState({ showCode: !this.state.showCode })
+
   render() {
-    const { scope, codeText, iso } = this.props;
-    const __render = this.__render;
+    const {
+      props: { scope, codeText, iso },
+      state: { showCode },
+      __render, toggleCode
+    } = this;
+
     return (
       <div className='live-demo'>
-        {this.contentNode &&
-          <ScrollView scrollPropagation={false}>
-            <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console />
-          </ScrollView>
-        }
         <div className='component' ref='contentNode' />
         {iso && <div className='iso-demo component' ref='contentNodeISO' />}
+        {!showCode && <div className='show-code cm-s-monokai CodeMirror' onClick={toggleCode}>SHOW CODE</div>}
+        <MoreOrLess expanded={showCode} onExpandedChange={toggleCode} icons={{ expanded: 'angle-up', collapsed: 'angle-down' }}>
+          <div style={showCode ? undefined : { position: 'absolute', pointerEvents: 'none', opacity: 0, height: 10, zIndex: -1, overflow: 'hidden' }}>
+            {this.contentNode &&
+              <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console ref='playground' />
+            }
+          </div>
+        </MoreOrLess>
       </div>
     );
   }

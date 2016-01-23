@@ -1,29 +1,36 @@
 import React from 'react';
 import Item from './Item';
+import Accordion from './Accordion/Accordion';
 
 export default class SidebarContent extends React.Component {
 
   static propTypes = {
     sections: React.PropTypes.array,
-    components: React.PropTypes.array,
-    componentId: React.PropTypes.string,
-    onSelectItem: React.PropTypes.func.isRequired
+    openSections: React.PropTypes.array.isRequired,
+    onSelectItem: React.PropTypes.func.isRequired,
+    onToggleSection: React.PropTypes.func
   }
 
-  isActive = (id) => id === this.props.componentId
+  isActive = (id) => false && id
+
+  isOpen = (sectionId) => this.props.openSections.indexOf(sectionId) !== -1
+
+  onToggle = (id) => () => this.props.onToggleSection(id)
 
   render() {
-    const { sections, components, onSelectItem } = this.props;
-    const getItems = (sectionId, components) => components.map(c =>
-      <Item {...c} onClick={onSelectItem} indent active={this.isActive(c.id)} key={c.id} />
+    const { sections, onSelectItem } = this.props;
+    const getItems = (sectionId, items) => items.map(({ id, ...item }) =>
+      <Item {...item} id={id} onClick={onSelectItem} sectionId={sectionId} indent active={this.isActive(id)} key={id} />
     );
 
-    const getSections = (sections) => sections.map(({ id, components, title }) =>
-      [<div className='section'>{title}</div>].concat(getItems(id, components)));
+    const getSections = (sections) => sections.map(({ id, components, contents, title }) =>
+      <Accordion onToggle={this.onToggle(id)} isOpen={this.isOpen(id)} title={title} key={id}>
+        {getItems(id, components || contents)}
+      </Accordion>);
 
     return (
       <div className='sidebar-content'>
-        {sections ? getSections(sections) : getItems(components)}
+        {getSections(sections)}
       </div>
     );
   }

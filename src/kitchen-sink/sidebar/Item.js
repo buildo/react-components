@@ -4,13 +4,14 @@ import cx from 'classnames';
 export default class Item extends React.Component {
 
   static propTypes = {
+    sectionId: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
     active: React.PropTypes.bool.isRequired,
     onClick: React.PropTypes.func.isRequired
   }
 
-  onClick = () => this.props.onClick(this.props.id)
+  onClick = () => this.props.onClick(this.props.sectionId, this.props.id)
 
   render() {
     const { active, title } = this.props;

@@ -15,25 +15,46 @@ const scope = {
 
 const defaultComponent = 'Toggle';
 
-const Examples = React.createClass({
+class Examples extends React.Component {
 
-  onSelectItem(componentId) {
-    this.props.router.transitionTo('/', null, { componentId });
-  },
+  constructor(props) {
+    super(props);
+    this.state = { openSections: sections.map(s => s.id) };
+  }
+
+  onSelectItem = (sectionId, componentId) => {
+    this.props.router.transitionTo('/', null, { componentId, sectionId });
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false });
+    });
+  }
+
+  onToggleSection = (sectionId) => {
+    const { openSections } = this.state;
+    if (openSections.indexOf(sectionId) !== -1) {
+      this.setState({ openSections: openSections.filter(s => s !== sectionId) });
+    } else {
+      this.setState({ openSections: openSections.concat(sectionId) });
+    }
+  }
 
   render() {
     const {
-      props: { query: { componentId = defaultComponent } },
-      onSelectItem
+      props: { query: { componentId = defaultComponent, sectionId } },
+      state: { openSections, loading },
+      onSelectItem, onToggleSection
     } = this;
+
+
 
     return (
       <div style={{ padding: 100 }}>
-        <KitchenSink {...{ scope, sections, componentId, onSelectItem }} />
+        <KitchenSink {...{ scope, sections, loading, componentId, sectionId, onSelectItem, onToggleSection, openSections }} />
       </div>
     );
   }
-});
+}
 
 
 const routes = (

@@ -1,25 +1,20 @@
 import React from 'react';
-import LoadingSpinner from '../../loading-spinner';
-import ExampleCard from './ExampleCard';
+import Markdown from 'react-remarkable';
 
 export default class Content extends React.Component {
 
   static propTypes = {
-    iso: React.PropTypes.bool,
-    scope: React.PropTypes.object.isRequired,
-    component: React.PropTypes.object
+    content: React.PropTypes.shape({
+      content: React.PropTypes.string.isRequired
+    }).isRequired
   }
 
   render() {
-    const { scope, component, iso } = this.props;
-    const { examples, title, desc } = component || {};
     return (
       <div className='content'>
-        <div className='header'>
-          <h1>{title}</h1>
-          {desc && <p>{desc}</p>}
+        <div className='body markdown-body'>
+          <Markdown source={this.props.content.content} options={{ html: true }} />
         </div>
-        {examples ? examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />) : <LoadingSpinner />}
       </div>
     );
   }

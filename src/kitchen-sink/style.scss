@@ -1,8 +1,19 @@
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+
 .kitchen-sink {
 
-  .content {
+  .component, .content {
     position: relative;
     margin-left: 2px;
+  }
+
+  .content {
+    > .body {
+      margin: 30px 50px;
+    }
+  }
+
+  .component {
 
     > .header {
       margin: 30px 50px;
@@ -15,20 +26,75 @@
       box-shadow: 0 1px 4px 1px rgba(0,0,0,.1);
 
       .live-demo {
-        .playground {
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+        position: relative;
+        .playground, .CodeMirror {
+          // border-bottom-left-radius: 5px;
+          // border-bottom-right-radius: 5px;
           overflow: hidden;
+        }
+
+        .CodeMirror {
+          height: auto;
+        }
+
+        .show-code.cm-s-monokai.CodeMirror {
+          height: auto;
+          text-align: center;
+          position: static;
+          display: none;
+        }
+
+        .playground {
+          @include display_flex();
+          @include flex_flex-direction(column-reverse);
+
+          .playgroundStage {
+            margin-bottom: -28px;
+          }
+
           .playgroundPreview {
-            display: none;
+            > div {
+              > div {
+                display: none;
+              }
+
+              > .playgroundError {
+                display: block;
+                font-family: Consolas, Courier, monospace;
+                position: absolute;
+                width: 100%;
+                padding: 10px;
+                font-size: 12px;
+                color: white;
+                background: #F2777A;
+                transform: translateY(-100%);
+              }
+            }
           }
         }
 
         .component {
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
           padding: 15px;
           font-family: Consolas, Courier, monospace;
+        }
+      }
+    }
+
+    > .footer {
+      margin: 30px 50px;
+
+      table {
+        tr {
+          height: 30px;
+        }
+        thead th {
+          padding: 0 5px;
+          text-align: left;
+        }
+        tbody td {
+          padding: 0 5px;
         }
       }
     }
@@ -49,16 +115,16 @@
         }
       }
 
-      .item {
-        width: 100%;
-        padding: 20px;
-        border-bottom: 1px solid #EAEAEA;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #F0F0F0;
-        }
-      }
+      // .item {
+      //   width: 100%;
+      //   padding: 20px;
+      //   border-bottom: 1px solid #EAEAEA;
+      //   cursor: pointer;
+      //
+      //   &:hover {
+      //     background-color: #F0F0F0;
+      //   }
+      // }
     }
   }
 }
