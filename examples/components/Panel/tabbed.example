@@ -14,7 +14,7 @@ class Example extends React.Component {
       tabs: {
         headers: [ 'Tab 1', 'Tab 2' ],
         onSetActiveTab,
-        activeIndex
+        activeIndex: activeTabIndex
       },
       header: {
         title: 'Tabbed panel!'
