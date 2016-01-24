@@ -10,7 +10,7 @@ const themes = {
 };
 
 const PropTypes = {
-  children: t.ReactNode,
+  children: t.maybe(t.ReactNode),
   theme: t.maybe(t.enums.of(['semantic'])),
   valueLink: t.maybe(t.struct({
     value: t.maybe(t.String),
