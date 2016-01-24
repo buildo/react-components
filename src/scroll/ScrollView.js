@@ -1,5 +1,6 @@
 import React from 'react';
 import omit from 'lodash/object/omit';
+import { props, t } from '../utils';
 import easing from './easingFunctions';
 
 /**
@@ -8,36 +9,32 @@ import easing from './easingFunctions';
  * - smooth programmatic scroll with 22 easing functions (see `easingFunctions.js`)
  * - out of the box momentum scrolling on iOS
  */
-const propTypes = {
+const PropTypes = {
   /**
    * components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }`
    */
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.func,
-    React.PropTypes.node
-  ]).isRequired,
+  children: t.union([ t.ReactNode, t.Function ]),
   /**
    * enable horizontal scrolling
    */
-  scrollX: React.PropTypes.bool,
+  scrollX: t.maybe(t.Boolean),
   /**
    * enable vertical scrolling
    */
-  scrollY: React.PropTypes.bool,
+  scrollY: t.maybe(t.Boolean),
   /**
    * enable scroll propagation
    */
-  scrollPropagation: React.PropTypes.bool,
+  scrollPropagation: t.maybe(t.Boolean),
   /**
    * easing function used when scrolling with `scrollTo`
    */
-  easing: React.PropTypes.oneOf(Object.keys(easing)),
-  style: React.PropTypes.object
+  easing: t.maybe(t.enums.of(Object.keys(easing))),
+  style: t.maybe(t.Object)
 };
 
+@props(PropTypes, { strict: false })
 export default class ScrollView extends React.Component {
-
-  static propTypes = propTypes
 
   static defaultProps = {
     scrollX: true,
@@ -157,7 +154,7 @@ export default class ScrollView extends React.Component {
   }
 
   render() {
-    const props = omit(this.props, Object.keys(propTypes));
+    const props = omit(this.props, Object.keys(PropTypes));
     const { children } = this.props;
     const isFunction = typeof children === 'function';
     return (

@@ -2,43 +2,43 @@ import React from 'react';
 import cx from 'classnames';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import cloneWithProps from 'react/lib/cloneWithProps';
+import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
 /**
  * ### Renders and animates toasts (children) inline or in a portal
  */
+@props({
+  /**
+   * list of toasts (any node with a unique key)
+   */
+  children: t.ReactNode,
+  /**
+   * id of the element you want to render the `Toaster` in
+   */
+  attachTo: t.maybe(t.String),
+  /**
+   * custom settings for `ReactTransitionGroup`
+   */
+  transitionGroup: t.maybe(t.Object),
+  /**
+   * object with style for each transition event (used by `TransitionWrapper`)
+   */
+  transitionStyles: t.maybe(t.Object),
+  /**
+   * duration of enter transition in milliseconds (used by `TransitionWrapper`)
+   */
+  transitionEnterTimeout: t.Number,
+  /**
+   * duration of leave transition in milliseconds (used by `TransitionWrapper`)
+   */
+  transitionLeaveTimeout: t.Number,
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+})
 export default class Toaster extends React.Component {
-
-  static propTypes = {
-    /**
-     * list of toasts (any node with a unique key)
-     */
-    children: React.PropTypes.node.isRequired,
-    /**
-     * id of the element you want to render the `Toaster` in
-     */
-    attachTo: React.PropTypes.string,
-    /**
-     * custom settings for `ReactTransitionGroup`
-     */
-    transitionGroup: React.PropTypes.object,
-    /**
-     * object with style for each transition event (used by `TransitionWrapper`)
-     */
-    transitionStyles: React.PropTypes.object,
-    /**
-     * duration of enter transition in milliseconds (used by `TransitionWrapper`)
-     */
-    transitionEnterTimeout: React.PropTypes.number.isRequired,
-    /**
-     * duration of leave transition in milliseconds (used by `TransitionWrapper`)
-     */
-    transitionLeaveTimeout: React.PropTypes.number.isRequired,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
 
   static defaultProps = {
     transitionGroup: {}

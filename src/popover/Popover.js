@@ -1,47 +1,44 @@
 import React from 'react';
 import cx from 'classnames';
+import { props, t } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
 
 /**
  * ### Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
  */
+@props({
+  /**
+   * the trigger node. It's always visible
+   */
+  children: t.ReactNode,
+  /**
+   * popover settings. The popover is **not** always visible
+   */
+  popover: t.struct({
+    content: t.ReactNode,
+    attachToBody: t.maybe(t.Boolean),
+    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
+    anchor: t.maybe(t.enums.of(['start', 'center', 'end'])),
+    event: t.maybe(t.enums.of(['click', 'hover'])),
+    onShow: t.maybe(t.Function),
+    onHide: t.maybe(t.Function),
+    onToggle: t.maybe(t.Function),
+    dismissOnScroll: t.maybe(t.Boolean),
+    dismissOnClickOutside: t.maybe(t.Boolean),
+    className: t.maybe(t.String),
+    id: t.maybe(t.String),
+    maxWidth: t.maybe(t.union([ t.Number, t.String ])),
+    distance: t.maybe(t.Number),
+    offsetX: t.maybe(t.Number),
+    offsetY: t.maybe(t.Number),
+    isOpen: t.maybe(t.Boolean)
+  }),
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+})
 export default class Popover extends React.Component {
-
-  static propTypes = {
-    /**
-     * the trigger node. It's always visible
-     */
-    children: React.PropTypes.node.isRequired,
-    /**
-     * popover settings. The popover is **not** always visible
-     */
-    popover: React.PropTypes.shape({
-      content: React.PropTypes.node.isRequired,
-      attachToBody: React.PropTypes.bool,
-      position: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-      anchor: React.PropTypes.oneOf(['start', 'center', 'end']),
-      event: React.PropTypes.oneOf(['click', 'hover']),
-      onShow: React.PropTypes.func,
-      onHide: React.PropTypes.func,
-      onToggle: React.PropTypes.func,
-      dismissOnScroll: React.PropTypes.bool,
-      dismissOnClickOutside: React.PropTypes.bool,
-      className: React.PropTypes.string,
-      id: React.PropTypes.string,
-      maxWidth: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string
-      ]),
-      distance: React.PropTypes.number,
-      offsetX: React.PropTypes.number,
-      offsetY: React.PropTypes.number,
-      isOpen: React.PropTypes.bool
-    }).isRequired,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
 
   // LIFECYCLE
 

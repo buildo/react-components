@@ -1,25 +1,25 @@
 import React from 'react';
+import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
 
 /**
  * ### Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
  */
+@props({
+  /**
+   * in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
+   */
+  children: t.maybe(t.Function),
+  /**
+   * this is the full string
+   */
+  label: t.String,
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+}, { strict: false })
 export default class TextOverflow extends React.Component {
-
-  static propTypes = {
-    /**
-     * in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
-     */
-    children: React.PropTypes.func,
-    /**
-     * this is the full string
-     */
-    label: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  }
 
   constructor(props) {
     super(props);
