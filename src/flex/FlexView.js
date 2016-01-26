@@ -9,7 +9,7 @@ const PropTypes = {
   /**
    * FlexView content
    */
-  children: t.maybe(t.ReactNode),
+  children: t.ReactChildren,
   /**
    * flex-direction: column
    */
