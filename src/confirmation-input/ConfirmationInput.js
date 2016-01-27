@@ -55,6 +55,7 @@ export default class ConfirmationInput extends React.Component {
   onEnter = (e) => {
     if (e.which === 13 || e.keyCode === 13) { // if Enter key
       this._onConfirm();
+      document.activeElement.blur(); // remove focus
     }
   }
 
@@ -92,7 +93,7 @@ export default class ConfirmationInput extends React.Component {
 
   _onClear = () => {
     this.props.onClear();
-    this.props.onChange('');
+    this.props.onChange(''); // props.onChange should always receive a string
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
   }
 
