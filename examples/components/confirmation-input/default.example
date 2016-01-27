@@ -5,17 +5,25 @@ class Example extends React.Component {
     this.state = {};
   }
 
-  onConfirm = (value) => this.setState({ value })
+  onConfirm = value => console.log(`confirmed: ${value}`)
 
-  onClear = () => this.setState({ value: '' })
+  onClear = () => console.log('cleared!')
+
+  onChange = value => this.setState({ value })
 
   render() {
-    const { state: { value }, onConfirm, onClear } = this;
-    const text = { clear: 'clear', toConfirm: 'to confirm' };
-    const icon = { clear: undefined, toConfirm: undefined };
+    const {
+      state: { value: initialValue },
+      onChange, onConfirm, onClear
+    } = this;
+
     return (
       <form className='ui form'>
-        <ConfirmationInput {...{ initialValue: value, onConfirm, onClear, text, icon }} />
+        <ConfirmationInput
+          {...{ initialValue, onChange, onConfirm, onClear }}
+          text={{ clear: 'clear', toConfirm: 'to confirm' }}
+          icon={{ clear: undefined, toConfirm: undefined }}
+        />
       </form>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, skinnable, t } from '../utils';
+import omit from 'lodash/object/omit';
 import InputChildren from 'react-input-children';
 import { linkState } from '../link-state';
 import FlexView from '../flex/FlexView';
@@ -10,8 +11,9 @@ import Icon from '../Icon/Icon';
 @skinnable()
 @props({
   initialValue: t.maybe(t.String),
-  onConfirm: t.Function,
-  onClear: t.Function,
+  onChange: t.maybe(t.Function),
+  onConfirm: t.maybe(t.Function),
+  onClear: t.maybe(t.Function),
   placeholder: t.maybe(t.String),
   text: t.struct({
     clear: t.maybe(t.String),
@@ -26,6 +28,12 @@ import Icon from '../Icon/Icon';
   style: t.maybe(t.Object)
 })
 export default class ConfirmationInput extends React.Component {
+
+  static defaultProps = {
+    onChange: () => {},
+    onConfirm: () => {},
+    onClear: () => {}
+  }
 
   constructor(props) {
     super(props);
@@ -46,14 +54,14 @@ export default class ConfirmationInput extends React.Component {
 
   onEnter = (e) => {
     if (e.which === 13 || e.keyCode === 13) { // if Enter key
-      this.props.onConfirm(this.state.value);
+      this._onConfirm();
     }
   }
 
   onBlur = () => {
     const { hoveringConfirm } = this.state;
     if (!hoveringConfirm) {
-      this.onConfirm();
+      this._onConfirm();
     }
     this.setState({ focused: false });
   }
@@ -62,27 +70,29 @@ export default class ConfirmationInput extends React.Component {
     this.setState({ focused: true });
   }
 
-  onConfirm = () => {
+  onMouseEnter = () => this.setState({ hoveringConfirm: true })
+
+  onMouseLeave = () => this.setState({ hoveringConfirm: false })
+
+  _onConfirm = () => {
     const {
-      props: { initialValue, onConfirm },
+      props: { initialValue, onConfirm, onChange },
       state: { value },
       onMouseLeave
     } = this;
     const confirmed = (value === initialValue) || (!value && !initialValue);
     if (!confirmed) {
       onConfirm(value);
+      onChange(value);
       if (!value) {
         onMouseLeave(); // on confirm, if value is empty, `templateConfirm` disappears -> onMouseLeave never called
       }
     }
   }
 
-  onMouseEnter = () => this.setState({ hoveringConfirm: true })
-
-  onMouseLeave = () => this.setState({ hoveringConfirm: false })
-
-  onClear = () => {
+  _onClear = () => {
     this.props.onClear();
+    this.props.onChange('');
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
   }
 
@@ -96,7 +106,8 @@ export default class ConfirmationInput extends React.Component {
         ...props
       },
       state: { value , focused },
-      onClear, onConfirm,
+      _onClear: onClear,
+      _onConfirm: onConfirm,
       onMouseEnter, onMouseLeave
     } = this;
     const confirmed = (value === initialValue) || (!value && !initialValue);
@@ -112,7 +123,7 @@ export default class ConfirmationInput extends React.Component {
         onMouseLeave
       },
       inputProps: {
-        ...props,
+        ...omit(props, 'onChange'),
         valueLink: linkState(this, 'value'),
         onKeyUp: this.onEnter,
         onBlur: this.onBlur,
