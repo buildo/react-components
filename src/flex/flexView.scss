@@ -2,6 +2,9 @@
 
 .react-flex-view {
   box-sizing: 'border-box';
+  // some browsers don't set these by default on flex
+  min-width: 0;
+  min-height: 0;
   @include display_flex();
   @include flex_flex-wrap(nowrap);
   @include flex_align-items(stretch);
