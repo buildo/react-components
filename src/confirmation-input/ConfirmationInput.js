@@ -54,7 +54,7 @@ export default class ConfirmationInput extends React.Component {
 
   onEnter = (e) => {
     if (e.which === 13 || e.keyCode === 13) { // if Enter key
-      this.props.onConfirm(this.state.value);
+      this._onConfirm();
     }
   }
 
