@@ -61,7 +61,7 @@ export default class ConfirmationInput extends React.Component {
   onBlur = () => {
     const { hoveringConfirm } = this.state;
     if (!hoveringConfirm) {
-      this.onConfirm();
+      this._onConfirm();
     }
     this.setState({ focused: false });
   }
