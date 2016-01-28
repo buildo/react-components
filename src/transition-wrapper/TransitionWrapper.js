@@ -47,12 +47,12 @@ export default class TransitionWrapper extends React.Component {
     transitionStyles: {},
     style: {},
     component: 'div'
-  }
+  };
 
   _replaceState = (state) => {
     this.state = state;
     this.forceUpdate();
-  }
+  };
 
   startAnimation(anim, timeout, callback) {
     const { transitionStyles } = this.props;
@@ -69,21 +69,21 @@ export default class TransitionWrapper extends React.Component {
     }, 30); // if the render is too fast the animation fails... 30ms is an empiric value.
   }
 
-  componentWillAppear = (callback) => this.componentWillEnter(callback)
+  componentWillAppear = (callback) => this.componentWillEnter(callback);
 
-  componentDidAppear = (callback) => this.componentDidEnter(callback)
+  componentDidAppear = (callback) => this.componentDidEnter(callback);
 
   componentWillEnter = (callback) => (
     this.startAnimation('enter', this.props.transitionEnterTimeout, callback)
-  )
+  );
 
   componentDidEnter = () => (
     this._replaceState({ defaultStyle: this.props.transitionStyles.default })
-  )
+  );
 
   componentWillLeave = (callback) => (
     this.startAnimation('leave', this.props.transitionLeaveTimeout, callback)
-  )
+  );
 
   getStyle = () => {
     const { style } = this.props;
@@ -97,7 +97,7 @@ export default class TransitionWrapper extends React.Component {
       ...animationEnd,
       transform: cx(userTransform, style.transform)
     };
-  }
+  };
 
   render() {
     if (!this.state) {

@@ -42,7 +42,7 @@ export default class Toaster extends React.Component {
 
   static defaultProps = {
     transitionGroup: {}
-  }
+  };
 
   componentWillMount() {
     this.appendToaster();
@@ -83,19 +83,19 @@ export default class Toaster extends React.Component {
         </TransitionWrapper>
       );
     });
-  }
+  };
 
   appendToaster = () => {
     if (this.props.attachTo) {
       this.toaster = document.getElementById(this.props.attachTo);
     }
-  }
+  };
 
   removeToaster = () => {
     if (this.toaster && this.props.attachTo) {
       this.toaster.innerHTML = ''; // stupid??
     }
-  }
+  };
 
   getToaster = () => {
     const { style: styleProp, id, className } = this.props;
@@ -115,13 +115,13 @@ export default class Toaster extends React.Component {
         </ReactTransitionGroup>
       </div>
     );
-  }
+  };
 
   renderToaster = () => {
     if (this.props.attachTo) {
       React.render(this.getToaster(), this.toaster);
     }
-  }
+  };
 
   render() {
     if (this.props.attachTo) {

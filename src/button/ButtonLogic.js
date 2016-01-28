@@ -114,7 +114,7 @@ export default class ButtonLogic extends React.Component {
     });
   }
 
-  getButtonState = () => (this.props.buttonState || this.state.internalState || this.props.baseState)
+  getButtonState = () => (this.props.buttonState || this.state.internalState || this.props.baseState);
 
   onClick = () => {
     if (this.getButtonState() === 'ready') {
@@ -126,7 +126,7 @@ export default class ButtonLogic extends React.Component {
         }, () => this.attachPromiseHandlers(promise) );
       }
     }
-  }
+  };
 
   getLocals() {
     return {

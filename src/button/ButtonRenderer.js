@@ -30,7 +30,7 @@ export default class ButtonRenderer extends React.Component {
 
   static defaultProps = {
     textOverflow: _TextOverflow
-  }
+  };
 
   getLocals() {
     const { buttonState, label: labelProp, icon: iconProp, textOverflow } = this.props;
@@ -52,19 +52,19 @@ export default class ButtonRenderer extends React.Component {
     <FlexView className="button-loading" style={{ position: 'relative' }}>
       <LoadingSpinner size="1em" overlayColor="transparent" />
     </FlexView>
-  )
+  );
 
   templateIcon = ({ icon }) => (
     <FlexView className="button-icon">
       <Icon icon={icon} />
     </FlexView>
-  )
+  );
 
   templateLabel = ({ label, TextOverflow }) => (
     <FlexView className="button-label" column grow basis="100%">
       <TextOverflow label={label} popover={{ offsetY: -8 }}/>
     </FlexView>
-  )
+  );
 
   template({ onClick, buttonState, icon, label, loading, className, style, TextOverflow }) {
     return (

@@ -20,17 +20,17 @@ export default class KitchenSink extends React.Component {
     header: React.PropTypes.node,
     footer: React.PropTypes.node,
     loading: React.PropTypes.bool
-  }
+  };
 
   static defaultProps = {
     openSections: []
-  }
+  };
 
-  findSection = () => find(this.props.sections, { id: this.props.sectionId }) || {}
+  findSection = () => find(this.props.sections, { id: this.props.sectionId }) || {};
 
-  findComponent = () => find(this.findSection().components, { id: this.props.componentId })
+  findComponent = () => find(this.findSection().components, { id: this.props.componentId });
 
-  findContent = () => find(this.findSection().contents, { id: this.props.contentId })
+  findContent = () => find(this.findSection().contents, { id: this.props.contentId });
 
   render() {
     const {

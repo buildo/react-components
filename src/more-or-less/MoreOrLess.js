@@ -22,7 +22,7 @@ export default class MoreOrLess extends React.Component {
 
   toggleExpanded = () => {
     this.props.onExpandedChange(!this.props.expanded);
-  }
+  };
 
   getLocals() {
     const {
@@ -52,7 +52,7 @@ export default class MoreOrLess extends React.Component {
         <Icon icon={icon} className="expand-button-icon" />
       </FlexView>
     );
-  }
+  };
 
   template({ children, className, style, icon, toggleExpanded }) {
     return (

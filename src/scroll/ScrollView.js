@@ -41,7 +41,7 @@ export default class ScrollView extends React.Component {
     scrollY: true,
     scrollPropagation: true,
     easing: 'easeInOutQuad'
-  }
+  };
 
   componentDidMount() {
     if (!this.props.scrollPropagation) {
@@ -49,21 +49,21 @@ export default class ScrollView extends React.Component {
     }
   }
 
-  getScrollView = () => React.findDOMNode(this.refs.scrollView)
+  getScrollView = () => React.findDOMNode(this.refs.scrollView);
 
   enableScrollPropagation = () => {
     this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
     this.getScrollView().removeEventListener('touchstart', this.initializeTouchEventDirection);
     this.getScrollView().removeEventListener('touchend', this.clearTouchEventDirection);
     this.getScrollView().removeEventListener('touchmove', this.stopScrollPropagation);
-  }
+  };
 
   disableScrollPropagation = () => {
     this.getScrollView().addEventListener('wheel', this.stopScrollPropagation);
     this.getScrollView().addEventListener('touchstart', this.initializeTouchEventDirection);
     this.getScrollView().addEventListener('touchend', this.clearTouchEventDirection);
     this.getScrollView().addEventListener('touchmove', this.stopScrollPropagation);
-  }
+  };
 
   isEventInsideScrollView = (el) => {
     if (el === this.getScrollView()) {
@@ -73,15 +73,15 @@ export default class ScrollView extends React.Component {
     } else {
       return false;
     }
-  }
+  };
 
   initializeTouchEventDirection = (e) => {
     this.lastY = e.touches[0].clientY;
-  }
+  };
 
   clearTouchEventDirection = () => {
     this.lastY = null;
-  }
+  };
 
   stopScrollPropagation = (e) => {
     const el = e.target || e.srcElement;
@@ -106,14 +106,14 @@ export default class ScrollView extends React.Component {
         e.preventDefault();
       }
     }
-  }
+  };
 
-  isAtTop = () => this.getScrollView().scrollTop === 0
+  isAtTop = () => this.getScrollView().scrollTop === 0;
 
   isAtBottom = () => {
     const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
     return scrollTop + offsetHeight === scrollHeight;
-  }
+  };
 
   computeStyle = () => {
     const { scrollX, scrollY, style } = this.props;
@@ -123,7 +123,7 @@ export default class ScrollView extends React.Component {
       WebkitOverflowScrolling: 'touch',
       ...style
     };
-  }
+  };
 
   scrollTo = (_x, _y, scrollDuration) => {
     const { scrollTop, scrollLeft } = this.getScrollView();
@@ -131,7 +131,7 @@ export default class ScrollView extends React.Component {
     const y = _y === null ? scrollTop : _y;
 
     this._scrollTo(x, y, scrollDuration, Date.now(), scrollLeft, scrollTop);
-  }
+  };
 
   _scrollTo = (x, y, scrollDuration, startTime, startX, startY) => {
     if (scrollDuration > 0) {
@@ -151,7 +151,7 @@ export default class ScrollView extends React.Component {
       this.getScrollView().scrollLeft = x;
       this.getScrollView().scrollTop = y;
     }
-  }
+  };
 
   render() {
     const props = omit(this.props, Object.keys(PropTypes));

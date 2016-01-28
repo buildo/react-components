@@ -43,7 +43,7 @@ const defaultProps = {
 @props(ButtonProps)
 export default class Button extends React.Component {
 
-  static defaultProps = defaultProps
+  static defaultProps = defaultProps;
 
   getLocals() {
 

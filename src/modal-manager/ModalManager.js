@@ -45,16 +45,16 @@ export default class ModalManager extends React.Component {
     transitionLeaveTimeout: 0,
     childContextTypes: {},
     getChildContext: () => ({})
-  }
+  };
 
   componentWillMount() {
     const { childContextTypes, getChildContext } = this.props;
 
     @props({ children: t.ReactElement })
     class ContextWrapper extends React.Component { // eslint-disable-line react/no-multi-comp
-      static childContextTypes = childContextTypes
-      static getChildContext = getChildContext
-      render = () => this.props.children
+      static childContextTypes = childContextTypes;
+      static getChildContext = getChildContext;
+      render = () => this.props.children;
     }
 
     this.ContextWrapper = ContextWrapper;
@@ -107,21 +107,21 @@ export default class ModalManager extends React.Component {
         </TransitionWrapper>
       );
     });
-  }
+  };
 
   appendModalContainer = () => {
     if (!this.containerNode) {
       this.containerNode = document.createElement('div');
       document.body.appendChild(this.containerNode);
     }
-  }
+  };
 
   removeModalContainer = () => {
     if (this.containerNode) {
       document.body.removeChild(this.containerNode);
       this.containerNode = null;
     }
-  }
+  };
 
   getModalManager = () => {
     return (
@@ -131,12 +131,12 @@ export default class ModalManager extends React.Component {
         </ReactTransitionGroup>
       </div>
     );
-  }
+  };
 
   renderModals = () => {
     const Modal = this.getModalManager();
     React.render(<this.ContextWrapper>{Modal}</this.ContextWrapper>, this.containerNode);
-  }
+  };
 
   render() {
     return null;

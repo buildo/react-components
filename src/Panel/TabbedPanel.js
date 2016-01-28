@@ -21,7 +21,7 @@ export default class TabbedPanel extends React.Component {
   onSetActiveTab = activeTabIndex => {
     const { tabs: { onSetActiveTab } } = this.props;
     onSetActiveTab(activeTabIndex);
-  }
+  };
 
   getLocals() {
     const { tabs, children, ...panelProps } = this.props;

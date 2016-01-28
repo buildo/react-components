@@ -20,18 +20,18 @@ const PropTypes = {
 @props(PropTypes, { strict: false })
 export default class Dropdown extends React.Component {
 
-  getChildren = () => [].concat(this.props.children || [])
+  getChildren = () => [].concat(this.props.children || []);
 
-  renderOption = (option) => this.getChildren()[option.value]
+  renderOption = (option) => this.getChildren()[option.value];
 
-  renderValue = (option) => this.getChildren()[option.value]
+  renderValue = (option) => this.getChildren()[option.value];
 
   getGeneralProps = () => {
     if (this.props.children && this.props.options) {
       warn('You\'re passing both children and options. Children will override options!');
     }
     return omit(this.props, Object.keys(PropTypes));
-  }
+  };
 
   getChildrenProps = () => {
     if (this.props.children) {
@@ -48,7 +48,7 @@ export default class Dropdown extends React.Component {
         optionRenderer: this.renderOption
       };
     }
-  }
+  };
 
   getValueLinkProps = () => {
     if (this.props.valueLink) {
@@ -57,9 +57,9 @@ export default class Dropdown extends React.Component {
         onChange: this.props.valueLink.requestChange
       };
     }
-  }
+  };
 
-  getClassName = () => cx(this.props.className, themes[this.props.theme])
+  getClassName = () => cx(this.props.className, themes[this.props.theme]);
 
   render() {
     // The order is important: props may override previous ones

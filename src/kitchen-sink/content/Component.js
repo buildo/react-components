@@ -8,7 +8,7 @@ export default class Component extends React.Component {
     iso: React.PropTypes.bool,
     scope: React.PropTypes.object.isRequired,
     component: React.PropTypes.object
-  }
+  };
 
   getLoadingSpinner() {
     return (
@@ -21,7 +21,7 @@ export default class Component extends React.Component {
   getExamples = (examples) => {
     const { scope, iso } = this.props;
     return examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />);
-  }
+  };
 
   render() {
     const { component, header, footer } = this.props;

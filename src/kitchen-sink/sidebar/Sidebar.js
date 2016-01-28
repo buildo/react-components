@@ -12,7 +12,7 @@ export default class Sidebar extends React.Component {
     onSelectItem: React.PropTypes.func.isRequired,
     onToggleSection: React.PropTypes.func,
     loading: React.PropTypes.bool
-  }
+  };
 
   getLoadingSpinner = () => {
     return (
@@ -20,7 +20,7 @@ export default class Sidebar extends React.Component {
         <LoadingSpinner />
       </div>
     );
-  }
+  };
 
   render() {
     const { children, loading, ...props } = this.props;

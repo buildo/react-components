@@ -26,7 +26,7 @@ export default class BasicModal extends React.Component {
       stopScrollPropagation: true,
       ...this.props.background
     };
-  }
+  };
 
   getIconClose = () => {
     const { iconClose, onDismiss } = this.props;
@@ -46,7 +46,7 @@ export default class BasicModal extends React.Component {
       fontSize: 25
     };
     return <i className='icon-close' style={style} onClick={onDismiss} />;
-  }
+  };
 
   render() {
     const { children, onDismiss, className, id, style } = this.props;

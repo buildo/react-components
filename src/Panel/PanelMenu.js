@@ -44,7 +44,7 @@ export default class PanelMenu extends React.Component {
 
   static defaultProps = {
     isOpen: false
-  }
+  };
 
   makeActionItem = action => ({
     type: 'item',
@@ -58,7 +58,7 @@ export default class PanelMenu extends React.Component {
     onClick: action.disabled ? () => {} : action.callBack,
     metadata: action.shortcut && action.shortcut.label,
     disabled: !!action.disabled
-  })
+  });
 
   makeDisabledAction = action => (
     <Tooltip
@@ -67,7 +67,7 @@ export default class PanelMenu extends React.Component {
     >
       <div style={{ opacity: '.5' }}>{action.name}</div>
     </Tooltip>
-  )
+  );
 
   makeSelectableAction = ({ name, selected }) => (
     <FlexView row vAlignContent="center">
@@ -83,7 +83,7 @@ export default class PanelMenu extends React.Component {
       />
       <div>{name}</div>
     </FlexView>
-  )
+  );
 
   makeOptions = actionsGroups => {
     return compact(flatten(
@@ -95,14 +95,14 @@ export default class PanelMenu extends React.Component {
         .concat(index !== actionsGroups.length - 1 && { type: 'divider' })
       )
     ));
-  }
+  };
 
   makeActionIcon = action => ({
     label: action.name,
     disabled: action.disabled,
     onClick: partial(action.callBack, action),
     ...action.featured
-  })
+  });
 
   makeActionIcons = actionsGroups => {
     return flatten(
@@ -111,7 +111,7 @@ export default class PanelMenu extends React.Component {
         .map(this.makeActionIcon)
       )
     ).slice(0, 5);
-  }
+  };
 
   getLocals() {
 

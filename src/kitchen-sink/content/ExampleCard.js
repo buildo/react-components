@@ -7,7 +7,7 @@ export default class ExampleCard extends React.Component {
     iso: React.PropTypes.bool,
     scope: React.PropTypes.object.isRequired,
     codeText: React.PropTypes.string.isRequired
-  }
+  };
 
   render() {
     const { scope, codeText, iso } = this.props;

@@ -7,7 +7,7 @@ export default class Content extends React.Component {
     content: React.PropTypes.shape({
       content: React.PropTypes.string.isRequired
     }).isRequired
-  }
+  };
 
   render() {
     return (

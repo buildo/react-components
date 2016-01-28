@@ -11,11 +11,11 @@ export default class Accordion extends React.Component {
     title: React.PropTypes.string,
     isOpen: React.PropTypes.bool,
     onToggle: React.PropTypes.func
-  }
+  };
 
   static defaultProps = {
     onToggle: () => {}
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ export default class Accordion extends React.Component {
     } else {
       this.setState({ isOpen: !this.state.isOpen });
     }
-  }
+  };
 
   render() {
     const { children, title, isOpen } = this.props;

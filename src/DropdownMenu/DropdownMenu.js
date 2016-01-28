@@ -27,7 +27,7 @@ export default class DropdownMenu extends React.Component {
   static defaultProps = {
     isOpen: false,
     dismissOnClickOut: true
-  }
+  };
 
   toggleMenu = () => {
     if (this.props.isOpen) {
@@ -35,11 +35,11 @@ export default class DropdownMenu extends React.Component {
     } else {
       this.props.onOpen();
     }
-  }
+  };
 
   onMenuClick = () => {
     this.toggleMenu();
-  }
+  };
 
   getHeightFromSize = size => {
     switch (size) {
@@ -48,7 +48,7 @@ export default class DropdownMenu extends React.Component {
       case 'large': return 600;
       default: return null;
     }
-  }
+  };
 
   getLocals() {
     const {
@@ -85,7 +85,7 @@ export default class DropdownMenu extends React.Component {
     return (
       children || this.templateIconButton({ iconClassName, toggleMenu, isOpen })
     );
-  }
+  };
 
   templateIconButton = ({ iconClassName, isOpen }) => {
     return (
@@ -93,7 +93,7 @@ export default class DropdownMenu extends React.Component {
         <Icon icon={iconClassName} className='dropdown-menu-icon' />
       </FlexView>
     );
-  }
+  };
 
   templateMenu = ({ isOpen, options, height, onMenuClick }) => {
     return (
@@ -101,7 +101,7 @@ export default class DropdownMenu extends React.Component {
       <Menu {...{ options }} maxHeight={height} onClick={onMenuClick} />
       : null
     );
-  }
+  };
 
   templateOverlay = ({ isOpen, toggleMenu, dismissOnClickOut }) => {
     return (
@@ -109,7 +109,7 @@ export default class DropdownMenu extends React.Component {
       <div className='dropdown-menu-overlay' onClick={toggleMenu} />
       : null
     );
-  }
+  };
 
   template({ iconClassName, toggleMenu, children, options, isOpen, dismissOnClickOut, className, onMenuClick, height }) {
     return (

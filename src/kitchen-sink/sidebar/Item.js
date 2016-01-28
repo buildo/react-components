@@ -9,9 +9,9 @@ export default class Item extends React.Component {
     title: React.PropTypes.string.isRequired,
     active: React.PropTypes.bool.isRequired,
     onClick: React.PropTypes.func.isRequired
-  }
+  };
 
-  onClick = () => this.props.onClick(this.props.sectionId, this.props.id)
+  onClick = () => this.props.onClick(this.props.sectionId, this.props.id);
 
   render() {
     const { active, title } = this.props;

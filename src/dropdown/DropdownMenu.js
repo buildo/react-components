@@ -9,7 +9,7 @@ export default class DropdownMenu extends React.Component {
       React.PropTypes.node,
       React.PropTypes.element
     ]).isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -32,13 +32,13 @@ export default class DropdownMenu extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ isOpen: true });
-  }
+  };
 
   toggleMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
 
   render() {
     const isOpenClass = this.state.isOpen ? 'is-open' : '';
