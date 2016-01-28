@@ -10,8 +10,21 @@ export default class Component extends React.Component {
     component: React.PropTypes.object
   }
 
+  getLoadingSpinner() {
+    return (
+      <div style={{ height: '100%', width: '100%', top: 0, left: 0, position: 'absolute' }}>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  getExamples = (examples) => {
+    const { scope, iso } = this.props;
+    return examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />);
+  }
+
   render() {
-    const { scope, component, iso, header, footer } = this.props;
+    const { component, header, footer } = this.props;
     const { examples } = component || {};
     return (
       <div className='component'>
@@ -19,7 +32,7 @@ export default class Component extends React.Component {
           {header}
         </div>
         <div className='examples'>
-          {examples ? examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />) : <LoadingSpinner />}
+          {examples ? this.getExamples(examples) : this.getLoadingSpinner()}
         </div>
         <div className='footer markdown-body'>
           {footer}

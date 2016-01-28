@@ -1,7 +1,8 @@
 import React from 'react/addons';
+import { t } from 'tcomb-react';
 import { Route, create } from 'react-router-transition-context';
 import * as brc from '../src';
-import lodash from 'lodash';
+import lodash, { find } from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
 import sections from './components';
 
@@ -9,11 +10,11 @@ import '../src/kitchen-sink/style.scss';
 
 const scope = {
   React,
+  t,
+  log: (x) => console.log(x), // eslint-disable-line no-console
   ...lodash,
   ...brc
 };
-
-const defaultComponent = 'Toggle';
 
 class Examples extends React.Component {
 
@@ -22,8 +23,13 @@ class Examples extends React.Component {
     this.state = { openSections: sections.map(s => s.id) };
   }
 
-  onSelectItem = (sectionId, componentId) => {
-    this.props.router.transitionTo('/', null, { componentId, sectionId });
+  findSection = (id) => find(sections, { id }) || {}
+
+  onSelectItem = (sectionId, id) => {
+    const isComponent = this.findSection(sectionId).components;
+    const componentId = isComponent ? id : undefined;
+    const contentId = isComponent ? undefined : id;
+    this.props.router.transitionTo('/', null, { componentId, contentId, sectionId });
     this.setState({ loading: true });
     setTimeout(() => {
       this.setState({ loading: false });
@@ -41,16 +47,14 @@ class Examples extends React.Component {
 
   render() {
     const {
-      props: { query: { componentId = defaultComponent, sectionId } },
+      props: { query: { componentId, contentId, sectionId } },
       state: { openSections, loading },
       onSelectItem, onToggleSection
     } = this;
 
-
-
     return (
       <div style={{ padding: 100 }}>
-        <KitchenSink {...{ scope, sections, loading, componentId, sectionId, onSelectItem, onToggleSection, openSections }} />
+        <KitchenSink {...{ scope, sections, loading, componentId, contentId, sectionId, onSelectItem, onToggleSection, openSections }} />
       </div>
     );
   }

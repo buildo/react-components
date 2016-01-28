@@ -22,6 +22,8 @@ import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
 
+import README from 'raw!../../README.md';
+
 import '../../src/more-or-less/moreOrLess.scss';
 import '../../src/flex/flexView.scss';
 import '../../src/loading-spinner/style.scss';
@@ -174,5 +176,17 @@ export default [
         'component': 'react-components/master/src/modal-manager/ModalManager.js'
       }
     ]
+  },
+  {
+    title: 'Markdown',
+    id: 'markdown',
+    contents: [
+      {
+        id: 'readme',
+        title: 'README.md',
+        repo: 'react-components',
+        content: README
+      }
+    ]
   }
-]
+];
