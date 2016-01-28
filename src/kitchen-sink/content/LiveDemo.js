@@ -11,7 +11,7 @@ export default class LiveDemo extends React.Component {
     iso: React.PropTypes.bool,
     scope: React.PropTypes.object.isRequired,
     codeText: React.PropTypes.string.isRequired
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ export default class LiveDemo extends React.Component {
       </div>
     );
     setTimeout(() => React.render(content, this.contentNode));
-  }
+  };
 
   __renderISO = (Example) => {
     const content = (
@@ -57,15 +57,15 @@ export default class LiveDemo extends React.Component {
       </div>
     );
     setTimeout(() => React.render(content, this.contentNodeISO));
-  }
+  };
 
   getContentISO = () => {
     const { scope, codeText } = this.props;
     const __renderISO = this.__renderISO;
     return <Playground codeText={codeText + footerISO} scope={{ ...scope, __renderISO }} es6Console />;
-  }
+  };
 
-  toggleCode = () => this.setState({ showCode: !this.state.showCode })
+  toggleCode = () => this.setState({ showCode: !this.state.showCode });
 
   render() {
     const {

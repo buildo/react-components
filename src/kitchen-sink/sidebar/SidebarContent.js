@@ -9,13 +9,13 @@ export default class SidebarContent extends React.Component {
     openSections: React.PropTypes.array.isRequired,
     onSelectItem: React.PropTypes.func.isRequired,
     onToggleSection: React.PropTypes.func
-  }
+  };
 
-  isActive = (id) => false && id
+  isActive = (id) => false && id;
 
-  isOpen = (sectionId) => this.props.openSections.indexOf(sectionId) !== -1
+  isOpen = (sectionId) => this.props.openSections.indexOf(sectionId) !== -1;
 
-  onToggle = (id) => () => this.props.onToggleSection(id)
+  onToggle = (id) => () => this.props.onToggleSection(id);
 
   render() {
     const { sections, onSelectItem } = this.props;

@@ -26,9 +26,9 @@ export default class MobileDetector extends React.Component {
     isMobile: React.PropTypes.bool.isRequired,
     isPhone: React.PropTypes.bool.isRequired,
     isTablet: React.PropTypes.bool.isRequired
-  }
+  };
 
-  getChildContext = () => this.getEnvironmentInfo()
+  getChildContext = () => this.getEnvironmentInfo();
 
   getEnvironmentInfo = () => {
     const md = new MobileDetect(this.props.userAgent || window.navigator.userAgent);
@@ -38,13 +38,13 @@ export default class MobileDetector extends React.Component {
       isPhone: this.isPhone(md),
       isTablet: this.isTablet(md)
     };
-  }
+  };
 
-  isPhone = (md) => !this.props.forceDesktop && !!md.phone()
+  isPhone = (md) => !this.props.forceDesktop && !!md.phone();
 
-  isTablet = (md) => !this.props.forceDesktop && !!md.tablet()
+  isTablet = (md) => !this.props.forceDesktop && !!md.tablet();
 
-  isMobile = (md) => !this.props.forceDesktop && !!md.mobile()
+  isMobile = (md) => !this.props.forceDesktop && !!md.mobile();
 
   render() {
     return this.props.children(this.getEnvironmentInfo());

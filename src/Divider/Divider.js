@@ -24,7 +24,7 @@ const defaultDividerProps = {
 @props(dividerProps)
 export default class Divider extends React.Component {
 
-  static defaultProps = defaultDividerProps
+  static defaultProps = defaultDividerProps;
 
   getLocals() {
     return {

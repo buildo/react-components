@@ -39,7 +39,7 @@ export default class Toggle extends React.Component {
     const { value } = getValueLink(this, props);
     const checkboxNode = React.findDOMNode(this.refs.checkbox);
     checkboxNode.checked = value;
-  }
+  };
 
   getHalfSize(size) {
     if (t.String.is(size)) {
@@ -60,7 +60,7 @@ export default class Toggle extends React.Component {
   onButtonClick = () => {
     const { value, requestChange } = getValueLink(this);
     requestChange(!value);
-  }
+  };
 
   getLocals() {
     const {

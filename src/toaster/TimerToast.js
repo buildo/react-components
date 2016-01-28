@@ -18,28 +18,28 @@ export default class TimerToast extends React.Component {
     this.state = { completed: false };
   }
 
-  componentDidMount = () => this.resetTimer()
+  componentDidMount = () => this.resetTimer();
 
-  componentWillUnmount = () => this.clearTimer()
+  componentWillUnmount = () => this.clearTimer();
 
   resetTimer = () => {
     if (!this.timer && !this.state.completed) {
       this.timer = setTimeout(this.onTimeout, this.props.duration);
     }
-  }
+  };
 
   clearTimer = () => {
     if (this.timer && !this.state.completed) {
       clearTimeout(this.timer);
       this.timer = null;
     }
-  }
+  };
 
   onTimeout = () => {
     const { onTimeout, uniqueKey } = this.props;
     this.timer = null;
     this.setState({ completed: true }, () => onTimeout(uniqueKey));
-  }
+  };
 
   render() {
     const { children, onTimeout, duration, ...props } = this.props;

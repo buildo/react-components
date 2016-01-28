@@ -33,7 +33,7 @@ export default class Menu extends React.Component {
   static defaultProps = {
     style: {},
     onClick: () => {}
-  }
+  };
 
   componentDidMount() {
     const { top: scrollTop, height } = React.findDOMNode(this).getBoundingClientRect();
@@ -48,7 +48,7 @@ export default class Menu extends React.Component {
   onOptionClick = option => {
     this.props.onClick();
     option.onClick(option);
-  }
+  };
 
   getLocals() {
     const { options, style, maxHeight: maxHeightProp } = this.props;
@@ -73,7 +73,7 @@ export default class Menu extends React.Component {
         </span>
       </div>
     );
-  }
+  };
 
   templateRenderedOptions = ({ options, onOptionClick }) => {
     return options.map((option, i) => (
@@ -83,7 +83,7 @@ export default class Menu extends React.Component {
         {option.type === 'divider' && <Divider />}
       </div>
     ));
-  }
+  };
 
   template(locals) {
     return (

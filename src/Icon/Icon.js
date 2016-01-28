@@ -16,7 +16,7 @@ export default class Icon extends React.Component {
     className: '',
     style: {},
     onClick: () => {}
-  }
+  };
 
   getLocals() {
     return {

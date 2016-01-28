@@ -27,7 +27,7 @@ export default class PanelHeader extends React.Component {
   getIcon = (collapse) => {
     const { direction, isExpanded } = collapse;
     return isExpanded ? icons[direction][0] : icons[direction][1];
-  }
+  };
 
   getLocals() {
     const { collapse, content, title, menu } = this.props;
@@ -68,7 +68,7 @@ export default class PanelHeader extends React.Component {
       </FlexView>
       : null
     );
-  }
+  };
 
   templateTitle = ({ renderTitle, title }) => {
     return (
@@ -79,7 +79,7 @@ export default class PanelHeader extends React.Component {
       : null
     );
 
-  }
+  };
 
   templateContent = ({ renderContent, content }) => {
     return (
@@ -89,7 +89,7 @@ export default class PanelHeader extends React.Component {
       </FlexView>
       : null
     );
-  }
+  };
 
   template({ collapse, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
     return (

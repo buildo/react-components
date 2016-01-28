@@ -36,7 +36,7 @@ export default class LoadingSpinner extends React.Component {
   static defaultProps = {
     size: '3em',
     overlayColor: 'rgba(255, 255, 255, .9)'
-  }
+  };
 
   componentDidMount() {
     this.logWarnings();
@@ -57,7 +57,7 @@ export default class LoadingSpinner extends React.Component {
         </div>
       );
     }
-  }
+  };
 
   logWarnings = () => {
     warn(() => {
@@ -67,7 +67,7 @@ export default class LoadingSpinner extends React.Component {
         return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];
       }
     });
-  }
+  };
 
   render() {
     const { size, color, overlayColor, id, className, style } = this.props;

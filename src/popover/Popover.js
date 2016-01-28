@@ -74,13 +74,13 @@ export default class Popover extends React.Component {
     if (this.getPopoverProps().dismissOnClickOutside) {
       window.addEventListener('click', this.onClickOutside, false);
     }
-  }
+  };
 
   removeOnClickListener = () => {
     if (this.getPopoverProps().dismissOnClickOutside) {
       window.removeEventListener('click', this.onClickOutside, false);
     }
-  }
+  };
 
   onClickOutside = (e) => {
     const childrenNode = React.findDOMNode(this.refs.children);
@@ -89,31 +89,31 @@ export default class Popover extends React.Component {
     if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
       this.hidePopover();
     }
-  }
+  };
 
   addOnScrollListener = () => {
     if (this.getPopoverProps().dismissOnScroll) {
       window.addEventListener('mousewheel', this.onScroll, false);
     }
-  }
+  };
 
   removeOnScrollListener = () => {
     if (this.getPopoverProps().dismissOnScroll) {
       window.removeEventListener('mousewheel', this.onScroll, false);
     }
-  }
+  };
 
-  onScroll = () => this.hidePopover()
+  onScroll = () => this.hidePopover();
 
   addListeners = () => {
     this.addOnScrollListener();
     this.addOnClickListener();
-  }
+  };
 
   removeListeners = () => {
     this.removeOnScrollListener();
     this.removeOnClickListener();
-  }
+  };
 
   // UTILS
 
@@ -136,7 +136,7 @@ export default class Popover extends React.Component {
       offsetY: 0,
       ...props.popover
     };
-  }
+  };
 
   getPopoverNode = () => {
     let popover;
@@ -147,7 +147,7 @@ export default class Popover extends React.Component {
       popover = childrenNode.childNodes[1];
     }
     return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.childNodes[0] : popover;
-  }
+  };
 
   getOffsetRect = (target) => {
     const box = target.getBoundingClientRect();
@@ -165,7 +165,7 @@ export default class Popover extends React.Component {
     const left = Math.round(box.left + scrollLeft - clientLeft);
 
     return { top, left };
-  }
+  };
 
   saveValuesFromNodeTree = (cb) => {
     const childrenNode = React.findDOMNode(this.refs.children);
@@ -192,11 +192,11 @@ export default class Popover extends React.Component {
         }
       }, cb);
     }
-  }
+  };
 
-  isStateful = (props) => typeof this.getPopoverProps(props).isOpen === 'undefined'
+  isStateful = (props) => typeof this.getPopoverProps(props).isOpen === 'undefined';
 
-  isOpen = (props) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen
+  isOpen = (props) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
 
   isEventInsideTarget = (el, target) => {
     if (!el) {
@@ -208,7 +208,7 @@ export default class Popover extends React.Component {
     } else {
       return false;
     }
-  }
+  };
 
   // VISIBILITY CHANGE
 
@@ -223,14 +223,14 @@ export default class Popover extends React.Component {
       const popover = this.getVisiblePopover();
       this.containerNode.innerHTML = React.renderToString(popover);
     });
-  }
+  };
 
   removePopover = () => {
     if (this.containerNode) {
       document.body.removeChild(this.containerNode);
       this.containerNode = null;
     }
-  }
+  };
 
   onPopoverOpenChange = (props) => {
     if (this.isOpen(props)) {
@@ -244,7 +244,7 @@ export default class Popover extends React.Component {
       }
       this.removeListeners();
     }
-  }
+  };
 
   onPopoverStateChange = () => {
     const { onShow, onHide, onToggle } = this.getPopoverProps();
@@ -255,7 +255,7 @@ export default class Popover extends React.Component {
     }
     onToggle();
     this.onPopoverOpenChange();
-  }
+  };
 
   eventWrapper = (cb) => {
     return (e) => {
@@ -266,13 +266,13 @@ export default class Popover extends React.Component {
         cb();
       }
     };
-  }
+  };
 
-  showPopover = () => this.setIsOpen(true)
+  showPopover = () => this.setIsOpen(true);
 
-  hidePopover = () => this.setIsOpen(false)
+  hidePopover = () => this.setIsOpen(false);
 
-  togglePopover = () => this.setIsOpen(!this.isOpen())
+  togglePopover = () => this.setIsOpen(!this.isOpen());
 
   setIsOpen = (isOpen) => {
     if (this.isStateful()) {
@@ -283,7 +283,7 @@ export default class Popover extends React.Component {
       cb();
       onToggle();
     }
-  }
+  };
 
   // LOCALES
 
@@ -299,9 +299,9 @@ export default class Popover extends React.Component {
         {content}
       </div>
     );
-  }
+  };
 
-  getVisiblePopover = () => this.popoverTemplate(this.computePopoverStyle())
+  getVisiblePopover = () => this.popoverTemplate(this.computePopoverStyle());
 
   getHiddenPopover = () => {
     const style = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
@@ -310,9 +310,9 @@ export default class Popover extends React.Component {
         {this.popoverTemplate({ position: 'absolute', visibility: 'hidden' })}
       </div>
     );
-  }
+  };
 
-  isAbsolute = () => this.getPopoverProps().attachToBody === true
+  isAbsolute = () => this.getPopoverProps().attachToBody === true;
 
   getEventCallbacks = () => {
     const { event } = this.getPopoverProps();
@@ -324,7 +324,7 @@ export default class Popover extends React.Component {
       onMouseLeave: onHover ? eventWrapper(hidePopover) : undefined,
       onClick: onClick ? eventWrapper(togglePopover) : undefined
     };
-  }
+  };
 
   computePopoverStyle = () => {
     const { child, popover } = this.state;
@@ -372,7 +372,7 @@ export default class Popover extends React.Component {
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
       maxWidth
     };
-  }
+  };
 
   getLocals() {
     const isRelative = !this.isAbsolute();

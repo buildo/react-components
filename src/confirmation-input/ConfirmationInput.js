@@ -33,7 +33,7 @@ export default class ConfirmationInput extends React.Component {
     onChange: () => {},
     onConfirm: () => {},
     onClear: () => {}
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -57,7 +57,7 @@ export default class ConfirmationInput extends React.Component {
       this._onConfirm();
       document.activeElement.blur(); // remove focus
     }
-  }
+  };
 
   onBlur = () => {
     const { hoveringConfirm } = this.state;
@@ -65,15 +65,15 @@ export default class ConfirmationInput extends React.Component {
       this._onConfirm();
     }
     this.setState({ focused: false });
-  }
+  };
 
   onFocus = () => {
     this.setState({ focused: true });
-  }
+  };
 
-  onMouseEnter = () => this.setState({ hoveringConfirm: true })
+  onMouseEnter = () => this.setState({ hoveringConfirm: true });
 
-  onMouseLeave = () => this.setState({ hoveringConfirm: false })
+  onMouseLeave = () => this.setState({ hoveringConfirm: false });
 
   _onConfirm = () => {
     const {
@@ -89,13 +89,13 @@ export default class ConfirmationInput extends React.Component {
         onMouseLeave(); // on confirm, if value is empty, `templateConfirm` disappears -> onMouseLeave never called
       }
     }
-  }
+  };
 
   _onClear = () => {
     this.props.onClear();
     this.props.onChange(''); // props.onChange should always receive a string
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
-  }
+  };
 
   getLocals() {
     const {

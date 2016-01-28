@@ -26,17 +26,17 @@ export default class TextOverflow extends React.Component {
     this.state = { isOverflowing: false };
   }
 
-  componentDidMount = () => this.verifyOverflow()
+  componentDidMount = () => this.verifyOverflow();
 
-  componentDidUpdate = () => this.verifyOverflow()
+  componentDidUpdate = () => this.verifyOverflow();
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.label !== this.props.label) {
       this.reset();
     }
-  }
+  };
 
-  reset = () => this.setState({ isOverflowing: false })
+  reset = () => this.setState({ isOverflowing: false });
 
   logWarnings = () => {
     warn(() => {
@@ -47,7 +47,7 @@ export default class TextOverflow extends React.Component {
         return [`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`, node];
       }
     });
-  }
+  };
 
   verifyOverflow = (_state) => {
     const state = _state || this.state;
@@ -59,7 +59,7 @@ export default class TextOverflow extends React.Component {
         this.logWarnings();
       }
     }
-  }
+  };
 
   getTextSpan = () => {
     const { label } = this.props;
@@ -72,7 +72,7 @@ export default class TextOverflow extends React.Component {
       textOverflow: 'ellipsis'
     };
     return <span ref='text' style={style}>{label}</span>;
-  }
+  };
 
   templateOverflow = () => {
     const { children, label, style, ...other } = this.props;
@@ -94,7 +94,7 @@ export default class TextOverflow extends React.Component {
 
       return <Popover { ...props }>{this.getTextSpan()}</Popover>;
     }
-  }
+  };
 
   templeteStandard = () => {
     const { children, label, style, ...other } = this.props;
@@ -107,7 +107,7 @@ export default class TextOverflow extends React.Component {
     };
 
     return <div { ...props }>{this.getTextSpan()}</div>;
-  }
+  };
 
   render() {
     return this.state.isOverflowing ? this.templateOverflow() : this.templeteStandard();

@@ -85,7 +85,7 @@ export default class FlexView extends React.Component {
     } else {
       return 0; // auto === true or default
     }
-  }
+  };
 
   getShrink = () => {
     const { shrink, basis, flexBasis, auto } = this.props;
@@ -103,7 +103,7 @@ export default class FlexView extends React.Component {
     } else {
       return 1; // grow === true or default
     }
-  }
+  };
 
   getBasis = () => {
     const { grow, shrink, basis, flexBasis, auto } = this.props;
@@ -116,7 +116,7 @@ export default class FlexView extends React.Component {
     } else {
       return 'auto'; // safe default
     }
-  }
+  };
 
   getFlexStyle = () => {
     const grow = this.getGrow();
@@ -130,7 +130,7 @@ export default class FlexView extends React.Component {
       WebkitFlex: values,
       flex: values
     };
-  }
+  };
 
   getStyle = () => {
     const style = pick(this.props, [
@@ -142,7 +142,7 @@ export default class FlexView extends React.Component {
       'marginBottom'
     ]);
     return { ...this.getFlexStyle(), ...style, ...this.props.style };
-  }
+  };
 
   getContentAlignmentClasses = () => {
     const vPrefix = this.props.column ? 'justify-content-' : 'align-content-';
@@ -164,14 +164,14 @@ export default class FlexView extends React.Component {
     const hAlignContent = hAlignContentClasses[this.props.hAlignContent];
 
     return cx(vAlignContent, hAlignContent);
-  }
+  };
 
   getClasses = () => {
     const direction = this.props.column ? 'flex-column' : 'flex-row';
     const contentAlignment = this.getContentAlignmentClasses();
     const wrap = this.props.wrap && 'flex-wrap';
     return cx('react-flex-view', direction, contentAlignment, wrap, this.props.className);
-  }
+  };
 
   render() {
     const className = this.getClasses();

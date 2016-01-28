@@ -40,7 +40,7 @@ export default class Panel extends React.Component {
     loading: false,
     softLoading: false,
     softLoadingDelay: 0
-  }
+  };
 
   _softLoadingActive = false;
   _softLoadingTimer = null;
@@ -88,7 +88,7 @@ export default class Panel extends React.Component {
     } else {
       onCollapse();
     }
-  }
+  };
 
   getStyle = () => {
     const style = {};
@@ -100,7 +100,7 @@ export default class Panel extends React.Component {
       ...this.props.style,
       ...style
     };
-  }
+  };
 
   getLocals() {
     const { header, children, loading, softLoading, softLoadingDelay, type, className } = this.props;
@@ -130,7 +130,7 @@ export default class Panel extends React.Component {
         <div className='loader'></div>
       </div>
     ) : null;
-  }
+  };
 
   templateHeader = ({ header, isExpanded, toggleExpanded }) => {
     return (
@@ -146,7 +146,7 @@ export default class Panel extends React.Component {
         } : null}
       />
     : null );
-  }
+  };
 
   templateExpandedContent = ({ children, loading }) => {
     return (
@@ -155,7 +155,7 @@ export default class Panel extends React.Component {
         {loading && <LoadingSpinner />}
       </FlexView>
     );
-  }
+  };
 
   templateCollapsedContent = ({ header, verticalDirection }) => {
     return (
@@ -167,7 +167,7 @@ export default class Panel extends React.Component {
       </FlexView>
       : null
     );
-  }
+  };
 
   template({ header, children, loading, softLoading, className, style, isExpanded, toggleExpanded, verticalDirection }) {
     return (
