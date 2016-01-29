@@ -49,26 +49,26 @@ export default class ButtonRenderer extends React.Component {
   }
 
   templateLoading = () => (
-    <FlexView className="button-loading" style={{ position: 'relative' }}>
+    <FlexView className="button-loading" style={{ position: 'relative' }} shrink={false} vAlignContent="center" hAlignContent='center'>
       <LoadingSpinner size="1em" overlayColor="transparent" />
     </FlexView>
   );
 
   templateIcon = ({ icon }) => (
-    <FlexView className="button-icon">
+    <FlexView className="button-icon" shrink={false}>
       <Icon icon={icon} />
     </FlexView>
   );
 
   templateLabel = ({ label, TextOverflow }) => (
-    <FlexView className="button-label" column grow basis="100%">
+    <FlexView className="button-label" column shrink={false} vAlignContent="center" hAlignContent='center'>
       <TextOverflow label={label} popover={{ offsetY: -8 }}/>
     </FlexView>
   );
 
   template({ onClick, buttonState, icon, label, loading, className, style, TextOverflow }) {
     return (
-      <FlexView className={cx('button', className, buttonState)} {...{ onClick, style }} vAlignContent="center" hAlignContent='center'>
+      <FlexView className={cx('button', className, buttonState)} {...{ onClick, style }} vAlignContent="center" hAlignContent='center' shrink={false}>
         {loading && this.templateLoading()}
         {icon && this.templateIcon({ icon })}
         {label && this.templateLabel({ label, TextOverflow })}

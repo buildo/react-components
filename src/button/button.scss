@@ -13,7 +13,6 @@ $button-ready-hover-background: lightgray !default;
 .button {
   font-weight: $button-font-weight;
   position: relative;
-  display: block;
   padding: 3px $button-horizontal-padding;
   height: 36px;
   cursor: pointer;
@@ -22,6 +21,10 @@ $button-ready-hover-background: lightgray !default;
   color: $button-color;
   font-size: 14px;
   border-radius: $button-border-radius;
+
+  .button-icon, .button-loading, .button-label {
+    margin: 0 3px;
+  }
 
   &.tiny {
     font-size: 14px;
@@ -35,14 +38,8 @@ $button-ready-hover-background: lightgray !default;
     padding-right: $button-large-horizontal-padding;
   }
 
-  .button-icon, .button-loading {
-    width: 14px;
-    display: inline-block;
-  }
   .button-loading {
     height: 1em;
-    width: 14px;
-    margin: 5px;
   }
   &.simple {
     border-width: 0;
