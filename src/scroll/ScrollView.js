@@ -43,26 +43,16 @@ export default class ScrollView extends React.Component {
     easing: 'easeInOutQuad'
   };
 
-  componentDidMount() {
-    if (!this.props.scrollPropagation) {
-      this.disableScrollPropagation();
-    }
-  }
-
   getScrollView = () => React.findDOMNode(this.refs.scrollView);
 
-  enableScrollPropagation = () => {
-    this.getScrollView().removeEventListener('wheel', this.stopScrollPropagation);
-    this.getScrollView().removeEventListener('touchstart', this.initializeTouchEventDirection);
-    this.getScrollView().removeEventListener('touchend', this.clearTouchEventDirection);
-    this.getScrollView().removeEventListener('touchmove', this.stopScrollPropagation);
-  };
-
-  disableScrollPropagation = () => {
-    this.getScrollView().addEventListener('wheel', this.stopScrollPropagation);
-    this.getScrollView().addEventListener('touchstart', this.initializeTouchEventDirection);
-    this.getScrollView().addEventListener('touchend', this.clearTouchEventDirection);
-    this.getScrollView().addEventListener('touchmove', this.stopScrollPropagation);
+  getEventListeners = () => {
+    return !this.props.scrollPropagation ? {
+      onScroll: this.stopScrollPropagation,
+      onWheel: this.stopScrollPropagation,
+      onTouchStart: this.initializeTouchEventDirection,
+      onTouchEnd: this.clearTouchEventDirection,
+      onTouchMove: this.stopScrollPropagation
+    } : {};
   };
 
   isEventInsideScrollView = (el) => {
@@ -83,7 +73,7 @@ export default class ScrollView extends React.Component {
     this.lastY = null;
   };
 
-  stopScrollPropagation = (e) => {
+  stopScrollPropagation = ({ nativeEvent: e }) => {
     const el = e.target || e.srcElement;
     const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
@@ -138,7 +128,7 @@ export default class ScrollView extends React.Component {
       const { scrollTop, scrollLeft } = this.getScrollView();
       const easingFunction = easing[this.props.easing];
 
-      if ((typeof x === 'number' && scrollLeft !== x) || (typeof y === 'number' && scrollTop !== y)) {
+      if ((t.Number.is(x) && scrollLeft !== x) || (t.Number.is(y) && scrollTop !== y)) {
         const currentTime = Math.min(scrollDuration, (Date.now() - startTime));
         const distanceX = (x - startX);
         const distanceY = (y - startY);
@@ -156,26 +146,11 @@ export default class ScrollView extends React.Component {
   render() {
     const props = omit(this.props, Object.keys(PropTypes));
     const { children } = this.props;
-    const isFunction = typeof children === 'function';
     return (
-      <div { ...props } style={this.computeStyle()} ref='scrollView'>
-        {isFunction ? children(this.scrollTo) : children}
+      <div { ...props } { ...this.getEventListeners() } style={this.computeStyle()} ref='scrollView'>
+        {t.Function.is(children) ? children(this.scrollTo) : children}
       </div>
     );
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.scrollPropagation && !this.props.scrollPropagation) {
-      this.enableScrollPropagation();
-    } else if (!nextProps.scrollPropagation && this.props.scrollPropagation) {
-      this.disableScrollPropagation();
-    }
-  }
-
-  componentWillUnmount() {
-    if (!this.props.scrollPropagation) {
-      this.enableScrollPropagation();
-    }
   }
 
 }
