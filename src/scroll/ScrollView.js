@@ -30,6 +30,10 @@ const PropTypes = {
    * easing function used when scrolling with `scrollTo`
    */
   easing: t.maybe(t.enums.of(Object.keys(easing))),
+  /**
+   *  onScroll function that handle onScroll events
+   */
+  onScroll: t.maybe(t.Function),
   style: t.maybe(t.Object)
 };
 
@@ -40,19 +44,20 @@ export default class ScrollView extends React.Component {
     scrollX: true,
     scrollY: true,
     scrollPropagation: true,
-    easing: 'easeInOutQuad'
+    easing: 'easeInOutQuad',
+    onScroll: () => {}
   };
 
   getScrollView = () => React.findDOMNode(this.refs.scrollView);
 
   getEventListeners = () => {
-    return !this.props.scrollPropagation ? {
-      onScroll: this.stopScrollPropagation,
-      onWheel: this.stopScrollPropagation,
+    return {
+      onScroll: this._onScroll,
+      //onWheel: this._onScroll,
       onTouchStart: this.initializeTouchEventDirection,
       onTouchEnd: this.clearTouchEventDirection,
-      onTouchMove: this.stopScrollPropagation
-    } : {};
+      onTouchMove: this._onScroll
+    };
   };
 
   isEventInsideScrollView = (el) => {
@@ -140,6 +145,13 @@ export default class ScrollView extends React.Component {
     } else {
       this.getScrollView().scrollLeft = x;
       this.getScrollView().scrollTop = y;
+    }
+  };
+
+  _onScroll = (e) => {
+    this.props.onScroll(e);
+    if (!this.props.scrollPropagation) {
+      this.stopScrollPropagation(e);
     }
   };
 
