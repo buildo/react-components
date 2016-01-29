@@ -38,5 +38,4 @@ class Example extends React.Component {
   render() {
     return this.getTemplate();
   }
-
 };

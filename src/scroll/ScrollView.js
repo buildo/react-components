@@ -52,8 +52,8 @@ export default class ScrollView extends React.Component {
 
   getEventListeners = () => {
     return {
-      onScroll: this._onScroll,
-      //onWheel: this._onScroll,
+      onWheel: this._onScroll,
+      onScroll: this.props.onScroll,
       onTouchStart: this.initializeTouchEventDirection,
       onTouchEnd: this.clearTouchEventDirection,
       onTouchMove: this._onScroll
@@ -149,7 +149,6 @@ export default class ScrollView extends React.Component {
   };
 
   _onScroll = (e) => {
-    this.props.onScroll(e);
     if (!this.props.scrollPropagation) {
       this.stopScrollPropagation(e);
     }
