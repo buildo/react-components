@@ -4,6 +4,7 @@ import includes from 'lodash/collection/includes';
 import { skinnable, t, props, pure } from '../utils';
 import FlexView from '../flex/FlexView';
 import { Table as FixedDataTable } from 'fixed-data-table';
+import warn from '../utils/log';
 
 import './patch-fixed-data-table';
 
@@ -17,13 +18,13 @@ export const isInvariantSatisfied = ({ selectionType, onRowsSelect, onRowSelect 
   const multipleSelectionEnabled = selectionType === 'multi';
   /* eslint-disable no-console, quotes */
   if (onRowSelect && onRowsSelect) {
-    console.warn("'onRowSelect' and 'onRowsSelect' are exclusive. Use the former if 'multipleSelectionEnabled' is true, or the latter if it's false");
+    warn("'onRowSelect' and 'onRowsSelect' are exclusive. Use the former if 'multipleSelectionEnabled' is true, or the latter if it's false");
     return false;
   } else if (multipleSelectionEnabled && onRowSelect) {
-    console.warn("'multipleSelectionEnabled' is true, so 'onRowSelect' will never be called. Use 'onRowsSelect' (plural) instead.");
+    warn("'multipleSelectionEnabled' is true, so 'onRowSelect' will never be called. Use 'onRowsSelect' (plural) instead.");
     return false;
   } else if (!multipleSelectionEnabled && onRowsSelect) {
-    console.warn("'multipleSelectionEnabled' is false, so 'onRowsSelect' will never be called. Use 'onRowSelect' (singular) instead.");
+    warn("'multipleSelectionEnabled' is false, so 'onRowsSelect' will never be called. Use 'onRowSelect' (singular) instead.");
     return false;
   }
   return true;
