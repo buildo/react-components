@@ -76,10 +76,11 @@ export default class Table extends React.Component {
 
   constructor(props) {
     super(props);
+    const { height, width, selectedRows } = props;
     this.state = {
-      height: this.props.height,
-      width: this.props.width,
-      scrollToRow: this.props.selectedRows[0]
+      height,
+      width,
+      scrollToRow: selectedRows[0]
     };
   }
 
