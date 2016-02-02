@@ -90,8 +90,9 @@ export default class Table extends React.Component {
     selectedRows: []
   };
 
+  getNode = () => React.findDOMNode(this.refs.wrapper);
+
   componentDidMount() {
-    this.node = React.findDOMNode(this.refs.wrapper);
     if (this.props.selectionType !== 'none') {
       this.attachKeyPressListener();
       this.scrollToSelectedRow();
@@ -122,10 +123,13 @@ export default class Table extends React.Component {
   };
 
   autoSize = () => {
-    const { height: currentHeight, width: currentWidth } = this.state;
-    const { clientHeight: height, clientWidth: width } = this.node;
-    if ((height !== currentHeight) || (width !== currentWidth)) {
-      this.setState({ height, width }, this.scrollToSelectedRow);
+    const node = this.getNode();
+    if (node) {
+      const { clientHeight: height, clientWidth: width } = node;
+      const { height: currentHeight, width: currentWidth } = this.state;
+      if ((height !== currentHeight) || (width !== currentWidth)) {
+        this.setState({ height, width }, this.scrollToSelectedRow);
+      }
     }
   };
 
@@ -172,11 +176,11 @@ export default class Table extends React.Component {
   };
 
   attachKeyPressListener = () => {
-    return this.node.addEventListener('keydown', this.onKeyPress, false);
+    return this.getNode().addEventListener('keydown', this.onKeyPress, false);
   };
 
   removeKeyPressListener = () => {
-    return this.node.removeEventListener('keydown', this.onKeyPress, false);
+    return this.getNode().removeEventListener('keydown', this.onKeyPress, false);
   };
 
   onRowClick = ({ ctrlKey, metaKey }, index) => {
