@@ -59,9 +59,9 @@ const Props = t.subtype(t.struct({
     dir: t.maybe(t.enums.of(['asc', 'desc'], 'sortDir'))
   })),
 
-  selectedRows: t.maybe(t.list(t.Num)),
-  onRowSelect: t.maybe(t.Func),
-  onRowsSelect: t.maybe(t.Func),
+  selectedRows: t.maybe(t.list(t.Number)),
+  onRowSelect: t.maybe(t.Function),
+  onRowsSelect: t.maybe(t.Function),
   selectionType: t.enums.of(['none', 'single', 'multi'], 'selectionType'),
 
   className: t.maybe(t.String),
