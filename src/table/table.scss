@@ -1,0 +1,70 @@
+@import '../utils/theme/variables.scss';
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+
+$selectedCellBackground: $lynch;
+$hoveredCellBackground: $aquamarine30;
+$oddRowBackground: $pearl;
+$borderColor: $pearl;
+$headerBackground: $silver;
+$headerText: $charcoal;
+
+.fixed-data-table-wrapper {
+
+  // whole table
+  .public_fixedDataTable_main, .public_fixedDataTable_hasBottomBorder {
+    border-width: 0;
+  }
+
+  // header
+  .public_fixedDataTable_header {
+    border-width: 0;
+    background: $headerBackground;
+    .public_fixedDataTableCell_cellContent {
+      color: $headerText;
+    }
+  }
+
+  .fixed-data-tablew-wrapper-header {
+    padding: 0 5px;
+  }
+
+  // bg color for odd rows in grid
+  &.grid .public_fixedDataTableRow_odd {
+    background: $oddRowBackground;
+  }
+
+  // cell
+  .public_fixedDataTableCell_main {
+    border-color: $borderColor;
+    &:last-child {
+      border-width: 0;
+    }
+  }
+
+  // selection/hover
+  &.selectable {
+    .public_fixedDataTableCell_cellContent {
+      cursor: pointer;
+      .selected {
+        background-color: $selectedCellBackground;
+      }
+    }
+    .public_fixedDataTable_bodyRow, .public_fixedDataTable_bodyRow.public_fixedDataTableRow_odd {
+      &:hover {
+        background-color: $hoveredCellBackground;
+      }
+    }
+  }
+
+  // Scrollbar
+  .public_Scrollbar_main.public_Scrollbar_mainActive, .public_Scrollbar_main:hover {
+    background-color: rgba($white, .8);
+    .public_Scrollbar_face:hover:after {
+      background-color: $silver;
+    }
+  }
+  .public_Scrollbar_face:after {
+    background-color: rgba($silver, .6);
+  }
+
+}

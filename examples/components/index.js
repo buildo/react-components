@@ -21,6 +21,7 @@ import ConfirmationInput from 'raw!./confirmation-input/default.example';
 import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
+import Table from 'raw!./table/default.example';
 
 import README from 'raw!../../README.md';
 
@@ -96,6 +97,12 @@ export default [
         id: 'Toggle',
         title: 'Toggle',
         'component': 'react-components/master/src/toggle/Toggle.js'
+      },
+      {
+        examples: [Table],
+        id: 'Table',
+        title: 'Table',
+        component: 'react-components/master/src/table/Table.js'
       }
     ]
   },

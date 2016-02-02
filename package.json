@@ -29,6 +29,7 @@
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
     "classnames": "^2.2.3",
+    "fixed-data-table": "^0.4.7",
     "lodash": "^3.10.1",
     "mobile-detect": "^1.2.1",
     "react-input-children": "^1.0.0",
