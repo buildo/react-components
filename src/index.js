@@ -21,3 +21,4 @@ export ConfirmationInput from './confirmation-input';
 export Badge from './badge';
 export NavBar from './nav-bar';
 export Toggle from './toggle';
+export Table, { Column } from './table';
