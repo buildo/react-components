@@ -1,0 +1,47 @@
+@import '../utils/theme/variables.scss';
+
+.menu {
+  width: 250px;
+  position: absolute;
+  z-index: 101;
+  top: 40px;
+  right: 0;
+  background-color: $white;
+  padding: 8px;
+  box-shadow: 0 0 10px 0px rgba($lynch, .7);
+  overflow: scroll;
+
+  .menu-row {
+    width: 100%;
+    position: relative;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .menu-title {
+    color: $silver;
+    text-transform: uppercase;
+    font-weight: $semibold;
+    font-size: 13px;
+  }
+
+  .menu-item {
+    position: relative;
+    cursor: pointer;
+
+    .menu-item-title {
+      color: $charcoal;
+    }
+
+    .menu-item-metadata {
+      color: $silver;
+      position: absolute;
+      right: 0;
+    }
+
+    &:hover:not(.disabled) .menu-item-title {
+      color: $lynch;
+    }
+  }
+}
