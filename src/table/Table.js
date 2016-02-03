@@ -14,21 +14,30 @@ import './table.scss';
 const ARROW_UP = 38;
 const ARROW_DOWN = 40;
 
-export const isInvariantSatisfied = ({ selectionType, onRowsSelect, onRowSelect }) => {
+export const checkPropsInvariants = (props) => {
+  const {
+    selectionType, onRowsSelect, onRowSelect,
+    width, height, autoSize
+  } = props;
   const multipleSelectionEnabled = selectionType === 'multi';
-  /* eslint-disable no-console, quotes */
+  let toReturn = true;
   if (onRowSelect && onRowsSelect) {
-    warn("'onRowSelect' and 'onRowsSelect' are exclusive. Use the former if 'multipleSelectionEnabled' is true, or the latter if it's false");
-    return false;
+    warn(`'onRowSelect' and 'onRowsSelect' are exclusive. Use the former if 'multipleSelectionEnabled' is true, or the latter if it's false`);
+    toReturn = false;
   } else if (multipleSelectionEnabled && onRowSelect) {
-    warn("'multipleSelectionEnabled' is true, so 'onRowSelect' will never be called. Use 'onRowsSelect' (plural) instead.");
-    return false;
+    warn(`'multipleSelectionEnabled' is true, so 'onRowSelect' will never be called. Use 'onRowsSelect' (plural) instead.`);
+    toReturn = false;
   } else if (!multipleSelectionEnabled && onRowsSelect) {
-    warn("'multipleSelectionEnabled' is false, so 'onRowsSelect' will never be called. Use 'onRowSelect' (singular) instead.");
-    return false;
+    warn(`'multipleSelectionEnabled' is false, so 'onRowsSelect' will never be called. Use 'onRowSelect' (singular) instead.`);
+    toReturn = false;
   }
-  return true;
-  /* eslint-enable no-console, quotes */
+
+  if ((!width && !height) && !autoSize) {
+    warn(`when 'autoSize=false' you must pass 'width' and 'height' otherwise the table will be sizeless.`);
+    toReturn = false;
+  }
+
+  return toReturn;
 };
 
 const Props = t.subtype(t.struct({
@@ -67,7 +76,7 @@ const Props = t.subtype(t.struct({
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
   id: t.maybe(t.String)
-}), isInvariantSatisfied, 'FixedDataTableWrapperProps');
+}), checkPropsInvariants, 'FixedDataTableWrapperProps');
 
 @pure
 @skinnable()
