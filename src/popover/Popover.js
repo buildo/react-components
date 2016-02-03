@@ -213,16 +213,19 @@ export default class Popover extends React.Component {
   // VISIBILITY CHANGE
 
   appendPopover = () => {
-    const hiddenPopover = this.getHiddenPopover();
+    // create container node
     this.containerNode = document.createElement('div');
-    this.containerNode.innerHTML = React.renderToString(hiddenPopover);
-    this.popoverNode = this.containerNode.childNodes[0];
     document.body.appendChild(this.containerNode);
 
-    this.saveValuesFromNodeTree(() => {
-      const popover = this.getVisiblePopover();
-      this.containerNode.innerHTML = React.renderToString(popover);
-    });
+    // render invisible popover
+    const hiddenPopover = this.getHiddenPopover();
+    React.render(hiddenPopover, this.containerNode);
+
+    // add pointer to popover node
+    this.popoverNode = this.containerNode.childNodes[0];
+
+    // save popover size (visible popover will be rendered in componentDidUpdate)
+    this.saveValuesFromNodeTree();
   };
 
   removePopover = () => {
