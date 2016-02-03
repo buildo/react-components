@@ -40,14 +40,12 @@ $hover-scrollbar-color: white !default;
     padding: 0 5px;
   }
 
-  // bg color for odd rows in grid
-  &.grid {
-    .public_fixedDataTableRow_odd {
-      background: $odd-row-background;
-    }
-    .public_fixedDataTableRow_even {
-      background: $even-row-background;
-    }
+  // bg color for rows
+  .public_fixedDataTableRow_odd {
+    background: $odd-row-background;
+  }
+  .public_fixedDataTableRow_even {
+    background: $even-row-background;
   }
 
   // cell
@@ -76,7 +74,7 @@ $hover-scrollbar-color: white !default;
     }
   }
 
-  // Scrollbar
+  // scrollbar
   .public_Scrollbar_main.public_Scrollbar_mainActive, .public_Scrollbar_main:hover {
     background-color: $hover-scrollbar-background;
     .public_Scrollbar_face:hover:after {
