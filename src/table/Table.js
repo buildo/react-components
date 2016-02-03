@@ -4,7 +4,7 @@ import includes from 'lodash/collection/includes';
 import { skinnable, t, props, pure } from '../utils';
 import FlexView from '../flex/FlexView';
 import { Table as FixedDataTable } from 'fixed-data-table';
-import warn from '../utils/log';
+import { warn } from '../utils/log';
 
 import './patch-fixed-data-table';
 
