@@ -94,8 +94,8 @@ export default class Table extends React.Component {
   }
 
   static defaultProps = {
-    width: 400,
-    height: 400,
+    width: 0,
+    height: 0,
     selectedRows: []
   };
 
