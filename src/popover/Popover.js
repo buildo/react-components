@@ -63,6 +63,13 @@ export default class Popover extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.containerNode) {
+      const popover = this.getVisiblePopover();
+      React.render(popover, this.containerNode);
+    }
+  }
+
   componentWillUnmount() {
     this.removePopover();
     this.removeListeners();
