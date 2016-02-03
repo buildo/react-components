@@ -56,6 +56,9 @@ $hover-scrollbar-color: white !default;
     &:last-child {
       border-width: 0;
     }
+    .public_fixedDataTableCell_wrap3 {
+      vertical-align: baseline; // needed to enable `height: 100%` on our cell components
+    }
   }
 
   // selection/hover
