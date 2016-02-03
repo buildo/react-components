@@ -4,6 +4,8 @@ import { pure, props, t, skinnable } from '../utils';
 import partial from 'lodash/function/partial';
 import Divider from '../Divider/Divider';
 
+import './menu.scss';
+
 export const optionType = t.struct({
   type: t.enums.of(['title', 'item', 'divider']),
   title: t.maybe(t.ReactNode),
