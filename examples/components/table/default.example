@@ -44,21 +44,23 @@ class Example extends React.Component {
 
     const cellRenderer = (cellData, selected, cellDataKey, rowData) => {
       const columnData = rowData[cellDataKey];
-      switch (cellDataKey) {
-        case 'name':
-          return <FlexView hAlignContent='left' vAlignContent='center' style={{ paddingLeft: 10 }}>{columnData}</FlexView>;
-        case 'age':
-          return <FlexView hAlignContent='center' vAlignContent='center'>{columnData}</FlexView>;
-        case 'occupation':
-          return <FlexView hAlignContent='center' vAlignContent='center'>{columnData}</FlexView>;
-      }
+      const isFirstCell = cellDataKey === 'name';
+      const props = {
+        hAlignContent: isFirstCell ? 'left' : 'center',
+        vAlignContent: 'center',
+        height: '100%',
+        style: isFirstCell ? { paddingLeft: 10 } : undefined
+      };
+      return <FlexView {...props}>{columnData}</FlexView>;
     };
 
     const headerRenderer = label => (
-      <FlexView hAlignContent='center'><strong>{label}</strong></FlexView>
+      <FlexView hAlignContent='center' vAlignContent='center' height='100%'>
+        <strong>{label}</strong>
+      </FlexView>
     );
 
-    const rowHeight = 44
+    const rowHeight = 44;
 
     const onRowSelect = row => alert(`Selected row ${row}`);
 

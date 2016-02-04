@@ -9,7 +9,6 @@ import { warn } from '../utils/log';
 import './patch-fixed-data-table';
 
 import 'fixed-data-table/dist/fixed-data-table-base.min.css';
-import './table.scss';
 
 const ARROW_UP = 38;
 const ARROW_DOWN = 40;

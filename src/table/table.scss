@@ -1,11 +1,18 @@
-@import '../utils/theme/variables.scss';
+$border-color: gray !default;
 
-$selectedCellBackground: $lynch;
-$hoveredCellBackground: $aquamarine30;
-$oddRowBackground: $pearl;
-$borderColor: $pearl;
-$headerBackground: $silver;
-$headerText: $charcoal;
+$header-background: gray !default;
+$header-color: #242424 !default;
+
+$odd-row-background: transparent !default;
+$even-row-background: transparent !default;
+
+$cell-border-color: gray !default;
+$selected-cell-background: lightblue !default;
+$hover-cell-background: lightblue !default;
+
+$scrollbar-color: rgba(gray, .6) !default;
+$hover-scrollbar-background: rgba(white, .8) !default;
+$hover-scrollbar-color: white !default;
 
 .fixed-data-table-wrapper {
 
@@ -14,12 +21,18 @@ $headerText: $charcoal;
     border-width: 0;
   }
 
+  .public_fixedDataTableRow_fixedColumnsDivider {
+    border-color: $border-color;
+    border-width: 2px;
+  }
+
   // header
   .public_fixedDataTable_header {
     border-width: 0;
-    background: $headerBackground;
+    background: $header-background;
     .public_fixedDataTableCell_cellContent {
-      color: $headerText;
+      color: $header-color;
+      background: $header-background;
     }
   }
 
@@ -27,16 +40,22 @@ $headerText: $charcoal;
     padding: 0 5px;
   }
 
-  // bg color for odd rows in grid
-  &.grid .public_fixedDataTableRow_odd {
-    background: $oddRowBackground;
+  // bg color for rows
+  .public_fixedDataTableRow_odd {
+    background: $odd-row-background;
+  }
+  .public_fixedDataTableRow_even {
+    background: $even-row-background;
   }
 
   // cell
   .public_fixedDataTableCell_main {
-    border-color: $borderColor;
+    border-color: $cell-border-color;
     &:last-child {
       border-width: 0;
+    }
+    .public_fixedDataTableCell_wrap3 {
+      vertical-align: baseline; // needed to enable `height: 100%` on our cell components
     }
   }
 
@@ -45,25 +64,25 @@ $headerText: $charcoal;
     .public_fixedDataTableCell_cellContent {
       cursor: pointer;
       .selected {
-        background-color: $selectedCellBackground;
+        background: $selected-cell-background;
       }
     }
     .public_fixedDataTable_bodyRow, .public_fixedDataTable_bodyRow.public_fixedDataTableRow_odd {
       &:hover {
-        background-color: $hoveredCellBackground;
+        background: $hover-cell-background;
       }
     }
   }
 
-  // Scrollbar
+  // scrollbar
   .public_Scrollbar_main.public_Scrollbar_mainActive, .public_Scrollbar_main:hover {
-    background-color: rgba($white, .8);
+    background-color: $hover-scrollbar-background;
     .public_Scrollbar_face:hover:after {
-      background-color: $silver;
+      background-color: $hover-scrollbar-color;
     }
   }
   .public_Scrollbar_face:after {
-    background-color: rgba($silver, .6);
+    background-color: $scrollbar-color;
   }
 
 }
