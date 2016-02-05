@@ -192,7 +192,7 @@ export default class Table extends React.Component {
     const footerDataGetter = () => true; /*because https://github.com/facebook/fixed-data-table/issues/172*/
 
     const columnWidth = autoSizeColumns ? { width: width/numberOfColumns } : {};
-    const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-tablew-wrapper-header' };
+    const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-table-wrapper-header' };
     const addProps = column => React.cloneElement(column, { ...columnProps });
     const columns = numberOfColumns === 1 ? addProps(children) : [].concat(children).map(addProps);
 
@@ -206,7 +206,7 @@ export default class Table extends React.Component {
     return {
       wrapperProps: { id, style, grow: true, className, tabIndex, ref: 'wrapper', width: '100%', height: '100%' },
       tableProps: {
-        width: width + 2, height: height + 2, // as long as FDT counts the borders
+        width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
         scrollToRow, onRowClick, onScrollStart,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
