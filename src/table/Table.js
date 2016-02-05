@@ -10,9 +10,6 @@ import './patch-fixed-data-table';
 
 import 'fixed-data-table/dist/fixed-data-table-base.min.css';
 
-const ARROW_UP = 38;
-const ARROW_DOWN = 40;
-
 export const checkPropsInvariants = (props) => {
   const {
     selectionType, onRowsSelect, onRowSelect,
@@ -102,7 +99,6 @@ export default class Table extends React.Component {
 
   componentDidMount() {
     if (this.props.selectionType !== 'none') {
-      this.attachKeyPressListener();
       this.scrollToSelectedRow();
     }
     if (this.props.autoSize) {
@@ -118,7 +114,6 @@ export default class Table extends React.Component {
   }
 
   componentWillUnmount() {
-    this.removeKeyPressListener();
     this.stopAutoSizeInterval();
   }
 
@@ -151,44 +146,6 @@ export default class Table extends React.Component {
     this.setState({
       scrollToRow: null
     });
-  };
-
-  getDirectionFromKeyCode = (keyCode) => {
-    switch (keyCode) {
-      case ARROW_UP: return -1;
-      case ARROW_DOWN: return 1;
-      default: return null;
-    }
-  };
-
-  selectAdjacentRow = (direction) => {
-    const { selectedRows, selectionType, onRowSelect, onRowsSelect } = this.props;
-    if (!direction || selectedRows.length !== 1) {
-      return;
-    }
-    const rowIndexToSelect = selectedRows[0] + direction;
-    if (rowIndexToSelect < 0 || rowIndexToSelect >= this.props.rowsCount) {
-      return;
-    }
-    const multipleSelectionEnabled = selectionType === 'multi';
-    if (multipleSelectionEnabled) {
-      onRowsSelect([rowIndexToSelect]);
-    } else {
-      onRowSelect(rowIndexToSelect);
-    }
-  };
-
-  onKeyPress = ({ which, keyCode }) => {
-    const direction = this.getDirectionFromKeyCode(which | keyCode);
-    return direction && this.selectAdjacentRow(direction);
-  };
-
-  attachKeyPressListener = () => {
-    return this.getNode().addEventListener('keydown', this.onKeyPress, false);
-  };
-
-  removeKeyPressListener = () => {
-    return this.getNode().removeEventListener('keydown', this.onKeyPress, false);
   };
 
   onRowClick = ({ ctrlKey, metaKey }, index) => {
@@ -235,7 +192,7 @@ export default class Table extends React.Component {
     const footerDataGetter = () => true; /*because https://github.com/facebook/fixed-data-table/issues/172*/
 
     const columnWidth = autoSizeColumns ? { width: width/numberOfColumns } : {};
-    const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-tablew-wrapper-header' };
+    const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-table-wrapper-header' };
     const addProps = column => React.cloneElement(column, { ...columnProps });
     const columns = numberOfColumns === 1 ? addProps(children) : [].concat(children).map(addProps);
 
@@ -249,7 +206,7 @@ export default class Table extends React.Component {
     return {
       wrapperProps: { id, style, grow: true, className, tabIndex, ref: 'wrapper', width: '100%', height: '100%' },
       tableProps: {
-        width: width + 2, height: height + 2, // as long as FDT counts the borders
+        width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
         scrollToRow, onRowClick, onScrollStart,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
