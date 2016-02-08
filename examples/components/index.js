@@ -22,6 +22,7 @@ import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
 import Table from 'raw!./table/default.example';
+import Meter from 'raw!./meter/default.example';
 
 import README from 'raw!../../README.md';
 
@@ -182,6 +183,12 @@ export default [
         id: 'ModalManager',
         title: 'ModalManager',
         'component': 'react-components/master/src/modal-manager/ModalManager.js'
+      },
+      {
+        examples: [Meter],
+        id: 'Meter',
+        title: 'Meter',
+        'component': 'react-components/master/src/meter/Meter.js'
       }
     ]
   },

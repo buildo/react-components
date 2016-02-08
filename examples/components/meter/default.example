@@ -1,0 +1,9 @@
+class Example extends React.Component {
+  render() {
+    return (
+      <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
+        <Meter currentValue={15} minValue={0} maxValue={20}/>
+      </div>
+    );
+  }
+}

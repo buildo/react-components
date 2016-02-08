@@ -22,3 +22,4 @@ export Badge from './badge';
 export NavBar from './nav-bar';
 export Toggle from './toggle';
 export Table, { Column } from './table';
+export Meter from './meter';
