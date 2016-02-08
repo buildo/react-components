@@ -8,11 +8,11 @@ const Range = t.refinement(t.struct({
   startValue: t.Number,
   endValue: t.Number,
   fillingColor: t.String,
-  labelColro: t.String
+  labelColor: t.String
 }), r => r.startValue < r.endValue);
 
 const labelFormatter = (currentValue, startValue, endValue) =>(
-  +(Math.round( currentValue * 100 / Math.abs(startValue - endValue) + 'e+2')  + 'e-2')+'%'
+  Math.abs((currentValue - startValue) * 100 / (endValue - startValue))+'%'
 );
 /**
  * ### Renders a Progress Bar
@@ -70,9 +70,8 @@ export default class Meter extends React.Component{
   }
 
   getResultFromCurrentValue = ({ currentValue, minValue, maxValue }) =>{
-    return +(Math.round( currentValue * 100 / Math.abs(minValue - maxValue) + 'e+2')  + 'e-2'); //to be checked, not work as expected for range and negative
-  };
-
+    return Math.abs((currentValue - minValue) * 100 / (maxValue - minValue));
+  }
   getStyles = () => {
     const {
       currentValue,
