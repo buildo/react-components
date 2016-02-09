@@ -19,18 +19,19 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
   const maxStartValue = Math.max(...endValues);
   //TODO: check for duplicates
   const stepsWithout = (steps, stepToRemove) => {
-    return steps.filter( step => {
-      return !(step.startValue === stepToRemove.startValue && step.endValue === stepToRemove.endValue);
-    });
+    return steps.filter( step => (
+      //Object.is(step, stepToRemove)
+      !(step.startValue === stepToRemove.startValue && step.endValue === stepToRemove.endValue)
+    ));
   };
 
-  const isOverlapped = (step1, step2) => {
-    return step1.endValue >= step2.startValue && step1.startValue <= step1.endValue;
-  };
+  const isOverlapped = (step1, step2) => (
+    step1.startValue <= step2.endValue && step2.startValue <= step1.endValue
+  );
   const noOverlappingRanges = (steps) => {
     return every((steps), step1 => {
       return every(stepsWithout(steps, step1), step2 => {
-        return step1.endValue <= step2.startValue;
+        return isOverlapped(step1, step2);
       });
     });
   };
@@ -84,19 +85,6 @@ export default class Meter extends React.Component{
     defaultLabelColor: '#000',
     labelFormatter
   };
-
-  /*
-  validatedSteps = (steps) => {
-    if (steps){
-      return steps.reduce(( memo, curr, index, arr ) => {
-        if (index === 1){
-          memo.startValue = curr.startValue || this.props.minValue;
-        }
-        curr.startValue = curr.startValue || arr[index-1].endValue + 1; //scale to be defined
-        return memo;
-      });
-    }
-  };*/
 
   computeStyle = () => {
     const {
