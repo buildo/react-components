@@ -55,7 +55,7 @@ class Example extends React.Component {
     };
 
     const headerRenderer = label => (
-      <FlexView hAlignContent='center' vAlignContent='center' height='100%'>
+      <FlexView hAlignContent='center' vAlignContent='center' height='100%' style={{ padding: '0 5px' }}>
         <strong>{label}</strong>
       </FlexView>
     );
