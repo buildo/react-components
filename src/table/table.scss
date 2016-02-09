@@ -37,10 +37,10 @@ $hover-scrollbar-color: white !default;
   }
 
   // bg color for rows
-  .public_fixedDataTableRow_odd {
+  .public_fixedDataTableRow_odd .fixedDataTableCellLayout_main {
     background: $odd-row-background;
   }
-  .public_fixedDataTableRow_even {
+  .public_fixedDataTableRow_even .fixedDataTableCellLayout_main {
     background: $even-row-background;
   }
 
