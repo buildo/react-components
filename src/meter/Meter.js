@@ -3,6 +3,7 @@ import { props, t, skinnable } from '../utils';
 import cx from 'classnames';
 import FlexView from '../flex/FlexView';
 import find from 'lodash/collection/find';
+import every from 'lodash/collection/every';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -10,6 +11,31 @@ const Range = t.refinement(t.struct({
   fillingColor: t.maybe(t.String),
   labelColor: t.maybe(t.String)
 }), r => r.startValue < r.endValue, 'Range');
+
+const Ranges = t.refinement(t.list(Range), (rangeList) => {
+  const startValues = rangeList.map(r => r.startValue);
+  const minStartValue = Math.min(...startValues);
+  const endValues = rangeList.map(r => r.endValue);
+  const maxStartValue = Math.max(...endValues);
+  //TODO: check for duplicates
+  const stepsWithout = (steps, stepToRemove) => {
+    return steps.filter( step => {
+      return !(step.startValue === stepToRemove.startValue && step.endValue === stepToRemove.endValue);
+    });
+  };
+
+  const isOverlapped = (step1, step2) => {
+    return step1.endValue >= step2.startValue && step1.startValue <= step1.endValue;
+  };
+  const noOverlappingRanges = (steps) => {
+    return every((steps), step1 => {
+      return every(stepsWithout(steps, step1), step2 => {
+        return step1.endValue <= step2.startValue;
+      });
+    });
+  };
+  //return globMax === maxStartValue && globMin === minStartValue && noOverlappingRanges;
+}, 'Ranges');
 
 const computeResult = (current, min, max) => {
   return Math.abs((current - min) * 100 / (max - min));
@@ -42,7 +68,7 @@ const labelFormatter = (current, min, max) => {
   /**
    * Array of Object in which you can define startValue, endValue, labelColor, fillingColor.
    */
-  steps: t.maybe(t.list(Range)),
+  steps: t.maybe(Ranges),
   defaultLabelColor: t.maybe(t.String),
   defaultFillingColor: t.maybe(t.String),
   id: t.maybe(t.String),
