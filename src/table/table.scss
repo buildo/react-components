@@ -36,7 +36,7 @@ $hover-scrollbar-color: white !default;
     }
   }
 
-  // bg color for rows
+  // bg color for odd/even rows (applied to cells for reliability)
   .public_fixedDataTableRow_odd .fixedDataTableCellLayout_main {
     background: $odd-row-background;
   }
