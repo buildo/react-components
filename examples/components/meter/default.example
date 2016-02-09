@@ -1,9 +1,40 @@
 class Example extends React.Component {
   render() {
+    const steps = [
+      {startValue:0, endValue:30, fillingColor: 'green', labelColor: '#000'},
+      {startValue:31, endValue:60, fillingColor: 'yellow', labelColor: '#000'},
+      {startValue:61, endValue:80, fillingColor: 'orange', labelColor: '#000'},
+      {startValue:81, endValue:100, fillingColor: 'red', labelColor: '#000'}
+    ];
     return (
+    <div>
       <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
-        <Meter currentValue={150} minValue={100} maxValue={200}/>
+        <Meter
+          current={31}
+          steps={[{startValue:0, endValue:30, fillingColor:'blue'}]}
+        />
       </div>
+      <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
+        <Meter
+          current={15}
+          steps={steps}/>
+      </div>
+      <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
+        <Meter
+          current={45}
+          steps={steps}/>
+      </div>
+      <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
+        <Meter
+          current={70}
+          steps={steps}/>
+      </div>
+      <div style={{minHeigth: 10,border: '1px solid #ccc'}}>
+        <Meter
+          current={90}
+          steps={steps}/>
+      </div>
+    </div>
     );
   }
 }

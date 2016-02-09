@@ -7,13 +7,17 @@ import find from 'lodash/collection/find';
 const Range = t.refinement(t.struct({
   startValue: t.Number,
   endValue: t.Number,
-  fillingColor: t.String,
-  labelColor: t.String
-}), r => r.startValue < r.endValue);
+  fillingColor: t.maybe(t.String),
+  labelColor: t.maybe(t.String)
+}), r => r.startValue < r.endValue, 'Range');
 
-const labelFormatter = (currentValue, startValue, endValue) =>(
-  Math.abs((currentValue - startValue) * 100 / (endValue - startValue))+'%'
-);
+const computeResult = (current, min, max) => {
+  return Math.abs((current - min) * 100 / (max - min));
+};
+
+const labelFormatter = (current, min, max) => {
+  return `${computeResult(current, min, max)}%`;
+};
 /**
  * ### Renders a Progress Bar
  */
@@ -22,7 +26,7 @@ const labelFormatter = (currentValue, startValue, endValue) =>(
   /**
    * This is the value provided as input.
    */
-  currentValue: t.Number,
+  current: t.Number,
   /**
    * Minimum value.
    */
@@ -39,6 +43,8 @@ const labelFormatter = (currentValue, startValue, endValue) =>(
    * Array of Object in which you can define startValue, endValue, labelColor, fillingColor.
    */
   steps: t.maybe(t.list(Range)),
+  defaultLabelColor: t.maybe(t.String),
+  defaultFillingColor: t.maybe(t.String),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -48,48 +54,45 @@ export default class Meter extends React.Component{
   static defaultProps = {
     minValue: 0,
     maxValue: 100,
+    defaultFillingColor: '#ccc',
+    defaultLabelColor: '#000',
     labelFormatter
   };
 
-  getSteps = () => {
-    const {
-      steps,
-      minValue,
-      maxValue
-    } = this.props;
-
-    if(steps){
-      return steps;
+  /*
+  validatedSteps = (steps) => {
+    if (steps){
+      return steps.reduce(( memo, curr, index, arr ) => {
+        if (index === 1){
+          memo.startValue = curr.startValue || this.props.minValue;
+        }
+        curr.startValue = curr.startValue || arr[index-1].endValue + 1; //scale to be defined
+        return memo;
+      });
     }
-    return [{
-      startValue: minValue,
-      endValue: maxValue,
-      fillingColor: '#ccc',
-      labelColor: '#000'
-    }];
-  }
+  };*/
 
-  getResultFromCurrentValue = ({ currentValue, minValue, maxValue }) =>{
-    return Math.abs((currentValue - minValue) * 100 / (maxValue - minValue));
-  }
-  getStyles = () => {
+  computeStyle = () => {
     const {
-      currentValue,
+      current,
       minValue,
-      maxValue
+      maxValue,
+      steps,
+      defaultFillingColor,
+      defaultLabelColor
     } = this.props;
-    const step = find(this.getSteps(), ({ startValue, endValue })  => {
-      return currentValue >= startValue && currentValue <= endValue; //To be checked, allow overlapping atm
+
+    const step = find(steps, ({ startValue, endValue })  => {
+      return current >= startValue && current <= endValue; //To be checked, allow overlapping atm
     });
-    const result = this.getResultFromCurrentValue({ currentValue, minValue, maxValue });
     return {
       wrapperStyle: {
-        width: result+'%',
+        width: `${computeResult(current, minValue, maxValue)}%`,
         height: '100%',
-        backgroundColor: step.fillingColor
+        backgroundColor: step ? step.fillingColor : defaultFillingColor
       },
       labelStyle: {
-        color: step.labelColor
+        color: step ? step.labelColor : defaultLabelColor
       }
     };
   }
@@ -100,15 +103,13 @@ export default class Meter extends React.Component{
       ...props
     } = this.props;
 
-    const styles = this.getStyles();
+    const styles = this.computeStyle();
 
     return {
       ...props,
       className: cx('meter', className),
-      steps: this.getSteps(),
       style: styles.wrapperStyle,
-      labelStyle: styles.labelStyle,
-      fillingStyle: styles.fillingStyle
+      labelStyle: styles.labelStyle
     };
   }
 
@@ -131,7 +132,7 @@ export default class Meter extends React.Component{
           hAlignContent='right'
           style={labelStyle}
         >
-          {locals.labelFormatter(locals.currentValue, locals.minValue, locals.maxValue)}
+          {locals.labelFormatter(locals.current, locals.minValue, locals.maxValue)}
         </FlexView>
       </FlexView>
     );
