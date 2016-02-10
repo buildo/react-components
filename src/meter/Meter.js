@@ -38,7 +38,7 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
     Math.max(step1.startValue, step2.startValue) < Math.min(step1.endValue, step2.endValue)
   );
 
-  const noOverlappingRanges = (steps) => {
+  const noOverlappingRanges = steps => {
     return every((steps), step1 => {
       return every(stepsWithout(steps, step1), step2 => {
         return !isOverlapped(step1, step2);
@@ -82,12 +82,12 @@ const Props = t.refinement(t.struct({
   return min === minStartValue && max === maxStartValue;
 }, 'Props');
 
-const computeResult = (current, min, max) => {
+const computeResultAsPercentage = (current, min, max) => {
   return Math.abs((current - min) * 100 / (max - min));
 };
 
 const labelFormatter = (current, min, max) => {
-  return `${computeResult(current, min, max)}%`;
+  return `${computeResultAsPercentage(current, min, max)}%`;
 };
 /**
  * ### Renders a Progress Bar
@@ -100,7 +100,7 @@ export default class Meter extends React.Component{
     min: 0,
     max: 100,
     defaultFillingColor: '#ccc',
-    defaultLabelColor: '#000',
+    defaultLabelColor: 'inherit',
     labelFormatter
   };
 
@@ -119,7 +119,7 @@ export default class Meter extends React.Component{
     });
     return {
       wrapperStyle: {
-        width: `${computeResult(current, min, max)}%`,
+        width: `${computeResultAsPercentage(current, min, max)}%`,
         height: '100%',
         backgroundColor: step ? step.fillingColor : defaultFillingColor
       },
@@ -135,7 +135,7 @@ export default class Meter extends React.Component{
       ...props
     } = this.props;
 
-    const styles = this.computeStyle();
+    const styles = this.computeStyles();
 
     return {
       ...props,
@@ -150,13 +150,11 @@ export default class Meter extends React.Component{
       <FlexView
         className={className}
         grow
-        row
         style={style}
       >
         <FlexView
           className='bar'
           grow
-          hAlignContent='left'
         />
         <FlexView
           className='label'
