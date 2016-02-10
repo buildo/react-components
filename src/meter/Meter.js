@@ -4,6 +4,7 @@ import cx from 'classnames';
 import FlexView from '../flex/FlexView';
 import find from 'lodash/collection/find';
 import every from 'lodash/collection/every';
+import uniq from 'lodash/array/uniq';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -13,43 +14,30 @@ const Range = t.refinement(t.struct({
 }), r => r.startValue < r.endValue, 'Range');
 
 const Ranges = t.refinement(t.list(Range), (rangeList) => {
-  const startValues = rangeList.map(r => r.startValue);
-  const minStartValue = Math.min(...startValues);
-  const endValues = rangeList.map(r => r.endValue);
-  const maxStartValue = Math.max(...endValues);
-  //TODO: check for duplicates
+
   const stepsWithout = (steps, stepToRemove) => {
-    return steps.filter( step => (
-      //Object.is(step, stepToRemove)
+    const stepsNoDuplicate = uniq(steps);
+    return stepsNoDuplicate.filter( step => (
       !(step.startValue === stepToRemove.startValue && step.endValue === stepToRemove.endValue)
     ));
   };
 
   const isOverlapped = (step1, step2) => (
-    step1.startValue <= step2.endValue && step2.startValue <= step1.endValue
+    Math.max(step1.startValue, step2.startValue) < Math.min(step1.endValue, step2.endValue)
   );
+
   const noOverlappingRanges = (steps) => {
     return every((steps), step1 => {
       return every(stepsWithout(steps, step1), step2 => {
-        return isOverlapped(step1, step2);
+        return !isOverlapped(step1, step2);
       });
     });
   };
-  //return globMax === maxStartValue && globMin === minStartValue && noOverlappingRanges;
+
+  return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-const computeResult = (current, min, max) => {
-  return Math.abs((current - min) * 100 / (max - min));
-};
-
-const labelFormatter = (current, min, max) => {
-  return `${computeResult(current, min, max)}%`;
-};
-/**
- * ### Renders a Progress Bar
- */
-@skinnable()
-@props({
+const Props = t.refinement(t.struct({
   /**
    * This is the value provided as input.
    */
@@ -57,11 +45,11 @@ const labelFormatter = (current, min, max) => {
   /**
    * Minimum value.
    */
-  minValue: t.maybe(t.Number),
+  min: t.maybe(t.Number),
   /**
    * Maximum value.
    */
-  maxValue: t.maybe(t.Number),
+  max: t.maybe(t.Number),
   /**
    * Function as input in which you can define a custom label format.
    */
@@ -75,12 +63,30 @@ const labelFormatter = (current, min, max) => {
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+}), ({ min, max, steps }) => {
+  const minStartValue = Math.min(...steps.map(r => r.startValue));
+  const maxStartValue = Math.max(...steps.map(r => r.endValue));
+
+  return min === minStartValue && max === maxStartValue;
+}, 'Props');
+
+const computeResult = (current, min, max) => {
+  return Math.abs((current - min) * 100 / (max - min));
+};
+
+const labelFormatter = (current, min, max) => {
+  return `${computeResult(current, min, max)}%`;
+};
+/**
+ * ### Renders a Progress Bar
+ */
+@skinnable()
+@props(Props)
 export default class Meter extends React.Component{
 
   static defaultProps = {
-    minValue: 0,
-    maxValue: 100,
+    min: 0,
+    max: 100,
     defaultFillingColor: '#ccc',
     defaultLabelColor: '#000',
     labelFormatter
@@ -89,8 +95,8 @@ export default class Meter extends React.Component{
   computeStyle = () => {
     const {
       current,
-      minValue,
-      maxValue,
+      min,
+      max,
       steps,
       defaultFillingColor,
       defaultLabelColor
@@ -101,7 +107,7 @@ export default class Meter extends React.Component{
     });
     return {
       wrapperStyle: {
-        width: `${computeResult(current, minValue, maxValue)}%`,
+        width: `${computeResult(current, min, max)}%`,
         height: '100%',
         backgroundColor: step ? step.fillingColor : defaultFillingColor
       },
@@ -146,7 +152,7 @@ export default class Meter extends React.Component{
           hAlignContent='right'
           style={labelStyle}
         >
-          {locals.labelFormatter(locals.current, locals.minValue, locals.maxValue)}
+          {locals.labelFormatter(locals.current, locals.min, locals.max)}
         </FlexView>
       </FlexView>
     );
