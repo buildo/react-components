@@ -4,7 +4,6 @@ import cx from 'classnames';
 import FlexView from '../flex/FlexView';
 import find from 'lodash/collection/find';
 import every from 'lodash/collection/every';
-import uniq from 'lodash/array/uniq';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -14,11 +13,24 @@ const Range = t.refinement(t.struct({
 }), r => r.startValue < r.endValue, 'Range');
 
 const Ranges = t.refinement(t.list(Range), (rangeList) => {
+  const rangeListNoColor = rangeList.map(r => ( { startValue: r.startValue, endValue: r.endValue }) );
+
+  const isEqual = (step1, step2) => (
+    step1.startValue === step2.startValue && step1.endValue === step2.endValue
+  );
+
+  const noDuplicateRanges = rangeList => {
+    const startValueList = rangeList.map(step => (step.startValue));
+    const endValueList = rangeList.map(step => (step.endValue));
+    const cleanedStartValueList = Array.from(new Set(startValueList));
+    const cleanedEndValueList = Array.from(new Set(endValueList));
+
+    return startValueList.length === cleanedStartValueList.length && endValueList.length === cleanedEndValueList.length;
+  };
 
   const stepsWithout = (steps, stepToRemove) => {
-    const stepsNoDuplicate = uniq(steps);
-    return stepsNoDuplicate.filter( step => (
-      !(step.startValue === stepToRemove.startValue && step.endValue === stepToRemove.endValue)
+    return steps.filter( step => (
+      !isEqual(step, stepToRemove)
     ));
   };
 
@@ -34,7 +46,7 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
     });
   };
 
-  return noOverlappingRanges(rangeList);
+  return noOverlappingRanges(rangeListNoColor) && noDuplicateRanges(rangeListNoColor);
 }, 'Ranges');
 
 const Props = t.refinement(t.struct({
