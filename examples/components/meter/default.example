@@ -1,32 +1,38 @@
 class Example extends React.Component {
   render() {
-    const steps = [
+    const ranges = [
       {startValue: 0, endValue: 30, fillingColor: 'green', labelColor: '#000'},
-      {startValue: 31, endValue: 60, fillingColor: 'yellow', labelColor: '#000'},
-      {startValue: 61, endValue: 80, fillingColor: 'orange', labelColor: '#000'},
-      {startValue: 81, endValue: 100, fillingColor: 'red', labelColor: '#000'}
+      {startValue: 30, endValue: 60, fillingColor: 'yellow', labelColor: '#000'},
+      {startValue: 60, endValue: 80, fillingColor: 'orange', labelColor: '#000'},
+      {startValue: 80, endValue: 100, fillingColor: 'red', labelColor: '#000'}
     ];
     return (
     <div>
-      <div style={{minHeigth: 10, border: '1px solid #ccc'}}>
+    <div style={{minHeigth: 10}}>
+      <Meter
+        value={40}
+        baseFillingColor={'#ccc'}
+        ranges={[{startValue: 30, endValue: 50, fillingColor: 'blue', labelColor: 'blue'}]}/>
+    </div>
+      <div style={{minHeigth: 10}}>
         <Meter
-          current={30}
-          steps={steps}/>
+          value={30}
+          ranges={ranges}/>
       </div>
-      <div style={{minHeigth: 10, border: '1px solid #ccc'}}>
+      <div style={{minHeigth: 10}}>
         <Meter
-          current={45}
-          steps={steps}/>
+          value={45}
+          ranges={ranges}/>
       </div>
-      <div style={{minHeigth: 10, border: '1px solid #ccc'}}>
+      <div style={{minHeigth: 10}}>
         <Meter
-          current={70}
-          steps={steps}/>
+          value={70}
+          ranges={ranges}/>
       </div>
-      <div style={{minHeigth: 10, border: '1px solid #ccc'}}>
+      <div style={{minHeigth: 10}}>
         <Meter
-          current={90}
-          steps={steps}/>
+          value={90}
+          ranges={ranges}/>
       </div>
     </div>
     );

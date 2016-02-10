@@ -13,47 +13,39 @@ const Range = t.refinement(t.struct({
 }), r => r.startValue < r.endValue, 'Range');
 
 const Ranges = t.refinement(t.list(Range), (rangeList) => {
-  const rangeListNoColor = rangeList.map(r => ( { startValue: r.startValue, endValue: r.endValue }) );
 
-  const isEqual = (step1, step2) => (
-    step1.startValue === step2.startValue && step1.endValue === step2.endValue
+  const isOverlapped = (range1, range2) => (
+    Math.max(range1.startValue, range2.startValue) < Math.min(range1.endValue, range2.endValue)
   );
 
-  const noDuplicateRanges = rangeList => {
-    const startValueList = rangeList.map(step => (step.startValue));
-    const endValueList = rangeList.map(step => (step.endValue));
-    const cleanedStartValueList = Array.from(new Set(startValueList));
-    const cleanedEndValueList = Array.from(new Set(endValueList));
-
-    return startValueList.length === cleanedStartValueList.length && endValueList.length === cleanedEndValueList.length;
-  };
-
-  const stepsWithout = (steps, stepToRemove) => {
-    return steps.filter( step => (
-      !isEqual(step, stepToRemove)
-    ));
-  };
-
-  const isOverlapped = (step1, step2) => (
-    Math.max(step1.startValue, step2.startValue) < Math.min(step1.endValue, step2.endValue)
-  );
-
-  const noOverlappingRanges = steps => {
-    return every((steps), step1 => {
-      return every(stepsWithout(steps, step1), step2 => {
-        return !isOverlapped(step1, step2);
+  const noOverlappingRanges = ranges => {
+    return every(ranges, (range1, i) => {
+      return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
+        return !isOverlapped(range1, range2);
       });
     });
   };
 
-  return noOverlappingRanges(rangeListNoColor) && noDuplicateRanges(rangeListNoColor);
+  return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-const Props = t.refinement(t.struct({
+const computePercentage = (value, min, max) => (
+  Math.abs((value - min) * 100 / (max - min))
+);
+
+const labelFormatter = (value, min, max) => (
+  `${computePercentage(value, min, max)}%`
+);
+
+/**
+ * ### Renders a Progress Bar
+ */
+@skinnable()
+@props({
   /**
    * This is the value provided as input.
    */
-  current: t.Number,
+  value: t.Number,
   /**
    * Minimum value.
    */
@@ -69,67 +61,52 @@ const Props = t.refinement(t.struct({
   /**
    * Array of Object in which you can define startValue, endValue, labelColor, fillingColor.
    */
-  steps: t.maybe(Ranges),
-  defaultLabelColor: t.maybe(t.String),
-  defaultFillingColor: t.maybe(t.String),
+  ranges: t.maybe(Ranges),
+  /**
+   * String as color for label.
+   */
+  baseLabelColor: t.maybe(t.String),
+  /**
+   * String as color for bar.
+   */
+  baseFillingColor: t.maybe(t.String),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-}), ({ min, max, steps }) => {
-  const minStartValue = Math.min(...steps.map(r => r.startValue));
-  const maxStartValue = Math.max(...steps.map(r => r.endValue));
-
-  return min === minStartValue && max === maxStartValue;
-}, 'Props');
-
-const computeResultAsPercentage = (current, min, max) => {
-  return Math.abs((current - min) * 100 / (max - min));
-};
-
-const labelFormatter = (current, min, max) => {
-  return `${computeResultAsPercentage(current, min, max)}%`;
-};
-/**
- * ### Renders a Progress Bar
- */
-@skinnable()
-@props(Props)
-export default class Meter extends React.Component{
+})
+export default class Meter extends React.Component {
 
   static defaultProps = {
     min: 0,
     max: 100,
-    defaultFillingColor: '#ccc',
-    defaultLabelColor: 'inherit',
     labelFormatter
   };
 
-  computeStyle = () => {
+  computeStyles = () => {
     const {
-      current,
+      value,
       min,
       max,
-      steps,
-      defaultFillingColor,
-      defaultLabelColor
+      ranges,
+      baseFillingColor,
+      baseLabelColor
     } = this.props;
 
-    const step = find(steps, ({ startValue, endValue })  => {
-      return current >= startValue && current <= endValue; //To be checked, allow overlapping atm
-    });
+    const range = find(ranges, ({ startValue, endValue })  => (
+      value >= startValue && value <= endValue
+    ));
     return {
-      wrapperStyle: {
-        width: `${computeResultAsPercentage(current, min, max)}%`,
-        height: '100%',
-        backgroundColor: step ? step.fillingColor : defaultFillingColor
+      basisSize: `${computePercentage(value, min, max)}%`,
+      fillingStyle: {
+        backgroundColor: range ? range.fillingColor : baseFillingColor
       },
       labelStyle: {
-        color: step ? step.labelColor : defaultLabelColor
+        color: range ? range.labelColor : baseLabelColor
       }
     };
   }
 
-  getLocals(){
+  getLocals() {
     const {
       className,
       ...props
@@ -140,29 +117,36 @@ export default class Meter extends React.Component{
     return {
       ...props,
       className: cx('meter', className),
-      style: styles.wrapperStyle,
-      labelStyle: styles.labelStyle
+      fillingStyle: styles.fillingStyle,
+      labelStyle: styles.labelStyle,
+      basisSize: styles.basisSize
     };
   }
 
-  template({ className, style, labelStyle, ...locals }){
+  template({ className, fillingStyle, labelStyle, basisSize, ...locals }) {
     return (
       <FlexView
         className={className}
-        grow
-        style={style}
+        auto
       >
         <FlexView
           className='bar'
           grow
-        />
+        >
+          <FlexView
+            className='filling'
+            auto
+            basis={basisSize}
+            style={fillingStyle}
+          />
+        </FlexView>
         <FlexView
           className='label'
-          grow
+          shrink={false}
           hAlignContent='right'
           style={labelStyle}
         >
-          {locals.labelFormatter(locals.current, locals.min, locals.max)}
+          {locals.labelFormatter(locals.value, locals.min, locals.max)}
         </FlexView>
       </FlexView>
     );
