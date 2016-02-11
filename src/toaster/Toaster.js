@@ -42,7 +42,8 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 export default class Toaster extends React.Component {
 
   static defaultProps = {
-    transitionGroup: {}
+    transitionGroup: {},
+    position: 'top-right'
   };
 
   componentWillMount() {
