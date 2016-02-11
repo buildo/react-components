@@ -6,6 +6,7 @@ import FlexView from '../flex/FlexView';
 import find from 'lodash/collection/find';
 import every from 'lodash/collection/every';
 import isEqual from 'lodash/lang/isEqual';
+import sortBy from 'lodash/collection/sortBy';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -31,14 +32,10 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
   return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-const sortNumbers = (a, b) => (a-b);
-
 const isFullyFilled = (ranges, min, max) => {
-  const rangesCopy = ranges.slice();
-  rangesCopy[rangesCopy.length] = { startValue: max, endValue: min };
-  const comparableRanges = rangesCopy.slice();
-  const sortedStartValueList = comparableRanges.map(range => range.startValue).sort(sortNumbers); //[0,30,60,80,100]
-  const sortedEndValueList = comparableRanges.map(range => range.endValue).sort(sortNumbers); //[30,60,80,100,0]
+  const comparableRanges = ranges.concat({ startValue: max, endValue: min });
+  const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(range => range.startValue);
+  const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
   return isEqual(sortedStartValueList, sortedEndValueList);
 };
 
@@ -106,12 +103,16 @@ export default class Meter extends React.Component {
       min,
       baseFillingColor
     } = this.props;
-    if (isFullyFilled(ranges, min, max) && baseFillingColor){
-      warn('baseFillingColor not needed, ranges are fully filled');
-    }
-    if (!(isFullyFilled(ranges, min, max) || baseFillingColor)){
-      warn('ranges accept holes, need a baseFillingColor');
-    }
+    warn(() => {
+      if (isFullyFilled(ranges, min, max) && baseFillingColor){
+        return 'baseFillingColor not needed, ranges are fully filled';
+      }
+    });
+    warn(() => {
+      if (!(isFullyFilled(ranges, min, max) || baseFillingColor)){
+        return 'ranges accept holes, need a baseFillingColor';
+      }
+    });
   };
 
   computeStyles = () => {
