@@ -123,9 +123,9 @@ export default class Meter extends React.Component {
     };
   }
 
-  template({ className, fillingStyle, labelStyle, basisSize, ...locals }) {
+  template({ id, className, style, fillingStyle, labelStyle, basisSize, ...locals }) {
     return (
-      <FlexView className={className} grow>
+      <FlexView {...{ id, className, style }} grow>
         <FlexView className='bar' grow>
           <FlexView
             className='filling'

@@ -19,6 +19,7 @@ class Example extends React.Component {
           <Meter
             value={45}
             ranges={ranges}
+            style={{border: '1px solid black'}}
           />
         </div>
         <br/>
