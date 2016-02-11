@@ -8,14 +8,14 @@ class Example extends React.Component {
     ];
     return (
       <div>
-        <div style={{minHeigth: 10}}>
+        <FlexView width='100%'>
           <Meter
             value={30}
             ranges={ranges}
           />
-        </div>
+        </FlexView>
         <br/>
-        <div style={{minHeigth: 10}}>
+        <div style={{minHeigth: 10, width: '50%'}}>
           <Meter
             value={45}
             ranges={ranges}
@@ -31,7 +31,7 @@ class Example extends React.Component {
         <br/>
         <div style={{minHeigth: 10}}>
           <Meter
-            value={90}
+            value={100}
             ranges={ranges}
           />
         </div>

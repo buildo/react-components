@@ -38,7 +38,7 @@ const labelFormatter = (value, min, max) => (
 );
 
 /**
- * ### Renders a Progress Bar
+ * ### Renders a Meter
  */
 @skinnable()
 @props({
@@ -125,17 +125,10 @@ export default class Meter extends React.Component {
 
   template({ className, fillingStyle, labelStyle, basisSize, ...locals }) {
     return (
-      <FlexView
-        className={className}
-        auto
-      >
-        <FlexView
-          className='bar'
-          grow
-        >
+      <FlexView className={className} grow>
+        <FlexView className='bar' grow>
           <FlexView
             className='filling'
-            auto
             basis={basisSize}
             style={fillingStyle}
           />
@@ -143,7 +136,6 @@ export default class Meter extends React.Component {
         <FlexView
           className='label'
           shrink={false}
-          hAlignContent='right'
           style={labelStyle}
         >
           {locals.labelFormatter(locals.value, locals.min, locals.max)}

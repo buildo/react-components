@@ -2,7 +2,7 @@ class Example extends React.Component {
 
   labelFormatter = (curr, min, max) => {
     if (curr === 666){
-      return `${curr} (UhUhUh the Devil!)`;
+      return `${curr}(looool Evil!)`;
     }
     return +(Math.round(curr + "e+2")  + "e-2");
   };
@@ -17,7 +17,7 @@ class Example extends React.Component {
       <div>
         <div style={{minHeigth: 10}}>
           <Meter
-            value={450.3245}
+            value={432.315}
             min={400}
             max={700}
             labelFormatter={this.labelFormatter}
