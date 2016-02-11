@@ -1,9 +1,11 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
+import { warn } from '../utils/log';
 import cx from 'classnames';
 import FlexView from '../flex/FlexView';
 import find from 'lodash/collection/find';
 import every from 'lodash/collection/every';
+import isEqual from 'lodash/lang/isEqual';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -28,6 +30,17 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
 
   return noOverlappingRanges(rangeList);
 }, 'Ranges');
+
+const sortNumbers = (a, b) => (a-b);
+
+const isFullyFilled = (ranges, min, max) => {
+  const rangesCopy = ranges.slice();
+  rangesCopy[rangesCopy.length] = { startValue: max, endValue: min };
+  const comparableRanges = rangesCopy.slice();
+  const sortedStartValueList = comparableRanges.map(range => range.startValue).sort(sortNumbers); //[0,30,60,80,100]
+  const sortedEndValueList = comparableRanges.map(range => range.endValue).sort(sortNumbers); //[30,60,80,100,0]
+  return isEqual(sortedStartValueList, sortedEndValueList);
+};
 
 const computePercentage = (value, min, max) => (
   Math.abs((value - min) * 100 / (max - min))
@@ -80,6 +93,25 @@ export default class Meter extends React.Component {
     min: 0,
     max: 100,
     labelFormatter
+  };
+
+  componentDidMount() {
+    this.logWarnings();
+  }
+
+  logWarnings = () => {
+    const {
+      ranges,
+      max,
+      min,
+      baseFillingColor
+    } = this.props;
+    if (isFullyFilled(ranges, min, max) && baseFillingColor){
+      warn('baseFillingColor not needed, ranges are fully filled');
+    }
+    if (!(isFullyFilled(ranges, min, max) || baseFillingColor)){
+      warn('ranges accept holes, need a baseFillingColor');
+    }
   };
 
   computeStyles = () => {

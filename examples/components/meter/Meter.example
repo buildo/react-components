@@ -12,6 +12,7 @@ class Example extends React.Component {
           <Meter
             value={30}
             ranges={ranges}
+            baseFillingColor='#ccc'
           />
         </FlexView>
         <br/>
