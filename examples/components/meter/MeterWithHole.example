@@ -1,0 +1,31 @@
+class Example extends React.Component {
+  render() {
+    return (
+      <div>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={20}
+            baseFillingColor={'#ccc'}
+            ranges={[{ startValue: 30, endValue: 50, fillingColor: 'blue', labelColor: 'blue' }]}
+          />
+        </div>
+        <br/>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={40}
+            baseFillingColor={'#ccc'}
+            ranges={[{ startValue: 30, endValue: 50, fillingColor: 'blue', labelColor: 'blue' }]}
+          />
+        </div>
+        <br/>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={60}
+            baseFillingColor={'#ccc'}
+            ranges={[{ startValue: 30, endValue: 50, fillingColor: 'blue', labelColor: 'blue' }]}
+          />
+        </div>
+      </div>
+    );
+  }
+}

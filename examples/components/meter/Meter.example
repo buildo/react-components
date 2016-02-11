@@ -1,0 +1,41 @@
+class Example extends React.Component {
+  render() {
+    const ranges = [
+      {startValue: 0, endValue: 30, fillingColor: 'green'},
+      {startValue: 30, endValue: 60, fillingColor: 'yellow'},
+      {startValue: 60, endValue: 80, fillingColor: 'orange', labelColor:'orange'},
+      {startValue: 80, endValue: 100, fillingColor: 'red', labelColor: 'red'}
+    ];
+    return (
+      <div>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={30}
+            ranges={ranges}
+          />
+        </div>
+        <br/>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={45}
+            ranges={ranges}
+          />
+        </div>
+        <br/>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={70}
+            ranges={ranges}
+          />
+        </div>
+        <br/>
+        <div style={{minHeigth: 10}}>
+          <Meter
+            value={90}
+            ranges={ranges}
+          />
+        </div>
+      </div>
+    );
+  }
+};

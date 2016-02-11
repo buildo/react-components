@@ -3,6 +3,7 @@ import Dropdown from 'raw!./Dropdown.example';
 import Popover from './popover';
 import FlexView from './flex';
 import ScrollView from './scroll';
+import Meter from './meter';
 import LoadingSpinner from 'raw!./LoadingSpinner.example';
 import MobileDetector from 'raw!./MobileDetector.example';
 import LinkState from 'raw!./LinkState.example';
@@ -22,7 +23,6 @@ import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
 import Table from 'raw!./table/default.example';
-import Meter from 'raw!./meter/default.example';
 
 import README from 'raw!../../README.md';
 
@@ -143,6 +143,12 @@ export default [
         'component': 'react-components/master/src/scroll/ScrollView.js'
       },
       {
+        examples: Meter,
+        id: 'Meter',
+        title: 'Meter',
+        'component': 'react-components/master/src/meter/Meter.js'
+      },
+      {
         examples: [LoadingSpinner],
         id: 'LoadingSpinner',
         title: 'LoadingSpinner',
@@ -183,12 +189,6 @@ export default [
         id: 'ModalManager',
         title: 'ModalManager',
         'component': 'react-components/master/src/modal-manager/ModalManager.js'
-      },
-      {
-        examples: [Meter],
-        id: 'Meter',
-        title: 'Meter',
-        'component': 'react-components/master/src/meter/Meter.js'
       }
     ]
   },
