@@ -20,7 +20,7 @@ export default class Component extends React.Component {
 
   getExamples = (examples) => {
     const { scope, iso } = this.props;
-    return examples.map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />);
+    return [].concat(examples).map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />);
   };
 
   render() {
