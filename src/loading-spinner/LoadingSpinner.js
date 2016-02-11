@@ -19,9 +19,9 @@ import { warn } from '../utils/log';
   * spinner message
   */
   message: t.maybe(t.struct({
-   content: t.String,
-   color: t.maybe(t.String),
-   size: t.maybe(t.union([t.String, t.Number]))
+    content: t.String,
+    color: t.maybe(t.String),
+    size: t.maybe(t.union([t.String, t.Number]))
   })),
   /**
   * dimmed-overlay color
