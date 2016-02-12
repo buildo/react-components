@@ -106,8 +106,8 @@ export default class ScrollView extends React.Component {
   isAtTop = () => this.getScrollView().scrollTop === 0;
 
   isAtBottom = () => {
-    const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
-    return scrollTop + offsetHeight === scrollHeight;
+    const { scrollTop, scrollHeight, clientHeight } = this.getScrollView();
+    return scrollTop + clientHeight === scrollHeight;
   };
 
   computeStyle = () => {
