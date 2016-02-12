@@ -34,6 +34,7 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
    * duration of leave transition in milliseconds (used by `TransitionWrapper`)
    */
   transitionLeaveTimeout: t.Number,
+  position: t.enums.of(['top-left', 'top-right', 'bottom-left', 'bottom-right']),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -41,7 +42,8 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 export default class Toaster extends React.Component {
 
   static defaultProps = {
-    transitionGroup: {}
+    transitionGroup: {},
+    position: 'top-right'
   };
 
   componentWillMount() {
@@ -62,11 +64,17 @@ export default class Toaster extends React.Component {
   }
 
   getTranslationStyle(i) {
+    const { position } = this.props;
+    const isTop = position.indexOf('top') !== -1;
+    const isRight = position.indexOf('right') !== -1;
+    const translationBase = isTop ? 100 : -100;
     return {
-      transform: `translateY(${100 * i}%)`,
+      transform: `translateY(${translationBase * i}%)`,
       position: 'absolute',
-      top: 0,
-      right: 0
+      right: isRight ? 0 : undefined,
+      left: isRight ? undefined : 0,
+      bottom: isTop ? undefined : 0,
+      top: isTop ? 0 : undefined
     };
   }
 
@@ -98,13 +106,16 @@ export default class Toaster extends React.Component {
   };
 
   getToaster = () => {
-    const { style: styleProp, id, className } = this.props;
+    const { style: styleProp, id, className, position } = this.props;
+    const isTop = position.indexOf('top') !== -1;
+    const isRight = position.indexOf('right') !== -1;
     const style = {
       position: 'absolute',
-      right: 0,
-      top: 0,
-      width: 0,
-      height: 0,
+      right: isRight ? 0 : undefined,
+      left: isRight ? undefined : 0,
+      bottom: isTop ? undefined : 0,
+      top: isTop ? 0 : undefined,
+      height: '100%',
       ...styleProp
     };
 

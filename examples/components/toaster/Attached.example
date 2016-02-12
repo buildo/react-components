@@ -81,7 +81,15 @@ const Example = React.createClass({
     const toasts = this.state.toasts.map(t => t.el);
 
     const attachedToaster = (
-      <Toaster attachTo='toaster' className='hello' style={{backgroundColor: 'blue'}} transitionStyles={this.getTransitionStyles()} transitionEnterTimeout={800} transitionLeaveTimeout={800}>
+      <Toaster
+        attachTo='toaster'
+        className='hello'
+        style={{backgroundColor: 'blue'}}
+        transitionStyles={this.getTransitionStyles()}
+        transitionEnterTimeout={800}
+        transitionLeaveTimeout={800}
+        position='bottom-right'
+      >
         {toasts}
       </Toaster>
     );
