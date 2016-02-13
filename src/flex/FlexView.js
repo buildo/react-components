@@ -3,6 +3,7 @@ import cx from 'classnames';
 import pick from 'lodash/object/pick';
 import omit from 'lodash/object/omit';
 import { props, t } from '../utils';
+import { warn } from '../utils/log';
 
 
 const PropTypes = {
@@ -71,6 +72,17 @@ const PropTypes = {
 };
 @props(PropTypes, { strict: false })
 export default class FlexView extends React.Component {
+
+  componentDidMount() {
+    this.logWarnings();
+  }
+
+  logWarnings = () => {
+    const { auto } = this.props;
+    if (!t.Nil.is(auto)) {
+      warn('"auto" is DEPRECATED. Use combination of "grow", "shrink" and "basis" instead');
+    }
+  };
 
   getGrow = () => {
     const { grow } = this.props;
