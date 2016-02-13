@@ -1,25 +1,15 @@
-const Example = React.createClass({
+class Example extends React.Component {
 
-  propTypes: {},
+  render = () => (
+    <FlexView
+      column
+      height={120}
+      hAlignContent='center'
+      vAlignContent='center'
+    >
+      <div style={{ backgroundColor: 'red', height: 30, width: 30 }} />
+      <div style={{ backgroundColor: 'green', height: 30, width: 30 }} />
+    </FlexView>
+  );
 
-  getTemplate() {
-    return (
-      <div>
-        <FlexView
-          className='hello'
-          style={{backgroundColor: 'white', height: 120}}
-          column
-          hAlignContent='center'
-          vAlignContent='center'>
-            <div style={{backgroundColor: 'red', height: 30, width: 30}}/>
-            <div style={{backgroundColor: 'green', height: 30, width: 30}}/>
-        </FlexView>
-      </div>
-    );
-  },
-
-  render() {
-    return this.getTemplate();
-  }
-
-});
+}
