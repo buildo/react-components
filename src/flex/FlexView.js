@@ -74,9 +74,9 @@ export default class FlexView extends React.Component {
       return grow;
     } else if (grow) {
       return 1;
-    } else {
-      return 0; // auto === true or default
     }
+
+    return 0; // default
   };
 
   getShrink = () => {
