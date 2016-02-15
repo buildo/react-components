@@ -142,6 +142,7 @@ export default class Meter extends React.Component {
   getLocals() {
     const {
       className,
+      labelFormatter,
       ...props
     } = this.props;
 
@@ -152,11 +153,12 @@ export default class Meter extends React.Component {
       className: cx('meter', className),
       fillingStyle: styles.fillingStyle,
       labelStyle: styles.labelStyle,
-      basisSize: styles.basisSize
+      basisSize: styles.basisSize,
+      formattedLabel: labelFormatter(props.value, props.min, props.max)
     };
   }
 
-  template({ id, className, style, fillingStyle, labelStyle, basisSize, ...locals }) {
+  template({ id, className, style, fillingStyle, labelStyle, basisSize, formattedLabel }) {
     return (
       <FlexView {...{ id, className, style }} grow>
         <FlexView className='bar' grow>
@@ -171,7 +173,7 @@ export default class Meter extends React.Component {
           shrink={false}
           style={labelStyle}
         >
-          {locals.labelFormatter(locals.value, locals.min, locals.max)}
+          {formattedLabel}
         </FlexView>
       </FlexView>
     );
