@@ -32,26 +32,7 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
   return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-const isFullyFilled = (ranges, min, max) => {
-  const comparableRanges = ranges.concat({ startValue: max, endValue: min });
-  const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(range => range.startValue);
-  const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
-  return isEqual(sortedStartValueList, sortedEndValueList);
-};
-
-const computePercentage = (value, min, max) => (
-  Math.abs((value - min) * 100 / (max - min))
-);
-
-const labelFormatter = (value, min, max) => (
-  `${computePercentage(value, min, max)}%`
-);
-
-/**
- * ### Renders a Meter
- */
-@skinnable()
-@props({
+const Props = t.refinement(t.struct({
   /**
    * This is the value provided as input.
    */
@@ -83,7 +64,28 @@ const labelFormatter = (value, min, max) => (
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+}), ({ min, max }) => min < max, 'Props');
+
+const isFullyFilled = (ranges, min, max) => {
+  const comparableRanges = ranges.concat({ startValue: max, endValue: min });
+  const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(range => range.startValue);
+  const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
+  return isEqual(sortedStartValueList, sortedEndValueList);
+};
+
+const computePercentage = (value, min, max) => (
+  Math.abs((value - min) * 100 / (max - min))
+);
+
+const labelFormatter = (value, min, max) => (
+  `${computePercentage(value, min, max)}%`
+);
+
+/**
+ * ### Renders a Meter
+ */
+@skinnable()
+@props(Props)
 export default class Meter extends React.Component {
 
   static defaultProps = {
