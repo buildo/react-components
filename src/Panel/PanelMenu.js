@@ -132,14 +132,14 @@ export default class PanelMenu extends React.Component {
     return (
       <FlexView className='panel-menu' marginLeft='auto' vAlignContent='center'>
         {locals.actionIcons.map( ({ icon, color, label, disabled, onClick }, i) => (
-        <TooltippedIcon
-          className='panel-menu-action-icon'
-          label={disabled ? `${label} is disabled because ${disabled.reason}` : label}
-          icon={icon}
-          style={{ color, opacity: disabled ? '.5' : '1', cursor: disabled ? 'not-allowed' : 'pointer' }}
-          onClick={disabled ? null : onClick}
-          key={`${icon}-${i}`}
-        />
+          <TooltippedIcon
+            className='panel-menu-action-icon'
+            label={disabled ? `${label} is disabled because ${disabled.reason}` : label}
+            icon={icon}
+            style={{ color, opacity: disabled ? '.5' : '1', cursor: disabled ? 'not-allowed' : 'pointer' }}
+            onClick={disabled ? null : onClick}
+            key={`${icon}-${i}`}
+          />
         ))}
         <Divider orientation='horizontal' size='no-margin' style={{ height: 26 }} />
         <DropdownMenu

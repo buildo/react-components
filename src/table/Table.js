@@ -191,7 +191,7 @@ export default class Table extends React.Component {
     const numberOfColumns = [].concat(children).length;
     const footerDataGetter = () => []; /*because https://github.com/facebook/fixed-data-table/issues/172*/
 
-    const columnWidth = autoSizeColumns ? { width: width/numberOfColumns } : {};
+    const columnWidth = autoSizeColumns ? { width: width / numberOfColumns } : {};
     const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-table-wrapper-header' };
     const addProps = column => React.cloneElement(column, { ...columnProps });
     const columns = numberOfColumns === 1 ? addProps(children) : [].concat(children).map(addProps);

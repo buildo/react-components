@@ -106,12 +106,12 @@ export default class Meter extends React.Component {
       baseFillingColor
     } = this.props;
     warn(() => {
-      if (isFullyFilled(ranges, min, max) && baseFillingColor){
+      if (isFullyFilled(ranges, min, max) && baseFillingColor) {
         return 'baseFillingColor not needed, ranges are fully filled';
       }
     });
     warn(() => {
-      if (!(isFullyFilled(ranges, min, max) || baseFillingColor)){
+      if (!(isFullyFilled(ranges, min, max) || baseFillingColor)) {
         return 'You should pass baseFillingColor, ranges are not fully filled';
       }
     });

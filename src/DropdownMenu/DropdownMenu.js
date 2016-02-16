@@ -97,17 +97,13 @@ export default class DropdownMenu extends React.Component {
 
   templateMenu = ({ isOpen, options, height, onMenuClick }) => {
     return (
-      isOpen ?
-      <Menu {...{ options }} maxHeight={height} onClick={onMenuClick} />
-      : null
+      isOpen ? <Menu {...{ options }} maxHeight={height} onClick={onMenuClick} /> : null
     );
   };
 
   templateOverlay = ({ isOpen, toggleMenu, dismissOnClickOut }) => {
     return (
-      dismissOnClickOut && isOpen ?
-      <div className='dropdown-menu-overlay' onClick={toggleMenu} />
-      : null
+      dismissOnClickOut && isOpen ? <div className='dropdown-menu-overlay' onClick={toggleMenu} /> : null
     );
   };
 
