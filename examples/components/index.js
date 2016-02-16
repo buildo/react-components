@@ -3,6 +3,7 @@ import Dropdown from 'raw!./Dropdown.example';
 import Popover from './popover';
 import FlexView from './flex';
 import ScrollView from './scroll';
+import Meter from './meter';
 import LoadingSpinner from 'raw!./LoadingSpinner.example';
 import MobileDetector from 'raw!./MobileDetector.example';
 import LinkState from 'raw!./LinkState.example';
@@ -140,6 +141,12 @@ export default [
         id: 'ScrollView',
         title: 'ScrollView',
         'component': 'react-components/master/src/scroll/ScrollView.js'
+      },
+      {
+        examples: Meter,
+        id: 'Meter',
+        title: 'Meter',
+        'component': 'react-components/master/src/meter/Meter.js'
       },
       {
         examples: [LoadingSpinner],
