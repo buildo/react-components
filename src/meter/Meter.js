@@ -34,7 +34,7 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
 
 const Props = t.refinement(t.struct({
   /**
-   * This is the value provided as input.
+   * Current value.
    */
   value: t.Number,
   /**
@@ -46,7 +46,7 @@ const Props = t.refinement(t.struct({
    */
   max: t.maybe(t.Number),
   /**
-   * Function as input in which you can define a custom label format.
+   * Function in which you can define a custom label format.
    */
   labelFormatter: t.maybe(t.Function),
   /**
@@ -54,11 +54,11 @@ const Props = t.refinement(t.struct({
    */
   ranges: t.maybe(Ranges),
   /**
-   * String as color for label.
+   * Fallback labelColor.
    */
   baseLabelColor: t.maybe(t.String),
   /**
-   * String as color for bar.
+   * Fallback fillingColor.
    */
   baseFillingColor: t.maybe(t.String),
   id: t.maybe(t.String),
@@ -112,7 +112,7 @@ export default class Meter extends React.Component {
     });
     warn(() => {
       if (!(isFullyFilled(ranges, min, max) || baseFillingColor)){
-        return 'ranges accept holes, need a baseFillingColor';
+        return 'You should pass baseFillingColor, ranges are not fully filled';
       }
     });
   };
@@ -180,5 +180,4 @@ export default class Meter extends React.Component {
       </FlexView>
     );
   }
-
 }
