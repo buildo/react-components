@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from './components/Menu';
 
-const PanelMenu = React.createClass({
+const PanelMenu = React.createClass({ //eslint-disable-line
 
   propTypes: {
     children: React.PropTypes.oneOfType([

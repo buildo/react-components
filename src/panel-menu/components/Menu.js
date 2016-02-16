@@ -2,7 +2,7 @@ import React from 'react';
 import partial from 'lodash/function/partial';
 import { warn } from '../utils/log';
 
-const Menu = React.createClass({
+const Menu = React.createClass({ //eslint-disable-line
 
   propTypes: {
     children: React.PropTypes.oneOfType([
