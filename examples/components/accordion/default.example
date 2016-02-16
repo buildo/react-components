@@ -8,7 +8,7 @@ class Example extends React.Component {
   onChange = (isOpen) => this.setState({ isOpen });
 
   getContent = () => (
-    <FlexView>
+    <FlexView height={40} vAlignContent='center'>
       <Icon icon='user' />
       <FlexView marginLeft={10}>User</FlexView>
     </FlexView>
