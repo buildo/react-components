@@ -135,16 +135,16 @@ export default class Panel extends React.Component {
   templateHeader = ({ header, isExpanded, toggleExpanded }) => {
     return (
       header ?
-      <PanelHeader
-        title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
-        content={header.content}
-        menu={header.menu}
-        collapse={header.collapse ? {
-          direction: header.collapse.direction,
-          isExpanded,
-          onToggleExpanded: toggleExpanded
-        } : null}
-      />
+        <PanelHeader
+          title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
+          content={header.content}
+          menu={header.menu}
+          collapse={header.collapse ? {
+            direction: header.collapse.direction,
+            isExpanded,
+            onToggleExpanded: toggleExpanded
+          } : null}
+        />
     : null );
   };
 
@@ -160,12 +160,12 @@ export default class Panel extends React.Component {
   templateCollapsedContent = ({ header, verticalDirection }) => {
     return (
       (!verticalDirection && header && header.title) ?
-      <FlexView className='panel-content' column grow>
-        <FlexView grow className='panel-content-title'>
-          {header.title}
+        <FlexView className='panel-content' column grow>
+          <FlexView grow className='panel-content-title'>
+            {header.title}
+          </FlexView>
         </FlexView>
-      </FlexView>
-      : null
+        : null
     );
   };
 

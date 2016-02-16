@@ -17,8 +17,8 @@ const ButtonProps = t.subtype(t.struct({
   onClick: t.Func,
   stableSuccess: t.maybe(t.Bool),
   timerMillis: t.maybe(t.Num),
-  label: t.maybe(t.union([t.Str, t.Obj])),//t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
-  icon: t.maybe(t.union([t.Str, t.Obj])),//t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
+  label: t.maybe(t.union([t.Str, t.Obj])), //t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
+  icon: t.maybe(t.union([t.Str, t.Obj])), //t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
   children: t.maybe(t.ReactNode),
   style: t.maybe(t.Obj),
   className: t.maybe(t.Str),

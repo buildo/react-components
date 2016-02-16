@@ -106,7 +106,7 @@ export default class ConfirmationInput extends React.Component {
         icon,
         ...props
       },
-      state: { value , focused },
+      state: { value, focused },
       _onClear: onClear,
       _onConfirm: onConfirm,
       onMouseEnter, onMouseLeave

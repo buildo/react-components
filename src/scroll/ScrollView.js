@@ -97,7 +97,7 @@ export default class ScrollView extends React.Component {
       }
       down = !up;
 
-      if((down && this.isAtBottom()) || (up && this.isAtTop())) {
+      if ((down && this.isAtBottom()) || (up && this.isAtTop())) {
         e.preventDefault();
       }
     }

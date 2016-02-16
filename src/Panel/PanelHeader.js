@@ -52,31 +52,31 @@ export default class PanelHeader extends React.Component {
   templateExpandIcon = ({ renderExpandIcon, collapse }) => {
     return (
       renderExpandIcon ?
-      <FlexView
-        auto
-        vAlignContent='center'
-        hAlignContent='center'
-        style={{ cursor: 'pointer' }}
-        className='panel-header-icon'
-        flexBasis={30}
-        onClick={collapse.onToggleExpanded}
-      >
-        <Icon
-          icon={this.getIcon(collapse)}
-          className='expand-icon'
-        />
-      </FlexView>
-      : null
+        <FlexView
+          auto
+          vAlignContent='center'
+          hAlignContent='center'
+          style={{ cursor: 'pointer' }}
+          className='panel-header-icon'
+          flexBasis={30}
+          onClick={collapse.onToggleExpanded}
+        >
+          <Icon
+            icon={this.getIcon(collapse)}
+            className='expand-icon'
+          />
+        </FlexView>
+        : null
     );
   };
 
   templateTitle = ({ renderTitle, title }) => {
     return (
       renderTitle ?
-      <FlexView auto vAlignContent='center' className='panel-header-title'>
-        {title}
-      </FlexView>
-      : null
+        <FlexView auto vAlignContent='center' className='panel-header-title'>
+          {title}
+        </FlexView>
+        : null
     );
 
   };
@@ -84,10 +84,10 @@ export default class PanelHeader extends React.Component {
   templateContent = ({ renderContent, content }) => {
     return (
       renderContent ?
-      <FlexView className='panel-header-content' vAlignContent='center' grow>
-        {content}
-      </FlexView>
-      : null
+        <FlexView className='panel-header-content' vAlignContent='center' grow>
+          {content}
+        </FlexView>
+        : null
     );
   };
 

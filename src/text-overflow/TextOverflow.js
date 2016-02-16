@@ -53,7 +53,7 @@ export default class TextOverflow extends React.Component {
     const state = _state || this.state;
     if (state.isOverflowing === false) {
       const text = React.findDOMNode(this.refs.text);
-      if(text.offsetWidth < text.scrollWidth){
+      if (text.offsetWidth < text.scrollWidth){
         this.setState({ isOverflowing: true }, this.logWarnings);
       } else {
         this.logWarnings();
