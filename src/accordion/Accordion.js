@@ -63,20 +63,16 @@ export default class Accordion extends React.Component {
     icons && <Icon icon={isOpen ? icons.open : icons.closed} />
   );
 
-  template({ isOpen, children, onChange, content, icons }) {
+  template({ isOpen, children, className, onChange, content, icons }) {
     return (
-      <div className='accordion'>
-        <FlexView className='header' onClick={onChange}>
-          <div>{content}</div>
+      <div className={className}>
+        <FlexView className='content' onClick={onChange}>
+          {content}
           <FlexView marginLeft='auto' shrink={false}>
             {this.templateIcons({ isOpen, icons })}
           </FlexView>
         </FlexView>
-        {isOpen &&
-          <div className='content'>
-            {children}
-          </div>
-        }
+        {isOpen && children}
       </div>
     );
   }
