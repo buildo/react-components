@@ -43,8 +43,9 @@ export default class Accordion extends React.Component {
   getLocals() {
     const {
       props: {
-        isOpen, children, content,
-        icons, className, isSelected
+        isOpen, isSelected,
+        children, content, icons,
+        className, id, style
       },
       _onChange: onChange
     } = this;
@@ -55,7 +56,11 @@ export default class Accordion extends React.Component {
       content,
       icons,
       onChange,
-      className: cx(className, 'accordion', { 'is-open': isOpen, 'is-selected': isSelected })
+      wrapperProps: {
+        id,
+        style,
+        className: cx(className, 'accordion', { 'is-open': isOpen, 'is-selected': isSelected })
+      }
     };
   }
 
@@ -63,10 +68,10 @@ export default class Accordion extends React.Component {
     icons && <Icon icon={isOpen ? icons.open : icons.closed} />
   );
 
-  template({ isOpen, children, className, onChange, content, icons }) {
+  template({ isOpen, children, onChange, content, icons, wrapperProps }) {
     return (
-      <div className={className}>
-        <FlexView className='content' onClick={onChange}>
+      <div {...wrapperProps}>
+        <FlexView className='content' vAlignContent='center' onClick={onChange}>
           {content}
           <FlexView marginLeft='auto' shrink={false}>
             {this.templateIcons({ isOpen, icons })}
