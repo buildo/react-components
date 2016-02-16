@@ -23,6 +23,7 @@ import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
 import Table from 'raw!./table/default.example';
+import Accordion from 'raw!./accordion/default.example';
 
 import README from 'raw!../../README.md';
 
@@ -105,6 +106,12 @@ export default [
         id: 'Table',
         title: 'Table',
         component: 'react-components/master/src/table/Table.js'
+      },
+      {
+        examples: Accordion,
+        id: 'Accordion',
+        title: 'Accordion',
+        component: 'react-components/master/src/accordion/Accordion.js'
       }
     ]
   },
