@@ -22,56 +22,51 @@ describe('Meter', function () {
       labelFormatter: () => 'test'
     };
 
-    const componentMeter = new Meter({
-      ...exampleProps
-    });
+    const componentMeter = new Meter(exampleProps);
 
     it('should pass props', ()  => {
-      const {
-        id,
-        style,
-        value,
-        min,
-        max,
-        ranges,
-        baseLabelColor,
-        baseFillingColor
-      } = componentMeter.getLocals();
-      expect(id).toBe(exampleProps.id);
-      expect(style).toEqual(exampleProps.style);
-      expect(value).toBe(exampleProps.value);
-      expect(min).toBe(exampleProps.min);
-      expect(max).toBe(exampleProps.max);
-      expect(ranges).toEqual(exampleProps.ranges);
-      expect(baseLabelColor).toBe(baseLabelColor);
-      expect(baseFillingColor).toBe(baseFillingColor);
+      const locals = componentMeter.getLocals();
+      expect(locals.id).toBe(exampleProps.id);
+      expect(locals.style).toEqual(exampleProps.style);
+      expect(locals.value).toBe(exampleProps.value);
+      expect(locals.min).toBe(exampleProps.min);
+      expect(locals.max).toBe(exampleProps.max);
+      expect(locals.ranges).toEqual(exampleProps.ranges);
+      expect(locals.baseLabelColor).toBe(exampleProps.baseLabelColor);
+      expect(locals.baseFillingColor).toBe(exampleProps.baseFillingColor);
     });
+
     it('should compute className', ()  => {
       const { className } = componentMeter.getLocals();
       expect(className).toInclude('meter');
       expect(className).toInclude('fancy-class-name')
     });
-    it('should compute labelFormatter', ()  => {
+
+    it('should use labelFormatter correctly', ()  => {
       const { formattedLabel } = componentMeter.getLocals();
       expect(formattedLabel).toBe('test');
     });
-    it('should compute fillingStyle', ()  => {
+
+    it('should compute fillingStyle correctly', ()  => {
       const { fillingStyle, ranges } = componentMeter.getLocals();
       expect(fillingStyle).toExist();
       expect(fillingStyle).toBeA(Object);
       expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
     });
-    it('should compute labelStyle', ()  => {
+
+    it('should compute labelStyle correctly', ()  => {
       const { labelStyle, ranges } = componentMeter.getLocals();
       expect(labelStyle).toExist();
       expect(labelStyle).toBeA(Object);
       expect(labelStyle.color).toBe(ranges[0].labelColor);
     });
-    it('should compute basisSize', ()  => {
+
+    it('should compute basisSize correctly', ()  => {
       const { basisSize } = componentMeter.getLocals();
       expect(basisSize).toBe('50%');
     });
-    it('should compute basisSize for custom min-max', ()  => {
+
+    it('should compute basisSize correctly with custom min and max', ()  => {
       const meter = newComponent(Meter, {
         value: 150,
         min: 100,
@@ -80,7 +75,8 @@ describe('Meter', function () {
       const { basisSize } = meter.getLocals();
       expect(basisSize).toBe('50%');
     });
-    it('should compute basisSize for custom negative min', ()  => {
+
+    it('should compute basisSize correctly for custom negative min', ()  => {
       const meter = newComponent(Meter, {
         value: 0,
         min: -100,
@@ -89,25 +85,8 @@ describe('Meter', function () {
       const { basisSize } = meter.getLocals();
       expect(basisSize).toBe('50%');
     });
-    it('should compute basisSize for decimal value', ()  => {
-      const meter = newComponent(Meter, {
-        value: 0.5,
-        min: 0,
-        max: 1
-      });
-      const { basisSize } = meter.getLocals();
-      expect(basisSize).toBe('50%');
-    });
-    it('should compute basisSize for decimal min-max', ()  => {
-      const meter = newComponent(Meter, {
-        value: 2.5,
-        min: 1.5,
-        max: 3.5
-      });
-      const { basisSize } = meter.getLocals();
-      expect(basisSize).toBe('50%');
-    });
-    it('should compute ranges with holes', ()  => {
+
+    it('should use the correct background color for filling', ()  => {
       const meter = newComponent(Meter, {
         value: 60,
         ranges: [
@@ -117,18 +96,8 @@ describe('Meter', function () {
       const { fillingStyle, ranges } = meter.getLocals();
       expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
     });
-    it('should compute ranges with holes and baseFillingColor not defined', ()  => {
-      const meter = newComponent(Meter, {
-        value: 20,
-        ranges: [
-          { startValue: 50, endValue: 80, fillingColor: 'yellow' }
-        ]
-      });
-      const { fillingStyle } = meter.getLocals();
-      //console.log(meter.logWarnings());
-      expect(fillingStyle.backgroundColor).toNotExist();
-    });
-    it('should compute ranges with holes and setted baseFillingColor', ()  => {
+
+    it(`background color should be the base color if there's no matching range`, ()  => {
       const meter = newComponent(Meter, {
         value: 20,
         baseFillingColor: '#ccc',
@@ -139,33 +108,16 @@ describe('Meter', function () {
       const { fillingStyle, baseFillingColor } = meter.getLocals();
       expect(fillingStyle.backgroundColor).toBe(baseFillingColor);
     });
-    it('should compute ranges without holes and setted baseFillingColor', ()  => {
-      const meter = newComponent(Meter, {
-        value: 20,
-        baseFillingColor: '#ccc',
-        ranges: [
-          { startValue: 0, endValue: 50, fillingColor: 'green', labelColor: 'red' },
-          { startValue: 50, endValue: 80, fillingColor: 'yellow' },
-          { startValue: 80, endValue: 100 }
-        ]
-      });
-      const { fillingStyle, labelStyle, baseFillingColor, ranges } = meter.getLocals();
-      expect(fillingStyle.backgroundColor).toNotBe(baseFillingColor);
-      expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
-      expect(labelStyle.color).toBe(ranges[0].labelColor);
-    });
-    it('should compute ranges without holes using defaults', ()  => {
+
+    it(`background color should be not defined if there's no matching range and no default is given`, ()  => {
       const meter = newComponent(Meter, {
         value: 20,
         ranges: [
-          { startValue: 0, endValue: 50 },
-          { startValue: 50, endValue: 80 },
-          { startValue: 80, endValue: 100 }
+          { startValue: 50, endValue: 80, fillingColor: 'yellow' }
         ]
       });
-      const { fillingStyle, labelStyle, baseFillingColor, ranges } = meter.getLocals();
+      const { fillingStyle } = meter.getLocals();
       expect(fillingStyle.backgroundColor).toNotExist();
-      expect(labelStyle.color).toNotExist();
     });
   });
 });
