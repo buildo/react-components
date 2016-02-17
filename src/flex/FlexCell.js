@@ -1,7 +1,7 @@
 import React from 'react';
 import FlexView from './FlexView';
 
-export default React.createClass({ //eslint-disable-line
+export default React.createClass({ //eslint-disable-line react/prefer-es6-class
 
   getDefaultProps() {
     return {
