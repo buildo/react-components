@@ -68,7 +68,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/background-dimmer",
       "component": "react-components/__TAG__/src/background-dimmer/BackgroundDimmer.js",
       "examples": [
-        "react-components/__TAG__/examples/components/BackgroundDimmer.example"
+        "react-components/__TAG__/examples/components/background-dimmer/BackgroundDimmer.example"
       ]
     },
     {
@@ -91,7 +91,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/loading-spinner",
       "component": "react-components/__TAG__/src/loading-spinner/LoadingSpinner.js",
       "examples": [
-        "react-components/__TAG__/examples/components/LoadingSpinner.example"
+        "react-components/__TAG__/examples/components/loading-spinner/LoadingSpinner.example"
       ]
     },
     {
@@ -102,7 +102,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/modal-manager",
       "component": "react-components/__TAG__/src/modal-manager/ModalManager.js",
       "examples": [
-        "react-components/__TAG__/examples/components/ModalManager.example"
+        "react-components/__TAG__/examples/components/modal-manager/ModalManager.example"
       ]
     },
     {
@@ -113,7 +113,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/mobile-detector",
       "component": "react-components/__TAG__/src/mobile-detector/MobileDetector.js",
       "examples": [
-        "react-components/__TAG__/examples/components/MobileDetector.example"
+        "react-components/__TAG__/examples/components/mobile-detector/MobileDetector.example"
       ]
     },
     {
@@ -122,7 +122,7 @@
       "desc": "ScrollView",
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
-      "component": "react-components/__TAG__/src/scroll/ScrollView.js",
+      "component": "react-components/__TAG__/src/scroll/scroll/ScrollView.js",
       "examples": [
         "react-components/__TAG__/examples/components/scroll/StopPropagation.example",
         "react-components/__TAG__/examples/components/scroll/ScrollTo.example"
