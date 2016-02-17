@@ -62,10 +62,6 @@ const PropTypes = {
    * width property (for parent secondary axis)
    */
   width: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * DEPRECATED: use "basis" instead
-   */
-  flexBasis: t.maybe(t.union([ t.String, t.Number ])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
@@ -78,13 +74,13 @@ export default class FlexView extends React.Component {
       return grow;
     } else if (grow) {
       return 1;
-    } else {
-      return 0; // auto === true or default
     }
+
+    return 0; // default
   };
 
   getShrink = () => {
-    const { shrink, basis, flexBasis } = this.props;
+    const { shrink, basis } = this.props;
     if (typeof shrink === 'number') {
       return shrink;
     } else if (shrink) {
@@ -94,24 +90,23 @@ export default class FlexView extends React.Component {
     }
 
 
-    if (basis || flexBasis) {
+    if (basis) {
       return 0;
-    } else {
-      return 1; // grow === true or default
     }
+
+    return 1; // default
   };
 
   getBasis = () => {
-    const { grow, shrink, basis, flexBasis } = this.props;
-    const _basis = basis || flexBasis;
-    if (_basis) {
-      const suffix = typeof _basis === 'number' ? 'px' : '';
-      return _basis + suffix;
+    const { grow, shrink, basis } = this.props;
+    if (basis) {
+      const suffix = t.Number.is(basis) ? 'px' : '';
+      return basis + suffix;
     } else if (grow && !shrink) {
       return '100%';
-    } else {
-      return 'auto'; // safe default
     }
+
+    return 'auto'; // default
   };
 
   getFlexStyle = () => {
