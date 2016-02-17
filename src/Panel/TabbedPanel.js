@@ -27,9 +27,9 @@ export default class TabbedPanel extends React.Component {
     const { tabs, children, ...panelProps } = this.props;
     return {
       panelProps,
-      headers: this.props.tabs.headers,
-      content: this.props.children,
-      activeTabIndex: this.props.tabs.activeIndex,
+      headers: tabs.headers,
+      content: children,
+      activeTabIndex: tabs.activeIndex,
       onSetActiveTab: this.onSetActiveTab
     };
   }
