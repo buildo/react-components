@@ -14,7 +14,7 @@ import './accordion.scss';
   onChange: t.Function,
   onOpen: t.maybe(t.Function),
   onClose: t.maybe(t.Function),
-  content: t.maybe(t.ReactChild),
+  header: t.maybe(t.ReactChild),
   icons: t.maybe(t.struct({
     open: t.maybe(t.String),
     closed: t.maybe(t.String)
@@ -44,7 +44,7 @@ export default class Accordion extends React.Component {
     const {
       props: {
         isOpen, isSelected,
-        children, content, icons,
+        children, header, icons,
         className, id, style
       },
       _onChange: onChange
@@ -53,7 +53,7 @@ export default class Accordion extends React.Component {
     return {
       isOpen,
       children,
-      content,
+      header,
       icons,
       onChange,
       wrapperProps: {
@@ -68,11 +68,11 @@ export default class Accordion extends React.Component {
     icons && <Icon icon={isOpen ? icons.open : icons.closed} />
   );
 
-  template({ isOpen, children, onChange, content, icons, wrapperProps }) {
+  template({ isOpen, children, onChange, header, icons, wrapperProps }) {
     return (
       <div {...wrapperProps}>
         <FlexView className='content' vAlignContent='center' onClick={onChange}>
-          {content}
+          {header}
           <FlexView marginLeft='auto' shrink={false}>
             {this.templateIcons({ isOpen, icons })}
           </FlexView>
