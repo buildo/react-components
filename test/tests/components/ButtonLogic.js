@@ -1,5 +1,4 @@
 import React from 'react/addons';
-const TestUtils = React.addons.TestUtils;
 import expect from 'expect';
 import ButtonLogic from '../../../src/button/ButtonLogic';
 import vdom from 'react-vdom';
@@ -8,7 +7,7 @@ import clone from 'lodash/lang/clone';
 describe('ButtonLogic', () => {
 
   function timeoutPromise(millis) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(resolve, millis);
     });
   }
@@ -24,7 +23,7 @@ describe('ButtonLogic', () => {
     });
     component.setState = (state, cb) => {
       component.state = state;
-      cb && cb()
+      cb && cb();
     };
     return component;
   }
@@ -58,6 +57,7 @@ describe('ButtonLogic', () => {
       const component = mkComponent({
         stableSuccess: false
       });
+      component.componentDidMount();
       component.getLocals().onClick();
       expect(component.getLocals().buttonState).toBe('processing');
       expect(vdom(component).attrs.buttonState).toBe('processing');
@@ -76,6 +76,7 @@ describe('ButtonLogic', () => {
       const component = mkComponent({
         stableSuccess: true
       });
+      component.componentDidMount();
       component.getLocals().onClick();
       expect(component.getLocals().buttonState).toBe('processing');
       return timeoutPromise(6).then(() => {
@@ -91,6 +92,7 @@ describe('ButtonLogic', () => {
       const component = mkComponent({
         stableSuccess: true
       });
+      component.componentDidMount();
       component.getLocals().onClick();
       expect(component.getLocals().buttonState).toBe('processing');
       const newProps = clone(component.props);

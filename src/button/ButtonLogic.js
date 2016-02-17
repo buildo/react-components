@@ -63,10 +63,20 @@ export default class ButtonLogic extends React.Component {
     };
   }
 
-  doResetInternalState() {
-    this.setState({
-      internalState: null
-    });
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  doResetInternalState = () => {
+    if (this._isMounted) {
+      this.setState({
+        internalState: null
+      });
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -89,28 +99,32 @@ export default class ButtonLogic extends React.Component {
     }
   }
 
-  doResetInternalStateAfterTimer() {
+  doResetInternalStateAfterTimer = () => {
     this.timeoutId = setTimeout(() => {
       this.timeoutId = null;
       this.doResetInternalState();
     }, this.props.timerMillis);
   }
 
-  attachPromiseHandlers(promise) {
+  attachPromiseHandlers = (promise) => {
     promise.then(() => {
-      this.setState({
-        internalState: 'success'
-      }, () => {
-        if (!this.props.stableSuccess) {
-          this.doResetInternalStateAfterTimer();
-        } else if (this.resetInternalStateAfterProcessing) {
-          this.doResetInternalState();
-        }
-      });
+      if (this._isMounted) {
+        this.setState({
+          internalState: 'success'
+        }, () => {
+          if (!this.props.stableSuccess) {
+            this.doResetInternalStateAfterTimer();
+          } else if (this.resetInternalStateAfterProcessing) {
+            this.doResetInternalState();
+          }
+        });
+      }
     }).catch(() => {
-      this.setState({
-        internalState: 'error'
-      }, () => this.doResetInternalStateAfterTimer() );
+      if (this._isMounted) {
+        this.setState({
+          internalState: 'error'
+        }, () => this.doResetInternalStateAfterTimer() );
+      }
     });
   }
 
