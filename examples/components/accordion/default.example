@@ -7,7 +7,7 @@ class Example extends React.Component {
 
   onChange = (isOpen) => this.setState({ isOpen });
 
-  getContent = () => (
+  getHeader = () => (
     <FlexView height={40} vAlignContent='center'>
       <Icon icon='user' />
       <FlexView marginLeft={10}>User</FlexView>
@@ -18,7 +18,7 @@ class Example extends React.Component {
     <Accordion
       isOpen={this.state.isOpen}
       onChange={this.onChange}
-      content={this.getContent()}
+      header={this.getHeader()}
       icons={{ open: 'angle-up', closed: 'angle-down' }}
     >
       <div>ITEM 1</div>
