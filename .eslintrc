@@ -1,3 +1,7 @@
 {
-  "extends": "buildo"
+  "extends": "buildo",
+  "globals": {
+    "describe": true,
+    "it": true,
+  }
 }
