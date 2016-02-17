@@ -24,7 +24,7 @@ export default class SidebarContent extends React.Component {
     );
 
     const getSections = (sections) => sections.map(({ id, components, contents, title }) => (
-      <Accordion onChange={this.onToggle(id)} isOpen={this.isOpen(id)} content={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
+      <Accordion onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
         <div className='items'>
           {getItems(id, components || contents)}
         </div>
