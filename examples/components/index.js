@@ -23,6 +23,7 @@ import Badge from 'raw!./badge/default.example';
 import NavBar from 'raw!./nav-bar/default.example';
 import Toggle from 'raw!./toggle/default.example';
 import Table from 'raw!./table/default.example';
+import Accordion from 'raw!./accordion/default.example';
 
 import README from 'raw!../../README.md';
 
@@ -59,52 +60,58 @@ export default [
         'component': 'react-components/master/src/Panel/Panel.js'
       },
       {
-        examples: [DropdownMenu],
+        examples: DropdownMenu,
         id: 'DropdownMenu',
         title: 'DropdownMenu',
         'component': 'react-components/master/src/DropdownMenu/DropdownMenu.js'
       },
       {
-        examples: [Tooltip],
+        examples: Tooltip,
         id: 'Tooltip',
         title: 'Tooltip',
         'component': 'react-components/master/src/Tooltip/Tooltip.js'
       },
       {
-        examples: [Button],
+        examples: Button,
         id: 'Button',
         title: 'Button',
         'component': 'react-components/master/src/Button/Button.js'
       },
       {
-        examples: [MoreOrLess],
+        examples: MoreOrLess,
         id: 'MoreOrLess',
         title: 'MoreOrLess',
         'component': 'react-components/master/src/more-or-less/MoreOrLess.js'
       },
       {
-        examples: [ConfirmationInput],
+        examples: ConfirmationInput,
         id: 'ConfirmationInput',
         title: 'ConfirmationInput',
         'component': 'react-components/master/src/confirmation-input/ConfirmationInput.js'
       },
       {
-        examples: [Badge],
+        examples: Badge,
         id: 'Badge',
         title: 'Badge',
         'component': 'react-components/master/src/badge/Badge.js'
       },
       {
-        examples: [Toggle],
+        examples: Toggle,
         id: 'Toggle',
         title: 'Toggle',
         'component': 'react-components/master/src/toggle/Toggle.js'
       },
       {
-        examples: [Table],
+        examples: Table,
         id: 'Table',
         title: 'Table',
         component: 'react-components/master/src/table/Table.js'
+      },
+      {
+        examples: Accordion,
+        id: 'Accordion',
+        title: 'Accordion',
+        component: 'react-components/master/src/accordion/Accordion.js'
       }
     ]
   },
@@ -113,13 +120,13 @@ export default [
     id: 'section-2',
     components: [
       {
-        examples: [NavBar],
+        examples: NavBar,
         id: 'NavBar',
         title: 'NavBar',
         'component': 'react-components/master/src/nav-bar/NavBar.js'
       },
       {
-        examples: [Dropdown],
+        examples: Dropdown,
         id: 'Dropdown',
         title: 'Dropdown',
         'component': 'react-components/master/src/dropdown/Dropdown.js'
@@ -149,19 +156,19 @@ export default [
         'component': 'react-components/master/src/meter/Meter.js'
       },
       {
-        examples: [LoadingSpinner],
+        examples: LoadingSpinner,
         id: 'LoadingSpinner',
         title: 'LoadingSpinner',
         'component': 'react-components/master/src/loading-spinner/LoadingSpinner.js'
       },
       {
-        examples: [MobileDetector],
+        examples: MobileDetector,
         id: 'MobileDetector',
         title: 'MobileDetector',
         'component': 'react-components/master/src/mobile-detector/MobileDetector.js'
       },
       {
-        examples: [LinkState],
+        examples: LinkState,
         id: 'LinkState',
         title: 'LinkState',
         'component': 'react-components/master/src/link-state/LinkState.js'
@@ -179,13 +186,13 @@ export default [
         'component': 'react-components/master/src/toaster/Toaster.js'
       },
       {
-        examples: [BackgroundDimmer],
+        examples: BackgroundDimmer,
         id: 'BackgroundDimmer',
         title: 'BackgroundDimmer',
         'component': 'react-components/master/src/background-dimmer/BackgroundDimmer.js'
       },
       {
-        examples: [ModalManager],
+        examples: ModalManager,
         id: 'ModalManager',
         title: 'ModalManager',
         'component': 'react-components/master/src/modal-manager/ModalManager.js'

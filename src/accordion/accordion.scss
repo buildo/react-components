@@ -1,0 +1,32 @@
+$background: transparent !default;
+
+$content-background: transparent !default;
+$is-open-content-background: transparent !default;
+$is-selected-content-background: transparent !default;
+$hover-content-background: transparent !default;
+
+.accordion {
+  cursor: pointer;
+  background: $background;
+  .content {
+    height: 100%;
+    background: $content-background;
+    &:hover {
+      background: $hover-content-background;
+    }
+  }
+
+  &.is-open {
+    background: $is-open-content-background;
+    &:hover {
+      background: $hover-content-background;
+    }
+  }
+
+  &.is-selected, &.is-open.is-selected {
+    background: $is-selected-content-background;
+    &:hover {
+      background: $hover-content-background;
+    }
+  }
+}

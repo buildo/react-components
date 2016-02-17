@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import Accordion from './Accordion/Accordion';
+import Accordion from '../../accordion/Accordion';
 
 export default class SidebarContent extends React.Component {
 
@@ -23,10 +23,13 @@ export default class SidebarContent extends React.Component {
       <Item {...item} id={id} onClick={onSelectItem} sectionId={sectionId} indent active={this.isActive(id)} key={id} />
     );
 
-    const getSections = (sections) => sections.map(({ id, components, contents, title }) =>
-      <Accordion onToggle={this.onToggle(id)} isOpen={this.isOpen(id)} title={title} key={id}>
-        {getItems(id, components || contents)}
-      </Accordion>);
+    const getSections = (sections) => sections.map(({ id, components, contents, title }) => (
+      <Accordion onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
+        <div className='items'>
+          {getItems(id, components || contents)}
+        </div>
+      </Accordion>
+    ));
 
     return (
       <div className='sidebar-content'>
