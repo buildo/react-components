@@ -89,7 +89,6 @@ export default class FlexView extends React.Component {
       return 0;
     }
 
-
     if (basis) {
       return 0;
     }
@@ -98,12 +97,10 @@ export default class FlexView extends React.Component {
   };
 
   getBasis = () => {
-    const { grow, shrink, basis } = this.props;
+    const { basis } = this.props;
     if (basis) {
       const suffix = t.Number.is(basis) ? 'px' : '';
       return basis + suffix;
-    } else if (grow && !shrink) {
-      return '100%';
     }
 
     return 'auto'; // default
