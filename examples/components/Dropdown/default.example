@@ -1,0 +1,26 @@
+class Example extends React.Component {
+
+  getTemplate = () => {
+    const options = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'avocado', label: 'Avocado' },
+      { value: 'orange', label: 'Orange' },
+      { value: 'banana', label: 'Banana' }
+    ];
+    return (
+      <div>
+        <Dropdown placeholder="Select some fruit.."  options={options}/>
+        <br/>
+        <Dropdown placeholder="Select a pizza">
+          <option>Maragerita</option>
+          <option>Capricciosa</option>
+          <option>Quattro formaggi</option>
+        </Dropdown>
+      </div>
+    );
+  };
+
+  render = () => {
+    return this.getTemplate();
+  }
+}
