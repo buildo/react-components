@@ -150,7 +150,7 @@ export default class Panel extends React.Component {
 
   templateExpandedContent = ({ children, loading }) => {
     return (
-      <FlexView className='panel-content' column grow auto style={{ position: 'relative' }}>
+      <FlexView className='panel-content' column grow shrink={false} style={{ position: 'relative' }}>
         {children}
         {loading && <LoadingSpinner />}
       </FlexView>

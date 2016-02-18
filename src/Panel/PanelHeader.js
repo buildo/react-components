@@ -53,7 +53,6 @@ export default class PanelHeader extends React.Component {
     return (
       renderExpandIcon ?
         <FlexView
-          auto
           vAlignContent='center'
           hAlignContent='center'
           style={{ cursor: 'pointer' }}
@@ -73,7 +72,7 @@ export default class PanelHeader extends React.Component {
   templateTitle = ({ renderTitle, title }) => {
     return (
       renderTitle ?
-        <FlexView auto vAlignContent='center' className='panel-header-title' shrink={false}>
+        <FlexView vAlignContent='center' className='panel-header-title' shrink={false}>
           {title}
         </FlexView>
         : null
