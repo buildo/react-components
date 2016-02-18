@@ -1,6 +1,6 @@
 class Example extends React.Component {
 
-  getTemplate = () => {
+  render() {
     const options = [
       { value: 'apple', label: 'Apple' },
       { value: 'avocado', label: 'Avocado' },
@@ -9,18 +9,15 @@ class Example extends React.Component {
     ];
     return (
       <div>
-        <Dropdown placeholder="Select some fruit.."  options={options}/>
-        <br/>
-        <Dropdown placeholder="Select a pizza">
-          <option>Maragerita</option>
-          <option>Capricciosa</option>
-          <option>Quattro formaggi</option>
-        </Dropdown>
+        <p>
+          {'This component is based on '}
+          <a href='https://github.com/JedWatson/react-select' target='_blank'>
+            react-select
+          </a>
+        </p>
+        <Dropdown placeholder="Select some fruit.."  options={options} />
       </div>
     );
-  };
-
-  render = () => {
-    return this.getTemplate();
   }
+
 }
