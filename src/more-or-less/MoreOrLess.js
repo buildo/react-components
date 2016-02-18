@@ -44,12 +44,12 @@ export default class MoreOrLess extends React.Component {
   templateExpandButton = ({ icon, toggleExpanded }) => {
     return (
       <FlexView
-        hAlignContent="center"
-        vAlignContent="center"
-        className="expand-button"
+        hAlignContent='center'
+        vAlignContent='center'
+        className='expand-button'
         onClick={toggleExpanded}
       >
-        <Icon icon={icon} className="expand-button-icon" />
+        <Icon icon={icon} className='expand-button-icon' />
       </FlexView>
     );
   };

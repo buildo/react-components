@@ -89,7 +89,7 @@ export default class DropdownMenu extends React.Component {
 
   templateIconButton = ({ iconClassName, isOpen }) => {
     return (
-      <FlexView vAlignContent="center" className={cx('dropdown-menu-icon-container', { isOpen })}>
+      <FlexView vAlignContent='center' className={cx('dropdown-menu-icon-container', { isOpen })}>
         <Icon icon={iconClassName} className='dropdown-menu-icon' />
       </FlexView>
     );
@@ -109,7 +109,7 @@ export default class DropdownMenu extends React.Component {
 
   template({ iconClassName, toggleMenu, children, options, isOpen, dismissOnClickOut, className, onMenuClick, height }) {
     return (
-      <FlexView vAlignContent="center" className={cx('dropdown-menu', className)} onClick={toggleMenu}>
+      <FlexView vAlignContent='center' className={cx('dropdown-menu', className)} onClick={toggleMenu}>
         {this.templateOverlay({ isOpen, toggleMenu, dismissOnClickOut })}
         {this.templateToggler({ children, iconClassName, toggleMenu, isOpen })}
         {this.templateMenu({ isOpen, options, height, toggleMenu, onMenuClick })}
