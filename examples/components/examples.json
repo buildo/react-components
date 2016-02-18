@@ -15,6 +15,18 @@
       ]
     },
     {
+      "id": "dropdown",
+      "title": "Dropdown",
+      "desc": "Dropdown",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
+      "component": "react-components/__TAG__/src/dropdown/Dropdown.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/Dropdown/default.example",
+        "react-components/__TAG__/examples/components/Dropdown/DropdownWithChildren.example"
+      ]
+    },
+    {
       "id": "dropdown-menu",
       "title": "DropdownMenu",
       "desc": "DropdownMenu",

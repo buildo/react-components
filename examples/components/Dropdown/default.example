@@ -1,0 +1,23 @@
+class Example extends React.Component {
+
+  render() {
+    const options = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'avocado', label: 'Avocado' },
+      { value: 'orange', label: 'Orange' },
+      { value: 'banana', label: 'Banana' }
+    ];
+    return (
+      <div>
+        <p>
+          {'This component is based on '}
+          <a href='https://github.com/JedWatson/react-select' target='_blank'>
+            react-select
+          </a>
+        </p>
+        <Dropdown placeholder="Select some fruit.."  options={options} />
+      </div>
+    );
+  }
+
+}
