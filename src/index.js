@@ -25,3 +25,4 @@ export Table, { Column } from './table';
 export Meter from './meter';
 export CollapsableSection from './collapsable-section';
 export BrowserDetector from './browser-detector';
+export TimePicker from './time-picker';

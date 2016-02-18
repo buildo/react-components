@@ -299,6 +299,17 @@
       "examples": [
         "react-components/__TAG__/examples/components/browser-detector/default.example"
       ]
+    },
+    {
+      "id": "time-picker",
+      "title": "TimePicker",
+      "desc": "TimePicker",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
+      "component": "react-components/__TAG__/src/time-picker/TimePicker.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/time-picker/default.example"
+      ]
     }
   ]
 }
