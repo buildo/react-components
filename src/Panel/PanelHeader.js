@@ -58,7 +58,7 @@ export default class PanelHeader extends React.Component {
           hAlignContent='center'
           style={{ cursor: 'pointer' }}
           className='panel-header-icon'
-          flexBasis={30}
+          basis={30}
           onClick={collapse.onToggleExpanded}
         >
           <Icon
@@ -73,7 +73,7 @@ export default class PanelHeader extends React.Component {
   templateTitle = ({ renderTitle, title }) => {
     return (
       renderTitle ?
-        <FlexView auto vAlignContent='center' className='panel-header-title'>
+        <FlexView auto vAlignContent='center' className='panel-header-title' shrink={false}>
           {title}
         </FlexView>
         : null
@@ -84,7 +84,7 @@ export default class PanelHeader extends React.Component {
   templateContent = ({ renderContent, content }) => {
     return (
       renderContent ?
-        <FlexView className='panel-header-content' vAlignContent='center' grow>
+        <FlexView className='panel-header-content' vAlignContent='center' grow shrink={false}>
           {content}
         </FlexView>
         : null
@@ -93,7 +93,7 @@ export default class PanelHeader extends React.Component {
 
   template({ collapse, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
     return (
-      <FlexView className='panel-header' flexBasis={40}>
+      <FlexView className='panel-header' basis={40}>
         {this.templateExpandIcon({ renderExpandIcon, collapse })}
         {this.templateTitle({ renderTitle, title })}
         {this.templateContent({ renderContent, content })}
