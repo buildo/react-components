@@ -99,7 +99,7 @@ export default class FlexView extends React.Component {
   getBasis = () => {
     const { basis } = this.props;
     if (basis) {
-      const suffix = t.Number.is(basis) ? 'px' : '';
+      const suffix = t.Number.is(basis) || String(parseInt(basis, 10)) === basis ? 'px' : '';
       return basis + suffix;
     }
 
