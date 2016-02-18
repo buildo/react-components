@@ -70,7 +70,7 @@ export default class PanelMenu extends React.Component {
   );
 
   makeSelectableAction = ({ name, selected }) => (
-    <FlexView row vAlignContent="center">
+    <FlexView row vAlignContent='center'>
       <i
         style={{
           marginRight: 6,
