@@ -26,8 +26,8 @@ const Props = t.refinement(t.struct({
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-}), ({ timeFormat, value }) => (
-  timeFormat === H24 || Time12.is(value)
+}), ({ timeFormat, value, minTime, maxTime }) => (
+  timeFormat === H24 || (Time12.is(value) && t.maybe(Time12).is(minTime) && t.maybe(Time12).is(maxTime))
 ), 'Props');
 
 @skinnable()
