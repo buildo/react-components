@@ -25,7 +25,7 @@ export const Props = {
   loading: t.maybe(t.Bool),
   softLoading: t.maybe(t.Bool),
   softLoadingDelay: t.maybe(t.refinement(t.Num, v => v >= 0, 'NonNegativeNumber')),
-  children: t.ReactNode,
+  children: t.ReactChildren,
   className: t.maybe(t.Str),
   clearMargin: t.maybe(t.enums.of(['top', 'left', 'right', 'bottom'])),
   style: t.maybe(t.Obj)
