@@ -1,5 +1,11 @@
 class Example extends React.Component {
-  render = () => (
-    <TimePicker />
-  );
+
+  render = () => {
+    const Time = { hours: 10, minutes: 59 };
+    const minTime = { hours: 6, minutes: 20 };
+    const maxTime = { hours: 15, minutes: 20 };
+    return (
+      <TimePicker value={Time} minTime={minTime} maxTime={maxTime} timeFormat="24h" />
+    );
+  }
 }
