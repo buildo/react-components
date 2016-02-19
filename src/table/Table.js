@@ -107,8 +107,8 @@ export default class Table extends React.Component {
     }
   }
 
-  componentDidUpdate(newProps) {
-    if (newProps.selectedRows[0] !== this.props.selectedRows[0]) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedRows[0] !== this.props.selectedRows[0]) {
       this.scrollToSelectedRow();
     }
   }
