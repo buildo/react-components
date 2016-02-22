@@ -3,7 +3,9 @@ import set from 'lodash/object/set';
 
 export const linkState = (_this, path) => {
   const value = get(_this.state, path);
-  const requestChange = (value) => _this.setState(set({}, path, value));
+  const requestChange = (newValue) => (
+    _this.setState(set({ ..._this.state }, path, newValue))
+  );
   return {
     value,
     requestChange
