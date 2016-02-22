@@ -277,6 +277,18 @@
       "examples": [
         "react-components/__TAG__/examples/components/accordion/default.example"
       ]
+    },
+    {
+      "id": "link-state",
+      "title": "Link state",
+      "desc": "Link state",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/link-state",
+      "component": "react-components/__TAG__/src/link-state/index.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/link-state/default.example",
+        "react-components/__TAG__/examples/components/link-state/deep.example"
+      ]
     }
   ]
 }
