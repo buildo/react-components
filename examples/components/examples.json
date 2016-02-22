@@ -134,7 +134,7 @@
       "desc": "ScrollView",
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
-      "component": "react-components/__TAG__/src/scroll/scroll/ScrollView.js",
+      "component": "react-components/__TAG__/src/scroll/ScrollView.js",
       "examples": [
         "react-components/__TAG__/examples/components/scroll/StopPropagation.example",
         "react-components/__TAG__/examples/components/scroll/ScrollTo.example"
