@@ -22,8 +22,8 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
       "component": "react-components/__TAG__/src/dropdown/Dropdown.js",
       "examples": [
-        "react-components/__TAG__/examples/components/Dropdown/default.example",
-        "react-components/__TAG__/examples/components/Dropdown/DropdownWithChildren.example"
+        "react-components/__TAG__/examples/components/dropdown/default.example",
+        "react-components/__TAG__/examples/components/dropdown/DropdownWithChildren.example"
       ]
     },
     {
@@ -288,6 +288,17 @@
       "examples": [
         "react-components/__TAG__/examples/components/link-state/default.example",
         "react-components/__TAG__/examples/components/link-state/deep.example"
+      ]
+    },
+    {
+      "id": "browser-detector",
+      "title": "BrowserDetector",
+      "desc": "BrowserDetector",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
+      "component": "react-components/__TAG__/src/browser-detector/index.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/browser-detector/default.example"
       ]
     }
   ]

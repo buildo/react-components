@@ -1,0 +1,9 @@
+class Example extends React.Component {
+
+  render = () => (
+    <BrowserDetector supportedBrowsers={['safari']}>
+      {(map) => <span>{JSON.stringify(map, null, 2)}</span>}
+    </BrowserDetector>
+  );
+
+}
