@@ -1,18 +1,16 @@
 import React from 'react';
 import some from 'lodash/collection/some';
-import every from 'lodash/collection/every';
-import includes from 'lodash/collection/includes';
 import { props, t, skinnable } from '../utils';
 import bowser from 'bowser';
 
-const Browsers = t.irreducible('Browsers', (browsers) => every(browsers, b => includes([
+const Browser = t.enums.of([
   'chrome',
   'firefox',
   'safari',
   'msie',
   'msedge',
   'opera'
-], b)));
+], 'Browser');
 
 /**
  * ### Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
@@ -30,7 +28,7 @@ const Browsers = t.irreducible('Browsers', (browsers) => every(browsers, b => in
   /**
    * whitelist of supported browsers. If `undefined` they're all supported.
    */
-  supportedBrowsers: t.maybe(Browsers),
+  supportedBrowsers: t.maybe(t.list(Browser)),
   /**
    * custom user-agent
    */
