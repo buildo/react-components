@@ -1,8 +1,10 @@
 class Example extends React.Component {
 
+  getPlaceholder = (detectedBrowser) => <span>{`"${detectedBrowser.name}" is not supported!`}</span>;
+
   render = () => (
-    <BrowserDetector supportedBrowsers={['safari']}>
-      {(map) => <span>{JSON.stringify(map, null, 2)}</span>}
+    <BrowserDetector supportedBrowsers={['safari']} placeholder={this.getPlaceholder}>
+      <div>My Beautiful APP</div>
     </BrowserDetector>
   );
 
