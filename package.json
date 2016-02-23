@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
+    "bowser": "^1.0.0",
     "classnames": "^2.2.3",
     "fixed-data-table": "^0.4.7",
     "lodash": "^3.10.1",

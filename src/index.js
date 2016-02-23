@@ -24,3 +24,4 @@ export Toggle from './toggle';
 export Table, { Column } from './table';
 export Meter from './meter';
 export Accordion from './accordion';
+export BrowserDetector from './browser-detector';
