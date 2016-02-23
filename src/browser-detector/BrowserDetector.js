@@ -15,20 +15,20 @@ const Browsers = t.irreducible('Browsers', (browsers) => every(browsers, b => in
 ], b)));
 
 /**
- * ### Top-level component which detects device type and passes this info to children as context
+ * ### Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
  */
 @skinnable()
 @props({
   /**
-   * children node rendered when using supported browser
+   * children node rendered when using a supported browser
    */
   children: t.ReactChildren,
   /**
-   * called when using a non-supported browser. Expected to return valid ReactNode.
+   * called when using a non-supported browser. Expected to return a valid ReactNode.
    */
   placeholder: t.Function,
   /**
-   * whitelist of supported browsers. If `undefined` fallbacks to `*``
+   * whitelist of supported browsers. If `undefined` they're all supported.
    */
   supportedBrowsers: t.maybe(Browsers),
   /**
