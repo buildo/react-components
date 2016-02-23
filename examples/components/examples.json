@@ -284,7 +284,6 @@
       "desc": "Link state",
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/link-state",
-      "component": "react-components/__TAG__/src/link-state/index.js",
       "examples": [
         "react-components/__TAG__/examples/components/link-state/default.example",
         "react-components/__TAG__/examples/components/link-state/deep.example"
@@ -296,7 +295,7 @@
       "desc": "BrowserDetector",
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
-      "component": "react-components/__TAG__/src/browser-detector/index.js",
+      "component": "react-components/__TAG__/src/browser-detector/BrowserDetector.js",
       "examples": [
         "react-components/__TAG__/examples/components/browser-detector/default.example"
       ]
