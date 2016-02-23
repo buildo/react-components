@@ -26,6 +26,10 @@ const timeFormatter12 = (hour, minute) => {
   }
 };
 
+const compareTime = (minTime, maxTime) => (
+  maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes > minTime.minutes)
+);
+
 const insertColon = str => {
   if (numberRegex.test(str) && (str.length >= 3 && str.length <= 4)) {
     const position = str.length - 2;
@@ -47,21 +51,16 @@ const filterOptions = (options, filterStr) => (
 
 const Integer = t.refinement(t.Number, n => n % 1 === 0, 'Integer');
 const Hour = t.refinement(Integer, int => int >= 0 && int <= 23, 'Hour');
-const Hour12 = t.refinement(Hour, int => int >= 1 && int <= 12, 'Hour12');
 const Minute = t.refinement(Integer, int => int >= 0 && int <= 59, 'Minute');
 const TimeFormat = t.enums.of([H12, H24], 'TimeFormat');
 const Time = t.struct({
   hours: Hour,
   minutes: Minute
 }, 'Time');
-const Time12 = t.struct({
-  hours: Hour12,
-  minutes: Minute
-}, 'Time12');
 
 const Props = t.refinement(t.struct({
-  value: Time,
   onChange: t.Function,
+  value: t.maybe(Time),
   minTime: t.maybe(Time),
   maxTime: t.maybe(Time),
   interval: t.maybe(Integer),
@@ -70,8 +69,8 @@ const Props = t.refinement(t.struct({
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-}), ({ timeFormat, value, minTime, maxTime }) => (
-  timeFormat === H24 || (Time12(value) && (!minTime || Time12(minTime)) && (!maxTime || Time12(maxTime)))
+}), ({ value, minTime, maxTime }) => (
+  compareTime(minTime, maxTime) && (!value || (compareTime(value, maxTime) && compareTime(minTime, value)))
 ), 'Props');
 
 @skinnable()
@@ -82,16 +81,23 @@ export default class TimePicker extends React.Component {
     placeholder: `--${separator}--`,
     timeFormat: H24,
     interval: 30,
-    onChange: () => {}
+    minTime: { hours: 0, minutes: 0 },
+    maxTime: { hours: 23, minutes: 59 }
   }
 
   createOptionsList = ({ timeFormatter, minTime, maxTime, interval }) => {
 
-    const minHour = minTime ? minTime.hours : 0;
-    const maxHour = maxTime ? maxTime.hours : 24;
-    const hours = range(minHour, maxHour);
+    const minHour = minTime.hours;
+    const maxHour = maxTime.hours;
+    const minMinute = minTime.minutes;
+    const maxMinute = maxTime.minutes;
+
+    const hours = range(minHour, maxHour + 1);
     const minutes = range(0, 60, interval);
-    const options = flatten(hours.map( hour => minutes.map( minute => (
+    const options = flatten(hours.map( hour => minutes.filter( minute => (
+      (hour !== minHour || minute >= minMinute) &&
+      (hour !== maxHour || minute <= maxMinute)
+    )).map( minute => (
       { value: `${hour}${separator}${minute}`, label: timeFormatter(hour, minute) }
     )
     )));
@@ -107,26 +113,26 @@ export default class TimePicker extends React.Component {
 
   getLocals() {
     const {
-      placeholder,
       timeFormat,
       className,
-      onChange,
       ...props
     } = this.props;
 
+    const timeFormatter = timeFormat === H24 ? timeFormatter24 : timeFormatter12;
+
     return {
-      placeholder,
+      ...props,
       onChange: this._onChange,
       filterOptions,
       className: cx('time-picker', className),
-      options: timeFormat === H24 ? this.createOptionsList({ timeFormatter: timeFormatter24, ...props }) : this.createOptionsList({ timeFormatter: timeFormatter12, ...props })
+      options: this.createOptionsList({ timeFormatter, ...props })
     };
   }
 
-  template({ id, className, style, placeholder, options, onChange, filterOptions }) {
+  template({ id, className, style, value, placeholder, options, onChange, filterOptions }) {
     return(
       <FlexView {...{ id, className, style }} grow >
-        <Dropdown options={options} placeholder={placeholder} filterOptions={filterOptions} onChange={onChange}/>
+        <Dropdown onChange={onChange} value={value} options={options} placeholder={placeholder} filterOptions={filterOptions} />
       </FlexView>
     );
   }
