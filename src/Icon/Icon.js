@@ -30,7 +30,7 @@ export default class Icon extends React.Component {
   template({ icon, className, style, onClick, paths }) {
     return icon ? (
       <i className={cx('icon', `icon-${icon}`, className)} style={style} onClick={onClick}>
-        {paths > 1 && range(paths).map(k => <span className={`path${k+1}`} /> )}
+        {paths > 1 && range(paths).map(k => <span className={`path${k + 1}`} /> )}
       </i>
     )
     : null;
