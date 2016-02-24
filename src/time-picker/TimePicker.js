@@ -26,7 +26,7 @@ const timeFormatter12 = (hour, minute) => {
   }
 };
 
-const compareTime = (minTime, maxTime) => (
+const lteTime = (minTime, maxTime) => (
   maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes > minTime.minutes)
 );
 
@@ -70,7 +70,7 @@ const Props = t.refinement(t.struct({
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 }), ({ value, minTime, maxTime }) => (
-  compareTime(minTime, maxTime) && (!value || (compareTime(value, maxTime) && compareTime(minTime, value)))
+  lteTime(minTime, maxTime) && (!value || (lteTime(value, maxTime) && lteTime(minTime, value)))
 ), 'Props');
 
 @skinnable()
@@ -94,12 +94,13 @@ export default class TimePicker extends React.Component {
 
     const hours = range(minHour, maxHour + 1);
     const minutes = range(0, 60, interval);
-    const options = flatten(hours.map( hour => minutes.filter( minute => (
+    const options = flatten(hours.map(hour => minutes.filter(minute => (
       (hour !== minHour || minute >= minMinute) &&
       (hour !== maxHour || minute <= maxMinute)
-    )).map( minute => (
-      { value: `${hour}${separator}${minute}`, label: timeFormatter(hour, minute) }
-    )
+    )).map( minute => ({
+      value: `${hour}${separator}${minute}`,
+      label: timeFormatter(hour, minute)
+    })
     )));
     return options;
   };

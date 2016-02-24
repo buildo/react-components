@@ -6,7 +6,10 @@ import { newComponent } from '../helpers';
 describe('TimePicker', function () {
   describe('locals', () => {
 
-    const exampleProps = {};
+    const exampleProps = {
+      minTime: { hours: 5, minutes: 10 },
+      maxTime: { hours: 8, minutes: 20 }
+    };
 
     const componentTimePicker = new TimePicker(exampleProps);
 
