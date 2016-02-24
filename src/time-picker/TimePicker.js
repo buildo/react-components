@@ -2,7 +2,6 @@ import React from 'react';
 import { props, t, skinnable } from '../utils';
 import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
-import FlexView from '../flex/FlexView';
 import range from 'lodash/utility/range';
 import flatten from 'lodash/array/flatten';
 
@@ -31,23 +30,15 @@ const lteTime = (minTime, maxTime) => (
 );
 
 const insertColon = str => {
-  if (numberRegex.test(str) && (str.length >= 3 && str.length <= 4)) {
+  if (numberRegex.test(str) && (str.length === 3 || str.length === 4)) {
     const position = str.length - 2;
     const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}`;
     return strWithColon;
   }
   return str;
 };
-const cleanString = str => str.replace(symbolRegex, ':');
-const cleanFilter = filterStr => insertColon(cleanString(filterStr));
-const filterOptions = (options, filterStr) => (
-  options.filter( option => (
-      option.value.substr(0, filterStr.length) === cleanFilter(filterStr) ||
-      option.label.substr(0, filterStr.length) === cleanFilter(filterStr) ||
-      option.label === cleanFilter(filterStr) ||
-      option.value === cleanFilter(filterStr)
-  ))
-);
+const cleanSeparator = str => str.replace(symbolRegex, ':');
+const cleanFilter = inputStr => insertColon(cleanSeparator(inputStr));
 
 const Integer = t.refinement(t.Number, n => n % 1 === 0, 'Integer');
 const Hour = t.refinement(Integer, int => int >= 0 && int <= 23, 'Hour');
@@ -86,17 +77,16 @@ export default class TimePicker extends React.Component {
   }
 
   createOptionsList = ({ timeFormatter, minTime, maxTime, interval }) => {
+    const minHours = minTime.hours;
+    const maxHours = maxTime.hours;
+    const minMinutes = minTime.minutes;
+    const maxMinutes = maxTime.minutes;
 
-    const minHour = minTime.hours;
-    const maxHour = maxTime.hours;
-    const minMinute = minTime.minutes;
-    const maxMinute = maxTime.minutes;
-
-    const hours = range(minHour, maxHour + 1);
+    const hours = range(minHours, maxHours + 1);
     const minutes = range(0, 60, interval);
     const options = flatten(hours.map(hour => minutes.filter(minute => (
-      (hour !== minHour || minute >= minMinute) &&
-      (hour !== maxHour || minute <= maxMinute)
+      (hour !== minHours || minute >= minMinutes) &&
+      (hour !== maxHours || minute <= maxMinutes)
     )).map( minute => ({
       value: `${hour}${separator}${minute}`,
       label: timeFormatter(hour, minute)
@@ -105,10 +95,21 @@ export default class TimePicker extends React.Component {
     return options;
   };
 
+  _filterOptions = (options, inputStr) => (
+    options.filter( option => (
+        option.value.substr(0, inputStr.length) === cleanFilter(inputStr) ||
+        option.label.substr(0, inputStr.length) === cleanFilter(inputStr) ||
+        option.label === cleanFilter(inputStr) ||
+        option.value === cleanFilter(inputStr)
+    ))
+  );
+
   _onChange = (value) => {
     if (value) {
       const timeArray = value.split(separator);
       this.props.onChange({ hours: parseInt(timeArray[0]), minutes: parseInt(timeArray[1]) });
+    } else {
+      this.props.onChange();
     }
   }
 
@@ -123,18 +124,23 @@ export default class TimePicker extends React.Component {
 
     return {
       ...props,
-      onChange: this._onChange,
-      filterOptions,
       className: cx('time-picker', className),
-      options: this.createOptionsList({ timeFormatter, ...props })
+      options: this.createOptionsList({ timeFormatter, ...props }),
+      onChange: this._onChange,
+      filterOptions: this._filterOptions
     };
   }
 
   template({ id, className, style, value, placeholder, options, onChange, filterOptions }) {
     return(
-      <FlexView {...{ id, className, style }} grow >
-        <Dropdown onChange={onChange} value={value} options={options} placeholder={placeholder} filterOptions={filterOptions} />
-      </FlexView>
+      <Dropdown
+        {...{ id, className, style }}
+        onChange={onChange}
+        value={value}
+        options={options}
+        placeholder={placeholder}
+        filterOptions={filterOptions}
+      />
     );
   }
 }
