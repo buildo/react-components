@@ -1,8 +1,0 @@
-class Example extends React.Component {
-
-  render = () => {
-    return (
-      <TimePicker onChange={(x) => log(x)} interval={30} timeFormat="24h" />
-    );
-  }
-}

@@ -9,6 +9,8 @@ const H24 = '24h';
 const H12 = '12h';
 const symbolRegex = /[\s,\.\|\/\\]/;
 const numberRegex = /^\d+$/;
+const time12Regex = /^([1-9]|1[0-2])[:,\.\|\/\\]?([0-5]\d)?\s*?(AM|PM)$/;
+const time24Regex = /^([01]?\d|2[0-3])[:,\.\|\/\\]?([0-5]?\d)?$/;
 const separator = ':';
 
 const pad = (num) => num <= 9 ? `0${num}` : num;
@@ -25,20 +27,57 @@ const timeFormatter12 = (hour, minute) => {
   }
 };
 
+const isValidTime = input => time12Regex.test(input) || time24Regex.test(input);
+
+const formatValue = (timeFormatter, hour, minute) => ({
+  value: `${hour}${separator}${minute}`,
+  label: timeFormatter(hour, minute)
+});
+
 const lteTime = (minTime, maxTime) => (
   maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes > minTime.minutes)
 );
 
 const insertColon = str => {
-  if (numberRegex.test(str) && (str.length === 3 || str.length === 4)) {
-    const position = str.length - 2;
-    const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}`;
-    return strWithColon;
+  if (numberRegex.test(str)) {
+    if (str.length === 3) {
+      const position = str.length - 1;
+      const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}0`;
+      return strWithColon;
+    } else if (str.length === 4) {
+      const position = str.length - 2;
+      const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}`;
+      return strWithColon;
+    }
   }
   return str;
 };
 const cleanSeparator = str => str.replace(symbolRegex, ':');
-const cleanFilter = inputStr => insertColon(cleanSeparator(inputStr));
+const cleanInput = inputStr => insertColon(cleanSeparator(inputStr));
+
+const getSpecificOptionList = (cleanedInput, timeFormat) => {
+  const inputArray = cleanedInput.split(':');
+  const hours = parseInt(inputArray[0]);
+  const minutes = parseInt(inputArray[1]);
+  if (numberRegex.test(hours) && numberRegex.test(minutes)) {
+    const optionTime12 = [
+      { value: `${cleanedInput}am`, label: timeFormatter12(hours, minutes) },
+      { value: `${cleanedInput}pm`, label: timeFormatter12((hours + 12 ), minutes) }
+    ];
+    const optionTime12Single = [{ value: `${cleanedInput}pm`, label: timeFormatter12(hours, minutes) }];
+    const optionTime24 = [{ value: cleanedInput, label: timeFormatter24(hours, minutes) }];
+
+    if (timeFormat === H12 && hours <= 12 ) {
+      return optionTime12;
+    } else if (timeFormat === H12 && hours > 12) {
+      return optionTime12Single;
+    } else {
+      return optionTime24;
+    }
+  } else {
+    return [];
+  }
+};
 
 const Integer = t.refinement(t.Number, n => n % 1 === 0, 'Integer');
 const Hour = t.refinement(Integer, int => int >= 0 && int <= 23, 'Hour');
@@ -87,22 +126,22 @@ export default class TimePicker extends React.Component {
     const options = flatten(hours.map(hour => minutes.filter(minute => (
       (hour !== minHours || minute >= minMinutes) &&
       (hour !== maxHours || minute <= maxMinutes)
-    )).map( minute => ({
-      value: `${hour}${separator}${minute}`,
-      label: timeFormatter(hour, minute)
-    })
+    )).map( minute => formatValue(timeFormatter, hour, minute)
     )));
     return options;
   };
 
-  _filterOptions = (options, inputStr) => (
-    options.filter( option => (
-        option.value.substr(0, inputStr.length) === cleanFilter(inputStr) ||
-        option.label.substr(0, inputStr.length) === cleanFilter(inputStr) ||
-        option.label === cleanFilter(inputStr) ||
-        option.value === cleanFilter(inputStr)
-    ))
-  );
+  _filterOptions = (options, inputStr) => {
+    const cleanedInput = cleanInput(inputStr);
+    if ((cleanedInput.length === 4 || cleanedInput.length === 5) && isValidTime(cleanedInput)) {
+      return getSpecificOptionList(cleanedInput, this.props.timeFormat);
+    }
+    return options.filter( option => (
+        option.label.substr(0, inputStr.length) === cleanedInput ||
+        option.label === cleanedInput ||
+        option.value === cleanedInput
+    ));
+  };
 
   _onChange = (value) => {
     if (value) {
@@ -111,23 +150,25 @@ export default class TimePicker extends React.Component {
     } else {
       this.props.onChange();
     }
-  }
+  };
 
   getLocals() {
     const {
       timeFormat,
       className,
+      value,
       ...props
     } = this.props;
 
     const timeFormatter = timeFormat === H24 ? timeFormatter24 : timeFormatter12;
-
     return {
       ...props,
       className: cx('time-picker', className),
+      value: value ? formatValue(timeFormatter, value.hours, value.minute) : '',
       options: this.createOptionsList({ timeFormatter, ...props }),
       onChange: this._onChange,
-      filterOptions: this._filterOptions
+      filterOptions: this._filterOptions,
+      onInputChange: this.onInputChange
     };
   }
 
@@ -135,8 +176,8 @@ export default class TimePicker extends React.Component {
     return(
       <Dropdown
         {...{ id, className, style }}
-        onChange={onChange}
         value={value}
+        onChange={onChange}
         options={options}
         placeholder={placeholder}
         filterOptions={filterOptions}

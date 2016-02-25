@@ -308,7 +308,8 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
       "component": "react-components/__TAG__/src/time-picker/TimePicker.js",
       "examples": [
-        "react-components/__TAG__/examples/components/time-picker/default.example"
+        "react-components/__TAG__/examples/components/time-picker/TimePicker24.example",
+        "react-components/__TAG__/examples/components/time-picker/TimePicker12.example"
       ]
     }
   ]
