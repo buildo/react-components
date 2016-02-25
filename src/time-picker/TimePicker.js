@@ -64,19 +64,15 @@ const getSpecificOptionList = (cleanedInput, timeFormat) => {
       { value: `${cleanedInput}am`, label: timeFormatter12(hours, minutes) },
       { value: `${cleanedInput}pm`, label: timeFormatter12((hours + 12 ), minutes) }
     ];
-    const optionTime12Single = [{ value: `${cleanedInput}pm`, label: timeFormatter12(hours, minutes) }];
     const optionTime24 = [{ value: cleanedInput, label: timeFormatter24(hours, minutes) }];
 
     if (timeFormat === H12 && hours <= 12 ) {
       return optionTime12;
-    } else if (timeFormat === H12 && hours > 12) {
-      return optionTime12Single;
-    } else {
+    } else if (timeFormat === H24) {
       return optionTime24;
     }
-  } else {
-    return [];
   }
+  return [];
 };
 
 const Integer = t.refinement(t.Number, n => n % 1 === 0, 'Integer');
@@ -146,7 +142,9 @@ export default class TimePicker extends React.Component {
   _onChange = (value) => {
     if (value) {
       const timeArray = value.split(separator);
-      this.props.onChange({ hours: parseInt(timeArray[0]), minutes: parseInt(timeArray[1]) });
+      const hours = parseInt(timeArray[0]);
+      const minutes = parseInt(timeArray[1]);
+      this.props.onChange({ hours, minutes });
     } else {
       this.props.onChange();
     }
