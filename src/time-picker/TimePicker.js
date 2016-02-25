@@ -5,6 +5,12 @@ import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/utility/range';
 import flatten from 'lodash/array/flatten';
 
+/*
+  Options is defined here cause we need to not change the ref.
+  This happend because of a very wired behaviour of react-select v0.6.12
+*/
+const options = [];
+
 const H24 = '24h';
 const H12 = '12h';
 const symbolRegex = /[\s,\.\|\/\\]/;
@@ -16,7 +22,7 @@ const separator = ':';
 const pad = (num) => num <= 9 ? `0${num}` : num;
 const timeFormatter24 = (hour, minute) => `${pad(hour)}:${pad(minute)}`;
 const timeFormatter12 = (hour, minute) => {
-  if (hour === 0) {
+  if (hour === 0 || (hour > 12 && hour % 12 === 0)) {
     return `12${separator}${pad(minute)} am`;
   } else if (hour === 12) {
     return `12${separator}${pad(minute)} pm`;
@@ -35,14 +41,22 @@ const formatValue = (timeFormatter, hour, minute) => ({
 });
 
 const lteTime = (minTime, maxTime) => (
-  maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes > minTime.minutes)
+  maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes >= minTime.minutes)
 );
+
+const addZero = str => {
+  if (str.length === 4) {
+    return `${str}0`;
+  } else {
+    return str;
+  }
+};
 
 const insertColon = str => {
   if (numberRegex.test(str)) {
     if (str.length === 3) {
       const position = str.length - 1;
-      const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}0`;
+      const strWithColon = `${str.substr(0, position)}${separator}${str.substr(position)}`;
       return strWithColon;
     } else if (str.length === 4) {
       const position = str.length - 2;
@@ -52,17 +66,18 @@ const insertColon = str => {
   }
   return str;
 };
-const cleanSeparator = str => str.replace(symbolRegex, ':');
-const cleanInput = inputStr => insertColon(cleanSeparator(inputStr));
+
+const cleanSeparator = str => str.replace(symbolRegex, separator);
+const cleanInput = inputStr => addZero(insertColon(cleanSeparator(inputStr)));
 
 const getSpecificOptionList = (cleanedInput, timeFormat) => {
-  const inputArray = cleanedInput.split(':');
+  const inputArray = cleanedInput.split(separator);
   const hours = parseInt(inputArray[0]);
   const minutes = parseInt(inputArray[1]);
-  if (numberRegex.test(hours) && numberRegex.test(minutes)) {
+  if (hours !== 0 && numberRegex.test(hours) && numberRegex.test(minutes)) {
     const optionTime12 = [
       { value: `${cleanedInput}am`, label: timeFormatter12(hours, minutes) },
-      { value: `${cleanedInput}pm`, label: timeFormatter12((hours + 12 ), minutes) }
+      { value: `${cleanedInput}pm`, label: timeFormatter12(hours + 12, minutes) }
     ];
     const optionTime24 = [{ value: cleanedInput, label: timeFormatter24(hours, minutes) }];
 
@@ -111,7 +126,18 @@ export default class TimePicker extends React.Component {
     maxTime: { hours: 23, minutes: 59 }
   }
 
-  createOptionsList = ({ timeFormatter, minTime, maxTime, interval }) => {
+  /**
+    We use filterOptions because seems that is not possible
+    to change the options from outside of this function,
+    then we use this tricky hack and we workaround this creating a new set
+    of options as we wish and filter it if needed, or just returning a brand new array
+  **/
+  createOptionsList = (_, inputStr) => {
+    /**
+    _ is a placeholder because the TLC pass me the optionsList, but i don't really care. YOLO
+    **/
+    const { minTime, maxTime, interval, timeFormat } = this.props;
+    const timeFormatter = timeFormat === H24 ? timeFormatter24 : timeFormatter12;
     const minHours = minTime.hours;
     const maxHours = maxTime.hours;
     const minMinutes = minTime.minutes;
@@ -124,10 +150,10 @@ export default class TimePicker extends React.Component {
       (hour !== maxHours || minute <= maxMinutes)
     )).map( minute => formatValue(timeFormatter, hour, minute)
     )));
-    return options;
+    return this.filterOrRecreateOptions(options, inputStr);
   };
 
-  _filterOptions = (options, inputStr) => {
+  filterOrRecreateOptions = (options, inputStr) => {
     const cleanedInput = cleanInput(inputStr);
     if ((cleanedInput.length === 4 || cleanedInput.length === 5) && isValidTime(cleanedInput)) {
       return getSpecificOptionList(cleanedInput, this.props.timeFormat);
@@ -162,11 +188,10 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       className: cx('time-picker', className),
-      value: value ? formatValue(timeFormatter, value.hours, value.minute) : '',
-      options: this.createOptionsList({ timeFormatter, ...props }),
+      value: value ? formatValue(timeFormatter, value.hours, value.minutes) : '',
+      options,
       onChange: this._onChange,
-      filterOptions: this._filterOptions,
-      onInputChange: this.onInputChange
+      filterOptions: this.createOptionsList
     };
   }
 
@@ -179,6 +204,7 @@ export default class TimePicker extends React.Component {
         options={options}
         placeholder={placeholder}
         filterOptions={filterOptions}
+        onBlur={() => this.forceUpdate()}
       />
     );
   }
