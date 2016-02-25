@@ -57,7 +57,7 @@ $hover-scrollbar-color: white !default;
 
   // selection/hover
   &.selectable {
-    .public_fixedDataTableRow_main {
+    .public_fixedDataTableRow_main:not(.public_fixedDataTable_header) {
       cursor: pointer;
       .selected {
         background: $selected-cell-background;
