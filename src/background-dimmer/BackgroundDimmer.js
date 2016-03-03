@@ -44,64 +44,48 @@ export default class BackgroundDimmer extends React.Component {
 
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
-    return el === React.findDOMNode(this.refs.dimmedBackground);
+    return el === React.findDOMNode(this.refs.flexWrapper);
   };
 
   onClick = (e) => {
     const { onClickOutside } = this.props;
-    if (onClickOutside && this.isEventOutsideChildren(e)) {
+    if (this.props.onClickOutside) {
       onClickOutside(e);
     }
   };
 
+  stopPropagation = e => e.stopPropagation();
+
   preventDefault = (e) => e.preventDefault();
 
   stopScrollPropagation = (e) => {
-    const { stopScrollPropagation } = this.props;
-    if (stopScrollPropagation && this.isEventOutsideChildren(e)) {
+    if (this.props.stopScrollPropagation && this.isEventOutsideChildren(e)) {
       this.preventDefault(e);
     }
   };
 
-  getDimmedBackground = () => {
-    const { color, alpha, zIndex } = this.props;
-    const style = {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: color,
-      opacity: String(alpha),
-      zIndex
-    };
-    return <div style={style} onClick={this.onClick} ref='dimmedBackground' />;
-  };
-
   render() {
-    const { style, className, id, children, zIndex } = this.props;
-    const props = {
-      style: { position: 'relative', ...style },
-      className,
-      id
-    };
+    const { style, className, id, children, zIndex, color, alpha } = this.props;
+    const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
+
+    const props = { id, className, style };
     const flexViewProps = {
-      style: {
-        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: (zIndex + 1), pointerEvents: 'none'
-      },
+      style: { ...fixedStyle, zIndex: (zIndex + 1) },
       vAlignContent: 'center',
       hAlignContent: 'center'
-    };
-    const childrenWrapperProps = {
-      style: { pointerEvents: 'auto' },
-      ref: 'childrenWrapper'
     };
 
     return (
       <div {...props}>
-        {this.getDimmedBackground()}
-        <FlexView {...flexViewProps}>
-          <div {...childrenWrapperProps}>
+        <div style={{ ...fixedStyle, zIndex, backgroundColor: color, opacity: String(alpha) }} />
+        <FlexView
+          {...flexViewProps}
+          onClick={this.onClick}
+          onWheel={this.stopScrollPropagation}
+          onTouchMove={this.stopScrollPropagation}
+          ref='flexWrapper'
+        >
+          <div onClick={this.stopPropagation}>
             {children}
           </div>
         </FlexView>
