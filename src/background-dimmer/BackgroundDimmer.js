@@ -42,30 +42,6 @@ export default class BackgroundDimmer extends React.Component {
     zIndex: 99999
   };
 
-  componentDidMount() {
-    if (this.props.stopScrollPropagation) {
-      this.disableScrollPropagation();
-    }
-  }
-
-  enableScrollPropagation = () => {
-    const dimmedBackground = React.findDOMNode(this.refs.dimmedBackground);
-    const childrenWrapper = React.findDOMNode(this.refs.childrenWrapper);
-    dimmedBackground.removeEventListener('wheel', this.stopScrollPropagation);
-    dimmedBackground.removeEventListener('touchmove', this.stopScrollPropagation);
-    childrenWrapper.removeEventListener('wheel', this.preventDefault);
-    childrenWrapper.removeEventListener('touchmove', this.preventDefault);
-  };
-
-  disableScrollPropagation = () => {
-    const dimmedBackground = React.findDOMNode(this.refs.dimmedBackground);
-    const childrenWrapper = React.findDOMNode(this.refs.childrenWrapper);
-    dimmedBackground.addEventListener('wheel', this.stopScrollPropagation);
-    dimmedBackground.addEventListener('touchmove', this.stopScrollPropagation);
-    childrenWrapper.addEventListener('wheel', this.preventDefault);
-    childrenWrapper.addEventListener('touchmove', this.preventDefault);
-  };
-
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
     return el === React.findDOMNode(this.refs.dimmedBackground);
@@ -131,20 +107,6 @@ export default class BackgroundDimmer extends React.Component {
         </FlexView>
       </div>
     );
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.stopScrollPropagation && this.props.stopScrollPropagation) {
-      this.enableScrollPropagation();
-    } else if (nextProps.stopScrollPropagation && !this.props.stopScrollPropagation) {
-      this.disableScrollPropagation();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.stopScrollPropagation) {
-      this.enableScrollPropagation();
-    }
   }
 
 }
