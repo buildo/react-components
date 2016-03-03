@@ -18,18 +18,18 @@ export const checkPropsInvariants = (props) => {
   const multipleSelectionEnabled = selectionType === 'multi';
   let toReturn = true;
   if (onRowSelect && onRowsSelect) {
-    warn(`'onRowSelect' and 'onRowsSelect' are exclusive. Use the former if 'multipleSelectionEnabled' is true, or the latter if it's false`);
+    warn('\'onRowSelect\' and \'onRowsSelect\' are exclusive. Use the former if \'multipleSelectionEnabled\' is true, or the latter if it\'s false');
     toReturn = false;
   } else if (multipleSelectionEnabled && onRowSelect) {
-    warn(`'multipleSelectionEnabled' is true, so 'onRowSelect' will never be called. Use 'onRowsSelect' (plural) instead.`);
+    warn('\'multipleSelectionEnabled\' is true, so \'onRowSelect\' will never be called. Use \'onRowsSelect\' (plural) instead.');
     toReturn = false;
   } else if (!multipleSelectionEnabled && onRowsSelect) {
-    warn(`'multipleSelectionEnabled' is false, so 'onRowsSelect' will never be called. Use 'onRowSelect' (singular) instead.`);
+    warn('\'multipleSelectionEnabled\' is false, so \'onRowsSelect\' will never be called. Use \'onRowSelect\' (singular) instead.');
     toReturn = false;
   }
 
   if ((!width && !height) && !autoSize) {
-    warn(`when 'autoSize=false' you must pass 'width' and 'height' otherwise the table will be sizeless.`);
+    warn('when \'autoSize=false\' you must pass \'width\' and \'height\' otherwise the table will be sizeless.');
     toReturn = false;
   }
 

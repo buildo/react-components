@@ -44,7 +44,7 @@ export default class TextOverflow extends React.Component {
       const { width, flex } = node.style;
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
-        return [`WARNING: TextOverflow's parent doesn't have "width: 100%" nor "flex-basis: 100%"`, node];
+        return ['WARNING: TextOverflow\'s parent doesn\'t have "width: 100%" nor "flex-basis: 100%"', node];
       }
     });
   };
