@@ -178,8 +178,7 @@ export default class TimePicker extends React.Component {
   _onChange = (value) => {
     if (value) {
       const time = parser(value);
-      const option = formatter(time, time.timeFormat);
-      this.props.onChange(option);
+      this.props.onChange(time);
     } else {
       this.props.onChange();
     }
@@ -196,7 +195,7 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       className: cx('time-picker', className),
-      value: value ? formatter(timeFormat, value.hours, value.minutes) : '',
+      value: value ? formatter(value, timeFormat) : '',
       options,
       onChange: this._onChange,
       optionsManager: this.optionsManager
