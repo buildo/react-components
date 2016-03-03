@@ -86,8 +86,6 @@ export default class ScrollView extends React.Component {
       // const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
 
       let up;
-      let down;
-
       if (e instanceof TouchEvent) {
         const { clientY } = e.touches[0];
         up = clientY > this.lastY;
@@ -95,7 +93,7 @@ export default class ScrollView extends React.Component {
       } else if (e instanceof WheelEvent) {
         up = e.wheelDelta > 0;
       }
-      down = !up;
+      const down = !up;
 
       if ((down && this.isAtBottom()) || (up && this.isAtTop())) {
         e.preventDefault();

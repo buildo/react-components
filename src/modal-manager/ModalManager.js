@@ -135,7 +135,8 @@ export default class ModalManager extends React.Component {
 
   renderModals = () => {
     const Modal = this.getModalManager();
-    React.render(<this.ContextWrapper>{Modal}</this.ContextWrapper>, this.containerNode);
+    const { ContextWrapper } = this;
+    React.render(<ContextWrapper>{Modal}</ContextWrapper>, this.containerNode);
   };
 
   render() {
