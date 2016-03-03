@@ -204,7 +204,7 @@ export default class TimePicker extends React.Component {
   }
 
   template({ id, className, style, value, placeholder, options, onChange, optionsManager }) {
-    return(
+    return (
       <Dropdown
         {...{ id, className, style }}
         value={value}
