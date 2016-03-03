@@ -177,11 +177,9 @@ export default class TimePicker extends React.Component {
 
   _onChange = (value) => {
     if (value) {
-      const {
-        hours,
-        minutes
-      } = this.parser(value);
-      this.props.onChange({ hours, minutes });
+      const time = parser(value);
+      const option = formatter(time, time.timeFormat);
+      this.props.onChange(option);
     } else {
       this.props.onChange();
     }
