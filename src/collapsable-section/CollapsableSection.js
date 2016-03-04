@@ -4,7 +4,7 @@ import { skinnable, props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
-import './accordion.scss';
+import './collapsableSection.scss';
 
 @skinnable()
 @props({
@@ -23,7 +23,7 @@ import './accordion.scss';
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
 })
-export default class Accordion extends React.Component {
+export default class CollapsableSection extends React.Component {
 
   static defaultProps = {
     onOpen: () => {},
@@ -59,7 +59,7 @@ export default class Accordion extends React.Component {
       wrapperProps: {
         id,
         style,
-        className: cx(className, 'accordion', { 'is-open': isOpen, 'is-selected': isSelected })
+        className: cx(className, 'collapsable-section', { 'is-open': isOpen, 'is-selected': isSelected })
       }
     };
   }

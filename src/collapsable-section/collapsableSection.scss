@@ -5,7 +5,7 @@ $is-open-content-background: transparent !default;
 $is-selected-content-background: transparent !default;
 $hover-content-background: transparent !default;
 
-.accordion {
+.collapsable-section {
   cursor: pointer;
   background: $background;
   .content {

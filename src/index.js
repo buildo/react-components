@@ -23,5 +23,5 @@ export NavBar from './nav-bar';
 export Toggle from './toggle';
 export Table, { Column } from './table';
 export Meter from './meter';
-export Accordion from './accordion';
+export CollapsableSection from './collapsable-section';
 export BrowserDetector from './browser-detector';

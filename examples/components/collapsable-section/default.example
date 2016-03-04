@@ -15,7 +15,7 @@ class Example extends React.Component {
   );
 
   render = () => (
-    <Accordion
+    <CollapsableSection
       isOpen={this.state.isOpen}
       onChange={this.onChange}
       header={this.getHeader()}
@@ -24,7 +24,7 @@ class Example extends React.Component {
       <div>ITEM 1</div>
       <div>ITEM 2</div>
       <div>ITEM 3</div>
-    </Accordion>
+    </CollapsableSection>
   );
 
 }
