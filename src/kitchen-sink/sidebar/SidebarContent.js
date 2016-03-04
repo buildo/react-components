@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import Accordion from '../../accordion/Accordion';
+import CollapsableSection from '../../collapsable-section/CollapsableSection';
 
 export default class SidebarContent extends React.Component {
 
@@ -24,11 +24,11 @@ export default class SidebarContent extends React.Component {
     );
 
     const getSections = (sections) => sections.map(({ id, components, contents, title }) => (
-      <Accordion onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
+      <CollapsableSection onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
         <div className='items'>
           {getItems(id, components || contents)}
         </div>
-      </Accordion>
+      </CollapsableSection>
     ));
 
     return (
