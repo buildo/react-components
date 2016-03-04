@@ -11,13 +11,14 @@ import flatten from 'lodash/array/flatten';
 */
 const options = [];
 
-const H24 = '24h';
-const H12 = '12h';
+export const H24 = '24h';
+export const H12 = '12h';
 const generateList = {};
 const inputError = {};
 const symbolRegex = /[\s,\-\+\.\|\/\\]/;
 const numberRegex = /^\d+$/;
 const separator = ':';
+const interval = 30;
 
 const pad = (num) => num <= 9 ? `0${num}` : num;
 const reverseTime12 = hour => hour + 12 !== 24 ? hour + 12 : 0;
@@ -42,7 +43,6 @@ const Props = t.refinement(t.struct({
   value: t.maybe(Time),
   minTime: t.maybe(Time),
   maxTime: t.maybe(Time),
-  interval: t.maybe(Integer),
   placeholder: t.maybe(t.String),
   timeFormat: t.maybe(TimeFormat),
   id: t.maybe(t.String),
@@ -69,7 +69,7 @@ const timeToString = ({ hours, minutes, timeFormat }) => (
   timeFormat === H12 ? timeFormatter12({ hours, minutes }) : timeFormatter24({ hours, minutes })
 );
 
-const formatter = (time, timeFormat) => ({
+export const formatter = (time, timeFormat) => ({
   value: timeFormatter24(time),
   label: timeToString(time, timeFormat)
 });
@@ -98,7 +98,7 @@ const insertSeparator = str => {
   return str;
 };
 
-const parser = (inputStr, timeFormat) => {
+export const parser = (inputStr, timeFormat) => {
   if (inputStr === '') {
     return { generateList, originalInput: inputStr };
   }
@@ -119,7 +119,7 @@ const parser = (inputStr, timeFormat) => {
   }
 };
 
-const timesGenerator = ({ hours, minutes, generateList, inputError }, interval, timeFormat) => {
+export const timesGenerator = ({ hours, minutes, generateList, inputError }, timeFormat) => {
   if (inputError) {
     return [];
   } else if (generateList) {
@@ -137,7 +137,7 @@ const startsWith = (time, originalInput) => {
   return timeStr.substr(0, originalInput.length) === originalInput;
 };
 
-const timesFilter = (timeList, { originalInput }, minTime, maxTime) => {
+export const timesFilter = (timeList, { originalInput }, minTime, maxTime) => {
   return timeList.filter(time => (
      ((lteTime(minTime, time) && lteTime(time, maxTime)) && startsWith(time, originalInput))
   ));
@@ -150,7 +150,6 @@ export default class TimePicker extends React.Component {
   static defaultProps = {
     placeholder: `--${separator}--`,
     timeFormat: H24,
-    interval: 30,
     minTime: { hours: 0, minutes: 0 },
     maxTime: { hours: 23, minutes: 59 }
   }
@@ -166,11 +165,10 @@ export default class TimePicker extends React.Component {
     const {
       minTime,
       maxTime,
-      interval,
       timeFormat
     } = this.props;
     const time = parser(inputStr, timeFormat);
-    const timeList = timesGenerator(time, interval, timeFormat);
+    const timeList = timesGenerator(time, timeFormat);
     const filteredTimeList = timesFilter(timeList, time, minTime, maxTime);
     return filteredTimeList.map(time => formatter(time, timeFormat));
   };

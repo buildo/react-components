@@ -9,7 +9,7 @@ class Example extends React.Component {
     return (
       <div>
         <h1>12 Hour Time Picker</h1>
-        <TimePicker value={this.state.value} onChange={(value) => this.setState({ value })} interval={30} timeFormat="12h" />
+        <TimePicker value={this.state.value} onChange={(value) => this.setState({ value })} timeFormat="12h" />
       </div>
     );
   }
