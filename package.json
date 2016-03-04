@@ -6,6 +6,7 @@
   "scripts": {
     "pretest": "npm run lint",
     "test": "mocha",
+    "test-dev": "mocha --watch",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel --loose --stage 0 --out-dir lib src",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
