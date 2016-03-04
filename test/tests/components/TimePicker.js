@@ -126,11 +126,134 @@ describe('TimePicker', function () {
       expect(timeList24).toNotEqual(timeList12);
       expect(timeList12[0].timeFormat).toBe('12h');
     });
-    it('timesGenerator should return all the available times', () => {
+    it('timesGenerator should return an empty array of a single element for 24h', () => {
+      const time = { hours: 10, minutes: 31 };
+      const timeList = timesGenerator(time, H24);
+      expect(timeList).toBeA(Array);
+      expect(timeList.length).toBe(1);
+      expect(timeList[0]).toEqual({ hours: 10, minutes: 31, timeFormat: H24 }, '');
+
+    });
+    it('timesGenerator should return an empty array of 2 elements for 12h', () => {
+      const time = { hours: 10, minutes: 31 };
+      const timeList = timesGenerator(time, H12);
+      expect(timeList).toBeA(Array);
+      expect(timeList.length).toBe(2);
+      expect(timeList[0]).toEqual({ hours: 10, minutes: 31, timeFormat: H12 }, '');
+      expect(timeList[1]).toEqual({ hours: 22, minutes: 31, timeFormat: H12 }, '');
+
+    });
+    it('timesGenerator should return an empty array on errors', () => {
       const time = { inputError: {} };
       const timeList = timesGenerator(time, H24);
       expect(timeList).toBeA(Array);
-      expect(timeList).toExist();
+      expect(timeList.length).toBe(0);
+    });
+    it('timesFilter should filter based on minTime/maxTime ', () => {
+      const time = parser('', H24);
+      const minTime = { hours: 8, minutes: 0 };
+      const maxTime = { hours: 9, minutes: 0 };
+      const timeList = timesGenerator(time, H24);
+      const timeListFilterd = timesFilter(timeList, time, minTime, maxTime);
+      expect(timeListFilterd).toBeA(Array);
+      expect(timeListFilterd.length).toBe(3);
+      expect(timeListFilterd[0]).toEqual({ hours: 8, minutes: 0, timeFormat: H24 }, '');
+      expect(timeListFilterd[1]).toEqual({ hours: 8, minutes: 30, timeFormat: H24 }, '');
+      expect(timeListFilterd[2]).toEqual({ hours: 9, minutes: 0, timeFormat: H24 }, '');
+    });
+    it('timesFilter should filter based on minTime/maxTime and show no result for outranged values', () => {
+      const time = parser('10:00', H24);
+      const minTime = { hours: 8, minutes: 0 };
+      const maxTime = { hours: 9, minutes: 0 };
+      const timeList = timesGenerator(time, H24);
+      const timeListFilterd = timesFilter(timeList, time, minTime, maxTime);
+      expect(timeListFilterd).toBeA(Array);
+      expect(timeListFilterd.length).toBe(0);
+    });
+    it('formatter should format into a valid option for 24H time', () => {
+      const time = { hours: 10, minutes: 20 };
+      const formattedTime = formatter(time, H24);
+      expect(formattedTime).toBeA(Object);
+      expect(formattedTime.label).toBe('10:20');
+    });
+    it('formatter should format into a valid option for 12H time', () => {
+      const time0 = { hours: 13, minutes: 20, timeFormat: H12 };
+      const formattedTime0 = formatter(time0);
+      expect(formattedTime0).toBeA(Object);
+      expect(formattedTime0.label).toBe('01:20 pm');
+      const time1 = { hours: 10, minutes: 20, timeFormat: H12 };
+      const formattedTime1 = formatter(time1);
+      expect(formattedTime1).toBeA(Object);
+      expect(formattedTime1.label).toBe('10:20 am');
+      const time2 = { hours: 12, minutes: 34, timeFormat: H12 };
+      const formattedTime2 = formatter(time2);
+      expect(formattedTime2).toBeA(Object);
+      expect(formattedTime2.label).toBe('12:34 pm');
+      const time3 = { hours: 0, minutes: 34, timeFormat: H12 };
+      const formattedTime3 = formatter(time3);
+      expect(formattedTime3).toBeA(Object);
+      expect(formattedTime3.label).toBe('12:34 am');
+      const time4 = { hours: 24, minutes: 34, timeFormat: H12 };
+      const formattedTime4 = formatter(time4);
+      expect(formattedTime4).toBeA(Object);
+      expect(formattedTime4.label).toBe('12:34 am');
+    });
+    it('optionsManager should compute options based on min/max for 24H time', () => {
+      const timePicker = newComponent(TimePicker, {
+        minTime: { hours: 5, minutes: 10 },
+        maxTime: { hours: 7, minutes: 20 }
+      });
+      const { optionsManager } = timePicker.getLocals();
+      const inputStr = '';
+      const results = optionsManager([], inputStr);
+      expect(optionsManager).toBeA(Function);
+      expect(results).toBeA(Array);
+      expect(results.length).toBe(4);
+      expect(results[0]).toEqual({ label: '05:30', value: '05:30' }, '');
+      expect(results[3]).toEqual({ label: '07:00', value: '07:00' }, '');
+    });
+    it('optionsManager should compute options based on min/max for 12H time', () => {
+      const timePicker = newComponent(TimePicker, {
+        minTime: { hours: 5, minutes: 10 },
+        maxTime: { hours: 7, minutes: 20 },
+        timeFormat: H12
+      });
+      const { optionsManager } = timePicker.getLocals();
+      const inputStr = '';
+      const results = optionsManager([], inputStr);
+      expect(optionsManager).toBeA(Function);
+      expect(results).toBeA(Array);
+      expect(results.length).toBe(4);
+      expect(results[0]).toEqual({ label: '05:30 am', value: '05:30' }, '');
+      expect(results[3]).toEqual({ label: '07:00 am', value: '07:00' }, '');
+    });
+    it('optionsManager should return empty array for invalid min/max range', () => {
+      const timePicker = newComponent(TimePicker, {
+        minTime: { hours: 8, minutes: 10 },
+        maxTime: { hours: 7, minutes: 20 },
+        timeFormat: H12
+      });
+      const inputStr = '';
+      const { optionsManager } = timePicker.getLocals();
+      const results = optionsManager([], inputStr);
+      expect(optionsManager).toBeA(Function);
+      expect(results).toBeA(Array);
+      expect(results.length).toBe(0);
+    });
+    it('optionsManager should use defaults for invalid min or max are invalid', () => {
+      const timePicker = newComponent(TimePicker, {
+        minTime: { hours: -10, minutes: 40 },
+        maxTime: { hours: 50, minutes: 40 },
+        timeFormat: H24
+      });
+      const inputStr = '';
+      const { optionsManager } = timePicker.getLocals();
+      const results = optionsManager([], inputStr);
+      expect(optionsManager).toBeA(Function);
+      expect(results).toBeA(Array);
+      expect(results.length).toBe(48);
+      expect(results[0]).toEqual({ label: '00:00', value: '00:00' }, '');
+      expect(results[47]).toEqual({ label: '23:30', value: '23:30' }, '');
     });
   });
 });

@@ -69,9 +69,9 @@ const timeToString = ({ hours, minutes, timeFormat }) => (
   timeFormat === H12 ? timeFormatter12({ hours, minutes }) : timeFormatter24({ hours, minutes })
 );
 
-export const formatter = (time, timeFormat) => ({
+export const formatter = (time) => ({
   value: timeFormatter24(time),
-  label: timeToString(time, timeFormat)
+  label: timeToString(time)
 });
 
 
@@ -170,7 +170,7 @@ export default class TimePicker extends React.Component {
     const time = parser(inputStr, timeFormat);
     const timeList = timesGenerator(time, timeFormat);
     const filteredTimeList = timesFilter(timeList, time, minTime, maxTime);
-    return filteredTimeList.map(time => formatter(time, timeFormat));
+    return filteredTimeList.map(time => formatter(time));
   };
 
   _onChange = (value) => {
@@ -193,7 +193,7 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       className: cx('time-picker', className),
-      value: value ? formatter(value, timeFormat) : '',
+      value: value ? formatter(value) : '',
       options,
       onChange: this._onChange,
       optionsManager: this.optionsManager
