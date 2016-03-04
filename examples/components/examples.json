@@ -268,14 +268,14 @@
       ]
     },
     {
-      "id": "accordion",
-      "title": "Accordion",
-      "desc": "Accordion",
+      "id": "collapsable-section",
+      "title": "CollapsableSection",
+      "desc": "CollapsableSection",
       "repo": "react-components",
-      "url": "https://github.com/buildo/react-components/tree/master/src/accordion",
-      "component": "react-components/__TAG__/src/accordion/Accordion.js",
+      "url": "https://github.com/buildo/react-components/tree/master/src/collapsable-section",
+      "component": "react-components/__TAG__/src/collapsable-section/CollapsableSection.js",
       "examples": [
-        "react-components/__TAG__/examples/components/accordion/default.example"
+        "react-components/__TAG__/examples/components/collapsable-section/default.example"
       ]
     },
     {
