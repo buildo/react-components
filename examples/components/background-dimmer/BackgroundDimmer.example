@@ -1,32 +1,23 @@
-const Example = React.createClass({
+class Example extends React.Component {
 
-  propTypes: {},
+  constructor() {
+  	super();
+    this.state = {};
+  }
 
-  getInitialState() {
-    return {
-      isShow: true
-    };
-  },
+  show = () => this.setState({ isShow: true });
 
-  show() {
-    this.setState({ isShow: true });
-  },
+  hide = () => this.setState({ isShow: false });
 
-  hide() {
-    this.setState({ isShow: false });
-  },
+  getBackgroundDimmer = () => (
+    <BackgroundDimmer color='black' alpha={0.5} stopScrollPropagation onClickOutside={this.hide}>
+      <ScrollView style={{ backgroundColor: 'yellow', height: 120, width: 200 }} scrollPropagation={false}>
+        <div style={{ height: 200 }}>CONTENT</div>
+      </ScrollView>
+    </BackgroundDimmer>
+  );
 
-  getBackgroundDimmer() {
-    return (
-      <BackgroundDimmer color='black' alpha={0.5} stopScrollPropagation onClickOutside={this.hide}>
-        <div style={{ backgroundColor: 'yellow', height: 120, width: 200 }}>
-          CONTENT
-        </div>
-      </BackgroundDimmer>
-    );
-  },
-
-  getTemplate() {
+  render() {
     const {
       state: { isShow },
       getBackgroundDimmer, show
@@ -39,10 +30,6 @@ const Example = React.createClass({
         }
       </div>
     );
-  },
-
-  render() {
-    return this.getTemplate();
   }
 
-});
+}
