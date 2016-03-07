@@ -33,15 +33,28 @@ const Time = t.struct({
 
 const isValidHoursInTimeFormat = (hours, timeFormat) => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
-// TODO(ste): document props
 const Props = t.refinement(t.struct({
   onChange: t.Function,
-  // TODO(ste): document that value, minTime, maxTime are always considered in H24
+  /**
+   * Value provided as input. Have to be passed in 24h format.
+   * Es: { hours: 10, minutes: 30 }
+   */
   value: t.maybe(Time),
+  /**
+   * Minimum value. Have to be passed in 24h format. Default [00:00]
+   */
   minTime: t.maybe(Time),
+  /**
+   * Maximum value. Have to be passed in 24h format. Default [23:59]
+   */
   maxTime: t.maybe(Time),
+  /**
+   * Field placeholder, displayed when there's no value. Default[--:--]
+   */
   placeholder: t.maybe(t.String),
-  // TODO(ste): document that default is H24
+  /**
+   * format in which options are displayed. Default [24H].
+   */
   timeFormat: t.maybe(TimeFormat),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -141,7 +154,10 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
 };
 
 // we are not "filtering" options (options array is always empty and discarded by this function)
-// our `filterOptions` actually generates options based on current input string and props
+// our `filterOptions` actually generates options based on current input string and props.
+// We use this as a workaround because there's not any other easy way of updating options
+// without branking input in react-select v0.6.x
+// NOTE: can be fixed updating to v1.0.0
 export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, inputStr) => {
   const time = parseInTimeFormat(inputStr, timeFormat);
   const timeList = time === inputError ? [] : createTimeList(time, timeFormat);
@@ -164,7 +180,8 @@ export default class TimePicker extends React.Component {
 
   _onChange = (value) => {
     if (value) {
-      const time = parseInTimeFormat(value, H24); // interface with component user is always in H24
+      // interface with component user is always in H24
+      const time = parseInTimeFormat(value, H24);
       this.props.onChange(time);
     } else {
       this.props.onChange();
