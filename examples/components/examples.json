@@ -161,7 +161,8 @@
       "component": "react-components/__TAG__/src/popover/Popover.js",
       "examples": [
         "react-components/__TAG__/examples/components/popover/Relative.example",
-        "react-components/__TAG__/examples/components/popover/Absolute.example"
+        "react-components/__TAG__/examples/components/popover/Absolute.example",
+        "react-components/__TAG__/examples/components/popover/InitiallyOpen.example"
       ]
     },
     {
