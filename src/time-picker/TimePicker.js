@@ -143,6 +143,20 @@ export const timesFilter = (timeList, { originalInput }, minTime, maxTime) => {
   ));
 };
 
+/**
+  We use filterOptions because seems that is not possible
+  to change the options from outside of this function,
+  then we use this tricky hack and we workaround this creating a new set
+  of options as we wish and filter it if needed, or just returning a brand new array.
+`_` is a placeholder because the TLC pass me the optionsList, but i don't really care. YOLO
+**/
+export const optionsManager = ({ minTime, maxTime, timeFormat }) => (_, inputStr) => {
+  const time = parser(inputStr, timeFormat);
+  const timeList = timesGenerator(time, timeFormat);
+  const filteredTimeList = timesFilter(timeList, time, minTime, maxTime);
+  return filteredTimeList.map(time => formatter(time));
+};
+
 @skinnable()
 @props(Props)
 export default class TimePicker extends React.Component {
@@ -153,25 +167,6 @@ export default class TimePicker extends React.Component {
     minTime: { hours: 0, minutes: 0 },
     maxTime: { hours: 23, minutes: 59 }
   }
-
-  /**
-    We use filterOptions because seems that is not possible
-    to change the options from outside of this function,
-    then we use this tricky hack and we workaround this creating a new set
-    of options as we wish and filter it if needed, or just returning a brand new array.
-  `_` is a placeholder because the TLC pass me the optionsList, but i don't really care. YOLO
-  **/
-  optionsManager = (_, inputStr) => {
-    const {
-      minTime,
-      maxTime,
-      timeFormat
-    } = this.props;
-    const time = parser(inputStr, timeFormat);
-    const timeList = timesGenerator(time, timeFormat);
-    const filteredTimeList = timesFilter(timeList, time, minTime, maxTime);
-    return filteredTimeList.map(time => formatter(time));
-  };
 
   _onChange = (value) => {
     if (value) {
@@ -196,11 +191,11 @@ export default class TimePicker extends React.Component {
       value: value ? formatter(value) : '',
       options,
       onChange: this._onChange,
-      optionsManager: this.optionsManager
+      filterOptions: optionsManager(this.props)
     };
   }
 
-  template({ id, className, style, value, placeholder, options, onChange, optionsManager }) {
+  template({ id, className, style, value, placeholder, options, onChange, filterOptions }) {
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -208,7 +203,7 @@ export default class TimePicker extends React.Component {
         onChange={onChange}
         options={options}
         placeholder={placeholder}
-        filterOptions={optionsManager}
+        filterOptions={filterOptions}
         onBlur={() => this.forceUpdate()}
       />
     );
