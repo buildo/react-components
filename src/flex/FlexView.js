@@ -3,7 +3,7 @@ import cx from 'classnames';
 import pick from 'lodash/object/pick';
 import omit from 'lodash/object/omit';
 import { props, t } from '../utils';
-
+import { warn } from '../utils/log';
 
 const PropTypes = {
   /**
@@ -68,6 +68,18 @@ const PropTypes = {
 @props(PropTypes, { strict: false })
 export default class FlexView extends React.Component {
 
+  componentDidMount() {
+    this.logWarnings();
+  }
+
+  logWarnings = () => {
+    warn(() => {
+      if (this.props.basis === 'auto') {
+        return 'Default basis is auto. Force it to auto will leave shrink true as default';
+      }
+    });
+  };
+
   getGrow = () => {
     const { grow } = this.props;
     if (typeof grow === 'number') {
@@ -89,7 +101,7 @@ export default class FlexView extends React.Component {
       return 0;
     }
 
-    if (basis) {
+    if (basis && basis !== 'auto') {
       return 0;
     }
 
