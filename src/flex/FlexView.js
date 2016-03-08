@@ -73,11 +73,9 @@ export default class FlexView extends React.Component {
   }
 
   logWarnings = () => {
-    warn(() => {
-      if (this.props.basis === 'auto') {
-        return 'Default basis is auto. Force it to auto will leave shrink true as default';
-      }
-    });
+    if (this.props.basis === 'auto') {
+      warn('Default basis is auto. Force it to auto will leave shrink true as default');
+    }
   };
 
   getGrow = () => {
