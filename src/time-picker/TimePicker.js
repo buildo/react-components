@@ -133,7 +133,7 @@ export const parseInTimeFormat = (inputStr, timeFormat) => {
 
 export const createTimeList = ({ hours, minutes }, timeFormat) => {
   if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
-    const hoursList = range(0, 24);
+    const hoursList = range(1, 24).concat(0);
     const minutesList = range(0, 60, interval);
     return flatten(hoursList.map(hours => minutesList.map(minutes => ({ hours, minutes, timeFormat }))));
   } else {
