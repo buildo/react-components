@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable, pure } from '../utils';
 import PanelHeader from './PanelHeader';
-import capitalize from 'lodash/string/capitalize';
+import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import FlexView from '../flex/FlexView';
 

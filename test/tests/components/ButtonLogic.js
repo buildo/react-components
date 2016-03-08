@@ -2,7 +2,7 @@ import React from 'react/addons';
 import expect from 'expect';
 import ButtonLogic from '../../../src/button/ButtonLogic';
 import vdom from 'react-vdom';
-import clone from 'lodash/lang/clone';
+import clone from 'lodash/clone';
 
 describe('ButtonLogic', () => {
 

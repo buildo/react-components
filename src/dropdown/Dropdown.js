@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import omit from 'lodash/object/omit';
+import omit from 'lodash/omit';
 import cx from 'classnames';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';

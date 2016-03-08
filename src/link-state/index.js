@@ -1,5 +1,5 @@
-import get from 'lodash/object/get';
-import set from 'lodash/object/set';
+import get from 'lodash/get';
+import set from 'lodash/set';
 
 export const linkState = (_this, path) => {
   const value = get(_this.state, path);

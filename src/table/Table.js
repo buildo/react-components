@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import includes from 'lodash/collection/includes';
+import includes from 'lodash/includes';
 import { skinnable, t, props, pure } from '../utils';
 import FlexView from '../flex/FlexView';
 import { Table as FixedDataTable } from 'fixed-data-table';
