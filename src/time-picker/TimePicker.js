@@ -2,8 +2,8 @@ import React from 'react';
 import { props, t, skinnable } from '../utils';
 import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
-import range from 'lodash/utility/range';
-import flatten from 'lodash/array/flatten';
+import range from 'lodash/range';
+import flatten from 'lodash/flatten';
 
 const options = [];
 

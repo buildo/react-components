@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import pick from 'lodash/object/pick';
+import pick from 'lodash/pick';
 import { pure, skinnable, props, t } from '../utils';
 import ButtonLogic, { buttonState, buttonBaseState } from './ButtonLogic';
 import ButtonRenderer/*, { stringForButtonStates } */ from './ButtonRenderer';

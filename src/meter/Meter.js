@@ -3,10 +3,10 @@ import { props, t, skinnable } from '../utils';
 import { warn } from '../utils/log';
 import cx from 'classnames';
 import FlexView from '../flex/FlexView';
-import find from 'lodash/collection/find';
-import every from 'lodash/collection/every';
-import isEqual from 'lodash/lang/isEqual';
-import sortBy from 'lodash/collection/sortBy';
+import find from 'lodash/find';
+import every from 'lodash/every';
+import isEqual from 'lodash/isEqual';
+import sortBy from 'lodash/sortBy';
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,

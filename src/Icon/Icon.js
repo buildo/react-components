@@ -1,5 +1,5 @@
 import React from 'react';
-import range from 'lodash/utility/range';
+import range from 'lodash/range';
 import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown';
-import omit from 'lodash/object/omit';
+import omit from 'lodash/omit';
 
 export default class DropdownMenu extends React.Component {
 

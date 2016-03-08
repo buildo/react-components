@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, skinnable, t } from '../utils';
-import omit from 'lodash/object/omit';
+import omit from 'lodash/omit';
 import InputChildren from 'react-input-children';
 import { linkState } from '../link-state';
 import FlexView from '../flex/FlexView';

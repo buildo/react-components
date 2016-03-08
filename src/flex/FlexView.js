@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import pick from 'lodash/object/pick';
-import omit from 'lodash/object/omit';
+import pick from 'lodash/pick';
+import omit from 'lodash/omit';
 import { props, t } from '../utils';
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import omit from 'lodash/object/omit';
+import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import easing from './easingFunctions';
 

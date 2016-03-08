@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
-import partial from 'lodash/function/partial';
+import partial from 'lodash/partial';
 import Divider from '../Divider/Divider';
 
 import './menu.scss';

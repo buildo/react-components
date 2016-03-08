@@ -1,9 +1,9 @@
 import React from 'react';
 import { props, t, skinnable, pure } from '../utils';
-import compact from 'lodash/array/compact';
-import flatten from 'lodash/array/flatten';
-import omit from 'lodash/object/omit';
-import partial from 'lodash/function/partial';
+import compact from 'lodash/compact';
+import flatten from 'lodash/flatten';
+import omit from 'lodash/omit';
+import partial from 'lodash/partial';
 import DropdownMenu, { Props as dropdownMenuProps } from '../DropdownMenu/DropdownMenu';
 import Divider from '../Divider/Divider';
 import TooltippedIcon from '../Icon/TooltippedIcon';

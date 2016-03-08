@@ -1,5 +1,5 @@
 import React from 'react';
-import find from 'lodash/collection/find';
+import find from 'lodash/find';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 import Component from './content/Component';
