@@ -24,12 +24,6 @@ export default class Dropdown extends React.Component {
     this.logWarnings();
   }
 
-  getChildren = () => [].concat(this.props.children || []);
-
-  renderOption = (option) => this.getChildren()[option.value];
-
-  renderValue = (option) => this.getChildren()[option.value];
-
   getGeneralProps = () => omit(this.props, Object.keys(PropTypes));
 
   logWarnings = () => {
