@@ -22,8 +22,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
       "component": "react-components/__TAG__/src/dropdown/Dropdown.js",
       "examples": [
-        "react-components/__TAG__/examples/components/dropdown/default.example",
-        "react-components/__TAG__/examples/components/dropdown/DropdownWithChildren.example"
+        "react-components/__TAG__/examples/components/dropdown/default.example"
       ]
     },
     {
