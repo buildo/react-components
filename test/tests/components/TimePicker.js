@@ -1,7 +1,7 @@
 import expect from 'expect';
 import { newComponent } from '../helpers';
 import TimePicker, {
-  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeFilterOptions, inputError
+  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeFilterOptions, inputError, sortTimeList
 } from '../../../src/time-picker/TimePicker';
 
 describe('TimePicker', () => {
@@ -246,6 +246,38 @@ describe('TimePicker', () => {
         expect(formattedTime.label).toBe('12:34 am');
       });
 
+    });
+
+  });
+
+  describe('sortTimeList', () => {
+
+    it('should sort ascending by hours', () => {
+      const timeList = [
+        { hours: 9, minutes: 44 },
+        { hours: 7, minutes: 22 },
+        { hours: 8, minutes: 33 }
+      ];
+      const timeListSorted = sortTimeList(timeList);
+      expect(timeListSorted).toBeA(Array);
+      expect(timeListSorted.length).toBe(timeList.length);
+      expect(timeListSorted[0].hours).toBe(7);
+      expect(timeListSorted[2].hours).toBe(9);
+    });
+
+    it('should sort ascending by hours and 0 will be higher', () => {
+      const timeList = [
+        { hours: 9, minutes: 44 },
+        { hours: 0, minutes: 33 },
+        { hours: 7, minutes: 22 },
+        { hours: 8, minutes: 33 }
+      ];
+      const timeListSorted = sortTimeList(timeList);
+      expect(timeListSorted).toBeA(Array);
+      expect(timeListSorted.length).toBe(timeList.length);
+      expect(timeListSorted[0].hours).toBe(7);
+      expect(timeListSorted[2].hours).toBe(9);
+      expect(timeListSorted[3].hours).toBe(0);
     });
 
   });

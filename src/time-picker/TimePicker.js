@@ -4,6 +4,7 @@ import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/utility/range';
 import flatten from 'lodash/array/flatten';
+import sortBy from 'lodash/collection/sortBy';
 
 const options = [];
 
@@ -155,6 +156,8 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
   return lteTime(minTime, time) && lteTime(time, maxTime) && startsWith(time, originalInput);
 };
 
+export const sortTimeList = timeList => sortBy(timeList, time => ( time.hours === 0 ? 24 : time.hours));
+
 // we are not "filtering" options (options array is always empty and discarded by this function)
 // our `filterOptions` actually generates options based on current input string and props.
 // We use this as a workaround because there's not any other easy way of updating options
@@ -166,7 +169,8 @@ export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, input
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: time.originalInput, minTime, maxTime
   }));
-  return filteredTimeList.map(toOption);
+  const sortedTimeList = sortTimeList(filteredTimeList);
+  return sortedTimeList.map(toOption);
 };
 
 @skinnable()
