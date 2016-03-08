@@ -16,7 +16,7 @@ const separator = ':';
 const interval = 30;
 
 const pad = (num) => num <= 9 ? `0${num}` : num;
-const hoursInH12 = hour => hour + 12 !== 24 ? hour + 12 : 0;
+const normalizeHoursToH24 = hour => hour + 12 !== 24 ? hour + 12 : 0;
 const lteTime = (minTime, maxTime) => (
   maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes >= minTime.minutes)
 );
@@ -34,6 +34,9 @@ const Time = t.struct({
 const isValidHoursInTimeFormat = (hours, timeFormat) => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
 const Props = t.refinement(t.struct({
+  /**
+  * onChange handler it will return an object
+  */
   onChange: t.Function,
   /**
    * Value provided as input. Have to be passed in 24h format.
@@ -129,15 +132,14 @@ export const parseInTimeFormat = (inputStr, timeFormat) => {
 };
 
 export const createTimeList = ({ hours, minutes }, timeFormat) => {
-  if (!isValidHoursInTimeFormat(hours) || !Minute.is(minutes)) {
+  if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
     const hoursList = range(0, 24);
     const minutesList = range(0, 60, interval);
-    return flatten(hoursList.map(hours => minutesList.map(minutes => ({ hours, minutes, timeFormat })
-    )));
+    return flatten(hoursList.map(hours => minutesList.map(minutes => ({ hours, minutes, timeFormat }))));
   } else {
     return timeFormat !== H24 ? [
       { hours, minutes, timeFormat },
-      { hours: hoursInH12(hours), minutes, timeFormat }
+      { hours: normalizeHoursToH24(hours), minutes, timeFormat }
     ] : [
       { hours, minutes, timeFormat }
     ];
@@ -156,7 +158,7 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
 // we are not "filtering" options (options array is always empty and discarded by this function)
 // our `filterOptions` actually generates options based on current input string and props.
 // We use this as a workaround because there's not any other easy way of updating options
-// without branking input in react-select v0.6.x
+// without breaking input in react-select v0.6.x
 // NOTE: can be fixed updating to v1.0.0
 export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, inputStr) => {
   const time = parseInTimeFormat(inputStr, timeFormat);
@@ -197,14 +199,14 @@ export default class TimePicker extends React.Component {
     } = this.props;
 
     const value = userValue ? toOption({
-      ...userValue, timeFormat: this.props.timeFormat
+      ...userValue, timeFormat
     }) : undefined;
 
     return {
       ...props,
-      className: cx('time-picker', className),
       value,
       options,
+      className: cx('time-picker', className),
       onChange: this._onChange,
       filterOptions: makeFilterOptions(this.props)
     };
