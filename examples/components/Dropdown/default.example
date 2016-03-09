@@ -12,7 +12,6 @@ class Example extends React.Component {
       { value: 'orange', label: 'Orange' },
       { value: 'banana', label: 'Banana' }
     ];
-    //const valueLink = { value: this.state.value, requestChange: value => this.setState({ value }) };
     return (
       <div>
         <p>

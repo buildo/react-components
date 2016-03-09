@@ -7,6 +7,10 @@ import { warn } from '../utils/log';
 
 const PropTypes = {
   value: t.maybe(t.union([t.Number, t.String, t.Object])),
+  valueLink: t.maybe(t.struct({
+    value: t.maybe(t.String),
+    requestChange: t.Function
+  })),
   onChange: t.maybe(t.Function),
   options: t.Array,
   id: t.maybe(t.String),
@@ -39,7 +43,7 @@ export default class Dropdown extends React.Component {
     return value;
   };
 
-  _onChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
+  getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
   _onBlur = () => this.forceUpdate();
 
@@ -56,7 +60,7 @@ export default class Dropdown extends React.Component {
       options,
       className: cx('dropdown', className),
       value: this.valueToOption(this.getValue(), options),
-      onChange: this._onChange(),
+      onChange: this.getOnChange(),
       onBlur: this._onBlur
     };
   }
