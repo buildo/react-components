@@ -1,22 +1,20 @@
 import React from 'react';
+import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
-import omit from 'lodash/omit';
+import find from 'lodash/find';
 import cx from 'classnames';
-import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
-const themes = {
-  semantic: 'semantic-theme'
+const PropTypes = {
+  value: t.maybe(t.union([t.Number, t.String, t.Object])),
+  onChange: t.maybe(t.Function),
+  options: t.Array,
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
 };
 
-const PropTypes = {
-  children: t.maybe(t.ReactNode),
-  theme: t.maybe(t.enums.of(['semantic'])),
-  valueLink: t.maybe(t.struct({
-    value: t.maybe(t.String),
-    requestChange: t.Function
-  }))
-};
+@skinnable()
 @props(PropTypes, { strict: false })
 export default class Dropdown extends React.Component {
 
@@ -24,34 +22,46 @@ export default class Dropdown extends React.Component {
     this.logWarnings();
   }
 
-  getGeneralProps = () => omit(this.props, Object.keys(PropTypes));
-
   logWarnings = () => {
     if (this.props.children) {
       warn('You\'re passing children. Not expected behaviour');
     }
   };
 
-  getValueLinkProps = () => {
-    if (this.props.valueLink) {
-      return {
-        value: this.props.valueLink.value,
-        onChange: this.props.valueLink.requestChange
-      };
+  getValue = () => (
+    this.props.valueLink ? this.props.valueLink.value : this.props.value
+  );
+
+  valueToOption = (value, options) => {
+    if (t.String.is(value) || t.Number.is(value)) {
+      return find(options, { value });
     }
+    return value;
   };
 
-  getClassName = () => cx(this.props.className, themes[this.props.theme]);
+  _onChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
-  render() {
-    // The order is important: props may override previous ones
-    return (
-      <Select
-        {...this.getGeneralProps()}
-        {...this.getValueLinkProps()}
-        {...this.getClassName()}
-      />
-    );
+  _onBlur = () => this.forceUpdate();
+
+  getLocals() {
+    const {
+      className,
+      options,
+      valueLink,
+      ...props
+    } = this.props;
+
+    return {
+      ...props,
+      options,
+      className: cx('dropdown', className),
+      value: this.valueToOption(this.getValue(), options),
+      onChange: this._onChange(),
+      onBlur: this._onBlur
+    };
   }
 
+  template(locals) {
+    return <Select {...locals} />;
+  }
 }
