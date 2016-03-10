@@ -5,7 +5,7 @@ const json = JSON.parse(examplesJSON);
 
 function dynamicRequire(e) {
   const path = e.match(/\/components\/(.+).example/)[1];
-  return require('raw!./' + path + '.example');
+  return require(`raw!./${path}.example`);
 }
 
 const components = json.components.map(c => ({

@@ -310,6 +310,17 @@
         "react-components/__TAG__/examples/components/time-picker/TimePicker24.example",
         "react-components/__TAG__/examples/components/time-picker/TimePicker12.example"
       ]
+    },
+    {
+      "id": "focusable-view",
+      "title": "FocusableView",
+      "desc": "FocusableView",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/focusable-view",
+      "component": "react-components/__TAG__/src/focusable-view/FocusableView.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/focusable-view/default.example"
+      ]
     }
   ]
 }
