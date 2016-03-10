@@ -1,5 +1,10 @@
 class Example extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
     const options = [
       { value: 'apple', label: 'Apple' },
@@ -15,7 +20,7 @@ class Example extends React.Component {
             react-select
           </a>
         </p>
-        <Dropdown placeholder="Select some fruit.."  options={options} />
+        <Dropdown value={this.state.value} onChange={(value) => this.setState({ value })} placeholder="Select some fruit.."  options={options} />
       </div>
     );
   }
