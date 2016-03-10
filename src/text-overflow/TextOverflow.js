@@ -51,16 +51,11 @@ export default class TextOverflow extends React.Component {
 
   verifyOverflow = (_state) => {
     const state = _state || this.state;
-    if (state.isOverflowing === false && window) {
+    if (state.isOverflowing === false) {
       const text = React.findDOMNode(this.refs.text);
-      const { parentNode: parent } = text;
+      const textWithoutEllipsis = React.findDOMNode(this.refs.textWithoutEllipsis);
 
-      const { offsetWidth: textOffsetWidth, scrollWidth: textScrollWidth } = text;
-      const { width: parentWidth, 'max-width': parentMaxWidth } = window.getComputedStyle(parent);
-
-      const isOverflowing = (textOffsetWidth < textScrollWidth) ||
-        (textOffsetWidth === textScrollWidth && parseFloat(parentWidth) >= parseFloat(parentMaxWidth));
-
+      const isOverflowing = (text.offsetWidth < textWithoutEllipsis.offsetWidth);
       if (isOverflowing) {
         this.setState({ isOverflowing: true }, this.logWarnings);
       } else {
@@ -69,9 +64,9 @@ export default class TextOverflow extends React.Component {
     }
   };
 
-  getTextSpan = () => {
+  getContent = () => {
     const { label } = this.props;
-    const style = {
+    const styleText = {
       display: 'block',
       whiteSpace: 'nowrap',
       width: '100%',
@@ -79,14 +74,24 @@ export default class TextOverflow extends React.Component {
       OTextOverflow: 'ellipsis', // Opera
       textOverflow: 'ellipsis'
     };
-    return <span ref='text' style={style}>{label}</span>;
+    const styleTextWithoutEllipsis = {
+      position: 'fixed',
+      visibility: 'hidden',
+      pointerEvents: 'none'
+    };
+    return (
+      <div>
+        <span ref='text' style={styleText}>{label}</span>
+        <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
+      </div>
+    );
   };
 
   templateOverflow = () => {
     const { children, label, style, ...other } = this.props;
 
     if (children) {
-      return children(this.getTextSpan());
+      return children(this.getContent());
     } else {
       const props = {
         ...other,
@@ -100,7 +105,7 @@ export default class TextOverflow extends React.Component {
         }
       };
 
-      return <Popover { ...props }>{this.getTextSpan()}</Popover>;
+      return <Popover { ...props }>{this.getContent()}</Popover>;
     }
   };
 
@@ -114,7 +119,7 @@ export default class TextOverflow extends React.Component {
       }
     };
 
-    return <div { ...props }>{this.getTextSpan()}</div>;
+    return <div { ...props }>{this.getContent()}</div>;
   };
 
   render() {
