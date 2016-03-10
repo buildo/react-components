@@ -51,7 +51,7 @@ export default class TextOverflow extends React.Component {
 
   verifyOverflow = (_state) => {
     const state = _state || this.state;
-    if (state.isOverflowing === false) {
+    if (state.isOverflowing === false && window) {
       const text = React.findDOMNode(this.refs.text);
       const { parentNode: parent } = text;
 
