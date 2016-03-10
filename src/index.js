@@ -26,3 +26,4 @@ export Meter from './meter';
 export CollapsableSection from './collapsable-section';
 export BrowserDetector from './browser-detector';
 export TimePicker from './time-picker';
+export FocusableView from './focusable-view';
