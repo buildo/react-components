@@ -5,8 +5,6 @@ import find from 'lodash/find';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
-import './dropdown.scss';
-
 const PropTypes = {
   value: t.maybe(t.union([t.Number, t.String, t.Object])),
   valueLink: t.maybe(t.struct({
