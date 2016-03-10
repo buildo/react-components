@@ -5,7 +5,7 @@ import { props, t, skinnable } from '../utils';
 @skinnable()
 @props({
   /**
-   * FocusableView content
+   * FocusableView content. If a function it gets called with the boolean "focused".
    */
   children: t.union([t.ReactNode, t.Function]),
   /**
@@ -57,10 +57,11 @@ export default class FocusableView extends React.Component {
 
   getLocals() {
     const { focused } = this.state;
+    const { className, ignoreFocus, ...props } = this.props;
     return {
-      ...this.props,
+      ...props,
       focused,
-      className: !this.props.ignoreFocus ? cx(this.props.className, { focused }) : this.props.className,
+      className: !ignoreFocus ? cx(className, { focused }) : className,
       onFocus: this._onFocus,
       onBlur: this._onBlur
     };
