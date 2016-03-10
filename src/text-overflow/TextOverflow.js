@@ -40,7 +40,7 @@ export default class TextOverflow extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const node = React.findDOMNode(this.refs.text).parentNode;
+      const node = React.findDOMNode(this.refs.text).parentNode.parentNode;
       const { width, flex } = node.style;
       const flexBasis = flex ? flex.split(' ')[2] : null;
       if (width !== '100%' && flexBasis !== '100%') {
