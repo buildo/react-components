@@ -8,7 +8,7 @@ import { warn } from '../utils/log';
 const PropTypes = {
   value: t.maybe(t.union([t.Number, t.String, t.Object])),
   valueLink: t.maybe(t.struct({
-    value: t.maybe(t.String),
+    value: t.maybe(t.union([t.Number, t.String, t.Object])),
     requestChange: t.Function
   })),
   onChange: t.maybe(t.Function),
