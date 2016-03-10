@@ -3,10 +3,10 @@ const Example = React.createClass({
   getTemplate() {
     const label = 'sono un testo lungo lungo lungo';
     return (
-      <FlexView style={{maxWidth: 150}}>
+      <FlexView style={{ maxWidth: 150 }}>
         <TextOverflow style={{ color: 'blue' }} label={label}>
           {(self) =>
-            <Popover popover={{ content: label }} style={{ color: 'red', flex: '0 0 100%' }}>
+            <Popover popover={{ content: label }} style={{ color: 'red', width: '100%' }}>
               {self}
             </Popover>
           }
