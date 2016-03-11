@@ -26,9 +26,9 @@ export default class TextOverflow extends React.Component {
     this.state = { isOverflowing: false };
   }
 
-  componentDidMount = () => this.verifyOverflow();
+  componentDidMount = () => setTimeout(this.verifyOverflow);
 
-  componentDidUpdate = () => this.verifyOverflow();
+  componentDidUpdate = () => setTimeout(this.verifyOverflow);
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.label !== this.props.label) {
