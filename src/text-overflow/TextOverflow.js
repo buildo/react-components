@@ -49,9 +49,8 @@ export default class TextOverflow extends React.Component {
     });
   };
 
-  verifyOverflow = (_state) => {
-    const state = _state || this.state;
-    if (state.isOverflowing === false && window) {
+  verifyOverflow = () => {
+    if (this.state.isOverflowing === false && window) {
       const text = React.findDOMNode(this.refs.text);
       const textWithoutEllipsis = React.findDOMNode(this.refs.textWithoutEllipsis);
 
