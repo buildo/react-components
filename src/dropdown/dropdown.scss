@@ -22,19 +22,6 @@
   padding: 8px 52px 8px 10px;
 }
 
-.Select-control > .Select-placeholder {
-  color: #333333;
-  opacity: .5;
-}
-
-.has-value > .Select-control > .Select-placeholder {
-  opacity: 1;
-}
-
-.Select.dropdown.is-searchable.is-open.is-focused .Select-placeholder {
-  opacity: .75;
-}
-
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
@@ -288,4 +275,22 @@
   to {
     -webkit-transform: rotate(1turn);
   }
+}
+
+/** CUSTOM STYLE **/
+.Select-control > .Select-placeholder {
+  color: #333333;
+  opacity: .5;
+}
+
+.has-value {
+  > .Select-control {
+    > .Select-placeholder {
+      opacity: 1;
+    }
+  }
+}
+
+.Select.dropdown.is-searchable.is-open.is-focused .Select-placeholder {
+  opacity: .75;
 }
