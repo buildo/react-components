@@ -97,6 +97,7 @@ export default class BackgroundDimmer extends React.Component {
       },
       centeredContentWrapperProps: {
         className: 'centered-content-wrapper',
+        style: { maxHeight: '90%', maxWidth: '90%' },
         onClick: stopPropagation,
         column: true
       }
