@@ -94,18 +94,23 @@ export default class BackgroundDimmer extends React.Component {
         vAlignContent: 'center',
         hAlignContent: 'center',
         ref: 'mainContentWrapper'
+      },
+      centeredContentWrapperProps: {
+        className: 'centered-content-wrapper',
+        onClick: stopPropagation,
+        column: true
       }
     };
   }
 
-  template({ children, overlayProps, mainContentWrapperProps, stopPropagation, ...locals }) {
+  template({ children, overlayProps, mainContentWrapperProps, centeredContentWrapperProps, ...locals }) {
     return (
       <div {...locals}>
         <div {...overlayProps} />
         <FlexView {...mainContentWrapperProps}>
-          <div onClick={stopPropagation}>
+          <FlexView {...centeredContentWrapperProps}>
             {children}
-          </div>
+          </FlexView>
         </FlexView>
       </div>
     );
