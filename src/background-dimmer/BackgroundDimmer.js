@@ -1,5 +1,5 @@
 import React from 'react';
-import { props, t } from '../utils';
+import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
 /**
@@ -34,6 +34,7 @@ import FlexView from '../flex/FlexView';
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
 })
+@skinnable()
 export default class BackgroundDimmer extends React.Component {
 
   static defaultProps = {
@@ -64,28 +65,42 @@ export default class BackgroundDimmer extends React.Component {
     }
   };
 
-  render() {
-    const { style, className, id, children, zIndex, color, alpha } = this.props;
+  getLocals() {
+    const {
+      onClick, stopPropagation, stopScrollPropagation,
+      props: { zIndex, color, alpha, ...props }
+    } = this;
+
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
-
-    const props = { id, className, style };
-    const flexViewProps = {
-      style: { ...fixedStyle, zIndex: (zIndex + 1) },
-      vAlignContent: 'center',
-      hAlignContent: 'center'
+    return {
+      ...props,
+      stopPropagation,
+      overlayProps: {
+        style: {
+          ...fixedStyle,
+          zIndex,
+          backgroundColor: color,
+          opacity: String(alpha)
+        }
+      },
+      flexViewProps: {
+        onClick,
+        onWheel: stopScrollPropagation,
+        onTouchMove: stopScrollPropagation,
+        style: { ...fixedStyle, zIndex: (zIndex + 1) },
+        vAlignContent: 'center',
+        hAlignContent: 'center',
+        ref: 'flexWrapper'
+      }
     };
+  }
 
+  template({ children, overlayProps, flexViewProps, stopPropagation, ...locals }) {
     return (
-      <div {...props}>
-        <div style={{ ...fixedStyle, zIndex, backgroundColor: color, opacity: String(alpha) }} />
-        <FlexView
-          {...flexViewProps}
-          onClick={this.onClick}
-          onWheel={this.stopScrollPropagation}
-          onTouchMove={this.stopScrollPropagation}
-          ref='flexWrapper'
-        >
-          <div onClick={this.stopPropagation}>
+      <div {...locals}>
+        <div {...overlayProps} />
+        <FlexView {...flexViewProps}>
+          <div onClick={stopPropagation}>
             {children}
           </div>
         </FlexView>
