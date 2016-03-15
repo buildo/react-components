@@ -46,7 +46,7 @@ export default class BackgroundDimmer extends React.Component {
 
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
-    return el === React.findDOMNode(this.refs.flexWrapper);
+    return el === React.findDOMNode(this.refs.mainContentWrapper);
   };
 
   onClick = (e) => {
@@ -85,23 +85,24 @@ export default class BackgroundDimmer extends React.Component {
           opacity: String(alpha)
         }
       },
-      flexViewProps: {
+      mainContentWrapperProps: {
         onClick,
         onWheel: stopScrollPropagation,
         onTouchMove: stopScrollPropagation,
         style: { ...fixedStyle, zIndex: (zIndex + 1) },
+        className: 'main-content-wrapper',
         vAlignContent: 'center',
         hAlignContent: 'center',
-        ref: 'flexWrapper'
+        ref: 'mainContentWrapper'
       }
     };
   }
 
-  template({ children, overlayProps, flexViewProps, stopPropagation, ...locals }) {
+  template({ children, overlayProps, mainContentWrapperProps, stopPropagation, ...locals }) {
     return (
       <div {...locals}>
         <div {...overlayProps} />
-        <FlexView {...flexViewProps}>
+        <FlexView {...mainContentWrapperProps}>
           <div onClick={stopPropagation}>
             {children}
           </div>
