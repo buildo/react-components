@@ -51,8 +51,7 @@ export default class Popover extends React.Component {
     this.saveValuesFromNodeTree();
     this.initialized = true;
     if (this.isOpen()) {
-      this.addListeners();
-      this.forceUpdate();
+      this.onPopoverOpenChange(this.props);
     }
   }
 
