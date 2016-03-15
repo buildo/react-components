@@ -51,14 +51,14 @@ export default class BackgroundDimmer extends React.Component {
 
   onClick = (e) => {
     const { onClickOutside } = this.props;
-    if (this.props.onClickOutside) {
+    if (onClickOutside) {
       onClickOutside(e);
     }
   };
 
   stopPropagation = e => e.stopPropagation();
 
-  preventDefault = (e) => e.preventDefault();
+  preventDefault = e => e.preventDefault();
 
   stopScrollPropagation = (e) => {
     if (this.props.stopScrollPropagation && this.isEventOutsideChildren(e)) {
