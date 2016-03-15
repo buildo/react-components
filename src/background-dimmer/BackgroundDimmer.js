@@ -1,5 +1,6 @@
 import React from 'react';
-import { props, t } from '../utils';
+import cx from 'classnames';
+import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
 /**
@@ -30,33 +31,44 @@ import FlexView from '../flex/FlexView';
    * called when user clicks outside children
    */
   onClickOutside: t.maybe(t.Function),
+  /**
+   * centeredContentWrapper max-width
+   */
+  maxWidth: t.maybe(t.union([t.String, t.Number])),
+  /**
+   * centeredContentWrapper max-height
+   */
+  maxHeight: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
 })
+@skinnable()
 export default class BackgroundDimmer extends React.Component {
 
   static defaultProps = {
     color: 'black',
     alpha: 0.5,
-    zIndex: 99999
+    zIndex: 99999,
+    maxWidth: '90%',
+    maxHeight: '90%'
   };
 
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
-    return el === React.findDOMNode(this.refs.flexWrapper);
+    return el === React.findDOMNode(this.refs.mainContentWrapper);
   };
 
   onClick = (e) => {
     const { onClickOutside } = this.props;
-    if (this.props.onClickOutside) {
+    if (onClickOutside) {
       onClickOutside(e);
     }
   };
 
   stopPropagation = e => e.stopPropagation();
 
-  preventDefault = (e) => e.preventDefault();
+  preventDefault = e => e.preventDefault();
 
   stopScrollPropagation = (e) => {
     if (this.props.stopScrollPropagation && this.isEventOutsideChildren(e)) {
@@ -64,30 +76,52 @@ export default class BackgroundDimmer extends React.Component {
     }
   };
 
-  render() {
-    const { style, className, id, children, zIndex, color, alpha } = this.props;
+  getLocals() {
+    const {
+      onClick, stopPropagation, stopScrollPropagation,
+      props: { className, zIndex, color, alpha, maxWidth, maxHeight, ...props }
+    } = this;
+
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
-
-    const props = { id, className, style };
-    const flexViewProps = {
-      style: { ...fixedStyle, zIndex: (zIndex + 1) },
-      vAlignContent: 'center',
-      hAlignContent: 'center'
+    return {
+      ...props,
+      stopPropagation,
+      className: cx('background-dimmer', className),
+      overlayProps: {
+        style: {
+          ...fixedStyle,
+          zIndex,
+          backgroundColor: color,
+          opacity: String(alpha)
+        }
+      },
+      mainContentWrapperProps: {
+        onClick,
+        onWheel: stopScrollPropagation,
+        onTouchMove: stopScrollPropagation,
+        style: { ...fixedStyle, zIndex: (zIndex + 1) },
+        className: 'main-content-wrapper',
+        vAlignContent: 'center',
+        hAlignContent: 'center',
+        ref: 'mainContentWrapper'
+      },
+      centeredContentWrapperProps: {
+        className: 'centered-content-wrapper',
+        style: { maxWidth, maxHeight },
+        onClick: stopPropagation,
+        column: true
+      }
     };
+  }
 
+  template({ children, overlayProps, mainContentWrapperProps, centeredContentWrapperProps, ...locals }) {
     return (
-      <div {...props}>
-        <div style={{ ...fixedStyle, zIndex, backgroundColor: color, opacity: String(alpha) }} />
-        <FlexView
-          {...flexViewProps}
-          onClick={this.onClick}
-          onWheel={this.stopScrollPropagation}
-          onTouchMove={this.stopScrollPropagation}
-          ref='flexWrapper'
-        >
-          <div onClick={this.stopPropagation}>
+      <div {...locals}>
+        <div {...overlayProps} />
+        <FlexView {...mainContentWrapperProps}>
+          <FlexView {...centeredContentWrapperProps}>
             {children}
-          </div>
+          </FlexView>
         </FlexView>
       </div>
     );
