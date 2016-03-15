@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
@@ -68,13 +69,14 @@ export default class BackgroundDimmer extends React.Component {
   getLocals() {
     const {
       onClick, stopPropagation, stopScrollPropagation,
-      props: { zIndex, color, alpha, ...props }
+      props: { className, zIndex, color, alpha, ...props }
     } = this;
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
     return {
       ...props,
       stopPropagation,
+      className: cx('background-dimmer', className),
       overlayProps: {
         style: {
           ...fixedStyle,
