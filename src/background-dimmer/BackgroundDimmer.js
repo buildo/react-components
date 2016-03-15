@@ -31,6 +31,14 @@ import FlexView from '../flex/FlexView';
    * called when user clicks outside children
    */
   onClickOutside: t.maybe(t.Function),
+  /**
+   * centeredContentWrapper max-width
+   */
+  maxWidth: t.maybe(t.union([t.String, t.Number])),
+  /**
+   * centeredContentWrapper max-height
+   */
+  maxHeight: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -41,7 +49,9 @@ export default class BackgroundDimmer extends React.Component {
   static defaultProps = {
     color: 'black',
     alpha: 0.5,
-    zIndex: 99999
+    zIndex: 99999,
+    maxWidth: '90%',
+    maxHeight: '90%'
   };
 
   isEventOutsideChildren = (e) => {
@@ -69,7 +79,7 @@ export default class BackgroundDimmer extends React.Component {
   getLocals() {
     const {
       onClick, stopPropagation, stopScrollPropagation,
-      props: { className, zIndex, color, alpha, ...props }
+      props: { className, zIndex, color, alpha, maxWidth, maxHeight, ...props }
     } = this;
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
@@ -97,7 +107,7 @@ export default class BackgroundDimmer extends React.Component {
       },
       centeredContentWrapperProps: {
         className: 'centered-content-wrapper',
-        style: { maxHeight: '90%', maxWidth: '90%' },
+        style: { maxWidth, maxHeight },
         onClick: stopPropagation,
         column: true
       }
