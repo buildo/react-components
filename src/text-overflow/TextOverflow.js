@@ -40,11 +40,14 @@ export default class TextOverflow extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const node = React.findDOMNode(this.refs.text).parentNode.parentNode;
-      const { width, flex } = node.style;
-      const flexBasis = flex ? flex.split(' ')[2] : null;
-      if (width !== '100%' && flexBasis !== '100%') {
-        return ['WARNING: TextOverflow\'s parent doesn\'t have "width: 100%" nor "flex-basis: 100%"', node];
+      const node = React.findDOMNode(this.refs.text);
+      if (node) {
+        const styleNode = node.parentNode.parentNode;
+        const { width, flex } = styleNode.style;
+        const flexBasis = flex ? flex.split(' ')[2] : null;
+        if (width !== '100%' && flexBasis !== '100%') {
+          return ['WARNING: TextOverflow\'s parent doesn\'t have "width: 100%" nor "flex-basis: 100%"', styleNode];
+        }
       }
     });
   };
@@ -54,14 +57,16 @@ export default class TextOverflow extends React.Component {
       const text = React.findDOMNode(this.refs.text);
       const textWithoutEllipsis = React.findDOMNode(this.refs.textWithoutEllipsis);
 
-      const textWidth = parseFloat(window.getComputedStyle(text).width);
-      const textWithoutEllipsisWidth = parseFloat(window.getComputedStyle(textWithoutEllipsis).width);
+      if (text && textWithoutEllipsis) {
+        const textWidth = parseFloat(window.getComputedStyle(text).width);
+        const textWithoutEllipsisWidth = parseFloat(window.getComputedStyle(textWithoutEllipsis).width);
 
-      const isOverflowing = (textWidth < textWithoutEllipsisWidth);
-      if (isOverflowing) {
-        this.setState({ isOverflowing: true }, this.logWarnings);
-      } else {
-        this.logWarnings();
+        const isOverflowing = (textWidth < textWithoutEllipsisWidth);
+        if (isOverflowing) {
+          this.setState({ isOverflowing: true }, this.logWarnings);
+        } else {
+          this.logWarnings();
+        }
       }
     }
   };
