@@ -68,6 +68,8 @@ const Props = t.subtype(t.struct({
   onRowSelect: t.maybe(t.Function),
   onRowsSelect: t.maybe(t.Function),
   selectionType: t.enums.of(['none', 'single', 'multi'], 'selectionType'),
+  onColumnResizeEndCallback: t.maybe(t.Function),
+  isColumnResizing: t.maybe(t.Boolean),
 
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
@@ -92,7 +94,8 @@ export default class Table extends React.Component {
   static defaultProps = {
     width: 0,
     height: 0,
-    selectedRows: []
+    selectedRows: [],
+    isColumnResizing: false
   };
 
   getNode = () => React.findDOMNode(this.refs.wrapper);
@@ -181,6 +184,7 @@ export default class Table extends React.Component {
       props: {
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, groupHeaderHeight,
         selectionType,
+        onColumnResizeEndCallback, isColumnResizing,
         id, children, autoSizeColumns
       },
       state: { height, width, scrollToRow }
@@ -208,6 +212,7 @@ export default class Table extends React.Component {
       tableProps: {
         width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
         scrollToRow, onRowClick, onScrollStart,
+        onColumnResizeEndCallback, isColumnResizing,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
       columns
