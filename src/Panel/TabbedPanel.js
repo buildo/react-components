@@ -40,11 +40,7 @@ export default class TabbedPanel extends React.Component {
         {headers.map((header, i) => (
           <FlexView
             shrink
-<<<<<<< Updated upstream
             basis='100%'
-=======
-            basis="100%"
->>>>>>> Stashed changes
             key={i}
             className={cx('tabbed-panel-tab', { active: activeTabIndex === i })}
           >
