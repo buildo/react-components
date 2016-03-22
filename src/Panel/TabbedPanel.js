@@ -38,7 +38,9 @@ export default class TabbedPanel extends React.Component {
     return (
       <FlexView grow className='tabbed-panel-tabs'>
         {headers.map((header, i) => (
-          <FlexView grow
+          <FlexView
+            shrink
+            basis='100%'
             key={i}
             className={cx('tabbed-panel-tab', { active: activeTabIndex === i })}
           >
