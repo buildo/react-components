@@ -12,7 +12,7 @@ class Example extends React.Component {
     const panelProps = {
       type: 'floating',
       tabs: {
-        headers: [ 'Tab 1', 'Tab 2' ],
+        headers: [ 'Veeery long Tab 1', 'Tab 2' ],
         onSetActiveTab,
         activeIndex: activeTabIndex
       },
