@@ -274,3 +274,26 @@
     -webkit-transform: rotate(1turn);
   }
 }
+
+/** CUSTOM STYLE **/
+.Select.dropdown {
+  .Select-control {
+    > .Select-placeholder {
+     opacity: .5;
+   }
+  }
+  &.is-open.is-focused {
+    > .Select-control {
+      > .Select-placeholder {
+        opacity: .75;
+      }
+    }
+  }
+  &.has-value {
+    > .Select-control {
+      > .Select-placeholder {
+        opacity: 1;
+      }
+    }
+  }
+}
