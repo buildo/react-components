@@ -3,5 +3,8 @@
   "globals": {
     "describe": true,
     "it": true,
+  },
+  "rules": {
+    "no-use-before-define": 0
   }
 }
