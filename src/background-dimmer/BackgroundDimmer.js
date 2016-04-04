@@ -32,9 +32,17 @@ import FlexView from '../flex/FlexView';
    */
   onClickOutside: t.maybe(t.Function),
   /**
+   * centeredContentWrapper width
+   */
+  width: t.maybe(t.union([t.String, t.Number])),
+  /**
    * centeredContentWrapper max-width
    */
   maxWidth: t.maybe(t.union([t.String, t.Number])),
+  /**
+   * centeredContentWrapper height
+   */
+  height: t.maybe(t.union([t.String, t.Number])),
   /**
    * centeredContentWrapper max-height
    */
@@ -50,7 +58,9 @@ export default class BackgroundDimmer extends React.Component {
     color: 'black',
     alpha: 0.5,
     zIndex: 99999,
+    width: 'auto',
     maxWidth: '90%',
+    height: 'auto',
     maxHeight: '90%'
   };
 
@@ -79,7 +89,7 @@ export default class BackgroundDimmer extends React.Component {
   getLocals() {
     const {
       onClick, stopPropagation, stopScrollPropagation,
-      props: { className, zIndex, color, alpha, maxWidth, maxHeight, ...props }
+      props: { className, zIndex, color, alpha, width, maxWidth, height, maxHeight, ...props }
     } = this;
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
@@ -107,7 +117,7 @@ export default class BackgroundDimmer extends React.Component {
       },
       centeredContentWrapperProps: {
         className: 'centered-content-wrapper',
-        style: { maxWidth, maxHeight },
+        style: { width, maxWidth, height, maxHeight },
         onClick: stopPropagation,
         column: true
       }
