@@ -2,6 +2,7 @@ import React from 'react';
 import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
 import find from 'lodash/find';
+import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
@@ -51,12 +52,11 @@ export default class Dropdown extends React.Component {
     const {
       className,
       options,
-      valueLink,
       ...props
     } = this.props;
 
     return {
-      ...props,
+      ...omit(props, 'valueLink'),
       options,
       className: cx('dropdown', className),
       value: this.valueToOption(this.getValue(), options),
