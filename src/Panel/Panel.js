@@ -17,10 +17,10 @@ export const Props = {
       onCollapse: t.Func,
       isCollapsed: t.maybe(t.Bool)
     })),
-    content: t.maybe(t.ReactNode),
-    title: t.maybe(t.ReactNode),
+    content: t.maybe(t.ReactChildren),
+    title: t.maybe(t.ReactChildren),
     hideTitleWhenExpanded: t.maybe(t.Bool),
-    menu: t.maybe(t.ReactNode)
+    menu: t.maybe(t.ReactChildren)
   })),
   loading: t.maybe(t.Bool),
   softLoading: t.maybe(t.Bool),

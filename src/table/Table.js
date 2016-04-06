@@ -58,7 +58,7 @@ const Props = t.subtype(t.struct({
   /** number of row displayed in the table */
   rowsCount: t.maybe(t.Number),
   cellRenderer: t.Function,
-  children: t.ReactNode,
+  children: t.ReactChildren,
   sort: t.maybe(t.struct({
     by: t.maybe(t.String),
     dir: t.maybe(t.enums.of(['asc', 'desc'], 'sortDir'))

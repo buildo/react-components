@@ -13,7 +13,7 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
   /**
    * list of toasts (any node with a unique key)
    */
-  children: t.ReactNode,
+  children: t.ReactChildren,
   /**
    * id of the element you want to render the `Toaster` in
    */

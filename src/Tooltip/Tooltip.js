@@ -8,7 +8,7 @@ import './tooltip.scss';
 @pure
 @skinnable()
 @props({
-  children: t.ReactNode,
+  children: t.ReactChildren,
   popover: t.struct({
     content: t.Str,
     attachToBody: t.maybe(t.Bool),

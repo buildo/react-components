@@ -18,9 +18,9 @@ const icons = {
     direction: t.enums.of(Object.keys(icons)),
     onToggleExpanded: t.Func
   })),
-  title: t.maybe(t.ReactNode),
-  content: t.maybe(t.ReactNode),
-  menu: t.maybe(t.ReactNode)
+  title: t.maybe(t.ReactChildren),
+  content: t.maybe(t.ReactChildren),
+  menu: t.maybe(t.ReactChildren)
 })
 export default class PanelHeader extends React.Component {
 

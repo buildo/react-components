@@ -10,7 +10,7 @@ import FlexView from '../flex/FlexView';
   /**
    * children nodes/elements
    */
-  children: t.ReactNode,
+  children: t.ReactChildren,
   /**
    * background-color
    */

@@ -12,7 +12,7 @@ const PropTypes = {
   /**
    * the component you want to animate (it must have a unique "key")
    */
-  children: t.ReactNode,
+  children: t.ReactChildren,
   /**
    * custom component to be used as wrapper for `children`.
    * Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`)
