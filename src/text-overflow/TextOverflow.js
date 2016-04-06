@@ -1,4 +1,5 @@
 import React from 'react';
+import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
@@ -117,9 +118,9 @@ export default class TextOverflow extends React.Component {
   };
 
   templeteStandard = () => {
-    const { children, label, style, ...other } = this.props;
+    const { style, ...other } = this.props;
     const props = {
-      ...other,
+      ...omit(other, ['children', 'label']),
       style: {
         width: '100%',
         ...style

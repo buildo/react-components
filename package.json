@@ -45,7 +45,7 @@
   "devDependencies": {
     "axios": "^0.8.1",
     "babel": "^5.8.12",
-    "babel-eslint": "^5.0.0",
+    "babel-eslint": "^6.0.0",
     "babel-loader": "^5.3.2",
     "component-playground": "^0.1.2",
     "compression-webpack-plugin": "^0.2.0",
