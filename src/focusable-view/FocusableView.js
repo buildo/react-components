@@ -7,7 +7,7 @@ import { props, t, skinnable } from '../utils';
   /**
    * FocusableView content. If a function it gets called with the boolean "focused".
    */
-  children: t.union([t.ReactNode, t.Function]),
+  children: t.union([t.ReactChildren, t.Function]),
   /**
    *  Callback function called on "focus" event
    */

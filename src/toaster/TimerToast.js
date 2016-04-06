@@ -4,7 +4,7 @@ import { props, t } from '../utils';
 
 
 @props({
-  children: t.ReactNode,
+  children: t.ReactChildren,
   onTimeout: t.Function,
   duration: t.Number,
   uniqueKey: t.maybe(t.String),

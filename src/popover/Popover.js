@@ -11,12 +11,12 @@ const NO_SIZE_WRAPPER = 'no-size-wrapper';
   /**
    * the trigger node. It's always visible
    */
-  children: t.ReactNode,
+  children: t.ReactChildren,
   /**
    * popover settings. The popover is **not** always visible
    */
   popover: t.struct({
-    content: t.ReactNode,
+    content: t.ReactChildren,
     attachToBody: t.maybe(t.Boolean),
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
     anchor: t.maybe(t.enums.of(['start', 'center', 'end'])),

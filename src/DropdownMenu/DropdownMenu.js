@@ -8,7 +8,7 @@ import cx from 'classnames';
 import './dropdownMenu.scss';
 
 export const Props = {
-  children: t.maybe(t.ReactNode),
+  children: t.maybe(t.ReactChildren),
   options: t.list(optionType),
   iconClassName: t.maybe(t.Str), // if children is passed, this is ignored
   isOpen: t.maybe(t.Bool),

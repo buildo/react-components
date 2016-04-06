@@ -8,7 +8,7 @@ import FlexView from '../flex/FlexView';
 @pure
 @skinnable()
 @props({
-  children: t.ReactNode,
+  children: t.ReactChildren,
   expanded: t.Boolean,
   onExpandedChange: t.Function,
   icons: t.struct({

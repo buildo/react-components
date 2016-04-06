@@ -14,11 +14,11 @@ import FlexView from '../flex/FlexView';
   /** Props used to define the NavBar content */
   content: t.struct({
     /** Left content. It doesn't shrink nor grow */
-    left: t.maybe(t.ReactNode),
+    left: t.maybe(t.ReactChildren),
     /** Center content. It grows to use all the available space */
-    center: t.maybe(t.ReactNode),
+    center: t.maybe(t.ReactChildren),
     /** Right content. It doesn't shrink nor grow */
-    right: t.maybe(t.ReactNode),
+    right: t.maybe(t.ReactChildren),
     /** shorthand for css `max-width` */
     maxWidth: t.maybe(t.union([ t.String, t.Number ]))
   }),

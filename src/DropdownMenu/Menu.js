@@ -8,7 +8,7 @@ import './menu.scss';
 
 export const optionType = t.struct({
   type: t.enums.of(['title', 'item', 'divider']),
-  title: t.maybe(t.ReactNode),
+  title: t.maybe(t.ReactChildren),
   metadata: t.Any,
   selected: t.maybe(t.Bool),
   disabled: t.maybe(t.Bool),
