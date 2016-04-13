@@ -287,14 +287,18 @@ $border-color: gray !default;
 $border-color-open: gray !default;
 
 $text-color: darkgray !default;
-$text-color-hover: gray !default;
-$text-color-open: gray !default;
+$text-color-hover: black !default;
+$text-color-open: black !default;
 $text-color-has-value: black !default;
 $text-color-writing: black !default;
 
-$arrow-color: darkgray !default;
-$arrow-color-hover: gray !default;
-$arrow-color-open: gray !default;
+$placeholder-color: $text-color !default;
+$placeholder-color-hover: $text-color-hover !default;
+$placeholder-color-open: $text-color-open !default;
+
+$arrow-color: $text-color !default;
+$arrow-color-hover: $text-color-hover !default;
+$arrow-color-open: $text-color-open !default;
 
 $x-color: darkgray !default;
 $x-color-hover: gray !default;
@@ -337,6 +341,7 @@ $option-background-hover: wheat !default;
       padding-top: 0;
       padding-bottom: 0;
       padding-left: 14px;
+      color: $placeholder-color;
     }
 
     .Select-arrow {
@@ -359,6 +364,10 @@ $option-background-hover: wheat !default;
     background: $background-hover;
     color: $text-color-hover;
 
+    .Select-placeholder {
+      color: $placeholder-color-hover;
+    }
+
     .Select-arrow {
       color: $arrow-color-hover;
     }
@@ -368,6 +377,10 @@ $option-background-hover: wheat !default;
     background: $background-open;
     border-color: $border-color-open;
     color: $text-color-open;
+
+    &:hover .Select-placeholder, .Select-placeholder {
+      color: $placeholder-color-open;
+    }
 
     .Select-arrow {
       color: $arrow-color-open;
