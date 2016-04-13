@@ -14,6 +14,12 @@ const PropTypes = {
   })),
   onChange: t.maybe(t.Function),
   options: t.Array,
+  size: t.enums.of(['medium', 'small']),
+  disabled: t.maybe(t.Boolean),
+  searchable: t.maybe(t.Boolean),
+  clearable: t.maybe(t.Boolean),
+  multi: t.maybe(t.Boolean),
+  flat: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -22,6 +28,15 @@ const PropTypes = {
 @skinnable()
 @props(PropTypes, { strict: false })
 export default class Dropdown extends React.Component {
+
+  static defaultProps = {
+    size: 'medium',
+    disabled: false,
+    searchable: false,
+    clearable: false,
+    multi: false,
+    flat: false
+  }
 
   componentDidMount() {
     this.logWarnings();
@@ -48,17 +63,23 @@ export default class Dropdown extends React.Component {
 
   _onBlur = () => this.forceUpdate();
 
+  getCustomClassNames() {
+    const { size, flat, clearable } = this.props;
+    return cx({
+      'is-medium': size === 'medium',
+      'is-small': size === 'small',
+      'is-flat': flat,
+      'is-clearable': clearable
+    });
+  }
+
   getLocals() {
-    const {
-      className,
-      options,
-      ...props
-    } = this.props;
+    const { className, options, ...props } = this.props;
 
     return {
       ...omit(props, 'valueLink'),
       options,
-      className: cx('dropdown', className),
+      className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
       onChange: this.getOnChange(),
       onBlur: this._onBlur
