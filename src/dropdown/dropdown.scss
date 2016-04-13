@@ -1,3 +1,5 @@
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+
 /**
  * React Select
  * ============
@@ -276,23 +278,178 @@
 }
 
 /** CUSTOM STYLE **/
+
+$background: lightgray !default;
+$background-hover: gray !default;
+$background-open: gray !default;
+
+$border-color: gray !default;
+$border-color-open: gray !default;
+
+$text-color: darkgray !default;
+$text-color-hover: gray !default;
+$text-color-open: gray !default;
+$text-color-has-value: black !default;
+$text-color-writing: black !default;
+
+$arrow-color: darkgray !default;
+$arrow-color-hover: gray !default;
+$arrow-color-open: gray !default;
+
+$x-color: darkgray !default;
+$x-color-hover: gray !default;
+
+$menu-background: white !default;
+
+$menu-border-color: lightgray !default;
+
+$option-color: black !default;
+$option-color-hover: darkgray !default;
+
+$option-background-hover: wheat !default;
+
 .Select.dropdown {
+  height: 38px;
+  min-width: 150px;
+  background: $background;
+  border: solid 1px $border-color;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 400;
+  color: $text-color;
+
   .Select-control {
-    > .Select-placeholder {
-     opacity: .5;
-   }
+    @include display_flex();
+    @include flex_flex-direction(row);
+    @include flex_align-items(center);
+    padding: 0 12px;
+    background: transparent;
+    border: none;
+    height: 100%;
+    cursor: pointer;
+    box-shadow: none !important;
+
+    .Select-placeholder {
+      @include display_flex();
+      @include flex_flex-direction(row);
+      @include flex_align-items(center);
+      bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 14px;
+    }
+
+    .Select-arrow {
+      top: 15px;
+      margin-left: 35px;
+      font-size: 15px;
+      color: $arrow-color;
+    }
   }
-  &.is-open.is-focused {
-    > .Select-control {
-      > .Select-placeholder {
-        opacity: .75;
+
+  &.is-small {
+    height: 30px;
+
+    .Select-arrow {
+      top: 11px;
+    }
+  }
+
+  &:not(.is-disabled):hover {
+    background: $background-hover;
+    color: $text-color-hover;
+
+    .Select-arrow {
+      color: $arrow-color-hover;
+    }
+  }
+
+  &.is-open {
+    background: $background-open;
+    border-color: $border-color-open;
+    color: $text-color-open;
+
+    .Select-arrow {
+      color: $arrow-color-open;
+    }
+
+    .Select-menu-outer {
+      min-width: 185px;
+      background-color: $menu-background;
+      border: solid 1px $menu-border-color;
+      border-radius: 4px;
+      box-shadow: rgba(34, 36, 38, 0.12) 0px 2px 4px 0px;
+      margin-top: 10px;
+
+      .Select-option {
+        padding: 10px 14px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+        color: $option-color;
+
+        &:hover, &.is-focused {
+          color: $option-color-hover;
+          background-color: $option-background-hover;
+        }
       }
     }
   }
+
   &.has-value {
-    > .Select-control {
-      > .Select-placeholder {
-        opacity: 1;
+    color: $text-color-has-value;
+  }
+
+  &.is-clearable.has-value {
+    .Select-clear {
+      @include display_flex();
+      @include flex_flex-direction(row);
+      @include flex_align-items(center);
+      bottom: 0;
+      right: 23px;
+      padding: 0;
+      color: $x-color;
+
+      &:hover {
+        color: $x-color-hover;
+      }
+    }
+  }
+
+  &.is-searchable {
+    .Select-control {
+      cursor: text;
+    }
+
+    &.is-open {
+      .Select-input {
+        color: $text-color-writing;
+      }
+    }
+  }
+
+  &.is-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    .Select-arrow-zone, .Select-arrow, .Select-control {
+      cursor: inherit;
+    }
+  }
+
+  &.is-flat {
+    &:not(:hover), &.is-disabled {
+      &:not(.is-open) {
+        background: transparent;
+        border-color: transparent;
+      }
+    }
+
+    .Select-control {
+      padding: 0 6px;
+
+      .Select-arrow {
+        margin-left: 13px;
       }
     }
   }
