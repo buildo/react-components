@@ -6,8 +6,6 @@ import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import FlexView from '../flex/FlexView';
 
-import './panel.scss';
-
 export const Props = {
   type: t.enums.of(['docked-top', 'docked-left', 'docked-right', 'docked-bottom', 'floating']),
   header: t.maybe(t.struct({
