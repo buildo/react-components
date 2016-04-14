@@ -1,18 +1,23 @@
-@import '../utils/theme/variables.scss';
-$arrow-size: 5px;
-$tooltip-border-radius: 5px;
+$background: #2c3a40 !default;
+$border-radius: 5px !default;
+
+$text-color: white !default;
+
+$arrow-size: 5px !default;
+$arrow-color: #2c3a40 !default;
+
 
 .tooltip {
-  background-color: $charcoal;
+  background-color: $background;
   padding: 4px 9px;
-  border-radius: $tooltip-border-radius;
-  color: $white;
+  border-radius: $border-radius;
+  color: $text-color;
   box-shadow: 0px 0px 4px 0px rgba(255,255,255,0.4);
   max-width: 260px;
   text-align: center;
   font-size: 13px;
-  font-weight: 300;
-  z-index: 102;
+  font-weight: 400;
+  z-index: 10000;
 
   &:after {
     border: solid transparent;
@@ -25,17 +30,17 @@ $tooltip-border-radius: 5px;
   }
 
   &.position-bottom:after {
-    border-bottom-color: $charcoal;
+    border-bottom-color: $arrow-color;
     bottom: 100%;
   }
 
   &.position-top:after {
-    border-top-color: $charcoal;
+    border-top-color: $arrow-color;
     top: 100%;
   }
 
   &.anchor-start:after {
-    left: $tooltip-border-radius;
+    left: $border-radius;
   }
 
   &.anchor-center:after {
@@ -44,6 +49,6 @@ $tooltip-border-radius: 5px;
   }
 
   &.anchor-end:after {
-    right: $tooltip-border-radius;
+    right: $border-radius;
   }
 }
