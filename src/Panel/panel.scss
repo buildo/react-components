@@ -2,6 +2,7 @@ $border-color: #e6e6e6 !default;
 $soft-loader-color: #45a7b9 !default;
 $panel-header-background-color: #2c3a40 !default;
 $panel-header-color: white !default;
+$expand-icon-color: white !default;
 $panel-header-title-font-weight: 700 !default;
 $panel-content-background-color: white !default;
 $panel-content-color: #2c3a40 !default;
@@ -37,10 +38,6 @@ $panel-content-title-background-color:  white !default;
     border: 1px solid $border-color;
   }
 
-  &.collapsable > .panel-header {
-    padding-left: 0;
-  }
-
   .panel-soft-loader {
     position: absolute;
     z-index: 999;
@@ -67,26 +64,35 @@ $panel-content-title-background-color:  white !default;
     }
   }
 
+  &.collapsable {
+    > .panel-header .panel-header-title-wrapper {
+      cursor: pointer;
+    }
+  }
+
   > .panel-header {
     color: $panel-header-color;
     background-color: $panel-header-background-color;
+    padding: 0 12px;
 
     .expand-icon {
       font-size: 20px;
+      color: $expand-icon-color;
+      margin-right: 3px;
     }
 
     .panel-header-title {
       font-size: 16px;
       font-weight: $panel-header-title-font-weight;
-      padding-left: 20px;
     }
 
     .panel-header-content {
-      padding: 0 10px;
+      margin-left: 5px;
     }
 
     .panel-menu {
       padding: 7px 0;
+      margin-right: -12px;
     }
   }
 
@@ -124,15 +130,15 @@ $panel-content-title-background-color:  white !default;
     border-bottom: 1px solid $border-color;
   }
 
-  &.docked-left > .panel-content {
+  &.docked-left {
     border-right: 1px solid $border-color;
   }
 
-  &.docked-bottom > .panel-content {
+  &.docked-bottom {
     border-top: 1px solid $border-color;
   }
 
-  &.docked-right > .panel-content {
+  &.docked-right {
     border-left: 1px solid $border-color;
   }
 }

@@ -1,6 +1,7 @@
 $expand-button-background: #EAEAEA !default;
 $expand-button-hover-background: #F1F2F3 !default;
 $expand-button-icon-color: #999 !default;
+$expand-button-icon-hover-color: #999 !default;
 
 .more-or-less {
   .expand-button {
@@ -11,6 +12,9 @@ $expand-button-icon-color: #999 !default;
 
     &:hover {
       background-color: $expand-button-hover-background;
+      .expand-button-icon {
+        color: $expand-button-icon-hover-color;
+      }
     }
 
     .expand-button-icon {

@@ -49,33 +49,27 @@ export default class PanelHeader extends React.Component {
     };
   }
 
-  templateExpandIcon = ({ renderExpandIcon, collapse }) => {
+  templateExpandIcon = ({ collapse }) => {
     return (
-      renderExpandIcon ?
-        <FlexView
-          vAlignContent='center'
-          hAlignContent='center'
-          style={{ cursor: 'pointer' }}
-          className='panel-header-icon'
-          basis={30}
-          onClick={collapse.onToggleExpanded}
-        >
-          <Icon
-            icon={this.getIcon(collapse)}
-            className='expand-icon'
-          />
-        </FlexView>
-        : null
+      <FlexView
+        vAlignContent='center'
+        hAlignContent='center'
+        className='panel-header-icon'
+      >
+        <Icon
+          icon={this.getIcon(collapse)}
+          className='expand-icon'
+        />
+      </FlexView>
     );
   };
 
-  templateTitle = ({ renderTitle, title }) => {
+  templateTitle = ({ renderTitle, title, renderExpandIcon, collapse }) => {
     return (
-      renderTitle ?
-        <FlexView vAlignContent='center' className='panel-header-title' shrink={false}>
-          {title}
-        </FlexView>
-        : null
+      <FlexView vAlignContent='center' shrink={false} onClick={collapse && collapse.onToggleExpanded} className='panel-header-title-wrapper'>
+        {renderExpandIcon && this.templateExpandIcon({ collapse })}
+        <FlexView className='panel-header-title'>{renderTitle && title}</FlexView>
+      </FlexView>
     );
 
   };
@@ -93,8 +87,7 @@ export default class PanelHeader extends React.Component {
   template({ collapse, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
     return (
       <FlexView className='panel-header' basis={40}>
-        {this.templateExpandIcon({ renderExpandIcon, collapse })}
-        {this.templateTitle({ renderTitle, title })}
+        {this.templateTitle({ renderTitle, title, renderExpandIcon, collapse })}
         {this.templateContent({ renderContent, content })}
         {renderMenu && menu}
       </FlexView>

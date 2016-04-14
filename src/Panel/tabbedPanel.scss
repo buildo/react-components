@@ -14,7 +14,6 @@
       color: #3f4e49; // $gunmetal missing in variables.scss
       cursor: pointer;
       &.active {
-        border-bottom: 4px solid $aquamarine;
         color: $white;
       }
 
