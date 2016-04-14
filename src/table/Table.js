@@ -83,11 +83,10 @@ export default class Table extends React.Component {
 
   constructor(props) {
     super(props);
-    const { height, width, selectedRows } = props;
+    const { height, width } = props;
     this.state = {
       height,
-      width,
-      scrollToRow: selectedRows[0]
+      width
     };
   }
 
@@ -101,12 +100,11 @@ export default class Table extends React.Component {
   getNode = () => React.findDOMNode(this.refs.wrapper);
 
   componentDidMount() {
-    if (this.props.selectionType !== 'none') {
-      this.scrollToSelectedRow();
-    }
     if (this.props.autoSize) {
       this.autoSize();
       this.startAutoSizeInterval();
+    } else {
+      setTimeout(this.scrollToSelectedRow);
     }
   }
 
