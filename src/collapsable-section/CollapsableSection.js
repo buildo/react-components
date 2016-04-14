@@ -70,7 +70,7 @@ export default class CollapsableSection extends React.Component {
 
   template({ isOpen, children, onChange, header, icons, wrapperProps }) {
     return (
-      <div {...wrapperProps}>
+      <FlexView {...wrapperProps} column>
         <FlexView className='content' vAlignContent='center' onClick={onChange}>
           {header}
           <FlexView marginLeft='auto' shrink={false}>
@@ -78,7 +78,7 @@ export default class CollapsableSection extends React.Component {
           </FlexView>
         </FlexView>
         {isOpen && children}
-      </div>
+      </FlexView>
     );
   }
 
