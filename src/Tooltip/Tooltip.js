@@ -1,51 +1,47 @@
 import React from 'react';
-import { pure, props, skinnable, t } from '../utils';
-import Popover from '../popover/Popover';
 import cx from 'classnames';
-
-import './tooltip.scss';
+import { pure, props, skinnable, t, stateClassUtil } from '../utils';
+import Popover from '../popover/Popover';
 
 @pure
 @skinnable()
 @props({
   children: t.ReactChildren,
   popover: t.struct({
-    content: t.Str,
-    attachToBody: t.maybe(t.Bool),
-    position: t.maybe(t.Str),
-    anchor: t.maybe(t.Str),
-    onShow: t.maybe(t.Func),
-    onHide: t.maybe(t.Func),
-    dismissOnScroll: t.maybe(t.Bool),
-    className: t.maybe(t.Str),
-    id: t.maybe(t.Str),
-    maxWidth: t.maybe(t.union([t.Num, t.Str]))
+    content: t.String,
+    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
+    anchor: t.maybe(t.enums.of(['start', 'center', 'end']))
   }),
-  className: t.maybe(t.Str),
-  id: t.maybe(t.Str),
-  style: t.maybe(t.Obj)
+  type: t.enums.of(['light', 'dark']),
+  size: t.enums.of(['small', 'big']),
+  className: t.maybe(t.String),
+  id: t.maybe(t.String),
+  style: t.maybe(t.Object)
 })
 export default class Tooltip extends React.Component {
 
+  static defaultProps = {
+    type: 'dark',
+    size: 'small'
+  }
+
   getLocals() {
-    const { children, ...props } = this.props;
+    const { children, type, size, ...props } = this.props;
     const popover = {
       ...props.popover,
       event: 'hover',
-      className: cx('tooltip', props.popover.className)
+      className: cx('tooltip', stateClassUtil([type, size]), props.popover.className)
     };
     return {
-      props: {
-        ...props,
-        popover
-      },
-      children
+      children,
+      type, size,
+      popoverProps: { ...props, popover }
     };
   }
 
-  template({ props, children }) {
+  template({ popoverProps, children }) {
     return (
-      <Popover { ...props }>
+      <Popover { ...popoverProps }>
         {children}
       </Popover>
     );

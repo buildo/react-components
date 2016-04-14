@@ -1,20 +1,49 @@
-@import '../utils/theme/variables.scss';
-$arrow-size: 5px;
-$tooltip-border-radius: 5px;
+$background-dark: #2C3A40 !default;
+$background-light: white !default;
+
+$border-radius: 5px !default;
+$border-color-dark: #F0F0F0 !default;
+$border-color-light: #2C3A40 !default;
+
+$text-color-dark: white !default;
+$text-color-light: #2C3A40 !default;
+
+$arrow-size: 5px !default;
+$arrow-color: #2C3A40 !default;
+
 
 .tooltip {
-  background-color: $charcoal;
-  padding: 4px 9px;
-  border-radius: $tooltip-border-radius;
-  color: $white;
-  box-shadow: 0px 0px 4px 0px rgba(255,255,255,0.4);
-  max-width: 260px;
+  max-width: 250px;
+  border-radius: $border-radius;
+  border: 1px solid;
+  z-index: 10000;
   text-align: center;
-  font-size: 13px;
-  font-weight: 300;
-  z-index: 102;
 
-  &:after {
+  &.is-dark {
+    background: $background-dark;
+    border-color: $border-color-dark;
+    color: $text-color-dark;
+  }
+
+  &.is-light {
+    background: $background-light;
+    border-color: $border-color-light;
+    color: $text-color-light;
+  }
+
+  &.is-small {
+    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &.is-big {
+    padding: 17px 14px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &:after, &:before {
     border: solid transparent;
     content: ' ';
     height: 0;
@@ -24,26 +53,75 @@ $tooltip-border-radius: 5px;
     border-width: $arrow-size;
   }
 
-  &.position-bottom:after {
-    border-bottom-color: $charcoal;
-    bottom: 100%;
+  &:before {
+    border-width: $arrow-size + 1;
   }
 
-  &.position-top:after {
-    border-top-color: $charcoal;
-    top: 100%;
+  &.position-bottom {
+    &:after, &:before {
+      bottom: 100%;
+    }
+    &.is-dark {
+      &:after {
+        border-bottom-color: $background-dark;
+      }
+      &:before {
+        border-bottom-color: $border-color-dark;
+      }
+    }
+    &.is-light {
+      &:after {
+        border-bottom-color: $background-light;
+      }
+      &:before {
+        border-bottom-color: $border-color-light;
+      }
+    }
   }
 
-  &.anchor-start:after {
-    left: $tooltip-border-radius;
+  &.position-top {
+    &:after, &:before {
+      top: 100%;
+    }
+    &.is-dark {
+      &:after {
+        border-top-color: $background-dark;
+      }
+      &:before {
+        border-top-color: $border-color-dark;
+      }
+    }
+    &.is-light {
+      &:after {
+        border-top-color: $background-light;
+      }
+      &:before {
+        border-top-color: $border-color-light;
+      }
+    }
   }
 
-  &.anchor-center:after {
-    left: 50%;
-    margin-left: -$arrow-size;
+  &.anchor-start:after, &.anchor-start:before {
+    left: $border-radius;
   }
 
-  &.anchor-end:after {
-    right: $tooltip-border-radius;
+  &.anchor-center {
+    &:after, &:before {
+      left: 50%;
+    }
+    &:after {
+      margin-left: -$arrow-size;
+    }
+    &:before {
+      margin-left: -$arrow-size - 1;
+    }
+  }
+
+  &.anchor-end:after, &.anchor-end:before {
+    right: $border-radius;
+  }
+
+  &:before {
+    margin-left: -1px;
   }
 }
