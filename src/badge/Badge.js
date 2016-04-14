@@ -25,11 +25,9 @@ export default class Badge extends React.Component {
 
   template({ label, className, style }) {
     return (
-      <div {...{ className, style }}>
-        <FlexView vAlignContent='center' hAlignContent='center'>
-          <span className='badge-label'>{label}</span>
-        </FlexView>
-      </div>
+      <FlexView vAlignContent='center' hAlignContent='center' {...{ className, style }}>
+        <span className='badge-label'>{label}</span>
+      </FlexView>
     );
   }
 }

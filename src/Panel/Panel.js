@@ -6,8 +6,6 @@ import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import FlexView from '../flex/FlexView';
 
-import './panel.scss';
-
 export const Props = {
   type: t.enums.of(['docked-top', 'docked-left', 'docked-right', 'docked-bottom', 'floating']),
   header: t.maybe(t.struct({
@@ -23,6 +21,7 @@ export const Props = {
     menu: t.maybe(t.ReactChildren)
   })),
   loading: t.maybe(t.Bool),
+  dark: t.maybe(t.Bool),
   softLoading: t.maybe(t.Bool),
   softLoadingDelay: t.maybe(t.refinement(t.Num, v => v >= 0, 'NonNegativeNumber')),
   children: t.ReactChildren,
@@ -39,7 +38,8 @@ export default class Panel extends React.Component {
     style: {},
     loading: false,
     softLoading: false,
-    softLoadingDelay: 0
+    softLoadingDelay: 0,
+    dark: false
   };
 
   _softLoadingActive = false;
@@ -103,16 +103,17 @@ export default class Panel extends React.Component {
   };
 
   getLocals() {
-    const { header, children, loading, softLoading, softLoadingDelay, type, className } = this.props;
+    const { header, children, loading, softLoading, softLoadingDelay, type, className, dark } = this.props;
     const collapsable = header && header.collapse;
     const isExpanded = !collapsable || !header.collapse.isCollapsed;
     const panelState = isExpanded ? 'expanded' : 'collapsed';
     const directionClass = collapsable ? (`collapse-${header.collapse.direction}`) : '';
     const verticalDirection = collapsable && (collapsable.direction === 'up' || collapsable.direction === 'down');
+    const themeType = dark ? 'is-dark' : 'is-light';
 
     return {
       header,
-      className: cx('panel', type, { collapsable }, directionClass, panelState, className),
+      className: cx('panel', type, { collapsable }, themeType, directionClass, panelState, className),
       style: this.getStyle(),
       isExpanded,
       toggleExpanded: this.toggleExpanded,

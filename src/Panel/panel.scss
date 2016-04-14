@@ -1,4 +1,16 @@
-@import '../utils/theme/variables.scss';
+$border-color: #e6e6e6 !default;
+$soft-loader-color: #45a7b9 !default;
+
+$header-background: white !default;
+$header-background-dark: #2c3a40 !default;
+$header-color: white !default;
+
+$expand-icon-color: white !default;
+$expand-icon-color-hover: rgba(white, 0.7) !default;
+
+$content-background: white !default;
+$content-color: #2c3a40 !default;
+$content-title-color: #2c3a40 !default;
 
 @keyframes loading {
   0% {
@@ -29,8 +41,71 @@
     border: 1px solid $border-color;
   }
 
-  &.collapsable > .panel-header {
-    padding-left: 0;
+  &.collapsable {
+    > .panel-header .panel-header-title-wrapper {
+      cursor: pointer;
+
+      .expand-icon {
+        font-size: 20px;
+        color: $expand-icon-color;
+        margin-right: 3px;
+      }
+
+      &:hover .expand-icon {
+        color: $expand-icon-color-hover;
+      }
+    }
+  }
+
+  &.docked-top > .panel-content {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &.docked-left {
+    border-right: 1px solid $border-color;
+  }
+
+  &.docked-bottom {
+    border-top: 1px solid $border-color;
+  }
+
+  &.docked-right {
+    border-left: 1px solid $border-color;
+  }
+
+  &.is-dark {
+    > .panel-header {
+      background: $header-background-dark;
+    }
+  }
+
+  > .panel-header {
+    background: $header-background;
+    padding: 0 12px;
+    color: $header-color;
+
+    .panel-header-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .panel-header-content {
+      margin-left: 5px;
+    }
+
+    .panel-menu {
+      padding: 7px 0;
+      margin-right: -12px;
+    }
+  }
+
+  > .panel-content {
+    background: $content-background;
+
+    .panel-content-title {
+      font-size: 17px;
+      margin: 0;
+    }
   }
 
   .panel-soft-loader {
@@ -44,7 +119,7 @@
       position: relative;
       width: 100%;
       height: 1px;
-      background-color: $aquamarine30;
+      background: rgba($soft-loader-color, .3);
 
       &:after {
         position: absolute;
@@ -54,42 +129,8 @@
         height: 100%;
         content: '';
         animation: loading 2s ease infinite;
-        background-color: $aquamarine;
+        background: $soft-loader-color;
       }
-    }
-  }
-
-  > .panel-header {
-    color: $white;
-    background-color: $charcoal;
-
-    .expand-icon {
-      font-size: 20px;
-    }
-
-    .panel-header-title {
-      font-size: 16px;
-      font-weight: $semibold;
-      padding-left: 20px;
-    }
-
-    .panel-header-content {
-      padding: 0 10px;
-    }
-
-    .panel-menu {
-      padding: 7px 0;
-    }
-  }
-
-  > .panel-content {
-    background-color: $white;
-
-    .panel-content-title {
-      font-size: 17px;
-      margin: 0;
-      color: $charcoal;
-      background: $white;
     }
   }
 
@@ -110,21 +151,5 @@
               transform-origin: 0 0;
       white-space: nowrap;
     }
-  }
-
-  &.docked-top > .panel-content {
-    border-bottom: 1px solid $border-color;
-  }
-
-  &.docked-left > .panel-content {
-    border-right: 1px solid $border-color;
-  }
-
-  &.docked-bottom > .panel-content {
-    border-top: 1px solid $border-color;
-  }
-
-  &.docked-right > .panel-content {
-    border-left: 1px solid $border-color;
   }
 }
