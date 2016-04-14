@@ -1,7 +1,8 @@
 $border-color: #e6e6e6 !default;
 $soft-loader-color: #45a7b9 !default;
 
-$header-background: #2c3a40 !default;
+$header-background: white !default;
+$header-background-dark: #2c3a40 !default;
 $header-color: white !default;
 
 $expand-icon-color: white !default;
@@ -70,6 +71,12 @@ $content-title-color: #2c3a40 !default;
 
   &.docked-right {
     border-left: 1px solid $border-color;
+  }
+
+  &.is-dark {
+    > .panel-header {
+      background: $header-background-dark;
+    }
   }
 
   > .panel-header {
