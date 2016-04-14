@@ -3,8 +3,6 @@ import cx from 'classnames';
 import { pure, props, skinnable, t, stateClassUtil } from '../utils';
 import Popover from '../popover/Popover';
 
-import './tooltip.scss';
-
 @pure
 @skinnable()
 @props({
