@@ -409,8 +409,12 @@ $option-background-hover: wheat !default;
     }
   }
 
-  &.has-value {
+  &.has-value .Select-control {
     color: $text-color-has-value;
+
+    .Select-placeholder {
+      color: $text-color-has-value;
+    }
   }
 
   &.is-clearable.has-value {
