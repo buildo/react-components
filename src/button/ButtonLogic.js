@@ -1,8 +1,8 @@
 import React from 'react';
 import { pure, skinnable, props, t } from '../utils';
 
-const buttonBaseStates = ['ready', 'success', 'not-allowed'];
-const buttonStates = buttonBaseStates.concat(['processing', 'error']);
+const buttonBaseStates = ['ready', 'not-allowed'];
+const buttonStates = buttonBaseStates.concat(['processing', 'error', 'success']);
 export const buttonBaseState = t.enums.of(buttonBaseStates, 'buttonBaseState');
 export const buttonState = t.enums.of(buttonStates, 'buttonStates');
 
@@ -143,15 +143,16 @@ export default class ButtonLogic extends React.Component {
   };
 
   getLocals() {
+    const { onClick, props: { children } } = this;
     return {
       buttonState: this.getButtonState(),
-      onClick: this.onClick,
-      child: this.props.children
+      onClick,
+      children
     };
   }
 
-  template({ buttonState, onClick, child }) {
-    return child({ buttonState, onClick });
+  template({ buttonState, onClick, children }) {
+    return children({ buttonState, onClick });
   }
 
 }

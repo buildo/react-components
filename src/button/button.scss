@@ -1,95 +1,168 @@
-$button-horizontal-padding: 16px !default;
-$button-font-weight: semibold !default;
-$button-background: lightgray !default;
-$button-color: black !default;
-$button-border-radius: 3px !default;
+$horizontal-padding: 16px !default;
+$font-size: 14px !default;
+$height: 36px !default;
+$font-weight: semibold !default;
+$background: lightgray !default;
+$color: black !default;
+$border-color: black !default;
+$border-width: 1px !default;
+$border-radius: 3px !default;
+$font-family: sans-serif !default;
 
-$button-large-horizontal-padding: 18px !default;
+$large-horizontal-padding: 18px !default;
 
-$button-ready-hover-color: white !default;
-$button-ready-hover-background: lightgray !default;
+$default-background: lightgray !default;
+$default-border-color: grey !default;
+$default-border-width: 1px !default;
+$default-color: black !default;
+$default-background-hover: red !default;
 
+$primary-background: grey !default;
+$primary-border-color: blue !default;
+$primary-border-width: 1px !default;
+$primary-color: blue !default;
+$primary-background-hover: lightgray !default;
 
-.button {
-  font-weight: $button-font-weight;
+$positive-background: lightgray !default;
+$positive-border-color: green !default;
+$positive-border-width: 1px !default;
+$positive-color: green !default;
+$positive-background-hover: lightgreen !default;
+
+$negative-background: lightgray !default;
+$negative-border-color: red !default;
+$negative-border-width: 1px !default;
+$negative-color: red !default;
+$negative-background-hover: orange !default;
+
+$flat-background: none !default;
+$flat-border-color: transparent !default;
+$flat-border-width: 1px !default;
+$flat-color: blue !default;
+$flat-background-hover: none !default;
+$flat-border-color-hover: blue !default;
+$flat-border-width-hover: 1px !default;
+$flat-horizontal-padding: 6px !default;
+
+$icon-button-horizontal-padding: 13px !default;
+$icon-button-circular-padding: 11px !default;
+
+$medium-height: 38px !default;
+$medium-horizontal-padding: 18px !default;
+$medium-font-size: 15px !default;
+
+$small-height: 30px !default;
+$small-horizontal-padding: 14px !default;
+$small-font-size: 15px !default;
+
+$tiny-height: 18px !default;
+$tiny-font-size: 12px !default;
+$tiny-horizontal-padding: 6px !default;
+
+$ready-hover-color: white !default;
+$ready-hover-background: lightgray !default;
+
+.button .button-inner {
+  // commons
   position: relative;
-  padding: 3px $button-horizontal-padding;
-  height: 36px;
   cursor: pointer;
   text-align: center;
-  background: $button-background;
-  color: $button-color;
-  font-size: 14px;
-  border-radius: $button-border-radius;
+  font-weight: $font-weight;
+  font-family: $font-family;
 
-  .button-icon, .button-loading, .button-label {
+  // default sizes
+  padding: 0 $horizontal-padding;
+  font-size: $font-size;
+  height: $height;
+
+  // default colors and other style
+  background: $background;
+  border: $border-width solid $border-color;
+  color: $color;
+  border-radius: $border-radius;
+
+  // sub-components/sub-elements
+  .icon, .loading, .label {
     margin: 0 3px;
   }
-
-  &.tiny {
-    font-size: 14px;
-    height: 30px;
-  }
-
-  &.large {
-    font-size: 16px;
-    height: 38px;
-    padding-left: $button-large-horizontal-padding;
-    padding-right: $button-large-horizontal-padding;
-  }
-
-  .button-loading {
+  .loading {
     height: 1em;
   }
-  &.simple {
-    border-width: 0;
-    padding: 0;
-  }
 
-  &.ready {
-    &:hover {
-      color: $button-ready-hover-color;
-      background: $button-ready-hover-background;
+  //types
+  &.default {
+    background: $default-background;
+    border: $default-border-width solid $default-border-color;
+    color: $default-color;
+    &:hover:not(.not-allowed) {
+      background: $default-background-hover;
+    }
+  }
+  &.primary {
+    background: $primary-background;
+    border: $primary-border-width solid $primary-border-color;
+    color: $primary-color;
+    &:hover:not(.not-allowed) {
+      background: $primary-background-hover;
+    }
+  }
+  &.positive, &.success {
+    background: $positive-background;
+    border: $positive-border-width solid $positive-border-color;
+    color: $positive-color;
+    &:hover:not(.not-allowed) {
+      background: $positive-background-hover;
+    }
+  }
+  &.negative, &.error {
+    background: $negative-background;
+    border: $negative-border-width solid $negative-border-color;
+    color: $negative-color;
+    &:hover:not(.not-allowed) {
+      background: $negative-background-hover;
+    }
+  }
+  &.flat {
+    background: $flat-background;
+    border: $flat-border-width solid $flat-border-color;
+    color: $flat-color;
+    padding: 0 $flat-horizontal-padding !important; //!important because it should be ovverridden by small/tiny variations
+    &:hover:not(.not-allowed) {
+      background: $flat-background-hover;
+      border: $flat-border-width-hover solid $flat-border-color-hover;
     }
   }
 
-  &.destructive {
-    color: white;
-    background: red;
+  // variations
 
-    &:hover {
-      color: white;
-      background: red;
+  &.icon-button {
+    padding: 0 $icon-button-horizontal-padding !important;//!important because it should be ovverridden by small/tiny variations
+    &.circular {
+      border-radius: 100% !important;//!important because it should be ovverridden by small/tiny variations
+      padding: $icon-button-circular-padding !important;//!important because it should be ovverridden by small/tiny variations
     }
   }
 
-  &.success {
-    // color: $aquamarine;
+  // sizes
+  &.tiny {
+    padding: 0 $tiny-horizontal-padding;
+    font-size: $tiny-font-size;
+    height: $tiny-height;
   }
-  &.error {
-    color: white;
-    background: purple;
+  &.small {
+    padding: 0 $small-horizontal-padding;
+    font-size: $small-font-size;
+    height: $small-height;
   }
-  &.processing, &.not-allowed {
-    color: lightgray;
+  &.medium {
+    padding: 0 $medium-horizontal-padding;
+    font-size: $medium-font-size;
+    height: $medium-height;
   }
+
   &.not-allowed {
-    opacity: .7;
+    opacity: .6;
     cursor: not-allowed;
   }
 
-  &.primary {
-    background: blue;
-    color: white;
-
-    &.ready:hover {
-      color: white;
-      background: lightblue;
-    }
-
-    &.error {
-      color: white;
-      background: purple;
-    }
-  }
 }
