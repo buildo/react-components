@@ -20,7 +20,14 @@ class Example extends React.Component {
             react-select
           </a>
         </p>
-        <Dropdown value={this.state.value} onChange={(value) => this.setState({ value })} placeholder="Select some fruit.."  options={options} />
+        <Dropdown
+          searchable
+          clearable
+          value={this.state.value}
+          onChange={(value) => this.setState({ value })}
+          placeholder="Select some fruit.."
+          options={options}
+        />
       </div>
     );
   }
