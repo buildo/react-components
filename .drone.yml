@@ -1,0 +1,24 @@
+build:
+  react-components:
+    image: quay.io/buildo/node5-npm3
+    environment:
+      - NPM_CONFIG_CACHE=/drone/.npm
+    commands:
+      - npm i
+      - npm run lint
+      - npm run build
+
+  gh-pages:
+    image: ubuntu
+    commands:
+      - git fetch --no-tags origin +refs/heads/gh-pages
+      - git checkout gh-pages
+      - git pull
+      - git merge master --no-edit
+      - npm run deploy-showroom
+    when:
+      branch: master
+
+cache:
+  mount:
+    - /drone/.npm
