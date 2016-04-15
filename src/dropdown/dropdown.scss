@@ -369,7 +369,7 @@ $option-background-hover: wheat !default;
     }
 
     .Select-arrow {
-      color: $arrow-color-hover;
+      border-color: $arrow-color-hover transparent transparent;
     }
   }
 
@@ -383,7 +383,7 @@ $option-background-hover: wheat !default;
     }
 
     .Select-arrow {
-      color: $arrow-color-open;
+      border-color: $arrow-color-open transparent transparent;
     }
 
     .Select-menu-outer {
@@ -409,8 +409,12 @@ $option-background-hover: wheat !default;
     }
   }
 
-  &.has-value {
+  &.has-value .Select-control {
     color: $text-color-has-value;
+
+    .Select-placeholder {
+      color: $text-color-has-value;
+    }
   }
 
   &.is-clearable.has-value {
