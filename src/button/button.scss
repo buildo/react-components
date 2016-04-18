@@ -91,7 +91,7 @@ $tiny-horizontal-padding: 6px !default;
     background: $default-background;
     border: $default-border-width solid $default-border-color;
     color: $default-color;
-    &:hover:not(.not-allowed) {
+    &:hover:not(.is-not-allowed) {
       background: $default-background-hover;
     }
   }
@@ -99,7 +99,7 @@ $tiny-horizontal-padding: 6px !default;
     background: $primary-background;
     border: $primary-border-width solid $primary-border-color;
     color: $primary-color;
-    &:hover:not(.not-allowed) {
+    &:hover:not(.is-not-allowed) {
       background: $primary-background-hover;
     }
   }
@@ -107,7 +107,7 @@ $tiny-horizontal-padding: 6px !default;
     background: $positive-background;
     border: $positive-border-width solid $positive-border-color;
     color: $positive-color;
-    &:hover:not(.not-allowed) {
+    &:hover:not(.is-not-allowed) {
       background: $positive-background-hover;
     }
   }
@@ -115,7 +115,7 @@ $tiny-horizontal-padding: 6px !default;
     background: $negative-background;
     border: $negative-border-width solid $negative-border-color;
     color: $negative-color;
-    &:hover:not(.not-allowed) {
+    &:hover:not(.is-not-allowed) {
       background: $negative-background-hover;
     }
   }
@@ -124,7 +124,7 @@ $tiny-horizontal-padding: 6px !default;
     border: $flat-border-width solid $flat-border-color;
     color: $flat-color;
     padding: 0 $flat-horizontal-padding !important; //!important because it should not be ovverridden by small/tiny variations
-    &:hover:not(.not-allowed) {
+    &:hover:not(.is-not-allowed) {
       background: $flat-background-hover;
       border: $flat-border-width-hover solid $flat-border-color-hover;
     }
