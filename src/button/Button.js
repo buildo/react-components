@@ -4,7 +4,7 @@ import pick from 'lodash/pick';
 import every from 'lodash/every';
 import { pure, skinnable, props, t, stateClassUtil } from '../utils';
 import ButtonLogic, { buttonState, buttonBaseState } from './ButtonLogic';
-import ButtonRenderer/*, { stringForButtonStates } */ from './ButtonRenderer';
+import ButtonRenderer from './ButtonRenderer';
 
 // util
 const notBoth = (a, b) => !(a && b);
@@ -20,23 +20,76 @@ const propsInvariants = [
 ];
 
 const ButtonProps = t.subtype(t.struct({
-  baseState: t.maybe(buttonBaseState), // ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
-  stableSuccess: t.maybe(t.Boolean), // if baseState is passed, it indicates if the success should be persistent or temporary
-  timerMillis: t.maybe(t.Number), // if baseState is passed, indicates how long it should take to return to ready state from error state (or from success state if stableSuccess === false)
-  buttonState: t.maybe(buttonState), // ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component
-  onClick: t.Func, // callback
-  label: t.maybe(t.union([t.String, t.Object])), // can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
-  icon: t.maybe(t.union([t.String, t.Object])), //can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])), https://github.com/buildo/labonline/issues/544
-  children: t.maybe(t.ReactChildren), // otherwise just pass children
+  /**
+  * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
+  */
+  baseState: t.maybe(buttonBaseState),
+  /**
+  * if baseState is passed, it indicates if the success should be persistent or temporary
+  */
+  stableSuccess: t.maybe(t.Boolean),
+  /**
+  * if baseState is passed, indicates how long it should take to return to ready state from error state (or from  success state if stableSuccess === false)
+  */
+  timerMillis: t.maybe(t.Number),
+  /**
+  * ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component
+  */
+  buttonState: t.maybe(buttonState),
+  /**
+  * callback
+  */
+  onClick: t.Func,
+  /**
+  * can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates])
+  */
+  label: t.maybe(t.union([t.String, t.Object])),
+  /**
+  * can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates]))
+  */
+  icon: t.maybe(t.union([t.String, t.Object])),
+  /**
+  * otherwise just pass children
+  */
+  children: t.maybe(t.ReactChildren),
+  /**
+  * type of the button
+  */
+
   type: t.maybe(t.enums.of(['default', 'primary', 'positive', 'negative', 'flat'])),
-  primary: t.maybe(t.Boolean), // shortcut for type
-  flat: t.maybe(t.Boolean), //shortcut for type,
+  /**
+  * shortcut for type
+  */
+  primary: t.maybe(t.Boolean),
+  /**
+  * shortcut for type,
+  */
+  flat: t.maybe(t.Boolean),
+  /**
+  * size of the button,
+  */
+
   size: t.enums.of(['tiny', 'small', 'medium']),
-  fluid: t.maybe(t.Boolean), // fluid (block) button, takes the width of the container
-  circular: t.maybe(t.Boolean), // circular button, only if it's an icon only button
-  textOverflow: t.maybe(t.Function), // function to handle the overflow of too long labels, replacing with ellipsed string and tooltip
-  style: t.maybe(t.Object), // custom style
-  className: t.maybe(t.String) // adds a className to top-level tag
+  /**
+  * fluid (block) button, takes the width of the container
+  */
+  fluid: t.maybe(t.Boolean),
+  /**
+  * circular button, only if it's an icon only button
+  */
+  circular: t.maybe(t.Boolean),
+  /**
+  * function to handle the overflow of too long labels, replacing with ellipsed string and tooltip
+  */
+  textOverflow: t.maybe(t.Function),
+  /**
+  * custom style
+  */
+  style: t.maybe(t.Object),
+  /**
+  * adds a className to top-level tag
+  */
+  className: t.maybe(t.String)
 }), satisfyAll(...propsInvariants), 'ButtonProps');
 
 const defaultProps = {
