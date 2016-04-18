@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../utils';
+import { pure, skinnable, props, t, stateClassUtil } from '../utils';
 import { buttonState } from './ButtonLogic';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
@@ -19,11 +19,12 @@ export const stringForButtonStates = t.struct({
 @skinnable()
 @props({
   buttonState,
-  onClick: t.Func,
+  onClick: t.Function,
   label: stringForButtonStates,
   icon: stringForButtonStates,
-  className: t.Str,
-  style: t.Obj,
+  className: t.String,
+  style: t.Object,
+  wrapperStyle: t.Object,
   textOverflow: t.maybe(t.Function)
 })
 export default class ButtonRenderer extends React.Component {
@@ -37,13 +38,11 @@ export default class ButtonRenderer extends React.Component {
     const label = labelProp[buttonState];
     const icon = iconProp[buttonState];
     const loading = buttonState === 'processing';
-    const style = { width: '100%', ...this.props.style };
     return {
       ...this.props,
       label,
       icon,
       loading,
-      style,
       TextOverflow: textOverflow
     };
   }
@@ -66,13 +65,21 @@ export default class ButtonRenderer extends React.Component {
     </FlexView>
   );
 
-  template({ onClick, buttonState, icon, label, loading, className, style, TextOverflow }) {
+  template({ onClick, buttonState, icon, label, loading, className, style, TextOverflow, wrapperStyle }) {
     return (
-      <FlexView className={cx('button', className, buttonState)} {...{ onClick, style }} vAlignContent='center' hAlignContent='center' shrink={false}>
-        {loading && this.templateLoading()}
-        {icon && this.templateIcon({ icon })}
-        {label && this.templateLabel({ label, TextOverflow })}
-      </FlexView>
+      <div className='button' style={wrapperStyle}>
+        <FlexView
+          className={cx('button-inner', className, stateClassUtil(buttonState))}
+          vAlignContent='center'
+          hAlignContent='center'
+          onClick={onClick}
+          style={style}
+        >
+          {loading && this.templateLoading()}
+          {icon && this.templateIcon({ icon })}
+          {label && this.templateLabel({ label, TextOverflow })}
+        </FlexView>
+      </div>
     );
   }
 

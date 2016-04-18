@@ -34,7 +34,7 @@ describe('ButtonLogic', () => {
     });
     const locals = component.getLocals();
     expect(locals.buttonState).toBe('ready');
-    expect(locals.child).toExist();
+    expect(locals.children).toExist();
     const dom = vdom(component);
     expect(dom.tag).toBe('button');
     expect(dom.attrs.buttonState).toBe('ready');
@@ -46,7 +46,7 @@ describe('ButtonLogic', () => {
     });
     const locals = component.getLocals();
     expect(locals.buttonState).toBe('error');
-    expect(locals.child).toExist();
+    expect(locals.children).toExist();
     const dom = vdom(component);
     expect(dom.tag).toBe('button');
     expect(dom.attrs.buttonState).toBe('error');
