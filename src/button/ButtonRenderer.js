@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../utils';
+import { pure, skinnable, props, t, stateClassUtil } from '../utils';
 import { buttonState } from './ButtonLogic';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
@@ -69,7 +69,7 @@ export default class ButtonRenderer extends React.Component {
     return (
       <div className='button' style={wrapperStyle}>
         <FlexView
-          className={cx('button-inner', className, buttonState)}
+          className={cx('button-inner', className, stateClassUtil(buttonState))}
           vAlignContent='center'
           hAlignContent='center'
           onClick={onClick}

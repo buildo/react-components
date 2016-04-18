@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import pick from 'lodash/pick';
 import every from 'lodash/every';
-import { pure, skinnable, props, t } from '../utils';
+import { pure, skinnable, props, t, stateClassUtil } from '../utils';
 import ButtonLogic, { buttonState, buttonBaseState } from './ButtonLogic';
 import ButtonRenderer/*, { stringForButtonStates } */ from './ButtonRenderer';
 
@@ -101,10 +101,10 @@ export default class Button extends React.Component {
     const isIconButton = () => this.props.icon && !this.props.label;
 
     const className = cx(
-      getButtonType(),
+      stateClassUtil(getButtonType()),
       { 'icon-button': isIconButton() },
       { circular },
-      size,
+      stateClassUtil(size),
       this.props.className
     );
 
