@@ -136,6 +136,15 @@ $tiny-horizontal-padding: 6px !default;
     &.circular {
       border-radius: 100% !important;//!important because it should not be ovverridden by small/tiny variations
       padding: $icon-button-circular-padding !important;//!important because it should not be ovverridden by small/tiny variations
+      &.is-medium {
+        width: $medium-height;
+      }
+      &.is-small {
+        width: $small-height;
+      }
+      &.is-tiny {
+        width: $tiny-height;
+      }
     }
   }
 
