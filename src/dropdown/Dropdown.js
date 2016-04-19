@@ -18,6 +18,7 @@ const PropTypes = {
   disabled: t.maybe(t.Boolean),
   searchable: t.maybe(t.Boolean),
   clearable: t.maybe(t.Boolean),
+  backspaceRemoves: t.maybe(t.Boolean),
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   id: t.maybe(t.String),
@@ -74,11 +75,13 @@ export default class Dropdown extends React.Component {
   }
 
   getLocals() {
-    const { className, options, ...props } = this.props;
+    const { className, options, backspaceRemoves, clearable, ...props } = this.props;
 
     return {
       ...omit(props, 'valueLink'),
       options,
+      clearable,
+      backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
       onChange: this.getOnChange(),
