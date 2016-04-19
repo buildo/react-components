@@ -59,6 +59,9 @@ $tiny-height: 18px !default;
 $tiny-font-size: 12px !default;
 $tiny-horizontal-padding: 6px !default;
 
+$disabled-button-opacity: .6 !default;
+$disabled-button-cursor: not-allowed !default;
+
 .button .button-inner {
   // commons
   position: relative;
@@ -166,8 +169,8 @@ $tiny-horizontal-padding: 6px !default;
   }
 
   &.is-not-allowed {
-    opacity: .6;
-    cursor: not-allowed;
+    opacity: $disabled-button-opacity;
+    cursor: $disabled-button-cursor;
   }
 
 }
