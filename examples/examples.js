@@ -1,6 +1,7 @@
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { t } from 'tcomb-react';
-import { Route, create } from 'react-router-transition-context';
+import { Route, create } from 'react-router';
 import * as brc from '../src';
 import lodash, { find } from 'lodash';
 import KitchenSink from '../src/kitchen-sink/KitchenSink';
@@ -69,5 +70,5 @@ const router = create({ routes });
 
 router.run((Handler, { query }) => {
   // RENDERS
-  React.render(<Examples router={router} query={query} />, document.getElementById('container'));
+  ReactDOM.render(<Examples router={router} query={query} />, document.getElementById('container'));
 });

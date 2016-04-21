@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Dropdown from './Dropdown';
 import omit from 'lodash/omit';
 
@@ -17,7 +18,7 @@ export default class DropdownMenu extends React.Component {
   }
 
   componentDidMount() {
-    const control = React.findDOMNode(this.refs.select).getElementsByClassName('Select-control')[0];
+    const control = ReactDOM.findDOMNode(this.refs.select).getElementsByClassName('Select-control')[0];
     const arrowZone = control.getElementsByClassName('Select-arrow-zone')[0];
     const arrow = control.getElementsByClassName('Select-arrow')[0];
 

@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import expect from 'expect';
 import ButtonLogic from '../../../src/button/ButtonLogic';
 import vdom from 'react-vdom';

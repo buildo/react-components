@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import includes from 'lodash/includes';
 import { skinnable, t, props, pure } from '../utils';
@@ -97,7 +98,7 @@ export default class Table extends React.Component {
     isColumnResizing: false
   };
 
-  getNode = () => React.findDOMNode(this.refs.wrapper);
+  getNode = () => ReactDOM.findDOMNode(this.refs.wrapper);
 
   componentDidMount() {
     if (this.props.autoSize) {

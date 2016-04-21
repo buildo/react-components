@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
 import { getValueLink } from '../link-state';
@@ -37,7 +38,7 @@ export default class Toggle extends React.Component {
 
   updateCheckbox = (props) => {
     const { value } = getValueLink(this, props);
-    const checkboxNode = React.findDOMNode(this.refs.checkbox);
+    const checkboxNode = ReactDOM.findDOMNode(this.refs.checkbox);
     checkboxNode.checked = value;
   };
 

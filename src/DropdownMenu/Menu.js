@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import partial from 'lodash/partial';
@@ -38,7 +39,7 @@ export default class Menu extends React.Component {
   };
 
   componentDidMount() {
-    const { top: scrollTop, height } = React.findDOMNode(this).getBoundingClientRect();
+    const { top: scrollTop, height } = ReactDOM.findDOMNode(this).getBoundingClientRect();
     const { height: wHeight } = document.documentElement.getBoundingClientRect();
     if (wHeight - (scrollTop + height) < 20) {
       this.setState({ // eslint-disable-line react/no-did-mount-set-state

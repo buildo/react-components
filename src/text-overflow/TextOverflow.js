@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
@@ -41,7 +42,7 @@ export default class TextOverflow extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const node = React.findDOMNode(this.refs.text);
+      const node = ReactDOM.findDOMNode(this.refs.text);
       if (node) {
         const styleNode = node.parentNode.parentNode;
         const { width, flex } = styleNode.style;
@@ -55,8 +56,8 @@ export default class TextOverflow extends React.Component {
 
   verifyOverflow = () => {
     if (this.state.isOverflowing === false && typeof window !== 'undefined') {
-      const text = React.findDOMNode(this.refs.text);
-      const textWithoutEllipsis = React.findDOMNode(this.refs.textWithoutEllipsis);
+      const text = ReactDOM.findDOMNode(this.refs.text);
+      const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
 
       if (text && textWithoutEllipsis) {
         const textWidth = parseFloat(window.getComputedStyle(text).width);
