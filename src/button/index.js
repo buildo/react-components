@@ -1,1 +1,2 @@
-export default from './Button';
+export default from './StatefulButton';
+export PureButton from './Button';
