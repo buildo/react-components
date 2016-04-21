@@ -39,6 +39,7 @@ $flat-background: none !default;
 $flat-border-color: transparent !default;
 $flat-border-width: 1px !default;
 $flat-color: blue !default;
+$flat-color-hover: lightblue !default;
 $flat-border-width-hover: 1px !default;
 $flat-horizontal-padding: 6px !default;
 $flat-background-hover: none !default;
@@ -128,6 +129,7 @@ $disabled-button-cursor: not-allowed !default;
     color: $flat-color;
     padding: 0 $flat-horizontal-padding !important; //!important because it should not be ovverridden by small/tiny variations
     &:hover:not(.is-not-allowed) {
+      color: $flat-color-hover;
       background: $flat-background-hover;
       border: $flat-border-width-hover solid $flat-border-color-hover;
     }
