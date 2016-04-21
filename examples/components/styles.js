@@ -8,3 +8,4 @@ require('../../src/badge/badge.scss');
 require('../../src/toggle/toggle.scss');
 require('../../src/table/table.scss');
 require('../../src/Tooltip/tooltip.scss');
+require('./button/button.scss');

@@ -1,9 +1,50 @@
 class Example extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      label: 'click me',
+      buttonState: 'ready',
+      size: 'medium',
+      fluid: false,
+      type: 'default',
+      onClick: () => new Promise((resolve, reject) => {
+        const headsOrTails = () => Math.random() > .5;
+        const resolveOrReject = () => headsOrTails() ? resolve() : reject();
+        setTimeout(resolveOrReject, 2000);
+      })
+    };
+  }
+
+  dropdownTemplate = (prop, options) => (
+    <div style={{ marginBottom: 4 }}>
+      <Dropdown
+        placeholder={`select ${prop}`}
+        options={options.map(x => ({ value: x, label: JSON.stringify(x) }))}
+        value={this.state[prop]}
+        clearable
+        onChange={x => this.setState({ [prop]: x })}
+      />
+    </div>
+  );
+
   render() {
+
     return (
-      <Button onClick={() => alert('clicked button')}>
-        Click me!
-      </Button>
+      <div>
+        <div style={{ marginBottom: 20 }}>
+          {this.dropdownTemplate('buttonState', ['ready', 'processing', 'error', 'success', 'not-allowed'])}
+          {this.dropdownTemplate('size', ['small', 'medium', 'tiny'])}
+          {this.dropdownTemplate('type', ['default', 'positive', 'negative', 'flat', 'primary'])}
+          {this.dropdownTemplate('label', ['click me', 'very very very very very very very long label', ''])}
+          {this.dropdownTemplate('icon', ['gift', 'asterisk', 'minus', 'compress', 'eye', 'fire', 'warning', 'mail', 'ban', 'arrow'])}
+          {this.dropdownTemplate('circular', [true, false])}
+          {this.dropdownTemplate('fluid', [true, false])}
+          {this.dropdownTemplate('baseState', ['ready'])}
+          {this.dropdownTemplate('style', [{ color: 'rebeccaPurple' }])}
+        </div>
+        <Button {...this.state}/>
+      </div>
     );
   }
 }
