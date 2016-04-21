@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
@@ -66,7 +67,7 @@ export default class BackgroundDimmer extends React.Component {
 
   isEventOutsideChildren = (e) => {
     const el = e.target || e.srcElement;
-    return el === React.findDOMNode(this.refs.mainContentWrapper);
+    return el === ReactDOM.findDOMNode(this.refs.mainContentWrapper);
   };
 
   onClick = (e) => {

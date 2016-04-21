@@ -37,8 +37,8 @@
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
     "react-input-children": "^1.0.0",
-    "react-select": "^0.6.1",
-    "revenge": "^0.4.1",
+    "react-select": "^0.7",
+    "revenge": "^0.4.2",
     "sass-flex-mixins": "^0.1.0",
     "tcomb-react": "^0.9.0"
   },
@@ -63,15 +63,16 @@
     "object-assign": "^4.0.1",
     "raw-loader": "^0.5.1",
     "rc-datepicker": "buildo/rc-datepicker",
-    "react": "^0.13.3 <0.14.0",
+    "react": "^0.14",
     "react-autosize-textarea": "buildo/react-autosize-textarea",
     "react-cookie-banner": "buildo/react-cookie-banner",
     "react-docgen": "2.7.0",
+    "react-dom": "^0.14",
     "react-input-children": "buildo/react-input-children",
     "react-remarkable": "^1.1.1",
-    "react-router-transition-context": "^0.13.3",
+    "react-router": "^0.13.5",
     "react-sidebar": "^1.1.0",
-    "react-vdom": "^0.5.0",
+    "react-vdom": "^0.6.2",
     "require-dir": "^0.3.0",
     "require-noop": "0.0.2",
     "sass-loader": "^3.1.2",
@@ -80,6 +81,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "peerDependencies": {
-    "react": "^0.13.3 <0.14.0"
+    "react": "^0.14",
+    "react-dom": "^0.14"
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import { warn } from '../utils/log';
 import { props, t } from '../utils';
@@ -136,7 +137,7 @@ export default class ModalManager extends React.Component {
   renderModals = () => {
     const Modal = this.getModalManager();
     const { ContextWrapper } = this;
-    React.render(<ContextWrapper>{Modal}</ContextWrapper>, this.containerNode);
+    ReactDOM.render(<ContextWrapper>{Modal}</ContextWrapper>, this.containerNode);
   };
 
   render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
 import cloneWithProps from 'react/lib/cloneWithProps';
@@ -52,7 +53,7 @@ export default class Toaster extends React.Component {
   }
 
   componentDidMount() {
-    const node = this.props.attachTo ? this.toaster : React.findDOMNode(this).parentNode;
+    const node = this.props.attachTo ? this.toaster : ReactDOM.findDOMNode(this).parentNode;
     const { position } = window.getComputedStyle(node);
     if (position !== 'relative' && position !== 'absolute') {
       warn(['Toaster\'s parent node should have "position: relative/absolute"', node]);
@@ -130,7 +131,7 @@ export default class Toaster extends React.Component {
 
   renderToaster = () => {
     if (this.props.attachTo) {
-      React.render(this.getToaster(), this.toaster);
+      ReactDOM.render(this.getToaster(), this.toaster);
     }
   };
 

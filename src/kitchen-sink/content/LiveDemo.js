@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 import Playground from 'component-playground';
 import MoreOrLess from '../../more-or-less/MoreOrLess';
 
@@ -20,21 +22,21 @@ export default class LiveDemo extends React.Component {
 
   componentDidMount() {
     if (this.props.iso) {
-      this.contentNodeISO = React.findDOMNode(this.refs.contentNodeISO);
-      this.contentNodeISO.innerHTML = React.renderToString(this.getContentISO());
-      React.render(this.getContentISO(), this.contentNodeISO);
+      this.contentNodeISO = ReactDOM.findDOMNode(this.refs.contentNodeISO);
+      this.contentNodeISO.innerHTML = ReactDOMServer.renderToString(this.getContentISO());
+      ReactDOM.render(this.getContentISO(), this.contentNodeISO);
     }
-    this.contentNode = React.findDOMNode(this.refs.contentNode);
+    this.contentNode = ReactDOM.findDOMNode(this.refs.contentNode);
     this.forceUpdate();
   }
 
   componentDidUpdate() {
-    const playground = React.findDOMNode(this.refs.playground);
+    const playground = ReactDOM.findDOMNode(this.refs.playground);
     if (playground) {
       playground.click();
     }
     if (this.props.iso) {
-      React.render(this.getContentISO(), this.contentNodeISO);
+      ReactDOM.render(this.getContentISO(), this.contentNodeISO);
     }
   }
 
@@ -44,7 +46,7 @@ export default class LiveDemo extends React.Component {
         <Example />
       </div>
     );
-    setTimeout(() => React.render(content, this.contentNode));
+    setTimeout(() => ReactDOM.render(content, this.contentNode));
   };
 
   __renderISO = (Example) => {
@@ -56,7 +58,7 @@ export default class LiveDemo extends React.Component {
         </div>
       </div>
     );
-    setTimeout(() => React.render(content, this.contentNodeISO));
+    setTimeout(() => ReactDOM.render(content, this.contentNodeISO));
   };
 
   getContentISO = () => {
