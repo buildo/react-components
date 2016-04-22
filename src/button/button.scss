@@ -82,6 +82,10 @@ $disabled-button-cursor: not-allowed !default;
   color: $color;
   border-radius: $border-radius;
 
+  .button-loading {
+    position: relative;
+  }
+
   // sub-components/sub-elements
   .icon, .loading, .label {
     margin: 0 3px;

@@ -48,10 +48,15 @@ import Button, { ButtonPropTypes } from './Button';
 @props({
   ...ButtonPropTypes,
   baseState: t.maybe(t.enums.of(['ready', 'success', 'not-allowed'])),
-  stableSuccess: t.Boolean,
-  timerMillis: t.Number
+  stableSuccess: t.maybe(t.Boolean),
+  timerMillis: t.maybe(t.Number)
 })
 export default class StatefulButton extends React.Component {
+
+  static defaultProps = {
+    stableSuccess: false,
+    timerMillis: 2000
+  };
 
   constructor(props) {
     super(props);

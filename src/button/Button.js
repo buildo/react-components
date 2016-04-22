@@ -13,19 +13,19 @@ const ButtonState = t.enums.of(buttonStates, 'ButtonState');
 export const buttonTypes = ['default', 'primary',  'positive', 'negative', 'flat'];
 const ButtonType = t.enums.of(buttonTypes, 'ButtonType');
 export const buttonSizes = ['tiny', 'small', 'medium'];
-const ButtonSize = t.enums.of(buttonSizes, 'ButtonState');
+const ButtonSize = t.enums.of(buttonSizes, 'ButtonSize');
 
 // util
 const notBoth = (a, b) => !(a && b);
-const satisfyAll = (...conditions) => (props) => every(conditions.map(condition => condition(props)));
+const satisfyAll = (...conditions) => (props) => every(conditions, c => c(props));
 
 // invariants
 const propsInvariants = [
   ({ label, icon, children }) => notBoth(label || icon, children), // notBothChildrenAndLabelOrIcon
   ({ primary, flat }) => notBoth(primary, flat), // notBothFlatAndPrimary
-  ({ fluid, circular }) => notBoth(fluid, circular), // notFluidAndCircular
+  ({ fluid, circular }) => notBoth(fluid, circular), // notBothFluidAndCircular
   ({ circular, icon, label }) => !circular || (icon && !label), // circularOnlyIfIconAndNotLabel
-  ({ type, primary, flat }) => notBoth(type, flat || primary) // notTypeAndItsShortucts
+  ({ type, primary, flat }) => notBoth(type, flat || primary) // notBothTypeAndItsShortucts
 ];
 
 export const ButtonPropTypes = {
@@ -54,11 +54,11 @@ export const ButtonPropTypes = {
   */
   type: t.maybe(ButtonType),
   /**
-  * shortcut for type
+  * shortcut for type "primary"
   */
   primary: t.maybe(t.Boolean),
   /**
-  * shortcut for type,
+  * shortcut for type "flat"
   */
   flat: t.maybe(t.Boolean),
   /**
@@ -70,7 +70,7 @@ export const ButtonPropTypes = {
   */
   fluid: t.maybe(t.Boolean),
   /**
-  * circular button, only if it's an icon only button
+  * circular button, this is allowed only if it's an icon button
   */
   circular: t.maybe(t.Boolean),
   /**
@@ -78,7 +78,7 @@ export const ButtonPropTypes = {
   */
   textOverflow: t.maybe(t.Function),
   /**
-  * custom style
+  * custom inline style
   */
   style: t.maybe(t.Object),
   /**
@@ -93,14 +93,23 @@ const defaultProps = {
   textOverflow: _TextOverflow,
   buttonState: 'ready',
   size: 'medium',
-  stableSuccess: false,
-  timerMillis: 2000,
   fluid: false,
   primary: false,
   circular: false,
   icon: '',
   className: '',
   style: {}
+};
+
+const defaultLabels = { // TODO this should be easily overriden
+  success: 'success',
+  error: 'error',
+  processing: 'processing'
+};
+
+const defaultIcons = {
+  success: 'validate',
+  error: 'exclamation'
 };
 
 @pure
@@ -110,31 +119,19 @@ export default class Button extends React.Component {
 
   static defaultProps = defaultProps;
 
+  makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
+
   getLocals() {
-
     const { size, style, textOverflow, fluid, circular, onClick, buttonState } = this.props;
-
-    const defaultLabels = { // TODO this should be easily overriden
-      success: 'success',
-      error: 'error',
-      processing: 'processing'
-    };
-
-    const defaultIcons = {
-      success: 'validate',
-      error: 'exclamation'
-    };
-
-    const makeProp = x => ( typeof x === 'string' ? { ready: x, 'not-allowed': x } : x ); // todo check if this works with children
 
     const labels = {
       ...defaultLabels,
-      ...makeProp(this.props.label || this.props.children)
+      ...this.makeProp(this.props.label || this.props.children)
     };
 
     const icons = {
       ...defaultIcons,
-      ...makeProp(this.props.icon)
+      ...this.makeProp(this.props.icon)
     };
 
     const getButtonType = () => {
@@ -175,7 +172,7 @@ export default class Button extends React.Component {
   }
 
   templateLoading = () => (
-    <FlexView className='button-loading' style={{ position: 'relative' }} shrink={false} vAlignContent='center' hAlignContent='center'>
+    <FlexView className='button-loading' shrink={false} vAlignContent='center' hAlignContent='center'>
       <LoadingSpinner size='1em' overlayColor='transparent' />
     </FlexView>
   );
