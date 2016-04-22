@@ -1,0 +1,66 @@
+@import './variables.scss';
+
+$horizontal-padding: 18px;
+$font-size: 15px;
+$height: 38px;
+$font-weight: $regular;
+$background: grey;
+$color: black;
+$border-color: black;
+$border-width: 1px;
+$border-radius: $border-radius-small;
+$font-family: 'Calibri', sans-serif;
+
+$default-background: $gradientGrey;
+$default-border-color: $coolGrey;
+$default-border-width: 1px;
+$default-color: $charcoal;
+$default-background-hover: $gradientMediumGrey;
+
+$primary-background: $gradientAquamarine;
+$primary-border-color: $lightBlue;
+$primary-border-width: 1px;
+$primary-color: $white;
+$primary-background-hover: $gradientDarkAquamarine;
+
+$positive-background: $gradientCoolGreen;
+$positive-border-color: $darkGreen;
+$positive-border-width: 1px;
+$positive-color: $white;
+$positive-background-hover: $gradientDarkCoolGreen;
+
+$negative-background: $gradientVermillion;
+$negative-border-color: $darkVermillion;
+$negative-border-width: 1px;
+$negative-color: $white;
+$negative-background-hover: $gradientDarkVermillion;
+
+$flat-background: none;
+$flat-border-color: transparent;
+$flat-border-width: 1px;
+$flat-color: $aquamarine;
+$flat-background-hover: none;
+$flat-border-color-hover: $cerulean;
+//$flat-color-hover: $cerulean;
+$flat-border-width-hover: 1px;
+$flat-horizontal-padding: 6px;
+
+$icon-button-horizontal-padding: 13px;
+$icon-button-circular-padding: 11px;
+
+$medium-height: 38px;
+$medium-horizontal-padding: 18px;
+$medium-font-size: 15px;
+
+$small-height: 30px;
+$small-horizontal-padding: 14px;
+$small-font-size: 15px;
+
+$tiny-height: 18px;
+$tiny-font-size: 13px;
+$tiny-horizontal-padding: 6px;
+
+$disabled-button-opacity: .3;
+$disabled-button-cursor: not-allowed;
+
+@import '../../../src/button/button.scss';

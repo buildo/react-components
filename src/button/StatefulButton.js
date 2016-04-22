@@ -1,10 +1,7 @@
 import React from 'react';
+import pick from 'lodash/pick';
 import { pure, skinnable, props, t } from '../utils';
-
-const buttonBaseStates = ['ready', 'not-allowed'];
-const buttonStates = buttonBaseStates.concat(['processing', 'error', 'success']);
-export const buttonBaseState = t.enums.of(buttonBaseStates, 'buttonBaseState');
-export const buttonState = t.enums.of(buttonStates, 'buttonStates');
+import Button, { ButtonPropTypes } from './Button';
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -41,18 +38,25 @@ export const buttonState = t.enums.of(buttonStates, 'buttonStates');
  *                               internalState = null
  *
  */
+
+ /**
+ * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
+ */
+
 @pure
 @skinnable()
 @props({
-  buttonState: t.maybe(buttonState),
-  baseState: t.maybe(buttonBaseState),
-  // onClick: t.func([], PromiseType),
-  onClick: t.Func,
-  stableSuccess: t.Bool,
-  children: t.Func, // TODO check usage of React.CloneElement
-  timerMillis: t.Num
+  ...ButtonPropTypes,
+  baseState: t.maybe(t.enums.of(['ready', 'success', 'not-allowed'])),
+  stableSuccess: t.maybe(t.Boolean),
+  timerMillis: t.maybe(t.Number)
 })
-export default class ButtonLogic extends React.Component {
+export default class StatefulButton extends React.Component {
+
+  static defaultProps = {
+    stableSuccess: false,
+    timerMillis: 2000
+  };
 
   constructor(props) {
     super(props);
@@ -143,16 +147,16 @@ export default class ButtonLogic extends React.Component {
   };
 
   getLocals() {
-    const { onClick, props: { children } } = this;
+    const buttonProps = pick(this.props, Object.keys(ButtonPropTypes));
     return {
-      buttonState: this.getButtonState(),
-      onClick,
-      children
+      ...buttonProps,
+      onClick: this.onClick,
+      buttonState: this.getButtonState()
     };
   }
 
-  template({ buttonState, onClick, children }) {
-    return children({ buttonState, onClick });
+  template(props) {
+    return <Button {...props} />;
   }
 
 }
