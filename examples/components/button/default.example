@@ -4,7 +4,7 @@ class Example extends React.Component {
     super(props);
     this.state = {
       label: 'click me',
-      buttonState: 'ready',
+      baseState: 'ready',
       size: 'medium',
       fluid: false,
       type: 'default',
@@ -47,7 +47,7 @@ class Example extends React.Component {
           {this.dropdownTemplate('baseState', ['ready'])}
           {this.dropdownTemplate('style', [{ color: 'rebeccaPurple' }])}
         </div>
-        <Button {...this.state}/>
+        <StatefulButton {...this.state}/>
       </div>
     );
   }
