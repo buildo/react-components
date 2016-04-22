@@ -238,7 +238,7 @@
       "desc": "Button",
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/button",
-      "component": "react-components/__TAG__/src/button/Button.js",
+      "component": "react-components/__TAG__/src/button/StatefulButton.js",
       "examples": [
         "react-components/__TAG__/examples/components/button/default.example"
       ]
