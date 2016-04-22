@@ -150,6 +150,7 @@ export default class StatefulButton extends React.Component {
     const buttonProps = pick(this.props, Object.keys(ButtonPropTypes));
     return {
       ...buttonProps,
+      onClick: this.onClick,
       buttonState: this.getButtonState()
     };
   }
