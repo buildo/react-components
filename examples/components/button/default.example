@@ -10,8 +10,12 @@ class Example extends React.Component {
       type: 'default',
       onClick: () => new Promise((resolve, reject) => {
         const headsOrTails = () => Math.random() > .5;
-        const resolveOrReject = () => headsOrTails() ? resolve() : reject();
-        setTimeout(resolveOrReject, 2000);
+        const resolveOrReject = () => {
+          const _headsOrTails = headsOrTails();
+          log(_headsOrTails ? 'resolve' : 'reject');
+          _headsOrTails ? resolve() : reject();
+        }
+        setTimeout(resolveOrReject, 200);
       })
     };
   }
@@ -20,10 +24,10 @@ class Example extends React.Component {
     <div style={{ marginBottom: 4 }}>
       <Dropdown
         placeholder={`select ${prop}`}
-        options={options.map(x => ({ value: x, label: JSON.stringify(x) }))}
-        value={this.state[prop]}
+        options={options.map(x => ({ value: String(x), label: JSON.stringify(x), originalValue: x }))}
+        value={String(this.state[prop])}
         clearable
-        onChange={x => this.setState({ [prop]: x })}
+        onChange={value => this.setState({ [prop]: find(options, v => String(v) === value) })}
       />
     </div>
   );
