@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
-import cloneWithProps from 'react/lib/cloneWithProps';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
@@ -88,7 +87,7 @@ export default class Toaster extends React.Component {
           style={this.getTranslationStyle(i)}
           key={el.key}
         >
-          {cloneWithProps(el, { uniqueKey: el.key })}
+          {React.cloneElement(el, { uniqueKey: el.key })}
         </TransitionWrapper>
       );
     });
