@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import partial from 'lodash/partial';
+import FlexView from '../flex/FlexView';
 import Divider from '../Divider/Divider';
 
 import './menu.scss';
@@ -67,14 +68,14 @@ export default class Menu extends React.Component {
 
   menuItemTemplate = (option, onOptionClick) => {
     return (
-      <div className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)}>
+      <FlexView className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)} vAlignContent='center'>
         <span className='menu-item-title'>
           {option.title}
         </span>
         <span className='menu-item-metadata'>
           {option.metadata}
         </span>
-      </div>
+      </FlexView>
     );
   };
 
