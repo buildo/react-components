@@ -33,7 +33,8 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/DropdownMenu",
       "component": "react-components/__TAG__/src/DropdownMenu/DropdownMenu.js",
       "examples": [
-        "react-components/__TAG__/examples/components/DropdownMenu/default.example"
+        "react-components/__TAG__/examples/components/DropdownMenu/default.example",
+        "react-components/__TAG__/examples/components/DropdownMenu/deep.example"
       ]
     },
     {
