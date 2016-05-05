@@ -9,6 +9,7 @@ import './dropdownMenu.scss';
 
 export const Props = {
   children: t.maybe(t.ReactChildren),
+  menuRenderer: t.maybe(t.Function),
   options: t.list(optionType),
   iconClassName: t.maybe(t.Str), // if children is passed, this is ignored
   isOpen: t.maybe(t.Bool),
@@ -96,9 +97,13 @@ export default class DropdownMenu extends React.Component {
   };
 
   templateMenu = ({ isOpen, options, height, onMenuClick }) => {
-    return (
-      isOpen ? <Menu {...{ options }} maxHeight={height} onClick={onMenuClick} /> : null
-    );
+    return isOpen ? (
+      <FlexView onClick={onMenuClick}>
+        {this.props.menuRenderer ?
+          this.props.menuRenderer(options) : <Menu options={options} style={{ maxHeight: height }} />
+        }
+      </FlexView>
+    ) : null;
   };
 
   templateOverlay = ({ isOpen, toggleMenu, dismissOnClickOut }) => {
