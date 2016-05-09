@@ -1,6 +1,5 @@
 import expect from 'expect';
 import MoreOrLess from '../../../src/more-or-less';
-import vdom from 'react-vdom';
 
 const exampleProps = {
   children: 'content',
@@ -19,10 +18,8 @@ const componentLess = new MoreOrLess({
   ...exampleProps,
   expanded: false
 });
-const domMore = vdom(componentMore);
-const domLess = vdom(componentLess);
 
-describe('MoreOrLess', function () {
+describe('MoreOrLess', () => {
 
   describe('locals', () => {
 
@@ -40,15 +37,6 @@ describe('MoreOrLess', function () {
 
       const { icon: iconLess } = componentLess.getLocals();
       expect(iconLess).toBe('angle-down');
-    });
-
-  });
-
-  describe('template', () => {
-
-    it('should render an expand button', ()  => {
-      expect(domMore.children[1].attrs.className).toInclude('expand-button');
-      expect(domLess.children[1].attrs.className).toInclude('expand-button');
     });
 
   });

@@ -1,10 +1,9 @@
 import React from 'react';
 import expect from 'expect';
-import ButtonLogic from '../../../src/button/ButtonLogic';
-import vdom from 'react-vdom';
+import StatefulButton from '../../../src/button/StatefulButton';
 import clone from 'lodash/clone';
 
-describe('ButtonLogic', () => {
+describe('StatefulButton', () => {
 
   function timeoutPromise(millis) {
     return new Promise((resolve) => {
@@ -12,14 +11,14 @@ describe('ButtonLogic', () => {
     });
   }
 
-  function mkComponent({ stableSuccess, buttonState }) {
-    const component = new ButtonLogic({
-      children: props => <button {...props} />,
+  function mkComponent(overrides) {
+    const component = new StatefulButton({
+      label: overrides.children ? undefined : 'BeautifulButton',
       onClick: timeoutPromise.bind(this, 5),
       baseState: 'ready',
-      stableSuccess: stableSuccess || false,
+      stableSuccess: false,
       timerMillis: 5,
-      buttonState
+      ...overrides
     });
     component.setState = (state, cb) => {
       component.state = state;
@@ -34,22 +33,18 @@ describe('ButtonLogic', () => {
     });
     const locals = component.getLocals();
     expect(locals.buttonState).toBe('ready');
-    expect(locals.children).toExist();
-    const dom = vdom(component);
-    expect(dom.tag).toBe('button');
-    expect(dom.attrs.buttonState).toBe('ready');
+    expect(locals.label).toBe('BeautifulButton');
   });
 
   it('should pass through state if provided as prop', () => {
     const component = mkComponent({
+      children: <button />,
       buttonState: 'error'
     });
     const locals = component.getLocals();
     expect(locals.buttonState).toBe('error');
     expect(locals.children).toExist();
-    const dom = vdom(component);
-    expect(dom.tag).toBe('button');
-    expect(dom.attrs.buttonState).toBe('error');
+    expect(locals.label).toBe(undefined);
   });
 
   describe('with unstable success state', () => {
@@ -60,10 +55,8 @@ describe('ButtonLogic', () => {
       component.componentDidMount();
       component.getLocals().onClick();
       expect(component.getLocals().buttonState).toBe('processing');
-      expect(vdom(component).attrs.buttonState).toBe('processing');
       return timeoutPromise(6).then(() => {
         expect(component.getLocals().buttonState).toBe('success');
-        expect(vdom(component).attrs.buttonState).toBe('success');
         return timeoutPromise(5);
       }).then(() => {
         expect(component.getLocals().buttonState).toBe('ready');
@@ -81,7 +74,6 @@ describe('ButtonLogic', () => {
       expect(component.getLocals().buttonState).toBe('processing');
       return timeoutPromise(6).then(() => {
         expect(component.getLocals().buttonState).toBe('success');
-        expect(vdom(component).attrs.buttonState).toBe('success');
         return timeoutPromise(5);
       }).then(() => {
         expect(component.getLocals().buttonState).toBe('success');
