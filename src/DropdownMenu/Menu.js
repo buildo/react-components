@@ -69,12 +69,12 @@ export default class Menu extends React.Component {
   menuItemTemplate = (option, onOptionClick) => {
     return (
       <FlexView className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)} vAlignContent='center'>
-        <span className='menu-item-title'>
+        <FlexView grow shrink className='menu-item-title'>
           {option.title}
-        </span>
-        <span className='menu-item-metadata'>
+        </FlexView>
+        <FlexView grow shrink={false} className='menu-item-metadata' hAlignContent='right'>
           {option.metadata}
-        </span>
+        </FlexView>
       </FlexView>
     );
   };
