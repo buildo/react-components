@@ -56,10 +56,14 @@ export default class MoreOrLess extends React.Component {
 
   template({ children, className, style, icon, toggleExpanded }) {
     return (
-      <div {...{ className, style }}>
-        {children}
-        {this.templateExpandButton({ icon, toggleExpanded })}
-      </div>
+      <FlexView {...{ className, style }} grow column>
+        <FlexView grow>
+          {children}
+        </FlexView>
+        <FlexView grow={false} shrink={false}>
+          {this.templateExpandButton({ icon, toggleExpanded })}
+        </FlexView>
+      </FlexView>
     );
   }
 }
