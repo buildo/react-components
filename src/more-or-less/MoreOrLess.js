@@ -48,6 +48,7 @@ export default class MoreOrLess extends React.Component {
         vAlignContent='center'
         className='expand-button'
         onClick={toggleExpanded}
+        shrink={false}
       >
         <Icon icon={icon} className='expand-button-icon' />
       </FlexView>
@@ -56,13 +57,9 @@ export default class MoreOrLess extends React.Component {
 
   template({ children, className, style, icon, toggleExpanded }) {
     return (
-      <FlexView {...{ className, style }} grow column>
-        <FlexView grow>
-          {children}
-        </FlexView>
-        <FlexView grow={false} shrink={false}>
-          {this.templateExpandButton({ icon, toggleExpanded })}
-        </FlexView>
+      <FlexView {...{ className, style }} column shrink={false}>
+        {children}
+        {this.templateExpandButton({ icon, toggleExpanded })}
       </FlexView>
     );
   }
