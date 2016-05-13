@@ -15,6 +15,7 @@ import FlexView from '../flex/FlexView';
     expanded: t.String,
     collapsed: t.String
   }),
+  wrapperProps: t.maybe(t.Object),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 })
@@ -26,7 +27,7 @@ export default class MoreOrLess extends React.Component {
 
   getLocals() {
     const {
-      props: { children, className, style, expanded, icons },
+      props: { children, className, style, expanded, icons, wrapperProps },
       toggleExpanded
     } = this;
 
@@ -34,10 +35,13 @@ export default class MoreOrLess extends React.Component {
     const icon = expanded ? icons.expanded : icons.collapsed;
     return {
       children,
-      style,
       icon,
       toggleExpanded,
-      className: cx('more-or-less', panelState, className)
+      wrapperProps: {
+        ...wrapperProps,
+        style,
+        className: cx('more-or-less', panelState, className)
+      }
     };
   }
 
@@ -48,18 +52,19 @@ export default class MoreOrLess extends React.Component {
         vAlignContent='center'
         className='expand-button'
         onClick={toggleExpanded}
+        shrink={false}
       >
         <Icon icon={icon} className='expand-button-icon' />
       </FlexView>
     );
   };
 
-  template({ children, className, style, icon, toggleExpanded }) {
+  template({ children, wrapperProps, icon, toggleExpanded }) {
     return (
-      <div {...{ className, style }}>
+      <FlexView column shrink={false} {...wrapperProps}>
         {children}
         {this.templateExpandButton({ icon, toggleExpanded })}
-      </div>
+      </FlexView>
     );
   }
 }
