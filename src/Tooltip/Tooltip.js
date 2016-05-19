@@ -7,11 +7,7 @@ import Popover from '../popover/Popover';
 @skinnable()
 @props({
   children: t.ReactChildren,
-  popover: t.struct({
-    content: t.String,
-    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
-    anchor: t.maybe(t.enums.of(['start', 'center', 'end']))
-  }),
+  popover: t.refinement(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
   type: t.enums.of(['light', 'dark']),
   size: t.enums.of(['small', 'big']),
   className: t.maybe(t.String),
