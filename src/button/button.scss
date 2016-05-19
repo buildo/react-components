@@ -100,7 +100,7 @@ $disabled-button-cursor: not-allowed !default;
     background: $default-background;
     border: $default-border-width solid $default-border-color;
     color: $default-color;
-    &:hover:not(.is-not-allowed) {
+    &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $default-background-hover;
     }
   }
@@ -108,7 +108,7 @@ $disabled-button-cursor: not-allowed !default;
     background: $primary-background;
     border: $primary-border-width solid $primary-border-color;
     color: $primary-color;
-    &:hover:not(.is-not-allowed) {
+    &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $primary-background-hover;
     }
   }
@@ -116,7 +116,7 @@ $disabled-button-cursor: not-allowed !default;
     background: $positive-background;
     border: $positive-border-width solid $positive-border-color;
     color: $positive-color;
-    &:hover:not(.is-not-allowed) {
+    &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $positive-background-hover;
     }
   }
@@ -124,7 +124,7 @@ $disabled-button-cursor: not-allowed !default;
     background: $negative-background;
     border: $negative-border-width solid $negative-border-color;
     color: $negative-color;
-    &:hover:not(.is-not-allowed) {
+    &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $negative-background-hover;
     }
   }
@@ -133,7 +133,7 @@ $disabled-button-cursor: not-allowed !default;
     border: $flat-border-width solid $flat-border-color;
     color: $flat-color;
     padding: 0 $flat-horizontal-padding !important; //!important because it should not be ovverridden by small/tiny variations
-    &:hover:not(.is-not-allowed) {
+    &:hover:not(.is-not-allowed):not(.is-processing) {
       color: $flat-color-hover;
       background: $flat-background-hover;
       border: $flat-border-width-hover solid $flat-border-color-hover;
@@ -178,6 +178,10 @@ $disabled-button-cursor: not-allowed !default;
   &.is-not-allowed {
     opacity: $disabled-button-opacity;
     cursor: $disabled-button-cursor;
+  }
+
+  &.is-processing {
+    cursor: default;
   }
 
 }
