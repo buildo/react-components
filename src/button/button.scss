@@ -87,10 +87,11 @@ $disabled-button-cursor: not-allowed !default;
   }
 
   // sub-components/sub-elements
-  .icon, .loading, .label {
+  .button-icon, .button-loading, .button-label {
     margin: 0 3px;
   }
-  .loading {
+  .button-loading {
+    width: 1em;
     height: 1em;
   }
 
