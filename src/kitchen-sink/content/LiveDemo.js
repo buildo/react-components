@@ -42,7 +42,7 @@ export default class LiveDemo extends React.Component {
 
   __render = (Example) => {
     const content = (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', zIndex: 100 }}>
         <Example />
       </div>
     );
@@ -53,7 +53,7 @@ export default class LiveDemo extends React.Component {
     const content = (
       <div>
         <p>ISOMORPHIC TEST</p>
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', zIndex: 100 }}>
           <Example />
         </div>
       </div>
