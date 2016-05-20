@@ -31,6 +31,7 @@ const PropTypes = {
 export default class Dropdown extends React.Component {
 
   static defaultProps = {
+    delimiter: ',',
     size: 'medium',
     disabled: false,
     searchable: false,
@@ -55,6 +56,11 @@ export default class Dropdown extends React.Component {
 
   valueToOption = (value, options) => {
     if (t.String.is(value) || t.Number.is(value)) {
+      const { multi, delimiter } = this.props;
+      if (multi) {
+        const values = String(value).split(delimiter);
+        return values.map(v => find(options, { value: v }));
+      }
       return find(options, { value });
     }
     return value;
