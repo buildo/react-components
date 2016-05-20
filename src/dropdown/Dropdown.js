@@ -5,16 +5,16 @@ import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
-const Option = t.Object; /*t.interface({
+const Option = t.interface({
   value: t.union([t.Number, t.String]),
   label: t.String
-});*/
+});
 
 const Value = t.union([Option, t.list(Option)]);
 
 export const Props = {
   value: t.maybe(Value),
-  valueLink: t.maybe(t.struct({
+  valueLink: t.maybe(t.interface({
     value: t.maybe(Value),
     requestChange: t.Function
   })),
