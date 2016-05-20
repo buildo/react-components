@@ -69,12 +69,13 @@ export default class Dropdown extends React.Component {
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
   getCustomClassNames() {
-    const { size, flat, clearable } = this.props;
+    const { size, flat, clearable, multi } = this.props;
     return cx({
       'is-medium': size === 'medium',
       'is-small': size === 'small',
       'is-flat': flat,
-      'is-clearable': clearable
+      'is-clearable': clearable,
+      'is-multi': multi
     });
   }
 
