@@ -7,13 +7,13 @@ import cx from 'classnames';
 import { warn } from '../utils/log';
 
 const PropTypes = {
-  value: t.maybe(t.union([t.Number, t.String, t.Object])),
+  value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
   valueLink: t.maybe(t.struct({
-    value: t.maybe(t.union([t.Number, t.String, t.Object])),
+    value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
     requestChange: t.Function
   })),
   onChange: t.maybe(t.Function),
-  options: t.Array,
+  options: t.list(t.Object),
   size: t.enums.of(['medium', 'small']),
   disabled: t.maybe(t.Boolean),
   searchable: t.maybe(t.Boolean),
