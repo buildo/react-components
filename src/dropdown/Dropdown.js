@@ -1,24 +1,33 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
-import find from 'lodash/find';
 import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
-const PropTypes = {
-  value: t.maybe(t.union([t.Number, t.String, t.Object])),
+const Option = t.Object; /*t.interface({
+  value: t.union([t.Number, t.String]),
+  label: t.String
+});*/
+
+const Value = t.union([Option, t.list(Option)]);
+
+export const Props = {
+  value: t.maybe(Value),
   valueLink: t.maybe(t.struct({
-    value: t.maybe(t.union([t.Number, t.String, t.Object])),
+    value: t.maybe(Value),
     requestChange: t.Function
   })),
   onChange: t.maybe(t.Function),
-  options: t.Array,
+  options: t.list(Option),
   size: t.enums.of(['medium', 'small']),
   disabled: t.maybe(t.Boolean),
   searchable: t.maybe(t.Boolean),
   clearable: t.maybe(t.Boolean),
+  onBlurResetsInput: t.maybe(t.Boolean),
+  autoBlur: t.maybe(t.Boolean),
   backspaceRemoves: t.maybe(t.Boolean),
+  escapeClearsValue: t.maybe(t.Boolean),
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   id: t.maybe(t.String),
@@ -27,7 +36,7 @@ const PropTypes = {
 };
 
 @skinnable()
-@props(PropTypes, { strict: false })
+@props(Props, { strict: false })
 export default class Dropdown extends React.Component {
 
   static defaultProps = {
@@ -35,6 +44,10 @@ export default class Dropdown extends React.Component {
     disabled: false,
     searchable: false,
     clearable: false,
+    onBlurResetsInput: true,
+    autoBlur: true,
+    backspaceRemoves: true,
+    escapeClearsValue: false,
     multi: false,
     flat: false
   }
@@ -53,16 +66,7 @@ export default class Dropdown extends React.Component {
     this.props.valueLink ? this.props.valueLink.value : this.props.value
   );
 
-  valueToOption = (value, options) => {
-    if (t.String.is(value) || t.Number.is(value)) {
-      return find(options, { value });
-    }
-    return value;
-  };
-
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
-
-  _onBlur = () => this.forceUpdate();
 
   getCustomClassNames() {
     const { size, flat, clearable } = this.props;
@@ -74,18 +78,15 @@ export default class Dropdown extends React.Component {
     });
   }
 
-  getLocals() {
-    const { className, options, backspaceRemoves, clearable, ...props } = this.props;
-
+  getLocals({ className, options, backspaceRemoves, clearable, ...props }) {
     return {
       ...omit(props, 'valueLink'),
       options,
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       className: cx('dropdown', className, this.getCustomClassNames()),
-      value: this.valueToOption(this.getValue(), options),
-      onChange: this.getOnChange(),
-      onBlur: this._onBlur
+      value: this.getValue(),
+      onChange: this.getOnChange()
     };
   }
 
