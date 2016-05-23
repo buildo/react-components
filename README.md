@@ -26,7 +26,7 @@ NOTE: If you installed it as a GitHub dependency (`npm i --save buildo/react-com
 `import { FlexView } from 'buildo-react-components/src/flex';`
 
 ### Versioning guidelines
-A new version of `b-r-c` is published every ~2 weeks with a github release containing a list of all the commits (mostly PR) merged on `master` since the previous one.
+A new version of `b-r-c` is published every ~2 weeks with a github release containing a list of all the PRs merged on `master` since the previous one.
 Each commit will marked as `Breaking`, `Fix`, `Feature`, `Docs`, `Build` (tests, examples, webpack...).
 example of a release:
 ```
