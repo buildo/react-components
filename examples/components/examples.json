@@ -46,6 +46,16 @@
       "examples": [
         "react-components/__TAG__/examples/components/Icon/default.example"
       ]
+    },{
+      "id": "modal",
+      "title": "Modal",
+      "desc": "Modal",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/Modal",
+      "component": "react-components/__TAG__/src/Modal/Modal.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/Modal/default.example"
+      ]
     },
     {
       "id": "panel",
