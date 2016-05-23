@@ -42,9 +42,20 @@ $content-title-color: #2c3a40 !default;
   }
 
   &.collapsable {
+    &.collapsed:hover .panel-header .panel-header-title-wrapper .expand-icon {
+      color: $expand-icon-color-hover;
+    }
+    &.collapsed .panel-header {
+      padding: 0;
+      .panel-header-title-wrapper {
+        width: 100%;
+        .expand-icon {
+          margin-right: 0;
+        }
+      }
+    }
     > .panel-header .panel-header-title-wrapper {
       cursor: pointer;
-
       .expand-icon {
         font-size: 20px;
         color: $expand-icon-color;
@@ -135,6 +146,9 @@ $content-title-color: #2c3a40 !default;
   }
 
   &.collapsed.collapse-right, &.collapsed.collapse-left {
+    .panel-content {
+      cursor: pointer;
+    }
     .panel-content-title {
       position: absolute;
       margin-top: 10px;
