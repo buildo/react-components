@@ -1,0 +1,61 @@
+@import '../utils/theme/variables.scss';
+
+$close-icon-color: $pearl !default;
+$close-icon-hover-color: $charcoal !default;
+$close-icon-size: 15px !default;
+$body-color: $charcoal !default;
+$font-weight-regular: 400;
+
+.modal {
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0; right: 0; bottom: 0; left: 0;
+
+  .modal-content {
+    min-width: 520px;
+    background-color: $white;
+    border-radius: 4px;
+
+    .modal-header {
+      min-height: 52px;
+      padding: 0 15px;
+      position: relative;
+      border-bottom: 1px solid $pearl;
+
+      .modal-title {
+        text-transform: uppercase;
+        font-size: 22px;
+        margin: 0;
+
+        &.with-close-icon {
+          margin-right: 15px;
+        }
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 50%;
+        font-size: $close-icon-size;
+        margin-top: -$close-icon-size/2;
+        right: 15px;
+        color: $close-icon-color;
+
+        cursor: pointer;
+
+        &:hover {
+          color: $close-icon-hover-color;
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 43px 15px;
+      font-size: 15px;
+      color: $body-color;
+      font-weight: $font-weight-regular;
+    }
+
+  }
+}
