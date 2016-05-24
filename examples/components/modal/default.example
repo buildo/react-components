@@ -8,7 +8,7 @@ class Example extends React.Component {
   render() {
     return (
       <Modal dismissOnClickOut
-        onDismiss={(e) => { console.log('e', e);}}
+        onDismiss={(e) => { log('e', e);}}
       >
         <button>My button</button>
       </Modal>

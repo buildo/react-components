@@ -51,10 +51,10 @@
       "title": "Modal",
       "desc": "Modal",
       "repo": "react-components",
-      "url": "https://github.com/buildo/react-components/tree/master/src/Modal",
-      "component": "react-components/__TAG__/src/Modal/Modal.js",
+      "url": "https://github.com/buildo/react-components/tree/master/src/modal",
+      "component": "react-components/__TAG__/src/modal/Modal.js",
       "examples": [
-        "react-components/__TAG__/examples/components/Modal/default.example"
+        "react-components/__TAG__/examples/components/modal/default.example"
       ]
     },
     {
