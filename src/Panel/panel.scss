@@ -42,18 +42,33 @@ $content-title-color: #2c3a40 !default;
   }
 
   &.collapsable {
-    > .panel-header .panel-header-title-wrapper {
-      cursor: pointer;
+    &.collapsed {
+      &:hover {
+        cursor: pointer;
 
-      .expand-icon {
-        font-size: 20px;
-        color: $expand-icon-color;
-        margin-right: 3px;
+        > .panel-header .panel-header-title-wrapper .expand-icon {
+          color: $expand-icon-color-hover;
+        }
       }
+    }
 
-      &:hover .expand-icon {
-        color: $expand-icon-color-hover;
+    &.expanded {
+      > .panel-header .panel-header-title-wrapper {
+        cursor: pointer;
+
+        .expand-icon {
+          margin-right: 3px;
+        }
+
+        &:hover .expand-icon {
+          color: $expand-icon-color-hover;
+        }
       }
+    }
+
+    > .panel-header .panel-header-title-wrapper .expand-icon {
+      color: $expand-icon-color;
+      font-size: 20px;
     }
   }
 
@@ -135,6 +150,9 @@ $content-title-color: #2c3a40 !default;
   }
 
   &.collapsed.collapse-right, &.collapsed.collapse-left {
+    .panel-content {
+      cursor: pointer;
+    }
     .panel-content-title {
       position: absolute;
       margin-top: 10px;

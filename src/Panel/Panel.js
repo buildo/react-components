@@ -172,7 +172,7 @@ export default class Panel extends React.Component {
 
   template({ header, children, loading, softLoading, className, style, isExpanded, toggleExpanded, verticalDirection }) {
     return (
-      <FlexView className={className} grow style={style} column>
+      <FlexView className={className} grow style={style} column onClick={!isExpanded && toggleExpanded}>
         {this.templateSoftLoading({ softLoading, isExpanded })}
         {this.templateHeader({ header, isExpanded, toggleExpanded })}
         {isExpanded ?
