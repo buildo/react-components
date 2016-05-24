@@ -46,12 +46,16 @@ $content-title-color: #2c3a40 !default;
       color: $expand-icon-color-hover;
     }
     &.collapsed .panel-header {
-      padding: 0;
       .panel-header-title-wrapper {
-        width: 100%;
         .expand-icon {
           margin-right: 0;
         }
+      }
+    }
+    &.collapsed:hover {
+      cursor: pointer;
+      .expand-icon {
+        color: $expand-icon-color-hover;
       }
     }
     > .panel-header .panel-header-title-wrapper {
@@ -62,9 +66,6 @@ $content-title-color: #2c3a40 !default;
         margin-right: 3px;
       }
 
-      &:hover .expand-icon {
-        color: $expand-icon-color-hover;
-      }
     }
   }
 

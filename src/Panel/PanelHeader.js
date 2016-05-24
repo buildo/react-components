@@ -66,7 +66,7 @@ export default class PanelHeader extends React.Component {
 
   templateTitle = ({ renderTitle, title, renderExpandIcon, collapse }) => {
     return (
-      <FlexView vAlignContent='center' hAlignContent='center' shrink={false} onClick={renderExpandIcon && collapse.onToggleExpanded} className='panel-header-title-wrapper'>
+      <FlexView vAlignContent='center' shrink={false} onClick={renderExpandIcon && collapse.isExpanded && collapse.onToggleExpanded} className='panel-header-title-wrapper'>
         {renderExpandIcon && this.templateExpandIcon({ collapse })}
         {renderTitle && <FlexView className='panel-header-title'>{title}</FlexView>}
       </FlexView>
