@@ -42,30 +42,33 @@ $content-title-color: #2c3a40 !default;
   }
 
   &.collapsable {
-    &.collapsed:hover .panel-header .panel-header-title-wrapper .expand-icon {
-      color: $expand-icon-color-hover;
-    }
-    &.collapsed .panel-header {
-      .panel-header-title-wrapper {
-        .expand-icon {
-          margin-right: 0;
+    &.collapsed {
+      &:hover {
+        cursor: pointer;
+
+        > .panel-header .panel-header-title-wrapper .expand-icon {
+          color: $expand-icon-color-hover;
         }
       }
     }
-    &.collapsed:hover {
-      cursor: pointer;
-      .expand-icon {
-        color: $expand-icon-color-hover;
+
+    &.expanded {
+      > .panel-header .panel-header-title-wrapper {
+        cursor: pointer;
+
+        .expand-icon {
+          margin-right: 3px;
+        }
+
+        &:hover .expand-icon {
+          color: $expand-icon-color-hover;
+        }
       }
     }
-    > .panel-header .panel-header-title-wrapper {
-      cursor: pointer;
-      .expand-icon {
-        font-size: 20px;
-        color: $expand-icon-color;
-        margin-right: 3px;
-      }
 
+    > .panel-header .panel-header-title-wrapper .expand-icon {
+      color: $expand-icon-color;
+      font-size: 20px;
     }
   }
 
