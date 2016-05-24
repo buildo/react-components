@@ -16,7 +16,7 @@ class Example extends React.Component {
       header: {
         title: 'Collapsable panel!',
         collapse: {
-          direction: 'up',
+          direction: 'left',
           onExpand,
           onCollapse,
           isCollapsed
@@ -26,11 +26,13 @@ class Example extends React.Component {
     }
 
     return (
-      <Panel {...panelProps} style={{ height: 240 }}>
-        <div className='my-panel-content' style={{ height: 100 }}>
-          <p>HELLO!</p>
-        </div>
-      </Panel>
+      <FlexView width={isCollapsed ? 30 : undefined}>
+        <Panel {...panelProps} style={{ height: 240 }}>
+          <div className='my-panel-content' style={{ height: 100 }}>
+            <p>HELLO!</p>
+          </div>
+        </Panel>
+      </FlexView>
     );
   }
 
