@@ -4,6 +4,7 @@ import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
+import ResizeSensor from '../resize-sensor/ResizeSensor';
 
 /**
  * ### Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
@@ -28,9 +29,17 @@ export default class TextOverflow extends React.Component {
     this.state = { isOverflowing: false };
   }
 
-  componentDidMount = () => setTimeout(this.verifyOverflow);
+  componentDidMount() {
+    this.timeout = setTimeout(this.verifyOverflow);
+  }
 
-  componentDidUpdate = () => setTimeout(this.verifyOverflow);
+  componentDidUpdate() {
+    this.timeout = setTimeout(this.verifyOverflow);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.label !== this.props.label) {
@@ -54,21 +63,28 @@ export default class TextOverflow extends React.Component {
     });
   };
 
-  verifyOverflow = () => {
-    if (this.state.isOverflowing === false && typeof window !== 'undefined') {
+  getElementWidth = element => {
+    if (element && typeof window !== 'undefined') {
+      return parseFloat(window.getComputedStyle(element).width);
+    }
+    return null;
+  };
+
+  verifyOverflow = (force) => {
+    if ((this.state.isOverflowing === false || force) && typeof window !== 'undefined') {
       const text = ReactDOM.findDOMNode(this.refs.text);
       const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
 
-      if (text && textWithoutEllipsis) {
-        const textWidth = parseFloat(window.getComputedStyle(text).width);
-        const textWithoutEllipsisWidth = parseFloat(window.getComputedStyle(textWithoutEllipsis).width);
+      const textWidth = this.getElementWidth(text);
+      const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
 
-        const isOverflowing = (textWidth < textWithoutEllipsisWidth);
-        if (isOverflowing) {
-          this.setState({ isOverflowing: true }, this.logWarnings);
-        } else {
-          this.logWarnings();
-        }
+      const isOverflowing = (textWidth < textWithoutEllipsisWidth);
+      if (isOverflowing) {
+        this.setState({ isOverflowing: true }, this.logWarnings);
+      } else if (force) {
+        this.setState({ isOverflowing: false }, this.logWarnings);
+      } else {
+        this.logWarnings();
       }
     }
   };
@@ -90,7 +106,9 @@ export default class TextOverflow extends React.Component {
     };
     return (
       <div>
-        <span ref='text' style={styleText}>{label}</span>
+        <ResizeSensor onResize={() => this.verifyOverflow(true)}>
+          <span ref='text' style={styleText}>{label}</span>
+        </ResizeSensor>
         <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
       </div>
     );
