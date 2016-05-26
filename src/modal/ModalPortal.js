@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTransitionGroup from 'react/lib/ReactTransitionGroup';
+import ReactTransitionGroup from 'react-addons-transition-group';
 import { props, t } from '../utils';
 import TransitionWrapper from '../transition-wrapper';
 
