@@ -66,7 +66,7 @@ export default class ModalPortal extends React.Component { //eslint-disable-line
           <TransitionWrapper
             key={0}
             className={className}
-            onLeave={() => this._cleanup()}
+            onLeave={() => setTimeout(this._cleanup)}
             transitionEnterTimeout={transitionEnterTimeout}
             transitionLeaveTimeout={transitionLeaveTimeout}
           >
