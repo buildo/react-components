@@ -11,4 +11,6 @@ require('../../src/Tooltip/tooltip.scss');
 require('../../src/Panel/panel.scss');
 require('../../src/Panel/panelMenu.scss');
 require('../../src/Panel/tabbedPanel.scss');
+require('../../src/modal/modal.scss');
 require('./button/button.scss');
+require('./modal/transition.scss');
