@@ -6,7 +6,7 @@ import FlexView from '../flex/FlexView';
 @pure
 @skinnable()
 @props({
-  label: t.union([t.String, t.Number]),
+  label: t.ReactChildren,
   active: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
