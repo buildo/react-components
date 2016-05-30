@@ -44,7 +44,7 @@ export default class LiveDemo extends React.Component {
     (new Example()).render(); // let Playground catch eventual errors in "Example.render"
 
     const content = (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', zIndex: 100 }}>
         <Example />
       </div>
     );
@@ -57,7 +57,7 @@ export default class LiveDemo extends React.Component {
     const content = (
       <div>
         <p>ISOMORPHIC TEST</p>
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', zIndex: 100 }}>
           <Example />
         </div>
       </div>
