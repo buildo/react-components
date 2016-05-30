@@ -5,6 +5,7 @@
     "it": true,
   },
   "rules": {
-    "no-use-before-define": 0
+    "no-use-before-define": 0,
+    "max-len": 0
   }
 }
