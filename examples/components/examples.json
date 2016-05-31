@@ -323,6 +323,17 @@
       "examples": [
         "react-components/__TAG__/examples/components/focusable-view/default.example"
       ]
+    },
+    {
+      "id": "resize-sensor",
+      "title": "ResizeSensor",
+      "desc": "ResizeSensor",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/resize-sensor",
+      "component": "react-components/__TAG__/src/resize-sensor/ResizeSensor.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/resize-sensor/default.example"
+      ]
     }
   ]
 }
