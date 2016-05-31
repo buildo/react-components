@@ -10,7 +10,7 @@ import sections from './components';
 import '../src/kitchen-sink/style.scss';
 
 const scope = {
-  React,
+  React, ReactDOM,
   t,
   log: (x) => console.log(x), // eslint-disable-line no-console
   ...lodash,
