@@ -150,7 +150,8 @@
       "examples": [
         "react-components/__TAG__/examples/components/text-overflow/Default.example",
         "react-components/__TAG__/examples/components/text-overflow/CustomPopover.example",
-        "react-components/__TAG__/examples/components/text-overflow/WithFlexView.example"
+        "react-components/__TAG__/examples/components/text-overflow/WithFlexView.example",
+        "react-components/__TAG__/examples/components/text-overflow/Resizable.example"
       ]
     },
     {
