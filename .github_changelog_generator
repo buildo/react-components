@@ -1,0 +1,6 @@
+bug-labels=bug,defect
+bugs-label=Fixes (bugs & defects):
+issues-label=New features:
+enhancement-label=Breaking:
+enhancement-labels=breaking
+pull-requests=false
