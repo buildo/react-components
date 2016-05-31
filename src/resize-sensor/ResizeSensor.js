@@ -12,35 +12,19 @@ import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 export default class ResizeSensor extends React.Component {
 
   attachResizeSensor = () => {
-    this.resizeSensor = new _ResizeSensor(
-      ReactDOM.findDOMNode(this),
-      this.onResize
-    );
-  }
-
-  detachResizeSensor = () => {
-    this.resizeSensor.detach(ReactDOM.findDOMNode(this));
-  }
-
-  updateResizeSensor = () => {
-    if (this.resizeSensor) {
-      this.detachResizeSensor();
+    const element = ReactDOM.findDOMNode(this);
+    if (!element.resizedAttached) {
+      this.resizeSensor = new _ResizeSensor(element, this.onResize);
     }
-    this.attachResizeSensor();
   }
 
   componentDidMount() {
     _ElementQueries.listen();
-    this.updateResizeSensor();
+    this.attachResizeSensor();
   }
 
   componentDidUpdate() {
-    this.updateResizeSensor();
-  }
-
-  componentWillUnmount() {
-    this.detachResizeSensor();
-    this.resizeSensor = null;
+    this.attachResizeSensor();
   }
 
   onResize = () => this.props.onResize()
