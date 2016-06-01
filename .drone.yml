@@ -35,7 +35,7 @@ build:
           git config --global user.email "our-bots@buildo.io";
           git checkout $$BRANCH;
           git add CHANGELOG.md;
-          git commit -m "Update CHANGELOG.md";
+          git commit -m "Update CHANGELOG.md [skip ci]";
           git push origin $$BRANCH;
         fi
     when:
