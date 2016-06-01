@@ -1,4 +1,4 @@
-[![Build Status](https://drone.our.buildo.io/api/badges/buildo/react-components/status.svg)](https://drone.our.buildo.io/buildo/react-components)
+[![Build Status](https://drone.our.buildo.io/api/badges/buildo/react-components/status.svg)](https://drone.our.buildo.io/buildo/react-components) [![GitHub tag](https://img.shields.io/github/tag/buildo/react-components.svg)](https://github.com/buildo/react-components/releases)
 
 # React Components
 This is a collection of reusable React components used at [buildo](http://buildo.io/).
