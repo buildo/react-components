@@ -30,15 +30,11 @@ export default class TextOverflow extends React.Component {
   }
 
   componentDidMount() {
-    this.timeout = setTimeout(this.verifyOverflow);
+    this.verifyOverflow();
   }
 
   componentDidUpdate() {
-    this.timeout = setTimeout(this.verifyOverflow);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
+    this.verifyOverflow();
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -75,16 +71,18 @@ export default class TextOverflow extends React.Component {
       const text = ReactDOM.findDOMNode(this.refs.text);
       const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
 
-      const textWidth = this.getElementWidth(text);
-      const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
+      if (text && textWithoutEllipsis) {
+        const textWidth = this.getElementWidth(text);
+        const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
 
-      const isOverflowing = (textWidth < textWithoutEllipsisWidth);
-      if (isOverflowing) {
-        this.setState({ isOverflowing: true }, this.logWarnings);
-      } else if (force) {
-        this.setState({ isOverflowing: false }, this.logWarnings);
-      } else {
-        this.logWarnings();
+        const isOverflowing = (textWidth < textWithoutEllipsisWidth);
+        if (isOverflowing) {
+          this.setState({ isOverflowing: true }, this.logWarnings);
+        } else if (force) {
+          this.setState({ isOverflowing: false }, this.logWarnings);
+        } else {
+          this.logWarnings();
+        }
       }
     }
   };
