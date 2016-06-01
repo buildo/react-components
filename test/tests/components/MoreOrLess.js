@@ -24,10 +24,10 @@ describe('MoreOrLess', () => {
   describe('locals', () => {
 
     it('should compute className', ()  => {
-      const { className: classNameMore } = componentMore.getLocals();
+      const { wrapperProps: { className: classNameMore } } = componentMore.getLocals();
       expect(classNameMore).toBe('more-or-less more fancy-class-name');
 
-      const { className: classNameLess } = componentLess.getLocals();
+      const { wrapperProps: { className: classNameLess } } = componentLess.getLocals();
       expect(classNameLess).toBe('more-or-less less fancy-class-name');
     });
 
