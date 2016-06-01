@@ -1,8 +1,8 @@
 import expect from 'expect';
-import Meter, { Props } from '../../../src/meter';
+import Meter from '../../../src/meter';
 import { newComponent } from '../helpers';
 
-describe('Meter', function () {
+describe('Meter', () => {
   describe('locals', () => {
 
     const exampleProps = {
@@ -39,7 +39,7 @@ describe('Meter', function () {
     it('should compute className', ()  => {
       const { className } = componentMeter.getLocals();
       expect(className).toInclude('meter');
-      expect(className).toInclude('fancy-class-name')
+      expect(className).toInclude('fancy-class-name');
     });
 
     it('should use labelFormatter correctly', ()  => {
@@ -97,7 +97,7 @@ describe('Meter', function () {
       expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
     });
 
-    it(`background color should be the base color if there's no matching range`, ()  => {
+    it('background color should be the base color if there\'s no matching range', ()  => {
       const meter = newComponent(Meter, {
         value: 20,
         baseFillingColor: '#ccc',
@@ -109,7 +109,7 @@ describe('Meter', function () {
       expect(fillingStyle.backgroundColor).toBe(baseFillingColor);
     });
 
-    it(`background color should be not defined if there's no matching range and no default is given`, ()  => {
+    it('background color should be not defined if there\'s no matching range and no default is given', ()  => {
       const meter = newComponent(Meter, {
         value: 20,
         ranges: [
