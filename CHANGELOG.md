@@ -8,6 +8,10 @@ Fixes (bugs & defects):
 
 - \[ResizeSensor\] not isomorphic [\#451](https://github.com/buildo/react-components/issues/451)
 
+New features:
+
+- \[Modal\] Create a standalone Modal component [\#432](https://github.com/buildo/react-components/issues/432)
+
 ## [v0.4.1](https://github.com/buildo/react-components/tree/v0.4.1) (2016-06-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/hail-0...v0.4.1)
 
