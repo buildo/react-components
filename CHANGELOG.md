@@ -4,24 +4,24 @@
 
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...HEAD)
 
-Fixes (bugs & defects):
+#### Fixes (bugs & defects):
 
 - \[ResizeSensor\] not isomorphic [\#451](https://github.com/buildo/react-components/issues/451)
 
-New features:
+#### New features:
 
 - \[Modal\] Create a standalone Modal component [\#432](https://github.com/buildo/react-components/issues/432)
-- \[tests\] add tests back on CI [\#404](https://github.com/buildo/react-components/issues/404)
+- \[Dropdown\] Add Unit Test [\#344](https://github.com/buildo/react-components/issues/344)
 
 ## [v0.4.1](https://github.com/buildo/react-components/tree/v0.4.1) (2016-06-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/hail-0...v0.4.1)
 
-Breaking:
+#### Breaking:
 
 - remove `dropdown/DropdownMenu` [\#441](https://github.com/buildo/react-components/issues/441)
 - \[MoreOrLess\] MoreOrLess should use flexbox to render its children properly [\#420](https://github.com/buildo/react-components/issues/420)
 
-Fixes (bugs & defects):
+#### Fixes (bugs & defects):
 
 - \[ResizeSensor\] throw error on detach [\#447](https://github.com/buildo/react-components/issues/447)
 - \[TextOverflow\] Should update also on parent resize [\#436](https://github.com/buildo/react-components/issues/436)
@@ -47,7 +47,7 @@ Fixes (bugs & defects):
 - getChildrenProps in DropDown doesn't work as expected [\#299](https://github.com/buildo/react-components/issues/299)
 - \[BackgroundDimmer\] [\#266](https://github.com/buildo/react-components/issues/266)
 
-New features:
+#### New features:
 
 - \[TextOverflow\] remove setTimeouts [\#449](https://github.com/buildo/react-components/issues/449)
 - implement ResizeSensor component [\#445](https://github.com/buildo/react-components/issues/445)
@@ -92,14 +92,13 @@ New features:
 ## [hail-0](https://github.com/buildo/react-components/tree/hail-0) (2016-02-25)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.0...hail-0)
 
-Fixes (bugs & defects):
+#### Fixes (bugs & defects):
 
-- \[eslint\] Resolve eslint errors due to recent rules update [\#301](https://github.com/buildo/react-components/issues/301)
 - \[Panel\] Panel should have shrink=false for all its children [\#296](https://github.com/buildo/react-components/issues/296)
 - \[Button\] no check before invoke setState\(\) for still mounted component [\#280](https://github.com/buildo/react-components/issues/280)
 - publish on npm [\#1](https://github.com/buildo/react-components/issues/1)
 
-New features:
+#### New features:
 
 - not sortable columns should have header with cursor default [\#321](https://github.com/buildo/react-components/issues/321)
 - ColumnGroupHeader should be fixed for fixed columns [\#320](https://github.com/buildo/react-components/issues/320)
@@ -118,13 +117,13 @@ New features:
 ## [v0.4.0](https://github.com/buildo/react-components/tree/v0.4.0) (2016-02-17)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.3.1...v0.4.0)
 
-Fixes (bugs & defects):
+#### Fixes (bugs & defects):
 
 - \[Panel\] Panel Header should have overflow: hidden as default [\#287](https://github.com/buildo/react-components/issues/287)
 - \[Table\] Suppress warnings due to footerDataGetter [\#276](https://github.com/buildo/react-components/issues/276)
 - \[FlexView\] in Safari FlexView has wrong size [\#132](https://github.com/buildo/react-components/issues/132)
 
-New features:
+#### New features:
 
 - Add rules on lint disable comments [\#291](https://github.com/buildo/react-components/issues/291)
 - Reset hover on table rows hover [\#289](https://github.com/buildo/react-components/issues/289)
@@ -150,7 +149,7 @@ New features:
 ## [v0.3.1](https://github.com/buildo/react-components/tree/v0.3.1) (2016-02-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.3.0...v0.3.1)
 
-New features:
+#### New features:
 
 - add ScrollView.onScroll prop [\#239](https://github.com/buildo/react-components/issues/239)
 - use react event listeners in ScrollView [\#237](https://github.com/buildo/react-components/issues/237)
@@ -200,12 +199,12 @@ New features:
 ## [v0.3.0](https://github.com/buildo/react-components/tree/v0.3.0) (2016-01-11)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.2.1...v0.3.0)
 
-Fixes (bugs & defects):
+#### Fixes (bugs & defects):
 
 - \[FlexView\] shrink={false} doesn't work [\#124](https://github.com/buildo/react-components/issues/124)
 - \[TextOverflow\] TextOverflow is too fragile and risky [\#117](https://github.com/buildo/react-components/issues/117)
 
-New features:
+#### New features:
 
 - add revenge components [\#150](https://github.com/buildo/react-components/issues/150)
 - \[showroom\] evaluate how to move stuff from revenge to buildo [\#147](https://github.com/buildo/react-components/issues/147)
@@ -240,7 +239,7 @@ New features:
 ## [v0.2.1](https://github.com/buildo/react-components/tree/v0.2.1) (2015-11-09)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.2.0...v0.2.1)
 
-New features:
+#### New features:
 
 - custom sass importer to resolve ~ to node\_modules/ [\#83](https://github.com/buildo/react-components/issues/83)
 - better import of sass-flex-mixins [\#81](https://github.com/buildo/react-components/issues/81)
@@ -253,7 +252,7 @@ New features:
 ## [v0.2.0](https://github.com/buildo/react-components/tree/v0.2.0) (2015-10-23)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.8...v0.2.0)
 
-New features:
+#### New features:
 
 - Popover crashes if isOpen={true} from start [\#71](https://github.com/buildo/react-components/issues/71)
 - \[Popover\] - Statelessness [\#64](https://github.com/buildo/react-components/issues/64)
@@ -268,21 +267,21 @@ New features:
 ## [v0.1.7](https://github.com/buildo/react-components/tree/v0.1.7) (2015-10-08)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.6...v0.1.7)
 
-New features:
+#### New features:
 
 - Explicit react in peerDependencies [\#57](https://github.com/buildo/react-components/issues/57)
 
 ## [v0.1.6](https://github.com/buildo/react-components/tree/v0.1.6) (2015-10-08)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.5...v0.1.6)
 
-New features:
+#### New features:
 
 - Shrinkwrap [\#55](https://github.com/buildo/react-components/issues/55)
 
 ## [v0.1.5](https://github.com/buildo/react-components/tree/v0.1.5) (2015-10-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.4...v0.1.5)
 
-New features:
+#### New features:
 
 - \[Popover\] rename misleading type props "absolute" and "relative" [\#49](https://github.com/buildo/react-components/issues/49)
 - add simple export tests [\#43](https://github.com/buildo/react-components/issues/43)
@@ -291,14 +290,14 @@ New features:
 ## [v0.1.4](https://github.com/buildo/react-components/tree/v0.1.4) (2015-09-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.3...v0.1.4)
 
-New features:
+#### New features:
 
 - remove basis=100% default when auto or shrink are set [\#46](https://github.com/buildo/react-components/issues/46)
 
 ## [v0.1.3](https://github.com/buildo/react-components/tree/v0.1.3) (2015-09-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.2...v0.1.3)
 
-New features:
+#### New features:
 
 - add shrink to FlexView [\#16](https://github.com/buildo/react-components/issues/16)
 
@@ -311,7 +310,7 @@ New features:
 ## [v0.1.0](https://github.com/buildo/react-components/tree/v0.1.0) (2015-09-02)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.7...v0.1.0)
 
-New features:
+#### New features:
 
 - Add Popover from labonline \(semantic free!\) [\#39](https://github.com/buildo/react-components/issues/39)
 - add "events" object prop and pass it to first child [\#33](https://github.com/buildo/react-components/issues/33)
@@ -324,14 +323,14 @@ New features:
 ## [v0.0.7](https://github.com/buildo/react-components/tree/v0.0.7) (2015-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.6...v0.0.7)
 
-New features:
+#### New features:
 
 - package import is too verbose [\#24](https://github.com/buildo/react-components/issues/24)
 
 ## [v0.0.6](https://github.com/buildo/react-components/tree/v0.0.6) (2015-08-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.5...v0.0.6)
 
-New features:
+#### New features:
 
 - add LoadingSpinner from LOL [\#21](https://github.com/buildo/react-components/issues/21)
 - Add FlexView to KitchenSink [\#8](https://github.com/buildo/react-components/issues/8)
@@ -339,7 +338,7 @@ New features:
 ## [v0.0.5](https://github.com/buildo/react-components/tree/v0.0.5) (2015-08-11)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.4...v0.0.5)
 
-New features:
+#### New features:
 
 - update react-select [\#18](https://github.com/buildo/react-components/issues/18)
 - \[FlexView\] add centerHorizontally to FlexView [\#14](https://github.com/buildo/react-components/issues/14)
@@ -347,14 +346,14 @@ New features:
 ## [v0.0.4](https://github.com/buildo/react-components/tree/v0.0.4) (2015-07-21)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.3...v0.0.4)
 
-New features:
+#### New features:
 
 - FlexView.grow should be either number or bool [\#12](https://github.com/buildo/react-components/issues/12)
 
 ## [v0.0.3](https://github.com/buildo/react-components/tree/v0.0.3) (2015-07-21)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.2...v0.0.3)
 
-New features:
+#### New features:
 
 - wooops \(restore webbpack.build\) [\#10](https://github.com/buildo/react-components/issues/10)
 - add FlexView [\#6](https://github.com/buildo/react-components/issues/6)
@@ -362,7 +361,7 @@ New features:
 ## [v0.0.2](https://github.com/buildo/react-components/tree/v0.0.2) (2015-07-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.1...v0.0.2)
 
-New features:
+#### New features:
 
 - remove semantic from popover [\#2](https://github.com/buildo/react-components/issues/2)
 
