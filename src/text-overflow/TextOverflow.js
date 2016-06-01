@@ -30,15 +30,11 @@ export default class TextOverflow extends React.Component {
   }
 
   componentDidMount() {
-    this.timeout = setTimeout(this.verifyOverflow);
+    this.verifyOverflow();
   }
 
   componentDidUpdate() {
-    this.timeout = setTimeout(this.verifyOverflow);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
+    this.verifyOverflow();
   }
 
   componentWillReceiveProps = (nextProps) => {
