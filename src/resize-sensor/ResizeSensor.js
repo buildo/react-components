@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { props, t } from '../utils';
-import _ElementQueries from 'css-element-queries/src/ElementQueries';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 @props({
@@ -17,13 +16,26 @@ export default class ResizeSensor extends React.Component {
     }
   }
 
+  initElementQueries = () => {
+    if (!this.elementQueries) {
+      require('css-element-queries/src/ElementQueries').listen();
+      this.elementQueries = true;
+    }
+  }
+
+  updateSensorAndQueries = () => {
+    if (typeof window !== 'undefined') {
+      this.initElementQueries();
+      this.attachResizeSensor();
+    }
+  }
+
   componentDidMount() {
-    _ElementQueries.listen();
-    this.attachResizeSensor();
+    this.updateSensorAndQueries();
   }
 
   componentDidUpdate() {
-    this.attachResizeSensor();
+    this.updateSensorAndQueries();
   }
 
   onResize = () => this.props.onResize()
