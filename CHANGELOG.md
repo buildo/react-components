@@ -11,6 +11,7 @@ Fixes (bugs & defects):
 New features:
 
 - \[Modal\] Create a standalone Modal component [\#432](https://github.com/buildo/react-components/issues/432)
+- \[tests\] add tests back on CI [\#404](https://github.com/buildo/react-components/issues/404)
 
 ## [v0.4.1](https://github.com/buildo/react-components/tree/v0.4.1) (2016-06-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/hail-0...v0.4.1)
