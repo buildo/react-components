@@ -36,6 +36,10 @@ const PropTypes = {
    * duration of leave transition in milliseconds
    */
   transitionLeaveTimeout: t.Number,
+  /**
+   * callback for componentDidLeave: useful if you need to do some cleanup
+   */
+  onLeave: t.maybe(t.Function),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
@@ -46,7 +50,8 @@ export default class TransitionWrapper extends React.Component {
   static defaultProps = {
     transitionStyles: {},
     style: {},
-    component: 'div'
+    component: 'div',
+    onLeave: () => {}
   };
 
   _replaceState = (state) => {
@@ -84,6 +89,8 @@ export default class TransitionWrapper extends React.Component {
   componentWillLeave = (callback) => (
     this.startAnimation('leave', this.props.transitionLeaveTimeout, callback)
   );
+
+  componentDidLeave = () => this.props.onLeave()
 
   getStyle = () => {
     const { style } = this.props;
