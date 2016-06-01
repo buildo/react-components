@@ -9,6 +9,8 @@ class ContextWrapper extends React.Component {
   render = () => this.props.modal();
 }
 
+let containerNode = null;
+
 export const Props = {
   children: t.ReactChildren,
   transitionEnterTimeout: t.Number,
@@ -38,21 +40,23 @@ export default class ModalPortal extends React.Component { //eslint-disable-line
   }
 
   _cleanup() {
-    if (this.containerNode) {
-      ReactDOM.unmountComponentAtNode(this.containerNode);
-      document.body.removeChild(this.containerNode);
-      this.containerNode = null;
+    if (containerNode) {
+      ReactDOM.unmountComponentAtNode(containerNode);
+      document.body.removeChild(containerNode);
+      containerNode = null;
     }
   }
 
+  _onLeave = () => setTimeout(this._cleanup) // setTimeout is needed to avoid conflicts with ReactTransitionGroup setState
+
   _render() {
-    if (!this.containerNode) {
-      this.containerNode = document.createElement('div');
-      document.body.appendChild(this.containerNode);
+    if (!containerNode) {
+      containerNode = document.createElement('div');
+      document.body.appendChild(containerNode);
     }
 
     const Modal = this._renderModal();
-    ReactDOM.render(<ContextWrapper modal={Modal} />, this.containerNode);
+    ReactDOM.render(<ContextWrapper modal={Modal} />, containerNode);
   }
 
   _renderModal() {
@@ -66,7 +70,7 @@ export default class ModalPortal extends React.Component { //eslint-disable-line
           <TransitionWrapper
             key={0}
             className={className}
-            onLeave={() => setTimeout(this._cleanup)}
+            onLeave={this._onLeave}
             transitionEnterTimeout={transitionEnterTimeout}
             transitionLeaveTimeout={transitionLeaveTimeout}
           >
