@@ -5,9 +5,7 @@ build:
       - NPM_CONFIG_CACHE=/drone/.npm
     commands:
       - npm i
-      - npm run lint
       - npm test
-      - npm run build
 
   gh-pages:
     image: quay.io/buildo/node5-npm3
