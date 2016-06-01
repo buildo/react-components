@@ -21,6 +21,26 @@ build:
     when:
       branch: master
 
+  generate-changelog:
+    image: ruby
+    environment:
+      CHANGELOG_GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
+    commands:
+      - gem install github_changelog_generator
+      - github_changelog_generator
+      - git add CHANGELOG.md
+      - if ! git diff-index --quiet HEAD -- CHANGELOG.md; then
+          git fetch --no-tags origin +refs/heads/$$BRANCH;
+          git config --global user.name "nemobot";
+          git config --global user.email "our-bots@buildo.io";
+          git checkout $$BRANCH;
+          git add CHANGELOG.md;
+          git commit -m "Update CHANGELOG.md";
+          git push origin $$BRANCH;
+        fi
+    when:
+      branch: master
+
 cache:
   mount:
     - /drone/.npm
