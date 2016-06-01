@@ -2,7 +2,14 @@
 
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 
-[Full Changelog](https://github.com/buildo/react-components/compare/hail-0...HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...HEAD)
+
+Fixes (bugs & defects):
+
+- \[ResizeSensor\] not isomorphic [\#451](https://github.com/buildo/react-components/issues/451)
+
+## [v0.4.1](https://github.com/buildo/react-components/tree/v0.4.1) (2016-06-01)
+[Full Changelog](https://github.com/buildo/react-components/compare/hail-0...v0.4.1)
 
 Breaking:
 
@@ -39,6 +46,7 @@ New features:
 
 - \[TextOverflow\] remove setTimeouts [\#449](https://github.com/buildo/react-components/issues/449)
 - implement ResizeSensor component [\#445](https://github.com/buildo/react-components/issues/445)
+- automatize CHANGELOG.md [\#443](https://github.com/buildo/react-components/issues/443)
 - Badge label should be react children [\#439](https://github.com/buildo/react-components/issues/439)
 - \[Panel\] should be clickable anywhere in collapsed state [\#433](https://github.com/buildo/react-components/issues/433)
 - \[DropdownMenu\] Make DropdownMenu's Menu inner component customizable [\#411](https://github.com/buildo/react-components/issues/411)
