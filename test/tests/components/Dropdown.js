@@ -1,15 +1,15 @@
 import expect from 'expect';
-import Dropdown, { Props } from '../../../src/dropdown';
+import Dropdown from '../../../src/dropdown';
 import { newComponent } from '../helpers';
 
-describe('Dropdown', function () {
+describe('Dropdown', () => {
 
   describe('locals', () => {
     const exampleProps = {
       id: '12345',
       className: 'fancy-class-name',
       style: { margin: 10, position: 'relative' },
-      value: { value: 'test', label: 'Test' },
+      value: { value: 'test', label: 'Test', foo: 'bar' },
       onChange: () => {},
       options: [
         { value: 'test', label: 'Test' },
@@ -33,13 +33,13 @@ describe('Dropdown', function () {
       expect(className).toInclude('fancy-class-name');
     });
 
-    it('should compute value', () => {
+    it('should leave object value untouched', () => {
       const { value } = componentDropdown.getLocals();
       expect(value).toBeA(Object);
       expect(value).toEqual(exampleProps.value);
     });
 
-    it('should compute value as string', () => {
+    it('should compute value from a string', () => {
       const dropdown = newComponent(Dropdown, {
         value: 'test',
         options: [
