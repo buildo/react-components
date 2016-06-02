@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- \[ResizeSensor\] calling this.props.onResize when already unmounted [\#456](https://github.com/buildo/react-components/issues/456)
 - \[ResizeSensor\] not isomorphic [\#451](https://github.com/buildo/react-components/issues/451)
 
 #### New features:
