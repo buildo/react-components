@@ -38,7 +38,11 @@ export default class ResizeSensor extends React.Component {
     this.updateSensorAndQueries();
   }
 
-  onResize = () => this.props.onResize()
+  componentWillUnmount() {
+    this.resizeSensor = null;
+  }
+
+  onResize = () => !!this.resizeSensor && this.props.onResize()
 
   render() {
     return this.props.children;
