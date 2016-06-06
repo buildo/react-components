@@ -3,11 +3,16 @@ $font-size: 14px !default;
 $font-weight: 500 !default;
 $color: lightblue !default;
 $hover-color: blue !default;
+$disabled-opacity: .6 !default;
 
 .confirmation-input {
 
   input {
     padding-left: $padding-h;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: $disabled-opacity;
+    }
   }
 
   .confirmation {
@@ -21,4 +26,5 @@ $hover-color: blue !default;
     color: $hover-color;
     cursor: pointer;
   }
+
 }

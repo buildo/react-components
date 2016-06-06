@@ -312,6 +312,8 @@ $option-color-hover: darkgray !default;
 
 $option-background-hover: wheat !default;
 
+$disabled-opacity: .6 !default;
+
 .Select.dropdown {
   height: 38px;
   min-width: 150px;
@@ -446,7 +448,7 @@ $option-background-hover: wheat !default;
   }
 
   &.is-disabled {
-    opacity: 0.6;
+    opacity: $disabled-opacity;
     cursor: not-allowed;
 
     .Select-arrow-zone, .Select-arrow, .Select-control {
