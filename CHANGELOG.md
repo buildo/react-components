@@ -11,6 +11,7 @@
 
 #### New features:
 
+- Disabled state for confirmation input and dropdown [\#459](https://github.com/buildo/react-components/issues/459)
 - \[Modal\] Create a standalone Modal component [\#432](https://github.com/buildo/react-components/issues/432)
 - \[Dropdown\] Add Unit Test [\#344](https://github.com/buildo/react-components/issues/344)
 
