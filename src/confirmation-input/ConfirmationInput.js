@@ -15,6 +15,7 @@ import Icon from '../Icon/Icon';
   onConfirm: t.maybe(t.Function),
   onClear: t.maybe(t.Function),
   placeholder: t.maybe(t.String),
+  disabled: t.maybe(t.Boolean),
   text: t.struct({
     clear: t.maybe(t.String),
     toConfirm: t.maybe(t.String)
@@ -26,7 +27,7 @@ import Icon from '../Icon/Icon';
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+}, { strict: false })
 export default class ConfirmationInput extends React.Component {
 
   static defaultProps = {
