@@ -59,7 +59,7 @@ export default class Toggle extends React.Component {
   }
 
   onButtonClick = () => {
-    const { value, requestChange } = getValueLink(this);
+    const { value, requestChange } = getValueLink(this, this.props);
     requestChange(!value);
   };
 
@@ -68,7 +68,7 @@ export default class Toggle extends React.Component {
       props: { className, size, style },
       onButtonClick
     } = this;
-    const { value } = getValueLink(this);
+    const { value } = getValueLink(this, this.props);
     return {
       style,
       value,
