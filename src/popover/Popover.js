@@ -19,6 +19,7 @@ export const Props = {
     dismissOnScroll: t.maybe(t.Boolean),
     dismissOnClickOutside: t.maybe(t.Boolean),
     className: t.maybe(t.String),
+    style: t.maybe(t.Object),
     id: t.maybe(t.String),
     maxWidth: t.maybe(t.union([ t.Number, t.String ])),
     distance: t.maybe(t.Number),
