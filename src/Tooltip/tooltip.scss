@@ -18,6 +18,7 @@ $arrow-color: #2C3A40 !default;
   border: 1px solid;
   z-index: 10000;
   text-align: center;
+  margin-left: -1px; // border-width
 
   &.is-dark {
     background: $background-dark;
@@ -58,6 +59,9 @@ $arrow-color: #2C3A40 !default;
   }
 
   &.position-bottom {
+    // take into account arrow-size for positioning
+    margin-top: ($arrow-size + 1);
+
     &:after, &:before {
       bottom: 100%;
     }
@@ -80,6 +84,9 @@ $arrow-color: #2C3A40 !default;
   }
 
   &.position-top {
+    // take into account arrow-size for positioning
+    margin-top: -($arrow-size + 1);
+
     &:after, &:before {
       top: 100%;
     }
