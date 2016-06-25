@@ -51,11 +51,11 @@ export default class ResizeSensor extends React.Component {
     return this.props.children;
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate({ children, debounce }) {
     /*
       we don't need to update if `onResize` has changed
       as we're using the constant `this.onResize` callback
     */
-    return nextProps.children !== this.props.children;
+    return children !== this.props.children || debounce !== this.props.debounce;
   }
 }
