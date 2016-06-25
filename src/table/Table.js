@@ -4,6 +4,7 @@ import cx from 'classnames';
 import includes from 'lodash/includes';
 import { skinnable, t, props, pure } from '../utils';
 import FlexView from '../flex/FlexView';
+import ResizeSensor from '../resize-sensor/ResizeSensor';
 import { Table as FixedDataTable } from 'fixed-data-table';
 import { warn } from '../utils/log';
 
@@ -102,8 +103,7 @@ export default class Table extends React.Component {
 
   componentDidMount() {
     if (this.props.autoSize) {
-      this.autoSize();
-      this.startAutoSizeInterval();
+      this.updateSize();
     } else {
       setTimeout(this.scrollToSelectedRow);
     }
@@ -115,19 +115,7 @@ export default class Table extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.stopAutoSizeInterval();
-  }
-
-  startAutoSizeInterval = () => {
-    this.autoSizeInterval = setInterval(this.autoSize, 200);
-  };
-
-  stopAutoSizeInterval = () => {
-    clearInterval(this.autoSizeInterval);
-  };
-
-  autoSize = () => {
+  updateSize = () => {
     const node = this.getNode();
     if (node) {
       const { clientHeight: height, clientWidth: width } = node;
@@ -180,11 +168,12 @@ export default class Table extends React.Component {
       onRowClick,
       cellRenderer,
       onScrollStart,
+      updateSize,
       props: {
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, groupHeaderHeight,
         selectionType,
         onColumnResizeEndCallback, isColumnResizing,
-        id, children, autoSizeColumns
+        id, children, autoSizeColumns, autoSize
       },
       state: { height, width, scrollToRow }
     } = this;
@@ -207,6 +196,7 @@ export default class Table extends React.Component {
     const className = cx('fixed-data-table-wrapper', this.props.className, { selectable: selectionType !== 'none' });
 
     return {
+      columns,
       wrapperProps: { id, style, grow: true, className, tabIndex, ref: 'wrapper', width: '100%', height: '100%' },
       tableProps: {
         width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
@@ -214,17 +204,26 @@ export default class Table extends React.Component {
         onColumnResizeEndCallback, isColumnResizing,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
-      columns
+      resizeSensorProps: autoSize && {
+        onResize: updateSize,
+        debounce: 100
+      }
     };
   }
 
-  template({ wrapperProps, tableProps, columns }) {
+  templateContent = ({ wrapperProps, tableProps, columns }) => (
+    <FlexView {...wrapperProps}>
+      <FixedDataTable {...tableProps}>
+        {columns}
+      </FixedDataTable>
+    </FlexView>
+  )
+
+  template({ resizeSensorProps, ...locals }) {
     return (
-      <FlexView {...wrapperProps}>
-        <FixedDataTable {...tableProps}>
-          {columns}
-        </FixedDataTable>
-      </FlexView>
+      resizeSensorProps ?
+        <ResizeSensor {...resizeSensorProps}>{this.templateContent(locals)}</ResizeSensor> :
+        this.templateContent(locals)
     );
   }
 }
