@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 @props({
   children: t.ReactChildren,
-  onResize: t.Function
+  onResize: t.Function,
+  debounce: t.maybe(t.Integer)
 })
 export default class ResizeSensor extends React.Component {
 
   attachResizeSensor = () => {
+    const { debounce } = this.props;
     const element = ReactDOM.findDOMNode(this);
     if (!element.resizedAttached) {
-      this.resizeSensor = new _ResizeSensor(element, this.onResize);
+      this.resizeSensor = new _ResizeSensor(element, debounce ? _debounce(this.onResize, debounce) : this.onResize);
     }
   }
 
