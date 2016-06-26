@@ -31,10 +31,6 @@ export default class TextOverflow extends React.Component {
     this.verifyOverflow();
   }
 
-  componentDidUpdate() {
-    this.verifyOverflow();
-  }
-
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.label !== this.props.label) {
       this.reset();
