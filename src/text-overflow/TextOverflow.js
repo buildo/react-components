@@ -86,7 +86,7 @@ export default class TextOverflow extends React.Component {
   onMouseEnter = () => {
     this.setState({
       isHovering: true
-    }, () => this.props.lazy && this.verifyOverflow({ force: true }));
+    }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
   }
 
   onMouseLeave = () => this.setState({ isHovering: false })
@@ -118,7 +118,7 @@ export default class TextOverflow extends React.Component {
     const text = <span ref='text' {...events} style={styleText}>{label}</span>;
     return (
       <div>
-        <ResizeSensor onResize={this.onResize}>{text}</ResizeSensor>
+        {lazy ? text : <ResizeSensor onResize={this.onResize}>{text}</ResizeSensor>}
         <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
       </div>
     );
