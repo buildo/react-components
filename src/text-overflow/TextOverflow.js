@@ -18,6 +18,7 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
    * this is the full string
    */
   label: t.String,
+  lazy: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -67,7 +68,7 @@ export default class TextOverflow extends React.Component {
   };
 
   verifyOverflow = (force) => {
-    if ((this.state.isOverflowing === false || force) && typeof window !== 'undefined') {
+    if ((force || (!this.props.lazy && this.state.isOverflowing === false)) && typeof window !== 'undefined') {
       const text = ReactDOM.findDOMNode(this.refs.text);
       const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
 
@@ -87,6 +88,14 @@ export default class TextOverflow extends React.Component {
     }
   };
 
+  onMouseEnter = () => {
+    this.setState({
+      isHovering: true
+    }, () => this.props.lazy && this.verifyOverflow(true));
+  }
+
+  onMouseLeave = () => this.setState({ isHovering: false })
+
   getContent = () => {
     const { label } = this.props;
     const styleText = {
@@ -102,10 +111,14 @@ export default class TextOverflow extends React.Component {
       visibility: 'hidden',
       pointerEvents: 'none'
     };
+    const events = {
+      onMouseEnter: this.onMouseEnter,
+      onMouseLeave: this.onMouseLeave
+    };
     return (
       <div>
         <ResizeSensor onResize={() => this.verifyOverflow(true)}>
-          <span ref='text' style={styleText}>{label}</span>
+          <span ref='text' {...events} style={styleText}>{label}</span>
         </ResizeSensor>
         <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
       </div>
@@ -113,16 +126,19 @@ export default class TextOverflow extends React.Component {
   };
 
   templateOverflow = () => {
-    const { children, label, style, ...other } = this.props;
+    const {
+      state: { isHovering },
+      props: { children, label, style, ...other }
+    } = this;
 
     if (children) {
-      return children(this.getContent());
+      return children(this.getContent(), isHovering);
     } else {
       const props = {
-        ...other,
+        ...omit(other, ['lazy']),
         popover: {
           content: label,
-          event: 'hover'
+          isOpen: isHovering
         },
         style: {
           width: '100%',
@@ -137,7 +153,7 @@ export default class TextOverflow extends React.Component {
   templeteStandard = () => {
     const { style, ...other } = this.props;
     const props = {
-      ...omit(other, ['children', 'label']),
+      ...omit(other, ['children', 'label', 'lazy']),
       style: {
         width: '100%',
         ...style
