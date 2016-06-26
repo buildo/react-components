@@ -108,7 +108,9 @@ export default class TextOverflow extends React.Component {
     const styleTextWithoutEllipsis = {
       position: 'fixed',
       visibility: 'hidden',
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      top: 0,
+      left: 0
     };
     const events = lazy && {
       onMouseEnter: this.onMouseEnter,
