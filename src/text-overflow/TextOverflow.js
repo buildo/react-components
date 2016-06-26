@@ -41,7 +41,9 @@ export default class TextOverflow extends React.Component {
     }
   };
 
-  reset = () => this.setState({ isOverflowing: false });
+  reset = () => this.setState({
+    isOverflowing: false
+  }, () => this.verifyOverflow({ force: true, reset: true }));
 
   logWarnings = () => {
     warn(() => {
@@ -64,7 +66,7 @@ export default class TextOverflow extends React.Component {
     return null;
   };
 
-  verifyOverflow = (force) => {
+  verifyOverflow = ({ force, reset } = {}) => {
     if ((force || (!this.props.lazy && this.state.isOverflowing === false)) && typeof window !== 'undefined') {
       const text = ReactDOM.findDOMNode(this.refs.text);
       const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
@@ -76,7 +78,7 @@ export default class TextOverflow extends React.Component {
         const isOverflowing = (textWidth < textWithoutEllipsisWidth);
         if (isOverflowing && !this.state.isOverflowing) {
           this.setState({ isOverflowing: true }, this.logWarnings);
-        } else if (force && this.state.isOverflowing) {
+        } else if (reset && this.state.isOverflowing) {
           this.setState({ isOverflowing: false }, this.logWarnings);
         } else {
           this.logWarnings();
@@ -88,7 +90,7 @@ export default class TextOverflow extends React.Component {
   onMouseEnter = () => {
     this.setState({
       isHovering: true
-    }, () => this.props.lazy && this.verifyOverflow(true));
+    }, () => this.props.lazy && this.verifyOverflow({ force: true }));
   }
 
   onMouseLeave = () => this.setState({ isHovering: false })
@@ -114,7 +116,7 @@ export default class TextOverflow extends React.Component {
     };
     return (
       <div>
-        <ResizeSensor onResize={() => this.verifyOverflow(true)}>
+        <ResizeSensor onResize={() => this.verifyOverflow({ force: true })}>
           <span ref='text' {...events} style={styleText}>{label}</span>
         </ResizeSensor>
         <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
@@ -135,7 +137,7 @@ export default class TextOverflow extends React.Component {
         ...other,
         popover: {
           content: label,
-          event: !lazy ? 'hover' : undefined,
+          event: 'hover',
           isOpen: lazy ? isHovering : undefined
         },
         style: {
