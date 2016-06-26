@@ -25,10 +25,7 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
 }, { strict: false })
 export default class TextOverflow extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { isOverflowing: false };
-  }
+  state = { isOverflowing: false };
 
   componentDidMount() {
     this.verifyOverflow();
@@ -77,9 +74,9 @@ export default class TextOverflow extends React.Component {
         const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
 
         const isOverflowing = (textWidth < textWithoutEllipsisWidth);
-        if (isOverflowing) {
+        if (isOverflowing && !this.state.isOverflowing) {
           this.setState({ isOverflowing: true }, this.logWarnings);
-        } else if (force) {
+        } else if (force && this.state.isOverflowing) {
           this.setState({ isOverflowing: false }, this.logWarnings);
         } else {
           this.logWarnings();
