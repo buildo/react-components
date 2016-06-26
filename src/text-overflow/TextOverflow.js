@@ -78,7 +78,7 @@ export default class TextOverflow extends React.Component {
         const isOverflowing = (textWidth < textWithoutEllipsisWidth);
         if (isOverflowing && !this.state.isOverflowing) {
           this.setState({ isOverflowing: true }, this.logWarnings);
-        } else if (reset && this.state.isOverflowing) {
+        } else if (!isOverflowing && reset && this.state.isOverflowing) {
           this.setState({ isOverflowing: false }, this.logWarnings);
         } else {
           this.logWarnings();
@@ -94,6 +94,8 @@ export default class TextOverflow extends React.Component {
   }
 
   onMouseLeave = () => this.setState({ isHovering: false })
+
+  onResize = () => this.verifyOverflow({ force: true, reset: true })
 
   getContent = () => {
     const { label, lazy } = this.props;
@@ -116,11 +118,11 @@ export default class TextOverflow extends React.Component {
       onMouseEnter: this.onMouseEnter,
       onMouseLeave: this.onMouseLeave
     };
+
+    const text = <span ref='text' {...events} style={styleText}>{label}</span>;
     return (
       <div>
-        <ResizeSensor onResize={() => this.verifyOverflow({ force: true })}>
-          <span ref='text' {...events} style={styleText}>{label}</span>
-        </ResizeSensor>
+        <ResizeSensor onResize={this.onResize}>{text}</ResizeSensor>
         <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
       </div>
     );
