@@ -97,7 +97,7 @@ export default class TextOverflow extends React.Component {
   onMouseLeave = () => this.setState({ isHovering: false })
 
   getContent = () => {
-    const { label } = this.props;
+    const { label, lazy } = this.props;
     const styleText = {
       display: 'block',
       whiteSpace: 'nowrap',
@@ -111,7 +111,7 @@ export default class TextOverflow extends React.Component {
       visibility: 'hidden',
       pointerEvents: 'none'
     };
-    const events = {
+    const events = lazy && {
       onMouseEnter: this.onMouseEnter,
       onMouseLeave: this.onMouseLeave
     };
@@ -128,17 +128,18 @@ export default class TextOverflow extends React.Component {
   templateOverflow = () => {
     const {
       state: { isHovering },
-      props: { children, label, style, ...other }
+      props: { children, label, style, lazy, ...other }
     } = this;
 
     if (children) {
-      return children(this.getContent(), isHovering);
+      return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
       const props = {
-        ...omit(other, ['lazy']),
+        ...other,
         popover: {
           content: label,
-          isOpen: isHovering
+          event: !lazy ? 'hover' : undefined,
+          isOpen: lazy ? isHovering : undefined
         },
         style: {
           width: '100%',
