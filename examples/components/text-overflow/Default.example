@@ -17,6 +17,7 @@ const Example = React.createClass({
           style={{ color: 'blue' }}
           label={this.state.text}
           popover={{ position: 'bottom', anchor: 'left' }}
+          lazy
         />
       </button>
     );

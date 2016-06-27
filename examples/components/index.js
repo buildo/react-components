@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash';
 import examplesJSON from 'raw!./examples.json';
 import './styles';
 
@@ -8,7 +9,7 @@ function dynamicRequire(e) {
   return require(`raw!./${path}.example`);
 }
 
-const components = json.components.map(c => ({
+const components = sortBy(json.components, 'title').map(c => ({
   ...c,
   examples: c.examples.map(dynamicRequire)
 }));
