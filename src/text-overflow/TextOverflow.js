@@ -28,11 +28,11 @@ export default class TextOverflow extends React.Component {
   state = { isOverflowing: false };
 
   componentDidMount() {
-    this.verifyOverflow();
+    !this.props.lazy && this.verifyOverflow();
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if (nextProps.label !== this.props.label) {
+    if (!this.props.lazy && nextProps.label !== this.props.label) {
       this.reset();
     }
   };
