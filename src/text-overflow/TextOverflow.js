@@ -89,13 +89,7 @@ export default class TextOverflow extends React.Component {
     }
   };
 
-  _onMouseEvent = (type) => {
-    if (type === 'mouseenter') {
-      this.onMouseEnter();
-    } else if (type === 'mouseleave') {
-      this.onMouseLeave();
-    }
-  }
+  _onMouseEvent = (type) => (type === 'mouseenter') && this.onMouseEnter()
 
   onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy)
 
@@ -114,7 +108,7 @@ export default class TextOverflow extends React.Component {
   onResize = () => this.verifyOverflow({ force: true, reset: true })
 
   getContent = () => {
-    const { onMouseEvent, props: { label, lazy } } = this;
+    const { onMouseEvent, onMouseLeave, props: { label, lazy } } = this;
     const styleText = {
       display: 'block',
       whiteSpace: 'nowrap',
@@ -132,7 +126,10 @@ export default class TextOverflow extends React.Component {
     };
     const events = lazy && {
       onMouseEnter: onMouseEvent,
-      onMouseLeave: onMouseEvent
+      onMouseLeave: e => {
+        onMouseEvent(e);
+        onMouseLeave(e);
+      }
     };
 
     const text = <span ref='text' {...events} style={styleText}>{label}</span>;
