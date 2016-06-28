@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
+import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
@@ -88,6 +89,20 @@ export default class TextOverflow extends React.Component {
     }
   };
 
+  _onMouseEvent = (type) => {
+    if (type === 'mouseenter') {
+      this.onMouseEnter();
+    } else if (type === 'mouseleave') {
+      this.onMouseLeave();
+    }
+  }
+
+  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy)
+
+  onMouseEvent = ({ type }) => (
+    this.props.delayWhenLazy ? this.onMouseEventDebounced(type) : this._onMouseEvent(type)
+  )
+
   onMouseEnter = () => {
     this.setState({
       isHovering: true
@@ -99,7 +114,7 @@ export default class TextOverflow extends React.Component {
   onResize = () => this.verifyOverflow({ force: true, reset: true })
 
   getContent = () => {
-    const { label, lazy } = this.props;
+    const { onMouseEvent, props: { label, lazy } } = this;
     const styleText = {
       display: 'block',
       whiteSpace: 'nowrap',
@@ -116,8 +131,8 @@ export default class TextOverflow extends React.Component {
       left: 0
     };
     const events = lazy && {
-      onMouseEnter: this.onMouseEnter,
-      onMouseLeave: this.onMouseLeave
+      onMouseEnter: onMouseEvent,
+      onMouseLeave: onMouseEvent
     };
 
     const text = <span ref='text' {...events} style={styleText}>{label}</span>;
