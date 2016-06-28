@@ -98,12 +98,14 @@ export default class TextOverflow extends React.Component {
   )
 
   onMouseEnter = () => {
-    this.setState({
-      isHovering: true
-    }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
+    if (!this.state.isHovering) {
+      this.setState({
+        isHovering: true
+      }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
+    }
   }
 
-  onMouseLeave = () => this.setState({ isHovering: false })
+  onMouseLeave = () => this.state.isHovering && this.setState({ isHovering: false })
 
   onResize = () => this.verifyOverflow({ force: true, reset: true })
 
