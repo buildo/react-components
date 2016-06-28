@@ -18,6 +18,7 @@ const Example = React.createClass({
           label={this.state.text}
           popover={{ position: 'bottom', anchor: 'left' }}
           lazy
+          delayWhenLazy={1000}
         />
       </button>
     );
