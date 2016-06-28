@@ -19,11 +19,16 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
    */
   label: t.String,
   lazy: t.maybe(t.Boolean),
+  delayWhenLazy: t.maybe(t.Integer),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 }, { strict: false })
 export default class TextOverflow extends React.Component {
+
+  static defaultProps = {
+    delayWhenLazy: 100
+  }
 
   state = { isOverflowing: false };
 
