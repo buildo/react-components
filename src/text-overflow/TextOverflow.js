@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
+import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
@@ -19,11 +20,16 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
    */
   label: t.String,
   lazy: t.maybe(t.Boolean),
+  delayWhenLazy: t.maybe(t.Integer),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 }, { strict: false })
 export default class TextOverflow extends React.Component {
+
+  static defaultProps = {
+    delayWhenLazy: 100
+  }
 
   state = { isOverflowing: false };
 
@@ -83,18 +89,28 @@ export default class TextOverflow extends React.Component {
     }
   };
 
+  _onMouseEvent = (type) => (type === 'mouseenter') && this.onMouseEnter()
+
+  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy)
+
+  onMouseEvent = ({ type }) => (
+    this.props.delayWhenLazy ? this.onMouseEventDebounced(type) : this._onMouseEvent(type)
+  )
+
   onMouseEnter = () => {
-    this.setState({
-      isHovering: true
-    }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
+    if (!this.state.isHovering) {
+      this.setState({
+        isHovering: true
+      }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
+    }
   }
 
-  onMouseLeave = () => this.setState({ isHovering: false })
+  onMouseLeave = () => this.state.isHovering && this.setState({ isHovering: false })
 
   onResize = () => this.verifyOverflow({ force: true, reset: true })
 
   getContent = () => {
-    const { label, lazy } = this.props;
+    const { onMouseEvent, onMouseLeave, props: { label, lazy } } = this;
     const styleText = {
       display: 'block',
       whiteSpace: 'nowrap',
@@ -111,8 +127,11 @@ export default class TextOverflow extends React.Component {
       left: 0
     };
     const events = lazy && {
-      onMouseEnter: this.onMouseEnter,
-      onMouseLeave: this.onMouseLeave
+      onMouseEnter: onMouseEvent,
+      onMouseLeave: e => {
+        onMouseEvent(e);
+        onMouseLeave(e);
+      }
     };
 
     const text = <span ref='text' {...events} style={styleText}>{label}</span>;
@@ -134,7 +153,7 @@ export default class TextOverflow extends React.Component {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
       const props = {
-        ...other,
+        ...omit(other, ['delayWhenLazy']),
         popover: {
           content: label,
           event: 'hover',
