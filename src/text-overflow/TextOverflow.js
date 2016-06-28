@@ -154,7 +154,7 @@ export default class TextOverflow extends React.Component {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
       const props = {
-        ...other,
+        ...omit(other, ['delayWhenLazy']),
         popover: {
           content: label,
           event: 'hover',
