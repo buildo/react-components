@@ -13,7 +13,7 @@ describe('Meter', () => {
       min: 0,
       max: 50,
       ranges: [
-        { startValue: 0, endValue: 50, fillingColor: 'green', labelColor: 'red' },
+        { startValue: 0, endValue: 50, fillingColor: 'green', labelColor: 'red', backgroundColor: 'grey' },
         { startValue: 50, endValue: 80, fillingColor: 'yellow' },
         { startValue: 80, endValue: 100 }
       ],
@@ -45,6 +45,13 @@ describe('Meter', () => {
     it('should use labelFormatter correctly', ()  => {
       const { formattedLabel } = componentMeter.getLocals();
       expect(formattedLabel).toBe('test');
+    });
+
+    it('should compute barStyle correctly', ()  => {
+      const { barStyle, ranges } = componentMeter.getLocals();
+      expect(barStyle).toExist();
+      expect(barStyle).toBeA(Object);
+      expect(barStyle.backgroundColor).toBe(ranges[0].backgroundColor);
     });
 
     it('should compute fillingStyle correctly', ()  => {
@@ -118,6 +125,29 @@ describe('Meter', () => {
       });
       const { fillingStyle } = meter.getLocals();
       expect(fillingStyle.backgroundColor).toNotExist();
+    });
+
+    it('bar background color should be the base color if there\'s no matching range', ()  => {
+      const meter = newComponent(Meter, {
+        value: 20,
+        baseBackroundColor: '#ccc',
+        ranges: [
+          { startValue: 50, endValue: 80, backgroundColor: 'yellow' }
+        ]
+      });
+      const { barStyle, baseBackgroundColor } = meter.getLocals();
+      expect(barStyle.backgroundColor).toBe(baseBackgroundColor);
+    });
+
+    it('bar background color should be not defined if there\'s no matching range and no default is given', ()  => {
+      const meter = newComponent(Meter, {
+        value: 20,
+        ranges: [
+          { startValue: 50, endValue: 80, backgroundColor: 'yellow' }
+        ]
+      });
+      const { barStyle } = meter.getLocals();
+      expect(barStyle.backgroundColor).toNotExist();
     });
   });
 });

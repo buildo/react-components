@@ -12,7 +12,8 @@ const Range = t.refinement(t.struct({
   startValue: t.Number,
   endValue: t.Number,
   fillingColor: t.maybe(t.String),
-  labelColor: t.maybe(t.String)
+  labelColor: t.maybe(t.String),
+  backgroundColor: t.maybe(t.String)
 }), r => r.startValue < r.endValue, 'Range');
 
 const Ranges = t.refinement(t.list(Range), (rangeList) => {
@@ -61,6 +62,10 @@ const Props = t.refinement(t.struct({
    * Fallback fillingColor.
    */
   baseFillingColor: t.maybe(t.String),
+  /**
+   * Fallback backgroundColor.
+   */
+  baseBackgroundColor: t.maybe(t.String),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -124,7 +129,8 @@ export default class Meter extends React.Component {
       max,
       ranges,
       baseFillingColor,
-      baseLabelColor
+      baseLabelColor,
+      baseBackgroundColor
     } = this.props;
 
     const range = find(ranges, ({ startValue, endValue })  => (
@@ -137,6 +143,9 @@ export default class Meter extends React.Component {
       },
       labelStyle: {
         color: range ? range.labelColor : baseLabelColor
+      },
+      barStyle: {
+        backgroundColor: range ? range.backgroundColor : baseBackgroundColor
       }
     };
   }
@@ -155,15 +164,20 @@ export default class Meter extends React.Component {
       className: cx('meter', className),
       fillingStyle: styles.fillingStyle,
       labelStyle: styles.labelStyle,
+      barStyle: styles.barStyle,
       basisSize: styles.basisSize,
       formattedLabel: labelFormatter(props.value, props.min, props.max)
     };
   }
 
-  template({ id, className, style, fillingStyle, labelStyle, basisSize, formattedLabel }) {
+  template({ id, className, style, fillingStyle, labelStyle, barStyle, basisSize, formattedLabel }) {
     return (
       <FlexView {...{ id, className, style }} grow>
-        <FlexView className='bar' grow>
+        <FlexView
+          className='bar'
+          grow
+          style={barStyle}
+        >
           <FlexView
             className='filling'
             basis={basisSize}
