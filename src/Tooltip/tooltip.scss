@@ -14,6 +14,7 @@ $arrow-color: #2C3A40 !default;
 
 .tooltip {
   max-width: 250px;
+  word-wrap: break-word;
   border-radius: $border-radius;
   border: 1px solid;
   z-index: 10000;

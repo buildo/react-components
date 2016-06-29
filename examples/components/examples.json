@@ -69,7 +69,8 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/Tooltip",
       "component": "react-components/__TAG__/src/Tooltip/Tooltip.js",
       "examples": [
-        "react-components/__TAG__/examples/components/Tooltip/default.example"
+        "react-components/__TAG__/examples/components/Tooltip/default.example",
+        "react-components/__TAG__/examples/components/Tooltip/long-word.example"
       ]
     },
     {
