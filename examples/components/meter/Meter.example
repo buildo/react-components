@@ -1,7 +1,7 @@
 class Example extends React.Component {
   render() {
     const ranges = [
-      {startValue: 0, endValue: 30, fillingColor: 'green'},
+      {startValue: 0, endValue: 30, fillingColor: 'green', backgroundColor: 'rgba(0, 255, 0, 0.1)'},
       {startValue: 30, endValue: 60, fillingColor: 'yellow'},
       {startValue: 60, endValue: 80, fillingColor: 'orange', labelColor:'orange'},
       {startValue: 80, endValue: 100, fillingColor: 'red', labelColor: 'red'}

@@ -24,6 +24,7 @@ class Example extends React.Component {
           <Meter
             value={60}
             baseFillingColor={'#ccc'}
+            baseBackgroundColor={'#eee'}
             ranges={ranges}
           />
         </div>
