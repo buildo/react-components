@@ -14,18 +14,12 @@ import 'fixed-data-table/dist/fixed-data-table-base.min.css';
 
 export const checkPropsInvariants = (props) => {
   const {
-    selectionType, onRowsSelect, onRowSelect,
+    selectionType, onRowsSelect,
     width, height, autoSize
   } = props;
   const multipleSelectionEnabled = selectionType === 'multi';
   let toReturn = true;
-  if (onRowSelect && onRowsSelect) {
-    warn('\'onRowSelect\' and \'onRowsSelect\' are exclusive. Use the former if \'multipleSelectionEnabled\' is true, or the latter if it\'s false');
-    toReturn = false;
-  } else if (multipleSelectionEnabled && onRowSelect) {
-    warn('\'multipleSelectionEnabled\' is true, so \'onRowSelect\' will never be called. Use \'onRowsSelect\' (plural) instead.');
-    toReturn = false;
-  } else if (!multipleSelectionEnabled && onRowsSelect) {
+  if (!multipleSelectionEnabled && onRowsSelect) {
     warn('\'multipleSelectionEnabled\' is false, so \'onRowsSelect\' will never be called. Use \'onRowSelect\' (singular) instead.');
     toReturn = false;
   }
@@ -65,14 +59,14 @@ const Props = t.subtype(t.struct({
     by: t.maybe(t.String),
     dir: t.maybe(t.enums.of(['asc', 'desc'], 'sortDir'))
   })),
-
+  selectedColumns: t.maybe(t.list(t.String)),
   selectedRows: t.maybe(t.list(t.Number)),
   onRowSelect: t.maybe(t.Function),
   onRowsSelect: t.maybe(t.Function),
   selectionType: t.enums.of(['none', 'single', 'multi'], 'selectionType'),
   onColumnResizeEndCallback: t.maybe(t.Function),
   isColumnResizing: t.maybe(t.Boolean),
-
+  columns: t.maybe(t.list(t.Object)),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
   id: t.maybe(t.String)
@@ -96,6 +90,7 @@ export default class Table extends React.Component {
     width: 0,
     height: 0,
     selectedRows: [],
+    selectedColumns: [],
     isColumnResizing: false
   };
 
@@ -105,13 +100,19 @@ export default class Table extends React.Component {
     if (this.props.autoSize) {
       this.updateSize();
     } else {
-      setTimeout(this.scrollToSelectedRow);
+      setTimeout(() => {
+        this.scrollToSelectedRow();
+        this.scrollToSelectedColumn();
+      });
     }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.selectedRows[0] !== this.props.selectedRows[0]) {
       this.scrollToSelectedRow();
+    }
+    if (prevProps.selectedColumns[0] !== this.props.selectedColumns[0]) {
+      this.scrollToSelectedColumn();
     }
   }
 
@@ -132,9 +133,16 @@ export default class Table extends React.Component {
     });
   };
 
+  scrollToSelectedColumn = () => {
+    this.setState({
+      scrollToColumn: this.props.columns.map(c => c.key).indexOf(this.props.selectedColumns[0])
+    });
+  };
+
   onScrollStart = () => {
     this.setState({
-      scrollToRow: null
+      scrollToRow: null,
+      scrollToColumn: null
     });
   };
 
@@ -160,7 +168,7 @@ export default class Table extends React.Component {
 
   cellRenderer = (cellData, cellDataKey, rowData, rowIndex) => {
     const selected = this.props.selectedRows.indexOf(rowIndex) !== -1;
-    return this.props.cellRenderer(cellData, selected, cellDataKey, rowData);
+    return this.props.cellRenderer(cellData, selected, cellDataKey, rowData, rowIndex);
   };
 
   getLocals() {
@@ -175,7 +183,7 @@ export default class Table extends React.Component {
         onColumnResizeEndCallback, isColumnResizing,
         id, children, autoSizeColumns, autoSize
       },
-      state: { height, width, scrollToRow }
+      state: { height, width, scrollToRow, scrollToColumn }
     } = this;
 
     const tabIndex = selectionType !== 'none' ? '0' : null;
@@ -200,7 +208,7 @@ export default class Table extends React.Component {
       wrapperProps: { id, style, grow: true, className, tabIndex, ref: 'wrapper', width: '100%', height: '100%' },
       tableProps: {
         width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
-        scrollToRow, onRowClick, onScrollStart,
+        scrollToRow, onRowClick, onScrollStart, scrollToColumn,
         onColumnResizeEndCallback, isColumnResizing,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
