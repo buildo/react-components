@@ -72,6 +72,8 @@ const Props = t.subtype(t.struct({
   selectionType: t.enums.of(['none', 'single', 'multi'], 'selectionType'),
   onColumnResizeEndCallback: t.maybe(t.Function),
   isColumnResizing: t.maybe(t.Boolean),
+  scrollToColumn: t.maybe(t.Number),
+  scrollToRow: t.maybe(t.Number),
 
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
@@ -85,10 +87,11 @@ export default class Table extends React.Component {
 
   constructor(props) {
     super(props);
-    const { height, width } = props;
+    const { height, width, scrollToRow } = props;
     this.state = {
       height,
-      width
+      width,
+      scrollToRow
     };
   }
 
@@ -96,7 +99,9 @@ export default class Table extends React.Component {
     width: 0,
     height: 0,
     selectedRows: [],
-    isColumnResizing: false
+    isColumnResizing: false,
+    scrollToColumn: 0,
+    scrollToRow: 0
   };
 
   getNode = () => ReactDOM.findDOMNode(this.refs.wrapper);
@@ -113,6 +118,10 @@ export default class Table extends React.Component {
     if (prevProps.selectedRows[0] !== this.props.selectedRows[0]) {
       this.scrollToSelectedRow();
     }
+  }
+
+  componentWillReceiveProps({ scrollToRow }) {
+    this.setState({ scrollToRow });
   }
 
   updateSize = () => {
@@ -158,21 +167,24 @@ export default class Table extends React.Component {
     }
   };
 
-  cellRenderer = (cellData, cellDataKey, rowData, rowIndex) => {
+  cellRenderer = (scrollToRow) => (cellData, cellDataKey, rowData, rowIndex, width) => {
     const selected = this.props.selectedRows.indexOf(rowIndex) !== -1;
-    return this.props.cellRenderer(cellData, selected, cellDataKey, rowData);
-  };
+    const isScrollTarget = scrollToRow === rowIndex;
+    return this.props.cellRenderer(cellData, selected, cellDataKey, rowData, rowIndex, width, isScrollTarget);
+  }
+
 
   getLocals() {
     const {
       onRowClick,
-      cellRenderer,
+      cellRenderer: _cellRenderer,
       onScrollStart,
       updateSize,
       props: {
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, groupHeaderHeight,
         selectionType,
         onColumnResizeEndCallback, isColumnResizing,
+	scrollToColumn,
         id, children, autoSizeColumns, autoSize
       },
       state: { height, width, scrollToRow }
@@ -184,7 +196,12 @@ export default class Table extends React.Component {
     const footerDataGetter = () => []; /*because https://github.com/facebook/fixed-data-table/issues/172*/
 
     const columnWidth = autoSizeColumns ? { width: width / numberOfColumns } : {};
-    const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-table-wrapper-header' };
+    const columnProps = {
+      ...columnWidth,
+      cellRenderer: _cellRenderer(scrollToRow),
+      headerClassName: 'fixed-data-table-wrapper-header'
+    };
+
     const addProps = column => React.cloneElement(column, { ...columnProps });
     const columns = numberOfColumns === 1 ? addProps(children) : [].concat(children).map(addProps);
 
@@ -200,7 +217,7 @@ export default class Table extends React.Component {
       wrapperProps: { id, style, grow: true, className, tabIndex, ref: 'wrapper', width: '100%', height: '100%' },
       tableProps: {
         width: width + 2, height: height + 2, // as long as FDT counts the borders to calculate size
-        scrollToRow, onRowClick, onScrollStart,
+        scrollToColumn, scrollToRow, onRowClick, onScrollStart,
         onColumnResizeEndCallback, isColumnResizing,
         rowHeight, headerHeight, footerHeight, rowGetter, rowsCount, footerDataGetter, groupHeaderHeight
       },
