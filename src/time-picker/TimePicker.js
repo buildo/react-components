@@ -59,6 +59,10 @@ const Props = t.refinement(t.struct({
    * format in which options are displayed. Default [24H].
    */
   timeFormat: t.maybe(TimeFormat),
+  /**
+   * Enable the search feature
+   */
+  searchable: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -177,7 +181,8 @@ export default class TimePicker extends React.Component {
     placeholder: `--${separator}--`,
     timeFormat: H24,
     minTime: { hours: 0, minutes: 0 },
-    maxTime: { hours: 23, minutes: 59 }
+    maxTime: { hours: 23, minutes: 59 },
+    searchable: true
   }
 
   _onChange = (value) => {
@@ -212,10 +217,11 @@ export default class TimePicker extends React.Component {
     };
   }
 
-  template({ id, className, style, value, placeholder, options, onChange, filterOptions }) {
+  template({ id, className, style, searchable, value, placeholder, options, onChange, filterOptions }) {
     return (
       <Dropdown
         {...{ id, className, style }}
+        searchable={searchable}
         value={value}
         onChange={onChange}
         options={options}
