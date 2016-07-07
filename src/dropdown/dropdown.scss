@@ -460,12 +460,10 @@ $disabled-opacity: .6 !default;
     &:not(:hover), &.is-disabled {
       &:not(.is-open) {
         background: transparent;
-        border-color: transparent;
       }
     }
 
     .Select-control {
-      padding: 0 6px;
 
       .Select-arrow {
         margin-left: 13px;
