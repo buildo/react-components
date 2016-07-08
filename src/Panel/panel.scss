@@ -43,6 +43,7 @@ $content-title-color: #2c3a40 !default;
 
   &.collapsable {
     &.collapsed {
+      width: 100%;
       &:hover {
         cursor: pointer;
 
