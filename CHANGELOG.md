@@ -1,17 +1,27 @@
 # Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...HEAD)
+## [v0.4.2](https://github.com/buildo/react-components/tree/v0.4.2) (2016-07-11)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...v0.4.2)
 
 #### Fixes (bugs & defects):
 
+- Collapsed Panel content may overflow in IE [\#484](https://github.com/buildo/react-components/issues/484)
+- \[TimePicker\] Make TimePicker searchable  [\#478](https://github.com/buildo/react-components/issues/478)
+- \[Tooltip\] Tooltip doesn't wrap long words [\#473](https://github.com/buildo/react-components/issues/473)
+- Tooltip should keep into account border and arrow when positioning [\#464](https://github.com/buildo/react-components/issues/464)
 - \[ResizeSensor\] calling this.props.onResize when already unmounted [\#456](https://github.com/buildo/react-components/issues/456)
 - \[ResizeSensor\] not isomorphic [\#451](https://github.com/buildo/react-components/issues/451)
 
 #### New features:
 
+- Flat Dropdown should have border in normal state [\#482](https://github.com/buildo/react-components/issues/482)
+- \[Table\] Add scrollToColumn and scrollToRow props  [\#476](https://github.com/buildo/react-components/issues/476)
+- \[Meter\] Range background color [\#472](https://github.com/buildo/react-components/issues/472)
+- Add optional delay to TextOverflow [\#470](https://github.com/buildo/react-components/issues/470)
+- make TextOverflow optionally lazy [\#468](https://github.com/buildo/react-components/issues/468)
+- use ResizeSensor for Table autosize [\#466](https://github.com/buildo/react-components/issues/466)
 - Disabled state for confirmation input and dropdown [\#459](https://github.com/buildo/react-components/issues/459)
+- \[ResizeSensor\] optionally debounce resize events [\#454](https://github.com/buildo/react-components/issues/454)
 - \[Modal\] Create a standalone Modal component [\#432](https://github.com/buildo/react-components/issues/432)
 - \[Dropdown\] Add Unit Test [\#344](https://github.com/buildo/react-components/issues/344)
 
