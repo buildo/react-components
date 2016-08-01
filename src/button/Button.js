@@ -121,8 +121,7 @@ export default class Button extends React.Component {
 
   makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
 
-  getLocals() {
-    const { size, style, textOverflow, fluid, circular, onClick, buttonState } = this.props;
+  getLocals({ size, style, textOverflow, fluid, circular, onClick, buttonState, className: _className }) {
 
     const labels = {
       ...defaultLabels,
@@ -151,7 +150,7 @@ export default class Button extends React.Component {
       { 'icon-button': isIconButton() },
       { circular },
       stateClassUtil(size),
-      this.props.className
+      _className
     );
 
     const label = labels[buttonState];
@@ -160,7 +159,7 @@ export default class Button extends React.Component {
 
     return {
       buttonState,
-      onClick,
+      onClick: buttonState === 'ready' ? onClick : () => {},
       style,
       wrapperStyle,
       className,
