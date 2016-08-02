@@ -46,9 +46,9 @@ export const ButtonPropTypes = {
   */
   icon: t.maybe(t.union([t.String, t.Object])),
   /**
-  * otherwise just pass children
+  * otherwise just pass a string as children
   */
-  children: t.maybe(t.ReactChildren),
+  children: t.maybe(t.String),
   /**
   * type of the button
   */
@@ -101,7 +101,7 @@ const defaultProps = {
   style: {}
 };
 
-const defaultLabels = { // TODO this should be easily overriden
+const defaultLabels = {
   success: 'success',
   error: 'error',
   processing: 'processing'
