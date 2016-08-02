@@ -112,6 +112,8 @@ const defaultIcons = {
   error: 'exclamation'
 };
 
+const makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
+
 @pure
 @skinnable()
 @props(ButtonProps)
@@ -119,31 +121,39 @@ export default class Button extends React.Component {
 
   static defaultProps = defaultProps;
 
-  makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
-
-  getLocals({ size, style, textOverflow, fluid, circular, onClick, buttonState, className: _className }) {
+  getLocals({
+    size,
+    style,
+    textOverflow,
+    fluid,
+    type, primary, flat,
+    circular,
+    onClick,
+    buttonState,
+    icon: _icon,
+    label: _label,
+    className: _className,
+    children
+  }) {
 
     const labels = {
       ...defaultLabels,
-      ...this.makeProp(this.props.label || this.props.children)
+      ...makeProp(_label || children)
     };
 
     const icons = {
       ...defaultIcons,
-      ...this.makeProp(this.props.icon)
+      ...makeProp(_icon)
     };
 
-    const getButtonType = () => {
-      const { type, primary, flat } = this.props;
-      return type || (primary && 'primary') || (flat && 'flat') || 'default';
-    };
+    const getButtonType = () => type || (primary && 'primary') || (flat && 'flat') || 'default';
 
     const wrapperStyle = {
       display: fluid ? 'block' : 'inline-block',
       width: fluid ? '100%' : null
     };
 
-    const isIconButton = () => this.props.icon && !this.props.label;
+    const isIconButton = () => _icon && !_label;
 
     const className = cx(
       stateClassUtil(getButtonType()),
