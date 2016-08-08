@@ -71,14 +71,20 @@ $hover-scrollbar-color: white !default;
   }
 
   // scrollbar
-  .public_Scrollbar_main.public_Scrollbar_mainActive, .public_Scrollbar_main:hover {
-    background-color: $hover-scrollbar-background;
+  .public_Scrollbar_main {
+    .public_Scrollbar_face:after {
+      background-color: $scrollbar-color;
+    }
     .public_Scrollbar_face:hover:after {
       background-color: $hover-scrollbar-color;
     }
+    &.public_Scrollbar_mainActive, &:hover {
+      background-color: $hover-scrollbar-background;
+    }
+    &.public_Scrollbar_mainActive {
+      .public_Scrollbar_face:after {
+        background-color: $hover-scrollbar-color;
+      }
+    }
   }
-  .public_Scrollbar_face:after {
-    background-color: $scrollbar-color;
-  }
-
 }
