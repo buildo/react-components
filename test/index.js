@@ -2,11 +2,9 @@
 const requireDir = require('require-dir');
 const path = require('path');
 
-require('babel/register')({
+require('babel-register')({
   only: [path.resolve('src'), path.resolve('test/tests')],
-  extensions: ['.js', '.jsx'],
-  stage: 0,
-  loose: true
+  extensions: ['.js', '.jsx']
 });
 
 require('require-noop')({
