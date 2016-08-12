@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 var paths = {
   SRC: path.resolve(__dirname, '../src'),
   EXAMPLES: path.resolve(__dirname, '.'),
@@ -20,7 +19,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel?stage=0&loose',
+        loader: 'babel',
         include: [paths.SRC, paths.EXAMPLES],
         exclude: /node_modules/
       },
