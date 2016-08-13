@@ -1,5 +1,20 @@
 # Change Log
 
+## [v0.4.3](https://github.com/buildo/react-components/tree/v0.4.3) (2016-08-13)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.2...v0.4.3)
+
+#### Breaking:
+
+- Button: children must be string + code style [\#488](https://github.com/buildo/react-components/issues/488)
+
+#### Fixes (bugs & defects):
+
+- Button should be clickable only when is ready [\#486](https://github.com/buildo/react-components/issues/486)
+
+#### New features:
+
+- subtle change in ui behaviour of table scrollbars [\#498](https://github.com/buildo/react-components/issues/498)
+
 ## [v0.4.2](https://github.com/buildo/react-components/tree/v0.4.2) (2016-07-11)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...v0.4.2)
 
