@@ -13,7 +13,7 @@ export TransitionWrapper from './transition-wrapper';
 export BackgroundDimmer from './background-dimmer';
 export Divider from './Divider';
 export Icon from './Icon';
-export { Panel, PanelHeader, PanelMenu, TabbedPanel } from './Panel';
+export { Panel, PanelHeader, TabbedPanel } from './Panel';
 export { Menu, DropdownMenu } from './DropdownMenu';
 export Tooltip from './Tooltip';
 export Button, { StatefulButton } from './button';
