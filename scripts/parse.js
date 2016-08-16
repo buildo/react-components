@@ -1,7 +1,5 @@
-
 import fs from 'fs';
 import t from 'tcomb';
-import find from 'lodash/find';
 import { toObject } from 'tcomb-doc';
 import parseComments from 'get-comments';
 import { parse as parseJSDocs } from 'doctrine';
@@ -20,7 +18,11 @@ function getComments(path) {
 function getDescriptions(comments) {
   const ret = {
     component: comments.description || null,
-    props: {}
+    props: {
+      className: 'additional `className` for wrapper element',
+      id: 'custom `id` for wrapper element',
+      style: 'inline-style overrides for wrapper element'
+    }
   };
   comments.tags.forEach((tag) => {
     if (tag.name) {
@@ -33,9 +35,6 @@ function getDescriptions(comments) {
 // (exports: t.Object) => ReactComponent
 function getComponent(defaultExport) {
   const def = defaultExport['default'] || defaultExport; // eslint-disable-line dot-notation
-  // if (defaultExport['default']) { // eslint-disable-line dot-notation
-  //   defaultExport = defaultExport['default']; // eslint-disable-line dot-notation no-param-reassign
-  // }
   return def.propTypes ? def : null;
 }
 
@@ -47,12 +46,12 @@ function getComponentName(component) {
 // (component: ReactComponent) => TcombType
 function getPropsType(component) {
   const propTypes = component.propTypes;
-  const props = {};
-  Object.keys(propTypes).forEach((k) => {
-    if (k !== '__strict__' && k !== '__subtype__') {
-      props[k] = propTypes[k].tcomb;
+  const props = Object.keys(propTypes).reduce((acc, prop) => {
+    if (prop !== '__strict__' && prop !== '__subtype__') {
+      acc[prop] = propTypes[prop].tcomb;
     }
-  });
+    return acc;
+  }, {});
   if (propTypes.hasOwnProperty('__subtype__')) {
     return t.refinement(t.struct(props), propTypes.__subtype__.predicate);
   }
@@ -79,17 +78,14 @@ export default function parse(path) {
     const defaultProps = getDefaultProps(component);
     const name = getComponentName(component);
     const propsSchema = Object.keys(props).reduce((acc, prop) => {
-      const comment = find(comments.tags, (t) => t.name === prop);
-      if (!comment) {
+      if (!descriptions.props.hasOwnProperty(prop)) {
         throw new Error(`Missing description for prop '${prop}' in '${name}'.`);
       }
       if (props.hasOwnProperty(prop)) {
         if (defaultProps.hasOwnProperty(prop)) {
           acc[prop].defaultValue = defaultProps[prop];
         }
-        if (descriptions.props.hasOwnProperty(prop)) {
-          acc[prop].description = descriptions.props[prop];
-        }
+        acc[prop].description = descriptions.props[prop];
       }
       return acc;
     }, props);
