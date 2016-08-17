@@ -19,6 +19,11 @@ const checkDocs = (json, fileName) => {
 
 };
 
+const kebabToPascalCase = value => {
+  const words = value.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+  return words.join('');
+};
+
 const generateReadMe = (dir, fileName) => {
   const filePath = path.join(dir, fileName);
   log(`Extracting docs from ${filePath}`);
@@ -36,22 +41,21 @@ const generateReadMe = (dir, fileName) => {
   }
 };
 
-const walkThroughDirs = (dir, cb) => {
+const walkThroughDirs = (dir, parent, cb) => {
   if (fs.statSync(dir).isDirectory()) {
     log(`Walking through ${dir}`);
     fs.readdir(dir, (err, results = []) => {
       log(`${dir} contains: ${results.join('\n')}`);
       results
-      .filter(r => r !== 'index.js' && ['', '.js'].indexOf(path.extname(r)) > -1)
       .forEach(r => {
         const pathToCheck = path.join(dir, r);
         log(`Checking path: ${pathToCheck}`);
-        if (fs.statSync(pathToCheck).isFile() && path.extname(r) === '.js') {
+        if (fs.statSync(pathToCheck).isFile() && r === `${kebabToPascalCase(parent)}.js`) {
           log(`${r} is a file!`);
           cb(dir, r);
         } else if (fs.statSync(pathToCheck).isDirectory()) {
           log(`${r} is a dir!`);
-          walkThroughDirs(path.join(dir, r), cb);
+          walkThroughDirs(path.join(dir, r), r, cb);
         }
       });
     });
@@ -62,4 +66,4 @@ const walkThroughDirs = (dir, cb) => {
 
 const root = process.argv[2] || 'src';
 
-walkThroughDirs(path.resolve(root), generateReadMe);
+walkThroughDirs(path.resolve(root), '', generateReadMe);
