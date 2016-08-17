@@ -4,8 +4,6 @@ import { props, t, skinnable, pure } from '../utils';
 import Panel, { Props as panelProps } from './Panel';
 import FlexView from '../flex/FlexView';
 
-import './tabbedPanel.scss';
-
 @pure
 @skinnable()
 @props(t.subtype(t.struct({

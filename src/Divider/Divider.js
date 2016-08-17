@@ -2,8 +2,6 @@ import React from 'react';
 import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
 
-import './divider.scss';
-
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
 const sizeType = t.enums.of(['small', 'medium', 'large', 'no-margin'], 'sizeType');
 

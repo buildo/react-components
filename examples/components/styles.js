@@ -1,4 +1,9 @@
 // use require to avoid errors in showroom webpack
+require('../../src/Divider/divider.scss');
+require('../../src/DropdownMenu/dropdownMenu.scss');
+require('../../src/DropdownMenu/menu.scss');
+require('../../src/Panel/tabbedPanel.scss');
+require('../../src/collapsable-section/collapsableSection.scss');
 require('../../src/more-or-less/moreOrLess.scss');
 require('../../src/flex/flexView.scss');
 require('../../src/loading-spinner/style.scss');

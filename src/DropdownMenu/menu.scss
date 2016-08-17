@@ -1,4 +1,9 @@
-@import '../utils/theme/variables.scss';
+$background: white;
+$box-shadow-color: #628292;             // $lynch
+$menu-title-color: #bdc2ca;             // $silver
+$menu-item-title-color: #2c3a40;        // $charcoal
+$menu-item-title-color-hover: #628292;  // $lynch
+$menu-item-metadata-color: #bdc2ca;     // $silver
 
 .menu {
   width: 250px;
@@ -6,9 +11,9 @@
   z-index: 101;
   top: 40px;
   right: 0;
-  background-color: $white;
+  background-color: $background;
   padding: 8px;
-  box-shadow: 0 0 10px 0px rgba($lynch, .7);
+  box-shadow: 0 0 10px 0px rgba($box-shadow-color, .7);
   overflow: auto;
 
   .menu-row {
@@ -20,9 +25,9 @@
   }
 
   .menu-title {
-    color: $silver;
+    color: $menu-title-color;
     text-transform: uppercase;
-    font-weight: $semibold;
+    font-weight: 600;
     font-size: 13px;
   }
 
@@ -31,15 +36,15 @@
     cursor: pointer;
 
     .menu-item-title {
-      color: $charcoal;
+      color: $menu-item-title-color;
     }
 
     .menu-item-metadata {
-      color: $silver;
+      color: $menu-item-metadata-color;
     }
 
     &:hover:not(.disabled) .menu-item-title {
-      color: $lynch;
+      color: $menu-item-title-color-hover;
     }
   }
 }

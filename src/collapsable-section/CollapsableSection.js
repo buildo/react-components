@@ -4,8 +4,6 @@ import { skinnable, props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
-import './collapsableSection.scss';
-
 @skinnable()
 @props({
   children: t.ReactChildren,
