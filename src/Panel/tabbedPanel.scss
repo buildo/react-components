@@ -1,5 +1,5 @@
-$tabbed-panel-tab-color: #3f4e49 !default;       // $gunmetal
-$tabbed-panel-tab-color-active: white !default;
+$tab-color: #3f4e49 !default;       // $gunmetal
+$tab-color-active: white !default;
 
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 
@@ -13,10 +13,10 @@ $tabbed-panel-tab-color-active: white !default;
       padding: 0;
     }
     .tabbed-panel-tab {
-      color: $tabbed-panel-tab-color; 
+      color: $tab-color; 
       cursor: pointer;
       &.active {
-        color: $tabbed-panel-tab-color-active;
+        color: $tab-color-active;
       }
 
       > div {

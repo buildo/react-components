@@ -1,9 +1,9 @@
 $background: white !default;
 $box-shadow-color: #628292 !default;             // $lynch
-$menu-title-color: #bdc2ca !default;             // $silver
-$menu-item-title-color: #2c3a40 !default;        // $charcoal
-$menu-item-title-color-hover: #628292 !default;  // $lynch
-$menu-item-metadata-color: #bdc2ca !default;     // $silver
+$title-color: #bdc2ca !default;             // $silver
+$item-title-color: #2c3a40 !default;        // $charcoal
+$item-title-color-hover: #628292 !default;  // $lynch
+$item-metadata-color: #bdc2ca !default;     // $silver
 
 .menu {
   width: 250px;
@@ -25,7 +25,7 @@ $menu-item-metadata-color: #bdc2ca !default;     // $silver
   }
 
   .menu-title {
-    color: $menu-title-color;
+    color: $title-color;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 13px;
@@ -36,15 +36,15 @@ $menu-item-metadata-color: #bdc2ca !default;     // $silver
     cursor: pointer;
 
     .menu-item-title {
-      color: $menu-item-title-color;
+      color: $item-title-color;
     }
 
     .menu-item-metadata {
-      color: $menu-item-metadata-color;
+      color: $item-metadata-color;
     }
 
     &:hover:not(.disabled) .menu-item-title {
-      color: $menu-item-title-color-hover;
+      color: $item-title-color-hover;
     }
   }
 }
