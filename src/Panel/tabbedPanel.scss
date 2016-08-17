@@ -1,5 +1,5 @@
-$tabbed-panel-tab-color: #3f4e49;       // $gunmetal
-$tabbed-panel-tab-color-active: white;
+$tabbed-panel-tab-color: #3f4e49 !default;       // $gunmetal
+$tabbed-panel-tab-color-active: white !default;
 
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 

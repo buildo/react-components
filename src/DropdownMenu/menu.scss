@@ -1,9 +1,9 @@
 $background: white;
-$box-shadow-color: #628292;             // $lynch
-$menu-title-color: #bdc2ca;             // $silver
-$menu-item-title-color: #2c3a40;        // $charcoal
-$menu-item-title-color-hover: #628292;  // $lynch
-$menu-item-metadata-color: #bdc2ca;     // $silver
+$box-shadow-color: #628292 !default;             // $lynch
+$menu-title-color: #bdc2ca !default;             // $silver
+$menu-item-title-color: #2c3a40 !default;        // $charcoal
+$menu-item-title-color-hover: #628292 !default;  // $lynch
+$menu-item-metadata-color: #bdc2ca !default;     // $silver
 
 .menu {
   width: 250px;
