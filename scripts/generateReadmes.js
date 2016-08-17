@@ -4,6 +4,8 @@ import t from 'tcomb';
 import parse from './parse';
 import template from './template';
 import debug from 'debug';
+import upperFirst from 'lodash/upperFirst';
+import camelCase from 'lodash/camelCase';
 
 debug.enable('brc:*');
 const log = debug('brc:generate-readmes');
@@ -17,11 +19,6 @@ const checkDocs = (json, fileName) => {
     throw new Error(`Missing description for file ${fileName}.`);
   }
 
-};
-
-const kebabToPascalCase = value => {
-  const words = value.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-  return words.join('');
 };
 
 const generateReadMe = (dir, fileName) => {
@@ -50,7 +47,7 @@ const walkThroughDirs = (dir, parent, cb) => {
       .forEach(r => {
         const pathToCheck = path.join(dir, r);
         log(`Checking path: ${pathToCheck}`);
-        if (fs.statSync(pathToCheck).isFile() && r === `${kebabToPascalCase(parent)}.js`) {
+        if (fs.statSync(pathToCheck).isFile() && r === `${upperFirst(camelCase(parent))}.js`) {
           log(`${r} is a file!`);
           cb(dir, r);
         } else if (fs.statSync(pathToCheck).isDirectory()) {
