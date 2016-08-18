@@ -7,7 +7,16 @@ import { linkState } from '../link-state';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
-
+/** An input field that allows to confirm its content
+ * @param initialValue - initial value
+ * @param onChange - called when input box content is changed
+ * @param onConfirm - called when confirming input content
+ * @param onClear - called when clearing confirmed content
+ * @param placeholder - input placeholder
+ * @param disabled - true if disabled
+ * @param text - labels for 'clear' and 'toConfirm' buttons
+ * @param icon - icons for 'clear' and 'toConfirm' buttons
+ */
 @skinnable()
 @props({
   initialValue: t.maybe(t.String),
