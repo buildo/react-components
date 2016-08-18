@@ -7,32 +7,21 @@ import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
 /**
- * ### Renders and animates toasts (children) inline or in a portal
+ * Renders and animates toasts (children) inline or in a portal
+ * @param children - list of toasts (any node with a unique key)
+ * @param attachTo - id of the element you want to render the `Toaster` in
+ * @param transitionGroup - custom settings for `ReactTransitionGroup`
+ * @param transitionStyles - object with style for each transition event (used by `TransitionWrapper`)
+ * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by `TransitionWrapper`)
+ * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by `TransitionWrapper`)
+ * @param position - top-left | top-right | bottom-left | bottom-right
  */
 @props({
-  /**
-   * list of toasts (any node with a unique key)
-   */
   children: t.ReactChildren,
-  /**
-   * id of the element you want to render the `Toaster` in
-   */
   attachTo: t.maybe(t.String),
-  /**
-   * custom settings for `ReactTransitionGroup`
-   */
   transitionGroup: t.maybe(t.Object),
-  /**
-   * object with style for each transition event (used by `TransitionWrapper`)
-   */
   transitionStyles: t.maybe(t.Object),
-  /**
-   * duration of enter transition in milliseconds (used by `TransitionWrapper`)
-   */
   transitionEnterTimeout: t.Number,
-  /**
-   * duration of leave transition in milliseconds (used by `TransitionWrapper`)
-   */
   transitionLeaveTimeout: t.Number,
   position: t.enums.of(['top-left', 'top-right', 'bottom-left', 'bottom-right']),
   id: t.maybe(t.String),
