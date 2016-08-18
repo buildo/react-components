@@ -4,6 +4,12 @@ import _debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
+/**
+ * A component used to intercept window resize events
+ * @param children - content
+ * @param onResize - called when a resize event is captured
+ * @param debounce - callback delay (milliseconds)
+ */
 @props({
   children: t.ReactChildren,
   onResize: t.Function,
