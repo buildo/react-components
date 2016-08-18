@@ -7,35 +7,23 @@ import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
 /**
- * ### Component to manage modals flow/animations inside an app:
+ * Component to manage modals flow/animations inside an app:
  * - creates a portal `div` on the page `body`
  * - renders one modal at a time
  * - supports animations (by using `TransitionWrapper`)
+ * @param children - active modal component
+ * @param transitionStyles - object with style for each transition event (used by TransitionWrapper)
+ * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by TransitionWrapper)
+ * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by TransitionWrapper)
+ * @param getChildContext - callback to get custom context for modals. Can't be updated
+ * @param childContextTypes - static object to describe custom context object for modals. Can't be updated
  */
 @props({
-  /**
-   * active modal component
-   */
   children: t.maybe(t.ReactElement),
-  /**
-   * object with style for each transition event (used by TransitionWrapper)
-   */
   transitionStyles: t.maybe(t.Object),
-  /**
-   * duration of enter transition in milliseconds (used by TransitionWrapper)
-   */
   transitionEnterTimeout: t.maybe(t.Number),
-  /**
-   * duration of leave transition in milliseconds (used by TransitionWrapper)
-   */
   transitionLeaveTimeout: t.maybe(t.Number),
-  /**
-   * callback to get custom context for modals. Can't be updated
-   */
   getChildContext: t.maybe(t.Function),
-  /**
-   * static object to describe custom context object for modals. Can't be updated
-   */
   childContextTypes: t.maybe(t.Object)
 })
 export default class ModalManager extends React.Component {
