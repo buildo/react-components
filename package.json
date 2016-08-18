@@ -16,7 +16,7 @@
     "start": "rm -rf examples/build && webpack-dev-server --config examples/webpack.config.js --progress --hot --inline && cp examples/index.html examples/build/index.html",
     "showroom": "rm -rf showroom/build && webpack-dev-server --config showroom/webpack.config.js --progress --hot --inline",
     "build-showroom": "rm -rf ./showroom/build && webpack --config showroom/webpack.config.build.js --progress && cp ./showroom/build/index.html ./index.html && npm run generate-componentsJSON",
-    "deploy-showroom": "git reset && npm run build-showroom && git add ./index.html && git add ./showroom/build && git add ./showroom/components.json && git commit -m 'deploy' && git push",
+    "deploy-showroom": "git reset && npm run build-showroom && git add ./index.html && git add ./showroom/build && git add ./showroom/components.json && ((git commit -m 'Update gh pages [skip CI]' && git push) || true)",
     "generate-componentsJSON": "node generateComponentsJSON/index.js",
     "generate-readmes": "node generateReadmes/index.js",
     "release-patch": "./releaseVersion.sh patch",

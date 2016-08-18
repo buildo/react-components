@@ -10,12 +10,8 @@ build:
   gh-pages:
     image: quay.io/buildo/node5-npm3
     commands:
-      - git fetch --no-tags origin +refs/heads/gh-pages
-      - git checkout gh-pages
-      - git pull
       - git config --global user.email "ci@buildo.io"
       - git config --global user.name "Drone CI"
-      - git merge master --no-edit
       - npm run deploy-showroom
     when:
       branch: master
