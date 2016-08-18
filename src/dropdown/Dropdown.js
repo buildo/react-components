@@ -26,6 +26,19 @@ const PropTypes = {
   style: t.maybe(t.Object)
 };
 
+/** A dropdown field
+ * @param value - selected value
+ * @param valueLink - defines actions to be taken when a particular value is selected
+ * @param onChange - called when value is changed
+ * @param options - available options
+ * @param size - medium | small
+ * @param disabled - true if disabled
+ * @param searchable - true if it should be possible to search the desired value by writing into the dropdown
+ * @param clearable - true if it should be possible to reset the selected value
+ * @param backspaceRemoves - whether pressing backspace removes the last item when there is no input value
+ * @param multi - true if it should be possible to select multiple values
+ * @param flat - whether it should have a flat style
+ */
 @skinnable()
 @props(PropTypes, { strict: false })
 export default class Dropdown extends React.Component {
