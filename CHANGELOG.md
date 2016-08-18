@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.4.5](https://github.com/buildo/react-components/tree/v0.4.5) (2016-08-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.4...v0.4.5)
+
+## [v0.4.4](https://github.com/buildo/react-components/tree/v0.4.4) (2016-08-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.3...v0.4.4)
+
+#### New features:
+
+- Remove PanelMenu component [\#503](https://github.com/buildo/react-components/issues/503)
+- \[Babel\] Update Babel [\#500](https://github.com/buildo/react-components/issues/500)
+
 ## [v0.4.3](https://github.com/buildo/react-components/tree/v0.4.3) (2016-08-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.2...v0.4.3)
 
