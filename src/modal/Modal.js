@@ -27,6 +27,17 @@ export const Props = {
   ...ModalProps
 };
 
+/** Render a modal window over a dimmed layer
+ * @param children - modal content
+ * @param title - modal title
+ * @param footer - modal footer
+ * @param iconClose - close icon
+ * @param overlay - specify 'color' and 'alpha' for the overlay layer
+ * @param dismissOnClickOutside - whether the modal should be dismissed when clicking outside it
+ * @param onDismiss - called when modal is dismissed
+ * @param transitionEnterTimeout - transition enter timeout
+ * @param transitionLeaveTimeout - transition leave timeout
+ */
 @skinnable()
 @props(Props)
 export default class Modal extends React.Component {
