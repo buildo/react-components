@@ -6,21 +6,17 @@ import { props, t } from '../utils';
 const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.prototype instanceof React.Component || t.Function.is(x.prototype.render)));
 
 /**
- * ### To be used with `ReactTransitionGroup` to show transitions for a component
+ * To be used with `ReactTransitionGroup` to show transitions for a component
+ * @param children - the component you want to animate (it must have a unique "key")
+ * @param component - custom component to be used as wrapper for `children`. Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`)
+ * @param transitionStyles - object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case)
+ * @param transitionEnterTimeout - duration of enter transition in milliseconds
+ * @param transitionLeaveTimeout - duration of leave transition in milliseconds
+ * @param onLeave - callback for componentDidLeave: useful if you need to do some cleanup
  */
 const PropTypes = {
-  /**
-   * the component you want to animate (it must have a unique "key")
-   */
   children: t.ReactChildren,
-  /**
-   * custom component to be used as wrapper for `children`.
-   * Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`)
-   */
   component: t.maybe(t.union([ ReactClass, t.String ])),
-  /**
-   * object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case)
-   */
   transitionStyles: t.maybe(t.struct({
     enter: t.maybe(t.Object),
     enterActive: t.maybe(t.Object),
@@ -28,17 +24,8 @@ const PropTypes = {
     leave: t.maybe(t.Object),
     leaveActive: t.maybe(t.Object)
   })),
-  /**
-   * duration of enter transition in milliseconds
-   */
   transitionEnterTimeout: t.Number,
-  /**
-   * duration of leave transition in milliseconds
-   */
   transitionLeaveTimeout: t.Number,
-  /**
-   * callback for componentDidLeave: useful if you need to do some cleanup
-   */
   onLeave: t.maybe(t.Function),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
