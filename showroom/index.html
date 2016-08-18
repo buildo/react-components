@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Buildo react-components</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/monokai.min.css"/>
+    <link rel="stylesheet" href="https://i.icomoon.io/public/5ba04e2a5e/Showroom/style.css">
+    <link rel="stylesheet" href="https://assets-cdn.github.com/assets/github-fefb561e0a804c2a181aed0adbaa8ba5aa475e09b7692a3f737cb8bb50ef1c27.css">
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks.main.css) { %}
+      <link rel="stylesheet" href="__BUILD_PATH__{%=o.htmlWebpackPlugin.files.chunks.main.css[chunk]%}__GZIP__" media="all">
+    {% } %}
+  </head>
+  <body>
+    <div id='app'></div>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/mode/javascript/javascript.min.js"></script>
+    {%
+      for (var chunk in o.htmlWebpackPlugin.files.chunks) {
+    %}<script type='text/javascript' src="__BUILD_PATH__{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}__GZIP__"></script>{%
+      }
+    %}
+  </body>
+</html>
