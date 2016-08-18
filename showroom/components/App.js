@@ -57,7 +57,7 @@ export default class App extends React.Component {
       this.getLastCommitHash({ data: sections })
         .then(sections => this.setState({ sections }));
     } else {
-      this.rawgit.get('react-components/gh-pages/showroom/components.json')
+      this.rawgit.get('react-components/master/showroom/components.json')
         .then(this.getLastCommitHash)
         .then((sections) => this.setState({ sections }));
     }
