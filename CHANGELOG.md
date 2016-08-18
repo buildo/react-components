@@ -1,12 +1,15 @@
 # Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...HEAD)
+## [v0.5.0](https://github.com/buildo/react-components/tree/v0.5.0) (2016-08-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...v0.5.0)
 
 #### Breaking:
 
 - Remove styles import [\#505](https://github.com/buildo/react-components/issues/505)
+
+#### New features:
+
+- \[KitchenSink\] Publish step [\#497](https://github.com/buildo/react-components/issues/497)
 
 ## [v0.4.5](https://github.com/buildo/react-components/tree/v0.4.5) (2016-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.4...v0.4.5)
