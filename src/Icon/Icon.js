@@ -5,6 +5,12 @@ import cx from 'classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
 
+/** An icon
+ * @param icon - icon className
+ * @param color - icon color
+ * @param paths - number of paths the icon is composed of
+ * @param onClick - onClick callback
+ */
 @pure
 @skinnable()
 @props({
