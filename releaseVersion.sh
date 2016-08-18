@@ -28,6 +28,7 @@ REMOTE=$(git rev-parse @{u})
 BASE=$(git merge-base @ @{u})
 
 if [ $LOCAL = $REMOTE ]; then
+  set -e
   npm version $1
   npm publish
   git push
