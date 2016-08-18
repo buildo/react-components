@@ -17,6 +17,10 @@ const defaultDividerProps = {
   style: {}
 };
 
+/** A simple component used to visually divide UI elements
+ * @param orientation - vertical | horizontal
+ * @param size - size of margins
+ */
 @pure
 @skinnable()
 @props(dividerProps)
