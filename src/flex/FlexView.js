@@ -6,65 +6,40 @@ import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
 const PropTypes = {
-  /**
-   * FlexView content
-   */
   children: t.ReactChildren,
-  /**
-   * flex-direction: column
-   */
   column: t.maybe(t.Boolean),
-  /**
-   * align content vertically
-   */
   vAlignContent: t.maybe(t.enums.of(['top', 'center', 'bottom'])),
-  /**
-   * align content horizontally
-   */
   hAlignContent: t.maybe(t.enums.of(['left', 'center', 'right'])),
-  /**
-   * margin-left property ("auto" to align self right)
-   */
   marginLeft: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * margin-top property ("auto" to align self bottom)
-   */
   marginTop: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * margin-right property ("auto" to align self left)
-   */
   marginRight: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * margin-bottom property ("auto" to align self top)
-   */
   marginBottom: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * flex-grow property (for parent primary axis)
-   */
   grow: t.maybe(t.union([ t.Boolean, t.Number ])),
-  /**
-   * flex-shrink property
-   */
   shrink: t.maybe(t.union([ t.Boolean, t.Number ])),
-  /**
-   * flex-basis property
-   */
   basis: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * wrap content
-   */
   wrap: t.maybe(t.Boolean),
-  /**
-   * height property (for parent secondary axis)
-   */
   height: t.maybe(t.union([ t.String, t.Number ])),
-  /**
-   * width property (for parent secondary axis)
-   */
   width: t.maybe(t.union([ t.String, t.Number ])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
+
+/** React component to abstract over flexbox
+ * @param children - flexView content
+ * @param column - flex-direction: column
+ * @param vAlignContent - align content vertically
+ * @param hAlignContent - align content horizontally
+ * @param marginLeft - margin-left property ("auto" to align self right)
+ * @param marginTop - margin-top property ("auto" to align self bottom)
+ * @param marginRight - margin-right property ("auto" to align self left)
+ * @param marginBottom - margin-bottom property ("auto" to align self top)
+ * @param flex-grow property (for parent primary axis)
+ * @param shrink - flex-shrink property
+ * @param basis - flex-basis property
+ * @param wrap - wrap content
+ * @param height - height property (for parent secondary axis)
+ * @param width - width property (for parent secondary axis)
+ */
 @props(PropTypes, { strict: false })
 export default class FlexView extends React.Component {
 
