@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...HEAD)
+
+#### Breaking:
+
+- Remove styles import [\#505](https://github.com/buildo/react-components/issues/505)
+
 ## [v0.4.5](https://github.com/buildo/react-components/tree/v0.4.5) (2016-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.4...v0.4.5)
 
