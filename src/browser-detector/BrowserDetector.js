@@ -13,25 +13,17 @@ const Browser = t.enums.of([
 ], 'Browser');
 
 /**
- * ### Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
+ * Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
+ * @param children - children node rendered when using a supported browser
+ * @param placeholder - called when using a non-supported browser. Expected to return a valid ReactNode.
+ * @param supportedBrowsers - whitelist of supported browsers. If `undefined` they're all supported
+ * @param userAgent - custom user-agent
  */
 @skinnable()
 @props({
-  /**
-   * children node rendered when using a supported browser
-   */
   children: t.ReactChildren,
-  /**
-   * called when using a non-supported browser. Expected to return a valid ReactNode.
-   */
   placeholder: t.Function,
-  /**
-   * whitelist of supported browsers. If `undefined` they're all supported.
-   */
   supportedBrowsers: t.maybe(t.list(Browser)),
-  /**
-   * custom user-agent
-   */
   userAgent: t.maybe(t.String)
 })
 export default class BrowserDetector extends React.Component {
