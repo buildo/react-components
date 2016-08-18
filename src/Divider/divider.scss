@@ -1,8 +1,8 @@
-@import '../utils/theme/variables.scss';
+$color: #E6E6E6 !default;  // pearl
 
 .divider {
-  background-color: $pearl;
-  color: $pearl;
+  background-color: $color;
+  color: $color;
   &.small {
     margin: 5px;
   }

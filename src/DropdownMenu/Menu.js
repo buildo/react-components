@@ -6,8 +6,6 @@ import partial from 'lodash/partial';
 import FlexView from '../flex/FlexView';
 import Divider from '../Divider/Divider';
 
-import './menu.scss';
-
 export const optionType = t.struct({
   type: t.enums.of(['title', 'item', 'divider']),
   title: t.maybe(t.ReactChildren),

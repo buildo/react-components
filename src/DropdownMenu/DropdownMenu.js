@@ -5,8 +5,6 @@ import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 import cx from 'classnames';
 
-import './dropdownMenu.scss';
-
 export const Props = {
   children: t.maybe(t.ReactChildren),
   menuRenderer: t.maybe(t.Function),
