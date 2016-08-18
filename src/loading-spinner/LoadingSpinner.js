@@ -5,28 +5,20 @@ import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
 /**
- * ### Absolute dimmed layer with loading spinner in the center
+ * Absolute dimmed layer with loading spinner in the center
+ * @param size - spinner size
+ * @param color - spinner main color
+ * @param message - spinner message
+ * @param overlayColor - dimmed-overlay color
  */
 @props({
-  /**
-  * spinner size
-  */
   size: t.maybe(t.union([t.String, t.Number])),
-  /**
-  * spinner main color
-  */
   color: t.maybe(t.String),
-  /**
-  * spinner message
-  */
   message: t.maybe(t.struct({
     content: t.String,
     color: t.maybe(t.String),
     size: t.maybe(t.union([t.String, t.Number]))
   })),
-  /**
-  * dimmed-overlay color
-  */
   overlayColor: t.maybe(t.String),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
