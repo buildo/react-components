@@ -7,15 +7,6 @@ build:
       - npm i
       - npm test
 
-  gh-pages:
-    image: quay.io/buildo/node5-npm3
-    commands:
-      - git config --global user.email "ci@buildo.io"
-      - git config --global user.name "Drone CI"
-      - npm run deploy-showroom
-    when:
-      branch: master
-
   generate-changelog:
     image: ruby
     environment:
@@ -33,6 +24,15 @@ build:
           git commit -m "Update CHANGELOG.md [skip ci]";
           git push origin $$BRANCH;
         fi
+    when:
+      branch: master
+
+  gh-pages:
+    image: quay.io/buildo/node5-npm3
+    commands:
+      - git config --global user.email "ci@buildo.io"
+      - git config --global user.name "Drone CI"
+      - npm run deploy-showroom
     when:
       branch: master
 
