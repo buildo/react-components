@@ -1,26 +1,28 @@
 import React from 'react';
 import find from 'lodash/find';
+import { props, t } from '../utils';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 import Component from './content/Component';
 
 export default class KitchenSink extends React.Component {
 
-  static propTypes = {
-    componentId: React.PropTypes.string,
-    contentId: React.PropTypes.string,
-    sectionId: React.PropTypes.string,
-    sections: React.PropTypes.array.isRequired,
-    openSections: React.PropTypes.array,
-    components: React.PropTypes.array,
-    onSelectItem: React.PropTypes.func.isRequired,
-    onToggleSection: React.PropTypes.func.isRequired,
-    scope: React.PropTypes.object,
-    iso: React.PropTypes.bool,
-    header: React.PropTypes.node,
-    footer: React.PropTypes.node,
-    loading: React.PropTypes.bool
-  };
+@props({
+  componentId: t.maybe(t.String),
+  contentId: t.maybe(t.String),
+  sectionId: t.maybe(t.String),
+  sections: t.Array,
+  openSections: t.maybe(t.Array),
+  components: t.maybe(t.Array),
+  onSelectItem: t.Function,
+  onToggleSection: t.Function,
+  scope: t.maybe(t.Object),
+  iso: t.maybe(t.Boolean),
+  header: t.maybe(t.ReactChildren),
+  footer: t.maybe(t.ReactChildren),
+  loading: t.maybe(t.Boolean)
+})
+export default class KitchenSink extends React.Component {
 
   static defaultProps = {
     openSections: []

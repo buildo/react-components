@@ -1,13 +1,13 @@
 import React from 'react';
+import { props, t } from '../../utils';
 import LiveDemo from './LiveDemo';
 
+@props({
+  iso: t.maybe(t.Boolean),
+  scope: t.Object,
+  codeText: t.String
+})
 export default class ExampleCard extends React.Component {
-
-  static propTypes = {
-    iso: React.PropTypes.bool,
-    scope: React.PropTypes.object.isRequired,
-    codeText: React.PropTypes.string.isRequired
-  };
 
   render() {
     const { scope, codeText, iso } = this.props;

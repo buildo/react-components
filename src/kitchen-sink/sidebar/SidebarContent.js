@@ -1,15 +1,15 @@
 import React from 'react';
+import { props, t } from '../../utils';
 import Item from './Item';
 import CollapsableSection from '../../collapsable-section/CollapsableSection';
 
+@props({
+  sections: t.maybe(t.Array),
+  openSections: t.Array,
+  onSelectItem: t.Function,
+  onToggleSection: t.maybe(t.Function)
+})
 export default class SidebarContent extends React.Component {
-
-  static propTypes = {
-    sections: React.PropTypes.array,
-    openSections: React.PropTypes.array.isRequired,
-    onSelectItem: React.PropTypes.func.isRequired,
-    onToggleSection: React.PropTypes.func
-  };
 
   isActive = (id) => false && id;
 
