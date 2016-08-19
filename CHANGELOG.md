@@ -7,8 +7,6 @@
 #### New features:
 
 - add table's scrollbars customization [\#509](https://github.com/buildo/react-components/issues/509)
-- \[KitchenSink\] Readme generator [\#494](https://github.com/buildo/react-components/issues/494)
-- \[KitchenSink\] Props documentation [\#491](https://github.com/buildo/react-components/issues/491)
 
 ## [v0.5.0](https://github.com/buildo/react-components/tree/v0.5.0) (2016-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...v0.5.0)
@@ -16,10 +14,6 @@
 #### Breaking:
 
 - Remove styles import [\#505](https://github.com/buildo/react-components/issues/505)
-
-#### New features:
-
-- \[KitchenSink\] Publish step [\#497](https://github.com/buildo/react-components/issues/497)
 
 ## [v0.4.5](https://github.com/buildo/react-components/tree/v0.4.5) (2016-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.4...v0.4.5)
@@ -30,7 +24,7 @@
 #### New features:
 
 - Remove PanelMenu component [\#503](https://github.com/buildo/react-components/issues/503)
-- \[Babel\] Update Babel [\#500](https://github.com/buildo/react-components/issues/500)
+- Update Babel to v6.x [\#500](https://github.com/buildo/react-components/issues/500)
 
 ## [v0.4.3](https://github.com/buildo/react-components/tree/v0.4.3) (2016-08-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.2...v0.4.3)
@@ -53,7 +47,7 @@
 #### Fixes (bugs & defects):
 
 - Collapsed Panel content may overflow in IE [\#484](https://github.com/buildo/react-components/issues/484)
-- \[TimePicker\] Make TimePicker searchable  [\#478](https://github.com/buildo/react-components/issues/478)
+- TimePicker: Make TimePicker searchable  [\#478](https://github.com/buildo/react-components/issues/478)
 - \[Tooltip\] Tooltip doesn't wrap long words [\#473](https://github.com/buildo/react-components/issues/473)
 - Tooltip should keep into account border and arrow when positioning [\#464](https://github.com/buildo/react-components/issues/464)
 - \[ResizeSensor\] calling this.props.onResize when already unmounted [\#456](https://github.com/buildo/react-components/issues/456)
@@ -62,8 +56,8 @@
 #### New features:
 
 - Flat Dropdown should have border in normal state [\#482](https://github.com/buildo/react-components/issues/482)
-- \[Table\] Add scrollToColumn and scrollToRow props  [\#476](https://github.com/buildo/react-components/issues/476)
-- \[Meter\] Range background color [\#472](https://github.com/buildo/react-components/issues/472)
+- Table: Add scrollToColumn and scrollToRow props  [\#476](https://github.com/buildo/react-components/issues/476)
+- Meter: Range background color [\#472](https://github.com/buildo/react-components/issues/472)
 - Add optional delay to TextOverflow [\#470](https://github.com/buildo/react-components/issues/470)
 - make TextOverflow optionally lazy [\#468](https://github.com/buildo/react-components/issues/468)
 - use ResizeSensor for Table autosize [\#466](https://github.com/buildo/react-components/issues/466)
@@ -419,10 +413,6 @@
 
 ## [v0.0.2](https://github.com/buildo/react-components/tree/v0.0.2) (2015-07-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.1...v0.0.2)
-
-#### New features:
-
-- remove semantic from popover [\#2](https://github.com/buildo/react-components/issues/2)
 
 ## [v0.0.1](https://github.com/buildo/react-components/tree/v0.0.1) (2015-07-06)
 
