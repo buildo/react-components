@@ -10,8 +10,6 @@ import { warn } from '../utils/log';
 
 import './patch-fixed-data-table';
 
-import 'fixed-data-table/dist/fixed-data-table-base.min.css';
-
 export const checkPropsInvariants = (props) => {
   const {
     selectionType, onRowsSelect,
@@ -33,25 +31,15 @@ export const checkPropsInvariants = (props) => {
 };
 
 const Props = t.subtype(t.struct({
-  /** the desired height of the table */
   height: t.maybe(t.Number),
-  /** the desired width of the table */
   width: t.maybe(t.Number),
-  /** if true, the table will fit the container if width and height */
   autoSize: t.maybe(t.Boolean),
-  /** if true, the columns will split evenly the width, avoiding horizontal scrollbars */
   autoSizeColumns: t.maybe(t.Boolean),
-  /** height in pixel of every row */
   rowHeight: t.maybe(t.Number),
-  /** height in pixel of header */
   headerHeight: t.maybe(t.Number),
-  /** height in pixel of groupHeader */
   groupHeaderHeight: t.maybe(t.Number),
-  /** height in pixel of footer */
   footerHeight: t.maybe(t.Number),
-  /** method to get the desired row of data */
   rowGetter: t.Function,
-  /** number of row displayed in the table */
   rowsCount: t.maybe(t.Number),
   cellRenderer: t.Function,
   children: t.ReactChildren,
@@ -72,6 +60,29 @@ const Props = t.subtype(t.struct({
   id: t.maybe(t.String)
 }), checkPropsInvariants, 'FixedDataTableWrapperProps');
 
+/** A table component based on fixed-data-table
+ * @param height - the desired height of the table
+ * @param width - the desired width of the table
+ * @param autoSize - if true, the table will fit the container if width and height
+ * @param autoSizeColumns - if true, the columns will split evenly the width, avoiding horizontal scrollbars
+ * @param rowHeight - height in pixel of every row
+ * @param headerHeight - height in pixel of header
+ * @param groupHeaderHeight - height in pixel of groupHeader
+ * @param footerHeight - height in pixel of footer
+ * @param rowGetter - method to get the desired row of data
+ * @param rowsCount number of row displayed in the table
+ * @param cellRenderer - method to render cells
+ * @param children - content
+ * @param sort - the desired sorting field and direction
+ * @param selectedColumns - selected columns
+ * @param selectedRows - selected rows
+ * @param onRowSelect - called when a row is selected
+ * @param onRowsSelect - called when multiple rows are selected
+ * @param selectionType - none | sigle | multi
+ * @param onColumnResizeEndCallback - called after a column has been resized
+ * @param isColumnResizing - whether a column is currently being resized
+ * @param columns - list of columns
+ */
 @pure
 @skinnable()
 @props(Props)

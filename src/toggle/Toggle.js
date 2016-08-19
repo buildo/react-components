@@ -8,24 +8,20 @@ import { warn } from '../utils/log';
 
 /**
  * A nice animated Toggle rendered using only CSS
+ * @param value - the current value (`true` if checked)
+ * @param onChange - callback called when user clicks on the Toggle
+ * @param valueLink - to be used together with `linkState`
+ * @param size - The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2`
  */
 @pure
 @skinnable()
 @props({
-  /** The current value (`true` if checked) */
   value: t.maybe(t.Boolean),
-  /** Callback called when user clicks on the Toggle */
   onChange: t.maybe(t.Function),
-  /** To be used together with `linkState` */
   valueLink: t.maybe(t.struct({
     value: t.maybe(t.Boolean),
     requestChange: t.Function
   })),
-  /**
-   * The size for the Toggle in whatever unit (px, em, rem ...).
-   * It will be used to compute `width`, `height` and `border-radius` as follows:
-   * `width: size`, `height: size / 2`, `border-radius: size / 2`
-   */
   size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)

@@ -34,37 +34,13 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
 }, 'Ranges');
 
 const Props = t.refinement(t.struct({
-  /**
-   * Current value.
-   */
   value: t.Number,
-  /**
-   * Minimum value.
-   */
   min: t.maybe(t.Number),
-  /**
-   * Maximum value.
-   */
   max: t.maybe(t.Number),
-  /**
-   * Function in which you can define a custom label format.
-   */
   labelFormatter: t.maybe(t.Function),
-  /**
-   * Array of Object in which you can define startValue, endValue, labelColor, fillingColor.
-   */
   ranges: t.maybe(Ranges),
-  /**
-   * Fallback labelColor.
-   */
   baseLabelColor: t.maybe(t.String),
-  /**
-   * Fallback fillingColor.
-   */
   baseFillingColor: t.maybe(t.String),
-  /**
-   * Fallback backgroundColor.
-   */
   baseBackgroundColor: t.maybe(t.String),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -87,7 +63,15 @@ const labelFormatter = (value, min, max) => (
 );
 
 /**
- * ### Renders a Meter
+ * Renders a Meter
+ * @param value - current value
+ * @param min - minimum value
+ * @param max - maximum value
+ * @param labelFormatter - function in which you can define a custom label format
+ * @param ranges - array of Object in which you can define startValue, endValue, labelColor, fillingColor
+ * @param baseLabelColor - fallback labelColor
+ * @param baseFillingColor - fallback fillingColor
+ * @param baseBackgroundColor - fallback backgroundColor
  */
 @skinnable()
 @props(Props)

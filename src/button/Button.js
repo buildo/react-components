@@ -29,61 +29,19 @@ const propsInvariants = [
 ];
 
 export const ButtonPropTypes = {
-  /**
-  * ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component
-  */
   buttonState: t.maybe(ButtonState),
-  /**
-  * callback
-  */
   onClick: t.Func,
-  /**
-  * can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates])
-  */
   label: t.maybe(t.union([t.String, t.Object])),
-  /**
-  * can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates]))
-  */
   icon: t.maybe(t.union([t.String, t.Object])),
-  /**
-  * otherwise just pass a string as children
-  */
   children: t.maybe(t.String),
-  /**
-  * type of the button
-  */
   type: t.maybe(ButtonType),
-  /**
-  * shortcut for type "primary"
-  */
   primary: t.maybe(t.Boolean),
-  /**
-  * shortcut for type "flat"
-  */
   flat: t.maybe(t.Boolean),
-  /**
-  * size of the button, one of 'tiny', 'small', 'medium'
-  */
   size: t.maybe(ButtonSize),
-  /**
-  * fluid (block) button, takes the width of the container
-  */
   fluid: t.maybe(t.Boolean),
-  /**
-  * circular button, this is allowed only if it's an icon button
-  */
   circular: t.maybe(t.Boolean),
-  /**
-  * function to handle the overflow of too long labels, replacing with ellipsed string and tooltip
-  */
   textOverflow: t.maybe(t.Function),
-  /**
-  * custom inline style
-  */
   style: t.maybe(t.Object),
-  /**
-  * adds a className to top-level tag
-  */
   className: t.maybe(t.String)
 };
 
@@ -114,6 +72,21 @@ const defaultIcons = {
 
 const makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
 
+/** A stateful button element
+ * @param buttonState - ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component
+ * @param onClick - callback
+ * @param label - can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates])
+ * @param icon - can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates]))
+ * @param children - otherwise just pass a string as children
+ * @param type - type of the button (default, primary, positive, negative, flat)
+ * @param primary - shortcut for type "primary"
+ * @param flat - shortcut for type "flat"
+ * @param size - size of the button, one of 'tiny', 'small', 'medium'
+ * @param fluid - fluid (block) button, takes the width of the container
+ * @param circular - circular button, this is allowed only if it's an icon button
+ * @param textOverflow - function to handle the overflow of too long labels, replacing with ellipsed string and tooltip
+
+ */
 @pure
 @skinnable()
 @props(ButtonProps)

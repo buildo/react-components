@@ -5,48 +5,28 @@ import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
 /**
- * ### Creates a full-page dimmed background for its children nodes
+ * Creates a full-page dimmed background for its children nodes
+ * @param children - children nodes/elements
+ * @param color - background-color
+ * @param alpha - opacity
+ * @param zIndex - z-index (BackgroundDimmer has `position: fixed`)
+ * @param stopScrollPropagation - avoid propagation for scroll events
+ * @param onClickOutside - called when user clicks outside children
+ * @param width - centeredContentWrapper width
+ * @param maxWidth - centeredContentWrapper max-width
+ * @param height - centeredContentWrapper height
+ * @param maxHeight - centeredContentWrapper max-height
  */
 @props({
-  /**
-   * children nodes/elements
-   */
   children: t.ReactChildren,
-  /**
-   * background-color
-   */
   color: t.maybe(t.String),
-  /**
-   * opacity
-   */
   alpha: t.maybe(t.Number),
-  /**
-   * z-index (BackgroundDimmer has `position: fixed`)
-   */
   zIndex: t.maybe(t.Number),
-  /**
-   * avoid propagation for scroll events
-   */
   stopScrollPropagation: t.maybe(t.Boolean),
-  /**
-   * called when user clicks outside children
-   */
   onClickOutside: t.maybe(t.Function),
-  /**
-   * centeredContentWrapper width
-   */
   width: t.maybe(t.union([t.String, t.Number])),
-  /**
-   * centeredContentWrapper max-width
-   */
   maxWidth: t.maybe(t.union([t.String, t.Number])),
-  /**
-   * centeredContentWrapper height
-   */
   height: t.maybe(t.union([t.String, t.Number])),
-  /**
-   * centeredContentWrapper max-height
-   */
   maxHeight: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   id: t.maybe(t.String),

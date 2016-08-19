@@ -8,16 +8,14 @@ import Popover from '../popover/Popover';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 
 /**
- * ### Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
+ * Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
+ * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
+ * @param label - this is the full string
+ * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
+ * @param delayWhenLazy - tooltip delay if the component is lazy
  */
 @props({
-  /**
-   * in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
-   */
   children: t.maybe(t.Function),
-  /**
-   * this is the full string
-   */
   label: t.String,
   lazy: t.maybe(t.Boolean),
   delayWhenLazy: t.maybe(t.Integer),

@@ -8,10 +8,13 @@ import FlexView from '../flex/FlexView';
  * A NavBar container built with FlexView:
  * - easy positioning of content (left, center and right columns)
  * - lets you define basic css style from JS
+ * @param content - props used to define the NavBar content (defines left, center, right, maxWidth).
+ * @param fixed - to set `position: fixed`
+ * @param height - shorthand for css `height`
+ * @param background - shorthand for css `background`
  */
 @skinnable()
 @props({
-  /** Props used to define the NavBar content */
   content: t.struct({
     /** Left content. It doesn't shrink nor grow */
     left: t.maybe(t.ReactChildren),
@@ -22,11 +25,8 @@ import FlexView from '../flex/FlexView';
     /** shorthand for css `max-width` */
     maxWidth: t.maybe(t.union([ t.String, t.Number ]))
   }),
-  /** To set `position: fixed` */
   fixed: t.maybe(t.Boolean),
-  /** shorthand for css `height` */
   height: t.maybe(t.union([ t.String, t.Number ])),
-  /** shorthand for css `background` */
   background: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)

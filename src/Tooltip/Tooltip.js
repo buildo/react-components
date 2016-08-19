@@ -3,6 +3,12 @@ import cx from 'classnames';
 import { pure, props, skinnable, t, stateClassUtil } from '../utils';
 import Popover from '../popover/Popover';
 
+/** Tooltip that appears when the mouse is over an element
+ * @param children - the element over which the tooltip is shown
+ * @param popover - popover props
+ * @param type - light | dark
+ * @param size - small | big
+ */
 @pure
 @skinnable()
 @props({

@@ -3,20 +3,14 @@ import MobileDetect from 'mobile-detect';
 import { props, t } from '../utils';
 
 /**
- * ### Top-level component which detects device type and passes this info to children as context
+ * Top-level component which detects device type and passes this info to children as context
+ * @param children - children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback
+ * @param forceDesktop - ignores real device type and considers it as desktop
+ * @param userAgent - custom user-agent
  */
 @props({
-  /**
-   * children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback
-   */
   children: t.Function,
-  /**
-   * ignores real device type and considers it as desktop
-   */
   forceDesktop: t.maybe(t.Boolean),
-  /**
-   * custom user-agent
-   */
   userAgent: t.maybe(t.String)
 })
 export default class MobileDetector extends React.Component {

@@ -19,6 +19,18 @@ export const Props = {
   className: t.maybe(t.Str)
 };
 
+/** A toggleable dropdown menu
+ * @param children - menu button content
+ * @param menuRenderer - renderer for menu items
+ * @param options - menu options
+ * @param iconClassName - className for menu button icon (if children is passed, this is ignored)
+ * @param isOpen - whether the menu is open or not
+ * @param onOpen - called when menu is open
+ * @param onClose - called when menu is closed
+ * @param dismissOnClickOut - whether the menu should be closed when clicking outside the dropdown
+ * @param size - small | medium | large
+ * @param maxHeight - menu button max-height
+ */
 @pure
 @skinnable()
 @props(Props)
