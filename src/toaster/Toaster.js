@@ -14,7 +14,7 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
  * @param transitionStyles - object with style for each transition event (used by `TransitionWrapper`)
  * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by `TransitionWrapper`)
  * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by `TransitionWrapper`)
- * @param position - top-left - top-right - bottom-left - bottom-right
+ * @param position - top-left | top-right | bottom-left | bottom-right
  */
 @props({
   children: t.ReactChildren,

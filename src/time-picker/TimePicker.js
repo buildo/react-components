@@ -159,7 +159,7 @@ export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, input
  * @param minTime - minimum value. Have to be passed in 24h format. Default [00:00]
  * @param maxTime - maximum value. Have to be passed in 24h format. Default [23:59]
  * @param placeholder - field placeholder, displayed when there's no value. Default[--:--]
- * @param timeFormat - format in which options are displayed (12h, 24h)
+ * @param timeFormat - format in which options are displayed (12h|24h)
  * @param searchable - enable the search feature
  */
 @skinnable()
