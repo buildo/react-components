@@ -4,6 +4,6 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | Function | "" | children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback |
-| forceDesktop | Boolean | "" | ignores real device type and considers it as desktop |
-| userAgent | String | "" | custom user-agent |
+| **children** | <code>Function</code> |  | **required**. Children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback |
+| **forceDesktop** | <code>Boolean</code> |  | *optional*. Ignores real device type and considers it as desktop |
+| **userAgent** | <code>String</code> |  | *optional*. Custom user-agent |

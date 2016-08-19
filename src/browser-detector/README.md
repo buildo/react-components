@@ -4,7 +4,7 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | ReactChildren | "" | children node rendered when using a supported browser |
-| placeholder | Function | "" | called when using a non-supported browser. Expected to return a valid ReactNode. |
-| supportedBrowsers | Array<Browser> | "" | whitelist of supported browsers. If `undefined` they're all supported |
-| userAgent | String | "" | custom user-agent |
+| **children** | <code>ReactChildren</code> |  | **required**. Children node rendered when using a supported browser |
+| **placeholder** | <code>Function</code> |  | **required**. Called when using a non-supported browser. Expected to return a valid ReactNode. |
+| **supportedBrowsers** | <code>Array<Browser></code> |  | *optional*. Whitelist of supported browsers. If `undefined` they're all supported |
+| **userAgent** | <code>String</code> |  | *optional*. Custom user-agent |

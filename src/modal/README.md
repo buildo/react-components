@@ -4,18 +4,18 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | ReactChildren | "" | modal content |
-| transitionEnterTimeout | Number | "" | transition enter timeout |
-| transitionLeaveTimeout | Number | "" | transition leave timeout |
-| className | String | "" | additional `className` for wrapper element |
-| title | String | "" | modal title |
-| footer | ReactChildren | "" | modal footer |
-| iconClose | ReactChildren | "" | close icon |
-| overlay | {color: ?String, alpha: ?Number} | {
+| **children** | <code>ReactChildren</code> |  | **required**. Modal content |
+| **transitionEnterTimeout** | <code>Number</code> |  | **required**. Transition enter timeout |
+| **transitionLeaveTimeout** | <code>Number</code> |  | **required**. Transition leave timeout |
+| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **title** | <code>String</code> |  | *optional*. Modal title |
+| **footer** | <code>ReactChildren</code> |  | *optional*. Modal footer |
+| **iconClose** | <code>ReactChildren</code> |  | *optional*. Close icon |
+| **overlay** | <code>{color: ?String, alpha: ?Number}</code> | <code>{
   "color": "black",
   "alpha": 0.85
-} | specify 'color' and 'alpha' for the overlay layer |
-| dismissOnClickOutside | Boolean | true | whether the modal should be dismissed when clicking outside it |
-| onDismiss | Function | "onDismiss" | called when modal is dismissed |
-| style | Object | "" | inline-style overrides for wrapper element |
-| id | String | "" | custom `id` for wrapper element |
+}</code> | **required**. Specify 'color' and 'alpha' for the overlay layer |
+| **dismissOnClickOutside** | <code>Boolean</code> | <code>true</code> | *optional*. Whether the modal should be dismissed when clicking outside it |
+| **onDismiss** | <code>Function</code> | <code>"onDismiss"</code> | *optional*. Called when modal is dismissed |
+| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |

@@ -7,9 +7,9 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | ReactElement | "" | active modal component |
-| transitionStyles | Object | {} | object with style for each transition event (used by TransitionWrapper) |
-| transitionEnterTimeout | Number | 0 | duration of enter transition in milliseconds (used by TransitionWrapper) |
-| transitionLeaveTimeout | Number | 0 | duration of leave transition in milliseconds (used by TransitionWrapper) |
-| getChildContext | Function | "getChildContext" | callback to get custom context for modals. Can't be updated |
-| childContextTypes | Object | {} | static object to describe custom context object for modals. Can't be updated |
+| **children** | <code>ReactElement</code> |  | *optional*. Active modal component |
+| **transitionStyles** | <code>Object</code> | <code>{}</code> | *optional*. Object with style for each transition event (used by TransitionWrapper) |
+| **transitionEnterTimeout** | <code>Number</code> | <code>0</code> | *optional*. Duration of enter transition in milliseconds (used by TransitionWrapper) |
+| **transitionLeaveTimeout** | <code>Number</code> | <code>0</code> | *optional*. Duration of leave transition in milliseconds (used by TransitionWrapper) |
+| **getChildContext** | <code>Function</code> | <code>"getChildContext"</code> | *optional*. Callback to get custom context for modals. Can't be updated |
+| **childContextTypes** | <code>Object</code> | <code>{}</code> | *optional*. Static object to describe custom context object for modals. Can't be updated |

@@ -4,6 +4,6 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | ReactChildren | "" | content |
-| onResize | Function | "" | called when a resize event is captured |
-| debounce | Integer | "" | callback delay (milliseconds) |
+| **children** | <code>ReactChildren</code> |  | **required**. Content |
+| **onResize** | <code>Function</code> |  | **required**. Called when a resize event is captured |
+| **debounce** | <code>Integer</code> |  | *optional*. Callback delay (milliseconds) |

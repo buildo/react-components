@@ -4,14 +4,14 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| initialValue | String | "" | initial value |
-| onChange | Function | "onChange" | called when input box content is changed |
-| onConfirm | Function | "onConfirm" | called when confirming input content |
-| onClear | Function | "onClear" | called when clearing confirmed content |
-| placeholder | String | "" | input placeholder |
-| disabled | Boolean | "" | true if disabled |
-| text | Struct{clear: ?String, toConfirm: ?String} | "" | labels for 'clear' and 'toConfirm' buttons |
-| icon | Struct{clear: ?String, toConfirm: ?String} | "" | icons for 'clear' and 'toConfirm' buttons |
-| className | String | "" | additional `className` for wrapper element |
-| id | String | "" | custom `id` for wrapper element |
-| style | Object | "" | inline-style overrides for wrapper element |
+| **initialValue** | <code>String</code> |  | *optional*. Initial value |
+| **onChange** | <code>Function</code> | <code>"onChange"</code> | *optional*. Called when input box content is changed |
+| **onConfirm** | <code>Function</code> | <code>"onConfirm"</code> | *optional*. Called when confirming input content |
+| **onClear** | <code>Function</code> | <code>"onClear"</code> | *optional*. Called when clearing confirmed content |
+| **placeholder** | <code>String</code> |  | *optional*. Input placeholder |
+| **disabled** | <code>Boolean</code> |  | *optional*. True if disabled |
+| **text** | <code>Struct{clear: ?String, toConfirm: ?String}</code> |  | **required**. Labels for 'clear' and 'toConfirm' buttons |
+| **icon** | <code>Struct{clear: ?String, toConfirm: ?String}</code> |  | **required**. Icons for 'clear' and 'toConfirm' buttons |
+| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
+| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |

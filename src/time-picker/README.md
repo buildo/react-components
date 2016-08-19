@@ -4,19 +4,19 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| onChange | Function | "" | onChange handler. It will return an object |
-| value | Time | "" | value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } |
-| minTime | Time | {
+| **onChange** | <code>Function</code> |  | **required**. OnChange handler. It will return an object |
+| **value** | <code>Time</code> |  | *optional*. Value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } |
+| **minTime** | <code>Time</code> | <code>{
   "hours": 0,
   "minutes": 0
-} | minimum value. Have to be passed in 24h format. Default [00:00] |
-| maxTime | Time | {
+}</code> | *optional*. Minimum value. Have to be passed in 24h format. Default [00:00] |
+| **maxTime** | <code>Time</code> | <code>{
   "hours": 23,
   "minutes": 59
-} | maximum value. Have to be passed in 24h format. Default [23:59] |
-| placeholder | String | "--:--" | field placeholder, displayed when there's no value. Default[--:--] |
-| timeFormat | ["12h","24h"] | "24h" | format in which options are displayed (12h, 24h) |
-| searchable | Boolean | true | enable the search feature |
-| id | String | "" | custom `id` for wrapper element |
-| className | String | "" | additional `className` for wrapper element |
-| style | Object | "" | inline-style overrides for wrapper element |
+}</code> | *optional*. Maximum value. Have to be passed in 24h format. Default [23:59] |
+| **placeholder** | <code>String</code> | <code>"--:--"</code> | *optional*. Field placeholder, displayed when there's no value. Default[--:--] |
+| **timeFormat** | <code>enum("12h"&#124;"24h")</code> | <code>"24h"</code> | *optional*. Format in which options are displayed (12h&#124;24h) |
+| **searchable** | <code>Boolean</code> | <code>true</code> | **required**. Enable the search feature |
+| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
+| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |

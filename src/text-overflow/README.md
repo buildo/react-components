@@ -4,10 +4,10 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| children | Function | "" | in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument |
-| label | String | "" | this is the full string |
-| lazy | Boolean | "" | whether the tooltip appearance should be delayed after mouse entering or not |
-| delayWhenLazy | Integer | 100 | tooltip delay if the component is lazy |
-| id | String | "" | custom `id` for wrapper element |
-| className | String | "" | additional `className` for wrapper element |
-| style | Object | "" | inline-style overrides for wrapper element |
+| **children** | <code>Function</code> |  | *optional*. In case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument |
+| **label** | <code>String</code> |  | **required**. This is the full string |
+| **lazy** | <code>Boolean</code> |  | *optional*. Whether the tooltip appearance should be delayed after mouse entering or not |
+| **delayWhenLazy** | <code>Integer</code> | <code>100</code> | *optional*. Tooltip delay if the component is lazy |
+| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
+| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |

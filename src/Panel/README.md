@@ -4,13 +4,13 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| type | ["docked-top","docked-left","docked-right","docked-bottom","floating"] | "" | docked-top - docked-left - docked-right - docked-bottom - floating |
-| header | Struct{collapse: ?Struct{direction: "up" | "left" | "right" | "down", onExpand: Function, onCollapse: Function, isCollapsed: ?Boolean}, content: ?ReactChildren, title: ?ReactChildren, hideTitleWhenExpanded: ?Boolean, menu: ?ReactChildren} | "" | header props (collapse, content, title, menu) |
-| loading | Boolean | false | whether it's loading or not |
-| dark | Boolean | false | true if it should use dark theme |
-| softLoading | Boolean | false | soft loading |
-| softLoadingDelay | NonNegativeNumber | 0 | soft loading delay |
-| children | ReactChildren | "" | panel content |
-| className | String | "" | additional `className` for wrapper element |
-| clearMargin | ["top","left","right","bottom"] | "" | : top - left - right - bottom |
-| style | Object | {} | inline-style overrides for wrapper element |
+| **type** | <code>enum("docked-top"&#124;"docked-left"&#124;"docked-right"&#124;"docked-bottom"&#124;"floating")</code> |  | **required**. Docked-top &#124; docked-left &#124; docked-right &#124; docked-bottom &#124; floating |
+| **header** | <code>Struct{collapse: ?Struct{direction: "up" &#124; "left" &#124; "right" &#124; "down", onExpand: Function, onCollapse: Function, isCollapsed: ?Boolean}, content: ?ReactChildren, title: ?ReactChildren, hideTitleWhenExpanded: ?Boolean, menu: ?ReactChildren}</code> |  | *optional*. Header props (collapse, content, title, menu) |
+| **loading** | <code>Boolean</code> | <code>false</code> | *optional*. Whether it's loading or not |
+| **dark** | <code>Boolean</code> | <code>false</code> | *optional*. True if it should use dark theme |
+| **softLoading** | <code>Boolean</code> | <code>false</code> | *optional*. Soft loading |
+| **softLoadingDelay** | <code>NonNegativeNumber</code> | <code>0</code> | *optional*. Soft loading delay |
+| **children** | <code>ReactChildren</code> |  | **required**. Panel content |
+| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **clearMargin** | <code>enum("top"&#124;"left"&#124;"right"&#124;"bottom")</code> |  | *optional*. : top &#124; left &#124; right &#124; bottom |
+| **style** | <code>Object</code> | <code>{}</code> | *optional*. Inline-style overrides for wrapper element |

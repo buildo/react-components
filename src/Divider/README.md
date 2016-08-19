@@ -4,6 +4,6 @@
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| orientation | ["horizontal","vertical"] | "vertical" | vertical - horizontal |
-| style | Object | {} | inline-style overrides for wrapper element |
-| size | ["small","medium","large","no-margin"] | "small" | size of margins |
+| **orientation** | <code>enum("horizontal"&#124;"vertical")</code> | <code>"vertical"</code> | *optional*. Vertical &#124; horizontal |
+| **style** | <code>Object</code> | <code>{}</code> | *optional*. Inline-style overrides for wrapper element |
+| **size** | <code>enum("small"&#124;"medium"&#124;"large"&#124;"no-margin")</code> | <code>"small"</code> | *optional*. Size of margins |
