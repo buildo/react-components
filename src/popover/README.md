@@ -1,15 +1,11 @@
-`Popover` (component)
-=====================
+# Popover
 
-### Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
+## Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
 
-Props
------
-
-|Name|Type|Default|Description
-|----|----|-------|-----------
-|**children**|<code>node</code>||**required**. The trigger node. It's always visible
-|**popover**|<code>shape[object Object]</code>||**required**. Popover settings. The popover is **not** always visible
-|**id**|<code>string</code>||*optional*. Custom `id` for wrapper element
-|**className**|<code>string</code>||*optional*. Additional `className` for wrapper element
-|**style**|<code>object</code>|`{}`|*optional*. Inline-style overrides for wrapper element
+|Name|Type|Default|Description|
+|----|----|-------|-----------|
+| children | ReactChildren | "" | the trigger node. It's always visible |
+| popover | Struct{content: ReactChildren, attachToBody: ?Boolean, position: ?"top" | "bottom" | "left" | "right", anchor: ?"start" | "center" | "end", event: ?"click" | "hover", onShow: ?Function, onHide: ?Function, onToggle: ?Function, dismissOnScroll: ?Boolean, dismissOnClickOutside: ?Boolean, className: ?String, id: ?String, maxWidth: ?Number | String, distance: ?Number, offsetX: ?Number, offsetY: ?Number, isOpen: ?Boolean} | "" | popover settings. The popover is **not** always visible |
+| id | String | "" | custom `id` for wrapper element |
+| className | String | "" | additional `className` for wrapper element |
+| style | Object | "" | inline-style overrides for wrapper element |
