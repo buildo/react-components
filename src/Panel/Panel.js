@@ -31,14 +31,14 @@ export const Props = {
 };
 
 /** A simple panel with header. It can be collapsable or not, docked or floating.
- * @param type - docked-top | docked-left | docked-right | docked-bottom | floating
+ * @param type - docked-top - docked-left - docked-right - docked-bottom - floating
  * @param header - header props (collapse, content, title, menu)
  * @param loading - whether it's loading or not
  * @param dark - true if it should use dark theme
  * @param softLoading - soft loading
  * @param softLoadingDelay - soft loading delay
  * @param children - panel content
- * @param clearMargin: top | left | right | bottom
+ * @param clearMargin: top - left - right - bottom
  */
 @pure
 @skinnable()

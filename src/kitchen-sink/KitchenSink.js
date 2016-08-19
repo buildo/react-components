@@ -1,26 +1,42 @@
 import React from 'react';
 import find from 'lodash/find';
+import { props, t } from '../utils';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 import Component from './content/Component';
 
-export default class KitchenSink extends React.Component {
+/** React component to generate a nice kitchen-sink
+ * @param componentId - selected component page
+ * @param contentId - selected content page
+ * @param sectionId - selected section in sidebar
+ * @param sections - list of sidebar sections,
+ * @param openSections - list of expanded sections in sidebar
+ * @param components - list of components pages
+ * @param onSelectItem - called when user selects an item
+ * @param onToggleSection - called when user click on a section
+ * @param scope - object with variables needed in the components examples
+ * @param iso - wheter the kitchen-sink render examples in a fake isomorphic environment
+ * @param header - renderable node used as header in component page
+ * @param footer - renderable node used as footer in component page
+ * @param loading - wheter it's loading or not
+ */
 
-  static propTypes = {
-    componentId: React.PropTypes.string,
-    contentId: React.PropTypes.string,
-    sectionId: React.PropTypes.string,
-    sections: React.PropTypes.array.isRequired,
-    openSections: React.PropTypes.array,
-    components: React.PropTypes.array,
-    onSelectItem: React.PropTypes.func.isRequired,
-    onToggleSection: React.PropTypes.func.isRequired,
-    scope: React.PropTypes.object,
-    iso: React.PropTypes.bool,
-    header: React.PropTypes.node,
-    footer: React.PropTypes.node,
-    loading: React.PropTypes.bool
-  };
+@props({
+  componentId: t.maybe(t.String),
+  contentId: t.maybe(t.String),
+  sectionId: t.maybe(t.String),
+  sections: t.Array,
+  openSections: t.maybe(t.Array),
+  components: t.maybe(t.Array),
+  onSelectItem: t.Function,
+  onToggleSection: t.Function,
+  scope: t.maybe(t.Object),
+  iso: t.maybe(t.Boolean),
+  header: t.maybe(t.ReactChildren),
+  footer: t.maybe(t.ReactChildren),
+  loading: t.maybe(t.Boolean)
+})
+export default class KitchenSink extends React.Component {
 
   static defaultProps = {
     openSections: []
@@ -52,8 +68,6 @@ export default class KitchenSink extends React.Component {
   render() {
     const {
       props: {
-        componentId,
-        contentId,
         sections,
         openSections,
         onSelectItem,
@@ -64,7 +78,7 @@ export default class KitchenSink extends React.Component {
 
     return (
       <div className='kitchen-sink'>
-        <Sidebar {...{ sections, openSections, onToggleSection, componentId, contentId, onSelectItem, loading }} >
+        <Sidebar {...{ sections, openSections, onToggleSection, onSelectItem, loading }} >
           {!loading && this.getChildren()}
         </Sidebar>
       </div>

@@ -1,15 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
+import { props, t } from '../../utils';
 
+@props({
+  sectionId: t.String,
+  id: t.String,
+  title: t.String,
+  active: t.Boolean,
+  onClick: t.Function
+})
 export default class Item extends React.Component {
-
-  static propTypes = {
-    sectionId: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    title: React.PropTypes.string.isRequired,
-    active: React.PropTypes.bool.isRequired,
-    onClick: React.PropTypes.func.isRequired
-  };
 
   onClick = () => this.props.onClick(this.props.sectionId, this.props.id);
 

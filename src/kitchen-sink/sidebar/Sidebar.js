@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactSidebar from 'react-sidebar';
+import { props, t } from '../../utils';
 import LoadingSpinner from '../../loading-spinner';
 import SidebarContent from './SidebarContent';
 
+@props({
+  children: t.ReactChildren,
+  sections: t.Array,
+  openSections: t.Array,
+  onSelectItem: t.Function,
+  onToggleSection: t.maybe(t.Function),
+  loading: t.maybe(t.Boolean)
+})
 export default class Sidebar extends React.Component {
 
   static propTypes = {

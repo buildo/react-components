@@ -19,6 +19,7 @@
     "deploy-showroom": "git reset && npm run build-showroom && git add ./index.html && git add ./showroom/build && git add ./showroom/components.json && ((git commit -m 'Update gh pages [skip CI]' && git push) || true)",
     "generate-componentsJSON": "node generateComponentsJSON/index.js",
     "generate-readmes": "node generateReadmes/index.js",
+    "generate-all-readmes": "babel-node scripts/generateReadmes.js",
     "release-patch": "./releaseVersion.sh patch",
     "release-breaking-version": "./releaseVersion.sh minor"
   },
@@ -37,6 +38,7 @@
     "bowser": "^1.0.0",
     "classnames": "^2.2.3",
     "css-element-queries": "^0.3.2",
+    "debug": "^2.2.0",
     "fixed-data-table": "^0.4.7",
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",

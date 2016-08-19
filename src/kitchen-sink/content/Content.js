@@ -1,13 +1,13 @@
 import React from 'react';
 import Markdown from 'react-remarkable';
+import { props, t } from '../../utils';
 
+@props({
+  content: t.struct({
+    content: t.String
+  })
+})
 export default class Content extends React.Component {
-
-  static propTypes = {
-    content: React.PropTypes.shape({
-      content: React.PropTypes.string.isRequired
-    }).isRequired
-  };
 
   render() {
     return (

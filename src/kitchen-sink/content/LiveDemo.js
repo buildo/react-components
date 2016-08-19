@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
-import Playground from 'component-playground';
+import { props, t } from '../../utils';
 import MoreOrLess from '../../more-or-less/MoreOrLess';
+
+const Playground = typeof window !== 'undefined' ?
+  require('component-playground').default :
+  null;
 
 const footer = '\n__render(Example);';
 const footerISO = '\n__renderISO(Example);';
 
+@props({
+  iso: t.maybe(t.Boolean),
+  scope: t.Object,
+  codeText: t.String
+})
 export default class LiveDemo extends React.Component {
-
-  static propTypes = {
-    iso: React.PropTypes.bool,
-    scope: React.PropTypes.object.isRequired,
-    codeText: React.PropTypes.string.isRequired
-  };
 
   constructor(props) {
     super(props);

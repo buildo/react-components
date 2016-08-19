@@ -34,34 +34,12 @@ const Time = t.struct({
 const isValidHoursInTimeFormat = (hours, timeFormat) => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
 const Props = t.refinement(t.struct({
-  /**
-  * onChange handler it will return an object
-  */
   onChange: t.Function,
-  /**
-   * Value provided as input. Have to be passed in 24h format.
-   * Es: { hours: 10, minutes: 30 }
-   */
   value: t.maybe(Time),
-  /**
-   * Minimum value. Have to be passed in 24h format. Default [00:00]
-   */
   minTime: t.maybe(Time),
-  /**
-   * Maximum value. Have to be passed in 24h format. Default [23:59]
-   */
   maxTime: t.maybe(Time),
-  /**
-   * Field placeholder, displayed when there's no value. Default[--:--]
-   */
   placeholder: t.maybe(t.String),
-  /**
-   * format in which options are displayed. Default [24H].
-   */
   timeFormat: t.maybe(TimeFormat),
-  /**
-   * Enable the search feature
-   */
   searchable: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -181,7 +159,7 @@ export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, input
  * @param minTime - minimum value. Have to be passed in 24h format. Default [00:00]
  * @param maxTime - maximum value. Have to be passed in 24h format. Default [23:59]
  * @param placeholder - field placeholder, displayed when there's no value. Default[--:--]
- * @param timeFormat - format in which options are displayed (12h|24h)
+ * @param timeFormat - format in which options are displayed (12h, 24h)
  * @param searchable - enable the search feature
  */
 @skinnable()

@@ -1,14 +1,16 @@
 import React from 'react';
+import { props, t } from '../../utils';
 import LoadingSpinner from '../../loading-spinner';
 import ExampleCard from './ExampleCard';
 
+@props({
+  iso: t.maybe(t.Boolean),
+  scope: t.Object,
+  component: t.maybe(t.Object),
+  header: t.maybe(t.ReactChildren),
+  footer: t.maybe(t.ReactChildren)
+})
 export default class Component extends React.Component {
-
-  static propTypes = {
-    iso: React.PropTypes.bool,
-    scope: React.PropTypes.object.isRequired,
-    component: React.PropTypes.object
-  };
 
   getLoadingSpinner() {
     return (
