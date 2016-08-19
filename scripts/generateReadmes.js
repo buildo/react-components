@@ -77,15 +77,18 @@ const walkThroughFirstLevelDirs = (dir, cb) => {
 
         const mainFilePath = path.join(dir, r, mainFileName);
 
+        let isFile = null;
         try {
-          if (fs.statSync(mainFilePath).isFile()) {
-            log(`"${r}" contains a main file: "${mainFileName}"!`);
-            cb(pathToCheck, mainFileName);
-          } else {
-            log(`"${r}" does not contain a main file...`);
-          }
+          isFile = fs.statSync(mainFilePath).isFile();
         } catch (e) {
           log(e);
+        }
+
+        if (isFile) {
+          log(`"${r}" contains a main file: "${mainFileName}"!`);
+          cb(pathToCheck, mainFileName);
+        } else {
+          log(`"${r}" does not contain a main file...`);
         }
       } else {
         log(`"${r}" is a file: ignoring!`);
