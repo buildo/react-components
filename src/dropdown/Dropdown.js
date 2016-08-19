@@ -31,7 +31,7 @@ const PropTypes = {
  * @param valueLink - defines actions to be taken when a particular value is selected
  * @param onChange - called when value is changed
  * @param options - available options
- * @param size - medium | small
+ * @param size - medium - small
  * @param disabled - true if disabled
  * @param searchable - true if it should be possible to search the desired value by writing into the dropdown
  * @param clearable - true if it should be possible to reset the selected value

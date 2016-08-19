@@ -28,7 +28,7 @@ export const Props = {
  * @param onOpen - called when menu is open
  * @param onClose - called when menu is closed
  * @param dismissOnClickOut - whether the menu should be closed when clicking outside the dropdown
- * @param size - small | medium | large
+ * @param size - small - medium - large
  * @param maxHeight - menu button max-height
  */
 @pure

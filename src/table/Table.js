@@ -78,7 +78,7 @@ const Props = t.subtype(t.struct({
  * @param selectedRows - selected rows
  * @param onRowSelect - called when a row is selected
  * @param onRowsSelect - called when multiple rows are selected
- * @param selectionType - none | sigle | multi
+ * @param selectionType - none - sigle - multi
  * @param onColumnResizeEndCallback - called after a column has been resized
  * @param isColumnResizing - whether a column is currently being resized
  * @param columns - list of columns
