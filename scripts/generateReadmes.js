@@ -61,6 +61,41 @@ const walkThroughDirs = (dir, parent, cb) => {
   }
 };
 
+const walkThroughFirstLevelDirs = (dir, cb) => {
+  if (fs.statSync(dir).isDirectory()) {
+    log(`Walking through "${dir}"`);
+
+    const results = fs.readdirSync(dir);
+
+    log(`"${dir}" contains: ${results.join('\n')}`);
+
+    results.forEach(r => {
+      const pathToCheck = path.join(dir, r);
+      log(`Checking path: ${pathToCheck}`);
+      if (fs.statSync(pathToCheck).isDirectory()) {
+        const mainFileName = `${upperFirst(camelCase(r))}.js`;
+
+        const mainFilePath = path.join(dir, r, mainFileName);
+
+        try {
+          if (fs.statSync(mainFilePath).isFile()) {
+            log(`"${r}" contains a main file: "${mainFileName}"!`);
+            cb(pathToCheck, mainFileName);
+          } else {
+            log(`"${r}" does not contain a main file...`);
+          }
+        } catch (e) {
+          log(e);
+        }
+      } else {
+        log(`"${r}" is a file: ignoring!`);
+      }
+    });
+  } else {
+    log(`"${dir}" is not a directory!`);
+  }
+};
+
 const root = process.argv[2] || 'src';
 
-walkThroughDirs(path.resolve(root), '', generateReadMe);
+walkThroughFirstLevelDirs(path.resolve(root), generateReadMe);
