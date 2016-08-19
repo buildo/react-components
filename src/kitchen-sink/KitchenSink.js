@@ -5,7 +5,21 @@ import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 import Component from './content/Component';
 
-export default class KitchenSink extends React.Component {
+/** React component to generate a nice kitchen-sink
+ * @param componentId - selected component page
+ * @param contentId - selected content page
+ * @param sectionId - selected section in sidebar
+ * @param sections - list of sidebar sections,
+ * @param openSections - list of expanded sections in sidebar
+ * @param components - list of components pages
+ * @param onSelectItem - called when user selects an item
+ * @param onToggleSection - called when user click on a section
+ * @param scope - object with variables needed in the components examples
+ * @param iso - wheter the kitchen-sink render examples in a fake isomorphic environment
+ * @param header - renderable node used as header in component page
+ * @param footer - renderable node used as footer in component page
+ * @param loading - wheter it's loading or not
+ */
 
 @props({
   componentId: t.maybe(t.String),
