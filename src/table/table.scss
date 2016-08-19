@@ -13,6 +13,7 @@ $hover-cell-background: lightblue !default;
 $scrollbar-color: rgba(gray, .6) !default;
 $hover-scrollbar-background: rgba(white, .8) !default;
 $hover-scrollbar-color: white !default;
+$scrollbar-size: 6px !default;
 
 @import '~fixed-data-table/dist/fixed-data-table-base.min.css';
 
@@ -72,9 +73,23 @@ $hover-scrollbar-color: white !default;
     }
   }
 
+  .public_fixedDataTable_horizontalScrollbar {
+    height: $scrollbar-size + 8px !important;
+    >div {
+      height: $scrollbar-size + 8px !important;
+    };
+  }
+
   // scrollbar
   .public_Scrollbar_main {
+    &.ScrollbarLayout_mainHorizontal {
+      height: $scrollbar-size + 8px;
+    }
+    &.ScrollbarLayout_mainVertical {
+      width: $scrollbar-size + 8px;
+    }
     .public_Scrollbar_face:after {
+      cursor: pointer;
       background-color: $scrollbar-color;
     }
     .public_Scrollbar_face:hover:after {
