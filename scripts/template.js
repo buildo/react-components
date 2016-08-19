@@ -6,6 +6,9 @@ const formatType = prop => {
     case 'enums':
       return `enum(${Object.keys(prop.map).map(key => `"${key}"`).join('|')})`;
 
+    case 'union':
+      return `union(${prop.types.map(formatType).join('|')})`;
+
     default:
       return prop.name;
   }
