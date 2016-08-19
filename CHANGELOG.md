@@ -6,6 +6,7 @@
 
 #### New features:
 
+- add table's scrollbars customization [\#509](https://github.com/buildo/react-components/issues/509)
 - \[KitchenSink\] Readme generator [\#494](https://github.com/buildo/react-components/issues/494)
 - \[KitchenSink\] Props documentation [\#491](https://github.com/buildo/react-components/issues/491)
 
