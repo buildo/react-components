@@ -3,6 +3,10 @@ import t from 'tcomb';
 import { toObject } from 'tcomb-doc';
 import parseComments from 'get-comments';
 import { parse as parseJSDocs } from 'doctrine';
+import includes from 'lodash/includes';
+import some from 'lodash/some';
+
+const INVALID_CHARACTERS = ['|'];
 
 // (path: t.String) => { description: t.String, tags: Array<Tag> }
 function getComments(path) {
@@ -85,6 +89,11 @@ export default function parse(path) {
         if (defaultProps.hasOwnProperty(prop)) {
           acc[prop].defaultValue = defaultProps[prop];
         }
+
+        if (some(INVALID_CHARACTERS, c => includes(descriptions.props[prop], c))) {
+          throw new Error(`Description for prop '${prop}' in '${name}' has one or more invalid characters!`);
+        }
+
         acc[prop].description = descriptions.props[prop];
       }
       return acc;
