@@ -99,6 +99,6 @@ const walkThroughFirstLevelDirs = (dir, cb) => {
   }
 };
 
-const root = process.argv[2] || 'src';
+const _root = process.argv[2] || 'src';
 
-walkThroughFirstLevelDirs(path.resolve(root), generateReadMe);
+walkThroughFirstLevelDirs(path.resolve(_root), generateReadMe);
