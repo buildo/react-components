@@ -29,10 +29,10 @@ build:
     commands:
       - npm run generate-all-readmes
       - git add src/**/README.md
-      - if ! git diff-index --quiet HEAD -- src; then
+      - if ! git diff-index --quiet HEAD -- src/**/README.md; then
           git config --global user.name "nemobot";
           git config --global user.email "our-bots@buildo.io";
-          git commit -m "Update READMES [skip CI]"
+          git commit -m "Update READMES [skip CI]";
           git push origin master;
         fi
     when:
