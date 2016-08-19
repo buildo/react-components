@@ -20,7 +20,14 @@ export default class SidebarContent extends React.Component {
   render() {
     const { sections, onSelectItem } = this.props;
     const getItems = (sectionId, items) => items.map(({ id, ...item }) =>
-      <Item {...item} id={id} onClick={onSelectItem} sectionId={sectionId} indent active={this.isActive(id)} key={id} />
+      <Item
+        title={item.title}
+        id={id}
+        onClick={onSelectItem}
+        sectionId={sectionId}
+        active={this.isActive(id)}
+        key={id}
+      />
     );
 
     const getSections = (sections) => sections.map(({ id, components, contents, title }) => (

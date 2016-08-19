@@ -68,8 +68,6 @@ export default class KitchenSink extends React.Component {
   render() {
     const {
       props: {
-        componentId,
-        contentId,
         sections,
         openSections,
         onSelectItem,
@@ -80,7 +78,7 @@ export default class KitchenSink extends React.Component {
 
     return (
       <div className='kitchen-sink'>
-        <Sidebar {...{ sections, openSections, onToggleSection, componentId, contentId, onSelectItem, loading }} >
+        <Sidebar {...{ sections, openSections, onToggleSection, onSelectItem, loading }} >
           {!loading && this.getChildren()}
         </Sidebar>
       </div>

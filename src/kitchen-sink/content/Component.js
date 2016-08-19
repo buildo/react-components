@@ -6,7 +6,9 @@ import ExampleCard from './ExampleCard';
 @props({
   iso: t.maybe(t.Boolean),
   scope: t.Object,
-  component: t.maybe(t.Object)
+  component: t.maybe(t.Object),
+  header: t.maybe(t.ReactChildren),
+  footer: t.maybe(t.ReactChildren)
 })
 export default class Component extends React.Component {
 
