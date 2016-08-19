@@ -6,6 +6,7 @@
 
 #### New features:
 
+- \[KitchenSink\] Readme generator [\#494](https://github.com/buildo/react-components/issues/494)
 - \[KitchenSink\] Props documentation [\#491](https://github.com/buildo/react-components/issues/491)
 
 ## [v0.5.0](https://github.com/buildo/react-components/tree/v0.5.0) (2016-08-18)
