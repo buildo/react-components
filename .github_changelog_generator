@@ -4,4 +4,4 @@ issues-label=#### New features:
 enhancement-label=#### Breaking:
 enhancement-labels=breaking
 pull-requests=false
-exclude-labels=duplicate,question,feedback,DX
+exclude-labels=duplicate,question,feedback,DX,discarded,macro
