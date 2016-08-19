@@ -4,6 +4,10 @@ import ReactDOMServer from 'react-dom/server';
 import { props, t } from '../../utils';
 import MoreOrLess from '../../more-or-less/MoreOrLess';
 
+const Playground = typeof window !== 'undefined' ?
+  require('component-playground').default :
+  null;
+
 const footer = '\n__render(Example);';
 const footerISO = '\n__renderISO(Example);';
 
