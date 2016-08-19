@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...HEAD)
+
+#### New features:
+
+- \[KitchenSink\] Props documentation [\#491](https://github.com/buildo/react-components/issues/491)
+
 ## [v0.5.0](https://github.com/buildo/react-components/tree/v0.5.0) (2016-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...v0.5.0)
 
