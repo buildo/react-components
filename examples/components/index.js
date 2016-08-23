@@ -5,8 +5,8 @@ import './styles';
 const json = JSON.parse(examplesJSON);
 
 function dynamicRequire(e) {
-  const path = e.match(/\/components\/(.+).example/)[1];
-  return require(`raw!./${path}.example`);
+  const path = e.match(/src\/(.+)\/examples\/(.+).js/)[0];
+  return require(`raw!../../${path}`);
 }
 
 const components = sortBy(json.components, 'title').map(c => ({
