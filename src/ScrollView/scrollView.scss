@@ -1,0 +1,113 @@
+@import '~gemini-scrollbar/gemini-scrollbar.css';
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+
+$scrollbarSize: 7px !default;
+$scrollbarSizeBig: 9px !default;
+$scrollbarColor: grey !default;
+$scrollbarContainerColor: white !default;
+
+// this is the way to make gemini consider a width of 0 for scrollbars in IE
+body > div[style*='-ms-overflow-style: scrollbar'] {
+  -ms-overflow-style: none !important;
+}
+
+body > div::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollview {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  @include flex_flex(1 1 auto);
+
+  > .gm-scrollbar {
+    transition-timing-function: ease;
+    transition-duration: 250ms;
+    z-index: 999;
+
+    &.-vertical {
+      transition-property: background-color width;
+      width: auto;
+      padding: 0 4px;
+      right: 0;
+
+      .thumb {
+        transition: width 250ms ease;
+        position: static;
+        width: 0;
+      }
+
+      .thumb[style*="height"] {
+        width: $scrollbarSize;
+        margin: 0;
+      }
+
+      &:hover, &:active {
+        .thumb[style*="height"] {
+          width: $scrollbarSizeBig;
+        }
+      }
+
+      &:active .thumb[style*="height"] {
+        transition: background-color 250ms ease;
+        background-color: $scrollbarColor;
+      }
+
+    }
+
+    &.-horizontal {
+      transition-property: background-color height;
+      height: auto;
+      padding: 4px 0;
+      bottom: 0;
+
+      .thumb {
+        transition: height 250ms ease;
+        position: static;
+        height: 0;
+      }
+
+      .thumb[style*="width"] {
+        height: $scrollbarSize;
+        margin: 0;
+      }
+
+      &:hover, &:active {
+        background: rgba($scrollbarContainerColor, .8);
+        .thumb[style*="width"] {
+          height: $scrollbarSizeBig;
+        }
+      }
+
+      &:active .thumb[style*="width"] {
+        transition: background-color 250ms ease;
+        background-color: $scrollbarColor;
+      }
+    }
+
+    .thumb {
+      border-radius: $scrollbarSize / 2;
+      background-color: rgba($scrollbarColor, .6);
+
+      &:hover {
+        transition: background-color 250ms ease;
+        background-color: $scrollbarColor;
+      }
+    }
+  }
+
+  > .gm-scroll-view {
+    -ms-overflow-style: none;
+
+    > * {
+      -ms-overflow-style: auto; // reset -ms-overflow-style as it is inherited by default
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      -webkit-appearance: none;
+    }
+  }
+}

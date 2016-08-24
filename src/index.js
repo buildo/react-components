@@ -5,7 +5,7 @@ export MobileDetector from './mobile-detector';
 export Popover from './popover';
 export TextOverflow from './text-overflow';
 export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './link-state';
-export ScrollView from './scroll';
+export ScrollView from './ScrollView/ScrollView';
 export { Toaster, TimerToast } from './toaster';
 export { ModalManager, BasicModal } from './modal-manager';
 export Modal from './modal';
