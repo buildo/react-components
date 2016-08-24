@@ -39,8 +39,8 @@ export default class Component extends React.Component {
       _axios.all([readmeLink].concat(examplesLinks))
         .then(res => {
           const markdown = res[0].data;
-          const header = <Markdown source={markdown.split('Props')[0]} options={{ html: true }}/>;
-          const footer = <Markdown source={`Props\n${markdown.split('Props')[1]}`} options={{ html: true }}/>;
+          const header = <Markdown source={markdown.split('## Props')[0]} options={{ html: true }}/>;
+          const footer = <Markdown source={`## Props\n${markdown.split('## Props')[1]}`} options={{ html: true }}/>;
           const examples = res.slice(1).map(r => r.data);
           const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
           const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
