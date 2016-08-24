@@ -38,7 +38,6 @@ export default class Component extends React.Component {
       const readmeLink = this.rawgitCDN.get(componentInfo.readme.replace('__TAG__', componentInfo.tag));
       _axios.all([readmeLink].concat(examplesLinks))
         .then(res => {
-          console.log(res[0]);
           const markdown = res[0].data;
           const header = <Markdown source={markdown.split('Props')[0]} options={{ html: true }}/>;
           const footer = <Markdown source={`Props\n${markdown.split('Props')[1]}`} options={{ html: true }}/>;
