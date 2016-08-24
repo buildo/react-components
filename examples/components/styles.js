@@ -1,4 +1,6 @@
 // use require to avoid errors in showroom webpack
+
+// default sass
 require('../../src/Divider/divider.scss');
 require('../../src/DropdownMenu/dropdownMenu.scss');
 require('../../src/DropdownMenu/menu.scss');
@@ -16,6 +18,8 @@ require('../../src/Tooltip/tooltip.scss');
 require('../../src/Panel/panel.scss');
 require('../../src/Panel/tabbedPanel.scss');
 require('../../src/modal/modal.scss');
-require('./button/button.scss');
-require('./modal/transition.scss');
 require('../../src/ScrollView/scrollView.scss');
+
+// examples sass
+require('../../src/button/examples/button.scss');
+require('../../src/modal/examples/transition.scss');

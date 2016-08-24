@@ -21,7 +21,7 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel',
         include: [paths.SRC, paths.EXAMPLES],
-        exclude: /node_modules/
+        exclude: [/node_modules/, /src\/.+\/examples/]
       },
       // style!css loaders
       {
