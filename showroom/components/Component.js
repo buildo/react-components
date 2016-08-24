@@ -1,10 +1,8 @@
 import React from 'react';
 import _axios from 'axios';
-import { parse } from 'react-docgen';
 import { props, t } from 'tcomb-react';
 import find from 'lodash/find';
 import Markdown from 'react-remarkable';
-import generateMarkdown from '../../generateReadmes/generateMarkdown';
 import KitchenSink from '../../src/kitchen-sink';
 
 
@@ -36,12 +34,12 @@ export default class Component extends React.Component {
 
     const componentInfo = find(section.components, { id: componentId });
     const examplesLinks = componentInfo.examples.map(e => this.rawgitCDN.get(e.replace('__TAG__', componentInfo.tag)));
-    if (componentInfo.component) {
-      const componentLink = this.rawgitCDN.get(componentInfo.component.replace('__TAG__', componentInfo.tag));
-      _axios.all([componentLink].concat(examplesLinks))
+    if (componentInfo.readme) {
+      const readmeLink = this.rawgitCDN.get(componentInfo.readme.replace('__TAG__', componentInfo.tag));
+      _axios.all([readmeLink].concat(examplesLinks))
         .then(res => {
-          const component = { props: {}, ...parse(res[0].data) };
-          const markdown = generateMarkdown(componentInfo.title, component);
+          console.log(res[0]);
+          const markdown = res[0].data;
           const header = <Markdown source={markdown.split('Props')[0]} options={{ html: true }}/>;
           const footer = <Markdown source={`Props\n${markdown.split('Props')[1]}`} options={{ html: true }}/>;
           const examples = res.slice(1).map(r => r.data);
