@@ -153,6 +153,17 @@
       ]
     },
     {
+      "id": "scroll-view-new",
+      "title": "ScrollViewNew",
+      "desc": "ScrollViewNew",
+      "repo": "react-components",
+      "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
+      "component": "react-components/__TAG__/src/ScrollView/ScrollView.js",
+      "examples": [
+        "react-components/__TAG__/examples/components/ScrollView/ScrollView.example"
+      ]
+    },
+    {
       "id": "text-overflow",
       "title": "TextOverflow",
       "desc": "TextOverflow",

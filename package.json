@@ -40,6 +40,7 @@
     "css-element-queries": "^0.3.2",
     "debug": "^2.2.0",
     "fixed-data-table": "^0.4.7",
+    "gemini-scrollbar": "^1.4.3",
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
     "react-addons-transition-group": "^0.14.8",
