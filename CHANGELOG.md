@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- dropdown's menu's scrollbars hide menu when clicked in ie11 [\#513](https://github.com/buildo/react-components/issues/513)
+
 #### New features:
 
 - add table's scrollbars customization [\#509](https://github.com/buildo/react-components/issues/509)
