@@ -160,7 +160,7 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
       "component": "react-components/__TAG__/src/ScrollView/ScrollView.js",
       "examples": [
-        "react-components/__TAG__/examples/components/ScrollView/ScrollView.example"
+        "react-components/__TAG__/src/ScrollView/examples/Default.js"
       ]
     },
     {
