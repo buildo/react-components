@@ -10,6 +10,12 @@ class Example extends React.Component {
       { value: 'apple', label: 'Apple' },
       { value: 'avocado', label: 'Avocado' },
       { value: 'orange', label: 'Orange' },
+      { value: 'lemon', label: 'Lemon' },
+      { value: 'mandarin', label: 'Mandarin' },
+      { value: 'lime', label: 'Lime' },
+      { value: 'peach', label: 'Peach' },
+      { value: 'apricot', label: 'Apricot' },
+      { value: 'pineapple', label: 'Pineapple' },
       { value: 'banana', label: 'Banana' }
     ];
     return (
