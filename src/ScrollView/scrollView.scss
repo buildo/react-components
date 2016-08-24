@@ -1,10 +1,10 @@
 @import '~gemini-scrollbar/gemini-scrollbar.css';
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 
-$scrollbarSize: 7px !default;
-$scrollbarSizeBig: 9px !default;
-$scrollbarColor: grey !default;
-$scrollbarContainerColor: white !default;
+$scrollbar-size: 7px !default;
+$scrollbar-size-hover: $scrollbar-size * 1.25 !default;
+$scrollbar-color: grey !default;
+$scrollbar-container-color: white !default;
 
 // this is the way to make gemini consider a width of 0 for scrollbars in IE
 body > div[style*='-ms-overflow-style: scrollbar'] {
@@ -39,19 +39,19 @@ body > div::-webkit-scrollbar {
       }
 
       .thumb[style*="height"] {
-        width: $scrollbarSize;
+        width: $scrollbar-size;
         margin: 0;
       }
 
       &:hover, &:active {
         .thumb[style*="height"] {
-          width: $scrollbarSizeBig;
+          width: $scrollbar-size-hover;
         }
       }
 
       &:active .thumb[style*="height"] {
         transition: background-color 250ms ease;
-        background-color: $scrollbarColor;
+        background-color: $scrollbar-color;
       }
 
     }
@@ -69,30 +69,30 @@ body > div::-webkit-scrollbar {
       }
 
       .thumb[style*="width"] {
-        height: $scrollbarSize;
+        height: $scrollbar-size;
         margin: 0;
       }
 
       &:hover, &:active {
-        background: rgba($scrollbarContainerColor, .8);
+        background: rgba($scrollbar-container-color, .8);
         .thumb[style*="width"] {
-          height: $scrollbarSizeBig;
+          height: $scrollbar-size-hover;
         }
       }
 
       &:active .thumb[style*="width"] {
         transition: background-color 250ms ease;
-        background-color: $scrollbarColor;
+        background-color: $scrollbar-color;
       }
     }
 
     .thumb {
-      border-radius: $scrollbarSize / 2;
-      background-color: rgba($scrollbarColor, .6);
+      border-radius: $scrollbar-size / 2;
+      background-color: rgba($scrollbar-color, .6);
 
       &:hover {
         transition: background-color 250ms ease;
-        background-color: $scrollbarColor;
+        background-color: $scrollbar-color;
       }
     }
   }
