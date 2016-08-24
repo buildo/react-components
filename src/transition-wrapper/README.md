@@ -1,7 +1,8 @@
 # TransitionWrapper
 
-## To be used with `ReactTransitionGroup` to show transitions for a component
+To be used with `ReactTransitionGroup` to show transitions for a component
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. The component you want to animate (it must have a unique "key") |

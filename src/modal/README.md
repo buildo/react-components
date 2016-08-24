@@ -1,7 +1,8 @@
 # Modal
 
-## Render a modal window over a dimmed layer
+Render a modal window over a dimmed layer
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Modal content |

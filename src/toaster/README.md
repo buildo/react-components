@@ -1,7 +1,8 @@
 # Toaster
 
-## Renders and animates toasts (children) inline or in a portal
+Renders and animates toasts (children) inline or in a portal
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. List of toasts (any node with a unique key) |

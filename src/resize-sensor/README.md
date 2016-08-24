@@ -1,7 +1,8 @@
 # ResizeSensor
 
-## A component used to intercept window resize events
+A component used to intercept window resize events
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Content |

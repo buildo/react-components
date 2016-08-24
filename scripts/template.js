@@ -40,8 +40,9 @@ export default function template(data) {
   return (
 `# ${data.name}
 
-## ${data.description}
+${data.description}
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 ${buildPropsTableRows(data.props)}`

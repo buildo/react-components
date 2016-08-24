@@ -1,7 +1,8 @@
 # Button
 
-## A stateful button element
+A stateful button element
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **buttonState** | <code>enum("ready"&#124;"not-allowed"&#124;"processing"&#124;"error"&#124;"success")</code> | <code>"ready"</code> | *optional*. Ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component |

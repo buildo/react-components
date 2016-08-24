@@ -1,7 +1,8 @@
 # Table
 
-## A table component based on fixed-data-table
+A table component based on fixed-data-table
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **height** | <code>Number</code> | <code>0</code> | *optional*. The desired height of the table |

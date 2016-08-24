@@ -1,7 +1,8 @@
 # BrowserDetector
 
-## Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
+Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Children node rendered when using a supported browser |

@@ -1,7 +1,8 @@
 # BackgroundDimmer
 
-## Creates a full-page dimmed background for its children nodes
+Creates a full-page dimmed background for its children nodes
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Children nodes/elements |

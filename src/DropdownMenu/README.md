@@ -1,7 +1,8 @@
 # DropdownMenu
 
-## A toggleable dropdown menu
+A toggleable dropdown menu
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | *optional*. Menu button content |
