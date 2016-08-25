@@ -40,7 +40,7 @@ export default class Component extends React.Component {
       const componentLink = this.rawgitCDN.get(componentInfo.component.replace('__TAG__', componentInfo.tag));
       _axios.all([componentLink].concat(examplesLinks))
         .then(res => {
-          const component = parse(res[0].data);
+          const component = { props: {}, ...parse(res[0].data) };
           const markdown = generateMarkdown(componentInfo.title, component);
           const header = <Markdown source={markdown.split('Props')[0]} options={{ html: true }}/>;
           const footer = <Markdown source={`Props\n${markdown.split('Props')[1]}`} options={{ html: true }}/>;
