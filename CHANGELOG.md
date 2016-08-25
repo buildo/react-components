@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...HEAD)
+## [v0.5.1](https://github.com/buildo/react-components/tree/v0.5.1) (2016-08-25)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...v0.5.1)
 
 #### Breaking:
 
@@ -311,7 +310,7 @@
 - add checkbox [\#4](https://github.com/buildo/react-components/issues/4)
 
 ## [v0.2.0](https://github.com/buildo/react-components/tree/v0.2.0) (2015-10-23)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.1.8...v0.2.0)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.1.9...v0.2.0)
 
 #### New features:
 
@@ -321,6 +320,9 @@
 - \[Popover\] Improve positioning  [\#62](https://github.com/buildo/react-components/issues/62)
 - \[Popover\] margin offset should be customizable inline [\#59](https://github.com/buildo/react-components/issues/59)
 - create Scrollable wrapper component [\#50](https://github.com/buildo/react-components/issues/50)
+
+## [v0.1.9](https://github.com/buildo/react-components/tree/v0.1.9) (2015-10-10)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.1.8...v0.1.9)
 
 ## [v0.1.8](https://github.com/buildo/react-components/tree/v0.1.8) (2015-10-08)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.7...v0.1.8)
