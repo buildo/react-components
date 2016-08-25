@@ -23,8 +23,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/Divider",
         "component": "react-components/__TAG__/src/Divider/Divider.js",
         "examples": [
-          "react-components/__TAG__/examples/components/Divider/default.example",
-          "react-components/__TAG__/examples/components/Divider/horizontal.example"
+          "react-components/__TAG__/src/Divider/examples/default.js",
+          "react-components/__TAG__/src/Divider/examples/horizontal.js"
         ]
       },
       {
@@ -35,7 +35,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
         "component": "react-components/__TAG__/src/dropdown/Dropdown.js",
         "examples": [
-          "react-components/__TAG__/examples/components/dropdown/default.example"
+          "react-components/__TAG__/src/dropdown/examples/default.js"
         ]
       },
       {
@@ -46,8 +46,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/DropdownMenu",
         "component": "react-components/__TAG__/src/DropdownMenu/DropdownMenu.js",
         "examples": [
-          "react-components/__TAG__/examples/components/DropdownMenu/default.example",
-          "react-components/__TAG__/examples/components/DropdownMenu/deep.example"
+          "react-components/__TAG__/src/DropdownMenu/examples/default.js",
+          "react-components/__TAG__/src/DropdownMenu/examples/deep.js"
         ]
       },
       {
@@ -58,7 +58,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/Icon",
         "component": "react-components/__TAG__/src/Icon/Icon.js",
         "examples": [
-          "react-components/__TAG__/examples/components/Icon/default.example"
+          "react-components/__TAG__/src/Icon/examples/default.js"
         ]
       },
       {
@@ -69,9 +69,9 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/Panel",
         "component": "react-components/__TAG__/src/Panel/Panel.js",
         "examples": [
-          "react-components/__TAG__/examples/components/Panel/floating.example",
-          "react-components/__TAG__/examples/components/Panel/docked.example",
-          "react-components/__TAG__/examples/components/Panel/tabbed.example"
+          "react-components/__TAG__/src/Panel/examples/floating.js",
+          "react-components/__TAG__/src/Panel/examples/docked.js",
+          "react-components/__TAG__/src/Panel/examples/tabbed.js"
         ]
       },
       {
@@ -82,8 +82,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/Tooltip",
         "component": "react-components/__TAG__/src/Tooltip/Tooltip.js",
         "examples": [
-          "react-components/__TAG__/examples/components/Tooltip/default.example",
-          "react-components/__TAG__/examples/components/Tooltip/long-word.example"
+          "react-components/__TAG__/src/Tooltip/examples/default.js",
+          "react-components/__TAG__/src/Tooltip/examples/long-word.js"
         ]
       },
       {
@@ -94,7 +94,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/background-dimmer",
         "component": "react-components/__TAG__/src/background-dimmer/BackgroundDimmer.js",
         "examples": [
-          "react-components/__TAG__/examples/components/background-dimmer/BackgroundDimmer.example"
+          "react-components/__TAG__/src/background-dimmer/examples/BackgroundDimmer.js"
         ]
       },
       {
@@ -105,8 +105,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/flex",
         "component": "react-components/__TAG__/src/flex/FlexView.js",
         "examples": [
-          "react-components/__TAG__/examples/components/flex/Column.example",
-          "react-components/__TAG__/examples/components/flex/Row.example"
+          "react-components/__TAG__/src/flex/examples/Column.js",
+          "react-components/__TAG__/src/flex/examples/Row.js"
         ]
       },
       {
@@ -117,7 +117,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/loading-spinner",
         "component": "react-components/__TAG__/src/loading-spinner/LoadingSpinner.js",
         "examples": [
-          "react-components/__TAG__/examples/components/loading-spinner/LoadingSpinner.example"
+          "react-components/__TAG__/src/loading-spinner/examples/LoadingSpinner.js"
         ]
       },
       {
@@ -128,7 +128,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/modal",
         "component": "react-components/__TAG__/src/modal/Modal.js",
         "examples": [
-          "react-components/__TAG__/examples/components/modal/default.example"
+          "react-components/__TAG__/src/modal/examples/default.js"
         ]
       },
       {
@@ -139,7 +139,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/modal-manager",
         "component": "react-components/__TAG__/src/modal-manager/ModalManager.js",
         "examples": [
-          "react-components/__TAG__/examples/components/modal-manager/ModalManager.example"
+          "react-components/__TAG__/src/modal-manager/examples/ModalManager.js"
         ]
       },
       {
@@ -150,7 +150,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/mobile-detector",
         "component": "react-components/__TAG__/src/mobile-detector/MobileDetector.js",
         "examples": [
-          "react-components/__TAG__/examples/components/mobile-detector/MobileDetector.example"
+          "react-components/__TAG__/src/mobile-detector/examples/MobileDetector.js"
         ]
       },
       {
@@ -161,8 +161,19 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
         "component": "react-components/__TAG__/src/scroll/ScrollView.js",
         "examples": [
-          "react-components/__TAG__/examples/components/scroll/StopPropagation.example",
-          "react-components/__TAG__/examples/components/scroll/ScrollTo.example"
+          "react-components/__TAG__/src/scroll/examples/StopPropagation.js",
+          "react-components/__TAG__/src/scroll/examples/ScrollTo.js"
+        ]
+      },
+      {
+        "id": "scroll-view-new",
+        "title": "ScrollViewNew",
+        "desc": "ScrollViewNew",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
+        "component": "react-components/__TAG__/src/ScrollView/ScrollView.js",
+        "examples": [
+          "react-components/__TAG__/src/ScrollView/examples/Default.js"
         ]
       },
       {
@@ -173,10 +184,10 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/text-overflow",
         "component": "react-components/__TAG__/src/text-overflow/TextOverflow.js",
         "examples": [
-          "react-components/__TAG__/examples/components/text-overflow/Default.example",
-          "react-components/__TAG__/examples/components/text-overflow/CustomPopover.example",
-          "react-components/__TAG__/examples/components/text-overflow/WithFlexView.example",
-          "react-components/__TAG__/examples/components/text-overflow/Resizable.example"
+          "react-components/__TAG__/src/text-overflow/examples/Default.js",
+          "react-components/__TAG__/src/text-overflow/examples/CustomPopover.js",
+          "react-components/__TAG__/src/text-overflow/examples/WithFlexView.js",
+          "react-components/__TAG__/src/text-overflow/examples/Resizable.js"
         ]
       },
       {
@@ -187,9 +198,9 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/popover",
         "component": "react-components/__TAG__/src/popover/Popover.js",
         "examples": [
-          "react-components/__TAG__/examples/components/popover/Relative.example",
-          "react-components/__TAG__/examples/components/popover/Absolute.example",
-          "react-components/__TAG__/examples/components/popover/InitiallyOpen.example"
+          "react-components/__TAG__/src/popover/examples/Relative.js",
+          "react-components/__TAG__/src/popover/examples/Absolute.js",
+          "react-components/__TAG__/src/popover/examples/InitiallyOpen.js"
         ]
       },
       {
@@ -200,8 +211,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/toaster",
         "component": "react-components/__TAG__/src/toaster/Toaster.js",
         "examples": [
-          "react-components/__TAG__/examples/components/toaster/Inline.example",
-          "react-components/__TAG__/examples/components/toaster/Attached.example"
+          "react-components/__TAG__/src/toaster/examples/Inline.js",
+          "react-components/__TAG__/src/toaster/examples/Attached.js"
         ]
       },
       {
@@ -212,7 +223,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/badge",
         "component": "react-components/__TAG__/src/badge/Badge.js",
         "examples": [
-          "react-components/__TAG__/examples/components/badge/default.example"
+          "react-components/__TAG__/src/badge/examples/default.js"
         ]
       },
       {
@@ -223,7 +234,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/more-or-less",
         "component": "react-components/__TAG__/src/more-or-less/MoreOrLess.js",
         "examples": [
-          "react-components/__TAG__/examples/components/more-or-less/default.example"
+          "react-components/__TAG__/src/more-or-less/examples/default.js"
         ]
       },
       {
@@ -234,7 +245,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/confirmation-input",
         "component": "react-components/__TAG__/src/confirmation-input/ConfirmationInput.js",
         "examples": [
-          "react-components/__TAG__/examples/components/confirmation-input/default.example"
+          "react-components/__TAG__/src/confirmation-input/examples/default.js"
         ]
       },
       {
@@ -245,7 +256,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/nav-bar",
         "component": "react-components/__TAG__/src/nav-bar/NavBar.js",
         "examples": [
-          "react-components/__TAG__/examples/components/nav-bar/default.example"
+          "react-components/__TAG__/src/nav-bar/examples/default.js"
         ]
       },
       {
@@ -256,7 +267,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/toggle",
         "component": "react-components/__TAG__/src/toggle/Toggle.js",
         "examples": [
-          "react-components/__TAG__/examples/components/toggle/default.example"
+          "react-components/__TAG__/src/toggle/examples/default.js"
         ]
       },
       {
@@ -267,7 +278,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/button",
         "component": "react-components/__TAG__/src/button/StatefulButton.js",
         "examples": [
-          "react-components/__TAG__/examples/components/button/default.example"
+          "react-components/__TAG__/src/button/examples/default.js"
         ]
       },
       {
@@ -278,7 +289,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/table",
         "component": "react-components/__TAG__/src/table/Table.js",
         "examples": [
-          "react-components/__TAG__/examples/components/table/default.example"
+          "react-components/__TAG__/src/table/examples/default.js"
         ]
       },
       {
@@ -289,9 +300,9 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/meter",
         "component": "react-components/__TAG__/src/meter/Meter.js",
         "examples": [
-          "react-components/__TAG__/examples/components/meter/Meter.example",
-          "react-components/__TAG__/examples/components/meter/MeterWithHole.example",
-          "react-components/__TAG__/examples/components/meter/MeterCustomLabel.example"
+          "react-components/__TAG__/src/meter/examples/Meter.js",
+          "react-components/__TAG__/src/meter/examples/MeterWithHole.js",
+          "react-components/__TAG__/src/meter/examples/MeterCustomLabel.js"
         ]
       },
       {
@@ -302,7 +313,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/collapsable-section",
         "component": "react-components/__TAG__/src/collapsable-section/CollapsableSection.js",
         "examples": [
-          "react-components/__TAG__/examples/components/collapsable-section/default.example"
+          "react-components/__TAG__/src/collapsable-section/examples/default.js"
         ]
       },
       {
@@ -312,8 +323,8 @@
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/link-state",
         "examples": [
-          "react-components/__TAG__/examples/components/link-state/default.example",
-          "react-components/__TAG__/examples/components/link-state/deep.example"
+          "react-components/__TAG__/src/link-state/examples/default.js",
+          "react-components/__TAG__/src/link-state/examples/deep.js"
         ]
       },
       {
@@ -324,7 +335,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
         "component": "react-components/__TAG__/src/browser-detector/BrowserDetector.js",
         "examples": [
-          "react-components/__TAG__/examples/components/browser-detector/default.example"
+          "react-components/__TAG__/src/browser-detector/examples/default.js"
         ]
       },
       {
@@ -335,8 +346,8 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
         "component": "react-components/__TAG__/src/time-picker/TimePicker.js",
         "examples": [
-          "react-components/__TAG__/examples/components/time-picker/TimePicker24.example",
-          "react-components/__TAG__/examples/components/time-picker/TimePicker12.example"
+          "react-components/__TAG__/src/time-picker/examples/TimePicker24.js",
+          "react-components/__TAG__/src/time-picker/examples/TimePicker12.js"
         ]
       },
       {
@@ -347,7 +358,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/focusable-view",
         "component": "react-components/__TAG__/src/focusable-view/FocusableView.js",
         "examples": [
-          "react-components/__TAG__/examples/components/focusable-view/default.example"
+          "react-components/__TAG__/src/focusable-view/examples/default.js"
         ]
       },
       {
@@ -358,7 +369,7 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/resize-sensor",
         "component": "react-components/__TAG__/src/resize-sensor/ResizeSensor.js",
         "examples": [
-          "react-components/__TAG__/examples/components/resize-sensor/default.example"
+          "react-components/__TAG__/src/resize-sensor/examples/default.js"
         ]
       },
       {
