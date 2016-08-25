@@ -23,8 +23,12 @@
         "url": "https://github.com/buildo/rc-datepicker",
         "component": "rc-datepicker/__TAG__/src/DatePickerInput.js",
         "examples": [
-          "rc-datepicker/__TAG__/examples/DatePickerInput.example",
-          "rc-datepicker/__TAG__/examples/DatePicker.example"
+          {
+            "url": "rc-datepicker/__TAG__/examples/DatePickerInput.example"
+          },
+          {
+            "url": "rc-datepicker/__TAG__/examples/DatePicker.example"
+          }
         ]
       },
       {
@@ -35,10 +39,18 @@
         "url": "https://github.com/buildo/react-input-children",
         "component": "react-input-children/__TAG__/src/InputChildren.js",
         "examples": [
-          "react-input-children/__TAG__/examples/PlainText.example",
-          "react-input-children/__TAG__/examples/Password.example",
-          "react-input-children/__TAG__/examples/Button.example",
-          "react-input-children/__TAG__/examples/Anything.example"
+          {
+            "url": "react-input-children/__TAG__/examples/PlainText.example"
+          },
+          {
+            "url": "react-input-children/__TAG__/examples/Password.example"
+          },
+          {
+            "url": "react-input-children/__TAG__/examples/Button.example"
+          },
+          {
+            "url": "react-input-children/__TAG__/examples/Anything.example"
+          }
         ]
       },
       {
@@ -49,9 +61,15 @@
         "url": "https://github.com/buildo/react-autosize-textarea",
         "component": "react-autosize-textarea/__TAG__/src/TextareaAutosize.js",
         "examples": [
-          "react-autosize-textarea/__TAG__/examples/Empty.example",
-          "react-autosize-textarea/__TAG__/examples/MinimumHeight.example",
-          "react-autosize-textarea/__TAG__/examples/Prefilled.example"
+          {
+            "url": "react-autosize-textarea/__TAG__/examples/Empty.example"
+          },
+          {
+            "url": "react-autosize-textarea/__TAG__/examples/MinimumHeight.example"
+          },
+          {
+            "url": "react-autosize-textarea/__TAG__/examples/Prefilled.example"
+          }
         ]
       },
       {
@@ -62,7 +80,9 @@
         "url": "https://github.com/buildo/react-cookie-banner",
         "component": "react-cookie-banner/__TAG__/src/CookieBanner.js",
         "examples": [
-          "react-cookie-banner/__TAG__/examples/Default.example"
+          {
+            "url": "react-cookie-banner/__TAG__/examples/Default.example"
+          }
         ]
       }
     ]

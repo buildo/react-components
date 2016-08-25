@@ -10,8 +10,14 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/Divider",
       "readme": "react-components/__TAG__/src/Divider/README.md",
       "examples": [
-        "react-components/__TAG__/src/Divider/examples/default.js",
-        "react-components/__TAG__/src/Divider/examples/horizontal.js"
+        {
+          "description": "### Vertical divider",
+          "url": "react-components/__TAG__/src/Divider/examples/default.js"
+        },
+        {
+          "description": "### Horizontal divider",
+          "url": "react-components/__TAG__/src/Divider/examples/horizontal.js"
+        }
       ]
     },
     {
@@ -22,7 +28,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
       "readme": "react-components/__TAG__/src/dropdown/README.md",
       "examples": [
-        "react-components/__TAG__/src/dropdown/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/dropdown/examples/default.js"
+        }
       ]
     },
     {
@@ -33,8 +41,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/DropdownMenu",
       "readme": "react-components/__TAG__/src/DropdownMenu/README.md",
       "examples": [
-        "react-components/__TAG__/src/DropdownMenu/examples/default.js",
-        "react-components/__TAG__/src/DropdownMenu/examples/deep.js"
+        {
+          "url": "react-components/__TAG__/src/DropdownMenu/examples/default.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/DropdownMenu/examples/deep.js"
+        }
       ]
     },
     {
@@ -45,7 +57,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/Icon",
       "readme": "react-components/__TAG__/src/Icon/README.md",
       "examples": [
-        "react-components/__TAG__/src/Icon/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/Icon/examples/default.js"
+        }
       ]
     },
     {
@@ -56,9 +70,15 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/Panel",
       "readme": "react-components/__TAG__/src/Panel/README.md",
       "examples": [
-        "react-components/__TAG__/src/Panel/examples/floating.js",
-        "react-components/__TAG__/src/Panel/examples/docked.js",
-        "react-components/__TAG__/src/Panel/examples/tabbed.js"
+        {
+          "url": "react-components/__TAG__/src/Panel/examples/floating.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/Panel/examples/docked.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/Panel/examples/tabbed.js"
+        } 
       ]
     },
     {
@@ -69,8 +89,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/Tooltip",
       "readme": "react-components/__TAG__/src/Tooltip/README.md",
       "examples": [
-        "react-components/__TAG__/src/Tooltip/examples/default.js",
-        "react-components/__TAG__/src/Tooltip/examples/long-word.js"
+        {
+          "url": "react-components/__TAG__/src/Tooltip/examples/default.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/Tooltip/examples/long-word.js"
+        }
       ]
     },
     {
@@ -81,7 +105,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/background-dimmer",
       "readme": "react-components/__TAG__/src/background-dimmer/README.md",
       "examples": [
-        "react-components/__TAG__/src/background-dimmer/examples/BackgroundDimmer.js"
+        {
+          "url": "react-components/__TAG__/src/background-dimmer/examples/BackgroundDimmer.js"
+        }
       ]
     },
     {
@@ -92,8 +118,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/flex",
       "readme": "react-components/__TAG__/src/flex/README.md",
       "examples": [
-        "react-components/__TAG__/src/flex/examples/Column.js",
-        "react-components/__TAG__/src/flex/examples/Row.js"
+        {
+          "url": "react-components/__TAG__/src/flex/examples/Column.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/flex/examples/Row.js"
+        }
       ]
     },
     {
@@ -104,7 +134,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/loading-spinner",
       "readme": "react-components/__TAG__/src/loading-spinner/README.md",
       "examples": [
-        "react-components/__TAG__/src/loading-spinner/examples/LoadingSpinner.js"
+        {
+          "url": "react-components/__TAG__/src/loading-spinner/examples/LoadingSpinner.js"
+        }
       ]
     },
     {
@@ -115,7 +147,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/modal",
       "readme": "react-components/__TAG__/src/modal/README.md",
       "examples": [
-        "react-components/__TAG__/src/modal/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/modal/examples/default.js"
+        }
       ]
     },
     {
@@ -126,7 +160,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/modal-manager",
       "readme": "react-components/__TAG__/src/modal-manager/README.md",
       "examples": [
-        "react-components/__TAG__/src/modal-manager/examples/ModalManager.js"
+        {
+          "url": "react-components/__TAG__/src/modal-manager/examples/ModalManager.js"
+        }
       ]
     },
     {
@@ -137,7 +173,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/mobile-detector",
       "readme": "react-components/__TAG__/src/mobile-detector/README.md",
       "examples": [
-        "react-components/__TAG__/src/mobile-detector/examples/MobileDetector.js"
+        {
+          "url": "react-components/__TAG__/src/mobile-detector/examples/MobileDetector.js"
+        }
       ]
     },
     {
@@ -148,8 +186,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
       "readme": "react-components/__TAG__/src/scroll/README.md",
       "examples": [
-        "react-components/__TAG__/src/scroll/examples/StopPropagation.js",
-        "react-components/__TAG__/src/scroll/examples/ScrollTo.js"
+        {
+          "url": "react-components/__TAG__/src/scroll/examples/StopPropagation.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/scroll/examples/ScrollTo.js"
+        }
       ]
     },
     {
@@ -160,7 +202,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
       "component": "react-components/__TAG__/src/ScrollView/ScrollView.js",
       "examples": [
-        "react-components/__TAG__/src/ScrollView/examples/Default.js"
+        {
+          "url": "react-components/__TAG__/src/ScrollView/examples/Default.js"
+        }
       ]
     },
     {
@@ -171,10 +215,18 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/text-overflow",
       "readme": "react-components/__TAG__/src/text-overflow/README.md",
       "examples": [
-        "react-components/__TAG__/src/text-overflow/examples/Default.js",
-        "react-components/__TAG__/src/text-overflow/examples/CustomPopover.js",
-        "react-components/__TAG__/src/text-overflow/examples/WithFlexView.js",
-        "react-components/__TAG__/src/text-overflow/examples/Resizable.js"
+        {
+          "url": "react-components/__TAG__/src/text-overflow/examples/Default.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/text-overflow/examples/CustomPopover.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/text-overflow/examples/WithFlexView.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/text-overflow/examples/Resizable.js"
+        }
       ]
     },
     {
@@ -185,9 +237,15 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/popover",
       "readme": "react-components/__TAG__/src/popover/README.md",
       "examples": [
-        "react-components/__TAG__/src/popover/examples/Relative.js",
-        "react-components/__TAG__/src/popover/examples/Absolute.js",
-        "react-components/__TAG__/src/popover/examples/InitiallyOpen.js"
+        {
+          "url": "react-components/__TAG__/src/popover/examples/Relative.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/popover/examples/Absolute.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/popover/examples/InitiallyOpen.js"
+        }
       ]
     },
     {
@@ -198,8 +256,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/toaster",
       "readme": "react-components/__TAG__/src/toaster/README.md",
       "examples": [
-        "react-components/__TAG__/src/toaster/examples/Inline.js",
-        "react-components/__TAG__/src/toaster/examples/Attached.js"
+        {
+          "url": "react-components/__TAG__/src/toaster/examples/Inline.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/toaster/examples/Attached.js"
+        }
       ]
     },
     {
@@ -210,7 +272,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/badge",
       "readme": "react-components/__TAG__/src/badge/README.md",
       "examples": [
-        "react-components/__TAG__/src/badge/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/badge/examples/default.js"
+        }
       ]
     },
     {
@@ -221,7 +285,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/more-or-less",
       "readme": "react-components/__TAG__/src/more-or-less/README.md",
       "examples": [
-        "react-components/__TAG__/src/more-or-less/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/more-or-less/examples/default.js"
+        }
       ]
     },
     {
@@ -232,7 +298,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/confirmation-input",
       "readme": "react-components/__TAG__/src/confirmation-input/README.md",
       "examples": [
-        "react-components/__TAG__/src/confirmation-input/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/confirmation-input/examples/default.js"
+        }
       ]
     },
     {
@@ -243,7 +311,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/nav-bar",
       "readme": "react-components/__TAG__/src/nav-bar/README.md",
       "examples": [
-        "react-components/__TAG__/src/nav-bar/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/nav-bar/examples/default.js"
+        }
       ]
     },
     {
@@ -254,7 +324,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/toggle",
       "readme": "react-components/__TAG__/src/toggle/README.md",
       "examples": [
-        "react-components/__TAG__/src/toggle/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/toggle/examples/default.js"
+        }
       ]
     },
     {
@@ -265,7 +337,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/button",
       "readme": "react-components/__TAG__/src/button/README.md",
       "examples": [
-        "react-components/__TAG__/src/button/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/button/examples/default.js"
+        }
       ]
     },
     {
@@ -276,7 +350,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/table",
       "readme": "react-components/__TAG__/src/table/README.md",
       "examples": [
-        "react-components/__TAG__/src/table/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/table/examples/default.js"
+        }
       ]
     },
     {
@@ -287,9 +363,15 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/meter",
       "readme": "react-components/__TAG__/src/meter/README.md",
       "examples": [
-        "react-components/__TAG__/src/meter/examples/Meter.js",
-        "react-components/__TAG__/src/meter/examples/MeterWithHole.js",
-        "react-components/__TAG__/src/meter/examples/MeterCustomLabel.js"
+        {
+          "url": "react-components/__TAG__/src/meter/examples/Meter.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/meter/examples/MeterWithHole.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/meter/examples/MeterCustomLabel.js"
+        }
       ]
     },
     {
@@ -300,7 +382,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/collapsable-section",
       "readme": "react-components/__TAG__/src/collapsable-section/README.md",
       "examples": [
-        "react-components/__TAG__/src/collapsable-section/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/collapsable-section/examples/default.js"
+        }
       ]
     },
     {
@@ -310,8 +394,12 @@
       "repo": "react-components",
       "url": "https://github.com/buildo/react-components/tree/master/src/link-state",
       "examples": [
-        "react-components/__TAG__/src/link-state/examples/default.js",
-        "react-components/__TAG__/src/link-state/examples/deep.js"
+        {
+          "url": "react-components/__TAG__/src/link-state/examples/default.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/link-state/examples/deep.js"
+        }
       ]
     },
     {
@@ -322,7 +410,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
       "readme": "react-components/__TAG__/src/browser-detector/README.md",
       "examples": [
-        "react-components/__TAG__/src/browser-detector/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/browser-detector/examples/default.js"
+        }
       ]
     },
     {
@@ -333,8 +423,12 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
       "readme": "react-components/__TAG__/src/time-picker/README.md",
       "examples": [
-        "react-components/__TAG__/src/time-picker/examples/TimePicker24.js",
-        "react-components/__TAG__/src/time-picker/examples/TimePicker12.js"
+        {
+          "url": "react-components/__TAG__/src/time-picker/examples/TimePicker24.js"
+        },
+        {
+          "url": "react-components/__TAG__/src/time-picker/examples/TimePicker12.js"
+        }
       ]
     },
     {
@@ -345,7 +439,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/focusable-view",
       "readme": "react-components/__TAG__/src/focusable-view/README.md",
       "examples": [
-        "react-components/__TAG__/src/focusable-view/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/focusable-view/examples/default.js"
+        }
       ]
     },
     {
@@ -356,7 +452,9 @@
       "url": "https://github.com/buildo/react-components/tree/master/src/resize-sensor",
       "readme": "react-components/__TAG__/src/resize-sensor/README.md",
       "examples": [
-        "react-components/__TAG__/src/resize-sensor/examples/default.js"
+        {
+          "url": "react-components/__TAG__/src/resize-sensor/examples/default.js"
+        }
       ]
     }
   ]
