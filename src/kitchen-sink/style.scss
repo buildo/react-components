@@ -29,7 +29,6 @@
 
             .component {
               margin: 0;
-              margin-top: 20px;
               padding: 30px 40px;
             }
 
@@ -126,6 +125,7 @@
     .sidebar-content {
       border-right: 1px solid #dfe3e9;
       width: 240px;
+      height: 100%;
 
       .logo {
         height: 240px;
@@ -167,12 +167,14 @@
         .items {
 
           background-color: $paleGrey;
+          padding: 10px 0;
 
           .item {
             width: 100%;
             padding: 10px 20px;
             cursor: pointer;
             color: $battleshipGrey;
+            font-weight: $regular;
 
             &.active, &:hover {
               color: $azure;
