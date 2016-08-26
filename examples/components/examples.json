@@ -11,11 +11,11 @@
       "readme": "react-components/__TAG__/src/Divider/README.md",
       "examples": [
         {
-          "description": "### Vertical divider",
+          "title": "Vertical divider",
           "url": "react-components/__TAG__/src/Divider/examples/default.js"
         },
         {
-          "description": "### Horizontal divider",
+          "title": "Horizontal divider",
           "url": "react-components/__TAG__/src/Divider/examples/horizontal.js"
         }
       ]

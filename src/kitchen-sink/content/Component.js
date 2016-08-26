@@ -25,6 +25,7 @@ export default class Component extends React.Component {
     const { scope, iso } = this.props;
     return [].concat(examples).map((example, key) =>
       <div className='example' key={key}>
+        {example.title && <Markdown source={`## ${example.title}`} options={{ html: true }} />}
         <Markdown source={example.description} options={{ html: true }} />
         <ExampleCard {...{ codeText: example.code, iso, scope }} />
       </div>);
