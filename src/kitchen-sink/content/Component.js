@@ -2,6 +2,7 @@ import React from 'react';
 import { props, t } from '../../utils';
 import LoadingSpinner from '../../loading-spinner';
 import ExampleCard from './ExampleCard';
+import Markdown from 'react-remarkable';
 
 @props({
   iso: t.maybe(t.Boolean),
@@ -22,7 +23,11 @@ export default class Component extends React.Component {
 
   getExamples = (examples) => {
     const { scope, iso } = this.props;
-    return [].concat(examples).map((codeText, key) => <ExampleCard {...{ codeText, iso, scope, key }} />);
+    return [].concat(examples).map((example, key) =>
+      <div className='example' key={key}>
+        <Markdown source={example.description} options={{ html: true }} />
+        <ExampleCard {...{ codeText: example.code, iso, scope }} />
+      </div>);
   };
 
   render() {
