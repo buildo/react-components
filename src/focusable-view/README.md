@@ -1,7 +1,8 @@
 # FocusableView
 
-## A panel that can get focus
+A panel that can get focus
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>union(ReactChildren&#124;Function)</code> |  | **required**. FocusableView content. If a function it gets called with the boolean "focused". |

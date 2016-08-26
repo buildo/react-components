@@ -1,7 +1,8 @@
 # CollapsableSection
 
-## A collapsable panel, allowing you to toggle more/less content
+A collapsable panel, allowing you to toggle more/less content
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Panel content (visible only when expanded) |

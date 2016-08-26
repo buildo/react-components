@@ -1,7 +1,8 @@
 # Icon
 
-## An icon
+An icon
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **icon** | <code>String</code> |  | *optional*. Icon className |

@@ -1,7 +1,8 @@
 # LoadingSpinner
 
-## Absolute dimmed layer with loading spinner in the center
+Absolute dimmed layer with loading spinner in the center
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **size** | <code>union(String&#124;Number)</code> | <code>"3em"</code> | *optional*. Spinner size |

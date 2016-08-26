@@ -1,7 +1,8 @@
 # ScrollView
 
-## A scrollable view
+A scrollable view
 
+## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. What to render inside the scroll view |
