@@ -1,8 +1,7 @@
 # Tooltip
 
-Tooltip that appears when the mouse is over an element
+## Tooltip that appears when the mouse is over an element
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. The element over which the tooltip is shown |

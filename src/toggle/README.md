@@ -1,8 +1,7 @@
 # Toggle
 
-A nice animated Toggle rendered using only CSS
+## A nice animated Toggle rendered using only CSS
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **value** | <code>Boolean</code> |  | *optional*. The current value (`true` if checked) |

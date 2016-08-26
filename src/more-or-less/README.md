@@ -1,8 +1,7 @@
 # MoreOrLess
 
-A panel used to alternately display short or long version of the content
+## A panel used to alternately display short or long version of the content
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactChildren</code> |  | **required**. Panel content |

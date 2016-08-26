@@ -1,8 +1,7 @@
 # TextOverflow
 
-Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
+## Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>Function</code> |  | *optional*. In case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument |

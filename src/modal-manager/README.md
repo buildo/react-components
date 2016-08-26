@@ -1,11 +1,10 @@
 # ModalManager
 
-Component to manage modals flow/animations inside an app:
+## Component to manage modals flow/animations inside an app:
 - creates a portal `div` on the page `body`
 - renders one modal at a time
 - supports animations (by using `TransitionWrapper`)
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **children** | <code>ReactElement</code> |  | *optional*. Active modal component |

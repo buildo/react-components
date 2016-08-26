@@ -1,8 +1,7 @@
 # Badge
 
-A small descriptive element to attach to other UI components
+## A small descriptive element to attach to other UI components
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **label** | <code>ReactChildren</code> |  | **required**. The descriptive content of the badge |

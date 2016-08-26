@@ -1,8 +1,7 @@
 # TimePicker
 
-TimePicker field, used to pick a time from a dropdown
+## TimePicker field, used to pick a time from a dropdown
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **onChange** | <code>Function</code> |  | **required**. OnChange handler. It will return an object |

@@ -1,8 +1,7 @@
 # ConfirmationInput
 
-An input field that allows to confirm its content
+## An input field that allows to confirm its content
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **initialValue** | <code>String</code> |  | *optional*. Initial value |

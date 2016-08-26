@@ -1,8 +1,7 @@
 # Panel
 
-A simple panel with header. It can be collapsable or not, docked or floating.
+## A simple panel with header. It can be collapsable or not, docked or floating.
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **type** | <code>enum("docked-top"&#124;"docked-left"&#124;"docked-right"&#124;"docked-bottom"&#124;"floating")</code> |  | **required**. Docked-top &#124; docked-left &#124; docked-right &#124; docked-bottom &#124; floating |

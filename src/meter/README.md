@@ -1,8 +1,7 @@
 # Meter
 
-Renders a Meter
+## Renders a Meter
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **value** | <code>Number</code> |  | **required**. Current value |

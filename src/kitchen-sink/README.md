@@ -1,8 +1,7 @@
 # KitchenSink
 
-React component to generate a nice kitchen-sink
+## React component to generate a nice kitchen-sink
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **componentId** | <code>String</code> |  | *optional*. Selected component page |

@@ -1,8 +1,7 @@
 # Divider
 
-A simple component used to visually divide UI elements
+## A simple component used to visually divide UI elements
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **orientation** | <code>enum("horizontal"&#124;"vertical")</code> | <code>"vertical"</code> | *optional*. Vertical &#124; horizontal |

@@ -1,8 +1,7 @@
 # Dropdown
 
-A dropdown field
+## A dropdown field
 
-## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
 | **value** | <code>union(Number&#124;String&#124;Object&#124;Array<Object>)</code> |  | *optional*. Selected value |
