@@ -8,20 +8,12 @@ import SidebarContent from './SidebarContent';
   children: t.ReactChildren,
   sections: t.Array,
   openSections: t.Array,
+  currentItemId: t.maybe(t.String),
   onSelectItem: t.Function,
   onToggleSection: t.maybe(t.Function),
   loading: t.maybe(t.Boolean)
 })
 export default class Sidebar extends React.Component {
-
-  static propTypes = {
-    children: React.PropTypes.node.isRequired,
-    sections: React.PropTypes.array.isRequired,
-    openSections: React.PropTypes.array.isRequired,
-    onSelectItem: React.PropTypes.func.isRequired,
-    onToggleSection: React.PropTypes.func,
-    loading: React.PropTypes.bool
-  };
 
   getLoadingSpinner = () => {
     return (

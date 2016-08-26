@@ -4,10 +4,10 @@ import upperFirst from 'lodash/upperFirst';
 const formatType = prop => {
   switch (prop.kind) {
     case 'enums':
-      return `enum(${Object.keys(prop.map).map(key => `"${key}"`).join('|')})`;
+      return `enum(${Object.keys(prop.map).map(key => `"${key}"`).join(' | ')})`;
 
     case 'union':
-      return `union(${prop.types.map(formatType).join('|')})`;
+      return `union(${prop.types.map(formatType).join(' | ')})`;
 
     default:
       return prop.name;

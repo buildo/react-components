@@ -2,16 +2,18 @@ import React from 'react';
 import { props, t } from '../../utils';
 import Item from './Item';
 import CollapsableSection from '../../collapsable-section/CollapsableSection';
+import View from '../../flex/FlexView';
 
 @props({
   sections: t.maybe(t.Array),
   openSections: t.Array,
+  currentItemId: t.maybe(t.String),
   onSelectItem: t.Function,
   onToggleSection: t.maybe(t.Function)
 })
 export default class SidebarContent extends React.Component {
 
-  isActive = (id) => false && id;
+  isActive = (id) => id === this.props.currentItemId;
 
   isOpen = (sectionId) => this.props.openSections.indexOf(sectionId) !== -1;
 
@@ -31,7 +33,7 @@ export default class SidebarContent extends React.Component {
     );
 
     const getSections = (sections) => sections.map(({ id, components, contents, title }) => (
-      <CollapsableSection onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angle-up', closed: 'angle-down' }} key={id}>
+      <CollapsableSection onChange={this.onToggle(id)} isOpen={this.isOpen(id)} header={title} icons={{ open: 'angleUpsvg', closed: 'angleDown' }} key={id}>
         <div className='items'>
           {getItems(id, components || contents)}
         </div>
@@ -40,6 +42,10 @@ export default class SidebarContent extends React.Component {
 
     return (
       <div className='sidebar-content'>
+        <View className='logo' vAlignContent='center' hAlignContent='center' column>
+          Buildo
+          <View className='sub'>React components</View>
+        </View>
         {getSections(sections)}
       </div>
     );
