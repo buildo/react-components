@@ -22,7 +22,7 @@ A table component based on fixed-data-table
 | **selectedRows** | <code>Array<Number></code> | <code>[]</code> | *optional*. Selected rows |
 | **onRowSelect** | <code>Function</code> |  | *optional*. Called when a row is selected |
 | **onRowsSelect** | <code>Function</code> |  | *optional*. Called when multiple rows are selected |
-| **selectionType** | <code>enum("none"&#124;"single"&#124;"multi")</code> |  | **required**. None &#124; sigle &#124; multi |
+| **selectionType** | <code>enum("none" &#124; "single" &#124; "multi")</code> |  | **required**. None &#124; sigle &#124; multi |
 | **onColumnResizeEndCallback** | <code>Function</code> |  | *optional*. Called after a column has been resized |
 | **isColumnResizing** | <code>Boolean</code> | <code>false</code> | *optional*. Whether a column is currently being resized |
 | **columns** | <code>Array<Object></code> |  | *optional*. List of columns |

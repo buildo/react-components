@@ -5,11 +5,11 @@ A dropdown field
 ## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| **value** | <code>union(Number&#124;String&#124;Object&#124;Array<Object>)</code> |  | *optional*. Selected value |
+| **value** | <code>union(Number &#124; String &#124; Object &#124; Array<Object>)</code> |  | *optional*. Selected value |
 | **valueLink** | <code>Struct{value: ?Number &#124; String &#124; Object &#124; Array<Object>, requestChange: Function}</code> |  | *optional*. Defines actions to be taken when a particular value is selected |
 | **onChange** | <code>Function</code> |  | *optional*. Called when value is changed |
 | **options** | <code>Array<Object></code> |  | **required**. Available options |
-| **size** | <code>enum("medium"&#124;"small")</code> | <code>"medium"</code> | **required**. Medium &#124; small |
+| **size** | <code>enum("medium" &#124; "small")</code> | <code>"medium"</code> | **required**. Medium &#124; small |
 | **disabled** | <code>Boolean</code> | <code>false</code> | *optional*. True if disabled |
 | **searchable** | <code>Boolean</code> | <code>false</code> | *optional*. True if it should be possible to search the desired value by writing into the dropdown |
 | **clearable** | <code>Boolean</code> | <code>false</code> | *optional*. True if it should be possible to reset the selected value |

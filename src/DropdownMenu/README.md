@@ -13,6 +13,6 @@ A toggleable dropdown menu
 | **onOpen** | <code>Function</code> |  | **required**. Called when menu is open |
 | **onClose** | <code>Function</code> |  | **required**. Called when menu is closed |
 | **dismissOnClickOut** | <code>Boolean</code> | <code>true</code> | *optional*. Whether the menu should be closed when clicking outside the dropdown |
-| **size** | <code>enum("small"&#124;"medium"&#124;"large")</code> |  | *optional*. Small &#124; medium &#124; large |
+| **size** | <code>enum("small" &#124; "medium" &#124; "large")</code> |  | *optional*. Small &#124; medium &#124; large |
 | **maxHeight** | <code>Number</code> |  | *optional*. Menu button max-height |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |

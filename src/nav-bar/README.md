@@ -9,7 +9,7 @@ A NavBar container built with FlexView:
 |----|----|-------|-----------|
 | **content** | <code>Struct{left: ?ReactChildren, center: ?ReactChildren, right: ?ReactChildren, maxWidth: ?String &#124; Number}</code> |  | **required**. Props used to define the NavBar content (defines left, center, right, maxWidth). |
 | **fixed** | <code>Boolean</code> |  | *optional*. To set `position: fixed` |
-| **height** | <code>union(String&#124;Number)</code> |  | *optional*. Shorthand for css `height` |
+| **height** | <code>union(String &#124; Number)</code> |  | *optional*. Shorthand for css `height` |
 | **background** | <code>String</code> |  | *optional*. Shorthand for css `background` |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
