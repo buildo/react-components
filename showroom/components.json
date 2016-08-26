@@ -24,11 +24,11 @@
         "readme": "react-components/__TAG__/src/Divider/README.md",
         "examples": [
           {
-            "description": "### Vertical divider",
+            "title": "Vertical divider",
             "url": "react-components/__TAG__/src/Divider/examples/default.js"
           },
           {
-            "description": "### Horizontal divider",
+            "title": "Horizontal divider",
             "url": "react-components/__TAG__/src/Divider/examples/horizontal.js"
           }
         ]
@@ -476,7 +476,7 @@
         "desc": "A decent and pretty date picker to be used with React",
         "repo": "rc-datepicker",
         "url": "https://github.com/buildo/rc-datepicker",
-        "component": "rc-datepicker/__TAG__/src/DatePickerInput.js",
+        "readme": "rc-datepicker/__TAG__/README.md",
         "examples": [
           {
             "url": "rc-datepicker/__TAG__/examples/DatePickerInput.example"
@@ -492,7 +492,7 @@
         "desc": "ReactInputChildren is a replacement for the base input react component capable of rendering a child (link, button...) inside the input itself. It supports the same props of react input.",
         "repo": "react-input-children",
         "url": "https://github.com/buildo/react-input-children",
-        "component": "react-input-children/__TAG__/src/InputChildren.js",
+        "readme": "react-input-children/__TAG__/README.md",
         "examples": [
           {
             "url": "react-input-children/__TAG__/examples/PlainText.example"
@@ -514,7 +514,7 @@
         "desc": "A textarea perfectly compatible with ReactJS default one which auto resizes its height based on user input.",
         "repo": "react-autosize-textarea",
         "url": "https://github.com/buildo/react-autosize-textarea",
-        "component": "react-autosize-textarea/__TAG__/src/TextareaAutosize.js",
+        "readme": "react-autosize-textarea/__TAG__/README.md",
         "examples": [
           {
             "url": "react-autosize-textarea/__TAG__/examples/Empty.example"
@@ -533,7 +533,7 @@
         "desc": "React Cookie banner which can be automatically dismissed with a scroll. Because fuck The Cookie Law, that's why.",
         "repo": "react-cookie-banner",
         "url": "https://github.com/buildo/react-cookie-banner",
-        "component": "react-cookie-banner/__TAG__/src/CookieBanner.js",
+        "readme": "react-cookie-banner/__TAG__/README.md",
         "examples": [
           {
             "url": "react-cookie-banner/__TAG__/examples/Default.example"
