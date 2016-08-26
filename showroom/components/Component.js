@@ -45,6 +45,7 @@ export default class Component extends React.Component {
           const examples = res.slice(1).map((r, key) => {
             return {
               code: r.data,
+              title: componentInfo.examples[key].title,
               description: componentInfo.examples[key].description
             };
           });
