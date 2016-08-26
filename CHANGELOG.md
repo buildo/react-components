@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.5.1...HEAD)
+
+#### New features:
+
+- \[KitchenSink\] Overall look&feel [\#519](https://github.com/buildo/react-components/issues/519)
+
 ## [v0.5.1](https://github.com/buildo/react-components/tree/v0.5.1) (2016-08-25)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...v0.5.1)
 
