@@ -213,7 +213,7 @@
         "desc": "ScrollViewNew",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
-        "component": "react-components/__TAG__/src/ScrollView/ScrollView.js",
+        "readme": "react-components/__TAG__/src/ScrollView/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/ScrollView/examples/Default.js"
