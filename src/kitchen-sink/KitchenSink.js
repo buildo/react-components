@@ -72,13 +72,17 @@ export default class KitchenSink extends React.Component {
         openSections,
         onSelectItem,
         onToggleSection,
+        contentId,
+        componentId,
         loading
       }
     } = this;
 
+    const currentItemId = contentId || componentId;
+
     return (
       <div className='kitchen-sink'>
-        <Sidebar {...{ sections, openSections, onToggleSection, onSelectItem, loading }} >
+        <Sidebar {...{ sections, openSections, currentItemId, onToggleSection, onSelectItem, loading }} >
           {!loading && this.getChildren()}
         </Sidebar>
       </div>

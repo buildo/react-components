@@ -1,41 +1,39 @@
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+@import '../utils/theme/variables.scss';
+@import '../utils/theme/typography.scss';
 
 .kitchen-sink {
 
-  .component, .content {
-    // position: relative;
-    margin-left: 2px;
-  }
-
   .content {
     > .body {
-      margin: 30px 50px;
+      margin: 40px 60px; 
     }
   }
 
   .component {
-
-    > .header {
-      margin: 30px 50px;
-    }
+    margin: 40px 60px;
 
     .examples {
-      margin: 0 50px;
 
       .example {
-        margin-bottom: 30px;
+
+        margin-bottom: 45px;
 
         .example-card {
+          position: relative;
           margin-top: 10px;
-          border-radius: 5px;
-          background-color: white;
-          box-shadow: 0 1px 4px 1px rgba(0,0,0,.1);
+          border-radius: 4px;
+          border: solid 1px #dfe3e9;
 
           .live-demo {
-            position: relative;
+
+            .component {
+              margin: 0;
+              margin-top: 20px;
+              padding: 30px 40px;
+            }
+
             .playground, .CodeMirror {
-              // border-bottom-left-radius: 5px;
-              // border-bottom-right-radius: 5px;
               overflow: hidden;
             }
 
@@ -43,19 +41,14 @@
               height: auto;
             }
 
-            .show-code.cm-s-monokai.CodeMirror {
-              height: auto;
-              text-align: center;
-              position: static;
-              display: none;
-            }
-
             .playground {
               @include display_flex();
               @include flex_flex-direction(column-reverse);
 
               .playgroundStage {
-                margin-bottom: -28px;
+                .CodeMirror-wrap {
+                  padding: 10px;
+                }
               }
 
               .playgroundPreview {
@@ -79,11 +72,17 @@
               }
             }
 
-            .component {
-              border-top-left-radius: 5px;
-              border-top-right-radius: 5px;
-              padding: 15px;
-              font-family: Consolas, Courier, monospace;
+            .show-code {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: $coolGrey;
+              font-size: 9px;
+
+              &:hover, &.active {
+                cursor: pointer;
+                color: $azure;
+              }
             }
           }
         }
@@ -91,35 +90,54 @@
     }
 
     > .footer {
-      margin: 30px 50px;
 
       table {
+        margin-top: 34px;
+        border-collapse: collapse;
+        font-size: 16px;
+        color: $darkGreyBlue;
+
         tr {
-          height: 30px;
+          height: 40px;
         }
         thead th {
           padding: 0 5px;
           text-align: left;
+          background-color: $paleGrey;
+          color: #7f8fa4;
+          font-size: 16px;
+          font-weight: $semibold;
+          border: 1px solid #dfe3e9;
         }
         tbody td {
           padding: 0 5px;
+          border: 1px solid #dfe3e9;
+
+          code {
+            background-color: $paleGrey;
+          }
         }
       }
     }
   }
-
+  
   .sidebar {
+
     .sidebar-content {
-      width: 270px;
+      border-right: 1px solid #dfe3e9;
+      width: 240px;
 
-      .section {
-        padding: 10px;
-        background-color: #242424;
-        color: white;
+      .logo {
+        height: 240px;
+        font-size: 33px;
+        font-weight: bold;
+        border-bottom: 1px solid #EAEAEA;
+        color: $darkGreyBlue;
 
-        * {
-          display: block;
-          margin: auto;
+        .sub {
+          font-size: 16px;
+          font-weight: $semibold;
+          color: $coolGrey;
         }
       }
 
@@ -134,37 +152,36 @@
           padding: 20px;
           border-bottom: 1px solid #EAEAEA;
           cursor: pointer;
+          font-weight: $semibold;
 
           &:hover {
             background-color: #F0F0F0;
           }
+
+          .icon {
+            font-size: 8px;
+            color: $coolGrey;
+          }
         }
 
         .items {
+
+          background-color: $paleGrey;
+
           .item {
             width: 100%;
             padding: 20px;
             padding-left: 50px;
             cursor: pointer;
+            color: $battleshipGrey;
 
-            &:hover {
-              background-color: #F0F0F0;
+            &.active, &:hover {
+              color: $azure;
+              text-decoration: none;
             }
           }
         }
       }
-
-
-      // .item {
-      //   width: 100%;
-      //   padding: 20px;
-      //   border-bottom: 1px solid #EAEAEA;
-      //   cursor: pointer;
-      //
-      //   &:hover {
-      //     background-color: #F0F0F0;
-      //   }
-      // }
     }
   }
 }

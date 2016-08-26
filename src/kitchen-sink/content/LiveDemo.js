@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import cx from 'classnames';
 import ReactDOMServer from 'react-dom/server';
 import { props, t } from '../../utils';
-import MoreOrLess from '../../more-or-less/MoreOrLess';
+import Icon from '../../Icon/Icon';
 
 const Playground = typeof window !== 'undefined' ?
   require('component-playground').default :
@@ -87,14 +88,12 @@ export default class LiveDemo extends React.Component {
       <div className='live-demo'>
         <div className='component' ref='contentNode' />
         {iso && <div className='iso-demo component' ref='contentNodeISO' />}
-        {!showCode && <div className='show-code cm-s-monokai CodeMirror' onClick={toggleCode}>SHOW CODE</div>}
-        <MoreOrLess expanded={showCode} onExpandedChange={toggleCode} icons={{ expanded: 'angle-up', collapsed: 'angle-down' }}>
-          <div style={showCode ? undefined : { position: 'absolute', pointerEvents: 'none', opacity: 0, height: 10, zIndex: -1, overflow: 'hidden' }}>
-            {this.contentNode &&
-              <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console ref='playground' />
-            }
-          </div>
-        </MoreOrLess>
+        <div className={cx('show-code', { active: showCode })} onClick={toggleCode}><Icon icon='angleLeft' /><Icon icon='angleRight' /></div>
+        <div style={showCode ? undefined : { position: 'absolute', pointerEvents: 'none', opacity: 0, height: 10, zIndex: -1, overflow: 'hidden' }}>
+          {this.contentNode &&
+            <Playground codeText={codeText + footer} scope={{ ...scope, __render }} es6Console ref='playground' />
+          }
+        </div>
       </div>
     );
   }

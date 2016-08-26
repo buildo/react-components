@@ -116,7 +116,7 @@ export default class App extends React.Component {
       <div>
         <div className='kitchen-sink'>
           <div className='sidebar'>
-            <ReactSidebar docked sidebar={<SidebarContent {...{ sections, onToggleSection, openSections, onSelectItem }} />} transitions={false}>
+            <ReactSidebar shadow={false} docked sidebar={<SidebarContent {...{ sections, onToggleSection, openSections, onSelectItem }} />} transitions={false}>
               <div />
             </ReactSidebar>
           </div>
