@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- \[standardize-code\] every folder should be in `kebab-case` [\#188](https://github.com/buildo/react-components/issues/188)
+
 #### New features:
 
+- Each main component should export its `props` [\#526](https://github.com/buildo/react-components/issues/526)
 - \[KitchenSink\] Overall look&feel [\#519](https://github.com/buildo/react-components/issues/519)
 
 ## [v0.5.1](https://github.com/buildo/react-components/tree/v0.5.1) (2016-08-25)
