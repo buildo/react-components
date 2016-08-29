@@ -31,12 +31,14 @@ class Example extends React.Component {
       options
     };
 
+    const icon = this.state.isOpen ? 'angleUpsvg' : 'angleDown';
+
     return (
       <FlexView hAlignContent="right">
         <DropdownMenu {...dropdownMenuProps}>
           <FlexView grow vAlignContent="center" hAlignContent="right">
             <span>Mr. Example</span>
-            <Icon icon='angle-down' style={{ marginLeft: 5, cursor: 'pointer' }} />
+            <Icon icon={icon} style={{ marginLeft: 5, cursor: 'pointer' }} />
           </FlexView>
         </DropdownMenu>
       </FlexView>

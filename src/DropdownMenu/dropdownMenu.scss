@@ -1,8 +1,29 @@
+@import '../utils/theme/variables.scss';
+
+$text-color: $coolGrey;
+$text-color-hover: $battleshipGrey;
+
+$icon-color: $text-color;
+$icon-color-hover: $text-color-hover;
+
 .dropdown-menu {
   position: relative;
+  cursor: pointer;
 
-  .dropdown-menu-icon-container {
-    cursor: pointer;
+  color: $text-color;
+
+  &:hover {
+    color: $text-color-hover;
+  }
+
+  .dropdown-menu-icon-container { 
+
+    color: $icon-color;
+
+    &:hover {
+      color: $icon-color-hover;
+    }
+
     &.isOpen {
      z-index: 101;
     }
