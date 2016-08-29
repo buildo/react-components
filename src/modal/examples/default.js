@@ -1,7 +1,7 @@
 class Example extends React.Component {
   constructor() {
     super();
-    this.state = { isOpen: true };
+    this.state = { isOpen: false };
   }
 
   open = () => this.setState({ isOpen: true })
@@ -14,14 +14,21 @@ class Example extends React.Component {
       transitionLeaveTimeout={500}
       onDismiss={this.close}
       iconClose={<Icon icon='close' />}
+      title='Send Message'
+      footer={
+        <FlexView hAlignContent='right'>
+          <Button default size='small' style={{ marginRight: 10 }} onClick={this.close}>Cancel</Button>
+          <Button primary size='small' onClick={this.close}>Confirm</Button>
+        </FlexView>
+      }
     >
-      <button>My button</button>
+      Are you sure you want to send this message? 
     </Modal>
   )
 
   render = () => (
     <div>
-      <button onClick={this.open}>Open modal</button>
+      <Button default onClick={this.open}>Open modal</Button>
       {this.state.isOpen && this.getModal()}
     </div>
   )
