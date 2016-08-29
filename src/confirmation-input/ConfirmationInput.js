@@ -7,18 +7,7 @@ import { linkState } from '../link-state';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
-/** An input field that allows to confirm its content
- * @param initialValue - initial value
- * @param onChange - called when input box content is changed
- * @param onConfirm - called when confirming input content
- * @param onClear - called when clearing confirmed content
- * @param placeholder - input placeholder
- * @param disabled - true if disabled
- * @param text - labels for 'clear' and 'toConfirm' buttons
- * @param icon - icons for 'clear' and 'toConfirm' buttons
- */
-@skinnable()
-@props({
+export const Props = {
   initialValue: t.maybe(t.String),
   onChange: t.maybe(t.Function),
   onConfirm: t.maybe(t.Function),
@@ -36,7 +25,20 @@ import Icon from '../Icon/Icon';
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
-}, { strict: false })
+};
+
+/** An input field that allows to confirm its content
+ * @param initialValue - initial value
+ * @param onChange - called when input box content is changed
+ * @param onConfirm - called when confirming input content
+ * @param onClear - called when clearing confirmed content
+ * @param placeholder - input placeholder
+ * @param disabled - true if disabled
+ * @param text - labels for 'clear' and 'toConfirm' buttons
+ * @param icon - icons for 'clear' and 'toConfirm' buttons
+ */
+@skinnable()
+@props(Props, { strict: false })
 export default class ConfirmationInput extends React.Component {
 
   static defaultProps = {

@@ -3,18 +3,20 @@ import cx from 'classnames';
 import { pure, skinnable, props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 
+export const Props = {
+  label: t.ReactChildren,
+  active: t.maybe(t.Boolean),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+};
+
 /** A small descriptive element to attach to other UI components
  * @param label - the descriptive content of the badge
  * @param active - tells if the badge is active (for styling purposes)
  */
 @pure
 @skinnable()
-@props({
-  label: t.ReactChildren,
-  active: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-})
+@props(Props)
 export default class Badge extends React.Component {
 
   getLocals() {

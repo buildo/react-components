@@ -4,20 +4,7 @@ import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
-/**
- * Creates a full-page dimmed background for its children nodes
- * @param children - children nodes/elements
- * @param color - background-color
- * @param alpha - opacity
- * @param zIndex - z-index (BackgroundDimmer has `position: fixed`)
- * @param stopScrollPropagation - avoid propagation for scroll events
- * @param onClickOutside - called when user clicks outside children
- * @param width - centeredContentWrapper width
- * @param maxWidth - centeredContentWrapper max-width
- * @param height - centeredContentWrapper height
- * @param maxHeight - centeredContentWrapper max-height
- */
-@props({
+export const Props = {
   children: t.ReactChildren,
   color: t.maybe(t.String),
   alpha: t.maybe(t.Number),
@@ -31,7 +18,22 @@ import FlexView from '../flex/FlexView';
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/**
+ * Creates a full-page dimmed background for its children nodes
+ * @param children - children nodes/elements
+ * @param color - background-color
+ * @param alpha - opacity
+ * @param zIndex - z-index (BackgroundDimmer has `position: fixed`)
+ * @param stopScrollPropagation - avoid propagation for scroll events
+ * @param onClickOutside - called when user clicks outside children
+ * @param width - centeredContentWrapper width
+ * @param maxWidth - centeredContentWrapper max-width
+ * @param height - centeredContentWrapper height
+ * @param maxHeight - centeredContentWrapper max-height
+ */
+@props(Props)
 @skinnable()
 export default class BackgroundDimmer extends React.Component {
 

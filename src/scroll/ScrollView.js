@@ -10,7 +10,7 @@ import easing from './easingFunctions';
  * - smooth programmatic scroll with 22 easing functions (see `easingFunctions.js`)
  * - out of the box momentum scrolling on iOS
  */
-const PropTypes = {
+export const Props = {
   /**
    * components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }`
    */
@@ -38,7 +38,7 @@ const PropTypes = {
   style: t.maybe(t.Object)
 };
 
-@props(PropTypes, { strict: false })
+@props(Props, { strict: false })
 export default class ScrollView extends React.Component {
 
   static defaultProps = {
@@ -154,7 +154,7 @@ export default class ScrollView extends React.Component {
   };
 
   render() {
-    const props = omit(this.props, Object.keys(PropTypes));
+    const props = omit(this.props, Object.keys(Props));
     const { children } = this.props;
     return (
       <div { ...props } { ...this.getEventListeners() } style={this.computeStyle()} ref='scrollView'>

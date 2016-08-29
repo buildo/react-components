@@ -4,14 +4,7 @@ import cx from 'classnames';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
-/**
- * Absolute dimmed layer with loading spinner in the center
- * @param size - spinner size
- * @param color - spinner main color
- * @param message - spinner message
- * @param overlayColor - dimmed-overlay color
- */
-@props({
+export const Props = {
   size: t.maybe(t.union([t.String, t.Number])),
   color: t.maybe(t.String),
   message: t.maybe(t.struct({
@@ -23,7 +16,16 @@ import { warn } from '../utils/log';
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/**
+ * Absolute dimmed layer with loading spinner in the center
+ * @param size - spinner size
+ * @param color - spinner main color
+ * @param message - spinner message
+ * @param overlayColor - dimmed-overlay color
+ */
+@props(Props)
 export default class LoadingSpinner extends React.Component {
 
   static defaultProps = {

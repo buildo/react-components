@@ -15,14 +15,16 @@ export const optionType = t.struct({
   onClick: t.maybe(t.Func)
 }, 'optionType');
 
-@pure
-@skinnable()
-@props({
+export const Props = {
   style: t.maybe(t.Obj),
   maxHeight: t.maybe(t.Num),
   options: t.maybe(t.list(optionType)),
   onClick: t.maybe(t.Func)
-})
+};
+
+@pure
+@skinnable()
+@props(Props)
 export default class Menu extends React.Component {
 
   constructor(props) {

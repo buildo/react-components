@@ -30,7 +30,7 @@ export const checkPropsInvariants = (props) => {
   return toReturn;
 };
 
-const Props = t.subtype(t.struct({
+export const Props = t.subtype(t.struct({
   height: t.maybe(t.Number),
   width: t.maybe(t.Number),
   autoSize: t.maybe(t.Boolean),

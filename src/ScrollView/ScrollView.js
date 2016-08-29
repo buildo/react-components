@@ -5,6 +5,16 @@ import { pure, skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 
+export const Props = {
+  children: t.ReactChildren,
+  autoshow: t.maybe(t.Boolean),
+  forceGemini: t.maybe(t.Boolean),
+  component: t.maybe(t.union([t.Function, t.String])),
+  componentProps: t.maybe(t.Object),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+};
+
 /** A scrollable view
  * @param children - what to render inside the scroll view
  * @param autoshow - whether to automatically show scrollbars
@@ -16,15 +26,7 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
  */
 @pure
 @skinnable()
-@props({
-  children: t.ReactChildren,
-  autoshow: t.maybe(t.Boolean),
-  forceGemini: t.maybe(t.Boolean),
-  component: t.maybe(t.union([t.Function, t.String])),
-  componentProps: t.maybe(t.Object),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-})
+@props(Props)
 export default class ScrollView extends React.Component {
 
   static defaultProps = {

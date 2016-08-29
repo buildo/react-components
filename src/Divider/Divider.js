@@ -5,7 +5,7 @@ import cx from 'classnames';
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
 const sizeType = t.enums.of(['small', 'medium', 'large', 'no-margin'], 'sizeType');
 
-const dividerProps = {
+export const Props = {
   orientation: t.maybe(orientation),
   style: t.maybe(t.Obj),
   size: t.maybe(sizeType)
@@ -23,7 +23,7 @@ const defaultDividerProps = {
  */
 @pure
 @skinnable()
-@props(dividerProps)
+@props(Props)
 export default class Divider extends React.Component {
 
   static defaultProps = defaultDividerProps;

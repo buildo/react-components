@@ -7,14 +7,7 @@ import { warn } from '../utils/log';
 import Popover from '../popover/Popover';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 
-/**
- * Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
- * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
- * @param label - this is the full string
- * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
- * @param delayWhenLazy - tooltip delay if the component is lazy
- */
-@props({
+export const Props = {
   children: t.maybe(t.Function),
   label: t.String,
   lazy: t.maybe(t.Boolean),
@@ -22,7 +15,16 @@ import ResizeSensor from '../resize-sensor/ResizeSensor';
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-}, { strict: false })
+};
+
+/**
+ * Text view which, if string content is too large, trims it and shows the full content on "hover" with a `Popover` (or custom component if any)
+ * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
+ * @param label - this is the full string
+ * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
+ * @param delayWhenLazy - tooltip delay if the component is lazy
+ */
+@props(Props, { strict: false })
 export default class TextOverflow extends React.Component {
 
   static defaultProps = {

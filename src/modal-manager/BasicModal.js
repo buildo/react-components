@@ -3,8 +3,7 @@ import cx from 'classnames';
 import { props, t } from '../utils';
 import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
 
-
-@props({
+export const Props = {
   children: t.ReactElement,
   iconClose: t.maybe(t.ReactElement),
   onDismiss: t.maybe(t.Function),
@@ -16,7 +15,9 @@ import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
   style: t.maybe(t.Object),
   className: t.maybe(t.String),
   id: t.maybe(t.String)
-})
+};
+
+@props(Props)
 export default class BasicModal extends React.Component {
 
   getBackgroundProp = () => {

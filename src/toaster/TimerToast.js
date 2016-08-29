@@ -2,8 +2,7 @@ import React from 'react';
 import omit from 'lodash/omit';
 import { props, t } from '../utils';
 
-
-@props({
+export const Props = {
   children: t.ReactChildren,
   onTimeout: t.Function,
   duration: t.Number,
@@ -11,7 +10,9 @@ import { props, t } from '../utils';
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+@props(Props)
 export default class TimerToast extends React.Component {
 
   constructor(props) {

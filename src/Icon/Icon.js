@@ -5,6 +5,15 @@ import cx from 'classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
 
+export const Props = {
+  icon: t.maybe(t.Str),
+  color: t.maybe(t.String),
+  className: t.maybe(t.Str),
+  style: t.maybe(t.Obj),
+  paths: t.maybe(PositiveInteger),
+  onClick: t.maybe(t.Func)
+};
+
 /** An icon
  * @param icon - icon className
  * @param color - icon color
@@ -13,14 +22,7 @@ const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'Posit
  */
 @pure
 @skinnable()
-@props({
-  icon: t.maybe(t.Str),
-  color: t.maybe(t.String),
-  className: t.maybe(t.Str),
-  style: t.maybe(t.Obj),
-  paths: t.maybe(PositiveInteger),
-  onClick: t.maybe(t.Func)
-})
+@props(Props)
 export default class Icon extends React.Component {
 
   static defaultProps = {

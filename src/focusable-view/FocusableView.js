@@ -2,6 +2,17 @@ import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 
+export const Props = {
+  children: t.union([t.ReactChildren, t.Function]),
+  onFocus: t.maybe(t.Function),
+  onBlur: t.maybe(t.Function),
+  tabIndex: t.maybe(t.Number),
+  component: t.maybe(t.union([t.Function, t.String])),
+  ignoreFocus: t.maybe(t.Boolean),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+};
+
 /** A panel that can get focus
  * @param children - FocusableView content. If a function it gets called with the boolean "focused".
  * @param onFocus - Callback function called on "focus" event
@@ -11,16 +22,7 @@ import { props, t, skinnable } from '../utils';
  * @param ignoreFocus - When `true` the class "focused" is NOT added
  */
 @skinnable()
-@props({
-  children: t.union([t.ReactChildren, t.Function]),
-  onFocus: t.maybe(t.Function),
-  onBlur: t.maybe(t.Function),
-  tabIndex: t.maybe(t.Number),
-  component: t.maybe(t.union([t.Function, t.String])),
-  ignoreFocus: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-}, { strict: false })
+@props(Props, { strict: false })
 export default class FocusableView extends React.Component {
 
   static defaultProps = {

@@ -6,6 +6,15 @@ import { props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
+export const Props = {
+  children: t.maybe(t.ReactElement),
+  transitionStyles: t.maybe(t.Object),
+  transitionEnterTimeout: t.maybe(t.Number),
+  transitionLeaveTimeout: t.maybe(t.Number),
+  getChildContext: t.maybe(t.Function),
+  childContextTypes: t.maybe(t.Object)
+};
+
 /**
  * Component to manage modals flow/animations inside an app:
  * - creates a portal `div` on the page `body`
@@ -18,14 +27,7 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
  * @param getChildContext - callback to get custom context for modals. Can't be updated
  * @param childContextTypes - static object to describe custom context object for modals. Can't be updated
  */
-@props({
-  children: t.maybe(t.ReactElement),
-  transitionStyles: t.maybe(t.Object),
-  transitionEnterTimeout: t.maybe(t.Number),
-  transitionLeaveTimeout: t.maybe(t.Number),
-  getChildContext: t.maybe(t.Function),
-  childContextTypes: t.maybe(t.Object)
-})
+@props(Props)
 export default class ModalManager extends React.Component {
 
   static defaultProps = {

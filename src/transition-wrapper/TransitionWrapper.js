@@ -14,7 +14,7 @@ const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.proto
  * @param transitionLeaveTimeout - duration of leave transition in milliseconds
  * @param onLeave - callback for componentDidLeave: useful if you need to do some cleanup
  */
-const PropTypes = {
+export const Props = {
   children: t.ReactChildren,
   component: t.maybe(t.union([ ReactClass, t.String ])),
   transitionStyles: t.maybe(t.struct({
@@ -31,7 +31,7 @@ const PropTypes = {
   style: t.maybe(t.Object)
 };
 
-@props(PropTypes, { strict: false })
+@props(Props, { strict: false })
 export default class TransitionWrapper extends React.Component {
 
   static defaultProps = {
@@ -103,7 +103,7 @@ export default class TransitionWrapper extends React.Component {
     const props = {
       className: cx(className, transitionClassName),
       style: this.getStyle(),
-      ...omit(this.props, Object.keys(PropTypes))
+      ...omit(this.props, Object.keys(Props))
     };
 
     return React.createElement(

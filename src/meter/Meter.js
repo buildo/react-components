@@ -33,7 +33,7 @@ const Ranges = t.refinement(t.list(Range), (rangeList) => {
   return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-const Props = t.refinement(t.struct({
+export const Props = t.refinement(t.struct({
   value: t.Number,
   min: t.maybe(t.Number),
   max: t.maybe(t.Number),
