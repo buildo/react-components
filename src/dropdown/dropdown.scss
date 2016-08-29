@@ -278,19 +278,20 @@
 }
 
 /** CUSTOM STYLE **/
+@import '../utils/theme/variables.scss';
 
-$background: lightgray !default;
-$background-hover: gray !default;
-$background-open: gray !default;
+$background: $gradientGrey !default;
+$background-hover: $gradientDarkGrey !default;
+$background-open: $gradientDarkGrey !default;
 
-$border-color: gray !default;
-$border-color-open: gray !default;
+$border-color: $silver !default;
+$border-color-open: $waterBlue !default;
 
-$text-color: darkgray !default;
-$text-color-hover: black !default;
-$text-color-open: black !default;
-$text-color-has-value: black !default;
-$text-color-writing: black !default;
+$text-color: $coolGrey !default;
+$text-color-hover: $coolGrey !default;
+$text-color-open: $coolGrey !default;
+$text-color-has-value: $darkGreyBlue !default;
+$text-color-writing: $coolGrey !default;
 
 $placeholder-color: $text-color !default;
 $placeholder-color-hover: $text-color-hover !default;
@@ -300,17 +301,17 @@ $arrow-color: $text-color !default;
 $arrow-color-hover: $text-color-hover !default;
 $arrow-color-open: $text-color-open !default;
 
-$x-color: darkgray !default;
-$x-color-hover: gray !default;
+$x-color: $text-color !default;
+$x-color-hover: $text-color-hover !default;
 
 $menu-background: white !default;
 
-$menu-border-color: lightgray !default;
+$menu-border-color: $silver !default;
 
-$option-color: black !default;
-$option-color-hover: darkgray !default;
+$option-color: rgba($darkGreyBlue, .5) !default;
+$option-color-hover: $darkGreyBlue !default;
 
-$option-background-hover: wheat !default;
+$option-background-hover: rgba($azure, .15) !default;
 
 $disabled-opacity: .6 !default;
 
@@ -319,7 +320,7 @@ $disabled-opacity: .6 !default;
   min-width: 150px;
   background: $background;
   border: solid 1px $border-color;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 15px;
   font-weight: 400;
   color: $text-color;
