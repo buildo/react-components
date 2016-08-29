@@ -47,7 +47,7 @@ class Example extends React.Component {
           {this.dropdownTemplate('baseState', ['ready'])}
           {this.dropdownTemplate('style', [{ color: 'rebeccaPurple' }])}
         </div>
-        <StatefulButton {...this.state}/>
+        <StatefulButton {...this.state} icon={{ error: 'error', success: 'check' }} />
       </div>
     );
   }
