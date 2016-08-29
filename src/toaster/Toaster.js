@@ -6,17 +6,7 @@ import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
-/**
- * Renders and animates toasts (children) inline or in a portal
- * @param children - list of toasts (any node with a unique key)
- * @param attachTo - id of the element you want to render the `Toaster` in
- * @param transitionGroup - custom settings for `ReactTransitionGroup`
- * @param transitionStyles - object with style for each transition event (used by `TransitionWrapper`)
- * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by `TransitionWrapper`)
- * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by `TransitionWrapper`)
- * @param position - top-left | top-right | bottom-left | bottom-right
- */
-@props({
+export const Props = {
   children: t.ReactChildren,
   attachTo: t.maybe(t.String),
   transitionGroup: t.maybe(t.Object),
@@ -27,7 +17,19 @@ import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/**
+ * Renders and animates toasts (children) inline or in a portal
+ * @param children - list of toasts (any node with a unique key)
+ * @param attachTo - id of the element you want to render the `Toaster` in
+ * @param transitionGroup - custom settings for `ReactTransitionGroup`
+ * @param transitionStyles - object with style for each transition event (used by `TransitionWrapper`)
+ * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by `TransitionWrapper`)
+ * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by `TransitionWrapper`)
+ * @param position - top-left | top-right | bottom-left | bottom-right
+ */
+@props(Props)
 export default class Toaster extends React.Component {
 
   static defaultProps = {

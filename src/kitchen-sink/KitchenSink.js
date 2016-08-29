@@ -5,6 +5,22 @@ import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
 import Component from './content/Component';
 
+export const Props = {
+  componentId: t.maybe(t.String),
+  contentId: t.maybe(t.String),
+  sectionId: t.maybe(t.String),
+  sections: t.Array,
+  openSections: t.maybe(t.Array),
+  components: t.maybe(t.Array),
+  onSelectItem: t.Function,
+  onToggleSection: t.Function,
+  scope: t.maybe(t.Object),
+  iso: t.maybe(t.Boolean),
+  header: t.maybe(t.ReactChildren),
+  footer: t.maybe(t.ReactChildren),
+  loading: t.maybe(t.Boolean)
+};
+
 /** React component to generate a nice kitchen-sink
  * @param componentId - selected component page
  * @param contentId - selected content page
@@ -20,22 +36,7 @@ import Component from './content/Component';
  * @param footer - renderable node used as footer in component page
  * @param loading - wheter it's loading or not
  */
-
-@props({
-  componentId: t.maybe(t.String),
-  contentId: t.maybe(t.String),
-  sectionId: t.maybe(t.String),
-  sections: t.Array,
-  openSections: t.maybe(t.Array),
-  components: t.maybe(t.Array),
-  onSelectItem: t.Function,
-  onToggleSection: t.Function,
-  scope: t.maybe(t.Object),
-  iso: t.maybe(t.Boolean),
-  header: t.maybe(t.ReactChildren),
-  footer: t.maybe(t.ReactChildren),
-  loading: t.maybe(t.Boolean)
-})
+@props(Props)
 export default class KitchenSink extends React.Component {
 
   static defaultProps = {

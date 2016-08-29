@@ -4,17 +4,19 @@ import _debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
+export const Props = {
+  children: t.ReactChildren,
+  onResize: t.Function,
+  debounce: t.maybe(t.Integer)
+};
+
 /**
  * A component used to intercept window resize events
  * @param children - content
  * @param onResize - called when a resize event is captured
  * @param debounce - callback delay (milliseconds)
  */
-@props({
-  children: t.ReactChildren,
-  onResize: t.Function,
-  debounce: t.maybe(t.Integer)
-})
+@props(Props)
 export default class ResizeSensor extends React.Component {
 
   attachResizeSensor = () => {

@@ -12,6 +12,13 @@ const Browser = t.enums.of([
   'opera'
 ], 'Browser');
 
+export const Props = {
+  children: t.ReactChildren,
+  placeholder: t.Function,
+  supportedBrowsers: t.maybe(t.list(Browser)),
+  userAgent: t.maybe(t.String)
+};
+
 /**
  * Top-level component which detects browser and renders children/placeholder based on a given whitelist of supported browsers.
  * @param children - children node rendered when using a supported browser
@@ -20,12 +27,7 @@ const Browser = t.enums.of([
  * @param userAgent - custom user-agent
  */
 @skinnable()
-@props({
-  children: t.ReactChildren,
-  placeholder: t.Function,
-  supportedBrowsers: t.maybe(t.list(Browser)),
-  userAgent: t.maybe(t.String)
-})
+@props(Props)
 export default class BrowserDetector extends React.Component {
 
   detectBrowser = (userAgent) => bowser._detect(userAgent);

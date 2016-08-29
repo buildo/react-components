@@ -3,6 +3,16 @@ import cx from 'classnames';
 import { pure, props, skinnable, t, stateClassUtil } from '../utils';
 import Popover from '../popover/Popover';
 
+export const Props = {
+  children: t.ReactChildren,
+  popover: t.refinement(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
+  type: t.enums.of(['light', 'dark']),
+  size: t.enums.of(['small', 'big']),
+  className: t.maybe(t.String),
+  id: t.maybe(t.String),
+  style: t.maybe(t.Object)
+};
+
 /** Tooltip that appears when the mouse is over an element
  * @param children - the element over which the tooltip is shown
  * @param popover - popover props
@@ -11,15 +21,7 @@ import Popover from '../popover/Popover';
  */
 @pure
 @skinnable()
-@props({
-  children: t.ReactChildren,
-  popover: t.refinement(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
-  type: t.enums.of(['light', 'dark']),
-  size: t.enums.of(['small', 'big']),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-})
+@props(Props)
 export default class Tooltip extends React.Component {
 
   static defaultProps = {

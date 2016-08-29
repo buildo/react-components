@@ -5,7 +5,7 @@ import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 
-const PropTypes = {
+const Props = {
   children: t.ReactChildren,
   column: t.maybe(t.Boolean),
   vAlignContent: t.maybe(t.enums.of(['top', 'center', 'bottom'])),
@@ -40,7 +40,7 @@ const PropTypes = {
  * @param height - height property (for parent secondary axis)
  * @param width - width property (for parent secondary axis)
  */
-@props(PropTypes, { strict: false })
+@props(Props, { strict: false })
 export default class FlexView extends React.Component {
 
   componentDidMount() {
@@ -149,7 +149,7 @@ export default class FlexView extends React.Component {
   render() {
     const className = this.getClasses();
     const style = this.getStyle();
-    const props = omit(this.props, Object.keys(PropTypes));
+    const props = omit(this.props, Object.keys(Props));
     return (
       <div className={className} style={style} { ...props }>
         {this.props.children}

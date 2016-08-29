@@ -3,18 +3,7 @@ import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from '../flex/FlexView';
 
-
-/**
- * A NavBar container built with FlexView:
- * - easy positioning of content (left, center and right columns)
- * - lets you define basic css style from JS
- * @param content - props used to define the NavBar content (defines left, center, right, maxWidth).
- * @param fixed - to set `position: fixed`
- * @param height - shorthand for css `height`
- * @param background - shorthand for css `background`
- */
-@skinnable()
-@props({
+export const Props = {
   content: t.struct({
     /** Left content. It doesn't shrink nor grow */
     left: t.maybe(t.ReactChildren),
@@ -30,7 +19,19 @@ import FlexView from '../flex/FlexView';
   background: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/**
+ * A NavBar container built with FlexView:
+ * - easy positioning of content (left, center and right columns)
+ * - lets you define basic css style from JS
+ * @param content - props used to define the NavBar content (defines left, center, right, maxWidth).
+ * @param fixed - to set `position: fixed`
+ * @param height - shorthand for css `height`
+ * @param background - shorthand for css `background`
+ */
+@skinnable()
+@props(Props)
 export default class NavBar extends React.Component {
 
   getLocals() {

@@ -4,16 +4,18 @@ import { props, t, skinnable, pure } from '../utils';
 import Panel, { Props as panelProps } from './Panel';
 import FlexView from '../flex/FlexView';
 
-@pure
-@skinnable()
-@props(t.subtype(t.struct({
+export const Props = t.subtype(t.struct({
   ...panelProps,
   tabs: t.struct({
     headers: t.list(t.Str),
     activeIndex: t.maybe(t.Num),
     onSetActiveTab: t.maybe(t.Func)
   })
-}), ({ tabs }) => tabs.headers.length > 0))
+}), ({ tabs }) => tabs.headers.length > 0);
+
+@pure
+@skinnable()
+@props(Props)
 export default class TabbedPanel extends React.Component {
 
   onSetActiveTab = activeTabIndex => {

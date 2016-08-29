@@ -4,18 +4,7 @@ import { skinnable, props, t } from '../utils';
 import FlexView from '../flex/FlexView';
 import Icon from '../Icon/Icon';
 
-/** A collapsable panel, allowing you to toggle more/less content
- * @param children - panel content (visible only when expanded)
- * @param isOpen - true if panel is expanded
- * @param isSelected - true if panel has focus
- * @param onChange - called when panel is toggled
- * @param onOpen - called when panel is expanded
- * @param onClose - called when panel is collapsed
- * @param header - header content (the only visible part when panel is collapsed)
- * @param icons - icons for open/closed panel
- */
-@skinnable()
-@props({
+export const Props = {
   children: t.ReactChildren,
   isOpen: t.Boolean,
   isSelected: t.maybe(t.Boolean),
@@ -30,7 +19,20 @@ import Icon from '../Icon/Icon';
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/** A collapsable panel, allowing you to toggle more/less content
+ * @param children - panel content (visible only when expanded)
+ * @param isOpen - true if panel is expanded
+ * @param isSelected - true if panel has focus
+ * @param onChange - called when panel is toggled
+ * @param onOpen - called when panel is expanded
+ * @param onClose - called when panel is collapsed
+ * @param header - header content (the only visible part when panel is collapsed)
+ * @param icons - icons for open/closed panel
+ */
+@skinnable()
+@props(Props)
 export default class CollapsableSection extends React.Component {
 
   static defaultProps = {

@@ -33,7 +33,7 @@ const Time = t.struct({
 
 const isValidHoursInTimeFormat = (hours, timeFormat) => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
-const Props = t.refinement(t.struct({
+export const Props = t.refinement(t.struct({
   onChange: t.Function,
   value: t.maybe(Time),
   minTime: t.maybe(Time),

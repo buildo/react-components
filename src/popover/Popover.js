@@ -5,12 +5,7 @@ import { props, t } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
 
-/**
- * Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
- * @param children - the trigger node. It's always visible
- * @param popover - popover settings. The popover is **not** always visible
- */
-@props({
+export const Props = {
   children: t.ReactChildren,
   popover: t.struct({
     content: t.ReactChildren,
@@ -34,7 +29,14 @@ const NO_SIZE_WRAPPER = 'no-size-wrapper';
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
-})
+};
+
+/**
+ * Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
+ * @param children - the trigger node. It's always visible
+ * @param popover - popover settings. The popover is **not** always visible
+ */
+@props(Props)
 export default class Popover extends React.Component {
 
   // LIFECYCLE

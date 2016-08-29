@@ -45,7 +45,7 @@ export const ButtonPropTypes = {
   className: t.maybe(t.String)
 };
 
-const ButtonProps = t.refinement(t.struct(ButtonPropTypes), satisfyAll(...propsInvariants), 'ButtonProps');
+export const Props = t.refinement(t.struct(ButtonPropTypes), satisfyAll(...propsInvariants), 'ButtonProps');
 
 const defaultProps = {
   textOverflow: _TextOverflow,
@@ -89,7 +89,7 @@ const makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // 
  */
 @pure
 @skinnable()
-@props(ButtonProps)
+@props(Props)
 export default class Button extends React.Component {
 
   static defaultProps = defaultProps;

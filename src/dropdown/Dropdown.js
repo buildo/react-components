@@ -7,7 +7,7 @@ import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
-const PropTypes = {
+export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
   valueLink: t.maybe(t.struct({
     value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
@@ -63,7 +63,7 @@ class Select extends _Select {
  * @param flat - whether it should have a flat style
  */
 @skinnable()
-@props(PropTypes, { strict: false })
+@props(Props, { strict: false })
 export default class Dropdown extends React.Component {
 
   static defaultProps = {

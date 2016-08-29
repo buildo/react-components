@@ -5,6 +5,17 @@ import cx from 'classnames';
 import { getValueLink } from '../link-state';
 import { warn } from '../utils/log';
 
+export const Props = {
+  value: t.maybe(t.Boolean),
+  onChange: t.maybe(t.Function),
+  valueLink: t.maybe(t.struct({
+    value: t.maybe(t.Boolean),
+    requestChange: t.Function
+  })),
+  size: t.maybe(t.union([t.String, t.Number])),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
+};
 
 /**
  * A nice animated Toggle rendered using only CSS
@@ -15,17 +26,7 @@ import { warn } from '../utils/log';
  */
 @pure
 @skinnable()
-@props({
-  value: t.maybe(t.Boolean),
-  onChange: t.maybe(t.Function),
-  valueLink: t.maybe(t.struct({
-    value: t.maybe(t.Boolean),
-    requestChange: t.Function
-  })),
-  size: t.maybe(t.union([t.String, t.Number])),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-})
+@props(Props)
 export default class Toggle extends React.Component {
 
   componentDidMount() {
