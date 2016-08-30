@@ -1,6 +1,8 @@
+@import '../utils/theme/variables.scss';
+
 $size: 3em !default;
-$background: #F0F0F0 !default;
-$checked-background: #9FD6AE !default;
+$background: $cloudyGrey !default;
+$checked-background: $gradientGreen !default;
 
 .toggle-input{
 	display: none;
