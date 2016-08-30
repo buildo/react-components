@@ -23,7 +23,8 @@ $scrollbar-size: 6px !default;
 
   // whole table
   .public_fixedDataTable_main, .public_fixedDataTable_hasBottomBorder {
-    border-width: 0;
+    border-color: $border-color;
+    border-width: 1px;
   }
 
   .public_fixedDataTableRow_fixedColumnsDivider {
@@ -33,7 +34,8 @@ $scrollbar-size: 6px !default;
 
   // header
   .public_fixedDataTable_header {
-    border-width: 0;
+    border-color: $border-color;
+    border-width: 1px;
     background: $header-background;
     .public_fixedDataTableCell_cellContent {
       color: $header-color;
