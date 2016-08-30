@@ -107,11 +107,7 @@ $content-title-color: #313D4F !default;
 
     .panel-header-title {
       font-size: 16px;
-      font-weight: 700;
-    }
-
-    .panel-header-content {
-      margin-left: 5px;
+      font-weight: $semibold;
     }
 
     .panel-menu {
