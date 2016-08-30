@@ -1,7 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-var paths = {
+const paths = {
   ASSETS: path.resolve(__dirname, './assets'),
   SRC: path.resolve(__dirname),
   COMPONENTS: path.resolve(__dirname, '../src'),

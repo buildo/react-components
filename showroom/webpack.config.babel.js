@@ -1,15 +1,16 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var webpackBase = require('./webpack.base');
-var assign = require('lodash/object').assign;
-var indexHtml = require('fs').readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import webpackBase from './webpack.base.babel';
+import assign from 'lodash/assign';
+import fs from 'fs';
 
-indexHtml = indexHtml.replace(/__GZIP__/g, '');
-indexHtml = indexHtml.replace(/__BUILD_PATH__/g, '');
+const indexHtml = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8')
+  .replace(/__GZIP__/g, '')
+  .replace(/__BUILD_PATH__/g, '');
 
-var paths = {
+const paths = {
   SRC: path.resolve(__dirname),
   DIST: path.resolve(__dirname, './build')
 };
@@ -18,7 +19,7 @@ module.exports = assign({}, webpackBase, {
 
   entry: [
     'webpack/hot/dev-server',
-    paths.SRC + '/app.js'
+    `${paths.SRC}/app.js`
   ],
 
   output: {
