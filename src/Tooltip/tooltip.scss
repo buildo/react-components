@@ -1,6 +1,6 @@
 @import '../utils/theme/variables.scss';
 
-$background-dark: $darkGreyBlue !default;
+$background-dark: $darkGrey !default;
 $background-light: $white !default;
 
 $border-radius: 5px !default;
@@ -8,10 +8,10 @@ $border-color-dark: transparent !default;
 $border-color-light: $silver !default;
 
 $text-color-dark: $white !default;
-$text-color-light: $darkGreyBlue !default;
+$text-color-light: $darkGrey !default;
 
 $arrow-size: 5px !default;
-$arrow-color: $darkGreyBlue !default;
+$arrow-color: $darkGrey !default;
 
 
 .tooltip {

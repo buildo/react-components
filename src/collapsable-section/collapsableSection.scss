@@ -3,9 +3,9 @@
 $background: transparent !default;
 
 $header-background: $gradientGrey !default;
-$is-open-header-background: $gradientGrey !default;
-$is-selected-header-background: transparent !default;
-$hover-header-background: $gradientDarkGrey !default;
+$header-background-open: $gradientGrey !default;
+$header-background-selected: transparent !default;
+$header-background-hover: $gradientDarkGrey !default;
 $border-color: $silver;
 
 .collapsable-section {
@@ -17,24 +17,24 @@ $border-color: $silver;
     height: 100%;
     background: $header-background;
     &:hover {
-      background: $hover-header-background;
+      background: $header-background-hover;
     }
   }
 
   &.is-open {
     .content {
-      background: $is-open-header-background;
+      background: $header-background-open;
       border-bottom: 1px solid $border-color;  
       &:hover {
-        background: $hover-header-background;
+        background: $header-background-hover;
       }
     }
   }
 
   &.is-selected, &.is-open.is-selected {
-    background: $is-selected-header-background;
+    background: $header-background-selected;
     &:hover {
-      background: $hover-header-background;
+      background: $header-background-hover;
     }
   }
 }
