@@ -9,7 +9,6 @@ $color: $darkGreyBlue !default;
 $border-color: $silver !default;
 $border-width: 1px !default;
 $border-radius: 4px !default;
-$font-family: "Source Sans Pro", sans-serif !default;
 
 $large-horizontal-padding: 18px !default;
 
@@ -71,7 +70,6 @@ $disabled-button-cursor: not-allowed !default;
   cursor: pointer;
   text-align: center;
   font-weight: $font-weight;
-  font-family: $font-family;
 
   // default sizes
   padding: 0 $horizontal-padding;
