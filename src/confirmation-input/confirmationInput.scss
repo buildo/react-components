@@ -4,7 +4,7 @@ $padding-h: 12px !default;
 $font-size: 14px !default;
 $font-weight: $semibold !default;
 $color: $azure !default;
-$hover-color: $azure !default;
+$color-hover: $azure !default;
 $disabled-opacity: .6 !default;
 
 .confirmation-input {
@@ -49,7 +49,7 @@ $disabled-opacity: .6 !default;
     outline: none;
 
     .confirmation {
-      color: $hover-color;
+      color: $color-hover;
       cursor: pointer;
     }
   }
