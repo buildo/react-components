@@ -1,10 +1,10 @@
 @import '../utils/theme/variables.scss';
 
 $border-color: $silver !default;
-$soft-loader-color: #45a7b9 !default;
+$soft-loader-color: $coolGrey !default;
 
 $header-background: $gradientGrey !default;
-$header-background-dark: #2c3a40 !default;
+$header-background-dark: $darkGreyBlue !default;
 $header-color: $darkGreyBlue !default;
 $header-color-dark: $white !default;
 
@@ -12,8 +12,8 @@ $expand-icon-color: $coolGrey !default;
 $expand-icon-color-hover: rgba($coolGrey, 0.7) !default;
 
 $content-background: $white !default;
-$content-color: #313D4F !default;
-$content-title-color: #313D4F !default;
+$content-color: $darkGreyBlue !default;
+$content-title-color: $darkGreyBlue !default;
 
 @keyframes loading {
   0% {
@@ -118,9 +118,11 @@ $content-title-color: #313D4F !default;
 
   > .panel-content {
     background: $content-background;
+    color: $content-color;
     padding: 25px 33px;
 
     .panel-content-title {
+      color: $content-title-color;
       font-size: 17px;
       margin: 0;
     }

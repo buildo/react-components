@@ -21,8 +21,9 @@ class Example extends React.Component {
           onCollapse,
           isCollapsed
         }
-      }
-    }
+      },
+      dark: true
+    };
 
     return (
       <FlexView width={isCollapsed ? 30 : undefined}>
