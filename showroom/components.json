@@ -21,7 +21,7 @@
         "desc": "Divider",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Divider",
-        "readme": "react-components/__TAG__/src/Divider/README.md",
+        "readmeUrl": "react-components/__TAG__/src/Divider/README.md",
         "examples": [
           {
             "title": "Vertical divider",
@@ -39,7 +39,7 @@
         "desc": "Dropdown",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
-        "readme": "react-components/__TAG__/src/dropdown/README.md",
+        "readmeUrl": "react-components/__TAG__/src/dropdown/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/dropdown/examples/default.js"
@@ -52,7 +52,7 @@
         "desc": "DropdownMenu",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/DropdownMenu",
-        "readme": "react-components/__TAG__/src/DropdownMenu/README.md",
+        "readmeUrl": "react-components/__TAG__/src/DropdownMenu/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/DropdownMenu/examples/default.js"
@@ -68,7 +68,7 @@
         "desc": "Icon",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Icon",
-        "readme": "react-components/__TAG__/src/Icon/README.md",
+        "readmeUrl": "react-components/__TAG__/src/Icon/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/Icon/examples/default.js"
@@ -81,7 +81,7 @@
         "desc": "Panel",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Panel",
-        "readme": "react-components/__TAG__/src/Panel/README.md",
+        "readmeUrl": "react-components/__TAG__/src/Panel/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/Panel/examples/floating.js"
@@ -100,7 +100,7 @@
         "desc": "Tooltip",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Tooltip",
-        "readme": "react-components/__TAG__/src/Tooltip/README.md",
+        "readmeUrl": "react-components/__TAG__/src/Tooltip/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/Tooltip/examples/default.js"
@@ -116,7 +116,7 @@
         "desc": "background dimmer",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/background-dimmer",
-        "readme": "react-components/__TAG__/src/background-dimmer/README.md",
+        "readmeUrl": "react-components/__TAG__/src/background-dimmer/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/background-dimmer/examples/BackgroundDimmer.js"
@@ -129,7 +129,7 @@
         "desc": "FlexView",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/flex",
-        "readme": "react-components/__TAG__/src/flex/README.md",
+        "readmeUrl": "react-components/__TAG__/src/flex/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/flex/examples/Column.js"
@@ -145,7 +145,7 @@
         "desc": "LoadingSpinner",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/loading-spinner",
-        "readme": "react-components/__TAG__/src/loading-spinner/README.md",
+        "readmeUrl": "react-components/__TAG__/src/loading-spinner/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/loading-spinner/examples/LoadingSpinner.js"
@@ -158,7 +158,7 @@
         "desc": "Modal",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/modal",
-        "readme": "react-components/__TAG__/src/modal/README.md",
+        "readmeUrl": "react-components/__TAG__/src/modal/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/modal/examples/default.js"
@@ -171,7 +171,7 @@
         "desc": "ModalManager",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/modal-manager",
-        "readme": "react-components/__TAG__/src/modal-manager/README.md",
+        "readmeUrl": "react-components/__TAG__/src/modal-manager/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/modal-manager/examples/ModalManager.js"
@@ -184,7 +184,7 @@
         "desc": "MobileDetector",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/mobile-detector",
-        "readme": "react-components/__TAG__/src/mobile-detector/README.md",
+        "readmeUrl": "react-components/__TAG__/src/mobile-detector/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/mobile-detector/examples/MobileDetector.js"
@@ -197,7 +197,7 @@
         "desc": "ScrollView",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
-        "readme": "react-components/__TAG__/src/scroll/README.md",
+        "readmeUrl": "react-components/__TAG__/src/scroll/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/scroll/examples/StopPropagation.js"
@@ -213,7 +213,7 @@
         "desc": "ScrollViewNew",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
-        "readme": "react-components/__TAG__/src/ScrollView/README.md",
+        "readmeUrl": "react-components/__TAG__/src/ScrollView/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/ScrollView/examples/Default.js"
@@ -226,7 +226,7 @@
         "desc": "TextOverflow",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/text-overflow",
-        "readme": "react-components/__TAG__/src/text-overflow/README.md",
+        "readmeUrl": "react-components/__TAG__/src/text-overflow/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/text-overflow/examples/Default.js"
@@ -248,7 +248,7 @@
         "desc": "Popover",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/popover",
-        "readme": "react-components/__TAG__/src/popover/README.md",
+        "readmeUrl": "react-components/__TAG__/src/popover/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/popover/examples/Relative.js"
@@ -267,7 +267,7 @@
         "desc": "Toaster",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/toaster",
-        "readme": "react-components/__TAG__/src/toaster/README.md",
+        "readmeUrl": "react-components/__TAG__/src/toaster/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/toaster/examples/Inline.js"
@@ -283,7 +283,7 @@
         "desc": "Badge",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/badge",
-        "readme": "react-components/__TAG__/src/badge/README.md",
+        "readmeUrl": "react-components/__TAG__/src/badge/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/badge/examples/default.js"
@@ -296,7 +296,7 @@
         "desc": "MoreOrLess",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/more-or-less",
-        "readme": "react-components/__TAG__/src/more-or-less/README.md",
+        "readmeUrl": "react-components/__TAG__/src/more-or-less/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/more-or-less/examples/default.js"
@@ -309,7 +309,7 @@
         "desc": "ConfirmationInput",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/confirmation-input",
-        "readme": "react-components/__TAG__/src/confirmation-input/README.md",
+        "readmeUrl": "react-components/__TAG__/src/confirmation-input/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/confirmation-input/examples/default.js"
@@ -322,7 +322,7 @@
         "desc": "NavBar",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/nav-bar",
-        "readme": "react-components/__TAG__/src/nav-bar/README.md",
+        "readmeUrl": "react-components/__TAG__/src/nav-bar/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/nav-bar/examples/default.js"
@@ -335,7 +335,7 @@
         "desc": "Toggle",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/toggle",
-        "readme": "react-components/__TAG__/src/toggle/README.md",
+        "readmeUrl": "react-components/__TAG__/src/toggle/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/toggle/examples/default.js"
@@ -348,7 +348,7 @@
         "desc": "Button",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/button",
-        "readme": "react-components/__TAG__/src/button/README.md",
+        "readmeUrl": "react-components/__TAG__/src/button/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/button/examples/default.js"
@@ -361,7 +361,7 @@
         "desc": "Table",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/table",
-        "readme": "react-components/__TAG__/src/table/README.md",
+        "readmeUrl": "react-components/__TAG__/src/table/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/table/examples/default.js"
@@ -374,7 +374,7 @@
         "desc": "Meter",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/meter",
-        "readme": "react-components/__TAG__/src/meter/README.md",
+        "readmeUrl": "react-components/__TAG__/src/meter/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/meter/examples/Meter.js"
@@ -393,7 +393,7 @@
         "desc": "CollapsableSection",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/collapsable-section",
-        "readme": "react-components/__TAG__/src/collapsable-section/README.md",
+        "readmeUrl": "react-components/__TAG__/src/collapsable-section/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/collapsable-section/examples/default.js"
@@ -421,7 +421,7 @@
         "desc": "BrowserDetector",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
-        "readme": "react-components/__TAG__/src/browser-detector/README.md",
+        "readmeUrl": "react-components/__TAG__/src/browser-detector/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/browser-detector/examples/default.js"
@@ -434,7 +434,7 @@
         "desc": "TimePicker",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
-        "readme": "react-components/__TAG__/src/time-picker/README.md",
+        "readmeUrl": "react-components/__TAG__/src/time-picker/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/time-picker/examples/TimePicker24.js"
@@ -450,7 +450,7 @@
         "desc": "FocusableView",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/focusable-view",
-        "readme": "react-components/__TAG__/src/focusable-view/README.md",
+        "readmeUrl": "react-components/__TAG__/src/focusable-view/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/focusable-view/examples/default.js"
@@ -463,7 +463,7 @@
         "desc": "ResizeSensor",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/resize-sensor",
-        "readme": "react-components/__TAG__/src/resize-sensor/README.md",
+        "readmeUrl": "react-components/__TAG__/src/resize-sensor/README.md",
         "examples": [
           {
             "url": "react-components/__TAG__/src/resize-sensor/examples/default.js"
@@ -476,7 +476,7 @@
         "desc": "A decent and pretty date picker to be used with React",
         "repo": "rc-datepicker",
         "url": "https://github.com/buildo/rc-datepicker",
-        "readme": "rc-datepicker/__TAG__/README.md",
+        "readmeUrl": "rc-datepicker/__TAG__/README.md",
         "examples": [
           {
             "url": "rc-datepicker/__TAG__/examples/DatePickerInput.example"
@@ -492,7 +492,7 @@
         "desc": "ReactInputChildren is a replacement for the base input react component capable of rendering a child (link, button...) inside the input itself. It supports the same props of react input.",
         "repo": "react-input-children",
         "url": "https://github.com/buildo/react-input-children",
-        "readme": "react-input-children/__TAG__/README.md",
+        "readmeUrl": "react-input-children/__TAG__/README.md",
         "examples": [
           {
             "url": "react-input-children/__TAG__/examples/PlainText.example"
@@ -514,7 +514,7 @@
         "desc": "A textarea perfectly compatible with ReactJS default one which auto resizes its height based on user input.",
         "repo": "react-autosize-textarea",
         "url": "https://github.com/buildo/react-autosize-textarea",
-        "readme": "react-autosize-textarea/__TAG__/README.md",
+        "readmeUrl": "react-autosize-textarea/__TAG__/README.md",
         "examples": [
           {
             "url": "react-autosize-textarea/__TAG__/examples/Empty.example"
@@ -533,7 +533,7 @@
         "desc": "React Cookie banner which can be automatically dismissed with a scroll. Because fuck The Cookie Law, that's why.",
         "repo": "react-cookie-banner",
         "url": "https://github.com/buildo/react-cookie-banner",
-        "readme": "react-cookie-banner/__TAG__/README.md",
+        "readmeUrl": "react-cookie-banner/__TAG__/README.md",
         "examples": [
           {
             "url": "react-cookie-banner/__TAG__/examples/Default.example"
