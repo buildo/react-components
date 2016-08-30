@@ -7,12 +7,8 @@ import Section from './components/Section';
 import Content from './components/Content';
 import Component from './components/Component';
 
-require('normalize-css/normalize.css');
-require('../src/flex/flexView.scss');
-require('../src/loading-spinner/style.scss');
-require('../src/kitchen-sink/style.scss');
-require('rc-datepicker/src/style.scss');
-require('react-select/dist/default.css');
+import 'normalize-css/normalize.css';
+import './styles.js';
 
 const routes = (
   <Route path='/' handler={App}>
