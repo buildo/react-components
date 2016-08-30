@@ -84,9 +84,15 @@ $scrollbar-size: 6px !default;
   .public_Scrollbar_main {
     &.ScrollbarLayout_mainHorizontal {
       height: $scrollbar-size + 8px;
+      &:hover {
+        height: $scrollbar-size * 1.25 + 8px;
+      }
     }
     &.ScrollbarLayout_mainVertical {
       width: $scrollbar-size + 8px;
+      &:hover {
+        width: $scrollbar-size * 1.25 + 8px;
+      }
     }
     .public_Scrollbar_face:after {
       cursor: pointer;
