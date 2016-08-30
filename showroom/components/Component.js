@@ -40,10 +40,11 @@ export default class Component extends React.Component {
       const shouldFetchExamples = !examples[0].code;
 
       if (shouldFetchExamples) {
-        return _axios.all(examples.map(e => ({
-          ...e,
-          code: this.rawgitCDN.get(e.url.replace('__TAG__', TAG)).then(({ data }) => data)
-        })));
+        return _axios.all(examples.map(e => this.rawgitCDN.get(e.url.replace('__TAG__', TAG))))
+          .then(res => res.map(({ data: code }, i) => ({
+            ...examples[i],
+            code
+          })));
       }
 
       return Promise.resolve(examples);
