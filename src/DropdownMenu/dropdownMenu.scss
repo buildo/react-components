@@ -1,10 +1,10 @@
 @import '../utils/theme/variables.scss';
 
-$text-color: $coolGrey;
-$text-color-hover: $battleshipGrey;
+$text-color: $coolGrey !default;
+$text-color-hover: $battleshipGrey !default;
 
-$icon-color: $text-color;
-$icon-color-hover: $text-color-hover;
+$icon-color: $text-color !default;
+$icon-color-hover: $text-color-hover !default;
 
 .dropdown-menu {
   position: relative;
