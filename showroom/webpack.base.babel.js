@@ -19,7 +19,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        exclude: [ paths.ASSETS ],
+        exclude: [ paths.ASSETS, /src\/.+\/examples/ ],
         include: [
           paths.COMPONENTS,
           paths.SRC,
