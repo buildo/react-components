@@ -4,7 +4,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpackBase from './webpack.base.babel';
-import assign from 'lodash/object/assign';
+import assign from 'lodash/assign';
 import fs from 'fs';
 
 const indexHtml = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8')
