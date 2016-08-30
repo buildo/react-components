@@ -1,0 +1,10 @@
+@import '../../utils/theme/variables.scss';
+
+.more-or-less {
+
+  border: 1px solid $silver;
+
+  .content {
+    padding: 25px 33px;
+  }
+}

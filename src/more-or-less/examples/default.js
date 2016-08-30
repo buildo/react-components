@@ -9,7 +9,7 @@ class Example extends React.Component {
 
   templateExpanded() {
     return (
-      <div>
+      <div className='content'>
         very
         <br/>
         <br/>
@@ -23,7 +23,7 @@ class Example extends React.Component {
 
   templateCollapsed() {
     return (
-      <div>
+      <div className='content'>
         short content
       </div>
     );

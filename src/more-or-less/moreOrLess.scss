@@ -1,14 +1,18 @@
-$expand-button-background: #EAEAEA !default;
-$expand-button-background-hover: #F1F2F3 !default;
-$expand-button-icon-color: #999 !default;
-$expand-button-icon-color-hover: #999 !default;
+@import '../utils/theme/variables.scss';
+
+$expand-button-background: $gradientGrey !default;
+$expand-button-background-hover: $gradientDarkGrey !default;
+$expand-button-icon-color: $coolGrey !default;
+$expand-button-icon-color-hover: $coolGrey !default;
 
 .more-or-less {
+  
   .expand-button {
     width: 100%;
     height: 15px;
     cursor: pointer;
     background: $expand-button-background;
+    border-top: 1px solid $silver;
 
     &:hover {
       background-color: $expand-button-background-hover;
