@@ -1,5 +1,11 @@
 @import '../utils/theme/variables.scss';
 
+$background: $white !default;
+$border-color: $silver !default;
+$title-color: $darkGreyBlue !default;
+$body-color: $darkGreyBlue !default;
+$footer-background: $paleGrey !default;
+
 .modal {
   position: fixed;
   z-index: 9999;
@@ -7,17 +13,17 @@
 
   .modal-content {
     min-width: 520px;
-    background-color: $white;
+    background: $background;
     border-radius: 4px;
 
     .modal-header {
       min-height: 52px;
       padding: 0 15px;
-      border-bottom: 1px solid $silver;
+      border-bottom: 1px solid $border-color;
 
       .modal-title {
         font-size: 18px;
-        color: $darkGreyBlue;
+        color: $title-color;
         font-weight: $semibold;
       }
 
@@ -31,12 +37,12 @@
       padding: 43px 15px;
       font-size: 14px;
       font-weight: $semibold;
-      color: $darkGreyBlue;
+      color: $body-color;
     }
 
     .modal-footer {
-      background: $paleGrey;
-      border-top: 1px solid $silver;
+      background: $footer-background;
+      border-top: 1px solid $border-color;
       padding: 12px 30px;
     }
   }
