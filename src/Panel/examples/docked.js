@@ -21,8 +21,7 @@ class Example extends React.Component {
           onCollapse,
           isCollapsed
         }
-      },
-      dark: true
+      }
     }
 
     return (
