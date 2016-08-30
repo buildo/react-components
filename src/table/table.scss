@@ -1,18 +1,20 @@
-$border-color: gray !default;
+@import '../utils/theme/variables.scss';
 
-$header-background: gray !default;
-$header-color: #242424 !default;
+$border-color: $silver !default;
+
+$header-background: $paleGrey !default;
+$header-color: $coolGrey !default;
 
 $odd-row-background: transparent !default;
 $even-row-background: transparent !default;
 
-$cell-border-color: gray !default;
-$selected-cell-background: lightblue !default;
-$hover-cell-background: lightblue !default;
+$cell-border-color: $silver !default;
+$selected-cell-background: $azure10 !default;
+$hover-cell-background: $azure10 !default;
 
-$scrollbar-color: rgba(gray, .6) !default;
-$hover-scrollbar-background: rgba(white, .8) !default;
-$hover-scrollbar-color: white !default;
+$scrollbar-color: rgba($coolGrey, .6) !default;
+$hover-scrollbar-background: rgba($white, .8) !default;
+$hover-scrollbar-color: $coolGrey !default;
 $scrollbar-size: 6px !default;
 
 @import '~fixed-data-table/dist/fixed-data-table-base.min.css';
