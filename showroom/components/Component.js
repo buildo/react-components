@@ -33,35 +33,58 @@ export default class Component extends React.Component {
     const { params: { componentId }, sections, section } = props;
 
     const componentInfo = find(section.components, { id: componentId });
-    const examplesLinks = componentInfo.examples.map(e => this.rawgitCDN.get(e.url.replace('__TAG__', componentInfo.tag)));
-    if (componentInfo.readme) {
-      const readmeLink = this.rawgitCDN.get(componentInfo.readme.replace('__TAG__', componentInfo.tag));
-      _axios.all([readmeLink].concat(examplesLinks))
-        .then(res => {
-          const markdown = res[0].data;
-          const splittedMarkdown = markdown.split('## Props');
-          const header = <Markdown source={splittedMarkdown[0]} options={{ html: true }}/>;
-          const footer = splittedMarkdown[1] && <Markdown source={`### Props\n${splittedMarkdown[1]}`} options={{ html: true }}/>;
-          const examples = res.slice(1).map((r, key) => {
-            return {
-              code: r.data,
-              title: componentInfo.examples[key].title,
-              description: componentInfo.examples[key].description
-            };
-          });
-          const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
-          const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
-          this.setState({ sections: mappedSections, header, footer, loading: false });
-        });
-    } else {
-      _axios.all(examplesLinks)
-        .then(res => {
-          const examples = res.map(r => r.data);
-          const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
-          const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
-          this.setState({ sections: mappedSections, header: '', footer: '', loading: false });
-        });
-    }
+    const TAG = componentInfo.tag;
+
+
+    const fetchExamples = examples => {
+      const shouldFetchExamples = !examples[0].code;
+
+      if (shouldFetchExamples) {
+        return _axios.all(examples.map(e => ({
+          ...e,
+          code: this.rawgitCDN.get(e.url.replace('__TAG__', TAG)).then(({ data }) => data)
+        })));
+      }
+
+      return Promise.resolve(examples);
+    };
+
+    const fetchReadme = ({ readme, readmeUrl }) => {
+      const shouldFetchReadme = !readme;
+
+      if (shouldFetchReadme) {
+        return readmeUrl ?
+          this.rawgitCDN.get(readmeUrl.replace('__TAG__', TAG)).then(({ data }) => data) :
+          Promise.resolve(null);
+      }
+
+      return Promise.resolve(readme);
+    };
+
+    fetchReadme(componentInfo)
+      .then(readme => ({ ...componentInfo, readme }))
+      .then(componentInfo => {
+        return fetchExamples(componentInfo.examples)
+          .then(examples => ({ ...componentInfo, examples }));
+      })
+      .then(componentInfo => {
+        const { readme, examples } = componentInfo;
+
+        // README
+        const splittedMarkdown = readme && readme.split('## Props');
+        const header = readme ?
+          <Markdown source={splittedMarkdown[0]} options={{ html: true }} /> :
+          '';
+        const footer = readme ?
+          splittedMarkdown[1] && <Markdown source={`### Props\n${splittedMarkdown[1]}`} options={{ html: true }} /> :
+          '';
+
+        // EXAMPLES
+        const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
+        const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
+
+        this.setState({ sections: mappedSections, header, footer, loading: false });
+      });
   }
 
   render() {

@@ -17,6 +17,8 @@ import InputChildren from 'react-input-children/src';
 import TextareaAutosize from 'react-autosize-textarea/src';
 import { cookie, default as CookieBanner } from 'react-cookie-banner/src';
 import json from 'raw!../components.json';
+import useLocalComponents from './useLocalComponents';
+import useLocalReadmes from './useLocalReadmes';
 
 require('./app.scss');
 
@@ -51,10 +53,15 @@ export default class App extends React.Component {
   }
 
   loadJSON = () => {
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test-showroom') {
       const sections = JSON.parse(json);
+
+      const useLocalFiles = _sections => useLocalReadmes(useLocalComponents((_sections)));
+
       this.getLastCommitHash({ data: sections })
-        .then(sections => this.setState({ sections }));
+        .then(sections => this.setState({
+          sections: process.env.NODE_ENV === 'development' ? useLocalFiles(sections) : sections
+        }));
     } else {
       this.rawgit.get('react-components/master/showroom/components.json')
         .then(this.getLastCommitHash)
