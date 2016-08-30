@@ -27,4 +27,5 @@ require('../src/kitchen-sink/style.scss');
 
 // examples sass
 require('../src/button/examples/button.scss');
+require('../src/more-or-less/examples/default.scss');
 require('../src/modal/examples/transition.scss');
