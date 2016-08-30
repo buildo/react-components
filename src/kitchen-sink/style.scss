@@ -6,7 +6,7 @@
 
   .content {
     > .body {
-      margin: 40px 60px; 
+      margin: 40px 60px;
     }
   }
 
@@ -34,10 +34,12 @@
 
             .playground, .CodeMirror {
               overflow: hidden;
+              border-radius: 0 0 4px 4px;
             }
 
             .CodeMirror {
               height: auto;
+              margin-bottom: -30px; // needed to hide LiveDemo footer
             }
 
             .playground {
@@ -119,7 +121,7 @@
       }
     }
   }
-  
+
   .sidebar {
 
     .sidebar-content {
