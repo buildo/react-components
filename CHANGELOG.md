@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.1...HEAD)
 
+#### Breaking:
+
+- \[KitchenSink\] Default style for components [\#529](https://github.com/buildo/react-components/issues/529)
+
 #### Fixes (bugs & defects):
 
 - Add hover effect on table scrollbars, make them larger [\#533](https://github.com/buildo/react-components/issues/533)
