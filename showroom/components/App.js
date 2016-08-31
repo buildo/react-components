@@ -53,15 +53,13 @@ export default class App extends React.Component {
   }
 
   loadJSON = () => {
-    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test-showroom') {
+    if (process.env.NODE_ENV === 'development') {
+      const sections = useLocalReadmes(useLocalComponents(JSON.parse(json)));
+      this.setState({ sections });
+    } else if (process.env.NODE_ENV === 'test-showroom') {
       const sections = JSON.parse(json);
-
-      const useLocalFiles = _sections => useLocalReadmes(useLocalComponents((_sections)));
-
       this.getLastCommitHash({ data: sections })
-        .then(sections => this.setState({
-          sections: process.env.NODE_ENV === 'development' ? useLocalFiles(sections) : sections
-        }));
+        .then(sections => this.setState({ sections }));
     } else {
       this.rawgit.get('react-components/master/showroom/components.json')
         .then(this.getLastCommitHash)
