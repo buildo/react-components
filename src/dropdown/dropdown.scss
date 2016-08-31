@@ -280,18 +280,18 @@
 /** CUSTOM STYLE **/
 @import '../utils/theme/variables.scss';
 
-$background: $gradientGrey !default;
-$background-hover: $gradientDarkGrey !default;
-$background-open: $gradientDarkGrey !default;
+$background: $brc-gradientGrey !default;
+$background-hover: $brc-gradientDarkGrey !default;
+$background-open: $brc-gradientDarkGrey !default;
 
-$border-color: $silver !default;
-$border-color-open: $waterBlue !default;
+$border-color: $brc-silver !default;
+$border-color-open: $brc-waterBlue !default;
 
-$text-color: $coolGrey !default;
-$text-color-hover: $coolGrey !default;
-$text-color-open: $coolGrey !default;
-$text-color-has-value: $darkGrey !default;
-$text-color-writing: $coolGrey !default;
+$text-color: $brc-coolGrey !default;
+$text-color-hover: $brc-coolGrey !default;
+$text-color-open: $brc-coolGrey !default;
+$text-color-has-value: $brc-darkGrey !default;
+$text-color-writing: $brc-coolGrey !default;
 
 $placeholder-color: $text-color !default;
 $placeholder-color-hover: $text-color-hover !default;
@@ -304,14 +304,14 @@ $arrow-color-open: $text-color-open !default;
 $x-color: $text-color !default;
 $x-color-hover: $text-color-hover !default;
 
-$menu-background: $white !default;
+$menu-background: $brc-white !default;
 
-$menu-border-color: $silver !default;
+$menu-border-color: $brc-silver !default;
 
-$option-color: rgba($darkGrey, .5) !default;
-$option-color-hover: $darkGrey !default;
+$option-color: rgba($brc-darkGrey, .5) !default;
+$option-color-hover: $brc-darkGrey !default;
 
-$option-background-hover: rgba($azure, .15) !default;
+$option-background-hover: rgba($brc-azure, .15) !default;
 
 $disabled-opacity: .6 !default;
 

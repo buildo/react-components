@@ -77,12 +77,12 @@
               position: absolute;
               top: 10px;
               right: 10px;
-              color: $coolGrey;
+              color: $brc-coolGrey;
               font-size: 9px;
 
               &:hover, &.active {
                 cursor: pointer;
-                color: $azure;
+                color: $brc-azure;
               }
             }
           }
@@ -96,7 +96,7 @@
         margin-top: 34px;
         border-collapse: collapse;
         font-size: 16px;
-        color: $darkGrey;
+        color: $brc-darkGrey;
 
         tr {
           height: 40px;
@@ -104,10 +104,10 @@
         thead th {
           padding: 0 5px;
           text-align: left;
-          background-color: $paleGrey;
+          background-color: $brc-paleGrey;
           color: #7f8fa4;
           font-size: 16px;
-          font-weight: $semibold;
+          font-weight: $brc-semibold;
           border: 1px solid #dfe3e9;
         }
         tbody td {
@@ -115,7 +115,7 @@
           border: 1px solid #dfe3e9;
 
           code {
-            background-color: $paleGrey;
+            background-color: $brc-paleGrey;
           }
         }
       }
@@ -134,12 +134,12 @@
         font-size: 33px;
         font-weight: bold;
         border-bottom: 1px solid #EAEAEA;
-        color: $darkGrey;
+        color: $brc-darkGrey;
 
         .sub {
           font-size: 16px;
-          font-weight: $semibold;
-          color: $coolGrey;
+          font-weight: $brc-semibold;
+          color: $brc-coolGrey;
         }
       }
 
@@ -156,7 +156,7 @@
           padding: 20px;
           border-bottom: 1px solid #EAEAEA;
           cursor: pointer;
-          font-weight: $semibold;
+          font-weight: $brc-semibold;
           background: transparent;
 
           &:hover {
@@ -165,24 +165,24 @@
 
           .icon {
             font-size: 8px;
-            color: $coolGrey;
+            color: $brc-coolGrey;
           }
         }
 
         .items {
 
-          background-color: $paleGrey;
+          background-color: $brc-paleGrey;
           padding: 10px 0;
 
           .item {
             width: 100%;
             padding: 10px 20px;
             cursor: pointer;
-            color: $battleshipGrey;
-            font-weight: $regular;
+            color: $brc-battleshipGrey;
+            font-weight: $brc-regular;
 
             &.active, &:hover {
-              color: $azure;
+              color: $brc-azure;
               text-decoration: none;
             }
           }

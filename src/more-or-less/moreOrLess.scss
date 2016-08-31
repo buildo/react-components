@@ -1,9 +1,9 @@
 @import '../utils/theme/variables.scss';
 
-$expand-button-background: $gradientGrey !default;
-$expand-button-background-hover: $gradientDarkGrey !default;
-$expand-button-icon-color: $coolGrey !default;
-$expand-button-icon-color-hover: $coolGrey !default;
+$expand-button-background: $brc-gradientGrey !default;
+$expand-button-background-hover: $brc-gradientDarkGrey !default;
+$expand-button-icon-color: $brc-coolGrey !default;
+$expand-button-icon-color-hover: $brc-coolGrey !default;
 
 .more-or-less {
   
@@ -12,7 +12,7 @@ $expand-button-icon-color-hover: $coolGrey !default;
     height: 15px;
     cursor: pointer;
     background: $expand-button-background;
-    border-top: 1px solid $silver;
+    border-top: 1px solid $brc-silver;
 
     &:hover {
       background-color: $expand-button-background-hover;

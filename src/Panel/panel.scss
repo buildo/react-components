@@ -1,19 +1,19 @@
 @import '../utils/theme/variables.scss';
 
-$border-color: $silver !default;
-$soft-loader-color: $coolGrey !default;
+$border-color: $brc-silver !default;
+$soft-loader-color: $brc-coolGrey !default;
 
-$header-background: $gradientGrey !default;
-$header-background-dark: $darkGrey !default;
-$header-color: $darkGrey !default;
-$header-color-dark: $white !default;
+$header-background: $brc-gradientGrey !default;
+$header-background-dark: $brc-darkGrey !default;
+$header-color: $brc-darkGrey !default;
+$header-color-dark: $brc-white !default;
 
-$expand-icon-color: $coolGrey !default;
-$expand-icon-color-hover: rgba($coolGrey, 0.7) !default;
+$expand-icon-color: $brc-coolGrey !default;
+$expand-icon-color-hover: rgba($brc-coolGrey, 0.7) !default;
 
-$content-background: $white !default;
-$content-color: $darkGrey !default;
-$content-title-color: $darkGrey !default;
+$content-background: $brc-white !default;
+$content-color: $brc-darkGrey !default;
+$content-title-color: $brc-darkGrey !default;
 
 @keyframes loading {
   0% {
@@ -107,7 +107,7 @@ $content-title-color: $darkGrey !default;
 
     .panel-header-title {
       font-size: 16px;
-      font-weight: $semibold;
+      font-weight: $brc-semibold;
     }
 
     .panel-menu {

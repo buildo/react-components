@@ -2,28 +2,28 @@
 
 $padding-h: 12px !default;
 $font-size: 14px !default;
-$font-weight: $semibold !default;
-$color: $azure !default;
-$color-hover: $azure !default;
+$font-weight: $brc-semibold !default;
+$color: $brc-azure !default;
+$color-hover: $brc-azure !default;
 $disabled-opacity: .6 !default;
 
 .confirmation-input {
 
   border-radius: 4px;
-  border: 1px solid $silver;
+  border: 1px solid $brc-silver;
 
   input {
-    color: $darkGrey;
+    color: $brc-darkGrey;
     padding-left: $padding-h;
     border: 0;
-    font-weight: $semibold;
+    font-weight: $brc-semibold;
 
     /*placeholder*/
     &::-webkit-input-placeholder,
     &::-moz-placeholder,
     &:-ms-input-placeholder,
     &:-moz-placeholder  {
-      color: $coolGrey;
+      color: $brc-coolGrey;
     }
 
     &:disabled {
@@ -45,7 +45,7 @@ $disabled-opacity: .6 !default;
 
   &.focused {
 
-    border: 1px solid $waterBlue;
+    border: 1px solid $brc-waterBlue;
     outline: none;
 
     .confirmation {

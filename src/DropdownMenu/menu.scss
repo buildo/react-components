@@ -1,12 +1,12 @@
 @import '../utils/theme/variables.scss';
 
 $background: white !default;
-$border-color: $silver !default;
-$title-color: $darkGrey !default;
-$item-title-color: rgba($darkGrey, .5) !default;
-$item-title-color-hover: $darkGrey !default;
-$item-background-hover: rgba($azure, .15) !default;
-$item-metadata-color: $coolGrey !default;
+$border-color: $brc-silver !default;
+$title-color: $brc-darkGrey !default;
+$item-title-color: rgba($brc-darkGrey, .5) !default;
+$item-title-color-hover: $brc-darkGrey !default;
+$item-background-hover: rgba($brc-azure, .15) !default;
+$item-metadata-color: $brc-coolGrey !default;
 
 .menu {
   width: 250px;

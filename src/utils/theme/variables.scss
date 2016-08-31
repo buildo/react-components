@@ -1,38 +1,38 @@
-$black: black;  
-$white: white;
-$charcoal: #2c3a40;
-$azure: #1a91eb;
-$azure30: rgba($azure, .3);
-$azure10: rgba($azure, .1);
-$mediumGreen: #39b54a;
-$sunYellow: #fecf39;
-$strawberry: #fb242c;
-$palePurple: #8a83d1;
-$lipstick: #d1236d;
+$brc-black: black;  
+$brc-white: white;
+$brc-charcoal: #2c3a40;
+$brc-azure: #1a91eb;
+$brc-azure30: rgba($brc-azure, .3);
+$brc-azure10: rgba($brc-azure, .1);
+$brc-mediumGreen: #39b54a;
+$brc-sunYellow: #fecf39;
+$brc-strawberry: #fb242c;
+$brc-palePurple: #8a83d1;
+$brc-lipstick: #d1236d;
 
-$darkGrey: #354052;
-$battleshipGrey: #727a86;
-$coolGrey: #9098A7;
-$cloudyGrey: #b5c0ce;
-$paleGrey: #f0f3f8;
+$brc-darkGrey: #354052;
+$brc-battleshipGrey: #727a86;
+$brc-coolGrey: #9098A7;
+$brc-cloudyGrey: #b5c0ce;
+$brc-paleGrey: #f0f3f8;
 
 // GRADIENTS
-$gradientGrey: linear-gradient(to top, #f2f4f7, #ffffff);
-$gradientDarkGrey: linear-gradient(to top, #dfe3e8, #ffffff);
-$gradientGreen: linear-gradient(to bottom, #39b54a, #34aa44);
-$gradientDarkGreen: linear-gradient(to top, #1e930b, #1e9d09);
-$gradientRed: linear-gradient(to bottom, #fb242c, #ed1c24);
-$gradientDarkRed:  linear-gradient(to top, #d71920, #ed1c24);
-$gradientAzure: linear-gradient(to top, #1789dd, #2da1f8);
-$gradientDarkAzure: linear-gradient(to bottom, #1584d7, #1f7ec6);
+$brc-gradientGrey: linear-gradient(to top, #f2f4f7, #ffffff);
+$brc-gradientDarkGrey: linear-gradient(to top, #dfe3e8, #ffffff);
+$brc-gradientGreen: linear-gradient(to bottom, #39b54a, #34aa44);
+$brc-gradientDarkGreen: linear-gradient(to top, #1e930b, #1e9d09);
+$brc-gradientRed: linear-gradient(to bottom, #fb242c, #ed1c24);
+$brc-gradientDarkRed:  linear-gradient(to top, #d71920, #ed1c24);
+$brc-gradientAzure: linear-gradient(to top, #1789dd, #2da1f8);
+$brc-gradientDarkAzure: linear-gradient(to bottom, #1584d7, #1f7ec6);
 
 // BORDER COLORS
-$silver: #ced0da;
-$waterBlue: #1991eb;
-$seaGreen: #2f9c3e;
-$alizarinCrimson: #de1b23;
-$lightningYellow: #fabd15;
+$brc-silver: #ced0da;
+$brc-waterBlue: #1991eb;
+$brc-seaGreen: #2f9c3e;
+$brc-alizarinCrimson: #de1b23;
+$brc-lightningYellow: #fabd15;
 
 // FONT WEIGHTS
-$regular: 400;
-$semibold: 600;
+$brc-regular: 400;
+$brc-semibold: 600;

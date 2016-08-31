@@ -3,48 +3,48 @@
 $horizontal-padding: 16px !default;
 $font-size: 14px !default;
 $height: 36px !default;
-$font-weight: $semibold !default;
-$background: $gradientGrey !default;
-$color: $darkGrey !default;
-$border-color: $silver !default;
+$font-weight: $brc-semibold !default;
+$background: $brc-gradientGrey !default;
+$color: $brc-darkGrey !default;
+$border-color: $brc-silver !default;
 $border-width: 1px !default;
 $border-radius: 4px !default;
 
 $large-horizontal-padding: 18px !default;
 
-$default-background: $gradientGrey !default;
-$default-border-color: $silver !default;
+$default-background: $brc-gradientGrey !default;
+$default-border-color: $brc-silver !default;
 $default-border-width: 1px !default;
-$default-color: $darkGrey !default;
-$default-background-hover: $gradientDarkGrey, !default;
+$default-color: $brc-darkGrey !default;
+$default-background-hover: $brc-gradientDarkGrey, !default;
 
-$primary-background: $gradientAzure !default;
-$primary-border-color: $waterBlue !default;
+$primary-background: $brc-gradientAzure !default;
+$primary-border-color: $brc-waterBlue !default;
 $primary-border-width: 1px !default;
-$primary-color: $white !default;
-$primary-background-hover: $gradientDarkAzure !default;
+$primary-color: $brc-white !default;
+$primary-background-hover: $brc-gradientDarkAzure !default;
 
-$positive-background: $gradientGreen !default;
-$positive-border-color: $seaGreen !default;
+$positive-background: $brc-gradientGreen !default;
+$positive-border-color: $brc-seaGreen !default;
 $positive-border-width: 1px !default;
-$positive-color: $white !default;
-$positive-background-hover: $gradientDarkGreen !default;
+$positive-color: $brc-white !default;
+$positive-background-hover: $brc-gradientDarkGreen !default;
 
-$negative-background: $gradientRed !default;
-$negative-border-color: $alizarinCrimson !default;
+$negative-background: $brc-gradientRed !default;
+$negative-border-color: $brc-alizarinCrimson !default;
 $negative-border-width: 1px !default;
-$negative-color: $white !default;
-$negative-background-hover: $gradientDarkRed !default;
+$negative-color: $brc-white !default;
+$negative-background-hover: $brc-gradientDarkRed !default;
 
 $flat-background: none !default;
-$flat-border-color: $silver !default;
+$flat-border-color: $brc-silver !default;
 $flat-border-width: 1px !default;
-$flat-color: $darkGrey !default;
-$flat-color-hover: $darkGrey !default;
+$flat-color: $brc-darkGrey !default;
+$flat-color-hover: $brc-darkGrey !default;
 $flat-border-width-hover: 1px !default;
 $flat-horizontal-padding: 6px !default;
 $flat-background-hover: none !default;
-$flat-border-color-hover: $darkGrey !default;
+$flat-border-color-hover: $brc-darkGrey !default;
 
 $icon-button-horizontal-padding: 13px !default;
 $icon-button-circular-padding: 11px !default;
