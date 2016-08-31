@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- Add hover effect on table scrollbars, make them larger [\#533](https://github.com/buildo/react-components/issues/533)
 - \[standardize-code\] every folder should be in `kebab-case` [\#188](https://github.com/buildo/react-components/issues/188)
 
 #### New features:
