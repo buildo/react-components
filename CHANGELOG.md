@@ -10,6 +10,7 @@
 
 #### Fixes (bugs & defects):
 
+- Avoid SASS variables collisions when override default style [\#535](https://github.com/buildo/react-components/issues/535)
 - Add hover effect on table scrollbars, make them larger [\#533](https://github.com/buildo/react-components/issues/533)
 - Add popover style prop [\#462](https://github.com/buildo/react-components/issues/462)
 - \[standardize-code\] every folder should be in `kebab-case` [\#188](https://github.com/buildo/react-components/issues/188)
