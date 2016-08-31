@@ -2,11 +2,11 @@
 
 $background: transparent !default;
 
-$header-background: $gradientGrey !default;
-$header-background-open: $gradientGrey !default;
+$header-background: $brc-gradientGrey !default;
+$header-background-open: $brc-gradientGrey !default;
 $header-background-selected: transparent !default;
-$header-background-hover: $gradientDarkGrey !default;
-$border-color: $silver;
+$header-background-hover: $brc-gradientDarkGrey !default;
+$border-color: $brc-silver;
 
 .collapsable-section {
   cursor: pointer;

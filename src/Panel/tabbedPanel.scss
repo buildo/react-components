@@ -1,12 +1,12 @@
 @import '../utils/theme/variables.scss';
 
-$tab-background: $white !default;
-$tab-background-active: $white !default;
-$tab-border-color: $silver !default;
-$tab-border-color-active: $azure !default;
+$tab-background: $brc-white !default;
+$tab-background-active: $brc-white !default;
+$tab-border-color: $brc-silver !default;
+$tab-border-color-active: $brc-azure !default;
 $tab-border-height-active: 3px !default;
-$tab-color: $coolGrey !default;
-$tab-color-active: $darkGrey !default;
+$tab-color: $brc-coolGrey !default;
+$tab-color-active: $brc-darkGrey !default;
 
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 

@@ -1,14 +1,14 @@
 @import '../utils/theme/variables.scss';
 
-$background: $gradientAzure !default;
+$background: $brc-gradientAzure !default;
 $border-radius: 32px !default;
 $padding: 3px 16px !default;
-$color: $white !default;
+$color: $brc-white !default;
 $font-size: 14px !default;
-$font-weight: $semibold !default;
+$font-weight: $brc-semibold !default;
 
-$active-color: $white !default;
-$active-background: $gradientAzure !default;
+$active-color: $brc-white !default;
+$active-background: $brc-gradientAzure !default;
 
 .badge {
   display: inline-block;

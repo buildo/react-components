@@ -4,8 +4,8 @@
 
 $scrollbar-size: 7px !default;
 $scrollbar-size-hover: $scrollbar-size * 1.25 !default;
-$scrollbar-color: $coolGrey !default;
-$scrollbar-container-color: $white !default;
+$scrollbar-color: $brc-coolGrey !default;
+$scrollbar-container-color: $brc-white !default;
 
 // this is the way to make gemini consider a width of 0 for scrollbars in IE
 body > div[style*='-ms-overflow-style: scrollbar'] {

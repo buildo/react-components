@@ -1,10 +1,10 @@
 @import '../utils/theme/variables.scss';
 
-$background: $white !default;
-$border-color: $silver !default;
-$title-color: $darkGrey !default;
-$body-color: $darkGrey !default;
-$footer-background: $paleGrey !default;
+$background: $brc-white !default;
+$border-color: $brc-silver !default;
+$title-color: $brc-darkGrey !default;
+$body-color: $brc-darkGrey !default;
+$footer-background: $brc-paleGrey !default;
 
 .modal {
   position: fixed;
@@ -24,7 +24,7 @@ $footer-background: $paleGrey !default;
       .modal-title {
         font-size: 18px;
         color: $title-color;
-        font-weight: $semibold;
+        font-weight: $brc-semibold;
       }
 
       .modal-icon-close {
@@ -36,7 +36,7 @@ $footer-background: $paleGrey !default;
     .modal-body {
       padding: 43px 15px;
       font-size: 14px;
-      font-weight: $semibold;
+      font-weight: $brc-semibold;
       color: $body-color;
     }
 

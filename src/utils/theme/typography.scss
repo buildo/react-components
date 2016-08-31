@@ -3,30 +3,30 @@
 html {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
-  font-weight: $regular;
-  color: $battleshipGrey;
+  font-weight: $brc-regular;
+  color: $brc-battleshipGrey;
   -webkit-font-smoothing: antialiased;
   background-color: white;
 }
 
 h1 {
-  font-weight: $semibold;
+  font-weight: $brc-semibold;
   font-size: 27px;
-  color: $darkGrey;
+  color: $brc-darkGrey;
   line-height: 1.5;
 }
 
 h2 {
-  font-weight: $semibold;
+  font-weight: $brc-semibold;
   font-size: 18px;
-  color: $darkGrey;
+  color: $brc-darkGrey;
   line-height: 1.5;
 }
 
 h3 {
   font-weight: bold;
   font-size: 14px;
-  color: $darkGrey;
+  color: $brc-darkGrey;
   line-height: 1.5;
   text-transform: uppercase;
   border-bottom: 2px solid #dfe3e9;
@@ -35,7 +35,7 @@ h3 {
 
 p {
   font-size: 16px;
-  font-weight: $regular;
+  font-weight: $brc-regular;
   line-height: 1.43;
 }
 
@@ -45,9 +45,9 @@ strong {
 
 a {
   cursor: pointer;
-  color: $azure;
+  color: $brc-azure;
 }
 
 a:hover {
-  color: $azure30;
+  color: $brc-azure30;
 }
