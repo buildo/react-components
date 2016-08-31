@@ -296,15 +296,15 @@ export default class Popover extends React.Component {
 
   // LOCALES
 
-  popoverTemplate = (style) => {
-    const { position, anchor, className, content, id, event } = this.getPopoverProps();
+  popoverTemplate = (_style) => {
+    const { position, anchor, className, content, id, event, style } = this.getPopoverProps();
     const { eventWrapper, hidePopover, isAbsolute } = this;
     const positionClass = `position-${position}`;
     const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(hidePopover) } : undefined;
     return (
-      <div className={_className} id={id} style={style} {...events}>
+      <div className={_className} id={id} style={{ ...style, ..._style }} {...events}>
         {content}
       </div>
     );
