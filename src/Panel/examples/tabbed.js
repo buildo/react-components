@@ -18,8 +18,7 @@ class Example extends React.Component {
       },
       header: {
         title: 'Tabbed panel!'
-      },
-      dark: true
+      }
     };
 
     const tab = panelProps.tabs.headers[activeTabIndex];

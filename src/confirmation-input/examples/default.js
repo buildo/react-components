@@ -20,6 +20,7 @@ class Example extends React.Component {
     return (
       <form className='ui form'>
         <ConfirmationInput
+          placeholder='Type Word'
           {...{ initialValue, onChange, onConfirm, onClear }}
           text={{ clear: 'clear', toConfirm: 'to confirm' }}
           icon={{ clear: undefined, toConfirm: undefined }}

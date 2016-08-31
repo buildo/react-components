@@ -1,32 +1,40 @@
+@import '../utils/theme/variables.scss';
+
 $background: transparent !default;
 
-$content-background: transparent !default;
-$is-open-content-background: transparent !default;
-$is-selected-content-background: transparent !default;
-$hover-content-background: transparent !default;
+$header-background: $gradientGrey !default;
+$header-background-open: $gradientGrey !default;
+$header-background-selected: transparent !default;
+$header-background-hover: $gradientDarkGrey !default;
+$border-color: $silver;
 
 .collapsable-section {
   cursor: pointer;
   background: $background;
+  border: 1px solid $border-color;
   .content {
+    padding: 0 19px;
     height: 100%;
-    background: $content-background;
+    background: $header-background;
     &:hover {
-      background: $hover-content-background;
+      background: $header-background-hover;
     }
   }
 
   &.is-open {
-    background: $is-open-content-background;
-    &:hover {
-      background: $hover-content-background;
+    .content {
+      background: $header-background-open;
+      border-bottom: 1px solid $border-color;  
+      &:hover {
+        background: $header-background-hover;
+      }
     }
   }
 
   &.is-selected, &.is-open.is-selected {
-    background: $is-selected-content-background;
+    background: $header-background-selected;
     &:hover {
-      background: $hover-content-background;
+      background: $header-background-hover;
     }
   }
 }

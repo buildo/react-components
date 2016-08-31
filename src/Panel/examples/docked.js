@@ -23,7 +23,7 @@ class Example extends React.Component {
         }
       },
       dark: true
-    }
+    };
 
     return (
       <FlexView width={isCollapsed ? 30 : undefined}>

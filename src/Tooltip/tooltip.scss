@@ -1,15 +1,17 @@
-$background-dark: #2C3A40 !default;
-$background-light: white !default;
+@import '../utils/theme/variables.scss';
+
+$background-dark: $darkGrey !default;
+$background-light: $white !default;
 
 $border-radius: 5px !default;
-$border-color-dark: #F0F0F0 !default;
-$border-color-light: #2C3A40 !default;
+$border-color-dark: transparent !default;
+$border-color-light: $silver !default;
 
-$text-color-dark: white !default;
-$text-color-light: #2C3A40 !default;
+$text-color-dark: $white !default;
+$text-color-light: $darkGrey !default;
 
 $arrow-size: 5px !default;
-$arrow-color: #2C3A40 !default;
+$arrow-color: $darkGrey !default;
 
 
 .tooltip {

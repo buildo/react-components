@@ -1,16 +1,19 @@
-$border-color: #e6e6e6 !default;
-$soft-loader-color: #45a7b9 !default;
+@import '../utils/theme/variables.scss';
 
-$header-background: white !default;
-$header-background-dark: #2c3a40 !default;
-$header-color: white !default;
+$border-color: $silver !default;
+$soft-loader-color: $coolGrey !default;
 
-$expand-icon-color: white !default;
-$expand-icon-color-hover: rgba(white, 0.7) !default;
+$header-background: $gradientGrey !default;
+$header-background-dark: $darkGrey !default;
+$header-color: $darkGrey !default;
+$header-color-dark: $white !default;
 
-$content-background: white !default;
-$content-color: #2c3a40 !default;
-$content-title-color: #2c3a40 !default;
+$expand-icon-color: $coolGrey !default;
+$expand-icon-color-hover: rgba($coolGrey, 0.7) !default;
+
+$content-background: $white !default;
+$content-color: $darkGrey !default;
+$content-title-color: $darkGrey !default;
 
 @keyframes loading {
   0% {
@@ -58,7 +61,7 @@ $content-title-color: #2c3a40 !default;
         cursor: pointer;
 
         .expand-icon {
-          margin-right: 3px;
+          margin-right: 14px;
         }
 
         &:hover .expand-icon {
@@ -92,21 +95,19 @@ $content-title-color: #2c3a40 !default;
   &.is-dark {
     > .panel-header {
       background: $header-background-dark;
+      color: $header-color-dark;
     }
   }
 
   > .panel-header {
     background: $header-background;
-    padding: 0 12px;
+    padding: 15px 33px;
     color: $header-color;
+    border-bottom: 1px solid $border-color;
 
     .panel-header-title {
       font-size: 16px;
-      font-weight: 700;
-    }
-
-    .panel-header-content {
-      margin-left: 5px;
+      font-weight: $semibold;
     }
 
     .panel-menu {
@@ -117,8 +118,11 @@ $content-title-color: #2c3a40 !default;
 
   > .panel-content {
     background: $content-background;
+    color: $content-color;
+    padding: 25px 33px;
 
     .panel-content-title {
+      color: $content-title-color;
       font-size: 17px;
       margin: 0;
     }

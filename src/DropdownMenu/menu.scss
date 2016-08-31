@@ -1,9 +1,12 @@
+@import '../utils/theme/variables.scss';
+
 $background: white !default;
-$box-shadow-color: #628292 !default;             // $lynch
-$title-color: #bdc2ca !default;             // $silver
-$item-title-color: #2c3a40 !default;        // $charcoal
-$item-title-color-hover: #628292 !default;  // $lynch
-$item-metadata-color: #bdc2ca !default;     // $silver
+$border-color: $silver !default;
+$title-color: $darkGrey !default;
+$item-title-color: rgba($darkGrey, .5) !default;
+$item-title-color-hover: $darkGrey !default;
+$item-background-hover: rgba($azure, .15) !default;
+$item-metadata-color: $coolGrey !default;
 
 .menu {
   width: 250px;
@@ -12,8 +15,7 @@ $item-metadata-color: #bdc2ca !default;     // $silver
   top: 40px;
   right: 0;
   background-color: $background;
-  padding: 8px;
-  box-shadow: 0 0 10px 0px rgba($box-shadow-color, .7);
+  border: 1px solid $border-color;
   overflow: auto;
 
   .menu-row {
@@ -34,6 +36,7 @@ $item-metadata-color: #bdc2ca !default;     // $silver
   .menu-item {
     position: relative;
     cursor: pointer;
+    padding: 10px 14px;
 
     .menu-item-title {
       color: $item-title-color;
@@ -43,8 +46,12 @@ $item-metadata-color: #bdc2ca !default;     // $silver
       color: $item-metadata-color;
     }
 
-    &:hover:not(.disabled) .menu-item-title {
-      color: $item-title-color-hover;
+    &:hover:not(.disabled) {
+      background: $item-background-hover;
+      
+      .menu-item-title {
+        color: $item-title-color-hover;
+      }
     }
   }
 }

@@ -1,3 +1,11 @@
+@import '../utils/theme/variables.scss';
+
+$background: $white !default;
+$border-color: $silver !default;
+$title-color: $darkGrey !default;
+$body-color: $darkGrey !default;
+$footer-background: $paleGrey !default;
+
 .modal {
   position: fixed;
   z-index: 9999;
@@ -5,17 +13,18 @@
 
   .modal-content {
     min-width: 520px;
-    background-color: white;
+    background: $background;
     border-radius: 4px;
 
     .modal-header {
       min-height: 52px;
       padding: 0 15px;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid $border-color;
 
       .modal-title {
-        text-transform: uppercase;
-        font-size: 22px;
+        font-size: 18px;
+        color: $title-color;
+        font-weight: $semibold;
       }
 
       .modal-icon-close {
@@ -26,7 +35,15 @@
 
     .modal-body {
       padding: 43px 15px;
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: $semibold;
+      color: $body-color;
+    }
+
+    .modal-footer {
+      background: $footer-background;
+      border-top: 1px solid $border-color;
+      padding: 12px 30px;
     }
   }
 }

@@ -1,4 +1,6 @@
-$color: #E6E6E6 !default;  // pearl
+@import '../utils/theme/variables.scss';
+
+$color: $silver !default;
 
 .divider {
   background-color: $color;

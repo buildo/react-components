@@ -1,64 +1,65 @@
+@import '../utils/theme/variables.scss';
+
 $horizontal-padding: 16px !default;
 $font-size: 14px !default;
 $height: 36px !default;
-$font-weight: semibold !default;
-$background: lightgray !default;
-$color: black !default;
-$border-color: black !default;
+$font-weight: $semibold !default;
+$background: $gradientGrey !default;
+$color: $darkGrey !default;
+$border-color: $silver !default;
 $border-width: 1px !default;
-$border-radius: 3px !default;
-$font-family: sans-serif !default;
+$border-radius: 4px !default;
 
 $large-horizontal-padding: 18px !default;
 
-$default-background: lightgray !default;
-$default-border-color: grey !default;
+$default-background: $gradientGrey !default;
+$default-border-color: $silver !default;
 $default-border-width: 1px !default;
-$default-color: black !default;
-$default-background-hover: red !default;
+$default-color: $darkGrey !default;
+$default-background-hover: $gradientDarkGrey, !default;
 
-$primary-background: grey !default;
-$primary-border-color: blue !default;
+$primary-background: $gradientAzure !default;
+$primary-border-color: $waterBlue !default;
 $primary-border-width: 1px !default;
-$primary-color: blue !default;
-$primary-background-hover: lightgray !default;
+$primary-color: $white !default;
+$primary-background-hover: $gradientDarkAzure !default;
 
-$positive-background: lightgray !default;
-$positive-border-color: green !default;
+$positive-background: $gradientGreen !default;
+$positive-border-color: $seaGreen !default;
 $positive-border-width: 1px !default;
-$positive-color: green !default;
-$positive-background-hover: lightgreen !default;
+$positive-color: $white !default;
+$positive-background-hover: $gradientDarkGreen !default;
 
-$negative-background: lightgray !default;
-$negative-border-color: red !default;
+$negative-background: $gradientRed !default;
+$negative-border-color: $alizarinCrimson !default;
 $negative-border-width: 1px !default;
-$negative-color: red !default;
-$negative-background-hover: orange !default;
+$negative-color: $white !default;
+$negative-background-hover: $gradientDarkRed !default;
 
 $flat-background: none !default;
-$flat-border-color: transparent !default;
+$flat-border-color: $silver !default;
 $flat-border-width: 1px !default;
-$flat-color: blue !default;
-$flat-color-hover: lightblue !default;
+$flat-color: $darkGrey !default;
+$flat-color-hover: $darkGrey !default;
 $flat-border-width-hover: 1px !default;
 $flat-horizontal-padding: 6px !default;
 $flat-background-hover: none !default;
-$flat-border-color-hover: blue !default;
+$flat-border-color-hover: $darkGrey !default;
 
 $icon-button-horizontal-padding: 13px !default;
 $icon-button-circular-padding: 11px !default;
 
-$medium-height: 38px !default;
+$medium-height: 44px !default;
 $medium-horizontal-padding: 18px !default;
-$medium-font-size: 15px !default;
+$medium-font-size: 16px !default;
 
-$small-height: 30px !default;
+$small-height: 36px !default;
 $small-horizontal-padding: 14px !default;
-$small-font-size: 15px !default;
+$small-font-size: 14px !default;
 
-$tiny-height: 18px !default;
-$tiny-font-size: 12px !default;
+$tiny-height: 32px !default;
 $tiny-horizontal-padding: 6px !default;
+$tiny-font-size: 14px !default;
 
 $disabled-button-opacity: .6 !default;
 $disabled-button-cursor: not-allowed !default;
@@ -69,7 +70,6 @@ $disabled-button-cursor: not-allowed !default;
   cursor: pointer;
   text-align: center;
   font-weight: $font-weight;
-  font-family: $font-family;
 
   // default sizes
   padding: 0 $horizontal-padding;

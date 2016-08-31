@@ -1,23 +1,25 @@
-$background-color: lightblue !default;
-$border-radius: 15px !default;
-$padding: 3px 15px !default;
-$color: gray !default;
-$font-size: 13px !default;
-$font-weight: bold !default;
+@import '../utils/theme/variables.scss';
 
-$active-color: white !default;
-$active-background-color: lightblue !default;
+$background: $gradientAzure !default;
+$border-radius: 32px !default;
+$padding: 3px 16px !default;
+$color: $white !default;
+$font-size: 14px !default;
+$font-weight: $semibold !default;
+
+$active-color: $white !default;
+$active-background: $gradientAzure !default;
 
 .badge {
   display: inline-block;
   border-radius: $border-radius;
   padding: $padding;
   color: $color;
-  background-color: $background-color;
+  background: $background;
 
   &.active {
     color: $active-color;
-    background-color: $active-background-color;
+    background: $active-background;
   }
   .badge-label {
     font-size: $font-size;

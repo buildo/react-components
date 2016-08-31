@@ -1,17 +1,38 @@
+@import '../utils/theme/variables.scss';
+
 $padding-h: 12px !default;
 $font-size: 14px !default;
-$font-weight: 500 !default;
-$color: lightblue !default;
-$hover-color: blue !default;
+$font-weight: $semibold !default;
+$color: $azure !default;
+$color-hover: $azure !default;
 $disabled-opacity: .6 !default;
 
 .confirmation-input {
 
+  border-radius: 4px;
+  border: 1px solid $silver;
+
   input {
+    color: $darkGrey;
     padding-left: $padding-h;
+    border: 0;
+    font-weight: $semibold;
+
+    /*placeholder*/
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder  {
+      color: $coolGrey;
+    }
+
     &:disabled {
       cursor: not-allowed;
       opacity: $disabled-opacity;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0;
     }
   }
 
@@ -22,9 +43,14 @@ $disabled-opacity: .6 !default;
     color: $color;
   }
 
-  &.focused .confirmation {
-    color: $hover-color;
-    cursor: pointer;
-  }
+  &.focused {
 
+    border: 1px solid $waterBlue;
+    outline: none;
+
+    .confirmation {
+      color: $color-hover;
+      cursor: pointer;
+    }
+  }
 }

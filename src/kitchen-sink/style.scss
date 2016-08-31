@@ -96,7 +96,7 @@
         margin-top: 34px;
         border-collapse: collapse;
         font-size: 16px;
-        color: $darkGreyBlue;
+        color: $darkGrey;
 
         tr {
           height: 40px;
@@ -134,7 +134,7 @@
         font-size: 33px;
         font-weight: bold;
         border-bottom: 1px solid #EAEAEA;
-        color: $darkGreyBlue;
+        color: $darkGrey;
 
         .sub {
           font-size: 16px;
@@ -149,12 +149,15 @@
           transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
         }
 
+        border: 0;
+
         .content {
           width: 100%;
           padding: 20px;
           border-bottom: 1px solid #EAEAEA;
           cursor: pointer;
           font-weight: $semibold;
+          background: transparent;
 
           &:hover {
             background-color: #F0F0F0;
