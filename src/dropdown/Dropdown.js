@@ -101,6 +101,7 @@ export default class Dropdown extends React.Component {
       options,
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
+      resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
       onChange: this.getOnChange(),
