@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { props, t, skinnable } from '../utils';
-import _Select from 'react-select';
+import Select from 'react-select';
 import find from 'lodash/find';
 import omit from 'lodash/omit';
 import cx from 'classnames';
@@ -26,28 +25,6 @@ export const Props = {
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
-
-class Select extends _Select {
-
-  handleInputBlur = (event) => {
-    const menuDOM = ReactDOM.findDOMNode(this.refs.menu);
-    if (document.activeElement.isEqualNode(menuDOM)) {
-      return;
-    }
-
-    this._blurTimeout = setTimeout(() => {
-      if (this._focusAfterUpdate || !this.isMounted()) return;
-      this.setState({
-        isFocused: false,
-        isOpen: false
-      });
-    }, 50);
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-  }
-
-}
 
 /** A dropdown field
  * @param value - selected value
