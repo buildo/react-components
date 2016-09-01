@@ -7,14 +7,8 @@ TimePicker field, used to pick a time from a dropdown
 |----|----|-------|-----------|
 | **onChange** | <code>Function</code> |  | **required**. OnChange handler. It will return an object |
 | **value** | <code>Time</code> |  | *optional*. Value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } |
-| **minTime** | <code>Time</code> | <code>{
-  "hours": 0,
-  "minutes": 0
-}</code> | *optional*. Minimum value. Have to be passed in 24h format. Default [00:00] |
-| **maxTime** | <code>Time</code> | <code>{
-  "hours": 23,
-  "minutes": 59
-}</code> | *optional*. Maximum value. Have to be passed in 24h format. Default [23:59] |
+| **minTime** | <code>Time</code> | <code>{   "hours": 0,   "minutes": 0 }</code> | *optional*. Minimum value. Have to be passed in 24h format. Default [00:00] |
+| **maxTime** | <code>Time</code> | <code>{   "hours": 23,   "minutes": 59 }</code> | *optional*. Maximum value. Have to be passed in 24h format. Default [23:59] |
 | **placeholder** | <code>String</code> | <code>"--:--"</code> | *optional*. Field placeholder, displayed when there's no value. Default[--:--] |
 | **timeFormat** | <code>enum("12h" &#124; "24h")</code> | <code>"24h"</code> | *optional*. Format in which options are displayed (12h&#124;24h) |
 | **searchable** | <code>Boolean</code> | <code>true</code> | **required**. Enable the search feature |
