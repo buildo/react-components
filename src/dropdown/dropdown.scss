@@ -97,7 +97,6 @@ $height-small: 30px !default;
   }
 }
 
-
 .Select.dropdown {
   min-width: 150px;
   background: $background;
@@ -142,6 +141,7 @@ $height-small: 30px !default;
     border-radius: 4px;
     box-shadow: rgba(34, 36, 38, 0.12) 0px 2px 4px 0px;
     margin-top: 10px;
+    z-index: 1000;
 
     .Select-option {
       padding: 0 10px;
