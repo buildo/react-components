@@ -169,7 +169,7 @@ $height-small: 30px !default;
   }
 
   &.Select--multi {
-    .Select-input {
+    &.has-value .Select-input {
       position: relative;
     }
     .Select-control .Select-value {
