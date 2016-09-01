@@ -114,6 +114,11 @@ $height-small: 30px !default;
     cursor: pointer;
     box-shadow: none !important;
     padding-left: 10px;
+    padding-right: 25px;
+
+    .Select-multi-value-wrapper, .Select-value-label {
+      overflow: hidden;
+    }
 
     .Select-input {
       position: absolute;
@@ -219,6 +224,7 @@ $height-small: 30px !default;
   }
 
   &.has-value .Select-control {
+    padding-right: 45px;
     color: $text-color-has-value;
 
     .Select-placeholder {
