@@ -352,6 +352,26 @@
         "examples": [
           {
             "url": "react-components/__TAG__/src/button/examples/default.js"
+          },
+          {
+            "url": "react-components/__TAG__/src/button/examples/types.js",
+            "title": "Type of buttons",
+            "description": "A button can be formatted to show different levels of emphasis. We have 6 types of buttons:"
+          },
+          {
+            "url": "react-components/__TAG__/src/button/examples/sizes.js",
+            "title": "Buttons sizes",
+            "description": "There are 3 possible button sizes:"
+          },
+          {
+            "url": "react-components/__TAG__/src/button/examples/fluid.js",
+            "title": "Fluid button",
+            "description": "Block buttons typically occupy all the horizontal space available in its container. There should be only 1 button on the same line, if more than one block button is present they are stacked vertically."
+          },
+          {
+            "url": "react-components/__TAG__/src/button/examples/async.js",
+            "title": "Async buttons",
+            "description": "This variant can be applied to default, primary, positive and flat buttons."
           }
         ]
       },

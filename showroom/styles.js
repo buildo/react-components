@@ -4,6 +4,7 @@
 require('rc-datepicker/src/style.scss');
 require('react-select/dist/default.css');
 
+require('../src/Button/button.scss');
 require('../src/Divider/divider.scss');
 require('../src/DropdownMenu/dropdownMenu.scss');
 require('../src/DropdownMenu/menu.scss');
@@ -27,6 +28,5 @@ require('../src/kitchen-sink/style.scss');
 
 
 // examples sass
-require('../src/button/examples/button.scss');
 require('../src/more-or-less/examples/default.scss');
 require('../src/modal/examples/transition.scss');
