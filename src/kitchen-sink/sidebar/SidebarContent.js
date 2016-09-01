@@ -43,7 +43,7 @@ export default class SidebarContent extends React.Component {
     return (
       <div className='sidebar-content'>
         <View className='logo' vAlignContent='center' hAlignContent='center' column>
-          Buildo
+          buildo
           <View className='sub'>React components</View>
         </View>
         {getSections(sections)}
