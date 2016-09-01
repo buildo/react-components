@@ -12,12 +12,10 @@
 - Avoid SASS variables collisions when override default style [\#535](https://github.com/buildo/react-components/issues/535)
 - Add hover effect on table scrollbars, make them larger [\#533](https://github.com/buildo/react-components/issues/533)
 - Add popover style prop [\#462](https://github.com/buildo/react-components/issues/462)
-- \[standardize-code\] every folder should be in `kebab-case` [\#188](https://github.com/buildo/react-components/issues/188)
 
 #### New features:
 
 - Each main component should export its `props` [\#526](https://github.com/buildo/react-components/issues/526)
-- \[KitchenSink\] Overall look&feel [\#519](https://github.com/buildo/react-components/issues/519)
 
 ## [v0.5.1](https://github.com/buildo/react-components/tree/v0.5.1) (2016-08-25)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...v0.5.1)
