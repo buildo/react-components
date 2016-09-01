@@ -76,6 +76,7 @@ $height-small: 30px !default;
   .Select-value,
   .Select-placeholder,
   .Select-input,
+  .Select-input>input,
   .Select-option,
   .Select-arrow-zone,
   .Select-clear-zone {
@@ -89,6 +90,7 @@ $height-small: 30px !default;
     .Select-value,
     .Select-placeholder,
     .Select-input,
+    .Select-input>input,
     .Select-option,
     .Select-arrow-zone,
     .Select-clear-zone {
@@ -115,9 +117,6 @@ $height-small: 30px !default;
 
     .Select-input {
       position: absolute;
-      >input {
-        padding: 0;
-      }
     }
 
     .Select-arrow-zone, .Select-clear-zone {
