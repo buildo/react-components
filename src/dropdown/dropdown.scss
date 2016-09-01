@@ -113,6 +113,13 @@ $height-small: 30px !default;
     box-shadow: none !important;
     padding-left: 10px;
 
+    .Select-input {
+      position: absolute;
+      >input {
+        padding: 0;
+      }
+    }
+
     .Select-arrow-zone, .Select-clear-zone {
       @include flex_justify-content(center);
       position: absolute;
@@ -158,6 +165,9 @@ $height-small: 30px !default;
   }
 
   &.Select--multi {
+    .Select-input {
+      position: relative;
+    }
     .Select-control .Select-value {
       @include height($height - 14px);
       margin-right: 5px;
