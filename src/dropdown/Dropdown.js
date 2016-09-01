@@ -6,6 +6,8 @@ import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
+const isEmptyArray = x => t.Array.is(x) && x.length === 0;
+
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
   valueLink: t.maybe(t.struct({
@@ -104,7 +106,11 @@ export default class Dropdown extends React.Component {
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
-      onChange: this.getOnChange(),
+      onChange: (x) => {
+        const onChange = this.getOnChange();
+        const value = isEmptyArray(x) ? null : x;
+        return onChange(value);
+      },
       onBlur: this._onBlur
     };
   }
