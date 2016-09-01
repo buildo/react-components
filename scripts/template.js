@@ -15,7 +15,7 @@ const formatType = prop => {
 };
 
 const cleanInvalidCharacters = string => {
-  return string.replace(/\|/g, '&#124;');
+  return string.replace(/\|/g, '&#124;').replace(/\n/g, ' ');
 };
 
 const buildPropsTableRows = (props) => (
