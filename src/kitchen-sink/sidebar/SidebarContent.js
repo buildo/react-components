@@ -19,6 +19,8 @@ export default class SidebarContent extends React.Component {
 
   onToggle = (id) => () => this.props.onToggleSection(id);
 
+  toHome = () => this.props.onSelectItem('home');
+
   render() {
     const { sections, onSelectItem } = this.props;
     const getItems = (sectionId, items) => items.map(({ id, ...item }) =>
@@ -42,7 +44,7 @@ export default class SidebarContent extends React.Component {
 
     return (
       <div className='sidebar-content'>
-        <View className='logo' vAlignContent='center' hAlignContent='center' column>
+        <View className='logo' vAlignContent='center' hAlignContent='center' column onClick={this.toHome}>
           buildo
           <View className='sub'>React components</View>
         </View>

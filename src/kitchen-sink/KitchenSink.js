@@ -18,7 +18,8 @@ export const Props = {
   iso: t.maybe(t.Boolean),
   header: t.maybe(t.ReactChildren),
   footer: t.maybe(t.ReactChildren),
-  loading: t.maybe(t.Boolean)
+  loading: t.maybe(t.Boolean),
+  children: t.maybe(t.ReactChildren)
 };
 
 /** React component to generate a nice kitchen-sink
@@ -56,14 +57,15 @@ export default class KitchenSink extends React.Component {
       scope,
       iso,
       header,
-      footer
+      footer,
+      children
     } = this.props;
     if (componentId) {
       return <Component {...{ component: this.findComponent(), scope, iso, header, footer }} />;
     } else if (contentId) {
       return <Content content={this.findContent()} />;
     }
-    return <div />;
+    return children;
   };
 
   render() {

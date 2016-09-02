@@ -88,10 +88,13 @@ export default class App extends React.Component {
   }
 
   onSelectItem = (sectionId, id) => {
-    const section = find(this.state.sections, { id: sectionId });
-    const route = section.components ? 'component' : 'content';
-    const param = `${route}Id`;
-    this.props.router.transitionToPatch(route, { sectionId, [param]: id });
+    if (sectionId === 'home') this.props.router.transitionToPatch('home');
+    else {
+      const section = find(this.state.sections, { id: sectionId });
+      const route = section.components ? 'component' : 'content';
+      const param = `${route}Id`;
+      this.props.router.transitionToPatch(route, { sectionId, [param]: id });
+    }
   }
 
   onToggleSection = (sectionId) => {
