@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import Icon from '../Icon/Icon';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 
 export const Props = {
   children: t.ReactChildren,

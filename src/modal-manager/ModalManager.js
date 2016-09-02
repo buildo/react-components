@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import { warn } from '../utils/log';
 import { props, t } from '../utils';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
 
 export const Props = {

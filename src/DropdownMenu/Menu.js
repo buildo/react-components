@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { pure, props, t, skinnable } from '../utils';
 import partial from 'lodash/partial';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import Divider from '../Divider/Divider';
 
 export const optionType = t.struct({

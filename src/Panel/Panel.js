@@ -4,7 +4,7 @@ import { props, t, skinnable, pure } from '../utils';
 import PanelHeader from './PanelHeader';
 import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 
 export const Props = {
   type: t.enums.of(['docked-top', 'docked-left', 'docked-right', 'docked-bottom', 'floating']),

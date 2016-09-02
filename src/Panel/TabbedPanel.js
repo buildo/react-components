@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable, pure } from '../utils';
 import Panel, { Props as panelProps } from './Panel';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 
 export const Props = t.subtype(t.struct({
   ...panelProps,

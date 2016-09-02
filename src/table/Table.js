@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import includes from 'lodash/includes';
 import { skinnable, t, props, pure } from '../utils';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 import { Table as FixedDataTable } from 'fixed-data-table';
 import { warn } from '../utils/log';

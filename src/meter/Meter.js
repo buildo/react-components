@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t, skinnable } from '../utils';
 import { warn } from '../utils/log';
 import cx from 'classnames';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import find from 'lodash/find';
 import every from 'lodash/every';
 import isEqual from 'lodash/isEqual';

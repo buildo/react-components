@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import omit from 'lodash/omit';
 import ModalPortal, { Props as ModalPortalProps } from './ModalPortal';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import BackgroundDimmer from '../background-dimmer';
 
 const ModalProps = {

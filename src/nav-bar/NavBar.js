@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 
 export const Props = {
   content: t.struct({
