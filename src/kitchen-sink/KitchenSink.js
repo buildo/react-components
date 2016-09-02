@@ -23,6 +23,7 @@ export const Props = {
 };
 
 /** React component to generate a nice kitchen-sink
+ * @param children - used if both componentId and contentId are missing
  * @param componentId - selected component page
  * @param contentId - selected content page
  * @param sectionId - selected section in sidebar
