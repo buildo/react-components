@@ -1,5 +1,4 @@
 export Dropdown from './dropdown';
-export FlexView from './flex';
 export LoadingSpinner from './loading-spinner';
 export MobileDetector from './mobile-detector';
 export Popover from './popover';
