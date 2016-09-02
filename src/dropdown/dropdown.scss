@@ -147,6 +147,8 @@ $height-small: 30px !default;
   }
 
   .Select-menu-outer {
+    position: absolute;
+    left: 0;
     min-width: 185px;
     background-color: $menu-background;
     border: solid 1px $menu-border-color;
