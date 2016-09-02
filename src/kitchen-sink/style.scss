@@ -4,6 +4,39 @@
 
 .kitchen-sink {
 
+  .pattern {
+    background: $brc-white url("./pattern.png") repeat-x left bottom;
+    height: 104px;
+    width: 100%;
+  }
+
+  .home {
+    .header {
+      position: relative;
+      height: 478px;
+      background-color: $brc-azure;
+      .pattern {
+        position: absolute;
+        bottom: 0;
+      }
+      .title {
+        color: $brc-white;
+        font-size: 59px;
+        font-weight: bold; 
+      }
+      .subtitle {
+        font-size: 26px;
+        font-weight: 300;
+        color: $brc-white;
+        opacity: .62;
+      }
+    }
+
+    .content {
+      margin: 40px 60px;
+    }
+  }
+
   .content {
     > .body {
       margin: 40px 60px;
@@ -135,6 +168,7 @@
         font-weight: bold;
         border-bottom: 1px solid #EAEAEA;
         color: $brc-darkGrey;
+        cursor: pointer;
 
         .sub {
           font-size: 16px;

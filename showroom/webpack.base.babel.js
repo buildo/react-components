@@ -29,6 +29,10 @@ module.exports = {
           /react-cookie-banner/,
           /revenge-react-components/
         ]
+      },
+      {
+        test: /\.png/,
+        loader: 'file?name=[path][name].[ext]'
       }
     ],
     preLoaders: [

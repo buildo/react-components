@@ -12,6 +12,7 @@ export default class Content extends React.Component {
   render() {
     return (
       <div className='content'>
+        <div className='pattern' />
         <div className='body markdown-body'>
           <Markdown source={this.props.content.content} options={{ html: true }} />
         </div>
