@@ -4,7 +4,7 @@
 require('rc-datepicker/src/style.scss');
 require('react-select/dist/default.css');
 
-require('../src/Button/button.scss');
+require('../src/button/button.scss');
 require('../src/Divider/divider.scss');
 require('../src/DropdownMenu/dropdownMenu.scss');
 require('../src/DropdownMenu/menu.scss');
