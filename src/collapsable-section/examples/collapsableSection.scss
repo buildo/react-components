@@ -1,0 +1,36 @@
+@import '../../utils/theme/variables.scss';
+
+.collapsable-section {
+  
+  border-radius: 4px;
+  overflow: hidden;
+
+  .content {
+    height: 48px;
+    font-weight: $brc-semibold;
+    color: $brc-darkGrey;
+
+    .icon {
+      color: $brc-coolGrey;
+    }
+  }
+
+  margin-bottom: 10px;
+
+  .section {
+    padding: 16px 42px;
+  
+    .item {
+      border-bottom: 1px solid $brc-silver;
+      height: 50px;
+
+      .key {
+        font-weight: $brc-semibold;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
