@@ -10,9 +10,9 @@ class Example extends React.Component {
   render() {
     const { onSetActiveTab, state: { activeTabIndex } } = this;
     const panelProps = {
-      type: 'floating',
+      type: 'docked-top',
       tabs: {
-        headers: [ 'Veeery long Tab 1', 'Tab 2' ],
+        headers: [ 'All Projects', 'Synced Projects', 'My Projects' ],
         onSetActiveTab,
         activeIndex: activeTabIndex
       },
@@ -26,7 +26,7 @@ class Example extends React.Component {
     return (
       <TabbedPanel {...panelProps}>
         <div style={{ height: 200 }}>
-          <p>{tab}</p>
+          <p>{tab} content</p>
         </div>
       </TabbedPanel>
     );

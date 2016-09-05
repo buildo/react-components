@@ -30,7 +30,7 @@ export const Props = {
   style: t.maybe(t.Obj)
 };
 
-/** A simple panel with header. It can be collapsable or not, docked or floating.
+/** A simple component used to group elements in a box.
  * @param type - docked-top | docked-left | docked-right | docked-bottom | floating
  * @param header - header props (collapse, content, title, menu)
  * @param loading - whether it's loading or not

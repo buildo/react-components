@@ -84,12 +84,26 @@
         "readmeUrl": "react-components/__TAG__/src/Panel/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/Panel/examples/floating.js"
+            "description": "In its simplest form, Panel is just a floating box surrounding any content you want to group togheter.",
+            "url": "react-components/__TAG__/src/Panel/examples/default.js"
           },
           {
+            "title": "Panel with header",
+            "description": "A Panel could also have an header, showing a title or whatever you want to render in it",
+            "url": "react-components/__TAG__/src/Panel/examples/header.js"
+          },
+          {
+            "title": "Docked panel",
+            "description": "A docked panel can be collapsed so that only the header is visible. It could be collapsed vertically:",
             "url": "react-components/__TAG__/src/Panel/examples/docked.js"
           },
           {
+            "description": "or horizontally:",
+            "url": "react-components/__TAG__/src/Panel/examples/dockedLeft.js"
+          },
+          {
+            "title": "Tabbed panel",
+            "description": "A tabbed panel will show content based on the currently selected tab.",
             "url": "react-components/__TAG__/src/Panel/examples/tabbed.js"
           }
         ]

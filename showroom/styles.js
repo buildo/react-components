@@ -27,6 +27,12 @@ require('../src/ScrollView/scrollView.scss');
 require('../src/kitchen-sink/style.scss');
 
 
-// examples sass
+// examples sass and resources
 require('../src/more-or-less/examples/default.scss');
 require('../src/modal/examples/transition.scss');
+
+require('../src/Panel/examples/default.scss');
+require('../src/Panel/examples/image1.png');
+require('../src/Panel/examples/image2.png');
+require('../src/Panel/examples/image3.png');
+require('../src/Panel/examples/image4.png');
