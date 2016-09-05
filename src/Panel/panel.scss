@@ -92,6 +92,14 @@ $content-title-color: $brc-darkGrey !default;
     border-left: 1px solid $border-color;
   }
 
+  &.floating {
+    &.collapsed {
+      .panel-header {
+        border-bottom: 0;
+      }
+    }
+  }
+
   &.is-dark {
     > .panel-header {
       background: $header-background-dark;
