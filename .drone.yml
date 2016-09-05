@@ -42,7 +42,7 @@ build:
     image: quay.io/buildo/node5-npm3
     commands:
       - if [ "$$BRANCH" != "master" ]; then
-          npm run generate-all-readmes
+          npm run generate-all-readmes;
           npm run build-showroom;
         fi
 
