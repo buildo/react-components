@@ -17,5 +17,5 @@ React component to generate a nice kitchen-sink
 | **iso** | <code>Boolean</code> |  | *optional*. Wheter the kitchen-sink render examples in a fake isomorphic environment |
 | **header** | <code>ReactChildren</code> |  | *optional*. Renderable node used as header in component page |
 | **footer** | <code>ReactChildren</code> |  | *optional*. Renderable node used as footer in component page |
-| **loading** | <code>Boolean</code> |  | *optional*. Wheter it's loading or not |
+| **loading** | <code>Boolean</code> |  | *optional*. Whether it's loading or not |
 | **children** | <code>ReactChildren</code> |  | *optional*. Used if both componentId and contentId are missing |

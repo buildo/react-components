@@ -1,6 +1,6 @@
 # Panel
 
-A simple panel with header. It can be collapsable or not, docked or floating.
+A simple component used to group elements in a box.
 
 ## Props
 |Name|Type|Default|Description|
