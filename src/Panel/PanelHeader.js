@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t, pure, skinnable } from '../utils';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
 const icons = {

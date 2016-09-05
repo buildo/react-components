@@ -3,7 +3,7 @@ import cx from 'classnames';
 import every from 'lodash/every';
 import { pure, skinnable, props, t, stateClassUtil } from '../utils';
 import _TextOverflow from '../text-overflow/TextOverflow';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 

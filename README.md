@@ -15,15 +15,15 @@ Its purpose is to give access to all these components through a single npm depen
 Each component is stored inside its own folder (useful for small bundles).
 You can import each package directly from the main lib:
 
-`import { FlexView, Dropdown, Popover } from 'buildo-react-components';`
+`import { Panel, Dropdown, Popover } from 'buildo-react-components';`
 
 Or from the package folder:
 
-`import { FlexView } from 'buildo-react-components/lib/flex';`
+`import Button from 'buildo-react-components/lib/button';`
 
 **NOTE:** If you installed it as a GitHub dependency (`npm i --save buildo/react-component`) then import from `/src`:
 
-`import { FlexView } from 'buildo-react-components/src/flex';`
+`import Button from 'buildo-react-components/src/button';`
 
 ## Semver
 Until `buildo-react-components` reaches a 1.0 release, breaking changes will be released with a new minor version. For example in 0.5.1, and 0.5.4 **every** component will have the same expected output, but in 0.6.0 **at least** one component will have breaking changes.

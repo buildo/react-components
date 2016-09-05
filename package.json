@@ -44,6 +44,7 @@
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
     "react-addons-transition-group": "^0.14.8",
+    "react-flexview": "^1.0.0",
     "react-input-children": "^1.0.0",
     "react-select": "^0.7",
     "revenge": "^0.4.2",

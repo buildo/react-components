@@ -12,6 +12,7 @@ import { props, t } from 'tcomb-react';
 import SidebarContent from '../../src/kitchen-sink/sidebar/SidebarContent';
 import ReactSidebar from 'react-sidebar';
 import * as brc from '../../src';
+import FlexView from 'react-flexview';
 import { DatePicker, DatePickerInput } from 'rc-datepicker/src';
 import InputChildren from 'react-input-children/src';
 import TextareaAutosize from 'react-autosize-textarea/src';
@@ -28,6 +29,7 @@ const scope = {
   log: x => console.log(x), // eslint-disable-line no-console
   find, partial, reject,
   ...brc,
+  FlexView,
   DatePicker, DatePickerInput,
   InputChildren,
   TextareaAutosize,

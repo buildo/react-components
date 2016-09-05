@@ -1,7 +1,7 @@
 import React from 'react';
 import { pure, props, t, skinnable } from '../utils';
 import Menu, { optionType } from './Menu';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 import cx from 'classnames';
 

@@ -1,6 +1,7 @@
 // use require to avoid errors in showroom webpack
 
 // default sass
+require('react-flexview/src/flexView.scss');
 require('rc-datepicker/src/style.scss');
 require('react-select/dist/default.css');
 
@@ -11,7 +12,6 @@ require('../src/DropdownMenu/menu.scss');
 require('../src/Panel/tabbedPanel.scss');
 require('../src/collapsable-section/collapsableSection.scss');
 require('../src/more-or-less/moreOrLess.scss');
-require('../src/flex/flexView.scss');
 require('../src/loading-spinner/style.scss');
 require('../src/dropdown/dropdown.scss');
 require('../src/confirmation-input/confirmationInput.scss');

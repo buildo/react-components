@@ -1,5 +1,5 @@
 import React from 'react';
-import FlexView from '../../src/flex';
+import FlexView from 'react-flexview';
 import KitchenSink from '../../src/kitchen-sink';
 import { t, props } from 'tcomb-react';
 

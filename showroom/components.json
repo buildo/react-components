@@ -124,18 +124,21 @@
         ]
       },
       {
-        "id": "flex-view",
+        "id": "react-flexview",
         "title": "FlexView",
-        "desc": "FlexView",
-        "repo": "react-components",
-        "url": "https://github.com/buildo/react-components/tree/master/src/flex",
-        "readmeUrl": "react-components/__TAG__/src/flex/README.md",
+        "desc": "A React component to abstract over flexbox",
+        "repo": "react-flexview",
+        "url": "https://github.com/buildo/react-flexview",
+        "readmeUrl": "react-flexview/__TAG__/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/flex/examples/Column.js"
+            "url": "react-flexview/__TAG__/examples/Column.example"
           },
           {
-            "url": "react-components/__TAG__/src/flex/examples/Row.js"
+            "url": "react-flexview/__TAG__/examples/Row.example"
+          },
+          {
+            "url": "react-flexview/__TAG__/examples/ComputeFlex.example"
           }
         ]
       },

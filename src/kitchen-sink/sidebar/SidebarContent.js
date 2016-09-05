@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t } from '../../utils';
 import Item from './Item';
 import CollapsableSection from '../../collapsable-section/CollapsableSection';
-import View from '../../flex/FlexView';
+import View from 'react-flexview';
 
 @props({
   sections: t.maybe(t.Array),

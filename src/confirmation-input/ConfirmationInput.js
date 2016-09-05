@@ -4,7 +4,7 @@ import { props, skinnable, t } from '../utils';
 import omit from 'lodash/omit';
 import InputChildren from 'react-input-children';
 import { linkState } from '../link-state';
-import FlexView from '../flex/FlexView';
+import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
 export const Props = {
