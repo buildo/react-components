@@ -1,26 +1,20 @@
 class Example extends React.Component {
 
-  left() {
-    return <div>LEFT</div>;
-  }
+  left = () => <FlexView className='left'>
+    <a className='item active'>Home</a>
+    <a className='item'>Discover</a>
+    <a className='item'>Messages</a>
+  </FlexView>;
 
-  center() {
-    return <div>CENTER</div>;
-  }
-
-  right() {
-    return <div>RIGHT</div>;
-  }
+  right = () => <Button primary size='small' icon='plus' label='New Project' onClick={() => {}} />;
 
   render() {
     const props = {
       content: {
         left: this.left(),
-        center: this.center(),
-        right: this.right(),
-        maxWidth: '80%'
+        right: this.right()
       },
-      background: 'brown',
+      background: 'white',
       height: 80
     };
 

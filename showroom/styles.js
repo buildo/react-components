@@ -42,3 +42,6 @@ require('../src/collapsable-section/examples/collapsableSection.scss');
 require('../src/background-dimmer/examples/backgroundDimmer.scss');
 require('../src/background-dimmer/examples/cover.png');
 require('../src/background-dimmer/examples/rating.png');
+
+require('../src/nav-bar/examples/navbar.scss');
+
