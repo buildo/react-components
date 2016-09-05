@@ -9,13 +9,13 @@ if (!access_token) {
   process.exit();
 }
 
-const github = axios.create({ baseURL: 'https://api.github.com/repos/buildo/react-components' });
+const github = axios.create({ baseURL: 'https://api.github.com/repos/buildo/react-components', params: { access_token } });
 
 github.get('/tags')
   .then(tags => {
     const tag = find(tags.data, { name: `v${version}` });
 
-    axios.get(tag.commit.url)
+    github.get(`/commits/${tag.commit.sha}`)
       .then(commit => {
         const changelogUrl = 'https://github.com/buildo/react-components/blob/master/CHANGELOG.md';
         const tagISODate = commit.data.commit.author.date.slice(0, 10);
@@ -27,13 +27,8 @@ github.get('/tags')
           body: `See [CHANGELOG.md](${linkToChangelog}) for details about this release.`
         };
 
-        github({
-          method: 'post',
-          url: '/releases',
-          data: release,
-          params: { access_token }
-        })
-        .then(() => console.log(`\nSuccessfully created release "${version}"\n`))
-        .catch(x => console.log(x));
+        github.post('/releases', release)
+          .then(() => console.log(`\nSuccessfully created release "${tag.name}"\n`))
+          .catch(x => console.log(x.data.message));
       });
   }).catch(x => console.log(x));
