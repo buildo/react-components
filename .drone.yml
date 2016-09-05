@@ -20,6 +20,7 @@ build:
           git config --global user.email "our-bots@buildo.io";
           git commit -m "Update CHANGELOG.md [skip ci]";
           git push origin master;
+          node ./publishReleaseOnGitHub
         fi
     when:
       branch: master
