@@ -20,8 +20,16 @@ build:
           git config --global user.email "our-bots@buildo.io";
           git commit -m "Update CHANGELOG.md [skip ci]";
           git push origin master;
-          node ./publishReleaseOnGitHub.js;
         fi
+    when:
+      branch: master
+
+  publishReleaseOnGitHub:
+    image: quay.io/buildo/node5-npm3
+    environment:
+      GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
+    commands:
+      - node ./publishReleaseOnGitHub.js
     when:
       branch: master
 
