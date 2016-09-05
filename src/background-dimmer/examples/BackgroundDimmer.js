@@ -21,7 +21,7 @@ class Example extends React.Component {
   render() {
     const { state: { opened }, show, hide } = this;
     return opened ? (
-      <BackgroundDimmer stopScrollPropagation onClickOutside={hide}>
+      <BackgroundDimmer stopScrollPropagation onClickOutside={hide} color='black' alpha={0.85}>
         <Card image='cover.png' title='Utopia' author='Dennis Kelly'>
           After a group of people, who meet online, discover a bizarre graphic novel
           which seems to hold mysterious answers, they find themselves being tracked
