@@ -23,6 +23,7 @@ export const Props = {
   backspaceRemoves: t.maybe(t.Boolean),
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
+  autoBlur: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -40,6 +41,7 @@ export const Props = {
  * @param backspaceRemoves - whether pressing backspace removes the last item when there is no input value
  * @param multi - true if it should be possible to select multiple values
  * @param flat - whether it should have a flat style
+ * @param autoBlur - whether it should blur automatically when the user selects a value
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -52,7 +54,8 @@ export default class Dropdown extends React.Component {
     searchable: false,
     clearable: false,
     multi: false,
-    flat: false
+    flat: false,
+    autoBlur: true
   }
 
   componentDidMount() {
