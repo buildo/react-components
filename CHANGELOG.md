@@ -147,7 +147,6 @@
 - \[button\] make it compatible with new style guidelines [\#387](https://github.com/buildo/react-components/issues/387)
 - fix dropdown style [\#386](https://github.com/buildo/react-components/issues/386)
 - CollapsableSection should be a FlexView \(support IE11\) [\#384](https://github.com/buildo/react-components/issues/384)
-- Move to Drone CI [\#383](https://github.com/buildo/react-components/issues/383)
 - update Tooltip to reflect new guidelines [\#379](https://github.com/buildo/react-components/issues/379)
 - \[dropdown\] update placeholder colors as described in the guidelines [\#377](https://github.com/buildo/react-components/issues/377)
 - style Dropdown as described in the LOL guidelines [\#375](https://github.com/buildo/react-components/issues/375)
