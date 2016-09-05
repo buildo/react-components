@@ -10,7 +10,7 @@ describe('Dropdown', () => {
       className: 'fancy-class-name',
       style: { margin: 10, position: 'relative' },
       value: { value: 'test', label: 'Test', foo: 'bar' },
-      onChange: () => {},
+      fakeProp: true,
       options: [
         { value: 'test', label: 'Test' },
         { value: 'test1', label: 'Test1' },
@@ -24,7 +24,7 @@ describe('Dropdown', () => {
       expect(locals.id).toBe(exampleProps.id);
       expect(locals.style).toEqual(exampleProps.style);
       expect(locals.options).toEqual(exampleProps.options);
-      expect(locals.onChange).toEqual(exampleProps.onChange);
+      expect(locals.fakeProp).toEqual(exampleProps.fakeProp);
     });
 
     it('should compute className', () => {
