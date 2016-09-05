@@ -2,6 +2,12 @@
 
 .panel {
 
+  &.collapsed.collapse-left {
+    .panel-content-title {
+      margin-left: 15px;
+    }
+  }
+
   .panel-header {
     .icon {
       margin-right: 10px;
