@@ -83,8 +83,6 @@ export default class Dropdown extends React.Component {
 
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
-  _onBlur = () => this.forceUpdate();
-
   getCustomClassNames() {
     const { size, flat, clearable } = this.props;
     return cx({
@@ -110,8 +108,7 @@ export default class Dropdown extends React.Component {
         const onChange = this.getOnChange();
         const value = isEmptyArray(x) ? null : x;
         return onChange(value);
-      },
-      onBlur: this._onBlur
+      }
     };
   }
 
