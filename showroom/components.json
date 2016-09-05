@@ -89,7 +89,7 @@
           },
           {
             "title": "Panel with header",
-            "description": "A Panel could also have an header, showing a title or whatever you want to render in it",
+            "description": "A Panel could also have a header, showing a title or whatever you want to render in it",
             "url": "react-components/__TAG__/src/Panel/examples/header.js"
           },
           {
