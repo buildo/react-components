@@ -29,6 +29,10 @@ github.get('/tags')
 
         github.post('/releases', release)
           .then(() => console.log(`\nSuccessfully created release "${tag.name}"\n`))
-          .catch(x => console.log(x.data.message));
+          .catch(x => {
+            x.data.message === 'Validation Failed' ?
+              console.log(`Release "${tag.name}" already exists`) :
+              console.log(x.data.message)
+          });
       });
   }).catch(x => console.log(x));
