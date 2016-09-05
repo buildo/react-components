@@ -93,8 +93,17 @@ export default class Dropdown extends React.Component {
     });
   }
 
+  _onChange = _value => {
+    const onChange = this.getOnChange();
+    const value = isEmptyArray(_value) ? null : _value;
+    return onChange(value);
+  }
+
   getLocals() {
-    const { className, options, backspaceRemoves, clearable, ...props } = this.props;
+    const {
+      _onChange,
+      props: { className, options, backspaceRemoves, clearable, ...props }
+    } = this;
 
     return {
       ...omit(props, 'valueLink'),
@@ -104,11 +113,7 @@ export default class Dropdown extends React.Component {
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
-      onChange: (x) => {
-        const onChange = this.getOnChange();
-        const value = isEmptyArray(x) ? null : x;
-        return onChange(value);
-      }
+      onChange: _onChange
     };
   }
 
