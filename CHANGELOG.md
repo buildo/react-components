@@ -162,7 +162,6 @@
 - \[dependencies\] update lodash [\#323](https://github.com/buildo/react-components/issues/323)
 - \[Accordion\] rename in Section [\#308](https://github.com/buildo/react-components/issues/308)
 - \[FlexView\]  if basis='auto' throw warning [\#306](https://github.com/buildo/react-components/issues/306)
-- \[showroom\] simplify deploy [\#294](https://github.com/buildo/react-components/issues/294)
 - TimePicker [\#277](https://github.com/buildo/react-components/issues/277)
 - FocusableView [\#265](https://github.com/buildo/react-components/issues/265)
 - Date picker: defect on Safari and Chrome [\#251](https://github.com/buildo/react-components/issues/251)
