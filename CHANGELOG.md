@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.6.0...HEAD)
+
+#### Breaking:
+
+- Remove FlexView from b-r-c [\#545](https://github.com/buildo/react-components/issues/545)
+
 ## [v0.6.0](https://github.com/buildo/react-components/tree/v0.6.0) (2016-09-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.1...v0.6.0)
 
