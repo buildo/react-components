@@ -36,3 +36,8 @@ require('../src/Panel/examples/image1.png');
 require('../src/Panel/examples/image2.png');
 require('../src/Panel/examples/image3.png');
 require('../src/Panel/examples/image4.png');
+
+require('../src/background-dimmer/examples/backgroundDimmer.scss');
+require('../src/background-dimmer/examples/cover.png');
+require('../src/background-dimmer/examples/rating.png');
+

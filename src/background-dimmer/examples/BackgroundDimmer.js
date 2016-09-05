@@ -1,35 +1,34 @@
+const Card = ({ image, title, author, children }) => (
+  <FlexView column width={350} className='card'>
+    <img src={`./src/background-dimmer/examples/${image}`} />
+    <FlexView vAlignContent='center'>
+      <FlexView grow className='card-title'>{title}</FlexView>
+      <FlexView shrink={false} className='card-rating'><img src='./src/background-dimmer/examples/rating.png' heigth={12} /></FlexView>
+    </FlexView>
+    <FlexView className='card-author'>{author}</FlexView>
+    {children}
+  </FlexView>
+);
+
 class Example extends React.Component {
 
-  constructor() {
-  	super();
-    this.state = {};
-  }
+  state = { opened: false }
 
-  show = () => this.setState({ isShow: true });
+  show = () => this.setState({ opened: true });
 
-  hide = () => this.setState({ isShow: false });
-
-  getBackgroundDimmer = () => (
-    <BackgroundDimmer color='black' alpha={0.5} stopScrollPropagation onClickOutside={this.hide}>
-      <ScrollView style={{ backgroundColor: 'yellow', height: 120, width: 200 }} scrollPropagation={false}>
-        <div style={{ height: 200 }}>CONTENT</div>
-      </ScrollView>
-    </BackgroundDimmer>
-  );
+  hide = () => this.setState({ opened: false });
 
   render() {
-    const {
-      state: { isShow },
-      getBackgroundDimmer, show
-    } = this;
-    return (
-      <div style={{ height: 50, width: '100%' }}>
-        {isShow ?
-          getBackgroundDimmer() :
-          <button onClick={show}>SHOW</button>
-        }
-      </div>
-    );
+    const { state: { opened }, show, hide } = this;
+    return opened ? (
+      <BackgroundDimmer stopScrollPropagation onClickOutside={hide}>
+        <Card image='cover.png' title='Utopia' author='Dennis Kelly'>
+          After a group of people, who meet online, discover a bizarre graphic novel
+          which seems to hold mysterious answers, they find themselves being tracked
+          down by a merciless organization known merely as 'The Network'.
+        </Card>
+      </BackgroundDimmer>
+    ) : <Button onClick={show}>Show content</Button>;
   }
 
 }
