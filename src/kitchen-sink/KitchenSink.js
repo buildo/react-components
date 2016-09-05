@@ -37,7 +37,6 @@ export const Props = {
  * @param header - renderable node used as header in component page
  * @param footer - renderable node used as footer in component page
  * @param loading - whether it's loading or not
- * @param children - custom content
  */
 @props(Props)
 export default class KitchenSink extends React.Component {
