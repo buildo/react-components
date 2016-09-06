@@ -1,10 +1,53 @@
 @import '../../utils/theme/variables.scss';
 
-.more-or-less {
+.live-demo .more-or-less {
 
   border: 1px solid $brc-silver;
 
-  .content {
+  .card {
+
     padding: 25px 33px;
+
+    .description {
+
+      font-size: 14px;
+      line-height: 1.5;
+
+      margin-right: 20px;
+
+      .title {
+        font-weight: bold;
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+
+        .author {
+
+          &::before {
+            content: 'by\00a0';
+            color: $brc-darkGrey;
+          }
+
+          color: $brc-azure;
+          border-right: 1px solid $brc-silver;
+          padding-right: 9px;
+
+        }
+
+        .date {
+          padding-left: 9px;
+        }
+      }
+    }
+  }
+
+  .expand-button {
+    .icon {
+      font-size: 8px;
+    }
   }
 }
