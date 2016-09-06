@@ -31,7 +31,7 @@ class Example extends React.Component {
   };
 
   state = {
-    openedSections: []
+    openedSections: ['General Info']
   };
 
   isSectionOpen = (section) => this.state.openedSections.indexOf(section) >= 0;
