@@ -304,6 +304,10 @@
         "examples": [
           {
             "url": "react-components/__TAG__/src/badge/examples/default.js"
+          },
+          {
+            "description": "In the example below you can see a possible use of this UI component as a counter rendered over icons",
+            "url": "react-components/__TAG__/src/badge/examples/icon.js"
           }
         ]
       },
