@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...HEAD)
+
+#### Breaking:
+
+- Update react-select to v1.0.0-rc1 [\#517](https://github.com/buildo/react-components/issues/517)
+
 ## [v0.7.0](https://github.com/buildo/react-components/tree/v0.7.0) (2016-09-05)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.6.0...v0.7.0)
 
