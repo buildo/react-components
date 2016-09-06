@@ -29,7 +29,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-/** A dropdown field
+/** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
  * @param value - selected value
  * @param valueLink - defines actions to be taken when a particular value is selected
  * @param onChange - called when value is changed

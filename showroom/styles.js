@@ -46,3 +46,5 @@ require('../src/nav-bar/examples/navBar.scss');
 
 require('../src/DropdownMenu/examples/userMenu.scss');
 require('../src/DropdownMenu/examples/avatar.png');
+
+require('../src/dropdown/examples/dropdown.scss');
