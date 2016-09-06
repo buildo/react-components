@@ -3,7 +3,6 @@
 // default sass
 require('react-flexview/src/flexView.scss');
 require('rc-datepicker/src/style.scss');
-require('react-select/dist/default.css');
 
 require('../src/button/button.scss');
 require('../src/Divider/divider.scss');

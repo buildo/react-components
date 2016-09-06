@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { props, t, skinnable } from '../utils';
-import _Select from 'react-select';
+import Select from 'react-select';
 import find from 'lodash/find';
 import omit from 'lodash/omit';
 import cx from 'classnames';
 import { warn } from '../utils/log';
+
+const isEmptyArray = x => t.Array.is(x) && x.length === 0;
 
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
@@ -22,32 +23,11 @@ export const Props = {
   backspaceRemoves: t.maybe(t.Boolean),
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
+  autoBlur: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
-
-class Select extends _Select {
-
-  handleInputBlur = (event) => {
-    const menuDOM = ReactDOM.findDOMNode(this.refs.menu);
-    if (document.activeElement.isEqualNode(menuDOM)) {
-      return;
-    }
-
-    this._blurTimeout = setTimeout(() => {
-      if (this._focusAfterUpdate || !this.isMounted()) return;
-      this.setState({
-        isFocused: false,
-        isOpen: false
-      });
-    }, 50);
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-  }
-
-}
 
 /** A dropdown field
  * @param value - selected value
@@ -61,6 +41,7 @@ class Select extends _Select {
  * @param backspaceRemoves - whether pressing backspace removes the last item when there is no input value
  * @param multi - true if it should be possible to select multiple values
  * @param flat - whether it should have a flat style
+ * @param autoBlur - whether it should blur automatically when the user selects a value
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -73,7 +54,8 @@ export default class Dropdown extends React.Component {
     searchable: false,
     clearable: false,
     multi: false,
-    flat: false
+    flat: false,
+    autoBlur: true
   }
 
   componentDidMount() {
@@ -104,8 +86,6 @@ export default class Dropdown extends React.Component {
 
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
-  _onBlur = () => this.forceUpdate();
-
   getCustomClassNames() {
     const { size, flat, clearable } = this.props;
     return cx({
@@ -116,18 +96,37 @@ export default class Dropdown extends React.Component {
     });
   }
 
+  _onChange = _value => {
+    const onChange = this.getOnChange();
+    const value = isEmptyArray(_value) ? null : _value;
+    return onChange(value);
+  }
+
+  onInputKeyDown = (e) => {
+    if (e.keyCode === 38 || e.keyCode === 40) {
+      if (isEmptyArray(this.props.options)) {
+        e.preventDefault();
+      }
+    }
+  }
+
   getLocals() {
-    const { className, options, backspaceRemoves, clearable, ...props } = this.props;
+    const {
+      _onChange,
+      onInputKeyDown,
+      props: { className, options, backspaceRemoves, clearable, ...props }
+    } = this;
 
     return {
       ...omit(props, 'valueLink'),
       options,
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
+      resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
-      onChange: this.getOnChange(),
-      onBlur: this._onBlur
+      onInputKeyDown,
+      onChange: _onChange
     };
   }
 
