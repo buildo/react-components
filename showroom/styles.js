@@ -43,3 +43,6 @@ require('../src/background-dimmer/examples/cover.png');
 require('../src/background-dimmer/examples/rating.png');
 
 require('../src/nav-bar/examples/navBar.scss');
+
+require('../src/DropdownMenu/examples/userMenu.scss');
+require('../src/DropdownMenu/examples/avatar.png');

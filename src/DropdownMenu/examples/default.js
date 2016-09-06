@@ -1,44 +1,56 @@
 class Example extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-  }
+  state = { isOpen: false };
 
   toggleOpen = () => this.setState({ isOpen: !this.state.isOpen })
 
-  onActionClick = () => alert('clicked action')
+  onClick = (option) => alert(`${option.title} clicked`)
 
   render() {
+
+    const { toggleOpen, onClick, state: { isOpen } } = this;
+
     const options = [
       {
-        title: 'Action 1',
+        title: 'Preferences',
         type: 'item',
-        onClick: this.onActionClick
+        onClick
       },
       {
-        title: 'Action 2',
+        title: 'Change password',
         type: 'item',
-        onClick: this.onActionClick
+        onClick
+      },
+      {
+        title: 'Logout',
+        type: 'item',
+        onClick
       }
     ];
 
     const dropdownMenuProps = {
-      className: 'profile-menu',
-      onOpen: this.toggleOpen,
-      onClose: this.toggleOpen,
-      isOpen: this.state.isOpen,
+      onOpen: toggleOpen,
+      onClose: toggleOpen,
+      isOpen,
       options
     };
 
-    const icon = this.state.isOpen ? 'angleUpsvg' : 'angleDown';
+    const icon = isOpen ? 'angleUpsvg' : 'angleDown';
 
     return (
-      <FlexView hAlignContent="right">
+      <FlexView hAlignContent='right' style={{ border: '1px solid #ced0da' }}>
         <DropdownMenu {...dropdownMenuProps}>
-          <FlexView grow vAlignContent="center" hAlignContent="right">
-            <span>Mr. Example</span>
-            <Icon icon={icon} style={{ marginLeft: 5, cursor: 'pointer' }} />
+          <FlexView vAlignContent='center' className='user-menu'>
+            <FlexView shrink={false} className='user-avatar'>
+              <img src='../../src/DropdownMenu/examples/avatar.png' />
+            </FlexView>
+            <FlexView column grow>
+              <FlexView className='user-name'>Jordan J.</FlexView>
+              <FlexView className='user-role'>Administrator</FlexView>
+            </FlexView>
+            <FlexView shrink={false}>
+              <Icon icon={icon} style={{ cursor: 'pointer' }} />
+            </FlexView>
           </FlexView>
         </DropdownMenu>
       </FlexView>
