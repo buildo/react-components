@@ -430,13 +430,17 @@
         "readmeUrl": "react-components/__TAG__/src/meter/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/meter/examples/Meter.js"
+            "description": "You can customize the style (colors) of Meter based on the range in which the current value falls",
+            "url": "react-components/__TAG__/src/meter/examples/default.js"
           },
           {
-            "url": "react-components/__TAG__/src/meter/examples/MeterWithHole.js"
+            "description": "Ranges could also have holes between them. If the current value doesn't fall in any of the given ranges, it will use a base style you can configure as you like:",
+            "url": "react-components/__TAG__/src/meter/examples/holes.js"
           },
           {
-            "url": "react-components/__TAG__/src/meter/examples/MeterCustomLabel.js"
+            "title": "Custom labels",
+            "description": "By default, Meter display an auto-calculated percentage next to the bar. You can customize your own label formatter in order to show whathever you like:",
+            "url": "react-components/__TAG__/src/meter/examples/customLabels.js"
           }
         ]
       },
