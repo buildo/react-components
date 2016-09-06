@@ -43,6 +43,21 @@
         "examples": [
           {
             "url": "react-components/__TAG__/src/dropdown/examples/default.js"
+          },
+          {
+            "title": "Dropdowns sizes",
+            "description": "Dropdown comes in two different sizes: medium and small",
+            "url": "react-components/__TAG__/src/dropdown/examples/sizes.js"
+          },
+          {
+            "title": "Dropdowns options",
+            "description": "* When the `searchable` prop is used, it's possible to search the desired value by writing into the dropdown.\n* Use `Clearable` if it should be possible to reset the selected value clicking on the `delete` icon that will appear once a value is selected.",
+            "url": "react-components/__TAG__/src/dropdown/examples/options.js"
+          },
+          {
+            "title": "Multiselect",
+            "description": "Dropdown could also allow the selection of multiple values",
+            "url": "react-components/__TAG__/src/dropdown/examples/multi.js"
           }
         ]
       },

@@ -17,9 +17,12 @@ class Example extends React.Component {
     ];
     return (
       <Dropdown
+        className='custom'
         value={value}
         onChange={onChange}
-        placeholder='Select some fruit'
+        multi
+        clearable
+        placeholder='Select some fruit(s)'
         options={options}
       />
     );

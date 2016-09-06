@@ -13,13 +13,22 @@ class Example extends React.Component {
       { value: 'avocado', label: 'Avocado' },
       { value: 'orange', label: 'Orange' },
       { value: 'lemon', label: 'Lemon' },
-      { value: 'mandarin', label: 'Mandarin' }
+      { value: 'mandarin', label: 'Mandarin' },
+      { value: 'lime', label: 'Lime' },
+      { value: 'peach', label: 'Peach' },
+      { value: 'apricot', label: 'Apricot' },
+      { value: 'pineapple', label: 'Pineapple' },
+      { value: 'banana', label: 'Banana' }
     ];
     return (
       <Dropdown
+        className='custom'
         value={value}
         onChange={onChange}
-        placeholder='Select some fruit'
+        searchable
+        clearable
+        backspaceRemoves
+        placeholder='Select some fruit (try to type "Banana")'
         options={options}
       />
     );
