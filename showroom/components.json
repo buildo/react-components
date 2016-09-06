@@ -56,9 +56,6 @@
         "examples": [
           {
             "url": "react-components/__TAG__/src/DropdownMenu/examples/default.js"
-          },
-          {
-            "url": "react-components/__TAG__/src/DropdownMenu/examples/deep.js"
           }
         ]
       },

@@ -1,0 +1,36 @@
+@import '../../utils/theme/variables.scss';
+
+.user-menu {
+  height: 50px;
+  min-width: 210px;
+  padding: 6px 10px;
+
+  .icon {
+    font-size: 7px;
+  }
+
+  .user-name {
+    font-size: 16px;
+    font-weight: $brc-semibold;
+    color: $brc-darkGrey;
+  }
+
+  .user-role {
+    font-size: 14px;
+    color: $brc-coolGrey;
+    font-weight: $brc-semibold;
+  }
+
+  .user-avatar {
+    margin-right: 10px;
+  }
+
+  & ~ div .menu {
+    top: 64px;
+    right: 0;
+
+    .menu-item-metadata {
+      width: 0;
+    }
+  }
+}
