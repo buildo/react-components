@@ -48,3 +48,5 @@ require('../src/DropdownMenu/examples/userMenu.scss');
 require('../src/DropdownMenu/examples/avatar.png');
 
 require('../src/dropdown/examples/dropdown.scss');
+
+require('../src/meter/examples/meter.scss');
