@@ -27,8 +27,12 @@ require('../src/kitchen-sink/style.scss');
 
 
 // examples sass and resources
-require('../src/more-or-less/examples/default.scss');
 require('../src/modal/examples/transition.scss');
+
+require('../src/more-or-less/examples/default.scss');
+require('../src/more-or-less/examples/image.png');
+require('../src/more-or-less/examples/image2.png');
+require('../src/more-or-less/examples/image3.png');
 
 require('../src/Panel/examples/default.scss');
 require('../src/Panel/examples/image1.png');
