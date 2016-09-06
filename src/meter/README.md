@@ -1,6 +1,6 @@
 # Meter
 
-Renders a Meter
+A Meter is a simple UI component used to display a measurement (usually a percentage) on a known scale.
 
 ## Props
 |Name|Type|Default|Description|
