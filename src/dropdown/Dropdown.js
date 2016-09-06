@@ -102,9 +102,18 @@ export default class Dropdown extends React.Component {
     return onChange(value);
   }
 
+  onInputKeyDown = (e) => {
+    if (e.keyCode === 38 || e.keyCode === 40) {
+      if (isEmptyArray(this.props.options)) {
+        e.preventDefault();
+      }
+    }
+  }
+
   getLocals() {
     const {
       _onChange,
+      onInputKeyDown,
       props: { className, options, backspaceRemoves, clearable, ...props }
     } = this;
 
@@ -116,6 +125,7 @@ export default class Dropdown extends React.Component {
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
+      onInputKeyDown,
       onChange: _onChange
     };
   }
