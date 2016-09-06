@@ -1,6 +1,6 @@
 # Dropdown
 
-A dropdown field
+A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
 
 ## Props
 |Name|Type|Default|Description|
