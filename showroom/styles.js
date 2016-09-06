@@ -43,5 +43,5 @@ require('../src/background-dimmer/examples/backgroundDimmer.scss');
 require('../src/background-dimmer/examples/cover.png');
 require('../src/background-dimmer/examples/rating.png');
 
-require('../src/nav-bar/examples/navbar.scss');
+require('../src/nav-bar/examples/navBar.scss');
 
