@@ -31,7 +31,7 @@ class Example extends React.Component {
   };
 
   state = {
-    openedSections: []
+    openedSections: ['General Info']
   };
 
   isSectionOpen = (section) => this.state.openedSections.indexOf(section) >= 0;
@@ -47,6 +47,7 @@ class Example extends React.Component {
       {Object.keys(this.sections).map(section => (
 
         <CollapsableSection
+          className='userinfo-collapsable-section'
           isOpen={this.isSectionOpen(section)}
           onChange={this.onChange(section)}
           header={section}
