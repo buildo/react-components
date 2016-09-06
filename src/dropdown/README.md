@@ -16,6 +16,7 @@ A dropdown field
 | **backspaceRemoves** | <code>Boolean</code> |  | *optional*. Whether pressing backspace removes the last item when there is no input value |
 | **multi** | <code>Boolean</code> | <code>false</code> | *optional*. True if it should be possible to select multiple values |
 | **flat** | <code>Boolean</code> | <code>false</code> | *optional*. Whether it should have a flat style |
+| **autoBlur** | <code>Boolean</code> | <code>true</code> | *optional*. Whether it should blur automatically when the user selects a value |
 | **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
