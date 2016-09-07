@@ -299,10 +299,7 @@
         "readmeUrl": "react-components/__TAG__/src/toaster/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/toaster/examples/Inline.js"
-          },
-          {
-            "url": "react-components/__TAG__/src/toaster/examples/Attached.js"
+            "url": "react-components/__TAG__/src/toaster/examples/default.js"
           }
         ]
       },
