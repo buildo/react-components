@@ -1,33 +1,46 @@
 import React from 'react';
-import expect from 'expect';
-import StatefulButton from '../../../src/button/StatefulButton';
+import render from '../render';
+
+import StatefulButton from '../../src/button/StatefulButton';
 import clone from 'lodash/clone';
+
+function timeoutPromise(millis) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, millis);
+  });
+}
+
+const exampleProps = {
+  label: 'BeautifulButton',
+  onClick: timeoutPromise.bind(this, 5),
+  baseState: 'ready',
+  stableSuccess: false,
+  timerMillis: 5
+};
+
+function mkComponent(overrides) {
+  const component = new StatefulButton({
+    ...exampleProps,
+    label: overrides.children ? undefined : 'BeautifulButton',
+    ...overrides
+  });
+  component.setState = (state, cb) => {
+    component.state = state;
+    cb && cb();
+  };
+  return component;
+}
 
 describe('StatefulButton', () => {
 
-  function timeoutPromise(millis) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, millis);
-    });
-  }
+  it('renders correctly', () => {
+    const tree = render(
+      <StatefulButton {...exampleProps} />
+    );
+    expect(tree).toMatchSnapshot();
+  });
 
-  function mkComponent(overrides) {
-    const component = new StatefulButton({
-      label: overrides.children ? undefined : 'BeautifulButton',
-      onClick: timeoutPromise.bind(this, 5),
-      baseState: 'ready',
-      stableSuccess: false,
-      timerMillis: 5,
-      ...overrides
-    });
-    component.setState = (state, cb) => {
-      component.state = state;
-      cb && cb();
-    };
-    return component;
-  }
-
-  it('should behave correctly in base state', () => {
+  it('behaves correctly in base state', () => {
     const component = mkComponent({
       stableSuccess: false
     });
@@ -36,19 +49,19 @@ describe('StatefulButton', () => {
     expect(locals.label).toBe('BeautifulButton');
   });
 
-  it('should pass through state if provided as prop', () => {
+  it('passes through state if provided as prop', () => {
     const component = mkComponent({
       children: <button />,
       buttonState: 'error'
     });
     const locals = component.getLocals();
     expect(locals.buttonState).toBe('error');
-    expect(locals.children).toExist();
+    expect(locals.children).toBeDefined();
     expect(locals.label).toBe(undefined);
   });
 
   describe('with unstable success state', () => {
-    it('should switch to processing, success, ready on click', () => {
+    it('switches to processing, success, ready on click', () => {
       const component = mkComponent({
         stableSuccess: false
       });
@@ -65,7 +78,7 @@ describe('StatefulButton', () => {
   });
 
   describe('with stable success state', () => {
-    it('on click, should switch to processing, success and stop there', () => {
+    it('switches to processing, success and stop there, on click', () => {
       const component = mkComponent({
         stableSuccess: true
       });
@@ -80,7 +93,7 @@ describe('StatefulButton', () => {
       });
     });
 
-    it('on click, should switch to processing, success and back to baseState when baseState is changed after click', () => {
+    it('switches to processing, success and back to baseState when baseState is changed after click', () => {
       const component = mkComponent({
         stableSuccess: true
       });

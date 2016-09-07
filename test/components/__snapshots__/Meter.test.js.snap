@@ -1,0 +1,10 @@
+exports[`Meter renders correctly 1`] = `
+"<FlexView id=\"12345\" className=\"meter fancy-class-name\" style={{...}} grow={true}>
+<FlexView className=\"bar\" grow={true} style={{...}}>
+<FlexView className=\"filling\" basis=\"50%\" style={{...}} />
+</FlexView>
+<FlexView className=\"label\" shrink={false} style={{...}}>
+test
+</FlexView>
+</FlexView>"
+`;
