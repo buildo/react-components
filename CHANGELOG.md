@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.8.0...HEAD)
+
+#### Fixes (bugs & defects):
+
+- file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
+
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...v0.8.0)
 
