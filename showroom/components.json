@@ -195,19 +195,6 @@
         ]
       },
       {
-        "id": "modal-manager",
-        "title": "ModalManager",
-        "desc": "ModalManager",
-        "repo": "react-components",
-        "url": "https://github.com/buildo/react-components/tree/master/src/modal-manager",
-        "readmeUrl": "react-components/__TAG__/src/modal-manager/README.md",
-        "examples": [
-          {
-            "url": "react-components/__TAG__/src/modal-manager/examples/ModalManager.js"
-          }
-        ]
-      },
-      {
         "id": "mobile-detector",
         "title": "MobileDetector",
         "desc": "MobileDetector",
