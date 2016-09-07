@@ -132,7 +132,24 @@
             "url": "react-components/__TAG__/src/Tooltip/examples/default.js"
           },
           {
-            "url": "react-components/__TAG__/src/Tooltip/examples/long-word.js"
+            "title": "Tooltip sizes",
+            "description": "Tooltip comes in two different sizes:",
+            "url": "react-components/__TAG__/src/Tooltip/examples/sizes.js"
+          },
+          {
+            "title": "Tooltip content",
+            "description": "You could render anything you want inside the tooltip",
+            "url": "react-components/__TAG__/src/Tooltip/examples/content.js"
+          },
+          {
+            "title": "Tooltip positions",
+            "description": "You can also set the position ('top', 'bottom', 'left', 'right') and the anchor point ('start', 'center', 'end') of the tooltip:",
+            "url": "react-components/__TAG__/src/Tooltip/examples/positions.js"
+          },
+          {
+            "title": "Tooltip events",
+            "description": "By default, the tooltip is triggered when the mouse moves over the wrapped component. Using the `isOpen` prop you can also decide to manually control when the tooltip should appear:",
+            "url": "react-components/__TAG__/src/Tooltip/examples/events.js"
           }
         ]
       },
