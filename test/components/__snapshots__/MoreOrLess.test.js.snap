@@ -1,0 +1,17 @@
+exports[`MoreOrLess renders correctly when expanded 1`] = `
+"<FlexView column={true} shrink={false} style={[undefined]} className=\"more-or-less more fancy-class-name\">
+content
+<FlexView hAlignContent=\"center\" vAlignContent=\"center\" className=\"expand-button\" onClick={[Function]} shrink={false}>
+<Icon icon=\"angle-up\" className=\"expand-button-icon\" paths={1} onClick={[Function]} />
+</FlexView>
+</FlexView>"
+`;
+
+exports[`MoreOrLess renders correctly when not expanded 1`] = `
+"<FlexView column={true} shrink={false} style={[undefined]} className=\"more-or-less less fancy-class-name\">
+content
+<FlexView hAlignContent=\"center\" vAlignContent=\"center\" className=\"expand-button\" onClick={[Function]} shrink={false}>
+<Icon icon=\"angle-down\" className=\"expand-button-icon\" paths={1} onClick={[Function]} />
+</FlexView>
+</FlexView>"
+`;

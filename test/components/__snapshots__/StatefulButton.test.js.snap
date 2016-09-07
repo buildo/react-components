@@ -1,0 +1,1 @@
+exports[`StatefulButton renders correctly 1`] = `"<Button onClick={[Function]} label=\"BeautifulButton\" buttonState=\"ready\" textOverflow={[Function]} size=\"medium\" fluid={false} primary={false} circular={false} icon=\"\" className=\"\" style={{...}} />"`;
