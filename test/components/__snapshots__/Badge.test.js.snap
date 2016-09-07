@@ -1,0 +1,7 @@
+exports[`Badge renders correctly 1`] = `
+"<FlexView vAlignContent=\"center\" hAlignContent=\"center\" className=\"badge\" style={[undefined]}>
+<span className=\"badge-label\">
+42
+</span>
+</FlexView>"
+`;
