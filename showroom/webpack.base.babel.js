@@ -27,7 +27,7 @@ module.exports = {
           /react-input-children/,
           /react-autosize-textarea/,
           /react-cookie-banner/,
-          /revenge-react-components/
+          /react-flexview/
         ]
       },
       {
