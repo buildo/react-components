@@ -1,0 +1,13 @@
+{
+  "name": "gh-deps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "rc-datepicker": "buildo/rc-datepicker",
+    "react-autosize-textarea": "buildo/react-autosize-textarea",
+    "react-cookie-banner": "buildo/react-cookie-banner",
+    "react-flexview": "buildo/react-flexview",
+    "react-input-children": "buildo/react-input-children"
+  }
+}
