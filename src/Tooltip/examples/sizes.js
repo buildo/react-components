@@ -4,7 +4,8 @@ class Example extends React.Component {
     const popover = {
       position: 'bottom',
       anchor: 'center',
-      content: 'Tooltip content'
+      content: 'Tooltip content',
+      isOpen: true
     };
 
     return (
