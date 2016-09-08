@@ -1,4 +1,4 @@
-[![Build Status](https://drone.our.buildo.io/api/badges/buildo/react-components/status.svg)](https://drone.our.buildo.io/buildo/react-components) [![npm](https://img.shields.io/npm/v/buildo-react-components.svg?maxAge=2592000)](https://www.npmjs.com/package/buildo-react-components)
+[![Build Status](https://drone.our.buildo.io/api/badges/buildo/react-components/status.svg)](https://drone.our.buildo.io/buildo/react-components) [![npm](https://img.shields.io/npm/v/buildo-react-components.svg?maxAge=2592000)](https://www.npmjs.com/package/buildo-react-components) [![dependencies Status](https://david-dm.org/buildo/react-components/status.svg)](https://david-dm.org/buildo/react-components)
 
 # React Components
 This is a collection of reusable React components used at [buildo](http://buildo.io/).
