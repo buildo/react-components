@@ -137,11 +137,6 @@
             "url": "react-components/__TAG__/src/Tooltip/examples/sizes.js"
           },
           {
-            "title": "Tooltip content",
-            "description": "You could render anything you want inside the tooltip",
-            "url": "react-components/__TAG__/src/Tooltip/examples/content.js"
-          },
-          {
             "title": "Tooltip positions",
             "description": "You can also set the position ('top', 'bottom', 'left', 'right') and the anchor point ('start', 'center', 'end') of the tooltip:",
             "url": "react-components/__TAG__/src/Tooltip/examples/positions.js"
