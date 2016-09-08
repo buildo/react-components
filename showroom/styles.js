@@ -11,7 +11,7 @@ require('../src/DropdownMenu/menu.scss');
 require('../src/Panel/tabbedPanel.scss');
 require('../src/collapsable-section/collapsableSection.scss');
 require('../src/more-or-less/moreOrLess.scss');
-require('../src/loading-spinner/style.scss');
+require('../src/loading-spinner/loadingSpinner.scss');
 require('../src/dropdown/dropdown.scss');
 require('../src/confirmation-input/confirmationInput.scss');
 require('../src/badge/badge.scss');
