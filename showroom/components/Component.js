@@ -93,9 +93,10 @@ export default class Component extends React.Component {
     const {
       params: { componentId, sectionId },
       openSections, onToggleSection,
-      onSelectItem, scope,
+      onSelectItem, scope: _scope,
       sections: propSections } = this.props;
     const sections = mappedSections || propSections;
+    const scope = componentId !== 'react-flexview' ? _scope : { ..._scope, FlexView: require('gh-deps/node_modules/react-flexview/src').default };
     const props = { sections, openSections, sectionId, componentId, onToggleSection, onSelectItem, scope, header, footer, loading };
 
     return <KitchenSink {...props} />;
