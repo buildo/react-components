@@ -9,7 +9,7 @@
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel src -d lib",
     "lint": "eslint src && eslint test",
     "lint-fix": "eslint src --fix",
-    "postinstall": "npm i ./ghDeps",
+    "postinstall": "if [[ $(git config --get remote.origin.url) == *buildo/react-components.git* ]]; then npm i ./ghDeps; fi",
     "preversion": "npm run test",
     "prepublish": "npm run build",
     "build-examples": "rm -rf examples/build && webpack --config examples/webpack.config.build.js --progress",
