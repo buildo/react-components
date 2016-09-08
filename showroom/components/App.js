@@ -55,18 +55,8 @@ export default class App extends React.Component {
   }
 
   loadJSON = () => {
-    if (process.env.NODE_ENV === 'development') {
-      const sections = useLocalReadmes(useLocalComponents(JSON.parse(json)));
-      this.setState({ sections });
-    } else if (process.env.NODE_ENV === 'test-showroom') {
-      const sections = JSON.parse(json);
-      this.getLastCommitHash({ data: sections })
-        .then(sections => this.setState({ sections }));
-    } else {
-      this.rawgit.get('react-components/master/showroom/components.json')
-        .then(this.getLastCommitHash)
-        .then((sections) => this.setState({ sections }));
-    }
+    const sections = useLocalReadmes(useLocalComponents(JSON.parse(json)));
+    this.setState({ sections });
   }
 
   getLastCommitHash = (res) => {
