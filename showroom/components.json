@@ -245,16 +245,17 @@
         "readmeUrl": "react-components/__TAG__/src/text-overflow/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/text-overflow/examples/Default.js"
+            "description": "By default, `TextOverflow` will wrap the truncaded text in a `Popover`, but you can change the rendering method on overflow as you like. In the example below we're wrapping the trimmed text in a Tooltip:",
+            "url": "react-components/__TAG__/src/text-overflow/examples/default.js"
           },
           {
-            "url": "react-components/__TAG__/src/text-overflow/examples/CustomPopover.js"
+            "title": "Overflow on resize",
+            "description": "`TextOverflow` use `ResizeSensor` to detect resize events. In the following example you can try to resize your window till the overflowing text will change color:",
+            "url": "react-components/__TAG__/src/text-overflow/examples/resize.js"
           },
           {
-            "url": "react-components/__TAG__/src/text-overflow/examples/WithFlexView.js"
-          },
-          {
-            "url": "react-components/__TAG__/src/text-overflow/examples/Resizable.js"
+            "description": "TextOverflow can be used in any place. Below we're using it in a `Dropdown` label:",
+            "url": "react-components/__TAG__/src/text-overflow/examples/dropdown.js"
           }
         ]
       },
