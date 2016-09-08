@@ -88,16 +88,38 @@ export default class Component extends React.Component {
       });
   }
 
+  getPatchedScope = (scope, componentId) => ({
+    ...scope,
+    FlexView: componentId === 'react-flexview' ? require('gh-deps/node_modules/react-flexview/src').default : scope.FlexView,
+    InputChildren: componentId === 'react-input-children' ? require('gh-deps/node_modules/react-input-children/src').default : scope.InputChildren,
+    DatePicker: componentId === 'rc-datepicker' ? require('rc-datepicker/src').DatePicker : scope.DatePicker,
+    DatePickerInput: componentId === 'rc-datepicker' ? require('rc-datepicker/src').DatePickerInput : scope.DatePickerInput,
+    TextareaAutosize: componentId === 'react-autosize-textarea' ? require('react-autosize-textarea/src').default : scope.TextareaAutosize,
+    CookieBanner: componentId === 'react-cookie-banner' ? require('react-cookie-banner/src').default : scope.CookieBanner,
+    cookie: componentId === 'react-cookie-banner' ? require('react-cookie-banner/src').cookie : scope.cookie
+  })
+
   render() {
-    const { sections: mappedSections, header, footer, loading } = this.state;
     const {
-      params: { componentId, sectionId },
-      openSections, onToggleSection,
-      onSelectItem, scope: _scope,
-      sections: propSections } = this.props;
-    const sections = mappedSections || propSections;
-    const scope = componentId !== 'react-flexview' ? _scope : { ..._scope, FlexView: require('gh-deps/node_modules/react-flexview/src').default };
-    const props = { sections, openSections, sectionId, componentId, onToggleSection, onSelectItem, scope, header, footer, loading };
+      getPatchedScope,
+      state: {
+        header, footer, loading,
+        sections: mappedSections
+      },
+      props: {
+        openSections, onToggleSection,
+        onSelectItem, scope,
+        sections: propSections,
+        params: { componentId, sectionId }
+      }
+    } = this;
+
+    const props = {
+      openSections, sectionId, componentId,
+      onToggleSection, onSelectItem, header, footer, loading,
+      sections: mappedSections || propSections,
+      scope: getPatchedScope(scope, componentId)
+    };
 
     return <KitchenSink {...props} />;
   }
