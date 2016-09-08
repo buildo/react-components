@@ -14,7 +14,7 @@ import ReactSidebar from 'react-sidebar';
 import * as brc from '../../src';
 import FlexView from 'react-flexview';
 import { DatePicker, DatePickerInput } from 'rc-datepicker/src';
-import InputChildren from 'react-input-children/src';
+import InputChildren from 'gh-deps/node_modules/react-input-children/src';
 import TextareaAutosize from 'react-autosize-textarea/src';
 import { cookie, default as CookieBanner } from 'react-cookie-banner/src';
 import json from 'raw!../components.json';
