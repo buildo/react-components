@@ -21,7 +21,7 @@ import json from 'raw!../components.json';
 import useLocalComponents from './useLocalComponents';
 import useLocalReadmes from './useLocalReadmes';
 
-require('./app.scss');
+import './app.scss';
 
 const scope = {
   React, ReactDOM,
