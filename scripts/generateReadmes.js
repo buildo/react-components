@@ -8,7 +8,7 @@ import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
 
 debug.enable('brc:*');
-const log = debug('brc:generate-readmes');
+const log = () => {};// debug('brc:generate-readmes');
 
 const checkDocs = (json, fileName) => {
   log('Checking extracted docs have necessary keys...');

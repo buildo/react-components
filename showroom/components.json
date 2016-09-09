@@ -21,15 +21,15 @@
         "desc": "Divider",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Divider",
-        "readmeUrl": "react-components/__TAG__/src/Divider/README.md",
+        "readmeUrl": "Divider/README.md",
         "examples": [
           {
             "title": "Vertical divider",
-            "url": "react-components/__TAG__/src/Divider/examples/default.js"
+            "url": "Divider/examples/default.js"
           },
           {
             "title": "Horizontal divider",
-            "url": "react-components/__TAG__/src/Divider/examples/horizontal.js"
+            "url": "Divider/examples/horizontal.js"
           }
         ]
       },
@@ -39,25 +39,25 @@
         "desc": "Dropdown",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/dropdown",
-        "readmeUrl": "react-components/__TAG__/src/dropdown/README.md",
+        "readmeUrl": "dropdown/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/dropdown/examples/default.js"
+            "url": "dropdown/examples/default.js"
           },
           {
             "title": "Dropdowns sizes",
             "description": "Dropdown comes in two different sizes: medium and small",
-            "url": "react-components/__TAG__/src/dropdown/examples/sizes.js"
+            "url": "dropdown/examples/sizes.js"
           },
           {
             "title": "Dropdowns options",
             "description": "* When the `searchable` prop is used, it's possible to search the desired value by writing into the dropdown.\n* Use `Clearable` if it should be possible to reset the selected value clicking on the `delete` icon that will appear once a value is selected.",
-            "url": "react-components/__TAG__/src/dropdown/examples/options.js"
+            "url": "dropdown/examples/options.js"
           },
           {
             "title": "Multiselect",
             "description": "Dropdown could also allow the selection of multiple values",
-            "url": "react-components/__TAG__/src/dropdown/examples/multi.js"
+            "url": "dropdown/examples/multi.js"
           }
         ]
       },
@@ -67,10 +67,10 @@
         "desc": "DropdownMenu",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/DropdownMenu",
-        "readmeUrl": "react-components/__TAG__/src/DropdownMenu/README.md",
+        "readmeUrl": "DropdownMenu/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/DropdownMenu/examples/default.js"
+            "url": "DropdownMenu/examples/default.js"
           }
         ]
       },
@@ -80,10 +80,10 @@
         "desc": "Icon",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Icon",
-        "readmeUrl": "react-components/__TAG__/src/Icon/README.md",
+        "readmeUrl": "Icon/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/Icon/examples/default.js"
+            "url": "Icon/examples/default.js"
           }
         ]
       },
@@ -93,30 +93,30 @@
         "desc": "Panel",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Panel",
-        "readmeUrl": "react-components/__TAG__/src/Panel/README.md",
+        "readmeUrl": "Panel/README.md",
         "examples": [
           {
             "description": "In its simplest form, Panel is just a floating box surrounding any content you want to group togheter.",
-            "url": "react-components/__TAG__/src/Panel/examples/default.js"
+            "url": "Panel/examples/default.js"
           },
           {
             "title": "Panel with header",
             "description": "A Panel could also have a header, showing a title or whatever you want to render in it",
-            "url": "react-components/__TAG__/src/Panel/examples/header.js"
+            "url": "Panel/examples/header.js"
           },
           {
             "title": "Docked panel",
             "description": "A docked panel can be collapsed so that only the header is visible. It could be collapsed vertically:",
-            "url": "react-components/__TAG__/src/Panel/examples/docked.js"
+            "url": "Panel/examples/docked.js"
           },
           {
             "description": "or horizontally:",
-            "url": "react-components/__TAG__/src/Panel/examples/dockedLeft.js"
+            "url": "Panel/examples/dockedLeft.js"
           },
           {
             "title": "Tabbed panel",
             "description": "A tabbed panel will show content based on the currently selected tab.",
-            "url": "react-components/__TAG__/src/Panel/examples/tabbed.js"
+            "url": "Panel/examples/tabbed.js"
           }
         ]
       },
@@ -126,25 +126,22 @@
         "desc": "Tooltip",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/Tooltip",
-        "readmeUrl": "react-components/__TAG__/src/Tooltip/README.md",
+        "readmeUrl": "Tooltip/README.md",
         "examples": [
-          {
-            "url": "react-components/__TAG__/src/Tooltip/examples/default.js"
-          },
           {
             "title": "Tooltip sizes",
             "description": "Tooltip comes in two different sizes:",
-            "url": "react-components/__TAG__/src/Tooltip/examples/sizes.js"
+            "url": "Tooltip/examples/sizes.js"
           },
           {
             "title": "Tooltip positions",
             "description": "You can also set the position ('top', 'bottom', 'left', 'right') and the anchor point ('start', 'center', 'end') of the tooltip:",
-            "url": "react-components/__TAG__/src/Tooltip/examples/positions.js"
+            "url": "Tooltip/examples/positions.js"
           },
           {
             "title": "Tooltip events",
             "description": "By default, the tooltip is triggered when the mouse moves over the wrapped component. Using the `isOpen` prop you can also decide to manually control when the tooltip should appear:",
-            "url": "react-components/__TAG__/src/Tooltip/examples/events.js"
+            "url": "Tooltip/examples/events.js"
           }
         ]
       },
@@ -154,10 +151,10 @@
         "desc": "background dimmer",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/background-dimmer",
-        "readmeUrl": "react-components/__TAG__/src/background-dimmer/README.md",
+        "readmeUrl": "background-dimmer/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/background-dimmer/examples/BackgroundDimmer.js"
+            "url": "background-dimmer/examples/BackgroundDimmer.js"
           }
         ]
       },
@@ -167,16 +164,16 @@
         "desc": "A React component to abstract over flexbox",
         "repo": "react-flexview",
         "url": "https://github.com/buildo/react-flexview",
-        "readmeUrl": "react-flexview/__TAG__/README.md",
+        "readmeUrl": "README.md",
         "examples": [
           {
-            "url": "react-flexview/__TAG__/examples/Column.example"
+            "url": "dev/examples/Column.example"
           },
           {
-            "url": "react-flexview/__TAG__/examples/Row.example"
+            "url": "dev/examples/Row.example"
           },
           {
-            "url": "react-flexview/__TAG__/examples/ComputeFlex.example"
+            "url": "dev/examples/ComputeFlex.example"
           }
         ]
       },
@@ -186,10 +183,10 @@
         "desc": "LoadingSpinner",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/loading-spinner",
-        "readmeUrl": "react-components/__TAG__/src/loading-spinner/README.md",
+        "readmeUrl": "loading-spinner/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/loading-spinner/examples/LoadingSpinner.js"
+            "url": "loading-spinner/examples/LoadingSpinner.js"
           }
         ]
       },
@@ -199,10 +196,10 @@
         "desc": "Modal",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/modal",
-        "readmeUrl": "react-components/__TAG__/src/modal/README.md",
+        "readmeUrl": "modal/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/modal/examples/default.js"
+            "url": "modal/examples/default.js"
           }
         ]
       },
@@ -212,10 +209,10 @@
         "desc": "MobileDetector",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/mobile-detector",
-        "readmeUrl": "react-components/__TAG__/src/mobile-detector/README.md",
+        "readmeUrl": "mobile-detector/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/mobile-detector/examples/MobileDetector.js"
+            "url": "mobile-detector/examples/MobileDetector.js"
           }
         ]
       },
@@ -225,10 +222,10 @@
         "desc": "ScrollView",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
-        "readmeUrl": "react-components/__TAG__/src/ScrollView/README.md",
+        "readmeUrl": "ScrollView/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/ScrollView/examples/default.js"
+            "url": "ScrollView/examples/default.js"
           }
         ]
       },
@@ -238,20 +235,20 @@
         "desc": "TextOverflow",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/text-overflow",
-        "readmeUrl": "react-components/__TAG__/src/text-overflow/README.md",
+        "readmeUrl": "text-overflow/README.md",
         "examples": [
           {
             "description": "By default, `TextOverflow` will wrap the truncaded text in a `Popover`, but you can change the rendering method on overflow as you like. In the example below we're wrapping the trimmed text in a Tooltip:",
-            "url": "react-components/__TAG__/src/text-overflow/examples/default.js"
+            "url": "text-overflow/examples/default.js"
           },
           {
             "title": "Overflow on resize",
             "description": "`TextOverflow` use `ResizeSensor` to detect resize events. In the following example you can try to resize your window till the overflowing text will change color:",
-            "url": "react-components/__TAG__/src/text-overflow/examples/resize.js"
+            "url": "text-overflow/examples/resize.js"
           },
           {
             "description": "TextOverflow can be used in any place. Below we're using it in a `Dropdown` label:",
-            "url": "react-components/__TAG__/src/text-overflow/examples/dropdown.js"
+            "url": "text-overflow/examples/dropdown.js"
           }
         ]
       },
@@ -261,16 +258,16 @@
         "desc": "Popover",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/popover",
-        "readmeUrl": "react-components/__TAG__/src/popover/README.md",
+        "readmeUrl": "popover/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/popover/examples/Relative.js"
+            "url": "popover/examples/Relative.js"
           },
           {
-            "url": "react-components/__TAG__/src/popover/examples/Absolute.js"
+            "url": "popover/examples/Absolute.js"
           },
           {
-            "url": "react-components/__TAG__/src/popover/examples/InitiallyOpen.js"
+            "url": "popover/examples/InitiallyOpen.js"
           }
         ]
       },
@@ -280,10 +277,10 @@
         "desc": "Toaster",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/toaster",
-        "readmeUrl": "react-components/__TAG__/src/toaster/README.md",
+        "readmeUrl": "toaster/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/toaster/examples/default.js"
+            "url": "toaster/examples/default.js"
           }
         ]
       },
@@ -293,14 +290,14 @@
         "desc": "Badge",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/badge",
-        "readmeUrl": "react-components/__TAG__/src/badge/README.md",
+        "readmeUrl": "badge/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/badge/examples/default.js"
+            "url": "badge/examples/default.js"
           },
           {
             "description": "In the example below you can see a possible use of this UI component as a counter rendered over icons",
-            "url": "react-components/__TAG__/src/badge/examples/icon.js"
+            "url": "badge/examples/icon.js"
           }
         ]
       },
@@ -310,10 +307,10 @@
         "desc": "MoreOrLess",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/more-or-less",
-        "readmeUrl": "react-components/__TAG__/src/more-or-less/README.md",
+        "readmeUrl": "more-or-less/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/more-or-less/examples/default.js"
+            "url": "more-or-less/examples/default.js"
           }
         ]
       },
@@ -323,10 +320,10 @@
         "desc": "ConfirmationInput",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/confirmation-input",
-        "readmeUrl": "react-components/__TAG__/src/confirmation-input/README.md",
+        "readmeUrl": "confirmation-input/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/confirmation-input/examples/default.js"
+            "url": "confirmation-input/examples/default.js"
           }
         ]
       },
@@ -336,10 +333,10 @@
         "desc": "NavBar",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/nav-bar",
-        "readmeUrl": "react-components/__TAG__/src/nav-bar/README.md",
+        "readmeUrl": "nav-bar/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/nav-bar/examples/default.js"
+            "url": "nav-bar/examples/default.js"
           }
         ]
       },
@@ -349,10 +346,10 @@
         "desc": "Toggle",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/toggle",
-        "readmeUrl": "react-components/__TAG__/src/toggle/README.md",
+        "readmeUrl": "toggle/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/toggle/examples/default.js"
+            "url": "toggle/examples/default.js"
           }
         ]
       },
@@ -362,28 +359,28 @@
         "desc": "Button",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/button",
-        "readmeUrl": "react-components/__TAG__/src/button/README.md",
+        "readmeUrl": "button/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/button/examples/default.js"
+            "url": "button/examples/default.js"
           },
           {
-            "url": "react-components/__TAG__/src/button/examples/types.js",
+            "url": "button/examples/types.js",
             "title": "Type of buttons",
             "description": "A button can be formatted to show different levels of emphasis. We have 6 types of buttons:"
           },
           {
-            "url": "react-components/__TAG__/src/button/examples/sizes.js",
+            "url": "button/examples/sizes.js",
             "title": "Buttons sizes",
             "description": "There are 3 possible button sizes:"
           },
           {
-            "url": "react-components/__TAG__/src/button/examples/fluid.js",
+            "url": "button/examples/fluid.js",
             "title": "Fluid button",
             "description": "Block buttons typically occupy all the horizontal space available in its container. There should be only 1 button on the same line, if more than one block button is present they are stacked vertically."
           },
           {
-            "url": "react-components/__TAG__/src/button/examples/async.js",
+            "url": "button/examples/async.js",
             "title": "Async buttons",
             "description": "This variant can be applied to default, primary, positive and flat buttons."
           }
@@ -395,10 +392,10 @@
         "desc": "Table",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/table",
-        "readmeUrl": "react-components/__TAG__/src/table/README.md",
+        "readmeUrl": "table/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/table/examples/default.js"
+            "url": "table/examples/default.js"
           }
         ]
       },
@@ -408,20 +405,20 @@
         "desc": "Meter",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/meter",
-        "readmeUrl": "react-components/__TAG__/src/meter/README.md",
+        "readmeUrl": "meter/README.md",
         "examples": [
           {
             "description": "You can customize the style (colors) of Meter based on the range in which the current value falls",
-            "url": "react-components/__TAG__/src/meter/examples/default.js"
+            "url": "meter/examples/default.js"
           },
           {
             "description": "Ranges could also have holes between them. If the current value doesn't fall in any of the given ranges, it will use a base style you can configure as you like:",
-            "url": "react-components/__TAG__/src/meter/examples/holes.js"
+            "url": "meter/examples/holes.js"
           },
           {
             "title": "Custom labels",
             "description": "By default, Meter display an auto-calculated percentage next to the bar. You can customize your own label formatter in order to show whathever you like:",
-            "url": "react-components/__TAG__/src/meter/examples/customLabels.js"
+            "url": "meter/examples/customLabels.js"
           }
         ]
       },
@@ -431,10 +428,10 @@
         "desc": "CollapsableSection",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/collapsable-section",
-        "readmeUrl": "react-components/__TAG__/src/collapsable-section/README.md",
+        "readmeUrl": "collapsable-section/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/collapsable-section/examples/default.js"
+            "url": "collapsable-section/examples/default.js"
           }
         ]
       },
@@ -446,10 +443,10 @@
         "url": "https://github.com/buildo/react-components/tree/master/src/link-state",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/link-state/examples/default.js"
+            "url": "link-state/examples/default.js"
           },
           {
-            "url": "react-components/__TAG__/src/link-state/examples/deep.js"
+            "url": "link-state/examples/deep.js"
           }
         ]
       },
@@ -459,10 +456,10 @@
         "desc": "BrowserDetector",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/browser-detector",
-        "readmeUrl": "react-components/__TAG__/src/browser-detector/README.md",
+        "readmeUrl": "browser-detector/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/browser-detector/examples/default.js"
+            "url": "browser-detector/examples/default.js"
           }
         ]
       },
@@ -472,13 +469,13 @@
         "desc": "TimePicker",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/time-picker",
-        "readmeUrl": "react-components/__TAG__/src/time-picker/README.md",
+        "readmeUrl": "time-picker/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/time-picker/examples/TimePicker24.js"
+            "url": "time-picker/examples/TimePicker24.js"
           },
           {
-            "url": "react-components/__TAG__/src/time-picker/examples/TimePicker12.js"
+            "url": "time-picker/examples/TimePicker12.js"
           }
         ]
       },
@@ -488,10 +485,10 @@
         "desc": "FocusableView",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/focusable-view",
-        "readmeUrl": "react-components/__TAG__/src/focusable-view/README.md",
+        "readmeUrl": "focusable-view/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/focusable-view/examples/default.js"
+            "url": "focusable-view/examples/default.js"
           }
         ]
       },
@@ -501,10 +498,10 @@
         "desc": "ResizeSensor",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/resize-sensor",
-        "readmeUrl": "react-components/__TAG__/src/resize-sensor/README.md",
+        "readmeUrl": "resize-sensor/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/resize-sensor/examples/default.js"
+            "url": "resize-sensor/examples/default.js"
           }
         ]
       },
@@ -514,13 +511,13 @@
         "desc": "A decent and pretty date picker to be used with React",
         "repo": "rc-datepicker",
         "url": "https://github.com/buildo/rc-datepicker",
-        "readmeUrl": "rc-datepicker/__TAG__/README.md",
+        "readmeUrl": "README.md",
         "examples": [
           {
-            "url": "rc-datepicker/__TAG__/examples/DatePickerInput.example"
+            "url": "examples/DatePickerInput.example"
           },
           {
-            "url": "rc-datepicker/__TAG__/examples/DatePicker.example"
+            "url": "examples/DatePicker.example"
           }
         ]
       },
@@ -530,19 +527,19 @@
         "desc": "ReactInputChildren is a replacement for the base input react component capable of rendering a child (link, button...) inside the input itself. It supports the same props of react input.",
         "repo": "react-input-children",
         "url": "https://github.com/buildo/react-input-children",
-        "readmeUrl": "react-input-children/__TAG__/README.md",
+        "readmeUrl": "README.md",
         "examples": [
           {
-            "url": "react-input-children/__TAG__/examples/PlainText.example"
+            "url": "examples/PlainText.example"
           },
           {
-            "url": "react-input-children/__TAG__/examples/Password.example"
+            "url": "examples/Password.example"
           },
           {
-            "url": "react-input-children/__TAG__/examples/Button.example"
+            "url": "examples/Button.example"
           },
           {
-            "url": "react-input-children/__TAG__/examples/Anything.example"
+            "url": "examples/Anything.example"
           }
         ]
       },
@@ -552,16 +549,16 @@
         "desc": "A textarea perfectly compatible with ReactJS default one which auto resizes its height based on user input.",
         "repo": "react-autosize-textarea",
         "url": "https://github.com/buildo/react-autosize-textarea",
-        "readmeUrl": "react-autosize-textarea/__TAG__/README.md",
+        "readmeUrl": "README.md",
         "examples": [
           {
-            "url": "react-autosize-textarea/__TAG__/examples/Empty.example"
+            "url": "examples/Empty.example"
           },
           {
-            "url": "react-autosize-textarea/__TAG__/examples/MinimumHeight.example"
+            "url": "examples/MinimumHeight.example"
           },
           {
-            "url": "react-autosize-textarea/__TAG__/examples/Prefilled.example"
+            "url": "examples/Prefilled.example"
           }
         ]
       },
@@ -571,10 +568,10 @@
         "desc": "React Cookie banner which can be automatically dismissed with a scroll. Because fuck The Cookie Law, that's why.",
         "repo": "react-cookie-banner",
         "url": "https://github.com/buildo/react-cookie-banner",
-        "readmeUrl": "react-cookie-banner/__TAG__/README.md",
+        "readmeUrl": "README.md",
         "examples": [
           {
-            "url": "react-cookie-banner/__TAG__/examples/Default.example"
+            "url": "examples/Default.example"
           }
         ]
       }
