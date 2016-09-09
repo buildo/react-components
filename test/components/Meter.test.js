@@ -1,5 +1,5 @@
 import React from 'react';
-import render from '../render';
+import renderer from 'react-test-renderer';
 
 import Meter from '../../src/meter';
 
@@ -25,10 +25,10 @@ const meter = new Meter(exampleProps);
 describe('Meter', () => {
 
   it('renders correctly', () => {
-    const tree = render(
+    const component = renderer.create(
       <Meter {...exampleProps} />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   describe('getLocals', () => {

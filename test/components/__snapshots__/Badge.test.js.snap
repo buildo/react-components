@@ -1,7 +1,18 @@
 exports[`Badge renders correctly 1`] = `
-"<FlexView vAlignContent=\"center\" hAlignContent=\"center\" className=\"badge\" style={[undefined]}>
-<span className=\"badge-label\">
-42
-</span>
-</FlexView>"
+<div
+  className="react-flex-view align-content-center justify-content-center badge"
+  style={
+    Object {
+      "MozBoxFlex": "0 1 auto",
+      "WebkitBoxFlex": "0 1 auto",
+      "WebkitFlex": "0 1 auto",
+      "flex": "0 1 auto",
+      "msFlex": "0 1 auto"
+    }
+  }>
+  <span
+    className="badge-label">
+    42
+  </span>
+</div>
 `;

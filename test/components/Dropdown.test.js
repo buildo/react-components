@@ -1,7 +1,11 @@
 import React from 'react';
-import render from '../render';
+import renderer from 'react-test-renderer';
 
 import Dropdown from '../../src/dropdown';
+
+// Because of this bug: https://github.com/facebook/react/issues/7386
+// Should be fixed in react 15.4
+jest.mock('react-dom');
 
 const exampleProps = {
   id: '12345',
@@ -21,10 +25,10 @@ const dropdown = new Dropdown(exampleProps);
 describe('Dropdown', () => {
 
   it('renders correctly', () => {
-    const tree = render(
+    const component = renderer.create(
       <Dropdown {...exampleProps} />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   describe('getLocals', () => {

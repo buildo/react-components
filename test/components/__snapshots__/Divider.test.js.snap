@@ -1,3 +1,11 @@
-exports[`Divider renders correctly horizontal 1`] = `"<div className=\"divider horizontal small\" style={{...}} />"`;
+exports[`Divider renders correctly horizontal 1`] = `
+<div
+  className="divider horizontal small"
+  style={Object {}} />
+`;
 
-exports[`Divider renders correctly vertical 1`] = `"<div className=\"divider vertical small\" style={{...}} />"`;
+exports[`Divider renders correctly vertical 1`] = `
+<div
+  className="divider vertical small"
+  style={Object {}} />
+`;

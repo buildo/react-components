@@ -1,15 +1,15 @@
 import React from 'react';
-import render from '../render';
+import renderer from 'react-test-renderer';
 
 import Badge from '../../src/badge';
 
 describe('Badge', () => {
 
   it('renders correctly', () => {
-    const tree = render(
+    const component = renderer.create(
       <Badge label='42' />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   describe('getLocals', () => {

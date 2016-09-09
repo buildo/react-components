@@ -1,10 +1,56 @@
 exports[`Meter renders correctly 1`] = `
-"<FlexView id=\"12345\" className=\"meter fancy-class-name\" style={{...}} grow={true}>
-<FlexView className=\"bar\" grow={true} style={{...}}>
-<FlexView className=\"filling\" basis=\"50%\" style={{...}} />
-</FlexView>
-<FlexView className=\"label\" shrink={false} style={{...}}>
-test
-</FlexView>
-</FlexView>"
+<div
+  className="react-flex-view meter fancy-class-name"
+  id="12345"
+  style={
+    Object {
+      "MozBoxFlex": "1 1 auto",
+      "WebkitBoxFlex": "1 1 auto",
+      "WebkitFlex": "1 1 auto",
+      "flex": "1 1 auto",
+      "margin": 10,
+      "msFlex": "1 1 auto",
+      "position": "relative"
+    }
+  }>
+  <div
+    className="react-flex-view bar"
+    style={
+      Object {
+        "MozBoxFlex": "1 1 auto",
+        "WebkitBoxFlex": "1 1 auto",
+        "WebkitFlex": "1 1 auto",
+        "backgroundColor": "grey",
+        "flex": "1 1 auto",
+        "msFlex": "1 1 auto"
+      }
+    }>
+    <div
+      className="react-flex-view filling"
+      style={
+        Object {
+          "MozBoxFlex": "0 0 50%",
+          "WebkitBoxFlex": "0 0 50%",
+          "WebkitFlex": "0 0 50%",
+          "backgroundColor": "green",
+          "flex": "0 0 50%",
+          "msFlex": "0 0 50%"
+        }
+      } />
+  </div>
+  <div
+    className="react-flex-view label"
+    style={
+      Object {
+        "MozBoxFlex": "0 0 auto",
+        "WebkitBoxFlex": "0 0 auto",
+        "WebkitFlex": "0 0 auto",
+        "color": "red",
+        "flex": "0 0 auto",
+        "msFlex": "0 0 auto"
+      }
+    }>
+    test
+  </div>
+</div>
 `;
