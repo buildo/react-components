@@ -172,7 +172,7 @@ export default class TextOverflow extends React.Component {
   templeteStandard = () => {
     const { style, ...other } = this.props;
     const props = {
-      ...omit(other, ['children', 'label', 'lazy']),
+      ...omit(other, ['children', 'label', 'lazy', 'delayWhenLazy', 'popover']),
       style: {
         width: '100%',
         ...style

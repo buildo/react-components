@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { props, skinnable, t } from '../utils';
 import omit from 'lodash/omit';
 import InputChildren from 'react-input-children';
-import { linkState } from '../link-state';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
@@ -109,6 +108,8 @@ export default class ConfirmationInput extends React.Component {
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
   };
 
+  _onChange = ({ target: { value } }) => this.setState({ value });
+
   getLocals() {
     const {
       props: {
@@ -121,6 +122,7 @@ export default class ConfirmationInput extends React.Component {
       state: { value, focused },
       _onClear: onClear,
       _onConfirm: onConfirm,
+      _onChange: onChange,
       onMouseEnter, onMouseLeave
     } = this;
     const confirmed = (value === initialValue) || (!value && !initialValue);
@@ -136,8 +138,9 @@ export default class ConfirmationInput extends React.Component {
         onMouseLeave
       },
       inputProps: {
-        ...omit(props, 'onChange'),
-        valueLink: linkState(this, 'value'),
+        ...omit(props, 'onChange', 'onConfirm', 'onClear'),
+        value,
+        onChange,
         onKeyUp: this.onEnter,
         onBlur: this.onBlur,
         onFocus: this.onFocus,

@@ -46,7 +46,7 @@ export default class TimerToast extends React.Component {
   render() {
     const { children, ...props } = this.props;
     return (
-      <div {...omit(props, ['onTimeout', 'duration'])} onMouseEnter={this.clearTimer} onMouseLeave={this.resetTimer}>
+      <div {...omit(props, ['onTimeout', 'duration', 'uniqueKey'])} onMouseEnter={this.clearTimer} onMouseLeave={this.resetTimer}>
         {children}
       </div>
     );
