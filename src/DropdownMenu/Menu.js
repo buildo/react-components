@@ -51,7 +51,9 @@ export default class Menu extends React.Component {
 
   onOptionClick = option => {
     this.props.onClick();
-    option.onClick(option);
+    if (!option.disabled) {
+      option.onClick(option);
+    }
   };
 
   getLocals() {
