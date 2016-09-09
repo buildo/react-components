@@ -11,6 +11,7 @@
 #### Fixes (bugs & defects):
 
 - file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
+- \[KitchenSink\] loading time is high [\#549](https://github.com/buildo/react-components/issues/549)
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
 
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
