@@ -13,6 +13,7 @@
 - file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
 - \[KitchenSink\] loading time is high [\#549](https://github.com/buildo/react-components/issues/549)
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
+- fix "InitiallyOpen" Popover example [\#355](https://github.com/buildo/react-components/issues/355)
 
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...v0.8.0)
