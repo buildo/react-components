@@ -18,9 +18,6 @@ body > div::-webkit-scrollbar {
 
 .scrollview {
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-  @include flex_flex(1 1 auto);
 
   > .gm-scrollbar {
     transition-timing-function: ease;

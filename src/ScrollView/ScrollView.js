@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { pure, skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
+import View from '../flex/FlexView';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 
 export const Props = {
@@ -30,7 +31,7 @@ export const Props = {
 export default class ScrollView extends React.Component {
 
   static defaultProps = {
-    component: 'div',
+    component: View,
     forceGemini: true
   }
 
@@ -76,6 +77,8 @@ export default class ScrollView extends React.Component {
       wrapperProps: {
         ...componentProps,
         style,
+        grow: true,
+        column: true,
         className: cx('scrollview', className)
       }
     };
@@ -91,13 +94,13 @@ export default class ScrollView extends React.Component {
           <div className='gm-scrollbar -horizontal'>
             <div className='thumb' />
           </div>
-          <div className='gm-scroll-view'>
+          <View className='gm-scroll-view' grow column>
             <ResizeSensor onResize={() => this.forceUpdate()}>
               <div>
                 {children}
               </div>
             </ResizeSensor>
-          </div>
+          </View>
         </Wrapper>
       </ResizeSensor>
     );
