@@ -136,7 +136,7 @@ export default class ConfirmationInput extends React.Component {
         onMouseLeave
       },
       inputProps: {
-        ...omit(props, 'onChange'),
+        ...omit(props, 'onChange', 'onConfirm', 'onClear'),
         valueLink: linkState(this, 'value'),
         onKeyUp: this.onEnter,
         onBlur: this.onBlur,
