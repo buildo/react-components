@@ -1,6 +1,6 @@
 import { sortBy } from 'lodash';
 
-function dynamicRequire({ repo, readmeUrl }) {
+function dynamicRequireReadmes({ repo, readmeUrl }) {
   switch (repo) {
     case 'rc-datepicker':
       return require(`raw!rc-datepicker/${readmeUrl.replace('.md', '')}.md`);
@@ -17,16 +17,21 @@ function dynamicRequire({ repo, readmeUrl }) {
   }
 }
 
-export default json => {
-  return json.map(section => {
-    if (section.id === 'components') {
-      const components = sortBy(section.components, 'title').map(c => ({
-        ...c,
-        readme: c.readmeUrl ? dynamicRequire(c) : null
-      }));
+function dynamicRequireContents({ contentUrl }) {
+  return require(`raw!../../${contentUrl.replace('.md', '')}.md`);
+}
 
-      return { ...section, components };
-    }
-    return section;
-  });
+
+export default json => {
+  return json.map(section => ({
+    ...section,
+    components: section.components ? sortBy(section.components, 'title').map(c => ({
+      ...c,
+      readme: c.readmeUrl ? dynamicRequireReadmes(c) : null
+    })) : undefined,
+    contents: section.contents ? section.contents.map(c => ({
+      ...c,
+      content: c.contentUrl ? dynamicRequireContents(c) : null
+    })) : undefined
+  }));
 };
