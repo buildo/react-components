@@ -5,6 +5,7 @@ build:
       - NPM_CONFIG_CACHE=/drone/.npm
     commands:
       - npm i
+      - npm run postinstall
       - npm run lint
       - npm test
 
