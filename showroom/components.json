@@ -261,13 +261,12 @@
         "readmeUrl": "popover/README.md",
         "examples": [
           {
-            "url": "popover/examples/Relative.js"
+            "title": "Triggering on hover",
+            "url": "popover/examples/hover.js"
           },
           {
-            "url": "popover/examples/Absolute.js"
-          },
-          {
-            "url": "popover/examples/InitiallyOpen.js"
+            "title": "Triggering on click",
+            "url": "popover/examples/click.js"
           }
         ]
       },

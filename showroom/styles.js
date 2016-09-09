@@ -56,3 +56,9 @@ import '../src/dropdown/examples/dropdown.scss';
 import '../src/ScrollView/examples/scroll.gif';
 
 import '../src/meter/examples/meter.scss';
+
+import '../src/popover/examples/popover.scss';
+import '../src/popover/examples/popover.scss';
+import '../src/popover/examples/avatar1.png';
+import '../src/popover/examples/avatar2.png';
+import '../src/popover/examples/avatar3.png';
