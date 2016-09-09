@@ -27,7 +27,7 @@ describe('BackgroundDimmer', () => {
   // Should be fixed in react 15.4
   xit('invokes the callback when the background is clicked', () => {
     const onClickOutside = jest.fn();
-    const dimmer = shallow(
+    const dimmer = shallow( // eslint-disable-line no-undef
       <BackgroundDimmer onClickOutside={onClickOutside}>
         {content}
       </BackgroundDimmer>
@@ -40,7 +40,7 @@ describe('BackgroundDimmer', () => {
   // Should be fixed in react 15.4
   xit('doesn\'t invoke the callback when the content is clicked', () => {
     const onClickOutside = jest.fn();
-    const dimmer = shallow(
+    const dimmer = shallow( // eslint-disable-line no-undef
       <BackgroundDimmer onClickOutside={onClickOutside}>
         {content}
       </BackgroundDimmer>
