@@ -51,7 +51,6 @@
     "tcomb-react": "^0.9.0"
   },
   "devDependencies": {
-    "axios": "^0.8.1",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-eslint": "^6.0.4",
