@@ -224,27 +224,11 @@
         "title": "ScrollView",
         "desc": "ScrollView",
         "repo": "react-components",
-        "url": "https://github.com/buildo/react-components/tree/master/src/scroll",
-        "readmeUrl": "react-components/__TAG__/src/scroll/README.md",
-        "examples": [
-          {
-            "url": "react-components/__TAG__/src/scroll/examples/StopPropagation.js"
-          },
-          {
-            "url": "react-components/__TAG__/src/scroll/examples/ScrollTo.js"
-          }
-        ]
-      },
-      {
-        "id": "scroll-view-new",
-        "title": "ScrollViewNew",
-        "desc": "ScrollViewNew",
-        "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/ScrollView",
         "readmeUrl": "react-components/__TAG__/src/ScrollView/README.md",
         "examples": [
           {
-            "url": "react-components/__TAG__/src/ScrollView/examples/Default.js"
+            "url": "react-components/__TAG__/src/ScrollView/examples/default.js"
           }
         ]
       },
