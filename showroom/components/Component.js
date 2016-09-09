@@ -1,5 +1,4 @@
 import React from 'react';
-import _axios from 'axios';
 import { props, t } from 'tcomb-react';
 import find from 'lodash/find';
 import Markdown from 'react-remarkable';
@@ -21,7 +20,6 @@ export default class Component extends React.Component {
 
   constructor(props) {
     super(props);
-    this.rawgitCDN = _axios.create({ baseURL: 'https://cdn.rawgit.com/buildo' });
     this.state = { loading: true };
   }
 
@@ -33,59 +31,23 @@ export default class Component extends React.Component {
     const { params: { componentId }, sections, section } = props;
 
     const componentInfo = find(section.components, { id: componentId });
-    const TAG = componentInfo.tag;
 
+    const { readme, examples } = componentInfo;
 
-    const fetchExamples = examples => {
-      const shouldFetchExamples = !examples[0].code;
+    // README
+    const splittedMarkdown = readme && readme.split('## Props');
+    const header = readme ?
+      <Markdown source={splittedMarkdown[0]} options={{ html: true }} /> :
+      '';
+    const footer = readme ?
+      splittedMarkdown[1] && <Markdown source={`### Props\n${splittedMarkdown[1]}`} options={{ html: true }} /> :
+      '';
 
-      if (shouldFetchExamples) {
-        return _axios.all(examples.map(e => this.rawgitCDN.get(e.url.replace('__TAG__', TAG))))
-          .then(res => res.map(({ data: code }, i) => ({
-            ...examples[i],
-            code
-          })));
-      }
+    // EXAMPLES
+    const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
+    const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
 
-      return Promise.resolve(examples);
-    };
-
-    const fetchReadme = ({ readme, readmeUrl }) => {
-      const shouldFetchReadme = !readme;
-
-      if (shouldFetchReadme) {
-        return readmeUrl ?
-          this.rawgitCDN.get(readmeUrl.replace('__TAG__', TAG)).then(({ data }) => data) :
-          Promise.resolve(null);
-      }
-
-      return Promise.resolve(readme);
-    };
-
-    fetchReadme(componentInfo)
-      .then(readme => ({ ...componentInfo, readme }))
-      .then(componentInfo => {
-        return fetchExamples(componentInfo.examples)
-          .then(examples => ({ ...componentInfo, examples }));
-      })
-      .then(componentInfo => {
-        const { readme, examples } = componentInfo;
-
-        // README
-        const splittedMarkdown = readme && readme.split('## Props');
-        const header = readme ?
-          <Markdown source={splittedMarkdown[0]} options={{ html: true }} /> :
-          '';
-        const footer = readme ?
-          splittedMarkdown[1] && <Markdown source={`### Props\n${splittedMarkdown[1]}`} options={{ html: true }} /> :
-          '';
-
-        // EXAMPLES
-        const components = section.components.map(c => c.id === componentId ? { ...c, examples } : c);
-        const mappedSections = sections.map(s => s.id === section.id ? { ...s, components } : s);
-
-        this.setState({ sections: mappedSections, header, footer, loading: false });
-      });
+    this.setState({ sections: mappedSections, header, footer, loading: false });
   }
 
   getPatchedScope = (scope, componentId) => ({
