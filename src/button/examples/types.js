@@ -16,7 +16,7 @@ class Example extends React.Component {
         <Button label='Positive button' type='positive' {...buttonProps} />
         <Button label='Negative button' type='negative' {...buttonProps} />
         <Button label='Flat button' flat {...buttonProps} />
-        <Button label='Icon button' icon='upload' {...buttonProps} />
+        <Button label='Icon button' icon='to-do' {...buttonProps} />
       </FlexView>
     );
   }
