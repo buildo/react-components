@@ -1,22 +1,22 @@
 import React from 'react';
-import render from '../render';
+import renderer from 'react-test-renderer';
 
 import Divider from '../../src/Divider';
 
 describe('Divider', () => {
 
   it('renders correctly vertical', () => {
-    const tree = render(
+    const component = renderer.create(
       <Divider orientation='vertical' />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('renders correctly horizontal', () => {
-    const tree = render(
+    const component = renderer.create(
       <Divider orientation='horizontal' />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
 });

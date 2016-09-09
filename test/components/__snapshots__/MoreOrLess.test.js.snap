@@ -1,17 +1,73 @@
 exports[`MoreOrLess renders correctly when expanded 1`] = `
-"<FlexView column={true} shrink={false} style={[undefined]} className=\"more-or-less more fancy-class-name\">
-content
-<FlexView hAlignContent=\"center\" vAlignContent=\"center\" className=\"expand-button\" onClick={[Function]} shrink={false}>
-<Icon icon=\"angle-up\" className=\"expand-button-icon\" paths={1} onClick={[Function]} />
-</FlexView>
-</FlexView>"
+<div
+  className="react-flex-view flex-column more-or-less more fancy-class-name"
+  style={
+    Object {
+      "MozBoxFlex": "0 0 auto",
+      "WebkitBoxFlex": "0 0 auto",
+      "WebkitFlex": "0 0 auto",
+      "flex": "0 0 auto",
+      "msFlex": "0 0 auto"
+    }
+  }>
+  content
+  <div
+    className="react-flex-view align-content-center justify-content-center expand-button"
+    onClick={[Function anonymous]}
+    style={
+      Object {
+        "MozBoxFlex": "0 0 auto",
+        "WebkitBoxFlex": "0 0 auto",
+        "WebkitFlex": "0 0 auto",
+        "flex": "0 0 auto",
+        "msFlex": "0 0 auto"
+      }
+    }>
+    <i
+      className="icon icon-angle-up expand-button-icon"
+      onClick={[Function onClick]}
+      style={
+        Object {
+          "color": undefined
+        }
+      } />
+  </div>
+</div>
 `;
 
 exports[`MoreOrLess renders correctly when not expanded 1`] = `
-"<FlexView column={true} shrink={false} style={[undefined]} className=\"more-or-less less fancy-class-name\">
-content
-<FlexView hAlignContent=\"center\" vAlignContent=\"center\" className=\"expand-button\" onClick={[Function]} shrink={false}>
-<Icon icon=\"angle-down\" className=\"expand-button-icon\" paths={1} onClick={[Function]} />
-</FlexView>
-</FlexView>"
+<div
+  className="react-flex-view flex-column more-or-less less fancy-class-name"
+  style={
+    Object {
+      "MozBoxFlex": "0 0 auto",
+      "WebkitBoxFlex": "0 0 auto",
+      "WebkitFlex": "0 0 auto",
+      "flex": "0 0 auto",
+      "msFlex": "0 0 auto"
+    }
+  }>
+  content
+  <div
+    className="react-flex-view align-content-center justify-content-center expand-button"
+    onClick={[Function anonymous]}
+    style={
+      Object {
+        "MozBoxFlex": "0 0 auto",
+        "WebkitBoxFlex": "0 0 auto",
+        "WebkitFlex": "0 0 auto",
+        "flex": "0 0 auto",
+        "msFlex": "0 0 auto"
+      }
+    }>
+    <i
+      className="icon icon-angle-down expand-button-icon"
+      onClick={[Function onClick]}
+      style={
+        Object {
+          "color": undefined
+        }
+      } />
+  </div>
+</div>
 `;

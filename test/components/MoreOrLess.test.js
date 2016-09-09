@@ -1,5 +1,5 @@
 import React from 'react';
-import render from '../render';
+import renderer from 'react-test-renderer';
 
 import MoreOrLess from '../../src/more-or-less';
 
@@ -27,17 +27,17 @@ const componentLess = new MoreOrLess({
 describe('MoreOrLess', () => {
 
   it('renders correctly when expanded', () => {
-    const tree = render(
+    const component = renderer.create(
       <MoreOrLess {...exampleProps} expanded />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('renders correctly when not expanded', () => {
-    const tree = render(
+    const component = renderer.create(
       <MoreOrLess {...exampleProps} expanded={false} />
     );
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   describe('getLocals', () => {

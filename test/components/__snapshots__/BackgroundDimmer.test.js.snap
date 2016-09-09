@@ -50,14 +50,63 @@ Object {
 `;
 
 exports[`BackgroundDimmer renders correctly 1`] = `
-"<div stopPropagation={[Function]} className=\"background-dimmer\">
-<div style={{...}} />
-<FlexView onClick={[Function]} onWheel={[Function]} onTouchMove={[Function]} style={{...}} className=\"main-content-wrapper\" vAlignContent=\"center\" hAlignContent=\"center\">
-<FlexView className=\"centered-content-wrapper\" style={{...}} onClick={[Function]} column={true}>
-<div className=\"content\">
-content
+<div
+  className="background-dimmer"
+  stopPropagation={[Function anonymous]}>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "left": 0,
+        "opacity": "0.5",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 99999
+      }
+    } />
+  <div
+    className="react-flex-view align-content-center justify-content-center main-content-wrapper"
+    onClick={[Function anonymous]}
+    onTouchMove={[Function anonymous]}
+    onWheel={[Function anonymous]}
+    style={
+      Object {
+        "MozBoxFlex": "0 1 auto",
+        "WebkitBoxFlex": "0 1 auto",
+        "WebkitFlex": "0 1 auto",
+        "bottom": 0,
+        "flex": "0 1 auto",
+        "left": 0,
+        "msFlex": "0 1 auto",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 100000
+      }
+    }>
+    <div
+      className="react-flex-view flex-column centered-content-wrapper"
+      onClick={[Function anonymous]}
+      style={
+        Object {
+          "MozBoxFlex": "0 1 auto",
+          "WebkitBoxFlex": "0 1 auto",
+          "WebkitFlex": "0 1 auto",
+          "flex": "0 1 auto",
+          "height": "auto",
+          "maxHeight": "90%",
+          "maxWidth": "90%",
+          "msFlex": "0 1 auto",
+          "width": "auto"
+        }
+      }>
+      <div
+        className="content">
+        content
+      </div>
+    </div>
+  </div>
 </div>
-</FlexView>
-</FlexView>
-</div>"
 `;

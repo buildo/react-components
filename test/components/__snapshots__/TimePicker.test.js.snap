@@ -1,1 +1,0 @@
-exports[`TimePicker renders correctly 1`] = `"<Dropdown id=\"12345\" className=\"time-picker fancy-class-name\" style={{...}} searchable={true} value={{...}} onChange={[Function]} options={{...}} placeholder=\"--:--\" filterOptions={[Function]} onBlur={[Function]} delimiter=\",\" size=\"medium\" disabled={false} clearable={false} multi={false} flat={false} autoBlur={true} />"`;
