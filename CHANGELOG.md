@@ -15,6 +15,11 @@
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
 - fix "InitiallyOpen" Popover example [\#355](https://github.com/buildo/react-components/issues/355)
 
+#### New features:
+
+- TimePicker: add support for `valueLink` [\#335](https://github.com/buildo/react-components/issues/335)
+- revert \#233/\#234 once babel recognizes that again [\#259](https://github.com/buildo/react-components/issues/259)
+
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...v0.8.0)
 
