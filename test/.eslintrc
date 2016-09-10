@@ -1,7 +1,5 @@
 {
-  "globals": {
-    "jest": true,
-    "expect": true,
-    "xit": true
+  "env": {
+    "jest": true
   }
 }
