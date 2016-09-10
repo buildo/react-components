@@ -13,6 +13,7 @@
 - file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
 - \[KitchenSink\] loading time is high [\#549](https://github.com/buildo/react-components/issues/549)
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
+- Menu: Menu is dismissed when user clicks on disabled menu item [\#419](https://github.com/buildo/react-components/issues/419)
 - fix "InitiallyOpen" Popover example [\#355](https://github.com/buildo/react-components/issues/355)
 
 #### New features:
