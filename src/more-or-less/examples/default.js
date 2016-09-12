@@ -28,8 +28,8 @@ class Example extends React.Component {
   );
 
   templateCollapsed = () => (
-    <FlexView className='card'>
-      <FlexView grow shrink className='description'>
+    <FlexView className='card' style={{ maxHeight: 116 }}>
+      <FlexView className='description'>
         <FlexView column>
           <FlexView className='title'>The Student Hotel</FlexView>
           <FlexView className='subtitle'>
@@ -38,9 +38,8 @@ class Example extends React.Component {
           </FlexView>
         </FlexView>
       </FlexView>
-      <FlexView grow shrink={false} hAlignContent='right'>
-        <img src='./src/more-or-less/examples/image2.png' />
-        <img src='./src/more-or-less/examples/image3.png' />
+      <FlexView grow hAlignContent='right' vAlignContent='center'>
+        <img src='./src/more-or-less/examples/image2.png' style={{ width: 'auto', height: 80 }} />
       </FlexView>
     </FlexView>
   );
