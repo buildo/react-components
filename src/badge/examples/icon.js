@@ -1,5 +1,5 @@
 const IconWithBadge = ({ icon, label }) => (
-  <FlexView className='icon-with-badge' style={{ marginRight: 10 }}>
+  <FlexView style={{ marginRight: 10 }}>
     <Icon icon={icon} style={{ fontSize: 20 }} />
     <Badge label={label} style={{
       height: 20,
@@ -16,7 +16,7 @@ const IconWithBadge = ({ icon, label }) => (
 class Example extends React.Component {
 
   render = () => (
-    <FlexView className='icons-with-badge'>
+    <FlexView>
       <IconWithBadge icon='calendar2' label={3} />
       <IconWithBadge icon='inbox3' label={5} />
       <IconWithBadge icon='world' label={1} />
