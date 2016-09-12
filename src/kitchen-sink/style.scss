@@ -63,6 +63,14 @@
             .component {
               margin: 0;
               padding: 30px 40px;
+
+              input {
+                &::selection { 
+                  background-color: $brc-azure;
+                  color: $brc-white;
+                  text-shadow: none; 
+                } 
+              }
             }
 
             .playground, .CodeMirror {
