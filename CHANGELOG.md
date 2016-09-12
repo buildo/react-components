@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...HEAD)
+## [v0.9.1](https://github.com/buildo/react-components/tree/v0.9.1) (2016-09-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...v0.9.1)
 
 #### Fixes (bugs & defects):
 
