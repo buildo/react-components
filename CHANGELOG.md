@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...HEAD)
+
+#### Fixes (bugs & defects):
+
+- Remove dot sh from npm ignore [\#608](https://github.com/buildo/react-components/issues/608)
+
 ## [v0.9.0](https://github.com/buildo/react-components/tree/v0.9.0) (2016-09-12)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.8.0...v0.9.0)
 
@@ -11,15 +19,9 @@
 
 - Dropdown `onChange` prop should have `value` as argument [\#604](https://github.com/buildo/react-components/issues/604)
 - file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
-- \[KitchenSink\] loading time is high [\#549](https://github.com/buildo/react-components/issues/549)
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
 - Menu: Menu is dismissed when user clicks on disabled menu item [\#419](https://github.com/buildo/react-components/issues/419)
 - fix "InitiallyOpen" Popover example [\#355](https://github.com/buildo/react-components/issues/355)
-
-#### New features:
-
-- TimePicker: add support for `valueLink` [\#335](https://github.com/buildo/react-components/issues/335)
-- revert \#233/\#234 once babel recognizes that again [\#259](https://github.com/buildo/react-components/issues/259)
 
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...v0.8.0)
