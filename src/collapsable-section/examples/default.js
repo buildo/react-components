@@ -51,7 +51,7 @@ class Example extends React.Component {
           onChange={this.onChange(section)}
           header={section}
           key={section}
-          icons={{ open: 'angleRight', closed: 'angleDown' }}
+          icons={{ open: 'angleDown', closed: 'angleRight' }}
         >
           <SectionList items={this.sections[section]} />
         </CollapsableSection>
