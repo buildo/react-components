@@ -32,7 +32,6 @@ import '../src/modal/examples/transition.scss';
 import '../src/more-or-less/examples/default.scss';
 import '../src/more-or-less/examples/image.png';
 import '../src/more-or-less/examples/image2.png';
-import '../src/more-or-less/examples/image3.png';
 
 import '../src/Panel/examples/default.scss';
 import '../src/Panel/examples/image1.png';

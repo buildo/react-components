@@ -15,6 +15,7 @@ $footer-background: $brc-paleGrey !default;
     min-width: 520px;
     background: $background;
     border-radius: 4px;
+    overflow: hidden;
 
     .modal-header {
       min-height: 52px;

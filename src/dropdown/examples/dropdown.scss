@@ -1,6 +1,39 @@
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+@import '../../utils/theme/variables.scss';
+
 .dropdown-list {
   .dropdown {
     min-width: 200px;
     margin-right: 20px;
+  }
+}
+
+.live-demo {
+  .dropdown {
+
+    .Select-arrow {
+      @include display_flex();
+      @include flex_flex-direction(row);
+      @include flex_align-items(center);
+      border: 0;
+      margin-top: 1px;
+      font-size: 8px !important;
+      color: $brc-coolGrey;
+      width: auto;
+      height: auto;
+
+      &::before {
+        font-family: 'icomoon';
+        content: "\e910";
+      }
+    }
+
+    &.is-open {
+      .Select-arrow {
+        &::before {
+          content: "\e90f";
+        }
+      }
+    }
   }
 }

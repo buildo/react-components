@@ -18,7 +18,6 @@ class Example extends React.Component {
     <StatefulButton
       baseState='ready'
       label='Button label'
-      size='small'
       icon={this.icons}
       onClick={this.onClick}
       style={{ width: 150 }}
