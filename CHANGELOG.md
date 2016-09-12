@@ -10,6 +10,7 @@
 
 #### Fixes (bugs & defects):
 
+- Dropdown `onChange` prop should have `value` as argument [\#604](https://github.com/buildo/react-components/issues/604)
 - file-loader should be a dev-dependency [\#577](https://github.com/buildo/react-components/issues/577)
 - \[KitchenSink\] loading time is high [\#549](https://github.com/buildo/react-components/issues/549)
 - LoadingSpinner style should be called loadingSpinner.scss [\#525](https://github.com/buildo/react-components/issues/525)
