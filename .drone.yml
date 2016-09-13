@@ -1,8 +1,9 @@
 build:
   lint-and-test:
-    image: quay.io/buildo/node5-npm3
+    image: node:5
     environment:
       - NPM_CONFIG_CACHE=/drone/.npm
+      - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
       - npm run postinstall
@@ -27,7 +28,7 @@ build:
       branch: master
 
   publishReleaseOnGitHub:
-    image: quay.io/buildo/node5-npm3
+    image: node:5
     environment:
       GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
     commands:
@@ -36,7 +37,7 @@ build:
       branch: master
 
   generate-readmes:
-    image: quay.io/buildo/node5-npm3
+    image: node:5
     commands:
       - npm run generate-all-readmes
       - git add src/**/README.md
@@ -50,7 +51,7 @@ build:
       branch: master
 
   gh-pages-build:
-    image: quay.io/buildo/node5-npm3
+    image: node:5
     commands:
       - if [ "$$BRANCH" != "master" ]; then
           npm run generate-all-readmes;
@@ -58,7 +59,7 @@ build:
         fi
 
   gh-pages:
-    image: quay.io/buildo/node5-npm3
+    image: node:5
     commands:
       - git config --global user.email "ci@buildo.io"
       - git config --global user.name "Drone CI"
