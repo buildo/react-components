@@ -5,10 +5,8 @@ import find from 'lodash/find';
 import reject from 'lodash/reject';
 import partial from 'lodash/partial';
 import { props, t } from 'tcomb-react';
-import ReactSidebar from 'react-sidebar';
 import FlexView from 'react-flexview';
 import * as brc from '../../src';
-import SidebarContent from '../../src/kitchen-sink/sidebar/SidebarContent';
 import json from 'raw!../components.json';
 import useLocalComponents from './useLocalComponents';
 import useLocalReadmes from './useLocalReadmes';
@@ -65,16 +63,7 @@ export default class App extends React.Component {
     const openSections = (querySections || '').split(';');
 
     return (
-      <div>
-        <div className='kitchen-sink'>
-          <div className='sidebar'>
-            <ReactSidebar shadow={false} docked sidebar={<SidebarContent {...{ sections, onToggleSection, openSections, onSelectItem }} />} transitions={false}>
-              <div />
-            </ReactSidebar>
-          </div>
-        </div>
-        <RouteHandler {...{ ...this.props, sections, openSections, onToggleSection, onSelectItem, scope }} />
-      </div>
+      <RouteHandler {...{ ...this.props, sections, openSections, onToggleSection, onSelectItem, scope }} />
     );
   }
 
