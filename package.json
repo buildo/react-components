@@ -17,8 +17,7 @@
     "showroom": "NODE_ENV=test-showroom webpack-dev-server --config showroom/webpack.config.babel.js --progress --hot --inline",
     "build-showroom": "rm -rf ./showroom/build && webpack --config showroom/webpack.config.build.babel.js --progress && cp ./showroom/build/index.html ./index.html",
     "deploy-showroom": "./deployShowroom.sh",
-    "generate-readmes": "node generateReadmes/index.js",
-    "generate-all-readmes": "babel-node scripts/generateReadmes.js",
+    "generate-all-readmes": "babel-node ./generateReadmes.js",
     "release-patch": "./releaseVersion.sh patch",
     "release-breaking-version": "./releaseVersion.sh minor"
   },
@@ -79,6 +78,7 @@
     "raw-loader": "^0.5.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "react-readme-generator": "0.0.1",
     "react-remarkable": "^1.1.1",
     "react-router": "^0.13.5",
     "react-sidebar": "^2.1.1",
