@@ -1,11 +1,11 @@
 [
   {
-    "title": "Guides",
-    "id": "guides",
+    "title": "Getting Started",
+    "id": "getting-started",
     "contents": [
       {
-        "id": "readme",
-        "title": "README.md",
+        "id": "getting-started",
+        "title": "Getting Started",
         "repo": "react-components",
         "contentUrl": "README.md"
       }
