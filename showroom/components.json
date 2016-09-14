@@ -548,7 +548,7 @@
         "desc": "A textarea perfectly compatible with ReactJS default one which auto resizes its height based on user input.",
         "repo": "react-autosize-textarea",
         "url": "https://github.com/buildo/react-autosize-textarea",
-        "readmeUrl": "README.md",
+        "readmeUrl": "src/README.md",
         "examples": [
           {
             "url": "examples/Empty.example"
