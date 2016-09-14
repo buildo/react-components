@@ -129,6 +129,9 @@
         "readmeUrl": "Tooltip/README.md",
         "examples": [
           {
+            "url": "Tooltip/examples/default.js"
+          },
+          {
             "title": "Tooltip sizes",
             "description": "Tooltip comes in two different sizes:",
             "url": "Tooltip/examples/sizes.js"
