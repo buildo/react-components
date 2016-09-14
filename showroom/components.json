@@ -164,7 +164,7 @@
         "desc": "A React component to abstract over flexbox",
         "repo": "react-flexview",
         "url": "https://github.com/buildo/react-flexview",
-        "readmeUrl": "README.md",
+        "readmeUrl": "src/README.md",
         "examples": [
           {
             "url": "dev/examples/Column.example"
