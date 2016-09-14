@@ -510,7 +510,7 @@
         "desc": "A decent and pretty date picker to be used with React",
         "repo": "rc-datepicker",
         "url": "https://github.com/buildo/rc-datepicker",
-        "readmeUrl": "README.md",
+        "readmeUrl": "src/README.md",
         "examples": [
           {
             "url": "examples/DatePickerInput.example"
