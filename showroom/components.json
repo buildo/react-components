@@ -567,7 +567,7 @@
         "desc": "React Cookie banner which can be automatically dismissed with a scroll. Because fuck The Cookie Law, that's why.",
         "repo": "react-cookie-banner",
         "url": "https://github.com/buildo/react-cookie-banner",
-        "readmeUrl": "README.md",
+        "readmeUrl": "src/README.md",
         "examples": [
           {
             "url": "examples/Default.example"
