@@ -49,6 +49,7 @@ export default class SidebarContent extends React.Component {
           {...{ title, id, sectionId }}
           onClick={this.props.onSelectItem}
           active={this.isActive(id)}
+          key={sectionId}
         />
       );
     }
