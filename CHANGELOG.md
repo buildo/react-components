@@ -1,5 +1,18 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.9.1...HEAD)
+
+#### Fixes (bugs & defects):
+
+- Dropdown box-sizing shouldn't be `border-box` [\#611](https://github.com/buildo/react-components/issues/611)
+- TimePicker is not working [\#592](https://github.com/buildo/react-components/issues/592)
+
+#### New features:
+
+- Popover: support delay on mouse events [\#605](https://github.com/buildo/react-components/issues/605)
+
 ## [v0.9.1](https://github.com/buildo/react-components/tree/v0.9.1) (2016-09-12)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...v0.9.1)
 
