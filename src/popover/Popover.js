@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
+import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
@@ -25,7 +26,11 @@ export const Props = {
     distance: t.maybe(t.Number),
     offsetX: t.maybe(t.Number),
     offsetY: t.maybe(t.Number),
-    isOpen: t.maybe(t.Boolean)
+    isOpen: t.maybe(t.Boolean),
+    delay: t.maybe(t.union([
+      t.Integer,
+      t.struct({ whenClosed: t.maybe(t.Integer), whenOpen: t.maybe(t.Integer) })
+    ]))
   }),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -42,12 +47,10 @@ export default class Popover extends React.Component {
 
   // LIFECYCLE
 
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-  }
+  state = { isOpen: false };
 
   componentDidMount() {
+    this.updateDebouncedMousedEvents();
     this.saveValuesFromNodeTree();
     this.initialized = true;
     if (this.isOpen()) {
@@ -56,6 +59,7 @@ export default class Popover extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.updateDebouncedMousedEvents(nextProps);
     this.saveValuesFromNodeTree();
     if (!this.isStateful() && this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen) {
       this.onPopoverOpenChange(nextProps);
@@ -266,15 +270,56 @@ export default class Popover extends React.Component {
     this.onPopoverOpenChange();
   };
 
-  eventWrapper = (cb) => {
-    return (e) => {
-      const { event } = this.getPopoverProps();
-      const childrenNode = ReactDOM.findDOMNode(this.refs.children).childNodes[0];
-      const el = e.target || e.srcElement;
-      if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
-        cb();
-      }
-    };
+
+  eventWrapper = cb => e => {
+    const { event } = this.getPopoverProps();
+    const childrenNode = ReactDOM.findDOMNode(this.refs.children).childNodes[0];
+    const el = e.target || e.srcElement;
+    if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
+      cb(e);
+    }
+  };
+
+  getDelayWhenClosed = delay => (delay || {}).whenClosed || delay;
+
+  getDelayWhenOpen = delay => (delay || {}).whenOpen || delay;
+
+  updateDebouncedMousedEvents = (nextProps) => {
+    const { delay } = this.getPopoverProps(nextProps);
+    const delayWhenClosed = this.getDelayWhenClosed(delay);
+    const delayWhenOpen = this.getDelayWhenOpen(delay);
+
+    const { delay: previousDelay } = this.getPopoverProps();
+    const previousDelayWhenClosed = this.getDelayWhenClosed(previousDelay);
+    const previousDelayWhenOpen = this.getDelayWhenOpen(previousDelay);
+
+    if (!nextProps || previousDelayWhenClosed !== delayWhenClosed) {
+      this.onMouseEventDebouncedWhenClosed = debounce(this._onMouseEvent, delayWhenClosed);
+    }
+
+    if (!nextProps || previousDelayWhenOpen !== delayWhenOpen) {
+      this.onMouseEventDebouncedWhenOpen = debounce(this._onMouseEvent, delayWhenOpen);
+    }
+  };
+
+  _onMouseEvent = (type) => {
+    if (type === 'mouseenter') {
+      this.showPopover();
+    } else if (type === 'mouseleave') {
+      this.hidePopover();
+    }
+  };
+
+  onMouseEvent = ({ type }) => {
+    const { delay } = this.getPopoverProps();
+    const delayWhenClosed = this.getDelayWhenClosed(delay);
+    const delayWhenOpen = this.getDelayWhenOpen(delay);
+
+    if (this.isOpen()) {
+      return delayWhenOpen ? this.onMouseEventDebouncedWhenOpen(type) : this._onMouseEvent(type);
+    } else {
+      return delayWhenClosed ? this.onMouseEventDebouncedWhenClosed(type) : this._onMouseEvent(type);
+    }
   };
 
   showPopover = () => this.setIsOpen(true);
@@ -298,11 +343,11 @@ export default class Popover extends React.Component {
 
   popoverTemplate = (_style) => {
     const { position, anchor, className, content, id, event, style } = this.getPopoverProps();
-    const { eventWrapper, hidePopover, isAbsolute } = this;
+    const { eventWrapper, onMouseEvent, isAbsolute } = this;
     const positionClass = `position-${position}`;
     const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
-    const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(hidePopover) } : undefined;
+    const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(onMouseEvent) } : undefined;
     return (
       <div className={_className} id={id} style={{ ...style, ..._style }} {...events}>
         {content}
@@ -327,10 +372,10 @@ export default class Popover extends React.Component {
     const { event } = this.getPopoverProps();
     const onHover = event === 'hover';
     const onClick = event === 'click';
-    const { eventWrapper, showPopover, hidePopover, togglePopover } = this;
+    const { eventWrapper, onMouseEvent, togglePopover } = this;
     return {
-      onMouseEnter: onHover ? eventWrapper(showPopover) : undefined,
-      onMouseLeave: onHover ? eventWrapper(hidePopover) : undefined,
+      onMouseEnter: onHover ? eventWrapper(onMouseEvent) : undefined,
+      onMouseLeave: onHover ? eventWrapper(onMouseEvent) : undefined,
       onClick: onClick ? eventWrapper(togglePopover) : undefined
     };
   };
