@@ -23,7 +23,8 @@ class Example extends React.Component {
       position: 'top',
       anchor: 'start',
       event: 'hover',
-      className: 'baloon'
+      className: 'baloon',
+      delay: { whenOpen: 100 }
     };
 
     return (
