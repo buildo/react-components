@@ -1,5 +1,4 @@
 @import '../utils/theme/variables.scss';
-
 $background: $brc-white !default;
 $border-color: $brc-silver !default;
 $title-color: $brc-darkGrey !default;
@@ -8,23 +7,26 @@ $footer-background: $brc-paleGrey !default;
 
 .modal {
   position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 9999;
-  top: 0; right: 0; bottom: 0; left: 0;
 
   .modal-content {
+    overflow: hidden;
+    border-radius: 4px;
     min-width: 520px;
     background: $background;
-    border-radius: 4px;
-    overflow: hidden;
 
     .modal-header {
-      min-height: 52px;
       padding: 0 15px;
       border-bottom: 1px solid $border-color;
+      min-height: 52px;
 
       .modal-title {
-        font-size: 18px;
         color: $title-color;
+        font-size: 18px;
         font-weight: $brc-semibold;
       }
 
@@ -36,15 +38,15 @@ $footer-background: $brc-paleGrey !default;
 
     .modal-body {
       padding: 43px 15px;
+      color: $body-color;
       font-size: 14px;
       font-weight: $brc-semibold;
-      color: $body-color;
     }
 
     .modal-footer {
-      background: $footer-background;
-      border-top: 1px solid $border-color;
       padding: 12px 30px;
+      border-top: 1px solid $border-color;
+      background: $footer-background;
     }
   }
 }

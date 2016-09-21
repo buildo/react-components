@@ -1,5 +1,6 @@
-$brc-black: black;  
-$brc-white: white;
+$brc-black: #000;
+$brc-white: #fff;
+$brc-red: #f00;
 $brc-charcoal: #2c3a40;
 $brc-azure: #1a91eb;
 $brc-azure30: rgba($brc-azure, .3);
@@ -9,20 +10,19 @@ $brc-sunYellow: #fecf39;
 $brc-strawberry: #fb242c;
 $brc-palePurple: #8a83d1;
 $brc-lipstick: #d1236d;
-
 $brc-darkGrey: #354052;
 $brc-battleshipGrey: #727a86;
-$brc-coolGrey: #9098A7;
+$brc-coolGrey: #9098a7;
 $brc-cloudyGrey: #b5c0ce;
 $brc-paleGrey: #f0f3f8;
 
 // GRADIENTS
-$brc-gradientGrey: linear-gradient(to top, #f2f4f7, #ffffff);
-$brc-gradientDarkGrey: linear-gradient(to top, #dfe3e8, #ffffff);
+$brc-gradientGrey: linear-gradient(to top, #f2f4f7, $brc-white);
+$brc-gradientDarkGrey: linear-gradient(to top, #dfe3e8, $brc-white);
 $brc-gradientGreen: linear-gradient(to bottom, #39b54a, #34aa44);
 $brc-gradientDarkGreen: linear-gradient(to top, #1e930b, #1e9d09);
 $brc-gradientRed: linear-gradient(to bottom, #fb242c, #ed1c24);
-$brc-gradientDarkRed:  linear-gradient(to top, #d71920, #ed1c24);
+$brc-gradientDarkRed: linear-gradient(to top, #d71920, #ed1c24);
 $brc-gradientAzure: linear-gradient(to top, #1789dd, #2da1f8);
 $brc-gradientDarkAzure: linear-gradient(to bottom, #1584d7, #1f7ec6);
 
@@ -36,3 +36,4 @@ $brc-lightningYellow: #fabd15;
 // FONT WEIGHTS
 $brc-regular: 400;
 $brc-semibold: 600;
+$brc-bold: 700;

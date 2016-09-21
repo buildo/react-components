@@ -1,34 +1,39 @@
 @import '../utils/theme/variables.scss';
-
 $color: $brc-silver !default;
 
 .divider {
   background-color: $color;
   color: $color;
+
   &.small {
     margin: 5px;
   }
+
   &.medium {
     margin: 10px;
   }
+
   &.large {
     margin: 20px;
   }
+
   &.no-margin {
     margin: 0;
   }
+
   &.horizontal {
     display: inline;
     margin-top: 0;
     margin-bottom: 0;
-    min-height: 100%;
     border-left: 1px solid;
+    min-height: 100%;
   }
+
   &.vertical {
     display: block;
-    margin-left: 0;
     margin-right: 0;
-    min-width: 100%;
+    margin-left: 0;
     height: 1px;
+    min-width: 100%;
   }
 }

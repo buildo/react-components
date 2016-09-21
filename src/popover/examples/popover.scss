@@ -1,21 +1,22 @@
-.live-demo {
+@import '../../utils/theme/variables.scss';
 
+.live-demo {
   .popover-content {
     &.baloon {
-      width: 519px;
-      word-wrap: break-word;
-      border-radius: 4px;
-      border: 1px solid #ced0da;
       z-index: 10000;
-      text-align: center;
       margin-left: -1px;
-      background: white;
+      border: 1px solid #ced0da;
+      border-radius: 4px;
+      width: 519px;
+      background: $brc-white;
       color: #354052;
+      text-align: center;
+      word-wrap: break-word;
 
       .option {
-        width: 173px;
-        border-right: 1px solid #ced0da;
         padding: 18px 0;
+        border-right: 1px solid #ced0da;
+        width: 173px;
 
         &:last-child {
           border: 0;
@@ -28,44 +29,49 @@
         }
 
         .value {
+          margin-bottom: 26px;
           color: #354052;
           font-size: 16px;
           line-height: 1.2;
-          margin-bottom: 26px;
         }
 
         img {
           margin-bottom: 10px;
-          width: 60px;
           height: 60px;
+          width: 60px;
         }
       }
 
-      &:after, &:before {
-        border: solid transparent;
+      &::after,
+      &::before {
         content: ' ';
+        position: absolute;
+        border: solid transparent;
+        border-width: 8px;
         height: 0;
         width: 0;
-        position: absolute;
         pointer-events: none;
-        border-width: 8px;
       }
 
-      &:before {
+      &::before {
         border-width: 9px;
       }
 
       &.position-bottom {
+
         // take into account arrow-size for positioning
         margin-top: 9px;
 
-        &:after, &:before {
+        &::after,
+        &::before {
           bottom: 100%;
         }
-        &:after {
-          border-bottom-color: white;
+
+        &::after {
+          border-bottom-color: $brc-white;
         }
-        &:before {
+
+        &::before {
           border-bottom-color: #ced0da;
         }
       }
@@ -73,38 +79,46 @@
       &.position-top {
         margin-top: -9px;
 
-        &:after, &:before {
+        &::after,
+        &::before {
           top: 100%;
         }
-        &:after {
-          border-top-color: white;
+
+        &::after {
+          border-top-color: $brc-white;
         }
-        &:before {
+
+        &::before {
           border-top-color: #ced0da;
         }
       }
 
-      &.anchor-start:after, &.anchor-start:before {
+      &.anchor-start::after,
+      &.anchor-start::before {
         left: 8px;
       }
 
       &.anchor-center {
-        &:after, &:before {
+        &::after,
+        &::before {
           left: 50%;
         }
-        &:after {
+
+        &::after {
           margin-left: -8px;
         }
-        &:before {
+
+        &::before {
           margin-left: -9px;
         }
       }
 
-      &.anchor-end:after, &.anchor-end:before {
+      &.anchor-end::after,
+      &.anchor-end::before {
         right: 9px;
       }
 
-      &:before {
+      &::before {
         margin-left: -1px;
       }
     }
