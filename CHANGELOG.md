@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- Dropdown: menu-background should be applied also to option [\#623](https://github.com/buildo/react-components/issues/623)
 - Dropdown box-sizing shouldn't be `border-box` [\#611](https://github.com/buildo/react-components/issues/611)
 - TimePicker is not working [\#592](https://github.com/buildo/react-components/issues/592)
 
