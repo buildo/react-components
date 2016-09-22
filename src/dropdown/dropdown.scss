@@ -204,7 +204,7 @@ $height-small: 30px !default;
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    &.has-value .Select-value .Select-value-label {
+    .Select-control .Select-value .Select-value-label {
       color: $text-color-hover;
     }
 
@@ -217,11 +217,11 @@ $height-small: 30px !default;
     }
   }
 
-  &.is-open {
+  &:not(.is-disabled).is-open {
     background: $background-open;
     border-color: $border-color-open;
 
-    &:hover > .Select-control .Select-value .Select-value-label {
+    .Select-control .Select-value .Select-value-label {
       color: $text-color-open;
     }
 
@@ -232,7 +232,6 @@ $height-small: 30px !default;
     .Select-arrow {
       border-color: $arrow-color-open transparent transparent;
     }
-
   }
 
   &.has-value .Select-control {
