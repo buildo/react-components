@@ -203,7 +203,10 @@ $height-small: 30px !default;
 
   &:not(.is-disabled):hover {
     background: $background-hover;
-    color: $text-color-hover;
+
+    &.has-value .Select-value .Select-value-label {
+      color: $text-color-hover;
+    }
 
     .Select-placeholder {
       color: $placeholder-color-hover;
@@ -217,7 +220,10 @@ $height-small: 30px !default;
   &.is-open {
     background: $background-open;
     border-color: $border-color-open;
-    color: $text-color-open;
+
+    &:hover > .Select-control .Select-value .Select-value-label {
+      color: $text-color-open;
+    }
 
     &:hover .Select-placeholder, .Select-placeholder {
       color: $placeholder-color-open;
@@ -231,7 +237,10 @@ $height-small: 30px !default;
 
   &.has-value .Select-control {
     padding-right: 45px;
-    color: $text-color-has-value;
+
+    .Select-value .Select-value-label {
+      color: $text-color-has-value;
+    }
 
     .Select-placeholder {
       color: $text-color-has-value;
