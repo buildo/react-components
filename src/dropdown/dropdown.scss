@@ -165,6 +165,7 @@ $height-small: 30px !default;
       font-size: 15px;
       font-weight: 400;
       color: $option-color;
+      background: $menu-background;
 
       &:hover, &.is-focused {
         color: $option-color-hover;
