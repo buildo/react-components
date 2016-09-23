@@ -21,9 +21,9 @@ class Example extends React.Component {
           height={50}
           hAlignContent='center'
           vAlignContent='center'
-          style={{ background: 'red', fontSize: 25, color: 'white' }}
+          style={{ background: '#1a91eb', fontSize: 18, fontWeight: '600', color: 'white' }}
         >
-          width: {this.state.width}
+          Width: {this.state.width}
         </FlexView>
       </ResizeSensor>
     );

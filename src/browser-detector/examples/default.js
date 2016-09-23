@@ -1,11 +1,13 @@
 class Example extends React.Component {
 
-  getPlaceholder = (detectedBrowser) => <span>{`"${detectedBrowser.name}" is not supported!`}</span>;
+  getPlaceholder = (detectedBrowser) => <FlexView vAlignContent='center'>{`"${detectedBrowser.name}" is not supported!`}</FlexView>;
 
   render = () => (
-    <BrowserDetector supportedBrowsers={['safari']} placeholder={this.getPlaceholder}>
-      <div>My Beautiful APP</div>
-    </BrowserDetector>
+    <div className='browser-detector'>
+      <BrowserDetector supportedBrowsers={['safari']} placeholder={this.getPlaceholder}>
+        <FlexView vAlignContent='center'>My Beautiful APP</FlexView>
+      </BrowserDetector>
+    </div>
   );
 
 }

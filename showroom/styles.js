@@ -61,3 +61,5 @@ import '../src/popover/examples/popover.scss';
 import '../src/popover/examples/avatar1.png';
 import '../src/popover/examples/avatar2.png';
 import '../src/popover/examples/avatar3.png';
+
+import '../src/browser-detector/examples/browserDetector.scss';
