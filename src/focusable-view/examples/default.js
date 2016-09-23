@@ -4,7 +4,11 @@ class Example extends React.Component {
     <FlexView
       grow
       height={50}
-      style={{ border: focused ? '1px solid blue' : undefined, backgroundColor: 'lightgray' }}
+      style={{
+        cursor: 'pointer',
+        border: focused ? '1px solid #1a91eb' : '1px solid #ced0da',
+        backgroundColor: '#f0f3f8'
+      }}
     />
   );
 
