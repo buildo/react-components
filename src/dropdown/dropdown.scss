@@ -203,7 +203,10 @@ $height-small: 30px !default;
 
   &:not(.is-disabled):hover {
     background: $background-hover;
-    color: $text-color-hover;
+
+    .Select-control .Select-value .Select-value-label {
+      color: $text-color-hover;
+    }
 
     .Select-placeholder {
       color: $placeholder-color-hover;
@@ -214,10 +217,13 @@ $height-small: 30px !default;
     }
   }
 
-  &.is-open {
+  &:not(.is-disabled).is-open {
     background: $background-open;
     border-color: $border-color-open;
-    color: $text-color-open;
+
+    .Select-control .Select-value .Select-value-label {
+      color: $text-color-open;
+    }
 
     &:hover .Select-placeholder, .Select-placeholder {
       color: $placeholder-color-open;
@@ -226,12 +232,14 @@ $height-small: 30px !default;
     .Select-arrow {
       border-color: $arrow-color-open transparent transparent;
     }
-
   }
 
   &.has-value .Select-control {
     padding-right: 45px;
-    color: $text-color-has-value;
+
+    .Select-value .Select-value-label {
+      color: $text-color-has-value;
+    }
 
     .Select-placeholder {
       color: $text-color-has-value;
