@@ -2,14 +2,14 @@
 
 .meter {
   .bar {
-    height: 18px;
-    border-radius: 10px;
     overflow: hidden;
+    border-radius: 10px;
+    height: 18px;
     background-color: $brc-paleGrey;
   }
 
   .filling {
-    border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   }
 }

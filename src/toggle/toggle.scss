@@ -1,69 +1,82 @@
 @import '../utils/theme/variables.scss';
-
 $size: 3em !default;
 $background: $brc-cloudyGrey !default;
 $checked-background: $brc-gradientGreen !default;
 
-.toggle-input{
-	display: none;
-	// add default box-sizing for this scope
-	&, &:after, &:before,
-	& *, & *:after, & *:before,
-	& + .toggle-button{
-		box-sizing: border-box;
-		&::selection{
-			background: none;
-		}
-	}
-	+ .toggle-button{
-		outline: 0;
-		display: block;
-		width: $size;
-		height: $size / 2;
-		position: relative;
-		cursor: pointer;
+.toggle-input {
+  display: none;
+
+  // add default box-sizing for this scope
+  &,
+  &::after,
+  &::before,
+  & *,
+  & *::after,
+  & *::before,
+  & + .toggle-button {
+    box-sizing: border-box;
+
+    &::selection {
+      background: none;
+    }
+  }
+
+  + .toggle-button {
+    display: block;
+    position: relative;
+    height: $size / 2;
+    width: $size;
+    outline: 0;
+    cursor: pointer;
     user-select: none;
-		&:after, &:before{
-			position: relative;
-			display: block;
-			content: "";
-			width: 50%;
-			height: 100%;
-		}
-		&:after{
-			left: 0;
-		}
-		&:before{
-			display: none;
-		}
-	}
-	&:checked{
-		+ .toggle-button{
-			&:after{
-				-webkit-transform: translate3d(100%, 0, 0);
-				transform: translate3d(100%, 0, 0);
-			}
-		}
-	}
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      position: relative;
+      height: 100%;
+      width: 50%;
+    }
+
+    &::after {
+      left: 0;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &:checked {
+    + .toggle-button {
+      &::after {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
 }
 
 .toggle-input {
-	+ .toggle-button {
-		background: $background;
-		border-radius: $size / 2;
-		padding: 2px;
-		-webkit-transition: background 0.4s ease;
-		transition: background 0.4s ease;
-		&:after {
-			border-radius: 50%;
-			background: $brc-white;
-			-webkit-transition: -webkit-transform 0.2s linear;
-			transition: transform 0.2s linear;
-		}
-	}
-	&:checked {
-		+ .toggle-button {
-			background: $checked-background;
-		}
-	}
+  + .toggle-button {
+    padding: 2px;
+    border-radius: $size / 2;
+    background: $background;
+    -webkit-transition: background .4s ease;
+    transition: background .4s ease;
+
+    &::after {
+      border-radius: 50%;
+      background: $brc-white;
+      -webkit-transition: -webkit-transform .2s linear;
+      transition: transform .2s linear;
+    }
+  }
+
+  &:checked {
+    + .toggle-button {
+      background: $checked-background;
+    }
+  }
 }

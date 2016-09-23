@@ -1,6 +1,5 @@
 @import '../utils/theme/variables.scss';
-
-$background: white !default;
+$background: $brc-white !default;
 $border-color: $brc-silver !default;
 $title-color: $brc-darkGrey !default;
 $item-title-color: rgba($brc-darkGrey, .5) !default;
@@ -9,34 +8,34 @@ $item-background-hover: rgba($brc-azure, .15) !default;
 $item-metadata-color: $brc-coolGrey !default;
 
 .menu {
-  width: 250px;
+  overflow: auto;
   position: absolute;
-  z-index: 101;
   top: 40px;
   right: 0;
-  background-color: $background;
+  z-index: 101;
   border: 1px solid $border-color;
-  overflow: auto;
+  width: 250px;
+  background-color: $background;
 
   .menu-row {
-    width: 100%;
     position: relative;
     margin-top: 4px;
     margin-bottom: 4px;
+    width: 100%;
     font-size: 14px;
   }
 
   .menu-title {
     color: $title-color;
-    text-transform: uppercase;
-    font-weight: 600;
     font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
   .menu-item {
     position: relative;
-    cursor: pointer;
     padding: 10px 14px;
+    cursor: pointer;
 
     .menu-item-title {
       color: $item-title-color;
@@ -48,7 +47,7 @@ $item-metadata-color: $brc-coolGrey !default;
 
     &:hover:not(.disabled) {
       background: $item-background-hover;
-      
+
       .menu-item-title {
         color: $item-title-color-hover;
       }

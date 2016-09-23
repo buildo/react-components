@@ -1,37 +1,32 @@
 @import '../utils/theme/variables.scss';
-
 $background-dark: $brc-darkGrey !default;
 $background-light: $brc-white !default;
-
 $border-radius: 5px !default;
 $border-color-dark: transparent !default;
 $border-color-light: $brc-silver !default;
-
 $text-color-dark: $brc-white !default;
 $text-color-light: $brc-darkGrey !default;
-
 $arrow-size: 5px !default;
 $arrow-color: $brc-darkGrey !default;
 
-
 .tooltip {
-  max-width: 250px;
-  word-wrap: break-word;
-  border-radius: $border-radius;
-  border: 1px solid;
   z-index: 10000;
-  text-align: center;
   margin-left: -1px; // border-width
+  border: 1px solid;
+  border-radius: $border-radius;
+  max-width: 250px;
+  text-align: center;
+  word-wrap: break-word;
 
   &.is-dark {
-    background: $background-dark;
     border-color: $border-color-dark;
+    background: $background-dark;
     color: $text-color-dark;
   }
 
   &.is-light {
-    background: $background-light;
     border-color: $border-color-light;
+    background: $background-light;
     color: $text-color-light;
   }
 
@@ -47,91 +42,109 @@ $arrow-color: $brc-darkGrey !default;
     font-weight: 400;
   }
 
-  &:after, &:before {
-    border: solid transparent;
+  &::after,
+  &::before {
     content: ' ';
+    position: absolute;
+    border: solid transparent;
+    border-width: $arrow-size;
     height: 0;
     width: 0;
-    position: absolute;
     pointer-events: none;
-    border-width: $arrow-size;
   }
 
-  &:before {
+  &::before {
     border-width: $arrow-size + 1;
   }
 
   &.position-bottom {
+
     // take into account arrow-size for positioning
     margin-top: ($arrow-size + 1);
 
-    &:after, &:before {
+    &::after,
+    &::before {
       bottom: 100%;
     }
+
     &.is-dark {
-      &:after {
+      &::after {
         border-bottom-color: $background-dark;
       }
-      &:before {
+
+      &::before {
         border-bottom-color: $border-color-dark;
       }
     }
+
     &.is-light {
-      &:after {
+      &::after {
         border-bottom-color: $background-light;
       }
-      &:before {
+
+      &::before {
         border-bottom-color: $border-color-light;
       }
     }
   }
 
   &.position-top {
+
     // take into account arrow-size for positioning
     margin-top: -($arrow-size + 1);
 
-    &:after, &:before {
+    &::after,
+    &::before {
       top: 100%;
     }
+
     &.is-dark {
-      &:after {
+      &::after {
         border-top-color: $background-dark;
       }
-      &:before {
+
+      &::before {
         border-top-color: $border-color-dark;
       }
     }
+
     &.is-light {
-      &:after {
+      &::after {
         border-top-color: $background-light;
       }
-      &:before {
+
+      &::before {
         border-top-color: $border-color-light;
       }
     }
   }
 
-  &.anchor-start:after, &.anchor-start:before {
+  &.anchor-start::after,
+  &.anchor-start::before {
     left: $border-radius;
   }
 
   &.anchor-center {
-    &:after, &:before {
+    &::after,
+    &::before {
       left: 50%;
     }
-    &:after {
+
+    &::after {
       margin-left: -$arrow-size;
     }
-    &:before {
+
+    &::before {
       margin-left: -$arrow-size - 1;
     }
   }
 
-  &.anchor-end:after, &.anchor-end:before {
+  &.anchor-end::after,
+  &.anchor-end::before {
     right: $border-radius;
   }
 
-  &:before {
+  &::before {
     margin-left: -1px;
   }
 }

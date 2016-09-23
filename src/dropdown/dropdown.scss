@@ -1,64 +1,52 @@
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 @import '~react-select/dist/react-select.min.css';
 @import '../utils/theme/variables.scss';
-
 $background: $brc-gradientGrey !default;
 $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;
-
 $border-color: $brc-silver !default;
 $border-color-open: $brc-waterBlue !default;
 $border-radius: 4px !default;
-
 $text-color: $brc-coolGrey !default;
 $text-color-hover: $brc-coolGrey !default;
 $text-color-open: $brc-coolGrey !default;
 $text-color-has-value: $brc-darkGrey !default;
 $text-color-writing: $brc-coolGrey !default;
-
 $placeholder-color: #999 !default;
 $placeholder-color-hover: #666 !default;
 $placeholder-color-open: #666 !default;
-
 $arrow-color: $text-color !default;
 $arrow-color-hover: $text-color-hover !default;
 $arrow-color-open: $text-color-open !default;
-
 $x-color: $text-color !default;
-$x-color-hover: red !default;
-
+$x-color-hover: $brc-red !default;
 $menu-background: $brc-white !default;
-
 $menu-border-color: $brc-silver !default;
-
 $option-color: rgba($brc-darkGrey, .5) !default;
 $option-color-hover: $brc-darkGrey !default;
-
 $option-background-hover: rgba($brc-azure, .15) !default;
-
 $multiple-value-color: #007eff !default;
 $multiple-value-border-color: $multiple-value-color !default;
-$multiple-value-background-color: #DAECF6!default;
+$multiple-value-background-color: #daecf6 !default;
 $multiple-value-icon-color: $multiple-value-color !default;
 $multiple-value-icon-background-color: $multiple-value-background-color !default;
 $multiple-value-icon-border-color: $multiple-value-icon-color !default;
-$multiple-value-icon-color-hover: red !default;
+$multiple-value-icon-color-hover: $brc-red !default;
 $multiple-value-icon-background-color-hover: darken($multiple-value-icon-background-color, 10%) !default;
 $multiple-value-icon-border-color-hover: $multiple-value-icon-border-color !default;
-
 $disabled-opacity: .6 !default;
-
 $height: 38px !default;
 $height-small: 30px !default;
 
 // NORMALIZE
 @mixin normalize {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+
   @include display_flex();
   @include flex_flex-direction(row);
   @include flex_align-items(center);
-  padding: 0;
-  margin: 0;
-  box-sizing: content-box;
 }
 
 @mixin height($height) {
@@ -67,29 +55,33 @@ $height-small: 30px !default;
 }
 
 .Select.dropdown {
-  @include normalize;
-  @include height($height);
   box-sizing: border-box;
+
+  @include normalize();
+  @include height($height);
+
   .Select-control,
   .Select-multi-value-wrapper,
   .Select-value,
   .Select-placeholder,
   .Select-input,
-  .Select-input>input,
+  .Select-input > input,
   .Select-option,
   .Select-arrow-zone,
   .Select-clear-zone {
-    @include normalize;
+    @include normalize();
     @include height($height - 2);
   }
+
   &.is-small {
     @include height($height-small);
+
     .Select-control,
     .Select-multi-value-wrapper,
     .Select-value,
     .Select-placeholder,
     .Select-input,
-    .Select-input>input,
+    .Select-input > input,
     .Select-option,
     .Select-arrow-zone,
     .Select-clear-zone {
@@ -99,23 +91,24 @@ $height-small: 30px !default;
 }
 
 .Select.dropdown {
-  min-width: 150px;
-  background: $background;
   border: solid 1px $border-color;
   border-radius: $border-radius;
+  min-width: 150px;
+  background: $background;
+  color: $text-color;
   font-size: 15px;
   font-weight: 400;
-  color: $text-color;
 
   .Select-control {
-    background: transparent;
+    padding-right: 25px;
+    padding-left: 10px;
     border: none;
+    background: transparent;
     cursor: pointer;
     box-shadow: none !important;
-    padding-left: 10px;
-    padding-right: 25px;
 
-    .Select-multi-value-wrapper, .Select-value-label {
+    .Select-multi-value-wrapper,
+    .Select-value-label {
       overflow: hidden;
       position: relative;
       width: 100%;
@@ -123,26 +116,33 @@ $height-small: 30px !default;
 
     .Select-input {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
     }
 
-    .Select-arrow-zone, .Select-clear-zone {
-      @include flex_justify-content(center);
+    .Select-arrow-zone,
+    .Select-clear-zone {
       position: absolute;
       bottom: 0;
       width: 30px;
+
+      @include flex_justify-content(center);
     }
+
     .Select-arrow-zone {
       right: 0;
     }
+
     .Select-clear-zone {
       right: 20px;
     }
-    .Select-arrow, .Select-clear {
+
+    .Select-arrow,
+    .Select-clear {
       cursor: pointer;
       font-size: 20px;
     }
+
     .Select-arrow {
       border-width: 5px 5px 0;
     }
@@ -151,13 +151,13 @@ $height-small: 30px !default;
   .Select-menu-outer {
     position: absolute;
     left: 0;
-    min-width: 185px;
-    background-color: $menu-background;
+    z-index: 1000;
+    margin-top: 10px;
     border: solid 1px $menu-border-color;
     border-radius: 4px;
-    box-shadow: rgba(34, 36, 38, 0.12) 0px 2px 4px 0px;
-    margin-top: 10px;
-    z-index: 1000;
+    min-width: 185px;
+    background-color: $menu-background;
+    box-shadow: rgba(34, 36, 38, .12) 0 2px 4px 0;
 
     .Select-option {
       padding: 0 10px;
@@ -167,9 +167,10 @@ $height-small: 30px !default;
       color: $option-color;
       background: $menu-background;
 
-      &:hover, &.is-focused {
-        color: $option-color-hover;
+      &:hover,
+      &.is-focused {
         background-color: $option-background-hover;
+        color: $option-color-hover;
       }
     }
   }
@@ -178,24 +179,29 @@ $height-small: 30px !default;
     &.has-value .Select-input {
       position: relative;
     }
+
     .Select-control .Select-value {
-      @include height($height - 14px);
       margin-right: 5px;
-      color: $multiple-value-color;
       border: 1px solid $multiple-value-border-color;
       background: $multiple-value-background-color;
+      color: $multiple-value-color;
+
+      @include height($height - 14px);
+
       .Select-value-icon {
-        color: $multiple-value-icon-color;
-        background: $multiple-value-icon-background-color;
-        border-color: $multiple-value-icon-border-color;
         padding: 0 4px;
+        border-color: $multiple-value-icon-border-color;
+        background: $multiple-value-icon-background-color;
+        color: $multiple-value-icon-color;
+
         &:hover {
-          color: $multiple-value-icon-color-hover;
-          background: $multiple-value-icon-background-color-hover;
           border-color: $multiple-value-icon-border-color-hover;
+          background: $multiple-value-icon-background-color-hover;
+          color: $multiple-value-icon-color-hover;
         }
       }
     }
+
     &.is-small .Select-control .Select-value {
       @include height($height-small - 14px);
     }
@@ -218,14 +224,15 @@ $height-small: 30px !default;
   }
 
   &:not(.is-disabled).is-open {
-    background: $background-open;
     border-color: $border-color-open;
+    background: $background-open;
 
     .Select-control .Select-value .Select-value-label {
       color: $text-color-open;
     }
 
-    &:hover .Select-placeholder, .Select-placeholder {
+    &:hover .Select-placeholder,
+    .Select-placeholder {
       color: $placeholder-color-open;
     }
 
@@ -271,16 +278,19 @@ $height-small: 30px !default;
   }
 
   &.is-disabled {
-    opacity: $disabled-opacity;
     cursor: not-allowed;
+    opacity: $disabled-opacity;
 
-    .Select-arrow-zone, .Select-arrow, .Select-control {
+    .Select-arrow-zone,
+    .Select-arrow,
+    .Select-control {
       cursor: inherit;
     }
   }
 
   &.is-flat {
-    &:not(:hover), &.is-disabled {
+    &:not(:hover),
+    &.is-disabled {
       &:not(.is-open) {
         background: transparent;
       }

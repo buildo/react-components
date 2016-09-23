@@ -1,5 +1,4 @@
 @import '../utils/theme/variables.scss';
-
 $horizontal-padding: 16px !default;
 $font-size: 14px !default;
 $height: 36px !default;
@@ -9,33 +8,27 @@ $color: $brc-darkGrey !default;
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
 $border-radius: 4px !default;
-
 $large-horizontal-padding: 18px !default;
-
 $default-background: $brc-gradientGrey !default;
 $default-border-color: $brc-silver !default;
 $default-border-width: 1px !default;
 $default-color: $brc-darkGrey !default;
 $default-background-hover: $brc-gradientDarkGrey, !default;
-
 $primary-background: $brc-gradientAzure !default;
 $primary-border-color: $brc-waterBlue !default;
 $primary-border-width: 1px !default;
 $primary-color: $brc-white !default;
 $primary-background-hover: $brc-gradientDarkAzure !default;
-
 $positive-background: $brc-gradientGreen !default;
 $positive-border-color: $brc-seaGreen !default;
 $positive-border-width: 1px !default;
 $positive-color: $brc-white !default;
 $positive-background-hover: $brc-gradientDarkGreen !default;
-
 $negative-background: $brc-gradientRed !default;
 $negative-border-color: $brc-alizarinCrimson !default;
 $negative-border-width: 1px !default;
 $negative-color: $brc-white !default;
 $negative-background-hover: $brc-gradientDarkRed !default;
-
 $flat-background: none !default;
 $flat-border-color: $brc-silver !default;
 $flat-border-width: 1px !default;
@@ -45,98 +38,108 @@ $flat-border-width-hover: 1px !default;
 $flat-horizontal-padding: 6px !default;
 $flat-background-hover: none !default;
 $flat-border-color-hover: $brc-darkGrey !default;
-
 $icon-button-horizontal-padding: 13px !default;
 $icon-button-circular-padding: 11px !default;
-
 $medium-height: 44px !default;
 $medium-horizontal-padding: 18px !default;
 $medium-font-size: 16px !default;
-
 $small-height: 36px !default;
 $small-horizontal-padding: 14px !default;
 $small-font-size: 14px !default;
-
 $tiny-height: 32px !default;
 $tiny-horizontal-padding: 6px !default;
 $tiny-font-size: 14px !default;
-
 $disabled-button-opacity: .6 !default;
 $disabled-button-cursor: not-allowed !default;
 
 .button .button-inner {
+
   // commons
   position: relative;
-  cursor: pointer;
-  text-align: center;
-  font-weight: $font-weight;
 
   // default sizes
   padding: 0 $horizontal-padding;
-  font-size: $font-size;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
   height: $height;
 
   // default colors and other style
   background: $background;
-  border: $border-width solid $border-color;
+  cursor: pointer;
   color: $color;
-  border-radius: $border-radius;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: center;
 
   .button-loading {
     position: relative;
   }
 
   // sub-components/sub-elements
-  .button-icon, .button-loading, .button-label {
+  .button-icon,
+  .button-loading,
+  .button-label {
     margin: 0 3px;
   }
+
   .button-loading {
-    width: 1em;
     height: 1em;
+    width: 1em;
   }
 
   //types
   &.is-default {
-    background: $default-background;
     border: $default-border-width solid $default-border-color;
+    background: $default-background;
     color: $default-color;
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $default-background-hover;
     }
   }
+
   &.is-primary {
-    background: $primary-background;
     border: $primary-border-width solid $primary-border-color;
+    background: $primary-background;
     color: $primary-color;
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $primary-background-hover;
     }
   }
-  &.is-positive, &.is-success {
-    background: $positive-background;
+
+  &.is-positive,
+  &.is-success {
     border: $positive-border-width solid $positive-border-color;
+    background: $positive-background;
     color: $positive-color;
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $positive-background-hover;
     }
   }
-  &.is-negative, &.is-error {
-    background: $negative-background;
+
+  &.is-negative,
+  &.is-error {
     border: $negative-border-width solid $negative-border-color;
+    background: $negative-background;
     color: $negative-color;
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $negative-background-hover;
     }
   }
+
   &.is-flat {
-    background: $flat-background;
-    border: $flat-border-width solid $flat-border-color;
-    color: $flat-color;
     padding: 0 $flat-horizontal-padding !important; //!important because it should not be ovverridden by small/tiny variations
+    border: $flat-border-width solid $flat-border-color;
+    background: $flat-background;
+    color: $flat-color;
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
-      color: $flat-color-hover;
-      background: $flat-background-hover;
       border: $flat-border-width-hover solid $flat-border-color-hover;
+      background: $flat-background-hover;
+      color: $flat-color-hover;
     }
   }
 
@@ -144,14 +147,16 @@ $disabled-button-cursor: not-allowed !default;
   &.icon-button {
     padding: 0 $icon-button-horizontal-padding !important;//!important because it should not be ovverridden by small/tiny variations
     &.circular {
-      border-radius: 100% !important;//!important because it should not be ovverridden by small/tiny variations
-      padding: $icon-button-circular-padding !important;//!important because it should not be ovverridden by small/tiny variations
+      padding: $icon-button-circular-padding !important;
+      border-radius: 100% !important;//!important because it should not be ovverridden by small/tiny variations//!important because it should not be ovverridden by small/tiny variations
       &.is-medium {
         width: $medium-height;
       }
+
       &.is-small {
         width: $small-height;
       }
+
       &.is-tiny {
         width: $tiny-height;
       }
@@ -161,27 +166,28 @@ $disabled-button-cursor: not-allowed !default;
   // sizes
   &.is-tiny {
     padding: 0 $tiny-horizontal-padding;
-    font-size: $tiny-font-size;
     height: $tiny-height;
+    font-size: $tiny-font-size;
   }
+
   &.is-small {
     padding: 0 $small-horizontal-padding;
-    font-size: $small-font-size;
     height: $small-height;
+    font-size: $small-font-size;
   }
+
   &.is-medium {
     padding: 0 $medium-horizontal-padding;
-    font-size: $medium-font-size;
     height: $medium-height;
+    font-size: $medium-font-size;
   }
 
   &.is-not-allowed {
-    opacity: $disabled-button-opacity;
     cursor: $disabled-button-cursor;
+    opacity: $disabled-button-opacity;
   }
 
   &.is-processing {
     cursor: default;
   }
-
 }

@@ -1,17 +1,12 @@
 @import '../utils/theme/variables.scss';
-
 $border-color: $brc-silver !default;
-
 $header-background: $brc-paleGrey !default;
 $header-color: $brc-coolGrey !default;
-
 $odd-row-background: transparent !default;
 $even-row-background: transparent !default;
-
 $cell-border-color: $brc-silver !default;
 $selected-cell-background: $brc-azure10 !default;
 $hover-cell-background: $brc-azure10 !default;
-
 $scrollbar-color: rgba($brc-coolGrey, .6) !default;
 $hover-scrollbar-background: rgba($brc-white, .8) !default;
 $hover-scrollbar-color: $brc-coolGrey !default;
@@ -22,24 +17,26 @@ $scrollbar-size: 6px !default;
 .fixed-data-table-wrapper {
 
   // whole table
-  .public_fixedDataTable_main, .public_fixedDataTable_hasBottomBorder {
-    border-color: $border-color;
+  .public_fixedDataTable_main,
+  .public_fixedDataTable_hasBottomBorder {
     border-width: 1px;
+    border-color: $border-color;
   }
 
   .public_fixedDataTableRow_fixedColumnsDivider {
-    border-color: $border-color;
     border-width: 2px;
+    border-color: $border-color;
   }
 
   // header
   .public_fixedDataTable_header {
-    border-color: $border-color;
     border-width: 1px;
+    border-color: $border-color;
     background: $header-background;
+
     .public_fixedDataTableCell_cellContent {
-      color: $header-color;
       background: $header-background;
+      color: $header-color;
     }
   }
 
@@ -47,6 +44,7 @@ $scrollbar-size: 6px !default;
   .public_fixedDataTableRow_odd .public_fixedDataTableCell_main {
     background: $odd-row-background;
   }
+
   .public_fixedDataTableRow_even .public_fixedDataTableCell_main {
     background: $even-row-background;
   }
@@ -54,9 +52,11 @@ $scrollbar-size: 6px !default;
   // cell
   .public_fixedDataTableCell_main {
     border-color: $cell-border-color;
+
     &:last-child {
       border-width: 0;
     }
+
     .public_fixedDataTableCell_wrap3 {
       vertical-align: baseline; // needed to enable `height: 100%` on our cell components
     }
@@ -66,11 +66,14 @@ $scrollbar-size: 6px !default;
   &.selectable {
     .public_fixedDataTableRow_main:not(.public_fixedDataTable_header) {
       cursor: pointer;
+
       .selected {
         background: $selected-cell-background;
       }
     }
-    .public_fixedDataTableRow_odd, .public_fixedDataTableRow_even {
+
+    .public_fixedDataTableRow_odd,
+    .public_fixedDataTableRow_even {
       &:hover .public_fixedDataTableCell_main {
         background: $hover-cell-background;
       }
@@ -79,37 +82,46 @@ $scrollbar-size: 6px !default;
 
   .public_fixedDataTable_horizontalScrollbar {
     height: $scrollbar-size + 8px !important;
-    >div {
+
+    > div {
       height: $scrollbar-size + 8px !important;
-    };
+    }
   }
 
   // scrollbar
   .public_Scrollbar_main {
     &.ScrollbarLayout_mainHorizontal {
       height: $scrollbar-size + 8px;
+
       &:hover {
         height: $scrollbar-size * 1.25 + 8px;
       }
     }
+
     &.ScrollbarLayout_mainVertical {
       width: $scrollbar-size + 8px;
+
       &:hover {
         width: $scrollbar-size * 1.25 + 8px;
       }
     }
-    .public_Scrollbar_face:after {
-      cursor: pointer;
+
+    .public_Scrollbar_face::after {
       background-color: $scrollbar-color;
+      cursor: pointer;
     }
-    .public_Scrollbar_face:hover:after {
+
+    .public_Scrollbar_face:hover::after {
       background-color: $hover-scrollbar-color;
     }
-    &.public_Scrollbar_mainActive, &:hover {
+
+    &.public_Scrollbar_mainActive,
+    &:hover {
       background-color: $hover-scrollbar-background;
     }
+
     &.public_Scrollbar_mainActive {
-      .public_Scrollbar_face:after {
+      .public_Scrollbar_face::after {
         background-color: $hover-scrollbar-color;
       }
     }

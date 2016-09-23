@@ -1,9 +1,9 @@
 @import '../../utils/theme/variables.scss';
 
 .nav-bar {
+  padding: 0 30px;
   border: 1px solid $brc-silver;
   box-shadow: 0 -1px 0 0 #e6eaee;
-  padding: 0 30px;
 
   .left {
     a.item {

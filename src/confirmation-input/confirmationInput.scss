@@ -1,5 +1,4 @@
 @import '../utils/theme/variables.scss';
-
 $padding-h: 12px !default;
 $font-size: 14px !default;
 $font-weight: $brc-semibold !default;
@@ -8,21 +7,20 @@ $color-hover: $brc-azure !default;
 $disabled-opacity: .6 !default;
 
 .confirmation-input {
-
-  border-radius: 4px;
   border: 1px solid $brc-silver;
+  border-radius: 4px;
 
   input {
-    color: $brc-darkGrey;
     padding-left: $padding-h;
     border: 0;
+    color: $brc-darkGrey;
     font-weight: $brc-semibold;
 
-    /*placeholder*/
+    /* placeholder */
     &::-webkit-input-placeholder,
     &::-moz-placeholder,
     &:-ms-input-placeholder,
-    &:-moz-placeholder  {
+    &:-moz-placeholder {
       color: $brc-coolGrey;
     }
 
@@ -30,6 +28,7 @@ $disabled-opacity: .6 !default;
       cursor: not-allowed;
       opacity: $disabled-opacity;
     }
+
     &:focus {
       outline: none;
       box-shadow: 0;
@@ -38,19 +37,18 @@ $disabled-opacity: .6 !default;
 
   .confirmation {
     margin: 0 $padding-h;
+    color: $color;
     font-size: $font-size;
     font-weight: $font-weight;
-    color: $color;
   }
 
   &.focused {
-
     border: 1px solid $brc-waterBlue;
     outline: none;
 
     .confirmation {
-      color: $color-hover;
       cursor: pointer;
+      color: $color-hover;
     }
   }
 }

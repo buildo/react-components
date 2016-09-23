@@ -3,11 +3,10 @@
 @import '../utils/theme/typography.scss';
 
 .kitchen-sink {
-
   .pattern {
-    background: $brc-white url("./pattern.png") repeat-x left bottom;
     height: 104px;
     width: 100%;
+    background: $brc-white url('./pattern.png') repeat-x left bottom;
   }
 
   .home {
@@ -15,19 +14,22 @@
       position: relative;
       height: 478px;
       background-color: $brc-azure;
+
       .pattern {
         position: absolute;
         bottom: 0;
       }
+
       .title {
         color: $brc-white;
         font-size: 59px;
-        font-weight: bold;
+        font-weight: $brc-bold;
       }
+
       .subtitle {
+        color: $brc-white;
         font-size: 26px;
         font-weight: 300;
-        color: $brc-white;
         opacity: .62;
       }
     }
@@ -47,19 +49,16 @@
     margin: 40px 60px;
 
     .examples {
-
       .example {
-
         margin-bottom: 45px;
 
         .example-card {
           position: relative;
           margin-top: 10px;
-          border-radius: 4px;
           border: solid 1px #dfe3e9;
+          border-radius: 4px;
 
           .live-demo {
-
             .component {
               margin: 0;
               padding: 30px 40px;
@@ -73,14 +72,15 @@
               }
             }
 
-            .playground, .CodeMirror {
+            .playground,
+            .CodeMirror {
               overflow: hidden;
               border-radius: 0 0 4px 4px;
             }
 
             .CodeMirror {
-              height: auto;
               margin-bottom: -30px; // needed to hide LiveDemo footer
+              height: auto;
             }
 
             .playground {
@@ -101,14 +101,14 @@
 
                   > .playgroundError {
                     display: block;
-                    font-family: Consolas, Courier, monospace;
                     position: absolute;
-                    width: 100%;
-                    padding: 10px;
-                    font-size: 12px;
-                    color: white;
-                    background: #F2777A;
                     transform: translateY(-100%);
+                    padding: 10px;
+                    width: 100%;
+                    background: #f2777a;
+                    color: $brc-white;
+                    font-family: 'Consolas', 'Courier', monospace;
+                    font-size: 12px;
                   }
                 }
               }
@@ -121,7 +121,8 @@
               color: $brc-coolGrey;
               font-size: 9px;
 
-              &:hover, &.active {
+              &:hover,
+              &.active {
                 cursor: pointer;
                 color: $brc-azure;
               }
@@ -132,25 +133,26 @@
     }
 
     > .footer {
-
       table {
         margin-top: 34px;
         border-collapse: collapse;
-        font-size: 16px;
         color: $brc-darkGrey;
+        font-size: 16px;
 
         tr {
           height: 40px;
         }
+
         thead th {
           padding: 0 5px;
-          text-align: left;
+          border: 1px solid #dfe3e9;
           background-color: $brc-paleGrey;
           color: #7f8fa4;
           font-size: 16px;
           font-weight: $brc-semibold;
-          border: 1px solid #dfe3e9;
+          text-align: left;
         }
+
         tbody td {
           padding: 0 5px;
           border: 1px solid #dfe3e9;
@@ -164,66 +166,65 @@
   }
 
   .sidebar {
-
     .sidebar-content {
       border-right: 1px solid #dfe3e9;
-      width: 240px;
       height: 100%;
+      width: 240px;
 
       .logo {
+        border-bottom: 1px solid #eaeaea;
         height: 240px;
-        font-size: 33px;
-        font-weight: bold;
-        border-bottom: 1px solid #EAEAEA;
-        color: $brc-darkGrey;
         cursor: pointer;
+        color: $brc-darkGrey;
+        font-size: 33px;
+        font-weight: $brc-bold;
 
         .sub {
+          color: $brc-coolGrey;
           font-size: 16px;
           font-weight: $brc-semibold;
-          color: $brc-coolGrey;
         }
       }
 
-      .collapsable-section, .single-item-section {
-
-        * {
-          transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        }
-
+      .collapsable-section,
+      .single-item-section {
         border: 0;
 
+        * {
+          transition: all 450ms cubic-bezier(.23, 1, .32, 1) 0ms;
+        }
+
         .content {
-          width: 100%;
           padding: 20px;
-          border-bottom: 1px solid #EAEAEA;
+          border-bottom: 1px solid #eaeaea;
+          width: 100%;
+          background: transparent;
           cursor: pointer;
           font-weight: $brc-semibold;
-          background: transparent;
 
           &:hover {
-            background-color: #FBFBFB;
+            background-color: #fbfbfb;
           }
 
           .icon {
-            font-size: 8px;
             color: $brc-coolGrey;
+            font-size: 8px;
           }
         }
 
         .items {
-
-          background-color: $brc-paleGrey;
           padding: 10px 0;
+          background-color: $brc-paleGrey;
 
           .item {
-            width: 100%;
             padding: 10px 20px;
+            width: 100%;
             cursor: pointer;
             color: $brc-battleshipGrey;
             font-weight: $brc-regular;
 
-            &.active, &:hover {
+            &.active,
+            &:hover {
               color: $brc-azure;
               text-decoration: none;
             }
@@ -231,21 +232,22 @@
         }
       }
 
-      .single-item-section, .collapsable-section .content  {
-        width: 100%;
+      .single-item-section,
+      .collapsable-section .content {
         padding: 20px;
-        border-bottom: 1px solid #EAEAEA;
+        border-bottom: 1px solid #eaeaea;
+        width: 100%;
+        background: transparent;
         cursor: pointer;
         font-weight: $brc-semibold;
-        background: transparent;
 
         &:hover {
-          background-color: #FBFBFB;
+          background-color: #fbfbfb;
         }
 
         .icon {
-          font-size: 8px;
           color: $brc-coolGrey;
+          font-size: 8px;
         }
       }
 

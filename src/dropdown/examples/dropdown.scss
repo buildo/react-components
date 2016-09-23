@@ -3,35 +3,35 @@
 
 .dropdown-list {
   .dropdown {
-    min-width: 200px;
     margin-right: 20px;
+    min-width: 200px;
   }
 }
 
 .live-demo {
   .dropdown {
-
     .Select-arrow {
+      margin-top: 1px;
+      border: 0;
+      height: auto;
+      width: auto;
+      color: $brc-coolGrey;
+      font-size: 8px !important;
+
       @include display_flex();
       @include flex_flex-direction(row);
       @include flex_align-items(center);
-      border: 0;
-      margin-top: 1px;
-      font-size: 8px !important;
-      color: $brc-coolGrey;
-      width: auto;
-      height: auto;
 
       &::before {
+        content: '\e910';
         font-family: 'icomoon';
-        content: "\e910";
       }
     }
 
     &.is-open {
       .Select-arrow {
         &::before {
-          content: "\e90f";
+          content: '\e90f';
         }
       }
     }
