@@ -1,0 +1,12 @@
+@import '../../utils/theme/variables.scss';
+
+.browser-detector {
+  > div {
+    padding: 18px 20px;
+    height: 56px;
+    border: 1px solid $brc-silver;
+    background: $brc-paleGrey;
+    font-size: 16px;
+    color: $brc-darkGrey;
+  }
+}
