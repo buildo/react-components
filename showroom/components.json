@@ -176,6 +176,8 @@
             "url": "dev/examples/Row.example"
           },
           {
+            "title": "Under the hood: \"flex\" property computation",
+            "description": "Go ahead and play with the following example to better understand how `FlexView` reacts to `grow`, `shrink` and `basis` props to compute the \"flex\" property",
             "url": "dev/examples/ComputeFlex.example"
           }
         ]
