@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 const paths = {
   ASSETS: path.resolve(__dirname, './assets'),
@@ -11,7 +12,12 @@ const paths = {
 module.exports = {
 
   plugins: [
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr|en/)
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr|en/),
+    new StyleLintPlugin({
+      files: '**/*.scss',
+      failOnError: false,
+      syntax: 'scss'
+    })
   ],
 
   module: {
