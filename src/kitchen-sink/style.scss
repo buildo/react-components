@@ -166,10 +166,16 @@
   }
 
   .sidebar {
+    padding-left: 240px;
+
     .sidebar-content {
       border-right: 1px solid #dfe3e9;
-      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
       width: 240px;
+      overflow: auto;
 
       .logo {
         border-bottom: 1px solid #eaeaea;
