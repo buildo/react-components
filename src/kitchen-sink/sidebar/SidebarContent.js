@@ -3,7 +3,7 @@ import { props, t } from '../../utils';
 import Item from './Item';
 import SingleItemSection from './SingleItemSection';
 import CollapsableSection from '../../collapsable-section/CollapsableSection';
-import ScrollView from '../../ScrollView/ScrollView';
+import Scroll from '../../scroll/ScrollView';
 import View from 'react-flexview';
 
 @props({
@@ -61,13 +61,13 @@ export default class SidebarContent extends React.Component {
 
   render() {
     return (
-      <View className='sidebar-content' column>
+      <Scroll className='sidebar-content' scrollPropagation={false}>
         <View className='logo' vAlignContent='center' hAlignContent='center' column onClick={this.toHome} shrink={false}>
           buildo
           <View className='sub'>React components</View>
         </View>
         {this.getSections(this.props.sections)}
-      </View>
+      </Scroll>
     );
   }
 

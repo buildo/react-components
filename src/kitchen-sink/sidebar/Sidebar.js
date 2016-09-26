@@ -2,7 +2,6 @@ import React from 'react';
 import View from 'react-flexview';
 import { props, t } from '../../utils';
 import LoadingSpinner from '../../loading-spinner';
-import ScrollView from '../../ScrollView/ScrollView';
 import SidebarContent from './SidebarContent';
 
 @props({
