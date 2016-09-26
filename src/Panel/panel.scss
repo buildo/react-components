@@ -30,6 +30,7 @@ $content-title-color: $brc-darkGrey !default;
 
 .panel {
   position: relative;
+  top: 10;
 
   &.expanded,
   &.collapse-top,
