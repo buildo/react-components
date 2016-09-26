@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { props, t } from '../utils';
+import { props, t, skinnable } from '../utils';
 import { warn } from '../utils/log';
 
 export const Props = {
@@ -26,6 +26,7 @@ export const Props = {
  * @param overlayColor - dimmed-overlay color
  */
 @props(Props)
+@skinnable()
 export default class LoadingSpinner extends React.Component {
 
   static defaultProps = {
@@ -64,7 +65,7 @@ export default class LoadingSpinner extends React.Component {
     });
   };
 
-  render() {
+  getLocals() {
     const { size, color, overlayColor, id, className, style } = this.props;
 
     const overlayStyle = { backgroundColor: overlayColor };
@@ -72,9 +73,20 @@ export default class LoadingSpinner extends React.Component {
       fontSize: size,
       color
     };
+    const computedClassName = cx('loading-spinner', className);
 
+    return {
+      id,
+      style,
+      className: computedClassName,
+      overlayStyle,
+      spinnerStyle
+    };
+  }
+
+  template({ id, style, className, overlayStyle, spinnerStyle }) {
     return (
-      <div ref='loadingSpinner' className={cx('loading-spinner', className)} {...{ style, id }}>
+      <div ref='loadingSpinner' className={className} style={style} id={id}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
           <div className='spinner' style={spinnerStyle}/>
           {this.getMessage()}
