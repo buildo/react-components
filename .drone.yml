@@ -10,6 +10,13 @@ build:
       - npm run lint
       - npm test
 
+  sync-repo:
+    image: node:5
+    commands:
+      - git pull --ff-only
+    when:
+      branch: master
+
   generate-changelog:
     image: ruby
     environment:
