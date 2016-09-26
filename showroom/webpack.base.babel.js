@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr|en/),
     new StyleLintPlugin({
-      files: '**/*.s?(a|c)ss',
+      files: '**/*.scss',
       failOnError: false,
       syntax: 'scss'
     })
