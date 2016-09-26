@@ -19,7 +19,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        exclude: [ paths.ASSETS, /src\/.+\/examples/ ],
+        exclude: [ paths.ASSETS, /src\/.+\/examples/, paths.DIST ],
         include: [
           paths.COMPONENTS,
           paths.SRC,
@@ -39,7 +39,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'eslint',
-        include: paths.SRC,
+        include: [ paths.SRC, paths.COMPONENTS ],
         exclude: paths.ASSETS
       }
     ]

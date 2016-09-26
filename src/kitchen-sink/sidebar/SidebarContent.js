@@ -3,6 +3,7 @@ import { props, t } from '../../utils';
 import Item from './Item';
 import SingleItemSection from './SingleItemSection';
 import CollapsableSection from '../../collapsable-section/CollapsableSection';
+import Scroll from '../../scroll/ScrollView';
 import View from 'react-flexview';
 
 @props({
@@ -36,34 +37,37 @@ export default class SidebarContent extends React.Component {
   getSections = (sections) => sections.map(({ id: sectionId, components, contents, title }) => {
     if ((components || contents).length > 1) {
       return (
-        <CollapsableSection onChange={this.onToggle(sectionId)} isOpen={this.isOpen(sectionId)} header={title} icons={{ open: 'angleUpsvg', closed: 'angleDown' }} key={sectionId}>
-          <div className='items'>
-            {this.getItems(sectionId, components || contents)}
-          </div>
-        </CollapsableSection>
+        <View shrink={false} column key={sectionId}>
+          <CollapsableSection onChange={this.onToggle(sectionId)} isOpen={this.isOpen(sectionId)} header={title} icons={{ open: 'angleUpsvg', closed: 'angleDown' }}>
+            <div className='items'>
+              {this.getItems(sectionId, components || contents)}
+            </div>
+          </CollapsableSection>
+        </View>
       );
     } else {
       const { id } = (components || contents)[0];
       return (
-        <SingleItemSection
-          {...{ title, id, sectionId }}
-          onClick={this.props.onSelectItem}
-          active={this.isActive(id)}
-          key={sectionId}
-        />
+        <View column shrink={false} key={sectionId}>
+          <SingleItemSection
+            {...{ title, id, sectionId }}
+            onClick={this.props.onSelectItem}
+            active={this.isActive(id)}
+          />
+        </View>
       );
     }
   });
 
   render() {
     return (
-      <div className='sidebar-content'>
-        <View className='logo' vAlignContent='center' hAlignContent='center' column onClick={this.toHome}>
+      <Scroll className='sidebar-content' scrollPropagation={false}>
+        <View className='logo' vAlignContent='center' hAlignContent='center' column onClick={this.toHome} shrink={false}>
           buildo
           <View className='sub'>React components</View>
         </View>
         {this.getSections(this.props.sections)}
-      </div>
+      </Scroll>
     );
   }
 

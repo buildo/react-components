@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactSidebar from 'react-sidebar';
+import View from 'react-flexview';
 import { props, t } from '../../utils';
 import LoadingSpinner from '../../loading-spinner';
 import SidebarContent from './SidebarContent';
@@ -25,13 +25,13 @@ export default class Sidebar extends React.Component {
 
   render() {
     const { children, loading, ...props } = this.props;
-    const sidebar = <SidebarContent {...props} />;
     return (
-      <div className='sidebar'>
-        <ReactSidebar shadow={false} docked sidebar={sidebar} transitions={false}>
+      <View className='sidebar' grow>
+        <SidebarContent {...props} />
+        <View grow column>
           {loading ? this.getLoadingSpinner() : children}
-        </ReactSidebar>
-      </div>
+        </View>
+      </View>
     );
   }
 

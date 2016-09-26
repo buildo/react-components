@@ -1,5 +1,6 @@
 import React from 'react';
 import find from 'lodash/find';
+import View from 'react-flexview';
 import { props, t } from '../utils';
 import Sidebar from './sidebar/Sidebar';
 import Content from './content/Content';
@@ -85,11 +86,11 @@ export default class KitchenSink extends React.Component {
     const currentItemId = contentId || componentId;
 
     return (
-      <div className='kitchen-sink'>
+      <View className='kitchen-sink' column>
         <Sidebar {...{ sections, openSections, currentItemId, onToggleSection, onSelectItem, loading }} >
           {!loading && this.getChildren()}
         </Sidebar>
-      </div>
+      </View>
     );
   }
 
