@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import TimePicker, {
-  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeFilterOptions, inputError
+  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
 } from '../../src/time-picker/TimePicker';
 
 // Because of this bug: https://github.com/facebook/react/issues/7386
@@ -240,21 +240,19 @@ describe('TimePicker', () => {
 
   });
 
-  describe('makeFilterOptions', () => {
+  describe('makeOptions', () => {
 
     it('computes options based on min/max for 24H time', () => {
-      const filterOptions = makeFilterOptions({ timeFormat: H24, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } });
       const inputStr = '';
-      const results = filterOptions([], inputStr);
+      const results = makeOptions({ timeFormat: H24, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } }, inputStr);
       expect(results.length).toBe(4);
       expect(results[0]).toEqual({ label: '05:30', value: '05:30' });
       expect(results[3]).toEqual({ label: '07:00', value: '07:00' });
     });
 
     it('computes options based on min/max for 12H time', () => {
-      const filterOptions = makeFilterOptions({ timeFormat: H12, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } });
       const inputStr = '';
-      const results = filterOptions([], inputStr);
+      const results = makeOptions({ timeFormat: H12, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } }, inputStr);
       expect(results.length).toBe(4);
       expect(results[0]).toEqual({ label: '05:30 am', value: '05:30' });
       expect(results[3]).toEqual({ label: '07:00 am', value: '07:00' });
