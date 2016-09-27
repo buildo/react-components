@@ -10,6 +10,9 @@
 - Dropdown: menu-background should be applied also to option [\#623](https://github.com/buildo/react-components/issues/623)
 - Dropdown box-sizing shouldn't be `border-box` [\#611](https://github.com/buildo/react-components/issues/611)
 - TimePicker is not working [\#592](https://github.com/buildo/react-components/issues/592)
+- \[KitchenSink\] Handle external components [\#528](https://github.com/buildo/react-components/issues/528)
+- warning for Dropdown `placeholder` [\#520](https://github.com/buildo/react-components/issues/520)
+- Dropdown: multi value support is broken [\#423](https://github.com/buildo/react-components/issues/423)
 
 #### New features:
 
