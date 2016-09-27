@@ -53,6 +53,7 @@ describe('BackgroundDimmer', () => {
 
     it('uses default props', () => {
       const dimmer = new BackgroundDimmer({
+        ...BackgroundDimmer.defaultProps,
         children: content
       });
       const locals = dimmer.getLocals();

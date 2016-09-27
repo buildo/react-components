@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import MoreOrLess from '../../src/more-or-less';
 
 const exampleProps = {
+  ...MoreOrLess.defaultProps,
   children: 'content',
   className: 'fancy-class-name',
   icons: {
@@ -61,4 +62,3 @@ describe('MoreOrLess', () => {
   });
 
 });
-

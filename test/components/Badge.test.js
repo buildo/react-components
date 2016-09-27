@@ -16,6 +16,7 @@ describe('Badge', () => {
 
     it('computes className', () => {
       const badge = new Badge({
+        ...Badge.defaultProps,
         label: 42,
         className: 'awesome-class'
       });
@@ -27,6 +28,7 @@ describe('Badge', () => {
 
     it('computes className when active', () => {
       const badge = new Badge({
+        ...Badge.defaultProps,
         active: true,
         label: 42,
         className: 'awesome-class'

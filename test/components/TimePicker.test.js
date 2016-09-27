@@ -10,6 +10,7 @@ import TimePicker, {
 jest.mock('react-dom');
 
 const exampleProps = {
+  ...TimePicker.defaultProps,
   id: '12345',
   className: 'fancy-class-name',
   placeholder: '--:--',
@@ -44,6 +45,7 @@ describe('TimePicker', () => {
 
     it('passes value properly formatted when H24', () => {
       const timePicker = new TimePicker({
+        ...TimePicker.defaultProps,
         value: { hours: 15, minutes: 33 }
       });
       const { value } = timePicker.getLocals();
@@ -52,6 +54,7 @@ describe('TimePicker', () => {
 
     it('passes value properly formatted when H12', () => {
       const timePicker = new TimePicker({
+        ...TimePicker.defaultProps,
         value: { hours: 15, minutes: 33 },
         timeFormat: H12
       });
@@ -60,7 +63,7 @@ describe('TimePicker', () => {
     });
 
     it('passes an undefined value when value prop is undefined', () => {
-      const timePicker = new TimePicker({});
+      const timePicker = new TimePicker({ ...TimePicker.defaultProps });
       const { value } = timePicker.getLocals();
       expect(value).toBeUndefined();
     });

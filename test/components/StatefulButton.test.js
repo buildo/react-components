@@ -15,6 +15,7 @@ function timeoutPromise(millis) {
 }
 
 const exampleProps = {
+  ...StatefulButton.defaultProps,
   label: 'BeautifulButton',
   onClick: timeoutPromise.bind(this, 5),
   baseState: 'ready',
