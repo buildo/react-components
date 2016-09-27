@@ -5,8 +5,6 @@ import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
 
-const options = [];
-
 export const H24 = '24h';
 export const H12 = '12h';
 export const inputError = {};
@@ -137,13 +135,8 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
   return lteTime(minTime, time) && lteTime(time, maxTime) && startsWith(time, originalInput);
 };
 
-// we are not "filtering" options (options array is always empty and discarded by this function)
-// our `filterOptions` actually generates options based on current input string and props.
-// We use this as a workaround because there's not any other easy way of updating options
-// without breaking input in react-select v0.6.x
-// NOTE: can be fixed updating to v1.0.0
-export const makeFilterOptions = ({ minTime, maxTime, timeFormat }) => (_, inputStr) => {
-  const time = parseInTimeFormat(inputStr, timeFormat);
+export const makeOptions = ({ minTime, maxTime, timeFormat }, inputValue) => {
+  const time = parseInTimeFormat(inputValue, timeFormat);
   const timeList = time === inputError ? [] : createTimeList(time, timeFormat);
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: time.originalInput, minTime, maxTime
@@ -174,6 +167,8 @@ export default class TimePicker extends React.Component {
     searchable: true
   }
 
+  state = { inputValue: '' }
+
   _onChange = (value) => {
     if (value) {
       // interface with component user is always in H24
@@ -184,10 +179,12 @@ export default class TimePicker extends React.Component {
     }
   };
 
+  updateInputValue = (inputValue) => this.setState({ inputValue });
+
   getLocals() {
     const {
-      timeFormat,
       className,
+      minTime, maxTime, timeFormat,
       value: userValue,
       ...props
     } = this.props;
@@ -199,14 +196,14 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       value,
-      options,
+      options: makeOptions({ minTime, maxTime, timeFormat }, this.state.inputValue),
       className: cx('time-picker', className),
       onChange: this._onChange,
-      filterOptions: makeFilterOptions(this.props)
+      updateInputValue: this.updateInputValue
     };
   }
 
-  template({ id, className, style, searchable, value, placeholder, options, onChange, filterOptions }) {
+  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue }) {
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -215,7 +212,7 @@ export default class TimePicker extends React.Component {
         onChange={onChange}
         options={options}
         placeholder={placeholder}
-        filterOptions={filterOptions}
+        onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
       />
     );
