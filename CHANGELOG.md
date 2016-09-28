@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- Dropdown: add sass variable $option-background-selected [\#635](https://github.com/buildo/react-components/issues/635)
 - Dropdown: $text-color-\* variables have no effect [\#625](https://github.com/buildo/react-components/issues/625)
 - Dropdown: menu-background should be applied also to option [\#623](https://github.com/buildo/react-components/issues/623)
 - TimePicker selection, keyboard selection and focus [\#612](https://github.com/buildo/react-components/issues/612)
