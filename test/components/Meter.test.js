@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import Meter from '../../src/meter';
 
 const exampleProps = {
+  ...Meter.defaultProps,
   id: '12345',
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },
@@ -66,6 +67,7 @@ describe('Meter', () => {
 
     it('computes basisSize with custom min and max', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 150,
         min: 100,
         max: 200,
@@ -77,6 +79,7 @@ describe('Meter', () => {
 
     it('computes basisSize for custom negative min', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 0,
         min: -100,
         max: 100,
@@ -88,6 +91,7 @@ describe('Meter', () => {
 
     it('computes background color for filling', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 60,
         ranges: [
           { startValue: 50, endValue: 80, fillingColor: 'yellow' }
@@ -100,6 +104,7 @@ describe('Meter', () => {
 
     it('defaults to the base color as background color if there\'s no matching range', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 20,
         baseFillingColor: '#ccc',
         ranges: [
@@ -113,6 +118,7 @@ describe('Meter', () => {
 
     it('doesn\'t define a background color if there\'s no matching range and no default is given', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 20,
         ranges: [
           { startValue: 50, endValue: 80, fillingColor: 'yellow' }
@@ -125,6 +131,7 @@ describe('Meter', () => {
 
     it('defaults to base color as bar background color should if there\'s no matching range', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 20,
         baseBackroundColor: '#ccc',
         ranges: [
@@ -138,6 +145,7 @@ describe('Meter', () => {
 
     it('doesn\'t define a bar background color if there\'s no matching range and no default is given', ()  => {
       const meter = new Meter({
+        ...Meter.defaultProps,
         value: 20,
         ranges: [
           { startValue: 50, endValue: 80, backgroundColor: 'yellow' }

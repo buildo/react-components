@@ -5,10 +5,10 @@ Object {
     "column": true,
     "onClick": [Function anonymous],
     "style": Object {
-      "height": undefined,
-      "maxHeight": undefined,
-      "maxWidth": undefined,
-      "width": undefined
+      "height": "auto",
+      "maxHeight": "90%",
+      "maxWidth": "90%",
+      "width": "auto"
     }
   },
   "children": <div
@@ -29,20 +29,20 @@ Object {
       "position": "fixed",
       "right": 0,
       "top": 0,
-      "zIndex": NaN
+      "zIndex": 100000
     },
     "vAlignContent": "center"
   },
   "overlayProps": Object {
     "style": Object {
-      "backgroundColor": undefined,
+      "backgroundColor": "black",
       "bottom": 0,
       "left": 0,
-      "opacity": "undefined",
+      "opacity": "0.5",
       "position": "fixed",
       "right": 0,
       "top": 0,
-      "zIndex": undefined
+      "zIndex": 99999
     }
   },
   "stopPropagation": [Function anonymous]

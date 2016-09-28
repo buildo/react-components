@@ -8,6 +8,7 @@ import Dropdown from '../../src/dropdown';
 jest.mock('react-dom');
 
 const exampleProps = {
+  ...Dropdown.defaultProps,
   id: '12345',
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },
@@ -47,6 +48,7 @@ describe('Dropdown', () => {
 
     it('computes value from a string', () => {
       const dropdown = new Dropdown({
+        ...Dropdown.defaultProps,
         value: 'test',
         options: [
           { value: 'test', label: 'Test' },
@@ -61,6 +63,7 @@ describe('Dropdown', () => {
 
     it('computes value from a number', () => {
       const dropdown = new Dropdown({
+        ...Dropdown.defaultProps,
         value: 2,
         options: [
           { value: 0, label: 'Test' },
