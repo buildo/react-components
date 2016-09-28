@@ -1,16 +1,14 @@
 class Example extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {};
-  }
+  state = {}
 
-  render = () => {
-    return (
-      <div>
-        <h1>12 Hour Time Picker</h1>
-        <TimePicker value={this.state.value} onChange={(value) => this.setState({ value })} timeFormat="12h" />
-      </div>
-    );
-  }
+  onChange = (value) => this.setState({ value });
+
+  render = () => (
+    <TimePicker
+      value={this.state.value}
+      onChange={this.onChange}
+      timeFormat='12h'
+    />
+  );
 }

@@ -476,10 +476,12 @@
         "readmeUrl": "time-picker/README.md",
         "examples": [
           {
-            "url": "time-picker/examples/TimePicker24.js"
+            "title": "12h time format",
+            "url": "time-picker/examples/TimePicker12.js"
           },
           {
-            "url": "time-picker/examples/TimePicker12.js"
+            "title": "24h time format (bounded range)",
+            "url": "time-picker/examples/TimePicker24.js"
           }
         ]
       },
