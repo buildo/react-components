@@ -176,7 +176,7 @@ $height-small: 30px !default;
 
       &:hover,
       &.is-focused {
-        background-color: $option-background-hover;
+        background: $option-background-hover;
         color: $option-color-hover;
       }
     }
