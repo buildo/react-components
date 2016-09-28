@@ -24,7 +24,9 @@ $menu-background: $brc-white !default;
 $menu-border-color: $brc-silver !default;
 $option-color: rgba($brc-darkGrey, .5) !default;
 $option-color-hover: $brc-darkGrey !default;
+$option-color-selected: $option-color !default;
 $option-background-hover: rgba($brc-azure, .15) !default;
+$option-background-selected: $menu-background !default;
 $multiple-value-color: #007eff !default;
 $multiple-value-border-color: $multiple-value-color !default;
 $multiple-value-background-color: #daecf6 !default;
@@ -166,6 +168,11 @@ $height-small: 30px !default;
       font-weight: 400;
       color: $option-color;
       background: $menu-background;
+
+      &.is-selected {
+        background: $option-background-selected;
+        color: $option-color-selected;
+      }
 
       &:hover,
       &.is-focused {
