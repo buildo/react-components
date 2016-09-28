@@ -8,6 +8,7 @@
 
 - Dropdown: $text-color-\* variables have no effect [\#625](https://github.com/buildo/react-components/issues/625)
 - Dropdown: menu-background should be applied also to option [\#623](https://github.com/buildo/react-components/issues/623)
+- TimePicker selection, keyboard selection and focus [\#612](https://github.com/buildo/react-components/issues/612)
 - Dropdown box-sizing shouldn't be `border-box` [\#611](https://github.com/buildo/react-components/issues/611)
 - TimePicker is not working [\#592](https://github.com/buildo/react-components/issues/592)
 - \[KitchenSink\] Handle external components [\#528](https://github.com/buildo/react-components/issues/528)
