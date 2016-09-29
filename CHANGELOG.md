@@ -19,6 +19,7 @@
 #### New features:
 
 - Popover: support delay on mouse events [\#605](https://github.com/buildo/react-components/issues/605)
+- FocusableView: optionally debounce focus/blur events [\#455](https://github.com/buildo/react-components/issues/455)
 
 ## [v0.9.1](https://github.com/buildo/react-components/tree/v0.9.1) (2016-09-12)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...v0.9.1)
