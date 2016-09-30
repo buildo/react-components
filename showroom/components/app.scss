@@ -1,15 +1,5 @@
 @import '../../src/utils/theme/variables.scss';
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 body {
   font-size: 15px;
 

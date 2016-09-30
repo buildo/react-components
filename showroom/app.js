@@ -8,7 +8,7 @@ import Content from './components/Content';
 import Component from './components/Component';
 import Home from './components/Home';
 
-import 'normalize-css/normalize.css';
+import 'buildo-normalize-css';
 import './styles.js';
 
 const routes = (
