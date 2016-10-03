@@ -12,7 +12,7 @@ describe('LoadingSpinner', () => {
 
   // disabled because react-dome is mocked out, see above
   xit('renders correctly', () => {
-    const component = renderer.create(
+    const component = renderer.create( // eslint-disable-line no-undef
       <LoadingSpinner />
     );
     expect(component).toMatchSnapshot();
@@ -20,7 +20,7 @@ describe('LoadingSpinner', () => {
 
   // disabled because react-dome is mocked out, see above
   xit('renders correctly with a message', () => {
-    const component = renderer.create(
+    const component = renderer.create( // eslint-disable-line no-undef
       <LoadingSpinner message={{ content: 'loading awesome content' }} />
     );
     expect(component).toMatchSnapshot();
