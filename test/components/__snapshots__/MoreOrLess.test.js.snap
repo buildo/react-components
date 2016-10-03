@@ -7,28 +7,28 @@ exports[`MoreOrLess renders correctly when expanded 1`] = `
       "WebkitBoxFlex": "0 0 auto",
       "WebkitFlex": "0 0 auto",
       "flex": "0 0 auto",
-      "msFlex": "0 0 auto"
+      "msFlex": "0 0 auto",
     }
   }>
   content
   <div
     className="react-flex-view align-content-center justify-content-center expand-button"
-    onClick={[Function anonymous]}
+    onClick={[Function]}
     style={
       Object {
         "MozBoxFlex": "0 0 auto",
         "WebkitBoxFlex": "0 0 auto",
         "WebkitFlex": "0 0 auto",
         "flex": "0 0 auto",
-        "msFlex": "0 0 auto"
+        "msFlex": "0 0 auto",
       }
     }>
     <i
       className="icon icon-angle-up expand-button-icon"
-      onClick={[Function onClick]}
+      onClick={[Function]}
       style={
         Object {
-          "color": undefined
+          "color": undefined,
         }
       } />
   </div>
@@ -44,28 +44,28 @@ exports[`MoreOrLess renders correctly when not expanded 1`] = `
       "WebkitBoxFlex": "0 0 auto",
       "WebkitFlex": "0 0 auto",
       "flex": "0 0 auto",
-      "msFlex": "0 0 auto"
+      "msFlex": "0 0 auto",
     }
   }>
   content
   <div
     className="react-flex-view align-content-center justify-content-center expand-button"
-    onClick={[Function anonymous]}
+    onClick={[Function]}
     style={
       Object {
         "MozBoxFlex": "0 0 auto",
         "WebkitBoxFlex": "0 0 auto",
         "WebkitFlex": "0 0 auto",
         "flex": "0 0 auto",
-        "msFlex": "0 0 auto"
+        "msFlex": "0 0 auto",
       }
     }>
     <i
       className="icon icon-angle-down expand-button-icon"
-      onClick={[Function onClick]}
+      onClick={[Function]}
       style={
         Object {
-          "color": undefined
+          "color": undefined,
         }
       } />
   </div>

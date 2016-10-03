@@ -10,7 +10,7 @@ exports[`Meter renders correctly 1`] = `
       "flex": "1 1 auto",
       "margin": 10,
       "msFlex": "1 1 auto",
-      "position": "relative"
+      "position": "relative",
     }
   }>
   <div
@@ -22,7 +22,7 @@ exports[`Meter renders correctly 1`] = `
         "WebkitFlex": "1 1 auto",
         "backgroundColor": "grey",
         "flex": "1 1 auto",
-        "msFlex": "1 1 auto"
+        "msFlex": "1 1 auto",
       }
     }>
     <div
@@ -34,7 +34,7 @@ exports[`Meter renders correctly 1`] = `
           "WebkitFlex": "0 0 50%",
           "backgroundColor": "green",
           "flex": "0 0 50%",
-          "msFlex": "0 0 50%"
+          "msFlex": "0 0 50%",
         }
       } />
   </div>
@@ -47,7 +47,7 @@ exports[`Meter renders correctly 1`] = `
         "WebkitFlex": "0 0 auto",
         "color": "red",
         "flex": "0 0 auto",
-        "msFlex": "0 0 auto"
+        "msFlex": "0 0 auto",
       }
     }>
     test

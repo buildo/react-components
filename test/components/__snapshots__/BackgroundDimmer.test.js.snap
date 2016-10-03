@@ -3,13 +3,13 @@ Object {
   "centeredContentWrapperProps": Object {
     "className": "centered-content-wrapper",
     "column": true,
-    "onClick": [Function anonymous],
+    "onClick": [Function],
     "style": Object {
       "height": "auto",
       "maxHeight": "90%",
       "maxWidth": "90%",
-      "width": "auto"
-    }
+      "width": "auto",
+    },
   },
   "children": <div
     className="content">
@@ -19,9 +19,9 @@ Object {
   "mainContentWrapperProps": Object {
     "className": "main-content-wrapper",
     "hAlignContent": "center",
-    "onClick": [Function anonymous],
-    "onTouchMove": [Function anonymous],
-    "onWheel": [Function anonymous],
+    "onClick": [Function],
+    "onTouchMove": [Function],
+    "onWheel": [Function],
     "ref": "mainContentWrapper",
     "style": Object {
       "bottom": 0,
@@ -29,9 +29,9 @@ Object {
       "position": "fixed",
       "right": 0,
       "top": 0,
-      "zIndex": 100000
+      "zIndex": 100000,
     },
-    "vAlignContent": "center"
+    "vAlignContent": "center",
   },
   "overlayProps": Object {
     "style": Object {
@@ -42,17 +42,17 @@ Object {
       "position": "fixed",
       "right": 0,
       "top": 0,
-      "zIndex": 99999
-    }
+      "zIndex": 99999,
+    },
   },
-  "stopPropagation": [Function anonymous]
+  "stopPropagation": [Function],
 }
 `;
 
 exports[`BackgroundDimmer renders correctly 1`] = `
 <div
   className="background-dimmer"
-  stopPropagation={[Function anonymous]}>
+  stopPropagation={[Function]}>
   <div
     style={
       Object {
@@ -63,14 +63,14 @@ exports[`BackgroundDimmer renders correctly 1`] = `
         "position": "fixed",
         "right": 0,
         "top": 0,
-        "zIndex": 99999
+        "zIndex": 99999,
       }
     } />
   <div
     className="react-flex-view align-content-center justify-content-center main-content-wrapper"
-    onClick={[Function anonymous]}
-    onTouchMove={[Function anonymous]}
-    onWheel={[Function anonymous]}
+    onClick={[Function]}
+    onTouchMove={[Function]}
+    onWheel={[Function]}
     style={
       Object {
         "MozBoxFlex": "0 1 auto",
@@ -83,12 +83,12 @@ exports[`BackgroundDimmer renders correctly 1`] = `
         "position": "fixed",
         "right": 0,
         "top": 0,
-        "zIndex": 100000
+        "zIndex": 100000,
       }
     }>
     <div
       className="react-flex-view flex-column centered-content-wrapper"
-      onClick={[Function anonymous]}
+      onClick={[Function]}
       style={
         Object {
           "MozBoxFlex": "0 1 auto",
@@ -99,7 +99,7 @@ exports[`BackgroundDimmer renders correctly 1`] = `
           "maxHeight": "90%",
           "maxWidth": "90%",
           "msFlex": "0 1 auto",
-          "width": "auto"
+          "width": "auto",
         }
       }>
       <div

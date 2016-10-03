@@ -7,7 +7,7 @@ exports[`Badge renders correctly 1`] = `
       "WebkitBoxFlex": "0 1 auto",
       "WebkitFlex": "0 1 auto",
       "flex": "0 1 auto",
-      "msFlex": "0 1 auto"
+      "msFlex": "0 1 auto",
     }
   }>
   <span
