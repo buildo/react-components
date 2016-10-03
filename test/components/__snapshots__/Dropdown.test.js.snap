@@ -4,15 +4,15 @@ exports[`Dropdown renders correctly 1`] = `
   style={undefined}>
   <div
     className="Select-control"
-    onKeyDown={[Function bound handleKeyDown]}
-    onMouseDown={[Function bound handleMouseDown]}
-    onTouchEnd={[Function bound handleTouchEnd]}
-    onTouchMove={[Function bound handleTouchMove]}
-    onTouchStart={[Function bound handleTouchStart]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
     style={
       Object {
         "margin": 10,
-        "position": "relative"
+        "position": "relative",
       }
     }>
     <span
@@ -36,24 +36,24 @@ exports[`Dropdown renders correctly 1`] = `
         aria-owns="react-select-2--value"
         aria-readonly="false"
         className="Select-input"
-        onBlur={[Function bound handleInputBlur]}
-        onFocus={[Function bound handleInputFocus]}
+        onBlur={[Function]}
+        onFocus={[Function]}
         role="combobox"
         style={
           Object {
             "border": 0,
             "display": "inline-block",
-            "width": 1
+            "width": 1,
           }
         }
         tabIndex={0} />
     </span>
     <span
       className="Select-arrow-zone"
-      onMouseDown={[Function bound handleMouseDownOnArrow]}>
+      onMouseDown={[Function]}>
       <span
         className="Select-arrow"
-        onMouseDown={[Function bound handleMouseDownOnArrow]} />
+        onMouseDown={[Function]} />
     </span>
   </div>
 </div>
