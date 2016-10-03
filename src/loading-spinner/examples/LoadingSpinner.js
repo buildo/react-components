@@ -1,22 +1,12 @@
-const Example = React.createClass({
+class Example extends React.Component {
 
-  propTypes: {},
+  render = () => (
+    <div style={{ position: 'relative', height: 200 }}>
+      <LoadingSpinner
+        size={45}
+        message={{ content: 'Loading...' }}
+      />
+    </div>
+  );
 
-  getInitialState() {
-    return {
-    };
-  },
-
-  getTemplate() {
-    return (
-      <div style={{position: 'relative', height: 200}}>
-        <LoadingSpinner />
-      </div>
-    );
-  },
-
-  render() {
-    return this.getTemplate();
-  }
-
-});
+}
