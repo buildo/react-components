@@ -37,7 +37,7 @@ try {
   };
 
   axios.get(`${BASE_URL}/tags`).then(res => {
-    const tags = res.data.slice(5);
+    const tags = res.data;
     const lastVersionTagShaUrl = _.find(tags, isVersionTag).commit.url;
 
     return axios.get(lastVersionTagShaUrl).then(res => {
