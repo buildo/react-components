@@ -52,21 +52,26 @@ try {
           throw new Error('Can\'t find any issue closed after last publish. Are you sure there are new features to publish?');
         }
 
-        const isBreaking = !!_.find(unpublishedIssues, i => !!_.find(i.labels, { name: 'breaking' }));
+        return axios.get(`${BASE_URL}/issues?labels=breaking&state=closed&since=${lastVersionTagDateTime}`).then(res => {
+          breakingIssuesUpdatedAfterLastTag = res.data;
+          const unpublishedBreakingIssues = breakingIssuesUpdatedAfterLastTag.filter(i => i.closed_at >= lastVersionTagDateTime);
 
-        console.log(`RUN "npm version ${isBreaking ? 'minor' : 'patch'}"`);
-        execSync(`npm version ${isBreaking ? 'minor' : 'patch'}`, { stdio: [process.stdin, process.stdout, process.stderr] });
+          const isBreaking = unpublishedBreakingIssues.length > 0;
 
-        console.log('RUN "npm publish"');
-        execSync('npm publish', { stdio: [process.stdin, process.stdout, process.stderr] });
+          console.log(`RUN "npm version ${isBreaking ? 'minor' : 'patch'}"`);
+          execSync(`npm version ${isBreaking ? 'minor' : 'patch'}`, { stdio: [process.stdin, process.stdout, process.stderr] });
 
-        console.log('RUN "git push"');
-        execSync('git push', { stdio: [process.stdin, process.stdout, process.stderr] });
+          console.log('RUN "npm publish"');
+          execSync('npm publish', { stdio: [process.stdin, process.stdout, process.stderr] });
 
-        console.log('RUN "git push --tags"');
-        execSync('git push --tags', { stdio: [process.stdin, process.stdout, process.stderr] });
+          console.log('RUN "git push"');
+          execSync('git push', { stdio: [process.stdin, process.stdout, process.stderr] });
 
-        console.log(`\n Successfuly released a new "${isBreaking ? 'BREAKING' : 'PATCH'}" version: "v${require('./package.json').version}"`);
+          console.log('RUN "git push --tags"');
+          execSync('git push --tags', { stdio: [process.stdin, process.stdout, process.stderr] });
+
+          console.log(`\n Successfuly released a new "${isBreaking ? 'BREAKING' : 'PATCH'}" version: "v${require('./package.json').version}"`);
+        });
       });
     })
   }).catch(logError);
