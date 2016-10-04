@@ -33,9 +33,16 @@ Every change (new features, fixes and breaking changes) is listed in `CHANGELOG.
 #### Publish on npm
 To publish a new version you must:
 - be authenticated in `npm` and authorized to publish buildo libraries
-- use one of these publish scripts
-  - `npm run release-patch`
-  - `npm run release-breaking-version`
+- run `npm run release`
+
+a powerful `node` script will do the rest for you :)
+- throw error if not on "master"
+- throw error if not in sync with "remote"
+- automatically detect if release should be "breaking"
+- run linters and tests
+- increase version (breaking|patch)
+- publish new version on `npm`
+- push work on origin
 
 ## Changelog
 [CHANGELOG.md](https://github.com/buildo/react-components/blob/master/CHANGELOG.md)
