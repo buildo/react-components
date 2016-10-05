@@ -12,7 +12,7 @@
     "lint-style": "stylelint \"src/**/*.scss\" \"showroom/**/*.scss\" --syntax scss",
     "lint-style-fix": "stylefmt -R src && stylefmt -R showroom",
     "postinstall": "./ghDepsInstall.sh",
-    "preversion": "npm run test",
+    "preversion": "npm run lint && npm run lint-style && npm run test",
     "prepublish": "npm run build",
     "build-examples": "rm -rf examples/build && webpack --config examples/webpack.config.build.js --progress",
     "start": "NODE_ENV=development webpack-dev-server --config showroom/webpack.config.babel.js --progress --hot --inline",
@@ -20,8 +20,7 @@
     "build-showroom": "rm -rf ./showroom/build && webpack --config showroom/webpack.config.build.babel.js --progress && cp ./showroom/build/index.html ./index.html",
     "deploy-showroom": "./deployShowroom.sh",
     "generate-all-readmes": "babel-node ./generateReadmes.js",
-    "release-patch": "./releaseVersion.sh patch",
-    "release-breaking-version": "./releaseVersion.sh minor"
+    "release-version": "node releaseVersion.js"
   },
   "repository": {
     "type": "git",
