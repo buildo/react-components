@@ -88,7 +88,7 @@
     "style-loader": "^0.13.0",
     "stylefmt": "^4.3.1",
     "stylelint": "^7.3.1",
-    "stylelint-config-buildo": "0.0.1",
+    "stylelint-config-buildo": "^0.0.2",
     "stylelint-webpack-plugin": "^0.4.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
