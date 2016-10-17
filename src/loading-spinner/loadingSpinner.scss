@@ -33,6 +33,7 @@ $thickness: .1em;
       border-left-color: transparent;
       -webkit-animation: spin $period infinite $easing;
       animation: spin $period infinite $easing;
+      box-sizing: border-box;
 
       &::after {
         content: '';
