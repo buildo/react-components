@@ -6,7 +6,7 @@ import { pure, skinnable } from 'revenge';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
-import { autosize } from './plugins';
+import { autosize, sortable } from './plugins';
 
 export const defaultWidth = 500;
 
@@ -22,6 +22,7 @@ export const defaultWidth = 500;
  * @param children - content
  */
 @autosize
+@sortable
 @skinnable()
 @pure
 @props({
@@ -50,8 +51,8 @@ export default class Tablo extends React.Component {
 
   getLocals({ data, children, ...tableProps }) {
 
-    const columnsOrGroups = updateColumns(children || defaultColumns(data), column => {
-      return <Column {...{ key: column.props.name, ...column.props, data }} />;
+    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }) => {
+      return <Column {...{ key: col.props.name, ...col.props, data }} />;
     }).map((ch, key) => ch.type({ key, ...ch.props }));
 
     t.assert(

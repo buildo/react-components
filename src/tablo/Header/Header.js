@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import t, { maybe } from 'tcomb';
 import { props  } from 'tcomb-react';
 import { pure, skinnable } from 'revenge';
@@ -9,25 +10,32 @@ const propsTypes = {
   rowIndex: maybe(t.Number), // should not be here
   columnKey: maybe(t.String),
   width: maybe(t.Number),
-  height: maybe(t.Number)
+  height: maybe(t.Number),
+  onClick: maybe(t.Function)
 };
 
 const getLocals = ({
-  width, height, children
+  columnKey,
+  width, height,
+  onClick,
+  children
 }) => {
 
   return {
-    width, height, children
+    width, height,
+    onClick: onClick && onClick(columnKey),
+    children
   };
 };
 
-const template = ({ children }) => {
+const template = ({ onClick, className, children }) => {
   return (
     <FlexView
-      className='grid-header'
+      className={cx('grid-header', className)}
       height='100%'
       width='100%'
       vAlignContent='center'
+      onClick={onClick}
       grow
     >
       <FlexView vAlignContent='center' grow height='100%'>

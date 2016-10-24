@@ -15,15 +15,15 @@ export const getColumnList = children => {
 };
 
 export const updateColumns = curry((children, update) => {
-  const updateIfColumn = (ch, index) => ch.type === Column ? update(ch, index) : ch;
+  const updateIfColumn = colGroup => (col, index) => col.type === Column ? update({ col, index, colGroup }) : col;
   const chArray = Children.toArray(children);
   const thereAreGroups = chArray.filter(ch => ch.type === ColumnGroup).length > 0;
 
   const newChildren = thereAreGroups ?
     chArray.map((group, key) => React.cloneElement(group, {
       key,
-      children: Children.map(group.props.children, updateIfColumn)
+      children: Children.map(group.props.children, updateIfColumn(group))
     })) :
-    chArray.map(updateIfColumn);
+    chArray.map(updateIfColumn());
   return newChildren;
 });

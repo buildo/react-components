@@ -4,6 +4,7 @@ import { RouteHandler } from 'react-router';
 import find from 'lodash/find';
 import reject from 'lodash/reject';
 import partial from 'lodash/partial';
+import sortBy from 'lodash/sortBy';
 import { props, t } from 'tcomb-react';
 import FlexView from 'react-flexview';
 import * as brc from '../../src';
@@ -17,7 +18,7 @@ const scope = {
   React, ReactDOM,
   t,
   log: x => console.log(x), // eslint-disable-line no-console
-  find, partial, reject,
+  find, partial, reject, sortBy,
   ...brc,
   FlexView
 };
