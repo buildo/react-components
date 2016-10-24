@@ -1,0 +1,33 @@
+@import '../../../utils/theme/variables.scss';
+@import '../../../utils/theme/flex.scss';
+
+.columns-reorderable-grid {
+  .dndHeader {
+    width: 100%;
+    height: 100%;
+
+    @include display_flex();
+    @include flex_align-items('center');
+
+    &.isDragging {
+      opacity: .6;
+    }
+
+    span.grip {
+      width: 20px;
+      height: 27px;
+      display: inline-block;
+      overflow: hidden;
+      line-height: 5px;
+      padding: 0 4px;
+      cursor: move;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: 1px 0 1px $brc-darkGrey;
+    }
+
+    span.grip::after {
+      content: '.. .. ..';
+    }
+  }
+}

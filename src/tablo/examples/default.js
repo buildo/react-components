@@ -3,7 +3,8 @@ class Example extends React.Component {
   state = {
     sortBy: 'name',
     sortDir: 'asc',
-    columnWidths: {}
+    columnWidths: {},
+    columnsOrder: []
   }
 
   data = [{
@@ -44,11 +45,15 @@ class Example extends React.Component {
     this.setState({ selectedRows });
   }
 
+  onColumnsReorder = (columnsOrder) => {
+    this.setState({ columnsOrder });
+  }
+
   render() {
 
     const {
-      data, rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect,
-      state: { sortBy: sortByField, sortDir, columnWidths, hoveredRowIndex, selectedRows }
+      data, rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect, onColumnsReorder,
+      state: { sortBy: sortByField, sortDir, columnWidths, hoveredRowIndex, selectedRows, columnsOrder }
     } = this;
 
     const sortedData = sortBy(data, sortByField);
@@ -66,7 +71,9 @@ class Example extends React.Component {
           hoveredRowIndex={hoveredRowIndex}
           onHoveredRowChange={onHoveredRowChange}
           selectedRows={selectedRows}
-          onRowsSelect={onRowsSelect}          
+          onRowsSelect={onRowsSelect}
+          columnsOrder={columnsOrder}
+          onColumnsReorder={onColumnsReorder}
         >
 
           <TabloColumn name='name' fixed width={columnWidths.name}>
