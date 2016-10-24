@@ -16,7 +16,9 @@ const argsTypes = struct({
   data: maybe(t.Array),
   name: t.String,
   fixed: maybe(t.Boolean),
-  children: t.ReactChildren
+  children: t.ReactChildren,
+
+  isResizable: maybe(t.Boolean)
 }, { strict: true });
 
 const Column = (args) => {

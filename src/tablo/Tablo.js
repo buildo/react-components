@@ -6,7 +6,7 @@ import { pure, skinnable } from 'revenge';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
-import { autosize, sortable } from './plugins';
+import { autosize, columnsResize, sortable } from './plugins';
 
 export const defaultWidth = 500;
 
@@ -22,10 +22,12 @@ export const defaultWidth = 500;
  * @param children - content
  */
 @autosize
+@columnsResize
 @sortable
 @skinnable()
 @pure
 @props({
+  // public
   className: maybe(t.String),
   data: t.Array,
   defaultColumns: maybe(t.Function),
@@ -35,7 +37,11 @@ export const defaultWidth = 500;
   headerHeight: t.Number,
   groupHeaderHeight: t.Number,
   footerHeight: t.Number,
-  children: t.ReactChildren
+  children: t.ReactChildren,
+
+  // private
+  isColumnResizing: maybe(t.Boolean),
+  onColumnResizeEndCallback: maybe(t.Function)
 })
 export default class Tablo extends React.Component {
 

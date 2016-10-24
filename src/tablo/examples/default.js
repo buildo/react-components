@@ -2,7 +2,8 @@ class Example extends React.Component {
 
   state = {
     sortBy: 'name',
-    sortDir: 'asc'
+    sortDir: 'asc',
+    columnWidths: {}
   }
 
   data = [{
@@ -26,11 +27,20 @@ class Example extends React.Component {
     this.setState({ sortBy, sortDir });
   };
 
+  onColumnResize = ({ width, key }) => {
+    this.setState({
+      columnWidths: {
+        ...this.state.columnWidths,
+        [key]: parseInt(width)
+      }
+    });
+  };
+
   render() {
 
     const {
-      data, rowHeight, onSortChange,
-      state: { sortBy: sortByField, sortDir }
+      data, rowHeight, onSortChange, onColumnResize,
+      state: { sortBy: sortByField, sortDir, columnWidths }
     } = this;
 
     const sortedData = sortBy(data, sortByField);
@@ -43,17 +53,18 @@ class Example extends React.Component {
           onSortChange={onSortChange}
           sortBy={sortByField}
           sortDir={sortDir}
+          onColumnResize={onColumnResize}
         >
 
-          <TabloColumn name='name' fixed>
+          <TabloColumn name='name' fixed width={columnWidths.name}>
             <Header>Name</Header>
           </TabloColumn>
 
-          <TabloColumn name='age'>
+          <TabloColumn name='age' width={columnWidths.age}>
             <Header>Age</Header>
           </TabloColumn>
 
-          <TabloColumn name='occupation' sortable={false}>
+          <TabloColumn name='occupation' sortable={false} width={columnWidths.occupation}>
             <Header>Occupation</Header>
             <Cell>{occupation => <span style={{ fontWeight: 700 }}>{occupation}</span>}</Cell>
           </TabloColumn>
