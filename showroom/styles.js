@@ -23,6 +23,7 @@ import '../src/Panel/tabbedPanel.scss';
 import '../src/meter/meter.scss';
 import '../src/modal/modal.scss';
 import '../src/ScrollView/scrollView.scss';
+import '../src/tablo/tablo.scss';
 import '../src/kitchen-sink/style.scss';
 
 

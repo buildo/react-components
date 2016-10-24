@@ -1,0 +1,16 @@
+@import '../../utils/theme/variables.scss';
+$border-color: $brc-silver !default;
+$border-width: 1px !default;
+$footer-background: $brc-paleGrey !default;
+$footer-color: $brc-coolGrey !default;
+
+// no fixed-data-table css classes in subcomponents
+
+.grid {
+  .grid-footer {
+    border: $border-width solid $border-color;
+    background: $footer-background;
+    color: $footer-color;
+    padding: 0 5px;
+  }
+}

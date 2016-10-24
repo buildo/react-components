@@ -39,6 +39,7 @@
     "css-element-queries": "^0.3.2",
     "debug": "^2.2.0",
     "fixed-data-table": "^0.4.7",
+    "fixed-data-table-2": "^0.7.6",
     "gemini-scrollbar": "^1.4.3",
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
