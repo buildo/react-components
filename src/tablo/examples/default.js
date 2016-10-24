@@ -36,11 +36,19 @@ class Example extends React.Component {
     });
   };
 
+  onHoveredRowChange = (rowIndex) => {
+    this.setState({ hoveredRowIndex: rowIndex });
+  }
+
+  onRowsSelect = (selectedRows) => {
+    this.setState({ selectedRows });
+  }
+
   render() {
 
     const {
-      data, rowHeight, onSortChange, onColumnResize,
-      state: { sortBy: sortByField, sortDir, columnWidths }
+      data, rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect,
+      state: { sortBy: sortByField, sortDir, columnWidths, hoveredRowIndex, selectedRows }
     } = this;
 
     const sortedData = sortBy(data, sortByField);
@@ -54,6 +62,11 @@ class Example extends React.Component {
           sortBy={sortByField}
           sortDir={sortDir}
           onColumnResize={onColumnResize}
+          selectionType='single'
+          hoveredRowIndex={hoveredRowIndex}
+          onHoveredRowChange={onHoveredRowChange}
+          selectedRows={selectedRows}
+          onRowsSelect={onRowsSelect}          
         >
 
           <TabloColumn name='name' fixed width={columnWidths.name}>

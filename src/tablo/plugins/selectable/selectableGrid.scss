@@ -1,0 +1,20 @@
+@import '../../../utils/theme/variables.scss';
+
+$selected-cell-background: $brc-azure10 !default;
+$hover-cell-background: $brc-azure05 !default;
+
+.selectable-grid {
+  &.selectable {
+    .grid-row {
+      cursor: pointer;
+
+      &.hover .public_fixedDataTableCell_main {
+        background: $hover-cell-background;
+      }
+
+      &.selected .public_fixedDataTableCell_main {
+        background: $selected-cell-background;
+      }
+    }
+  }
+}
