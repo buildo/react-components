@@ -16,6 +16,7 @@ const argsTypes = struct({
   data: maybe(t.Array),
   name: t.String,
   fixed: maybe(t.Boolean),
+  flexGrow: maybe(t.Number),
   children: t.ReactChildren,
 
   isResizable: maybe(t.Boolean)
@@ -26,6 +27,7 @@ const Column = (args) => {
   const {
     key,
     width = defaultWidth,
+    flexGrow,
     data = [],
     name,
     fixed,
@@ -50,6 +52,7 @@ const Column = (args) => {
       cell={cell}
       footer={footer}
       width={width}
+      flexGrow={flexGrow}
       fixed={fixed}
       isResizable={isResizable}
     />

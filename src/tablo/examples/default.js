@@ -84,7 +84,7 @@ class Example extends React.Component {
             <Header>Age</Header>
           </TabloColumn>
 
-          <TabloColumn name='occupation' sortable={false} width={columnWidths.occupation}>
+          <TabloColumn name='occupation' sortable={false} isResizable={false} flexGrow={1}>
             <Header>Occupation</Header>
             <Cell>{occupation => <span style={{ fontWeight: 700 }}>{occupation}</span>}</Cell>
           </TabloColumn>
