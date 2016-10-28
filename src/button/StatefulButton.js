@@ -112,17 +112,15 @@ export default class StatefulButton extends React.Component {
 
   attachPromiseHandlers = (promise) => {
     promise.then(() => {
-      if (this._isMounted) {
-        this.setState({
-          internalState: 'success'
-        }, () => {
-          if (!this.props.stableSuccess) {
-            this.doResetInternalStateAfterTimer();
-          } else if (this.resetInternalStateAfterProcessing) {
-            this.doResetInternalState();
-          }
-        });
-      }
+      return this._isMounted && this.setState({
+        internalState: 'success'
+      }, () => {
+        if (!this.props.stableSuccess) {
+          this.doResetInternalStateAfterTimer();
+        } else if (this.resetInternalStateAfterProcessing) {
+          this.doResetInternalState();
+        }
+      });
     }).catch(() => {
       if (this._isMounted) {
         this.setState({
