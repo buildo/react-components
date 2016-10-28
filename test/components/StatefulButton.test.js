@@ -78,9 +78,9 @@ describe('StatefulButton', () => {
       return timeoutPromise(6).then(() => {
         expect(component.getLocals().buttonState).toBe('success');
         return timeoutPromise(5);
-      }).then(() => {
-        expect(component.getLocals().buttonState).toBe('ready');
-      });
+      }).then(() =>
+        expect(component.getLocals().buttonState).toBe('ready')
+      );
     });
   });
 
@@ -95,9 +95,9 @@ describe('StatefulButton', () => {
       return timeoutPromise(6).then(() => {
         expect(component.getLocals().buttonState).toBe('success');
         return timeoutPromise(5);
-      }).then(() => {
-        expect(component.getLocals().buttonState).toBe('success');
-      });
+      }).then(() =>
+        expect(component.getLocals().buttonState).toBe('success')
+      );
     });
 
     it('switches to processing, success and back to baseState when baseState is changed after click', () => {
@@ -111,9 +111,9 @@ describe('StatefulButton', () => {
       newProps.baseState = 'not-allowed';
       component.componentWillReceiveProps(newProps);
       component.props = newProps;
-      return timeoutPromise(7).then(() => {
-        expect(component.getLocals().buttonState).toBe('not-allowed');
-      });
+      return timeoutPromise(7).then(() =>
+        expect(component.getLocals().buttonState).toBe('not-allowed')
+      );
     });
   });
 
