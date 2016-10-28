@@ -8,7 +8,9 @@ import find from 'lodash/find';
 import sortBy from 'lodash/sortBy';
 import findIndex from 'lodash/findIndex';
 import once from 'lodash/once';
+import uniqueId from 'lodash/uniqueId';
 
+import dragDropContextHTML5Backend from './htmlBackend';
 import Column, { defaultColumns, updateColumns } from '../../Column';
 import ColumnGroup from '../../ColumnGroup';
 import Header, { defaultHeader } from '../../Header';
@@ -17,6 +19,7 @@ import DNDHeader from './DNDHeader';
 import './columnsReorder.scss';
 
 export default (Grid) =>
+  @dragDropContextHTML5Backend
   @props({
     // transform, manipulate
     className: maybe(t.String),
@@ -27,6 +30,11 @@ export default (Grid) =>
   @pure
   @skinnable(contains(Grid))
   class ColumnsReorderGrid extends React.Component {
+
+    constructor() {
+      super();
+      this.uniqueId = uniqueId('tablo_');
+    }
 
     getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }) {
 
@@ -86,6 +94,7 @@ export default (Grid) =>
               name={name}
               isDragAllowed={isDragAllowed(col)}
               isDropAllowed={isDropAllowed(fixed)}
+              tabloUniqueId={this.uniqueId}
             >
               {header.props.children}
             </DNDHeader>

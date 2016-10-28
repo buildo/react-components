@@ -66,8 +66,10 @@ const collectSource = (connect, monitor) => {
   });
 };
 
-@DragSource('Column', columnSource, collectSource)
-@DropTarget('Column', columnTarget, collectTarget)
+const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
+
+@DragSource(columnType, columnSource, collectSource)
+@DropTarget(columnType, columnTarget, collectTarget)
 @skinnable()
 @pure
 @props({
@@ -85,6 +87,7 @@ const collectSource = (connect, monitor) => {
   name: t.String,
   index: t.Integer,
   isDropAllowed: t.Function,
+  tabloUniqueId: t.String,
   children: t.ReactChildren
 })
 export default class DNDHeader extends React.Component {

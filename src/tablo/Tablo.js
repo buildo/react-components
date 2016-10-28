@@ -7,7 +7,6 @@ import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
 import { autosize, columnsResize, columnsReorder, selectable, sortable } from './plugins';
-import dragDropContextHTML5Backend from './plugins/columnsReorder/htmlBackend';
 
 export const defaultWidth = 500;
 
@@ -22,7 +21,6 @@ export const defaultWidth = 500;
  * @param footerHeight - height in pixel of footer
  * @param children - content
  */
-@dragDropContextHTML5Backend    // should be moved at app-level
 @autosize
 @columnsReorder
 @columnsResize
