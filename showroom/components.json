@@ -591,6 +591,11 @@
         "examples": [
           {
             "url": "tablo/examples/default.js"
+          },
+          {
+            "title": "Controlled scrolling",
+            "description": "Tablo allows you to control scrolling. In the following example, after the table get focus (e.g. by clicking on it), you can scroll it using the arrow keys.<br />`UP` and `DOWN` arrows will change the selected entry, while `LEFT` and `RIGHT` arrows will control the horizontal scrolling.",
+            "url": "tablo/examples/scrollable.js"
           }
         ]
       }
