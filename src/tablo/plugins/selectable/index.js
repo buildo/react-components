@@ -1,1 +1,1 @@
-export default from './selectable.js';
+export default from './selectableGrid.js';

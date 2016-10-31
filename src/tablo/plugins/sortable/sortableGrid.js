@@ -8,8 +8,6 @@ import ColumnGroup from '../../ColumnGroup';
 import { props  } from 'tcomb-react';
 import { pure, skinnable, contains } from 'revenge';
 
-import './sortableGrid.scss';
-
 export const clean = omitBy(x => typeof x === 'undefined');
 
 const propsTypes = {

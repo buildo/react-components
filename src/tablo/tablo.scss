@@ -15,6 +15,8 @@ $scrollbar-color: rgba($brc-coolGrey, .6) !default;
 $hover-scrollbar-background: rgba($brc-white, .8) !default;
 $hover-scrollbar-color: $brc-coolGrey !default;
 $scrollbar-size: 6px !default;
+$selected-cell-background: $brc-azure10 !default;
+$hover-cell-background: $brc-azure05 !default;
 
 .grid {
   /*
@@ -122,3 +124,8 @@ $scrollbar-size: 6px !default;
 @import './Footer/footer.scss';
 @import './Cell/cell.scss';
 
+// plugins
+@import './plugins/columnsReorder/columnsReorderGrid.scss';
+@import './plugins/selectable/selectableGrid.scss';
+@import './plugins/sortable/arrow.scss';
+@import './plugins/sortable/sortableGrid.scss';

@@ -7,7 +7,6 @@ import cx from 'classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../resize-sensor/ResizeSensor';
 
-
 export default (Grid) =>
 
   @props({

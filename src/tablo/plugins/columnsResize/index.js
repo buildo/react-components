@@ -1,1 +1,1 @@
-export default from './columnsResize';
+export default from './columnsResizeGrid';

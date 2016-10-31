@@ -6,7 +6,6 @@ import { pure, skinnable } from 'revenge';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
-import { autosize, columnsResize, columnsReorder, scrollable, selectable, sortable } from './plugins';
 
 export const defaultWidth = 500;
 
@@ -19,14 +18,32 @@ export const defaultWidth = 500;
  * @param headerHeight - height in pixel of header
  * @param groupHeaderHeight - height in pixel of groupHeader
  * @param footerHeight - height in pixel of footer
- * @param children - content
+ * @param onRowMouseEnter - callback to be called when mouse enters a row
+ * @param onRowMouseLeave - callback to be called when mouse leaves a row
+ * @param autosize - wheater the table should resize to fit the available space
+ * @param columnsOrder - an array containing the ordered list of column names, in the same order they should be rendered
+ * @param onColumnsReorder - callback to be called when the order of columns changes after dragging an header in a new position
+ * @param onColumnResize - callback to be called when a column is resized
+ * @param children - table children (Column or ColumnGroup)
+ * @param scrollLeft - value of horizontal scroll
+ * @param scrollTop - value of vertical scroll
+ * @param onScrollStart - callback to be called when scrolling starts
+ * @param onScrollEnd - callback to be called when scrolling ends
+ * @param selectedRows - the list of selected row ids
+ * @param onRowsSelect - callback to be called when the currently selected rows change
+ * @param selectionType - single = only one selected row at a time, multi = multiple selection, none = selection disabled
+ * @param hoveredRowIndex - the id of the hovered row
+ * @param onHoverRowChange - callback to be called when the hovered row changes
+ * @param sortBy - id of the column according which the data should be ordered
+ * @param sortDir - sorting direction
+ * @param onSortChange - callback to be called when sorting change
+ *
+ * @param scrollToRow - index of the row to scroll to
+ * @param onRowClick - callback to be called when a row is clicked
+ * @param rowClassNameGetter - called to get any additional CSS classes that should be added to a row
+ * @param onColumnResizeEndCallback - callback to be called when resizer has been released and column needs to be updated
+ * @param isColumnResizing - whether a column is currently being resized
  */
-@autosize
-@columnsReorder
-@columnsResize
-@scrollable
-@selectable
-@sortable
 @skinnable()
 @pure
 @props({
@@ -40,20 +57,20 @@ export const defaultWidth = 500;
   headerHeight: t.Number,
   groupHeaderHeight: t.Number,
   footerHeight: t.Number,
-  children: t.ReactChildren,
   onRowMouseEnter: maybe(t.Function),
   onRowMouseLeave: maybe(t.Function),
+  scrollLeft: maybe(t.Integer),
+  scrollTop: maybe(t.Integer),
+  onScrollStart: maybe(t.Function),
+  onScrollEnd: maybe(t.Function),
+  children: t.ReactChildren,
 
   // private
-  isColumnResizing: maybe(t.Boolean),
-  onColumnResizeEndCallback: maybe(t.Function),
+  scrollToRow: maybe(t.Integer),
   onRowClick: maybe(t.Function),
-  scrollToRow: maybe(t.Number),
   rowClassNameGetter: maybe(t.Function),
-  onScrollEnd: maybe(t.Function),
-  onScrollStart: maybe(t.Function),
-  scrollLeft: maybe(t.Integer),
-  scrollTop: maybe(t.Integer)
+  onColumnResizeEndCallback: maybe(t.Function),
+  isColumnResizing: maybe(t.Boolean)
 })
 export default class Tablo extends React.Component {
 

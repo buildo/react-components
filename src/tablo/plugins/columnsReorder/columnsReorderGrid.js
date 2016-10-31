@@ -16,8 +16,6 @@ import ColumnGroup from '../../ColumnGroup';
 import Header, { defaultHeader } from '../../Header';
 import DNDHeader from './DNDHeader';
 
-import './columnsReorder.scss';
-
 export default (Grid) =>
   @dragDropContextHTML5Backend
   @props({

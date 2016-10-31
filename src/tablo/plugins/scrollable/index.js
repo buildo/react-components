@@ -1,1 +1,1 @@
-export default from './scrollable';
+export default from './scrollableGrid';

@@ -5,8 +5,6 @@ import FlexView from 'react-flexview';
 import { props  } from 'tcomb-react';
 import { pure, skinnable } from 'revenge';
 
-import './arrow.scss';
-
 const propsTypes = {
   arrowDir: enums.of('up down up-down')
 };

@@ -1,1 +1,1 @@
-export default from './autosize';
+export default from './autosizeGrid';

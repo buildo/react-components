@@ -1,1 +1,1 @@
-export default from './sortable';
+export default from './sortableGrid';

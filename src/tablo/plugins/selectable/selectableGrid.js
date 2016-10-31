@@ -5,8 +5,6 @@ import { props  } from 'tcomb-react';
 import { pure, skinnable, contains } from 'revenge';
 import includes from 'lodash/includes';
 
-import './selectableGrid.scss';
-
 const propsTypes = {
   className: maybe(t.String),
   selectedRows: maybe(list(t.Integer)),

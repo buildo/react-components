@@ -6,8 +6,6 @@ import { pure, skinnable, contains } from 'revenge';
 
 import Column, { defaultColumns, updateColumns } from '../../Column';
 
-// import './columnsResize.scss';
-
 const addSizeProps = ({ col }) => ( //eslint-disable-line
   <Column
     isResizable
