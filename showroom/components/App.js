@@ -11,6 +11,7 @@ import * as brc from '../../src';
 import json from 'raw!../components.json';
 import useLocalComponents from './useLocalComponents';
 import useLocalReadmes from './useLocalReadmes';
+import faker from 'faker';
 
 import './app.scss';
 
@@ -19,6 +20,7 @@ const scope = {
   t,
   log: x => console.log(x), // eslint-disable-line no-console
   find, partial, reject, sortBy,
+  faker,
   ...brc,
   FlexView
 };

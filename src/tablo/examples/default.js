@@ -7,21 +7,6 @@ class Example extends React.Component {
     columnsOrder: []
   }
 
-  data = [{
-    name: 'franci',
-    age: 24,
-    occupation: 'Component Engineer'
-  },
-  {
-    name: 'gabro',
-    age: 26,
-    occupation: 'Software Engineer'
-  }, {
-    name: 'daniele',
-    age: 26,
-    occupation: 'CFO'
-  }];
-
   rowHeight = 40;
 
   onSortChange = ({ sortBy, sortDir }) => {
@@ -52,14 +37,14 @@ class Example extends React.Component {
   render() {
 
     const {
-      data, rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect, onColumnsReorder,
+      rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect, onColumnsReorder,
       state: { sortBy: sortByField, sortDir, columnWidths, hoveredRowIndex, selectedRows, columnsOrder }
     } = this;
 
     const sortedData = sortBy(data, sortByField);
 
     return (
-      <FlexView style={{ height: (data.length + 1) * rowHeight, width: '100%' }}>
+      <FlexView style={{ height: 300, width: '100%' }}>
         <Tablo
           data={sortDir === 'desc' ? sortedData.reverse() : sortedData}
           rowHeight={rowHeight}
@@ -76,17 +61,26 @@ class Example extends React.Component {
           onColumnsReorder={onColumnsReorder}
         >
 
+          <TabloColumn name='avatar' fixed width={40} sortable={false} isResizable={false}>
+            <Header></Header>
+            <Cell>{avatar => <img src={avatar} height={40} width={40} />}</Cell>
+          </TabloColumn>
+
           <TabloColumn name='name' fixed width={columnWidths.name}>
             <Header>Name</Header>
+            <Cell>{name => <span style={{ fontWeight: 700 }}>{name}</span>}</Cell>
           </TabloColumn>
 
-          <TabloColumn name='age' width={columnWidths.age}>
-            <Header>Age</Header>
+          <TabloColumn name='city' width={columnWidths.city}>
+            <Header>City</Header>
           </TabloColumn>
 
-          <TabloColumn name='occupation' sortable={false} isResizable={false} flexGrow={1}>
-            <Header>Occupation</Header>
-            <Cell>{occupation => <span style={{ fontWeight: 700 }}>{occupation}</span>}</Cell>
+          <TabloColumn name='email' width={columnWidths.email}>
+            <Header>Email</Header>
+          </TabloColumn>
+
+          <TabloColumn name='company' isResizable={false} flexGrow={1}>
+            <Header>Company</Header>
           </TabloColumn>
 
         </Tablo>
@@ -94,3 +88,16 @@ class Example extends React.Component {
     );
   }
 }
+
+const getRandomRow = () => {
+  return {
+    avatar: faker.image.avatar(),
+    name: faker.name.findName(),
+    city: faker.address.city(),
+    email: faker.internet.email(),
+    company: faker.company.companyName()
+  };
+};
+
+const data = Array.apply(null, Array(30)).reduce(acc => [...acc, getRandomRow()], []);
+
