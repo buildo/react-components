@@ -3,7 +3,7 @@
 @import '../utils/theme/flex.scss';
 @import './tabloVariables.scss';
 
-.grid {
+.tablo {
   /*
     confinate here all the `fixed-data-table` css class overrides
     whole table
@@ -82,7 +82,7 @@
   }
 }
 
-.grid {
+.tablo {
 
   // for cells with TextOverflow
   .public_fixedDataTableCell_main {

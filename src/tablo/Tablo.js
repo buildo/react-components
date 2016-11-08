@@ -106,7 +106,7 @@ export default class Tablo extends React.Component {
 
   template({ columnsOrGroups, className, ...tableProps }) {
     return (
-      <FlexView ref='gridWrapper' column grow className={cx('grid', className)}>
+      <FlexView column grow className={cx('tablo', className)}>
         <Table {...tableProps}>
           {columnsOrGroups}
         </Table>
