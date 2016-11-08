@@ -1,6 +1,5 @@
 @import '../../../utils/theme/variables.scss';
-
-$header-color: $brc-coolGrey !default;
+@import '../../tabloVariables.scss';
 
 @mixin triangle($side, $size, $color) {
   border-left: $size solid transparent;

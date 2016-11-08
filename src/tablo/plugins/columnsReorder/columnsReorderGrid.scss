@@ -1,5 +1,6 @@
 @import '../../../utils/theme/variables.scss';
 @import '../../../utils/theme/flex.scss';
+@import '../../tabloVariables.scss';
 
 .columns-reorderable-grid {
   .dndHeader {
@@ -23,7 +24,7 @@
       cursor: move;
       font-size: 18px;
       letter-spacing: 2px;
-      color: 1px 0 1px $brc-darkGrey;
+      color: 1px 0 1px $header-color;
     }
 
     span.grip::after {

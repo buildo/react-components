@@ -1,6 +1,5 @@
 @import '../../../utils/theme/variables.scss';
-
-$header-color: rgba($brc-white, .8);
+@import '../../tabloVariables.scss';
 
 .sortable-grid {
   .sortable-header {

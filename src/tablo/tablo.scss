@@ -1,22 +1,7 @@
 @import '~fixed-data-table-2/dist/fixed-data-table-base.min.css';
 @import '../utils/theme/variables.scss';
 @import '../utils/theme/flex.scss';
-
-$border-color: $brc-silver !default;
-$border-width: 1px !default;
-$header-background: $brc-paleGrey !default;
-$header-color: $brc-coolGrey !default;
-$footer-background: $brc-paleGrey !default;
-$footer-color: $brc-coolGrey !default;
-$odd-row-background: $brc-white !default;
-$even-row-background: $brc-white !default;
-$cell-border-color: $brc-silver !default;
-$scrollbar-color: rgba($brc-coolGrey, .6) !default;
-$hover-scrollbar-background: rgba($brc-white, .8) !default;
-$hover-scrollbar-color: $brc-coolGrey !default;
-$scrollbar-size: 6px !default;
-$selected-cell-background: #eaf4fd !default;
-$hover-cell-background: #f5fafe !default;
+@import './tabloVariables.scss';
 
 .grid {
   /*

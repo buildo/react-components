@@ -1,6 +1,5 @@
 @import '../../utils/theme/variables.scss';
-
-$cell-border-color: $brc-silver !default;
+@import '../tabloVariables.scss';
 
 .grid {
   .public_fixedDataTableCell_main {

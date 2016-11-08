@@ -1,7 +1,5 @@
 @import '../../../utils/theme/variables.scss';
-
-$selected-cell-background: $brc-azure10 !default;
-$hover-cell-background: $brc-azure05 !default;
+@import '../../tabloVariables.scss';
 
 .selectable-grid {
   &.selectable {

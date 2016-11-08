@@ -1,8 +1,5 @@
 @import '../../utils/theme/variables.scss';
-$border-color: $brc-silver !default;
-$border-width: 1px !default;
-$header-background: $brc-paleGrey !default;
-$header-color: $brc-coolGrey !default;
+@import '../tabloVariables.scss';
 
 // no fixed-data-table css classes in subcomponents
 
