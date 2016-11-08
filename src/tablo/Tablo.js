@@ -38,11 +38,11 @@ export const defaultWidth = 500;
  * @param sortDir - sorting direction
  * @param onSortChange - callback to be called when sorting change
  *
- * @param scrollToRow - index of the row to scroll to
- * @param onRowClick - callback to be called when a row is clicked
- * @param rowClassNameGetter - called to get any additional CSS classes that should be added to a row
- * @param onColumnResizeEndCallback - callback to be called when resizer has been released and column needs to be updated
- * @param isColumnResizing - whether a column is currently being resized
+ * @param scrollToRow - Private
+ * @param onRowClick - Private
+ * @param rowClassNameGetter - Private
+ * @param onColumnResizeEndCallback - Private
+ * @param isColumnResizing - Private
  */
 @skinnable()
 @pure
