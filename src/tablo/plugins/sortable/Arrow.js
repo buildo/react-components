@@ -1,12 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
-import { enums } from 'tcomb';
 import FlexView from 'react-flexview';
-import { props  } from 'tcomb-react';
-import { pure, skinnable } from 'revenge';
+import { pure, skinnable, props, t } from '../../../utils';
+
+const { enums } = t;
 
 const propsTypes = {
-  arrowDir: enums.of('up down up-down')
+  arrowDir: enums.of(['up', 'down', 'up-down'])
 };
 
 const template = ({ arrowDir, className }) => {

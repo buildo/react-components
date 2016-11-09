@@ -1,12 +1,14 @@
 import React from 'react';
-import t, { union, maybe, struct } from 'tcomb';
 import find from 'lodash/find';
+import { t } from '../../utils';
 
 import { Column as ColumnFDT } from 'fixed-data-table-2';
 
 import Cell, { defaultCell } from '../Cell';
 import Header, { defaultHeader } from '../Header';
 import Footer from '../Footer';
+
+const { union, maybe, struct } = t;
 
 export const defaultWidth = 200;
 

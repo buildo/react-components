@@ -1,5 +1,5 @@
 import React from 'react';
-import t, { union, maybe, struct } from 'tcomb';
+import { t } from '../../utils';
 import find from 'lodash/find';
 
 import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
@@ -7,6 +7,7 @@ import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 import Header, { defaultHeader } from '../Header';
 import Column from '../Column';
 
+const { union, maybe, struct } = t;
 const argsTypes = struct({
   key: union([t.String, t.Number]),
   fixed: maybe(t.Boolean),

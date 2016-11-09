@@ -1,17 +1,17 @@
 import React from 'react';
-import t, { maybe, enums, union } from 'tcomb';
-import { props  } from 'tcomb-react';
-import { pure, skinnable } from 'revenge';
+import { pure, skinnable, props, t } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';
+
+const { maybe, enums, union } = t;
 
 const propsTypes = {
   data: t.Any,
   children: union([t.Function, t.ReactChildren]),
   backgroundColor: maybe(t.String),
   color: maybe(t.String),
-  vAlignContent: maybe(enums.of('top center bottom')),
-  hAlignContent: maybe(enums.of('left center right')),
+  vAlignContent: maybe(enums.of(['top', 'center', 'bottom'])),
+  hAlignContent: maybe(enums.of(['left', 'center', 'right'])),
   style: maybe(t.Object)
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import t, { maybe } from 'tcomb';
-import { props } from 'tcomb-react';
-import { pure, skinnable } from 'revenge';
+import { pure, skinnable, props, t } from '../../../utils';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../resize-sensor/ResizeSensor';
+
+const { maybe } = t;
 
 export default (Grid) =>
 

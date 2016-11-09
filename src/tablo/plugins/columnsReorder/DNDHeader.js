@@ -2,9 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
-import { pure, skinnable } from 'revenge';
-import t from 'tcomb';
-import { props } from 'tcomb-react';
+import { pure, skinnable, props, t } from '../../../utils';
 import FlexView from 'react-flexview';
 
 const columnTarget = {

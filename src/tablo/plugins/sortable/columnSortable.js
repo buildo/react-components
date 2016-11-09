@@ -1,10 +1,13 @@
 import React from 'react';
-import t, { maybe, struct } from 'tcomb';
+
+import { t } from '../../../utils';
 import find from 'lodash/find';
 import Column from '../../Column';
 
 import Header, { defaultHeader } from '../../Header';
 import SortableHeader from './SortableHeader';
+
+const { maybe, struct } = t;
 
 const argsTypes = struct({
   sortable: maybe(t.Boolean),

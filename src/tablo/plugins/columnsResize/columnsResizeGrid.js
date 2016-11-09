@@ -1,10 +1,10 @@
 import React from 'react';
-import t, { maybe } from 'tcomb';
 import cx from 'classnames';
-import { props  } from 'tcomb-react';
-import { pure, skinnable, contains } from 'revenge';
+import { pure, skinnable, props, t, contains } from '../../../utils';
 
 import Column, { defaultColumns, updateColumns } from '../../Column';
+
+const { maybe } = t;
 
 const addSizeProps = ({ col }) => ( //eslint-disable-line
   <Column

@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable } from 'revenge';
-import t, { maybe, enums } from 'tcomb';
-import { props } from 'tcomb-react';
+import { pure, skinnable, props, t } from '../../../utils';
 import FlexView from 'react-flexview';
 import Arrow from './Arrow';
+
+const { maybe, enums } = t;
 
 @skinnable()
 @pure

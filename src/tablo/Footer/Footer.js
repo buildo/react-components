@@ -1,8 +1,8 @@
 import React from 'react';
-import t, { maybe } from 'tcomb';
 import FlexView from 'react-flexview';
-import { props  } from 'tcomb-react';
-import { pure, skinnable } from 'revenge';
+import { pure, skinnable, props, t } from '../../utils';
+
+const { maybe } = t;
 
 const propsTypes = {
   columnKey: maybe(t.String),

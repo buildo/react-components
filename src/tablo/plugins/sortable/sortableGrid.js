@@ -1,12 +1,12 @@
 import React from 'react';
-import t, { maybe, enums } from 'tcomb';
 import cx from 'classnames';
 import omitBy from 'lodash/fp/omitBy';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { props  } from 'tcomb-react';
-import { pure, skinnable, contains } from 'revenge';
+import { pure, skinnable, props, t, contains } from '../../../utils';
+
+const { maybe, enums } = t;
 
 export const clean = omitBy(x => typeof x === 'undefined');
 
@@ -17,7 +17,7 @@ const propsTypes = {
   children: t.ReactChildren,
   // add
   sortBy: maybe(t.String),
-  sortDir: maybe(enums.of('asc desc')),
+  sortDir: maybe(enums.of(['asc', 'desc'])),
   onSortChange: maybe(t.Function)
 };
 

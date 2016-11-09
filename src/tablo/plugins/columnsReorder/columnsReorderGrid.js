@@ -1,7 +1,5 @@
 import React from 'react';
-import t, { maybe, list } from 'tcomb';
-import { props  } from 'tcomb-react';
-import { pure, skinnable, contains } from 'revenge';
+import { pure, skinnable, props, t, contains } from '../../../utils';
 
 import cx from 'classnames';
 import find from 'lodash/find';
@@ -15,6 +13,8 @@ import Column, { defaultColumns, updateColumns } from '../../Column';
 import ColumnGroup from '../../ColumnGroup';
 import Header, { defaultHeader } from '../../Header';
 import DNDHeader from './DNDHeader';
+
+const { maybe, list } = t;
 
 export default (Grid) =>
   @dragDropContextHTML5Backend

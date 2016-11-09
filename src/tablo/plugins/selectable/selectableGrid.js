@@ -1,15 +1,15 @@
 import React from 'react';
-import t, { list, maybe, enums } from 'tcomb';
 import cx from 'classnames';
-import { props  } from 'tcomb-react';
-import { pure, skinnable, contains } from 'revenge';
+import { pure, skinnable, props, t, contains } from '../../../utils';
 import includes from 'lodash/includes';
+
+const { list, maybe, enums } = t;
 
 const propsTypes = {
   className: maybe(t.String),
   selectedRows: maybe(list(t.Integer)),
   onRowsSelect: maybe(t.Function),
-  selectionType: enums.of('multi single none'),
+  selectionType: enums.of(['multi', 'single', 'none']),
   hoveredRowIndex: maybe(t.Integer),
   onHoveredRowChange: maybe(t.Function)
 };

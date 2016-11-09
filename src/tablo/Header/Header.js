@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
-import t, { maybe } from 'tcomb';
-import { props  } from 'tcomb-react';
-import { pure, skinnable } from 'revenge';
+import { pure, skinnable, props, t } from '../../utils';
 import FlexView from 'react-flexview';
+
+const { maybe } = t;
 
 const propsTypes = {
   children: t.ReactChildren,

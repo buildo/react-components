@@ -1,9 +1,9 @@
 import React from 'react';
 import omit from 'lodash/omit';
-import t, { maybe } from 'tcomb';
-import { props } from 'tcomb-react';
-import { pure, skinnable, contains } from 'revenge';
+import { pure, skinnable, props, t, contains } from '../../../utils';
 import cx from 'classnames';
+
+const { maybe } = t;
 
 export default (Grid) => (
   @props({
