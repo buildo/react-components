@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Children } from 'react';
 import curry from 'lodash/curry';
 import flatMap from 'lodash/flatMap';
 import Column from './Column';
 import ColumnGroup from '../ColumnGroup';
-import { Children } from 'react';
 
 // how to extract columns from children, update them and return new grid children
 // useful in the `getLocals` of the several plugins
