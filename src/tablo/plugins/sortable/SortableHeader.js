@@ -36,7 +36,6 @@ export default class SortableHeader extends React.Component {
           vAlignContent='center'
           hAlignContent='center'
           basis={20}
-          shrink={false}
           height='100%'
         >
           <Arrow arrowDir={arrowDir} />
