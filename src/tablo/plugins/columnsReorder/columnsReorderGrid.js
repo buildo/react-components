@@ -109,7 +109,7 @@ export default (Grid) =>
       const __children = updateColumns(orderedChildren, overrideHeader);
 
       return {
-        className: cx('columns-reorderable-grid', className),
+        className: cx('columns-reorderable-tablo', className),
         children: __children,
         ...gridProps
       };

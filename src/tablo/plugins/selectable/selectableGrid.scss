@@ -1,9 +1,9 @@
 @import '../../../utils/theme/variables.scss';
 @import '../../tabloVariables.scss';
 
-.selectable-grid {
+.selectable-tablo {
   &.selectable {
-    .grid-row {
+    .tablo-row {
       cursor: pointer;
 
       &.hover .public_fixedDataTableCell_main {

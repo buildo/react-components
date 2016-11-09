@@ -31,7 +31,7 @@ export default (Grid) => (
 
     getLocals({ scrollLeft, onScrollEnd, onScrollStart, className, ...tableProps }) {
       return {
-        className: cx('scrollable-grid', className),
+        className: cx('scrollable-tablo', className),
         scrollTop: this.state.scrollTop,
         scrollLeft,
         onScrollEnd,

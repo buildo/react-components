@@ -43,7 +43,7 @@ export default (Grid) =>
         width,
         height,
         autosize,
-        className: cx('autosize-grid', className),
+        className: cx('autosize-tablo', className),
         ...tableProps
       };
     }

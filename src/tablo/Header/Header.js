@@ -31,7 +31,7 @@ const getLocals = ({
 const template = ({ onClick, className, children }) => {
   return (
     <FlexView
-      className={cx('grid-header', className)}
+      className={cx('tablo-header', className)}
       height='100%'
       width='100%'
       vAlignContent='center'

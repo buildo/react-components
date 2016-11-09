@@ -27,7 +27,7 @@ const template = ({
   return (
     <CellFDT>
       <FlexView
-        className='grid-cell'
+        className='tablo-cell'
         style={{ backgroundColor, color, ...style }}
         vAlignContent={vAlignContent}
         hAlignContent={hAlignContent}

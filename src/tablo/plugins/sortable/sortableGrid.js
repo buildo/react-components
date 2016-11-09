@@ -69,7 +69,7 @@ const getLocals = ({
   const __children = updateColumns(_children, addSortableProps);
 
   return {
-    className: cx('sortable-grid', className),
+    className: cx('sortable-tablo', className),
     children: __children,
     ...gridProps
   };

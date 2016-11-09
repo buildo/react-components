@@ -47,7 +47,7 @@ const getLocals = ({
   };
 
   const rowClassNameGetter = (index) => cx(
-    'grid-row', {
+    'tablo-row', {
       selected: includes(selectedRows, index),
       hover: index === hoveredRowIndex
     }
@@ -56,7 +56,7 @@ const getLocals = ({
   const scrollToRow = !gridProps.scrollTop ? selectedRows[0] : undefined;
 
   return {
-    className: cx('selectable-grid', { selectable: selectionType !== 'none' }, className),
+    className: cx('selectable-tablo', { selectable: selectionType !== 'none' }, className),
     scrollToRow,
     onRowClick,
     rowClassNameGetter,
