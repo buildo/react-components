@@ -37,7 +37,7 @@ export default (Grid) =>
 
     getLocals({ autosize, className, ...tableProps }) {
 
-      const { width, height } = autosize ? this.state : {};
+      const { width = 0, height = 0 } = autosize ? this.state : {};
 
       return {
         width,

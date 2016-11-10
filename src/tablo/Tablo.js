@@ -7,20 +7,17 @@ import FlexView from 'react-flexview';
 
 const { maybe } = t;
 
-export const defaultWidth = 500;
-
 /** A table component based on fixed-data-table-2
  * @param data - data shown in the table
- * @param defaultColumns - a function that returns the default columns given the data
- * @param width - the desired width of the table
- * @param height - the desired height of the table
+ * @param width - the desired width of the table. Unless autosize is false, this can be left undefined
+ * @param height - the desired height of the table.  Unless autosize is false, this can be left undefined
  * @param rowHeight - height in pixel of every row
  * @param headerHeight - height in pixel of header
  * @param groupHeaderHeight - height in pixel of groupHeader
  * @param footerHeight - height in pixel of footer
  * @param onRowMouseEnter - callback to be called when mouse enters a row
  * @param onRowMouseLeave - callback to be called when mouse leaves a row
- * @param autosize - wheater the table should resize to fit the available space
+ * @param autosize - wheater the table should resize to fit the available space. Default true.
  * @param columnsOrder - an array containing the ordered list of column names, in the same order they should be rendered
  * @param onColumnsReorder - callback to be called when the order of columns changes after dragging an header in a new position
  * @param onColumnResize - callback to be called when a column is resized
@@ -50,7 +47,6 @@ export const defaultWidth = 500;
   // public
   className: maybe(t.String),
   data: t.Array,
-  defaultColumns: maybe(t.Function),
   width: t.Number,
   height: t.Number,
   rowHeight: t.Number,
@@ -75,9 +71,6 @@ export const defaultWidth = 500;
 export default class Tablo extends React.Component {
 
   static defaultProps = {
-    width: defaultWidth,
-    height: 500,
-    defaultColumns,
     rowHeight: 30,
     headerHeight: 40,
     groupHeaderHeight: 50,
