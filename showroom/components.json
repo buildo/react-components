@@ -587,7 +587,7 @@
         "desc": "A table component, based on fixed-data-table-2",
         "repo": "react-components",
         "url": "https://github.com/buildo/react-components/tree/master/src/tablo",
-        "readmeUrl": "tablo/README.md",
+        "readmeUrl": "tablo/API.md",
         "examples": [
           {
             "url": "tablo/examples/default.js"
