@@ -1,0 +1,31 @@
+@import '../../utils/theme/variables.scss';
+
+.input-children {
+  input {
+    border: 1px solid $brc-silver;
+    border-radius: 4px;
+    padding-left: 12px;
+    color: $brc-darkGrey;
+    font-weight: $brc-semibold;
+    font-size: 14px;
+
+    /* placeholder */
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder {
+      color: $brc-coolGrey;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: .6;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $brc-azure !important;
+      box-shadow: 0;
+    }
+  }
+}
