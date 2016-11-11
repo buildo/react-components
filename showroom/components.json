@@ -536,15 +536,15 @@
         "readmeUrl": "src/README.md",
         "examples": [
           {
-            "url": "examples/PlainText.example"
-          },
-          {
+            "title": "Show password",
             "url": "examples/Password.example"
           },
           {
+            "title": "Button",
             "url": "examples/Button.example"
           },
           {
+            "title": "Anything you want",
             "url": "examples/Anything.example"
           }
         ]
