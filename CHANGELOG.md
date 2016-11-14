@@ -8,6 +8,10 @@
 
 - LoadingSpinner should enforce box-sizing: border-box [\#649](https://github.com/buildo/react-components/issues/649)
 
+#### New features:
+
+- New tablo component [\#651](https://github.com/buildo/react-components/issues/651)
+
 ## [v0.9.2](https://github.com/buildo/react-components/tree/v0.9.2) (2016-10-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.1...v0.9.2)
 
