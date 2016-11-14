@@ -580,6 +580,24 @@
             "url": "examples/Default.example"
           }
         ]
+      },
+      {
+        "id": "tablo",
+        "title": "Tablo",
+        "desc": "A table component, based on fixed-data-table-2",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/tablo",
+        "readmeUrl": "tablo/API.md",
+        "examples": [
+          {
+            "url": "tablo/examples/default.js"
+          },
+          {
+            "title": "Controlled scrolling",
+            "description": "Tablo allows you to control scrolling. In the following example, after the table get focus (e.g. by clicking on it), you can scroll it using the arrow keys.<br />`UP` and `DOWN` arrows will change the selected entry, while `LEFT` and `RIGHT` arrows will control the horizontal scrolling.",
+            "url": "tablo/examples/scrollable.js"
+          }
+        ]
       }
     ]
   }

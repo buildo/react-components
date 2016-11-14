@@ -1,0 +1,116 @@
+@import '~fixed-data-table-2/dist/fixed-data-table-base.min.css';
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+@import '../utils/theme/variables.scss';
+@import './tabloVariables.scss';
+
+.tablo {
+  /*
+    confinate here all the `fixed-data-table` css class overrides
+    whole table
+  */
+
+  // TODO problem: confinate all fdt classes here, or avoid all non-core feature css class in plugins stylesheets?
+  .public_fixedDataTableColumnResizerLine_main {
+    border-color: $border-color;
+  }
+
+  .public_fixedDataTable_main,
+  .public_fixedDataTable_hasBottomBorder {
+    border-color: $border-color;
+    border-width: $border-width;
+  }
+
+  .public_fixedDataTableRow_fixedColumnsDivider {
+    border-color: $border-color;
+    border-width: $border-width + 1;
+  }
+
+  // bg color for odd/even rows (applied to cells for reliability)
+  .public_fixedDataTableRow_odd .public_fixedDataTableCell_main {
+    background: $odd-row-background;
+  }
+
+  .public_fixedDataTableRow_even .public_fixedDataTableCell_main {
+    background: $even-row-background;
+  }
+
+  // scrollbar
+  .public_fixedDataTable_horizontalScrollbar {
+    height: $scrollbar-size + 8px !important;
+
+    > div {
+      height: $scrollbar-size + 8px !important;
+    }
+  }
+
+  .public_Scrollbar_main {
+    &.ScrollbarLayout_mainHorizontal {
+      height: $scrollbar-size + 8px;
+
+      &:hover {
+        height: $scrollbar-size * 1.25 + 8px;
+      }
+    }
+
+    &.ScrollbarLayout_mainVertical {
+      width: $scrollbar-size + 8px;
+
+      &:hover {
+        width: $scrollbar-size * 1.25 + 8px;
+      }
+    }
+
+    .public_Scrollbar_face::after {
+      cursor: pointer;
+      background-color: $scrollbar-color;
+    }
+
+    .public_Scrollbar_face:hover::after {
+      background-color: $hover-scrollbar-color;
+    }
+
+    &.public_Scrollbar_mainActive,
+    &:hover {
+      background-color: $hover-scrollbar-background;
+    }
+
+    &.public_Scrollbar_mainActive {
+      .public_Scrollbar_face::after {
+        background-color: $hover-scrollbar-color;
+      }
+    }
+  }
+}
+
+.tablo {
+
+  // for cells with TextOverflow
+  .public_fixedDataTableCell_main {
+    @include display_flex();
+    @include flex_align-items(stretch);
+
+    .public_fixedDataTableCell_wrap1,
+    .public_fixedDataTableCell_wrap2,
+    .public_fixedDataTableCell_wrap3,
+    .public_fixedDataTableCell_cellContent {
+      @include display_flex();
+      @include flex_align-items(stretch);
+    }
+  }
+
+  font-size: 15px;
+
+  .public_fixedDataTableCell_main:last-child {
+    border-width: $border-width;
+  }
+}
+
+@import './Header/header.scss';
+@import './Footer/footer.scss';
+@import './Cell/cell.scss';
+
+// plugins
+@import './plugins/columnsReorder/columnsReorderGrid.scss';
+@import './plugins/selectable/selectableGrid.scss';
+@import './plugins/sortable/arrow.scss';
+@import './plugins/sortable/sortableGrid.scss';

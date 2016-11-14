@@ -1,0 +1,13 @@
+@import '../../utils/theme/variables.scss';
+@import '../tabloVariables.scss';
+
+// no fixed-data-table css classes in subcomponents
+
+.tablo {
+  .tablo-footer {
+    border: $border-width solid $border-color;
+    background: $footer-background;
+    color: $footer-color;
+    padding: 0 5px;
+  }
+}
