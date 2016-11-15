@@ -49,7 +49,7 @@ describe('TimePicker', () => {
         value: { hours: 15, minutes: 33 }
       });
       const { value } = timePicker.getLocals();
-      expect(value).toEqual({ value: '15:33', label: '15:33' });
+      expect(value).toEqual('15:33');
     });
 
     it('passes value properly formatted when H12', () => {
@@ -59,7 +59,7 @@ describe('TimePicker', () => {
         timeFormat: H12
       });
       const { value } = timePicker.getLocals();
-      expect(value).toEqual({ value: '15:33', label: '03:33 pm' });
+      expect(value).toEqual('15:33');
     });
 
     it('passes an undefined value when value prop is undefined', () => {
