@@ -43,23 +43,13 @@ describe('TimePicker', () => {
       expect(className).toContain('fancy-class-name');
     });
 
-    it('passes value properly formatted when H24', () => {
+    it('passes value properly formatted', () => {
       const timePicker = new TimePicker({
         ...TimePicker.defaultProps,
         value: { hours: 15, minutes: 33 }
       });
       const { value } = timePicker.getLocals();
-      expect(value).toEqual('15:33');
-    });
-
-    it('passes value properly formatted when H12', () => {
-      const timePicker = new TimePicker({
-        ...TimePicker.defaultProps,
-        value: { hours: 15, minutes: 33 },
-        timeFormat: H12
-      });
-      const { value } = timePicker.getLocals();
-      expect(value).toEqual('15:33');
+      expect(value).toBe('15:33');
     });
 
     it('passes an undefined value when value prop is undefined', () => {
