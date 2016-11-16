@@ -189,9 +189,7 @@ export default class TimePicker extends React.Component {
       ...props
     } = this.props;
 
-    const value = userValue ? toOption({
-      ...userValue, timeFormat
-    }) : undefined;
+    const value = userValue ? formatTime24(userValue) : undefined;
 
     return {
       ...props,
