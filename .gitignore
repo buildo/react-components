@@ -5,3 +5,4 @@ lib
 generateChangelog.sh
 **/.tags
 **/.tags1
+showroom/components/IsolatedComponentView/Component*.js
