@@ -10,6 +10,7 @@
 
 #### New features:
 
+- TimePicker missing "is-selected" class [\#663](https://github.com/buildo/react-components/issues/663)
 - New tablo component [\#651](https://github.com/buildo/react-components/issues/651)
 
 ## [v0.9.2](https://github.com/buildo/react-components/tree/v0.9.2) (2016-10-04)
