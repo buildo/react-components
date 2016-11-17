@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from 'react-flexview';
+import omit from 'lodash/omit';
 
 export const Props = {
   children: t.ReactChildren,
@@ -77,8 +78,7 @@ export default class BackgroundDimmer extends React.Component {
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
     return {
-      ...props,
-      stopPropagation,
+      ...omit(props, ['onClickOutside', 'stopPropagation']),
       className: cx('background-dimmer', className),
       overlayProps: {
         style: {
