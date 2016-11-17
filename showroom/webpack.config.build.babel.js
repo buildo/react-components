@@ -39,7 +39,7 @@ module.exports = assign({}, webpackBase, {
       template: 'index.html',
       inject: false,
       gzip: '',
-      bundle: 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/'
+      buildPath: 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/'
     }),
     new ExtractTextPlugin('style', 'style.[hash].min.css')
   ]),
