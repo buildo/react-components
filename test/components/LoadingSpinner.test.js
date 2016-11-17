@@ -1,29 +1,43 @@
 import React from 'react';
-// import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
-
-// Because of this bug: https://github.com/facebook/react/issues/7386
-// Should be fixed in react 15.4
-// jest.mock('react-dom');
+import { shallow, mount } from 'enzyme';
 
 import LoadingSpinner from '../../src/loading-spinner';
 
 describe('LoadingSpinner', () => {
 
-  // disabled because react-dome is mocked out, see above
-  xit('renders correctly', () => {
-    const component = renderer.create( // eslint-disable-line no-undef
-      <LoadingSpinner />
+  it('renders correctly', () => {
+    const component = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner />
+      </div>
     );
-    expect(component).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot();
   });
 
-  // disabled because react-dome is mocked out, see above
-  xit('renders correctly with a message', () => {
-    const component = renderer.create( // eslint-disable-line no-undef
-      <LoadingSpinner message={{ content: 'loading awesome content' }} />
+  it('renders correctly with a message', () => {
+    const component = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner message={{ content: 'loading awesome content' }} />
+      </div>
     );
-    expect(component).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot();
+  });
+
+  it('renders with a warning when parent is not relative or absolute', () => {
+    /* eslint-disable no-console */
+    const warn = jest.fn();
+    const originalWarn = console.warn;
+    console.warn = warn;
+    mount(
+      <div style={{ position: 'static' }}>
+        <LoadingSpinner />
+      </div>
+    );
+    expect(warn).toHaveBeenCalledTimes(1);
+    const warnArguments = warn.mock.calls[0];
+    expect(warnArguments[0]).toMatchSnapshot();
+    console.warn = originalWarn;
+    /* eslint-enable no-console */
   });
 
   it('computes message content and style', () => {
