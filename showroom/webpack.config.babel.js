@@ -4,11 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpackBase from './webpack.base.babel';
 import assign from 'lodash/assign';
-import fs from 'fs';
-
-const indexHtml = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8')
-  .replace(/__GZIP__/g, '')
-  .replace(/__BUILD_PATH__/g, '');
 
 const paths = {
   SRC: path.resolve(__dirname),
@@ -41,7 +36,12 @@ module.exports = assign({}, webpackBase, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new HtmlWebpackPlugin({ bundle: false, templateContent: indexHtml }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: false,
+      gzip: '',
+      buildPath: ''
+    }),
     new ExtractTextPlugin('style', 'style.[hash].min.css')
   ]),
 
