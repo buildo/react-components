@@ -7,10 +7,6 @@ import webpackBase from './webpack.base.babel';
 import assign from 'lodash/assign';
 import fs from 'fs';
 
-const indexHtml = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8')
-  .replace(/__GZIP__/g, '')
-  .replace(/__BUILD_PATH__/g, 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/');
-
 const paths = {
   SRC: path.resolve(__dirname),
   DIST: path.resolve(__dirname, './build')
@@ -39,7 +35,12 @@ module.exports = assign({}, webpackBase, {
       regExp: /\.js$|\.css$/
     }),
     new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin({ bundle: true, templateContent: indexHtml }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: false,
+      gzip: '',
+      buildPath: 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/'
+    }),
     new ExtractTextPlugin('style', 'style.[hash].min.css')
   ]),
 
