@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.10.0...HEAD)
+
+#### New features:
+
+- \[tablo perf\] Create an isolated environment for testing [\#667](https://github.com/buildo/react-components/issues/667)
+
 ## [v0.10.0](https://github.com/buildo/react-components/tree/v0.10.0) (2016-11-16)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.2...v0.10.0)
 
