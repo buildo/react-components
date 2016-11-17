@@ -78,7 +78,7 @@ export default class BackgroundDimmer extends React.Component {
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
     return {
-      ...omit(props, ['onClickOutside', 'stopPropagation']),
+      ...omit(props, ['onClickOutside']),
       className: cx('background-dimmer', className),
       overlayProps: {
         style: {
