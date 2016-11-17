@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Node 6 support [\#655](https://github.com/buildo/react-components/issues/655)
+
 #### New features:
 
 - \[tablo perf\] Create an isolated environment for testing [\#667](https://github.com/buildo/react-components/issues/667)
