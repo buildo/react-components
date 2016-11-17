@@ -103,8 +103,7 @@
   "greenkeeper": {
     "ignore": [
       "fixed-data-table",
-      "react-router",
-      "html-webpack-plugin"
+      "react-router"
     ]
   }
 }
