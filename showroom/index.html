@@ -8,18 +8,23 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/monokai.min.css"/>
     <link rel="stylesheet" href="https://i.icomoon.io/public/5ba04e2a5e/Showroom/style.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
-    {% for (var chunk in o.htmlWebpackPlugin.files.chunks.main.css) { %}
-      <link rel="stylesheet" href="__BUILD_PATH__{%=o.htmlWebpackPlugin.files.chunks.main.css[chunk]%}__GZIP__" media="all">
-    {% } %}
+    <% for (var chunk in htmlWebpackPlugin.files.chunks.main.css) { %>
+      <link
+        rel="stylesheet"
+        href="<%= htmlWebpackPlugin.options.buildPath %><%=o.htmlWebpackPlugin.files.chunks.main.css[chunk]%><% =htmlWebpackPlugin.options.gzip %>"
+        media="all"
+      />
+    <% } %>
   </head>
   <body>
     <div id='app'></div>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/mode/javascript/javascript.min.js"></script>
-    {%
-      for (var chunk in o.htmlWebpackPlugin.files.chunks) {
-    %}<script type='text/javascript' src="__BUILD_PATH__{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}__GZIP__"></script>{%
-      }
-    %}
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <script
+        type='text/javascript'
+        src="<%= htmlWebpackPlugin.options.buildPath %><%= o.htmlWebpackPlugin.files.chunks[chunk].entry %><% =htmlWebpackPlugin.options.gzip %>"
+      ></script>
+    <% } %>
   </body>
 </html>
