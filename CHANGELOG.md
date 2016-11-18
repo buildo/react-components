@@ -10,6 +10,7 @@
 
 #### New features:
 
+- \[tablo perf\] isolated index.html for isolated component [\#672](https://github.com/buildo/react-components/issues/672)
 - \[tablo perf\] Create an isolated environment for testing [\#667](https://github.com/buildo/react-components/issues/667)
 
 ## [v0.10.0](https://github.com/buildo/react-components/tree/v0.10.0) (2016-11-16)
