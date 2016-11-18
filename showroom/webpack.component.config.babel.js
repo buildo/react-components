@@ -1,6 +1,10 @@
 import path from 'path';
 import fs from 'fs';
+import webpack from 'webpack';
+import webpackBase from './webpack.base.babel';
 import webpackConfig from './webpack.config.babel';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const paths = {
   SHOWROOM: path.resolve(__dirname),
@@ -25,8 +29,23 @@ if (!stat || !stat.isFile()) {
 
 export default {
   ...webpackConfig,
+
   entry: [
     'webpack/hot/dev-server',
     `${paths.SHOWROOM}/app.component.js`
-  ]
+  ],
+
+  plugins: webpackBase.plugins.concat([
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new HtmlWebpackPlugin({
+      template: 'showroom/component.index.html',
+      inject: false,
+      gzip: '',
+      buildPath: ''
+    }),
+    new ExtractTextPlugin('style', 'style.[hash].min.css')
+  ])
+
 };
