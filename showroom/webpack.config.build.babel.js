@@ -36,7 +36,7 @@ module.exports = assign({}, webpackBase, {
     }),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'showroom/index.html',
       inject: false,
       gzip: '',
       buildPath: 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/'

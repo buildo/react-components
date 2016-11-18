@@ -37,7 +37,7 @@ module.exports = assign({}, webpackBase, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'showroom/index.html',
       inject: false,
       gzip: '',
       buildPath: ''

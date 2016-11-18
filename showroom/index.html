@@ -11,7 +11,7 @@
     <% for (var chunk in htmlWebpackPlugin.files.chunks.main.css) { %>
       <link
         rel="stylesheet"
-        href="<%= htmlWebpackPlugin.options.buildPath %><%=o.htmlWebpackPlugin.files.chunks.main.css[chunk]%><% =htmlWebpackPlugin.options.gzip %>"
+        href="<%= htmlWebpackPlugin.options.buildPath %><%= htmlWebpackPlugin.files.chunks.main.css[chunk]%><%= htmlWebpackPlugin.options.gzip %>"
         media="all"
       />
     <% } %>
@@ -23,7 +23,7 @@
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
       <script
         type='text/javascript'
-        src="<%= htmlWebpackPlugin.options.buildPath %><%= o.htmlWebpackPlugin.files.chunks[chunk].entry %><% =htmlWebpackPlugin.options.gzip %>"
+        src="<%= htmlWebpackPlugin.options.buildPath %><%= htmlWebpackPlugin.files.chunks[chunk].entry %><%= htmlWebpackPlugin.options.gzip %>"
       ></script>
     <% } %>
   </body>
