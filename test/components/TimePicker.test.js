@@ -1,13 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import TimePicker, {
   parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
 } from '../../src/time-picker/TimePicker';
-
-// Because of this bug: https://github.com/facebook/react/issues/7386
-// Should be fixed in react 15.4
-jest.mock('react-dom');
 
 const exampleProps = {
   ...TimePicker.defaultProps,
@@ -26,13 +22,11 @@ const timePicker = new TimePicker(exampleProps);
 
 describe('TimePicker', () => {
 
-  // ignored because react-dom is mocked (see above)
-  // it causes problem with AutosizeInput when using refs
-  xit('renders correctly', () => {
-    const component = renderer.create(
+  it('renders correctly', () => {
+    const component = mount(
       <TimePicker {...exampleProps} />
     );
-    expect(component).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot();
   });
 
   describe('getLocals', () => {

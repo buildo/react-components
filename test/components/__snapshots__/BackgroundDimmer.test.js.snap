@@ -45,14 +45,12 @@ Object {
       "zIndex": 99999,
     },
   },
-  "stopPropagation": [Function],
 }
 `;
 
 exports[`BackgroundDimmer renders correctly 1`] = `
 <div
-  className="background-dimmer"
-  stopPropagation={[Function]}>
+  className="background-dimmer">
   <div
     style={
       Object {

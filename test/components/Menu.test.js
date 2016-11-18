@@ -1,5 +1,4 @@
 import React from 'react';
-// import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { Menu } from '../../src/DropdownMenu';
 
@@ -12,14 +11,11 @@ const exampleProps = {
 
 describe('Menu', () => {
 
-  // ignored because react-test-renderer cannot co-exist with enzyme
-  // because of this bug: https://github.com/facebook/react/issues/7386
-  // Should be fixed in react 15.4
-  xit('renders correctly', () => {
-    const component = renderer.create( // eslint-disable-line no-undef
+  it('renders correctly', () => {
+    const component = mount(
       <Menu {...exampleProps} />
     );
-    expect(component).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot();
   });
 
   it('triggers onClick only on options that are not disabled', () => {

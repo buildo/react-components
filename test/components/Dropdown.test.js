@@ -3,10 +3,6 @@ import renderer from 'react-test-renderer';
 
 import Dropdown from '../../src/dropdown';
 
-// Because of this bug: https://github.com/facebook/react/issues/7386
-// Should be fixed in react 15.4
-jest.mock('react-dom');
-
 const exampleProps = {
   ...Dropdown.defaultProps,
   id: '12345',
