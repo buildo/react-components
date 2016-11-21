@@ -165,7 +165,7 @@ export default class TextOverflow extends React.Component {
         }
       };
 
-      return <Popover { ...props }>{this.getContent()}</Popover>;
+      return <Popover {...props}>{this.getContent()}</Popover>;
     }
   };
 
@@ -179,7 +179,7 @@ export default class TextOverflow extends React.Component {
       }
     };
 
-    return <div { ...props }>{this.getContent()}</div>;
+    return <div {...props}>{this.getContent()}</div>;
   };
 
   render() {

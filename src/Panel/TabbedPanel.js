@@ -61,7 +61,7 @@ export default class TabbedPanel extends React.Component {
     return (
       <Panel
         className={cx('tabbed-panel', className)}
-        { ...otherPanelProps }
+        {...otherPanelProps}
         header={{
           collapse: panelHeader.collapse,
           title: panelHeader.title,
