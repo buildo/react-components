@@ -86,7 +86,7 @@ export default class Modal extends React.Component {
                   marginLeft='auto'
                   onClick={onDismiss}
                 >
-                 {iconClose}
+                  {iconClose}
                 </FlexView>
               )}
             </FlexView>

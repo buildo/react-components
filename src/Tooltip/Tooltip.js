@@ -45,7 +45,7 @@ export default class Tooltip extends React.Component {
 
   template({ popoverProps, children }) {
     return (
-      <Popover { ...popoverProps }>
+      <Popover {...popoverProps}>
         {children}
       </Popover>
     );

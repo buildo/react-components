@@ -137,8 +137,8 @@ export default class Panel extends React.Component {
   templateSoftLoading = ({ softLoading, isExpanded }) => {
     return softLoading && isExpanded ? (
       <div className='panel-soft-loader'>
-        <div className='loader gradient'></div>
-        <div className='loader'></div>
+        <div className='loader gradient' />
+        <div className='loader' />
       </div>
     ) : null;
   };

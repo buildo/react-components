@@ -157,7 +157,7 @@ export default class ScrollView extends React.Component {
     const props = omit(this.props, Object.keys(Props));
     const { children } = this.props;
     return (
-      <div { ...props } { ...this.getEventListeners() } style={this.computeStyle()} ref='scrollView'>
+      <div {...props} {...this.getEventListeners()} style={this.computeStyle()} ref='scrollView'>
         {t.Function.is(children) ? children(this.scrollTo) : children}
       </div>
     );
