@@ -35,8 +35,9 @@ const sections = useLocalReadmes(useLocalComponents(JSON.parse(json)));
 export default class App extends React.Component {
 
   onSelectItem = (sectionId, id) => {
-    if (sectionId === 'home') this.props.router.transitionToPatch('home');
-    else {
+    if (sectionId === 'home') {
+      this.props.router.transitionToPatch('home');
+    } else {
       const section = find(sections, { id: sectionId });
       const route = section.components ? 'component' : 'content';
       const param = `${route}Id`;
