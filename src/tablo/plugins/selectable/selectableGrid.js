@@ -9,7 +9,7 @@ const propsTypes = {
   className: maybe(t.String),
   selectedRows: maybe(list(t.Integer)),
   onRowsSelect: maybe(t.Function),
-  selectionType: enums.of(['multi', 'single', 'none']),
+  selectionType: maybe(enums.of(['multi', 'single', 'none'])),
   hoveredRowIndex: maybe(t.Integer),
   onHoveredRowChange: maybe(t.Function)
 };
