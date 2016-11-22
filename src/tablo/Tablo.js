@@ -84,7 +84,7 @@ export default class Tablo extends React.Component {
     }).map((ch, key) => ch.type({ key, ...ch.props }));
 
     t.assert(
-      columnsOrGroups.length === ([].concat(children) || Object.keys).length,
+      columnsOrGroups.length === [].concat(children || Object.keys(data[0])).length,
       'There are extraneous children in the Grid. One should use only Column or ColumnGroup'
     );
 
