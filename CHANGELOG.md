@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- Tablo: SelectionType should be optional [\#682](https://github.com/buildo/react-components/issues/682)
 - Fix eslint curly error [\#678](https://github.com/buildo/react-components/issues/678)
 - Node 6 support [\#655](https://github.com/buildo/react-components/issues/655)
 
