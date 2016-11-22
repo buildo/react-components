@@ -6,6 +6,7 @@
 
 #### Fixes (bugs & defects):
 
+- Fix eslint curly error [\#678](https://github.com/buildo/react-components/issues/678)
 - Node 6 support [\#655](https://github.com/buildo/react-components/issues/655)
 
 #### New features:
