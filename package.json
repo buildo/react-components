@@ -37,7 +37,7 @@
     "bowser": "^1.0.0",
     "classnames": "^2.2.3",
     "css-element-queries": "^0.3.2",
-    "debug": "^2.2.0",
+    "debug": "^2.3.3",
     "faker": "^3.1.0",
     "fixed-data-table": "^0.4.7",
     "fixed-data-table-2": "^0.7.6",
