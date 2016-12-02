@@ -1,4 +1,4 @@
-node_modules
+node_modules/*
 coverage
 npm-debug.log
 lib
@@ -6,3 +6,4 @@ generateChangelog.sh
 **/.tags
 **/.tags1
 showroom/components/IsolatedComponentView/Component*.js
+!node_modules/web-shared

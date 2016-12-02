@@ -6,6 +6,7 @@ const paths = {
   ASSETS: path.resolve(__dirname, './assets'),
   SRC: path.resolve(__dirname),
   COMPONENTS: path.resolve(__dirname, '../src'),
+  PERF: path.resolve(__dirname, '../perf'),
   DIST: path.resolve(__dirname, './build')
 };
 
@@ -29,11 +30,13 @@ module.exports = {
         include: [
           paths.COMPONENTS,
           paths.SRC,
+          paths.PERF,
           /rc-datepicker/,
           /react-input-children/,
           /react-autosize-textarea/,
           /react-cookie-banner/,
-          /react-flexview/
+          /react-flexview/,
+          /web-shared/
         ]
       },
       {
@@ -45,7 +48,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'eslint',
-        include: [ paths.SRC, paths.COMPONENTS ],
+        include: [ paths.SRC, paths.COMPONENTS, paths.PERF ],
         exclude: paths.ASSETS
       }
     ]

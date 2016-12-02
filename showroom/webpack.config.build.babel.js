@@ -54,7 +54,11 @@ module.exports = assign({}, webpackBase, {
       // SASS
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap'),
+        include: [
+          /web-shared/
+        ]
+
       }
     ])
   })

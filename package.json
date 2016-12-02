@@ -83,6 +83,7 @@
     "node-sass": "^4.0.0",
     "raw-loader": "^0.5.1",
     "react": "^15.4.0",
+    "react-addons-perf": "^15.4.1",
     "react-addons-test-utils": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-readme-generator": "0.0.1",

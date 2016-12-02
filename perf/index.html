@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>perf test - buildo react-components</title>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks.main.css) { %>
+      <link
+        rel="stylesheet"
+        href="<%= htmlWebpackPlugin.options.buildPath %><%= htmlWebpackPlugin.files.chunks.main.css[chunk]%><%= htmlWebpackPlugin.options.gzip %>"
+        media="all"
+      />
+    <% } %>
+  </head>
+  <body>
+    <div id='app'></div>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <script
+        type='text/javascript'
+        src="<%= htmlWebpackPlugin.options.buildPath %><%= htmlWebpackPlugin.files.chunks[chunk].entry %><%= htmlWebpackPlugin.options.gzip %>"
+      ></script>
+    <% } %>
+  </body>
+</html>

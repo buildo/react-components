@@ -12,6 +12,9 @@ case $TARGET in
   "component")
     FILE_TARGET="$TARGET."
     ;;
+  "perf-test")
+    FILE_TARGET="$TARGET."
+    ;;
   *)
     echo "Invalid target"
     exit -1
