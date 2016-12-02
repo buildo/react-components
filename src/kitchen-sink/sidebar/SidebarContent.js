@@ -64,7 +64,7 @@ export default class SidebarContent extends React.Component {
       <Scroll className='sidebar-content' scrollPropagation={false}>
         <View className='logo' vAlignContent='center' hAlignContent='center' column onClick={this.toHome} shrink={false}>
           buildo
-          <View className='sub'>React components</View>
+          <View className='sub'>react components</View>
         </View>
         {this.getSections(this.props.sections)}
       </Scroll>

@@ -1,7 +1,9 @@
 import React from 'react';
 import FlexView from 'react-flexview';
 import KitchenSink from '../../src/kitchen-sink';
+import Button from '../../src/button';
 import { t, props } from 'tcomb-react';
+import packageJson from 'json!../../package.json';
 
 require('../icons/rocket.png');
 require('../icons/tools.png');
@@ -9,6 +11,8 @@ require('../icons/window.png');
 require('../icons/rocket@2x.png');
 require('../icons/tools@2x.png');
 require('../icons/window@2x.png');
+
+import './home.scss';
 
 @props({
   router: t.Function,
@@ -22,6 +26,16 @@ require('../icons/window@2x.png');
 })
 export default class Home extends React.Component {
 
+  onGetStartedClick = () => {
+    this.props.router.transitionToPatch('content', {
+      sectionId: 'getting-started', contentId: 'getting-started'
+    });
+  }
+
+  onStarClick = () => {
+    window.open('https://github.com/buildo/react-components', '_blank');
+  }
+
   render() {
 
     const {
@@ -32,7 +46,7 @@ export default class Home extends React.Component {
     } = this.props;
 
     const ColumnTemplate = ({ title, icon, children }) => (
-      <FlexView column shrink basis='100%'>
+      <FlexView className='column-template' column shrink basis='100%'>
         <FlexView basis={50} vAlignContent='center' style={{ marginBottom: 10 }}>
           {icon && <img src={`./showroom/icons/${icon}.png`} srcSet={`./showroom/icons/${icon}@2x.png 2x`} />}
         </FlexView>
@@ -45,25 +59,46 @@ export default class Home extends React.Component {
     return (
       <KitchenSink {...{ sections, openSections, sectionId, onToggleSection, contentId, onSelectItem, loading: false }}>
         <FlexView column className='home'>
-          <FlexView column className='header' vAlignContent='center' hAlignContent='center'>
-            <FlexView className='pattern' />
-            <FlexView className='title'>buildo react components</FlexView>
-            <FlexView className='subtitle'>Reusable components by buildo</FlexView>
+          <FlexView column className='header' hAlignContent='center'>
+            <FlexView shrink={false} className='title'>buildo react components</FlexView>
+            <FlexView shrink={false} className='subtitle'>Reusable components by buildo</FlexView>
+            <FlexView shrink={false} className='action-buttons'>
+              <Button flat label='Get Started' onClick={this.onGetStartedClick} />
+              <Button flat label='Star' icon='github' onClick={this.onStarClick} />
+            </FlexView>
+            <FlexView shrink={false} className='current-release'>
+              {`Current release: ${packageJson.version}`}
+            </FlexView>
+            <FlexView shrink={false} className='pattern' />
           </FlexView>
           <FlexView column className='content'>
             <h1>Introduction</h1>
-            <p>This is a collection of some of the most reusable React components built at Buildo. In the jQuery ecosystem there's a large collection of plugins that can be used for anything from modals to translation. We're trying to make it just as easy to jumpstart React applications with a well-tested, thoughtful, and beautiful library of components.</p>
-            <p>Most of our components are bespoke, so if you're already invested in a UI framework like Bootstrap, Topcoat, or KendoUI, you should check to see if there's an existing React wrapper for your framework.</p>
+            <p>
+              This is a collection of reusable React components created at Buildo
+            </p>
+            <p>
+              Its purpose is to give access to all these components through a single npm dependency so to improve the development experience and make eventual changes of library easier, faster and centralized
+            </p>
             <h1>Goals</h1>
             <FlexView>
-              <ColumnTemplate title='Open Source' icon='rocket'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Highly customizable' icon='tools'>
+                <p>
+                  The library integrates with your Webpack workflow and it's easily customizable and very flexible.
+                  <br />
+                  While style agnostic, all the components have a sane default style that can be totally overridden through Sass variables
+                </p>
               </ColumnTemplate>
-              <ColumnTemplate title='Build Tools' icon='tools'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Designed with expertise' icon='window'>
+                <p>
+                  Designed by React devs for React devs, written in ES6 and Sass, built with Babel and Webpack
+                </p>
               </ColumnTemplate>
-              <ColumnTemplate title='Cohesive design language' icon='window'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Live playground' icon='rocket'>
+                <p>
+                  Check our showroom and try all the components with live examples.
+                  <br />
+                  We've created a playground so you don't need to install anything to learn how the components work, look and behave
+                </p>
               </ColumnTemplate>
             </FlexView>
           </FlexView>
