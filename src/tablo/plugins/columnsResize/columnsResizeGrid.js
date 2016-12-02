@@ -15,7 +15,7 @@ const addSizeProps = ({ col }) => ( //eslint-disable-line
 
 const propsTypes = {
   className: maybe(t.String),
-  onColumnResize: t.Function,
+  onColumnResize: maybe(t.Function),
   children: maybe(t.ReactChildren)
 };
 
