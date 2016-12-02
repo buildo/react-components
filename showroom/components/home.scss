@@ -1,0 +1,19 @@
+@import '../../src/utils/theme/variables.scss';
+
+.home {
+  .action-buttons {
+    .button .button-inner.is-flat {
+      color: $brc-white;
+      border-color: $brc-white;
+
+      &:hover {
+        color: $brc-white !important;
+        border-color: $brc-white !important;
+      }
+    }
+
+    .button:first-child {
+      margin-right: 12px;
+    }
+  }
+}
