@@ -7,4 +7,6 @@ export Cell from './Cell';
 export Header from './Header';
 export Footer from './Footer';
 
+export { Tablo as SimpleTablo };
+
 export default autosize(columnsResize(columnsReorder(scrollable(selectable(sortable(Tablo))))));
