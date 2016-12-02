@@ -15,6 +15,7 @@
 
 - \[tablo perf\] isolated index.html for isolated component [\#672](https://github.com/buildo/react-components/issues/672)
 - \[tablo perf\] Create an isolated environment for testing [\#667](https://github.com/buildo/react-components/issues/667)
+- Update eslint-config-buildo@^0.2.0 [\#665](https://github.com/buildo/react-components/issues/665)
 
 ## [v0.10.0](https://github.com/buildo/react-components/tree/v0.10.0) (2016-11-16)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.2...v0.10.0)
