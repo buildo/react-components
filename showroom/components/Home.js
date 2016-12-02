@@ -1,7 +1,9 @@
 import React from 'react';
 import FlexView from 'react-flexview';
 import KitchenSink from '../../src/kitchen-sink';
+import Button from '../../src/button';
 import { t, props } from 'tcomb-react';
+import packageJson from 'json!../../package.json';
 
 require('../icons/rocket.png');
 require('../icons/tools.png');
@@ -9,6 +11,8 @@ require('../icons/window.png');
 require('../icons/rocket@2x.png');
 require('../icons/tools@2x.png');
 require('../icons/window@2x.png');
+
+import './home.scss';
 
 @props({
   router: t.Function,
@@ -21,6 +25,16 @@ require('../icons/window@2x.png');
   onSelectItem: t.Function
 })
 export default class Home extends React.Component {
+
+  onGetStartedClick = () => {
+    this.props.router.transitionToPatch('content', {
+      sectionId: 'getting-started', contentId: 'getting-started'
+    });
+  }
+
+  onStarClick = () => {
+    window.open('https://github.com/buildo/react-components', '_blank');
+  }
 
   render() {
 
@@ -45,10 +59,17 @@ export default class Home extends React.Component {
     return (
       <KitchenSink {...{ sections, openSections, sectionId, onToggleSection, contentId, onSelectItem, loading: false }}>
         <FlexView column className='home'>
-          <FlexView column className='header' vAlignContent='center' hAlignContent='center'>
-            <FlexView className='pattern' />
-            <FlexView className='title'>buildo react components</FlexView>
-            <FlexView className='subtitle'>Reusable components by buildo</FlexView>
+          <FlexView column className='header' hAlignContent='center'>
+            <FlexView shrink={false} className='title'>buildo react components</FlexView>
+            <FlexView shrink={false} className='subtitle'>Reusable components by buildo</FlexView>
+            <FlexView shrink={false} className='action-buttons'>
+              <Button flat label='Get Started' onClick={this.onGetStartedClick} />
+              <Button flat label='Star' icon='github' onClick={this.onStarClick} />
+            </FlexView>
+            <FlexView shrink={false} className='current-release'>
+              {`Current release: ${packageJson.version}`}
+            </FlexView>
+            <FlexView shrink={false} className='pattern' />
           </FlexView>
           <FlexView column className='content'>
             <h1>Introduction</h1>
