@@ -46,4 +46,16 @@
       color: $brc-white;
     }
   }
+
+  .column-template {
+    padding: 0 10px;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
 }

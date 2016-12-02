@@ -46,7 +46,7 @@ export default class Home extends React.Component {
     } = this.props;
 
     const ColumnTemplate = ({ title, icon, children }) => (
-      <FlexView column shrink basis='100%'>
+      <FlexView className='column-template' column shrink basis='100%'>
         <FlexView basis={50} vAlignContent='center' style={{ marginBottom: 10 }}>
           {icon && <img src={`./showroom/icons/${icon}.png`} srcSet={`./showroom/icons/${icon}@2x.png 2x`} />}
         </FlexView>
@@ -73,18 +73,32 @@ export default class Home extends React.Component {
           </FlexView>
           <FlexView column className='content'>
             <h1>Introduction</h1>
-            <p>This is a collection of some of the most reusable React components built at Buildo. In the jQuery ecosystem there's a large collection of plugins that can be used for anything from modals to translation. We're trying to make it just as easy to jumpstart React applications with a well-tested, thoughtful, and beautiful library of components.</p>
-            <p>Most of our components are bespoke, so if you're already invested in a UI framework like Bootstrap, Topcoat, or KendoUI, you should check to see if there's an existing React wrapper for your framework.</p>
+            <p>
+              This is a collection of reusable React components created at Buildo
+            </p>
+            <p>
+              Its purpose is to give access to all these components through a single npm dependency so to improve the development experience and make eventual changes of library easier, faster and centralized
+            </p>
             <h1>Goals</h1>
             <FlexView>
-              <ColumnTemplate title='Open Source' icon='rocket'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Highly customizable' icon='tools'>
+                <p>
+                  The library integrates with your Webpack workflow and it's easily customizable and very flexible.
+                  <br />
+                  While style agnostic, all the components have a sane default style that can be totally overridden through Sass variables
+                </p>
               </ColumnTemplate>
-              <ColumnTemplate title='Build Tools' icon='tools'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Designed with expertise' icon='window'>
+                <p>
+                  Designed by React devs for React devs, written in ES6 and Sass, built with Babel and Webpack
+                </p>
               </ColumnTemplate>
-              <ColumnTemplate title='Cohesive design language' icon='window'>
-                <p>Etsy whatever vice marfa normcore cred. Chartreuse direct trade schlitz, retro fixie trust fund slow-carb raw.</p>
+              <ColumnTemplate title='Live playground' icon='rocket'>
+                <p>
+                  Check our showroom and try all the components with live examples.
+                  <br />
+                  We've created a playground so you don't need to install anything to learn how the components work, look and behave
+                </p>
               </ColumnTemplate>
             </FlexView>
           </FlexView>
