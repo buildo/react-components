@@ -27,10 +27,8 @@ build:
 
   publishReleaseOnGitHub:
     image: node:5
-    environment:
-      GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
     commands:
-      - node ./publishReleaseOnGitHub.js
+      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN
     when:
       branch: master
 
