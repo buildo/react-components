@@ -95,6 +95,8 @@
     .public_fixedDataTableCell_cellContent {
       @include display_flex();
       @include flex_align-items(stretch);
+
+      width: 100%;
     }
   }
 
