@@ -20,7 +20,7 @@
     "build-showroom": "rm -rf ./showroom/build && webpack --config showroom/webpack.config.build.babel.js --progress && cp ./showroom/build/index.html ./index.html",
     "deploy-showroom": "./deployShowroom.sh",
     "generate-all-readmes": "babel-node ./generateReadmes.js",
-    "release-version": "smooth-release --npm-version --npm-publish"
+    "release-version": "smooth-release --validations --npm-version --npm-publish"
   },
   "repository": {
     "type": "git",
