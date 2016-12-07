@@ -21,14 +21,16 @@ build:
   generate-changelog:
     image: node:5
     commands:
-      - node_modules/smooth-release/smooth-release --changelog --token=$$CHANGELOG_GITHUB_TOKEN
+      - git config --global user.name "nemobot";
+      - git config --global user.email "our-bots@buildo.io";
+      - node_modules/smooth-release/smooth-release --changelog --token=$$CHANGELOG_GITHUB_TOKEN --no-validations
     when:
       branch: master
 
   publishReleaseOnGitHub:
     image: node:5
     commands:
-      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN
+      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN --no-validations
     when:
       branch: master
 
