@@ -77,6 +77,15 @@ class Example extends React.Component {
 
           <TabloColumn name='email' width={columnWidths.email}>
             <Header>Email</Header>
+            <Cell>{email => (
+              <TextOverflow lazy label={email}>
+                {self => (
+                  <Tooltip popover={{ content: email, attachToBody: true}} style={{ width: '100%' }}>
+                    {self}
+                  </Tooltip>
+                )}
+              </TextOverflow>
+            )}</Cell>
           </TabloColumn>
 
           <TabloColumn name='company' isResizable={false} flexGrow={1}>
