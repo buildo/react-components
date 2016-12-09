@@ -19,28 +19,18 @@ build:
       branch: master
 
   generate-changelog:
-    image: ruby
-    environment:
-      CHANGELOG_GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
+    image: node:5
     commands:
-      - gem install github_changelog_generator
-      - github_changelog_generator
-      - git add CHANGELOG.md
-      - if ! git diff-index --quiet HEAD -- CHANGELOG.md; then
-          git config --global user.name "nemobot";
-          git config --global user.email "our-bots@buildo.io";
-          git commit -m "Update CHANGELOG.md [skip ci]";
-          git push origin master;
-        fi
+      - git config --global user.name "nemobot";
+      - git config --global user.email "our-bots@buildo.io";
+      - node_modules/smooth-release/smooth-release --changelog --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish
     when:
       branch: master
 
   publishReleaseOnGitHub:
     image: node:5
-    environment:
-      GITHUB_TOKEN: $$CHANGELOG_GITHUB_TOKEN
     commands:
-      - node ./publishReleaseOnGitHub.js
+      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish
     when:
       branch: master
 
