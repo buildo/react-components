@@ -92,7 +92,7 @@
     "sass-loader": "^4.1.0",
     "smooth-release": "^5.0.2",
     "style-loader": "^0.13.0",
-    "stylefmt": "^4.3.1",
+    "stylefmt": "^5.0.1",
     "stylelint": "^7.3.1",
     "stylelint-config-buildo": "^0.0.2",
     "stylelint-webpack-plugin": "^0.4.0",
