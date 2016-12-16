@@ -29,7 +29,7 @@ export const Props = {
     isOpen: t.maybe(t.Boolean),
     delay: t.maybe(t.union([
       t.Integer,
-      t.struct({ whenClosed: t.maybe(t.Integer), whenOpen: t.maybe(t.Integer) })
+      t.interface({ whenClosed: t.maybe(t.Integer), whenOpen: t.maybe(t.Integer) })
     ]))
   }),
   id: t.maybe(t.String),
