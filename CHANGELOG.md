@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...HEAD)
 
+#### New features:
+
+- An in-range update of debug is breaking the build 🚨 [#698](https://github.com/buildo/react-components/issues/698)
 
 ## [v0.10.1](https://github.com/buildo/react-components/tree/v0.10.1) (2016-12-09)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.0...v0.10.1)
