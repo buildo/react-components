@@ -1,7 +1,7 @@
 {
   "github": {
     "changelog": {
-      "ignoredLabels": ["DX", "discarded", "discussion"]
+      "ignoredLabels": ["DX", "discarded", "discussion", "greenkeeper"]
     }
   }
 }
