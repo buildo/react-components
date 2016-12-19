@@ -21,7 +21,11 @@ case $TARGET in
     ;;
 esac
 
-NODE_ENV=development webpack-dev-server \
+if [[ -z "$NODE_ENV" ]]; then
+  NODE_ENV=development
+fi
+
+NODE_ENV=$NODE_ENV webpack-dev-server \
   --config showroom/webpack.${FILE_TARGET}config.babel.js \
   --progress \
   --hot \
