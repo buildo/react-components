@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Popover: delay prop validation always fails if you pass an object [#701](https://github.com/buildo/react-components/issues/701)
 
 ## [v0.10.1](https://github.com/buildo/react-components/tree/v0.10.1) (2016-12-09)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.0...v0.10.1)
