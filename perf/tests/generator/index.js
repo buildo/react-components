@@ -46,7 +46,7 @@ export default function({
           this.setState({ trialIndex: this.state.trialIndex + 1 });
         } else {
           const op = this.stopPerf();
-          console.log('ehiehi', op);
+          console.log('ehiehi', op); // eslint-disable-line no-console
           if (this.state.componentIndex < Components.length - 1) {
             this.setState({ componentIndex: this.state.componentIndex + 1, trialIndex: 0 });
             this.startPerf();
@@ -58,7 +58,9 @@ export default function({
     }
 
     componentDidMount() {
-      this.testComponents();
+      if (process.env.NODE_ENV !== 'production') {
+        this.testComponents();
+      }
     }
 
     render() {

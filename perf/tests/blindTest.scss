@@ -1,0 +1,50 @@
+.fixed-data-table-wrapper .public_Scrollbar_main.ScrollbarLayout_mainVertical {
+  width: 14px;
+  right: 1px;
+
+  &:hover {
+    width: 15.5px;
+  }
+}
+
+.grid.table-wrapper .grid-cell,
+.grid.table-wrapper .grid-header {
+  background: transparent;
+  -ms-flex-align: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.grid.table-wrapper .grid-header {
+  color: #9098a7;
+
+  > * {
+    padding: 0;
+  }
+
+  border-top: 1px solid #ced0da;
+  border-bottom: 1px solid #ced0da;
+}
+
+.grid.table-wrapper .grid-cell {
+  background: #fff;
+}
+
+.grid.table-wrapper {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.table-wrapper .public_fixedDataTable_header {
+  width: 1000px !important;
+}
+
+.fixedDataTableLayout_main.public_fixedDataTable_main {
+  border-bottom: 1px solid transparent;
+}
+
+.fixedDataTableLayout_rowsContainer {
+  border-bottom: 1px solid #ced0da;
+}
