@@ -5,4 +5,9 @@ import Test from './tests';
 
 import 'buildo-normalize-css';
 
-ReactDOM.render(<Test />, document.getElementById('app'));
+ReactDOM.render((
+  <div>
+    <h1>ENV: {process.env.NODE_ENV}</h1>
+    <Test />
+  </div>
+), document.getElementById('app'));
