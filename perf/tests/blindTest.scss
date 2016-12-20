@@ -1,3 +1,23 @@
+@import '../../src/utils/theme/variables.scss';
+
+$border-color: $brc-silver;
+$border-width: 1px;
+$header-background: $brc-paleGrey;
+$header-color: $brc-coolGrey;
+$footer-background: $brc-paleGrey;
+$footer-color: $brc-coolGrey;
+$odd-row-background: $brc-white;
+$even-row-background: $brc-white;
+$cell-border-color: $brc-silver;
+$scrollbar-color: rgba($brc-coolGrey, .6);
+$hover-scrollbar-background: rgba($brc-white, .8);
+$hover-scrollbar-color: $brc-coolGrey;
+$scrollbar-size: 6px;
+$selected-cell-background: #eaf4fd;
+$hover-cell-background: #f5fafe;
+
+@import '../../src/table/table.scss';
+
 .fixed-data-table-wrapper .public_Scrollbar_main.ScrollbarLayout_mainVertical {
   width: 14px;
   right: 1px;
