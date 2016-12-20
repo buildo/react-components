@@ -1,0 +1,23 @@
+@import '../../../../../src/utils/theme/variables.scss';
+@import '../../tabloVariables.scss';
+
+@mixin triangle($side, $size, $color) {
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-#{$side}: $size solid $color;
+}
+
+.arrow {
+  position: relative;
+  width: 0;
+  height: 0;
+  min-height: 0;
+
+  .up {
+    @include triangle(bottom, 5px, $header-color);
+  }
+
+  .down {
+    @include triangle(top, 5px, $header-color);
+  }
+}

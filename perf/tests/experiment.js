@@ -3,7 +3,7 @@ import faker from 'faker';
 import range from 'lodash/range';
 import shuffle from 'lodash/shuffle';
 import { SimpleTablo } from '../../src/tablo';
-import { SimpleTablo as SimpleTablo06 } from '../../src/tablo06';
+import { SimpleTablo as SimpleTablo06 } from './tablo06';
 import Tablo from '../../src/tablo';
 import Grid from 'web-shared/src/app/components/Basic/Grid/Grid';
 import generator from './generator';

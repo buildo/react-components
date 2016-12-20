@@ -1,0 +1,27 @@
+@import '../../../../../src/utils/theme/variables.scss';
+@import '../../tabloVariables.scss';
+
+.sortable-tablo {
+  .sortable-header {
+    cursor: pointer;
+
+    .sort-icon {
+      color: $header-color;
+      opacity: .4;
+    }
+
+    &.sorted .sort-icon {
+      opacity: 1;
+    }
+
+    &:hover {
+      .sort-icon {
+        opacity: 1;
+      }
+
+      &.sorted .sort-icon {
+        opacity: .4;
+      }
+    }
+  }
+}
