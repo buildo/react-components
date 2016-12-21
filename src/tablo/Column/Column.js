@@ -20,6 +20,7 @@ const argsTypes = struct({
   fixed: maybe(t.Boolean),
   flexGrow: maybe(t.Number),
   children: t.ReactChildren,
+  allowCellsRecycling: maybe(t.Boolean),
 
   isResizable: maybe(t.Boolean)
 }, { strict: true });
@@ -34,7 +35,8 @@ const Column = (args) => {
     name,
     fixed,
     isResizable,
-    children = []
+    children = [],
+    allowCellsRecycling = true
   } = argsTypes(args);
 
   const cell = ({ rowIndex, columnKey }) => {
@@ -57,6 +59,7 @@ const Column = (args) => {
       flexGrow={flexGrow}
       fixed={fixed}
       isResizable={isResizable}
+      allowCellsRecycling={allowCellsRecycling}
     />
   );
 };

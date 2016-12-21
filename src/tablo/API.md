@@ -40,3 +40,4 @@ A table component based on fixed-data-table-2
 | **fixed** | <code>Boolean</code> | <code>true</code>| *optional*. Used to set the column to fixed, it will be pulled to the left and it will not scroll with the rest of the columns
 | **sortable** | <code>Boolean</code> | <code>true</code>| *optional*. Used to exclude the columns from the sortable fields. It is default <code>true</code> if the `onSortChange` callback is provided to the Tablo component
 | **isResizable** | <code>Boolean</code> | <code>true</code>| *optional*. Used to make the column's width not modifiable. It is default <code>true</code> if the `onColumnResize` callback is provided to the Tablo component
+| **allowCellsRecycling** | <code>Boolean</code> | <code>true</code>| *optional*. Used to enable horizontal virtualization for the cells of this column
