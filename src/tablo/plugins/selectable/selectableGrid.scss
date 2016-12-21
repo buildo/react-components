@@ -6,11 +6,7 @@
     .tablo-row {
       cursor: pointer;
 
-      &.hover .public_fixedDataTableCell_main {
-        background: $hover-cell-background;
-      }
-
-      &.selected .public_fixedDataTableCell_main {
+      &.selected:not(:hover) .public_fixedDataTableCell_main {
         background: $selected-cell-background;
       }
     }
