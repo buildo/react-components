@@ -5,6 +5,8 @@ import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
 
+import './patch-fixed-data-table-2';
+
 const { maybe } = t;
 
 /** A table component based on fixed-data-table-2
