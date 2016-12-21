@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...HEAD)
 
+#### New features:
+
+- [Tablo Perf] horizontal virtualization should be settable and on by default [#713](https://github.com/buildo/react-components/issues/713)
+
 #### Fixes (bugs & defects):
 
 - Popover: delay prop validation always fails if you pass an object [#701](https://github.com/buildo/react-components/issues/701)
