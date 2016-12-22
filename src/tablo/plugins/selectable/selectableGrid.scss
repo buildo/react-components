@@ -9,6 +9,10 @@
       &.selected:not(:hover) .public_fixedDataTableCell_main {
         background: $selected-cell-background;
       }
+
+      &.selected:hover .public_fixedDataTableCell_main {
+        background: $hover-selected-cell-background;
+      }
     }
   }
 }
