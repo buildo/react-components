@@ -22,10 +22,6 @@ class Example extends React.Component {
     });
   };
 
-  onHoveredRowChange = (rowIndex) => {
-    this.setState({ hoveredRowIndex: rowIndex });
-  }
-
   onRowsSelect = (selectedRows) => {
     this.setState({ selectedRows });
   }
@@ -37,8 +33,8 @@ class Example extends React.Component {
   render() {
 
     const {
-      rowHeight, onSortChange, onColumnResize, onHoveredRowChange, onRowsSelect, onColumnsReorder,
-      state: { sortBy: sortByField, sortDir, columnWidths, hoveredRowIndex, selectedRows, columnsOrder }
+      rowHeight, onSortChange, onColumnResize, onRowsSelect, onColumnsReorder,
+      state: { sortBy: sortByField, sortDir, columnWidths, selectedRows, columnsOrder }
     } = this;
 
     const sortedData = sortBy(data, sortByField);
@@ -53,8 +49,6 @@ class Example extends React.Component {
           sortDir={sortDir}
           onColumnResize={onColumnResize}
           selectionType='single'
-          hoveredRowIndex={hoveredRowIndex}
-          onHoveredRowChange={onHoveredRowChange}
           selectedRows={selectedRows}
           onRowsSelect={onRowsSelect}
           columnsOrder={columnsOrder}

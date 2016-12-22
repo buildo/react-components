@@ -80,6 +80,10 @@
       }
     }
   }
+
+  .tablo-row:hover .public_fixedDataTableCell_main {
+    background: $hover-cell-background;
+  }
 }
 
 .tablo {

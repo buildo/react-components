@@ -13,8 +13,6 @@ A table component based on fixed-data-table-2
 | **selectionType** | <code>multi &#124; single &#124; none</code> |  <code>none</code> | *optional*.
 | **selectedRows** | <code>Array(Integer)</code> | | *optional*. List of selected rows' indexes
 | **onRowsSelect** | <code>Function</code> | | *optional*. Callback to handle <code>selectedRows</code> prop. An array with the indexes of selected rows is passed as parameter
-| **hoveredRowIndex** | <code>Integer</code> | | *optional*.
-| **onHoveredRowChange** | <code>Function</code> | | *optional*. Callback to handle <code>hoveredRowIndex</code> prop. The <code>rowNumber</code> being hovered is passed as parameter (rowNumber will be set to <code>null</code> if no rows are hovered)
 | **onSortChange** | <code>Function</code> | | *optional*. Callback to handle <code>sortBy</code> and <code>sortDir</code>props. Called when a header of a sortable column is clicked. An object containing the <code>sortBy</code> and <code>sortDir</code> strings is passed as parameter.
 | **sortBy** | <code>String</code> |  | *optional*. key (name) of the field for which the table is sorted
 | **sortDir** | <code>asc &#124; desc</code> |  | *optional*. Whether to show an ascending or descending icon. Required if <code>sortBy</code> is provided
