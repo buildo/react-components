@@ -3,9 +3,14 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...HEAD)
 
+#### Breaking:
+
+- [Tablo Perf] handle hover style for rows in CSS [#714](https://github.com/buildo/react-components/issues/714)
+
 #### New features:
 
 - [Tablo Perf] horizontal virtualization should be settable and on by default [#713](https://github.com/buildo/react-components/issues/713)
+- [Tablo Perf] disable prop validation for fixed-data-table-2 also in development [#712](https://github.com/buildo/react-components/issues/712)
 
 #### Fixes (bugs & defects):
 
