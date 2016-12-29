@@ -2,17 +2,23 @@
 
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
+
 $header-background: $brc-paleGrey !default;
 $header-color: $brc-coolGrey !default;
+
 $footer-background: $brc-paleGrey !default;
 $footer-color: $brc-coolGrey !default;
+
 $odd-row-background: $brc-white !default;
 $even-row-background: $brc-white !default;
-$cell-border-color: $brc-silver !default;
+
 $scrollbar-color: rgba($brc-coolGrey, .6) !default;
-$hover-scrollbar-background: rgba($brc-white, .8) !default;
-$hover-scrollbar-color: $brc-coolGrey !default;
+$scrollbar-color-hover: $brc-coolGrey !default;
+$scrollbar-background-hover: rgba($brc-white, .8) !default;
 $scrollbar-size: 6px !default;
-$selected-cell-background: #eaf4fd !default;
-$hover-cell-background: #f5fafe !default;
-$hover-selected-cell-background: $hover-cell-background !default;
+
+$cell-border-color: $brc-silver !default;
+
+$cell-background-selected: #eaf4fd !default;
+$cell-background-hover: #f5fafe !default;
+$cell-background-hover-selected: $cell-background-hover !default;

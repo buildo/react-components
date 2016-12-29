@@ -7,11 +7,11 @@
       cursor: pointer;
 
       &.selected:not(:hover) .public_fixedDataTableCell_main {
-        background: $selected-cell-background;
+        background: $cell-background-selected;
       }
 
       &.selected:hover .public_fixedDataTableCell_main {
-        background: $hover-selected-cell-background;
+        background: $cell-background-hover-selected;
       }
     }
   }

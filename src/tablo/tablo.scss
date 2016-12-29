@@ -66,23 +66,23 @@
     }
 
     .public_Scrollbar_face:hover::after {
-      background-color: $hover-scrollbar-color;
+      background-color: $scrollbar-color-hover;
     }
 
     &.public_Scrollbar_mainActive,
     &:hover {
-      background-color: $hover-scrollbar-background;
+      background-color: $scrollbar-background-hover;
     }
 
     &.public_Scrollbar_mainActive {
       .public_Scrollbar_face::after {
-        background-color: $hover-scrollbar-color;
+        background-color: $scrollbar-color-hover;
       }
     }
   }
 
   .tablo-row:hover .public_fixedDataTableCell_main {
-    background: $hover-cell-background;
+    background: $cell-background-hover;
   }
 }
 
