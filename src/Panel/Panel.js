@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, t, skinnable, pure } from '../utils';
-import PanelHeader from './PanelHeader';
+import PanelHeader, { HeaderSize } from './PanelHeader';
 import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import FlexView from 'react-flexview';
@@ -15,6 +15,7 @@ export const Props = {
       onCollapse: t.Func,
       isCollapsed: t.maybe(t.Bool)
     })),
+    size: t.maybe(HeaderSize),
     content: t.maybe(t.ReactChildren),
     title: t.maybe(t.ReactChildren),
     hideTitleWhenExpanded: t.maybe(t.Bool),
@@ -148,6 +149,7 @@ export default class Panel extends React.Component {
       header ?
         <PanelHeader
           title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
+          size={header.size}
           content={header.content}
           menu={header.menu}
           collapse={header.collapse ? {
