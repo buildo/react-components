@@ -1,8 +1,6 @@
 class Example extends React.Component {
-  constructor() {
-    super();
-    this.state = { isOpen: false };
-  }
+
+  state = { isOpen: false }
 
   open = () => this.setState({ isOpen: true })
 
@@ -14,15 +12,9 @@ class Example extends React.Component {
       transitionLeaveTimeout={500}
       onDismiss={this.close}
       iconClose={<Icon icon='close' />}
-      title='Send Message'
-      footer={
-        <FlexView hAlignContent='right'>
-          <Button default size='small' style={{ marginRight: 10 }} onClick={this.close}>Cancel</Button>
-          <Button primary size='small' onClick={this.close}>Confirm</Button>
-        </FlexView>
-      }
+      title='Informative Modal'
     >
-      Are you sure you want to send this message?
+      This modal contains just info. So it is not possible to perform an action.
     </Modal>
   )
 
