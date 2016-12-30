@@ -15,6 +15,7 @@ export const Props = {
       onCollapse: t.Func,
       isCollapsed: t.maybe(t.Bool)
     })),
+    height: t.maybe(t.Integer),
     content: t.maybe(t.ReactChildren),
     title: t.maybe(t.ReactChildren),
     hideTitleWhenExpanded: t.maybe(t.Bool),
@@ -148,6 +149,7 @@ export default class Panel extends React.Component {
       header ?
         <PanelHeader
           title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
+          height={header.height || 40}
           content={header.content}
           menu={header.menu}
           collapse={header.collapse ? {

@@ -18,6 +18,7 @@ const icons = {
     direction: t.enums.of(Object.keys(icons)),
     onToggleExpanded: t.Func
   })),
+  height: t.Integer,
   title: t.maybe(t.ReactChildren),
   content: t.maybe(t.ReactChildren),
   menu: t.maybe(t.ReactChildren)
@@ -30,7 +31,7 @@ export default class PanelHeader extends React.Component {
   };
 
   getLocals() {
-    const { collapse, content, title, menu } = this.props;
+    const { collapse, height, content, title, menu } = this.props;
     const verticalDirection = collapse && (collapse.direction === 'up' || collapse.direction === 'down');
     const renderExpandIcon = !!collapse;
     const renderInnerHeader = !collapse || collapse && (collapse.isExpanded || verticalDirection);
@@ -39,6 +40,7 @@ export default class PanelHeader extends React.Component {
     const renderMenu = menu && renderInnerHeader;
     return {
       collapse,
+      height,
       content,
       title,
       menu,
@@ -84,9 +86,9 @@ export default class PanelHeader extends React.Component {
     );
   };
 
-  template({ collapse, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
+  template({ collapse, height, content, title, menu, renderExpandIcon, renderTitle, renderContent, renderMenu }) {
     return (
-      <FlexView className='panel-header' basis={40}>
+      <FlexView className='panel-header' basis={height}>
         {this.templateTitle({ renderTitle, title, renderExpandIcon, collapse })}
         {this.templateContent({ renderContent, content })}
         {renderMenu && menu}
