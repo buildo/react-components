@@ -29,6 +29,10 @@ export const HeaderSize = t.enums.of(headerSizes, 'HeaderSize');
 })
 export default class PanelHeader extends React.Component {
 
+  static defaultProps={
+    size: HeaderSize('small')
+  };
+
   getIcon = (collapse) => {
     const { direction, isExpanded } = collapse;
     return isExpanded ? icons[direction][0] : icons[direction][1];

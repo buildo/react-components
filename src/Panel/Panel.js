@@ -149,7 +149,7 @@ export default class Panel extends React.Component {
       header ?
         <PanelHeader
           title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
-          size={header.size || HeaderSize('small')}
+          size={header.size}
           content={header.content}
           menu={header.menu}
           collapse={header.collapse ? {
