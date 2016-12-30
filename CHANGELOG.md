@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.11.0...HEAD)
 
+#### Breaking:
+
+- Panel: header height should be configurable [#721](https://github.com/buildo/react-components/issues/721)
 
 ## [v0.11.0](https://github.com/buildo/react-components/tree/v0.11.0) (2016-12-29)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...v0.11.0)
