@@ -52,9 +52,13 @@ export default class Modal extends React.Component {
   };
 
   getLocals() {
-    const { className, ...props } = this.props;
+    const { className, title, iconClose, footer, ...props } = this.props;
     return {
       ...props,
+      shouldRenderHeader: !!title || !!iconClose,
+      title, iconClose,
+      shouldRenderFooter: !!footer,
+      footer,
       modalPortalProps: {
         ...omit(props, Object.keys(ModalProps)),
         className: cx('modal', className)
@@ -63,7 +67,9 @@ export default class Modal extends React.Component {
   }
 
   template({
-    children, title, iconClose, footer,
+    shouldRenderHeader, title, iconClose,
+    children,
+    shouldRenderFooter, footer,
     dismissOnClickOutside, onDismiss, overlay,
     style, id, modalPortalProps
   }) {
@@ -75,27 +81,31 @@ export default class Modal extends React.Component {
           maxWidth={950}
         >
           <FlexView className='modal-content' column grow >
-            <FlexView className='modal-header' shrink={false} vAlignContent='center'>
-              <FlexView className={cx('modal-title')} grow>
-                {title}
-              </FlexView>
-              {iconClose && (
-                <FlexView
-                  className='modal-icon-close'
-                  shrink={false}
-                  marginLeft='auto'
-                  onClick={onDismiss}
-                >
-                  {iconClose}
+            {shouldRenderHeader && (
+              <FlexView className='modal-header' shrink={false} vAlignContent='center'>
+                <FlexView className={cx('modal-title')} grow>
+                  {title}
                 </FlexView>
-              )}
-            </FlexView>
+                {iconClose && (
+                  <FlexView
+                    className='modal-icon-close'
+                    shrink={false}
+                    marginLeft='auto'
+                    onClick={onDismiss}
+                  >
+                    {iconClose}
+                  </FlexView>
+                )}
+              </FlexView>
+            )}
             <FlexView className='modal-body' column grow>
               {children}
             </FlexView>
-            <FlexView className='modal-footer' column shrink={false}>
-              {footer}
-            </FlexView>
+            {shouldRenderFooter && (
+              <FlexView className='modal-footer' column shrink={false}>
+                {footer}
+              </FlexView>
+            )}
           </FlexView>
         </BackgroundDimmer>
       </ModalPortal>

@@ -205,6 +205,14 @@
         "examples": [
           {
             "url": "modal/examples/default.js"
+          },
+          {
+            "title": "Modal without header",
+            "url": "modal/examples/noHeader.js"
+          },
+          {
+            "title": "Modal without footer",
+            "url": "modal/examples/noFooter.js"
           }
         ]
       },
