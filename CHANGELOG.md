@@ -32,10 +32,9 @@
 
 #### Fixes (bugs & defects):
 
-- TextOverflow not working in tablo cells [#694](https://github.com/buildo/react-components/issues/694)
+- Tablo: TextOverflow not working in tablo cells [#694](https://github.com/buildo/react-components/issues/694)
 - Tablo: SelectionType should be optional [#682](https://github.com/buildo/react-components/issues/682)
 - Tablo: assert on children prop is faulty [#680](https://github.com/buildo/react-components/issues/680)
-- Fix eslint curly error [#678](https://github.com/buildo/react-components/issues/678)
 - Node 6 support [#655](https://github.com/buildo/react-components/issues/655)
 
 #### New features:
