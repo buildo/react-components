@@ -4,6 +4,7 @@ import { pure, skinnable, props, t } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
+import constant from 'lodash/constant';
 
 import './patch-fixed-data-table-2';
 
@@ -36,10 +37,11 @@ const { maybe } = t;
  * @param sortBy - id of the column according which the data should be ordered
  * @param sortDir - sorting direction
  * @param onSortChange - callback to be called when sorting change
+ * @param rowClassNameGetter - a function index -> className
+
  *
  * @param scrollToRow - Private
  * @param onRowClick - Private
- * @param rowClassNameGetter - Private
  * @param onColumnResizeEndCallback - Private
  * @param isColumnResizing - Private
  */
@@ -62,24 +64,25 @@ const { maybe } = t;
   onScrollStart: maybe(t.Function),
   onScrollEnd: maybe(t.Function),
   children: t.ReactChildren,
+  rowClassNameGetter: maybe(t.Function),
 
   // private
   scrollToRow: maybe(t.Integer),
   onRowClick: maybe(t.Function),
-  rowClassNameGetter: maybe(t.Function),
   onColumnResizeEndCallback: maybe(t.Function),
   isColumnResizing: maybe(t.Boolean)
 })
 export default class Tablo extends React.Component {
 
   static defaultProps = {
+    rowClassNameGetter: constant(''),
     rowHeight: 30,
     headerHeight: 40,
     groupHeaderHeight: 50,
     footerHeight: 0
   }
 
-  getLocals({ data, children, ...tableProps }) {
+  getLocals({ data, children, rowClassNameGetter: rcnGetter, ...tableProps }) {
 
     const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }) => {
       return <Column {...{ key: col.props.name, ...col.props, data }} />;
@@ -90,11 +93,16 @@ export default class Tablo extends React.Component {
       'There are extraneous children in the Grid. One should use only Column or ColumnGroup'
     );
 
+    const rowClassNameGetter = (index) => {
+      return cx('tablo-row', rcnGetter(index));
+    };
+
     const rowsCount = data.length;
 
     return {
       columnsOrGroups,
       rowsCount,
+      rowClassNameGetter,
       ...tableProps
     };
   }

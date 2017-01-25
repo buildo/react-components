@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { pure, skinnable, props, t, contains } from '../../../utils';
 import includes from 'lodash/includes';
+import constant from 'lodash/constant';
 
 const { list, maybe, enums } = t;
 
@@ -17,6 +18,7 @@ const getLocals = ({
   onRowsSelect,
   selectionType = 'none',
   className,
+  rowClassNameGetter: rcnGetter = constant(''),
   ...gridProps }) => {
 
   const onRowClick = ({ ctrlKey, metaKey }, index) => {
@@ -34,7 +36,7 @@ const getLocals = ({
     }
   };
 
-  const rowClassNameGetter = (index) => cx('tablo-row', {
+  const rowClassNameGetter = (index) => cx(rcnGetter(index), {
     selected: includes(selectedRows, index)
   });
 
