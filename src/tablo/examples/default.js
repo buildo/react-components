@@ -42,6 +42,7 @@ class Example extends React.Component {
     return (
       <FlexView style={{ height: 300, width: '100%' }}>
         <Tablo
+          rowClassNameGetter={index => `row-${index}`}
           data={sortDir === 'desc' ? sortedData.reverse() : sortedData}
           rowHeight={rowHeight}
           onSortChange={onSortChange}
@@ -103,4 +104,3 @@ const getRandomRow = () => {
 };
 
 const data = Array.apply(null, Array(30)).reduce(acc => [...acc, getRandomRow()], []);
-
