@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.11.0...HEAD)
 
+#### New features:
+
+- Dropdown: expose focus function [#731](https://github.com/buildo/react-components/issues/731)
+
 #### Fixes (bugs & defects):
 
 - Dropdown is ignoring scss variables [#729](https://github.com/buildo/react-components/issues/729)
