@@ -110,6 +110,8 @@ export default class Dropdown extends React.Component {
     }
   }
 
+  focus = () => { this.select.focus(); }
+
   getLocals() {
     const {
       _onChange,
@@ -132,6 +134,6 @@ export default class Dropdown extends React.Component {
   }
 
   template(locals) {
-    return <Select {...locals} />;
+    return <Select {...locals} ref={select => { this.select = select; }} />;
   }
 }
