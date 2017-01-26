@@ -146,8 +146,13 @@ $height-small: 30px !default;
     }
 
     .Select-arrow {
+      border-color: $arrow-color transparent transparent;
       border-width: 5px 5px 0;
     }
+  }
+
+  .Select-placeholder {
+    color: $placeholder-color;
   }
 
   .Select-menu-outer {
