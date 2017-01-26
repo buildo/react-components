@@ -179,7 +179,7 @@ $height-small: 30px !default;
         color: $option-color-selected;
       }
 
-      &:hover,
+      &:not(.is-disabled):hover,
       &.is-focused {
         background: $option-background-hover;
         color: $option-color-hover;
