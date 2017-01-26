@@ -151,6 +151,10 @@ $height-small: 30px !default;
     }
   }
 
+  .Select-placeholder {
+    color: $placeholder-color;
+  }
+
   .Select-menu-outer {
     position: absolute;
     left: 0;
