@@ -48,10 +48,11 @@ describe('Icon', () => {
 
   describe('getLocals', () => {
 
+    const getLocals = Icon.prototype.getLocals;
+
     it('computes className', () => {
       const props = { icon: 'foo', className: 'myicon' };
-      const icon = new Icon(props);
-      const { className } = icon.getLocals(props);
+      const { className } = getLocals(props);
       expect(className).toContain('icon');
       expect(className).toContain('icon-foo');
       expect(className).toContain('myicon');
@@ -59,29 +60,25 @@ describe('Icon', () => {
 
     it('computes color when not provided', () => {
       const props = { icon: 'foo' };
-      const icon = new Icon(props);
-      const { style: { color } = {} } = icon.getLocals(props);
+      const { style: { color } = {} } = getLocals(props);
       expect(color).toBeUndefined();
     });
 
     it('computes color when provided as prop', () => {
       const props = { icon: 'foo', color: 'blue' };
-      const icon = new Icon(props);
-      const { style: { color } = {} } = icon.getLocals(props);
+      const { style: { color } = {} } = getLocals(props);
       expect(color).toBe('blue');
     });
 
     it('computes color when provided as style', () => {
       const props = { icon: 'foo', style: { color: 'blue' } };
-      const icon = new Icon(props);
-      const { style: { color } = {} } = icon.getLocals(props);
+      const { style: { color } = {} } = getLocals(props);
       expect(color).toBe('blue');
     });
 
     it('overrides color form style if provided as prop', () => {
       const props = { icon: 'foo', style: { color: 'blue' }, color: 'red' };
-      const icon = new Icon(props);
-      const { style: { color } = {} } = icon.getLocals(props);
+      const { style: { color } = {} } = getLocals(props);
       expect(color).toBe('red');
     });
 
