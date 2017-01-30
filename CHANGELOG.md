@@ -7,6 +7,7 @@
 
 - Dropdown: style for disabled options [#733](https://github.com/buildo/react-components/issues/733)
 - Dropdown: expose focus function [#731](https://github.com/buildo/react-components/issues/731)
+- Add tests to Icon [#686](https://github.com/buildo/react-components/issues/686)
 
 #### Fixes (bugs & defects):
 
