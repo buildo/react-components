@@ -1,0 +1,10 @@
+exports[`Icon renders correctly 1`] = `
+<i
+  className="icon icon-foo"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": undefined,
+    }
+  } />
+`;
