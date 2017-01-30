@@ -30,10 +30,10 @@ export default class Icon extends React.Component {
     onClick: () => {}
   };
 
-  getLocals() {
-    const { className, icon, color, style = {} } = this.props;
+  getLocals(props) {
+    const { className, icon, color, style = {} } = props;
     return {
-      ...this.props,
+      ...props,
       className: cx('icon', `icon-${icon}`, className),
       style: { ...style, color: color || style.color }
     };

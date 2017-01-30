@@ -49,49 +49,39 @@ describe('Icon', () => {
   describe('getLocals', () => {
 
     it('computes className', () => {
-      const icon = new Icon({
-        icon: 'foo',
-        className: 'myicon'
-      });
-      const { className } = icon.getLocals();
+      const props = { icon: 'foo', className: 'myicon' };
+      const icon = new Icon(props);
+      const { className } = icon.getLocals(props);
       expect(className).toContain('icon');
       expect(className).toContain('icon-foo');
       expect(className).toContain('myicon');
     });
 
     it('computes color when not provided', () => {
-      const icon = new Icon({
-        icon: 'foo'
-      });
-      const { style: { color } = {} } = icon.getLocals();
+      const props = { icon: 'foo' };
+      const icon = new Icon(props);
+      const { style: { color } = {} } = icon.getLocals(props);
       expect(color).toBeUndefined();
     });
 
     it('computes color when provided as prop', () => {
-      const icon = new Icon({
-        icon: 'foo',
-        color: 'blue'
-      });
-      const { style: { color } = {} } = icon.getLocals();
+      const props = { icon: 'foo', color: 'blue' };
+      const icon = new Icon(props);
+      const { style: { color } = {} } = icon.getLocals(props);
       expect(color).toBe('blue');
     });
 
     it('computes color when provided as style', () => {
-      const icon = new Icon({
-        icon: 'foo',
-        style: { color: 'blue' }
-      });
-      const { style: { color } = {} } = icon.getLocals();
+      const props = { icon: 'foo', style: { color: 'blue' } };
+      const icon = new Icon(props);
+      const { style: { color } = {} } = icon.getLocals(props);
       expect(color).toBe('blue');
     });
 
     it('overrides color form style if provided as prop', () => {
-      const icon = new Icon({
-        icon: 'foo',
-        style: { color: 'blue' },
-        color: 'red'
-      });
-      const { style: { color } = {} } = icon.getLocals();
+      const props = { icon: 'foo', style: { color: 'blue' }, color: 'red' };
+      const icon = new Icon(props);
+      const { style: { color } = {} } = icon.getLocals(props);
       expect(color).toBe('red');
     });
 
