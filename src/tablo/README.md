@@ -20,8 +20,8 @@ A table component based on fixed-data-table-2
 | **onScrollStart** | <code>Function</code> |  | *optional*. Callback to be called when scrolling starts |
 | **onScrollEnd** | <code>Function</code> |  | *optional*. Callback to be called when scrolling ends |
 | **children** | <code>ReactChildren</code> |  | **required**. Table children (Column or ColumnGroup) |
+| **rowClassNameGetter** | <code>Function</code> | <code>"rowClassNameGetter"</code> | *optional*. A function index -> className |
 | **scrollToRow** | <code>Integer</code> |  | *optional*. Private |
 | **onRowClick** | <code>Function</code> |  | *optional*. Private |
-| **rowClassNameGetter** | <code>Function</code> |  | *optional*. Private |
 | **onColumnResizeEndCallback** | <code>Function</code> |  | *optional*. Private |
 | **isColumnResizing** | <code>Boolean</code> |  | *optional*. Private |
