@@ -4,7 +4,6 @@ import { pure, skinnable, props, t } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
-import constant from 'lodash/constant';
 
 import './patch-fixed-data-table-2';
 
@@ -75,7 +74,7 @@ const { maybe } = t;
 export default class Tablo extends React.Component {
 
   static defaultProps = {
-    rowClassNameGetter: constant(''),
+    rowClassNameGetter: () => '',
     rowHeight: 30,
     headerHeight: 40,
     groupHeaderHeight: 50,

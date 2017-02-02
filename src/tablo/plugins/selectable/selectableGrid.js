@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import { pure, skinnable, props, t, contains } from '../../../utils';
 import includes from 'lodash/includes';
-import constant from 'lodash/constant';
 
 const { list, maybe, enums } = t;
 
@@ -18,7 +17,7 @@ const getLocals = ({
   onRowsSelect,
   selectionType = 'none',
   className,
-  rowClassNameGetter: rcnGetter = constant(''),
+  rowClassNameGetter: rcnGetter = () => '',
   ...gridProps }) => {
 
   const onRowClick = ({ ctrlKey, metaKey }, index) => {
