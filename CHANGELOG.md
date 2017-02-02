@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.12.0...HEAD)
 
+#### New features:
+
+- Tablo: expose `rowClassNameGetter` [#741](https://github.com/buildo/react-components/issues/741)
 
 ## [v0.12.0](https://github.com/buildo/react-components/tree/v0.12.0) (2017-01-31)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.11.0...v0.12.0)
