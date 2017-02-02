@@ -17,6 +17,7 @@ const getLocals = ({
   onRowsSelect,
   selectionType = 'none',
   className,
+  rowClassNameGetter: rcnGetter = () => '',
   ...gridProps }) => {
 
   const onRowClick = ({ ctrlKey, metaKey }, index) => {
@@ -34,7 +35,7 @@ const getLocals = ({
     }
   };
 
-  const rowClassNameGetter = (index) => cx('tablo-row', {
+  const rowClassNameGetter = (index) => cx(rcnGetter(index), {
     selected: includes(selectedRows, index)
   });
 

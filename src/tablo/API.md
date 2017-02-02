@@ -28,6 +28,7 @@ A table component based on fixed-data-table-2
 | **onScrollStart** | <code>Function</code> |  | *optional*. Callback to be called when scrolling starts |
 | **onScrollEnd** | <code>Function</code> |  | *optional*. Callback to be called when scrolling ends |
 | **children** | <code>ReactChildren</code> |  | *optional*. Table children (Column or ColumnGroup). If left undefined, columns will be populated automatically with data|
+| **rowClassNameGetter** | <code>Function</code> |  | *optional*. Function: <code>(index) => className</code> of row of index <code>index</code>|
 
 ## Column Props
 |Name|Type|Default|Description|
