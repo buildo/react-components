@@ -89,7 +89,7 @@
     "react-remarkable": "^1.1.1",
     "react-router": "^0.13.5",
     "react-test-renderer": "^15.4.0",
-    "sass-loader": "^4.1.0",
+    "sass-loader": "^5.0.0",
     "smooth-release": "^7.0.0",
     "style-loader": "^0.13.0",
     "stylefmt": "^5.0.3",
