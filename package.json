@@ -45,7 +45,7 @@
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
     "react-addons-transition-group": "^0.14 || ^15",
-    "react-dnd": "^2.1.4",
+    "react-dnd": "2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
     "react-flexview": "1.0.1",
     "react-input-children": "1.0.1",
