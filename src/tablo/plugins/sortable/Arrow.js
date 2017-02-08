@@ -11,7 +11,7 @@ const propsTypes = {
 
 const template = ({ arrowDir, className }) => {
   return (
-    <FlexView column vAlignContent='center' className={cx('arrow', className )}>
+    <FlexView column vAlignContent='center' height='100%' className={cx('arrow', className )}>
       {arrowDir !== 'down' && <FlexView className='up' marginBottom={arrowDir !== 'up' ? 2 : 0} />}
       {arrowDir !== 'up' && <FlexView className='down' marginTop={arrowDir !== 'down' ? 2 : 0}  />}
     </FlexView>
