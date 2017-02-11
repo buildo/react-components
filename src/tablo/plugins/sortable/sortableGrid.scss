@@ -7,20 +7,20 @@
 
     .sort-icon {
       color: $header-color;
-      opacity: .4;
+      opacity: $sortable-grid-arrows-opacity;
     }
 
     &.sorted .sort-icon {
-      opacity: 1;
+      opacity: $sortable-grid-sorted-arrows-opacity;
     }
 
     &:hover {
       .sort-icon {
-        opacity: 1;
+        opacity: $sortable-grid-arrows-opacity-hover;
       }
 
       &.sorted .sort-icon {
-        opacity: .4;
+        opacity: $sortable-grid-sorted-arrows-opacity-hover;
       }
     }
   }
