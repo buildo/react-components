@@ -4,6 +4,8 @@ import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
 import { pure, skinnable, props, t } from '../../../utils';
 import FlexView from 'react-flexview';
+import flowRight from 'lodash/flowRight';
+import identity from 'lodash/identity';
 
 const columnTarget = {
   canDrop({ isDropAllowed, name: target }, monitor) {
@@ -90,18 +92,23 @@ const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
 })
 export default class DNDHeader extends React.Component {
 
-  template({ connectDragSource, connectDragPreview, connectDropTarget, isDragAllowed, isDragging, canDrop, isOver, children }) {
-    return connectDropTarget(connectDragPreview(
+  getLocals({ connectDragSource, connectDragPreview, connectDropTarget, isDragAllowed, ...props }) {
+    const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragPreview, connectDragSource) : identity;
+    return {
+      dndWrapper,
+      ...props
+    };
+  }
+
+  template({ dndWrapper, isDragging, canDrop, isOver, children }) {
+    return dndWrapper(
       <div className={cx('dndHeader', { isDragging, canDrop, isOver })}>
         <FlexView vAlignContent='center' width='100%' height='100%'>
-          {isDragAllowed && connectDragSource(
-            <span className='grip' />
-          )}
           <FlexView grow height='100%' vAlignContent='center'>
             {children}
           </FlexView>
         </FlexView>
       </div>
-    ));
+    );
   }
 }

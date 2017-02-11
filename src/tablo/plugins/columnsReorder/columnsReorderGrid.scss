@@ -11,24 +11,7 @@
     @include flex_align-items('center');
 
     &.isDragging {
-      opacity: .6;
-    }
-
-    span.grip {
-      width: 20px;
-      height: 27px;
-      display: inline-block;
-      overflow: hidden;
-      line-height: 5px;
-      padding: 0 4px;
-      cursor: move;
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: 1px 0 1px $header-color;
-    }
-
-    span.grip::after {
-      content: '.. .. ..';
+      opacity: $columns-reorder-header-opacity-is-dragging;
     }
   }
 }
