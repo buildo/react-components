@@ -22,3 +22,10 @@ $cell-border-color: $brc-silver !default;
 $cell-background-selected: #eaf4fd !default;
 $cell-background-hover: #f5fafe !default;
 $cell-background-hover-selected: $cell-background-hover !default;
+
+$sortable-grid-arrows-opacity: .4 !default;
+$sortable-grid-arrows-opacity-hover: 1 !default;
+$sortable-grid-sorted-arrows-opacity: 1 !default;
+$sortable-grid-sorted-arrows-opacity-hover: .4 !default;
+
+$columns-reorder-header-opacity-is-dragging: .6 !default;
