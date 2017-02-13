@@ -92,8 +92,8 @@ const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
 })
 export default class DNDHeader extends React.Component {
 
-  getLocals({ connectDragSource, connectDragPreview, connectDropTarget, isDragAllowed, ...props }) {
-    const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragPreview, connectDragSource) : identity;
+  getLocals({ connectDragSource, connectDropTarget, isDragAllowed, ...props }) {
+    const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragSource) : identity;
     return {
       dndWrapper,
       ...props
