@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.12.0...HEAD)
 
+#### Breaking:
+
+- Tablo: ui changes [#755](https://github.com/buildo/react-components/issues/755)
+
 #### Fixes (bugs & defects):
 
 - Tablo: in IE11 sort icons are misaligned [#750](https://github.com/buildo/react-components/issues/750)
