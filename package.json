@@ -57,7 +57,7 @@
   "devDependencies": {
     "axios": "^0.15.0",
     "babel-cli": "^6.11.4",
-    "babel-core": "^6.21.0",
+    "babel-core": "^6.23.0",
     "babel-eslint": "^7.0.0",
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.4",
