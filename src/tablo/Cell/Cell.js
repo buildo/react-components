@@ -7,6 +7,8 @@ const { maybe, enums, union } = t;
 
 const propsTypes = {
   data: t.Any,
+  rowData: t.Any,
+  rowIndex: maybe(t.Integer),
   children: union([t.Function, t.ReactChildren]),
   backgroundColor: maybe(t.String),
   color: maybe(t.String),
@@ -17,6 +19,8 @@ const propsTypes = {
 
 const template = ({
   data,
+  rowData,
+  rowIndex,
   children,
   backgroundColor,
   color,
@@ -33,7 +37,7 @@ const template = ({
         hAlignContent={hAlignContent}
       >
         <FlexView className='content' vAlignContent='center'>
-          {t.Function.is(children) ? children(data) : children}
+          {t.Function.is(children) ? children(data, rowData, rowIndex) : children}
         </FlexView>
       </FlexView>
     </CellFDT>

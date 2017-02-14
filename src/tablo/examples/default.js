@@ -55,6 +55,19 @@ class Example extends React.Component {
           columnsOrder={columnsOrder}
           onColumnsReorder={onColumnsReorder}
         >
+          <TabloColumn name='index' fixed width={40} isResizable={false} sortable={false}>
+            <Header></Header>
+            <Cell>{(_, __, index) => index}</Cell>
+          </TabloColumn>
+
+          <TabloColumn name='salutation' width={columnWidths.salutation}>
+            <Header>Salutation</Header>
+            <Cell>
+              {(_, { name, city }) => (
+                <span style={{ fontStyle: 'italic' }}>"Hello! I am {name.split(' ')[0]} from {city}!"</span>
+              )}
+            </Cell>
+          </TabloColumn>
 
           <TabloColumn name='avatar' fixed width={40} sortable={false} isResizable={false}>
             <Header></Header>
