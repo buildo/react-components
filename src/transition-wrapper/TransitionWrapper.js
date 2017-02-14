@@ -16,7 +16,7 @@ const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.proto
  */
 export const Props = {
   children: t.ReactChildren,
-  component: t.maybe(t.union([ ReactClass, t.String ])),
+  component: t.maybe(t.union([ReactClass, t.String])),
   transitionStyles: t.maybe(t.struct({
     enter: t.maybe(t.Object),
     enterActive: t.maybe(t.Object),

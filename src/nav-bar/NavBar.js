@@ -12,10 +12,10 @@ export const Props = {
     /** Right content. It doesn't shrink nor grow */
     right: t.maybe(t.ReactChildren),
     /** shorthand for css `max-width` */
-    maxWidth: t.maybe(t.union([ t.String, t.Number ]))
+    maxWidth: t.maybe(t.union([t.String, t.Number]))
   }),
   fixed: t.maybe(t.Boolean),
-  height: t.maybe(t.union([ t.String, t.Number ])),
+  height: t.maybe(t.union([t.String, t.Number])),
   background: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
