@@ -26,12 +26,28 @@
   }
 
   // bg color for odd/even rows (applied to cells for reliability)
-  .public_fixedDataTableRow_odd .public_fixedDataTableCell_main {
-    background: $odd-row-background;
+  .public_fixedDataTableRow_odd {
+    .public_fixedDataTableCell_main {
+      background: $odd-row-background;
+    }
+
+    &:hover {
+      .public_fixedDataTableCell_main {
+        background: $cell-odd-row-background-hover;
+      }
+    }
   }
 
-  .public_fixedDataTableRow_even .public_fixedDataTableCell_main {
-    background: $even-row-background;
+  .public_fixedDataTableRow_even {
+    .public_fixedDataTableCell_main {
+      background: $even-row-background;
+    }
+
+    &:hover {
+      .public_fixedDataTableCell_main {
+        background: $cell-even-row-background-hover;
+      }
+    }
   }
 
   // scrollbar
@@ -79,10 +95,6 @@
         background-color: $scrollbar-color-hover;
       }
     }
-  }
-
-  .tablo-row:hover .public_fixedDataTableCell_main {
-    background: $cell-background-hover;
   }
 }
 
