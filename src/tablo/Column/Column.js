@@ -41,7 +41,9 @@ const Column = (args) => {
 
   const cell = ({ rowIndex, columnKey }) => {
     const elem = find([].concat(children), child => child.type === Cell) || defaultCell;
-    return React.cloneElement(elem, { data: (data[rowIndex] || {})[columnKey] });
+    const rowData = data[rowIndex] || {};
+    const dataCell = rowData[columnKey];
+    return React.cloneElement(elem, { data: dataCell, rowData, rowIndex });
   };
 
   const header = find([].concat(children), child => child.type === Header) || defaultHeader(name);
