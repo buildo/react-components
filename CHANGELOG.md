@@ -1,6 +1,15 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.13.0...HEAD)
 
+#### New features:
+
+- Tablo: background on hover should have different variables for even and odd rows [#760](https://github.com/buildo/react-components/issues/760)
+
+#### Fixes (bugs & defects):
+
+- Tablo: fix drag and drop appearance when using TextOverflow in Header [#749](https://github.com/buildo/react-components/issues/749)
 
 ## [v0.13.0](https://github.com/buildo/react-components/tree/v0.13.0) (2017-02-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.12.0...v0.13.0)
