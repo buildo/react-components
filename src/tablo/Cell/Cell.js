@@ -26,6 +26,7 @@ const template = ({
   color,
   vAlignContent = 'center',
   hAlignContent = 'left',
+  grow = true,
   style
 }) => {
   return (
@@ -33,6 +34,7 @@ const template = ({
       <FlexView
         className='tablo-cell'
         style={{ backgroundColor, color, ...style }}
+        grow={grow}
         vAlignContent={vAlignContent}
         hAlignContent={hAlignContent}
       >
