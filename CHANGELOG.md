@@ -6,6 +6,7 @@
 #### New features:
 
 - Tablo: background on hover should have different variables for even and odd rows [#760](https://github.com/buildo/react-components/issues/760)
+- Tablo: Cell children shoul take the entire row as second argument [#758](https://github.com/buildo/react-components/issues/758)
 
 #### Fixes (bugs & defects):
 
