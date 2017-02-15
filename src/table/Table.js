@@ -200,7 +200,7 @@ export default class Table extends React.Component {
     const tabIndex = selectionType !== 'none' ? '0' : null;
 
     const numberOfColumns = [].concat(children).length;
-    const footerDataGetter = () => []; /*because https://github.com/facebook/fixed-data-table/issues/172*/
+    const footerDataGetter = () => []; /* because https://github.com/facebook/fixed-data-table/issues/172*/
 
     const columnWidth = autoSizeColumns ? { width: width / numberOfColumns } : {};
     const columnProps = { ...columnWidth, cellRenderer, headerClassName: 'fixed-data-table-wrapper-header' };

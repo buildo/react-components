@@ -20,7 +20,7 @@ export const Props = {
 export default class Badge extends React.Component {
 
   getLocals() {
-    const { label, active, className, style } =  this.props;
+    const { label, active, className, style } = this.props;
 
     return {
       label,

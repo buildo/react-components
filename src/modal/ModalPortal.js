@@ -19,7 +19,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class ModalPortal extends React.Component { //eslint-disable-line react/no-multi-comp
+export default class ModalPortal extends React.Component { // eslint-disable-line react/no-multi-comp
 
   render() {
     return null;
