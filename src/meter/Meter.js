@@ -117,7 +117,7 @@ export default class Meter extends React.Component {
       baseBackgroundColor
     } = this.props;
 
-    const range = find(ranges, ({ startValue, endValue })  => (
+    const range = find(ranges, ({ startValue, endValue }) => (
       value >= startValue && value <= endValue
     ));
     return {

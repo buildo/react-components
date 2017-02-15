@@ -19,7 +19,7 @@ const propsTypes = {
   children: maybe(t.ReactChildren)
 };
 
-const getLocals = ({  className, children, onColumnResize, ...gridProps }) => {
+const getLocals = ({ className, children, onColumnResize, ...gridProps }) => {
 
   const onColumnResizeEndCallback = (width, key) => {
     onColumnResize({ width, key });

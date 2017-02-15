@@ -10,7 +10,7 @@ import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 // types
 export const buttonStates = ['ready', 'not-allowed', 'processing', 'error', 'success'];
 const ButtonState = t.enums.of(buttonStates, 'ButtonState');
-export const buttonTypes = ['default', 'primary',  'positive', 'negative', 'flat'];
+export const buttonTypes = ['default', 'primary', 'positive', 'negative', 'flat'];
 const ButtonType = t.enums.of(buttonTypes, 'ButtonType');
 export const buttonSizes = ['tiny', 'small', 'medium'];
 const ButtonSize = t.enums.of(buttonSizes, 'ButtonSize');
