@@ -14,7 +14,7 @@ export const Props = {
   /**
    * components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }`
    */
-  children: t.union([ t.ReactChildren, t.Function ]),
+  children: t.union([t.ReactChildren, t.Function]),
   /**
    * enable horizontal scrolling
    */

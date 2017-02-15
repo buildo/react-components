@@ -22,7 +22,7 @@ export const Props = {
     className: t.maybe(t.String),
     style: t.maybe(t.Object),
     id: t.maybe(t.String),
-    maxWidth: t.maybe(t.union([ t.Number, t.String ])),
+    maxWidth: t.maybe(t.union([t.Number, t.String])),
     distance: t.maybe(t.Number),
     offsetX: t.maybe(t.Number),
     offsetY: t.maybe(t.Number),
