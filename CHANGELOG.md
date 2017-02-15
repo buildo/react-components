@@ -8,7 +8,6 @@
 #### Fixes (bugs & defects):
 
 - Tablo: `Cell` should grow [#762](https://github.com/buildo/react-components/issues/762)
-- Tablo: fix drag and drop appearance when using TextOverflow in Header [#749](https://github.com/buildo/react-components/issues/749)
 
 #### New features:
 
