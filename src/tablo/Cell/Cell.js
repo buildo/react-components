@@ -35,10 +35,14 @@ const template = ({
         className='tablo-cell'
         style={{ backgroundColor, color, ...style }}
         grow={grow}
-        vAlignContent={vAlignContent}
-        hAlignContent={hAlignContent}
       >
-        <FlexView className='content' vAlignContent='center'>
+        <FlexView
+          className='content'
+          grow={grow}
+          height='100%'
+          vAlignContent={vAlignContent}
+          hAlignContent={hAlignContent}
+        >
           {t.Function.is(children) ? children(data, rowData, rowIndex) : children}
         </FlexView>
       </FlexView>
