@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.13.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Tablo: Cell content should use grow, vAlignContent, hAlignContent [#768](https://github.com/buildo/react-components/issues/768)
 
 ## [v0.13.1](https://github.com/buildo/react-components/tree/v0.13.1) (2017-02-14)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.0...v0.13.1)
