@@ -5,6 +5,7 @@
 
 #### Fixes (bugs & defects):
 
+- Badge is overriding FlexVIew's `display` property [#771](https://github.com/buildo/react-components/issues/771)
 - Tablo: Cell content should use grow, vAlignContent, hAlignContent [#768](https://github.com/buildo/react-components/issues/768)
 
 ## [v0.13.1](https://github.com/buildo/react-components/tree/v0.13.1) (2017-02-14)
