@@ -3,12 +3,38 @@
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
 
+$table-border-color: $border-color !default;
+$table-border-width: $border-width !default;
+$table-border-left-color: $table-border-color !default;
+$table-border-right-color: $table-border-color !default;
+$table-border-top-color: $table-border-color !default;
+$table-border-bottom-color: $table-border-color !default;
+$table-border-left-width: $table-border-width !default;
+$table-border-right-width: $table-border-width !default;
+$table-border-top-width: $table-border-width !default;
+$table-border-bottom-width: $table-border-width !default;
+
+$cell-border-color: $table-border-color !default;
+$cell-border-width: $table-border-width !default;
+
+$cell-background-selected: #eaf4fd !default;
+$cell-background-hover: #f5fafe !default;
+$cell-background-hover-selected: $cell-background-hover !default;
+$cell-odd-row-background-hover: $cell-background-hover !default;
+$cell-even-row-background-hover: $cell-background-hover !default;
+
 $header-background: $brc-paleGrey !default;
 $header-color: $brc-coolGrey !default;
+$header-cell-border-color: $cell-border-color !default;
+$header-cell-border-width: $cell-border-width !default;
+$header-row-border-color: $table-border-color !default;
+$header-row-border-width: $table-border-width !default;
 
 $footer-background: $brc-paleGrey !default;
 $footer-color: $brc-coolGrey !default;
 
+$row-border-color: $cell-border-color !default;
+$row-border-width: 0 !default;
 $odd-row-background: $brc-white !default;
 $even-row-background: $brc-white !default;
 
@@ -17,17 +43,15 @@ $scrollbar-color-hover: $brc-coolGrey !default;
 $scrollbar-background-hover: rgba($brc-white, .8) !default;
 $scrollbar-size: 6px !default;
 
-$cell-border-color: $brc-silver !default;
-
-$cell-background-selected: #eaf4fd !default;
-$cell-background-hover: #f5fafe !default;
-$cell-background-hover-selected: $cell-background-hover !default;
-$cell-odd-row-background-hover: $cell-background-hover !default;
-$cell-even-row-background-hover: $cell-background-hover !default;
-
 $sortable-grid-arrows-opacity: .4 !default;
 $sortable-grid-arrows-opacity-hover: 1 !default;
 $sortable-grid-sorted-arrows-opacity: 1 !default;
 $sortable-grid-sorted-arrows-opacity-hover: .4 !default;
 
 $columns-reorder-header-opacity-is-dragging: .6 !default;
+
+$fixed-columns-separator-color: $header-cell-border-color !default;
+$fixed-columns-separator-width: $header-cell-border-width * 2 !default;
+
+$column-resizer-line-color: $header-cell-border-color !default;
+$column-resizer-line-width: $header-cell-border-width !default;

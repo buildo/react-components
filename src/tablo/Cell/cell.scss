@@ -3,10 +3,14 @@
 
 .tablo {
   .public_fixedDataTableCell_main {
-    border-color: $cell-border-color;
+    border-width: 0; // to reset
+
+    &:not(:last-child) {
+      border-right: $cell-border-width solid $cell-border-color;
+    }
 
     &:last-child {
-      border-width: 0;
+      border-right-width: 0;
     }
 
     .public_fixedDataTableCell_wrap3 {

@@ -5,26 +5,31 @@
 
 .tablo {
   .public_fixedDataTable_header {
-    border-width: $border-width;
-    border-color: $border-color;
     background: $header-background;
+    border-width: 0; // to reset
+    border-bottom: $header-row-border-width solid $header-row-border-color;
 
-    .public_fixedDataTableCell_cellContent {
-      background: $header-background;
-      color: $header-color;
-    }
-  }
+    .public_fixedDataTableCell_main {
+      .tablo-header {
+        color: $header-color;
+        padding: 0 5px;
 
-  .tablo-header {
-    background: $header-background;
-    color: $header-color;
-    padding: 0 5px;
-
-    /*
-      > div, > div > div {
-        http://stackoverflow.com/a/25386261;  //TODO(frag) investigate this stuff
-        width: 100%;
+        /*
+          > div, > div > div {
+            http://stackoverflow.com/a/25386261;  //TODO(frag) investigate this stuff
+            width: 100%;
+          }
+        */
       }
-    */
+
+      &:not(:last-child) .tablo-header {
+        border-width: 0; // to reset
+        border-right: $header-cell-border-width solid $header-cell-border-color;
+      }
+
+      &:last-child .tablo-header {
+        border-right-width: 0;
+      }
+    }
   }
 }
