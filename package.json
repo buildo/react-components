@@ -106,7 +106,10 @@
   "greenkeeper": {
     "ignore": [
       "fixed-data-table",
-      "react-router"
+      "react-router",
+      "webpack",
+      "webpack-dev-server",
+      "sass-loader"
     ]
   }
 }
