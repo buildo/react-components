@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Badge renders correctly 1`] = `
 <div
   className="react-flex-view align-content-center justify-content-center badge"
@@ -9,9 +11,11 @@ exports[`Badge renders correctly 1`] = `
       "flex": "0 1 auto",
       "msFlex": "0 1 auto",
     }
-  }>
+  }
+>
   <span
-    className="badge-label">
+    className="badge-label"
+  >
     42
   </span>
 </div>
