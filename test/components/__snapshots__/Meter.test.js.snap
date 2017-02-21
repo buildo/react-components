@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Meter renders correctly 1`] = `
 <div
   className="react-flex-view meter fancy-class-name"
@@ -12,7 +14,8 @@ exports[`Meter renders correctly 1`] = `
       "msFlex": "1 1 auto",
       "position": "relative",
     }
-  }>
+  }
+>
   <div
     className="react-flex-view bar"
     style={
@@ -24,7 +27,8 @@ exports[`Meter renders correctly 1`] = `
         "flex": "1 1 auto",
         "msFlex": "1 1 auto",
       }
-    }>
+    }
+  >
     <div
       className="react-flex-view filling"
       style={
@@ -36,7 +40,8 @@ exports[`Meter renders correctly 1`] = `
           "flex": "0 0 50%",
           "msFlex": "0 0 50%",
         }
-      } />
+      }
+    />
   </div>
   <div
     className="react-flex-view label"
@@ -49,7 +54,8 @@ exports[`Meter renders correctly 1`] = `
         "flex": "0 0 auto",
         "msFlex": "0 0 auto",
       }
-    }>
+    }
+  >
     test
   </div>
 </div>

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`BackgroundDimmer getLocals uses default props 1`] = `
 Object {
   "centeredContentWrapperProps": Object {
@@ -12,7 +14,8 @@ Object {
     },
   },
   "children": <div
-    className="content">
+    className="content"
+>
     content
 </div>,
   "className": "background-dimmer",
@@ -50,7 +53,8 @@ Object {
 
 exports[`BackgroundDimmer renders correctly 1`] = `
 <div
-  className="background-dimmer">
+  className="background-dimmer"
+>
   <div
     style={
       Object {
@@ -63,7 +67,8 @@ exports[`BackgroundDimmer renders correctly 1`] = `
         "top": 0,
         "zIndex": 99999,
       }
-    } />
+    }
+  />
   <div
     className="react-flex-view align-content-center justify-content-center main-content-wrapper"
     onClick={[Function]}
@@ -83,7 +88,8 @@ exports[`BackgroundDimmer renders correctly 1`] = `
         "top": 0,
         "zIndex": 100000,
       }
-    }>
+    }
+  >
     <div
       className="react-flex-view flex-column centered-content-wrapper"
       onClick={[Function]}
@@ -99,9 +105,11 @@ exports[`BackgroundDimmer renders correctly 1`] = `
           "msFlex": "0 1 auto",
           "width": "auto",
         }
-      }>
+      }
+    >
       <div
-        className="content">
+        className="content"
+      >
         content
       </div>
     </div>

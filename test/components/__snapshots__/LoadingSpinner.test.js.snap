@@ -1,5 +1,7 @@
-exports[`LoadingSpinner renders correctly 1`] = `"<div style=\"position: relative;\"><div class=\"loading-spinner\"><div class=\"loading-spinner-overlay\" style=\"background-color: rgba(255, 255, 255, 0.9);\"><div class=\"spinner\" style=\"font-size: 3em;\"></div></div></div></div>"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoadingSpinner renders correctly with a message 1`] = `"<div style=\"position: relative;\"><div class=\"loading-spinner\"><div class=\"loading-spinner-overlay\" style=\"background-color: rgba(255, 255, 255, 0.9);\"><div class=\"spinner\" style=\"font-size: 3em;\"></div><div class=\"message\" style=\"margin-top: 3em; font-size: 16px;\">loading awesome content</div></div></div></div>"`;
+exports[`LoadingSpinner renders correctly 1`] = `"<div style=\\"position: relative;\\"><div class=\\"loading-spinner\\"><div class=\\"loading-spinner-overlay\\" style=\\"background-color: rgba(255, 255, 255, 0.9);\\"><div class=\\"spinner\\" style=\\"font-size: 3em;\\"></div></div></div></div>"`;
 
-exports[`LoadingSpinner renders with a warning when parent is not relative or absolute 1`] = `"LoadingSpinner\'s parent node style should have \"position: relative\" or \"position: absolute\""`;
+exports[`LoadingSpinner renders correctly with a message 1`] = `"<div style=\\"position: relative;\\"><div class=\\"loading-spinner\\"><div class=\\"loading-spinner-overlay\\" style=\\"background-color: rgba(255, 255, 255, 0.9);\\"><div class=\\"spinner\\" style=\\"font-size: 3em;\\"></div><div class=\\"message\\" style=\\"margin-top: 3em; font-size: 16px;\\">loading awesome content</div></div></div></div>"`;
+
+exports[`LoadingSpinner renders with a warning when parent is not relative or absolute 1`] = `"LoadingSpinner's parent node style should have \\"position: relative\\" or \\"position: absolute\\""`;
