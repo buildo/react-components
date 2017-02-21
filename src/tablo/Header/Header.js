@@ -31,6 +31,7 @@ const getLocals = ({
 const template = ({ onClick, className, children }) => {
   return (
     <FlexView
+      style={{ transform: 'translate3d(0, 0, 0)' }}
       className={cx('tablo-header', className)}
       height='100%'
       width='100%'
