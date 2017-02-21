@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.13.2...HEAD)
 
+#### Fixes (bugs & defects):
+
+- `faker` and `debug` should be devDependencies [#745](https://github.com/buildo/react-components/issues/745)
 
 ## [v0.13.2](https://github.com/buildo/react-components/tree/v0.13.2) (2017-02-16)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.1...v0.13.2)
