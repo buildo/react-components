@@ -76,6 +76,9 @@ export default class Popover extends React.Component {
   componentWillUnmount() {
     this.removePopover();
     this.removeListeners();
+    this.onMouseEventDebouncedWhenOpen.cancel();
+    this.onMouseEventDebouncedWhenClosed.cancel();
+
   }
 
   // LISTENERS
