@@ -76,8 +76,12 @@ export default class Popover extends React.Component {
   componentWillUnmount() {
     this.removePopover();
     this.removeListeners();
-    this.onMouseEventDebouncedWhenOpen.cancel();
-    this.onMouseEventDebouncedWhenClosed.cancel();
+    if (this.onMouseEventDebouncedWhenOpen) {
+      this.onMouseEventDebouncedWhenOpen.cancel();
+    }
+    if (this.onMouseEventDebouncedWhenClosed) {
+      this.onMouseEventDebouncedWhenClosed.cancel();
+    }
 
   }
 
@@ -297,11 +301,11 @@ export default class Popover extends React.Component {
     const previousDelayWhenOpen = this.getDelayWhenOpen(previousDelay);
 
     if (!nextProps || previousDelayWhenClosed !== delayWhenClosed) {
-      this.onMouseEventDebouncedWhenClosed = debounce(this._onMouseEvent, delayWhenClosed);
+      this.onMouseEventDebouncedWhenClosed = delayWhenClosed ? debounce(this._onMouseEvent, delayWhenClosed) : null;
     }
 
     if (!nextProps || previousDelayWhenOpen !== delayWhenOpen) {
-      this.onMouseEventDebouncedWhenOpen = debounce(this._onMouseEvent, delayWhenOpen);
+      this.onMouseEventDebouncedWhenOpen = delayWhenOpen ? debounce(this._onMouseEvent, delayWhenOpen) : null;
     }
   };
 
