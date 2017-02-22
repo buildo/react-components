@@ -51,7 +51,7 @@ describe('MoreOrLess', () => {
       expect(classNameLess).toBe('more-or-less less fancy-class-name');
     });
 
-    it('computes icon', ()  => {
+    it('computes icon', () => {
       const { icon: iconMore } = componentMore.getLocals();
       expect(iconMore).toBe('angle-up');
 

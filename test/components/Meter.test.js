@@ -34,38 +34,38 @@ describe('Meter', () => {
 
   describe('getLocals', () => {
 
-    it('computes className', ()  => {
+    it('computes className', () => {
       const { className } = meter.getLocals();
       expect(className).toContain('meter');
       expect(className).toContain('fancy-class-name');
     });
 
-    it('uses labelFormatter', ()  => {
+    it('uses labelFormatter', () => {
       const { formattedLabel } = meter.getLocals();
       expect(formattedLabel).toBe('test');
     });
 
-    it('computes barStyle', ()  => {
+    it('computes barStyle', () => {
       const { barStyle, ranges } = meter.getLocals();
       expect(barStyle.backgroundColor).toBe(ranges[0].backgroundColor);
     });
 
-    it('computes fillingStyle', ()  => {
+    it('computes fillingStyle', () => {
       const { fillingStyle, ranges } = meter.getLocals();
       expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
     });
 
-    it('computes labelStyle', ()  => {
+    it('computes labelStyle', () => {
       const { labelStyle, ranges } = meter.getLocals();
       expect(labelStyle.color).toBe(ranges[0].labelColor);
     });
 
-    it('computes basisSize', ()  => {
+    it('computes basisSize', () => {
       const { basisSize } = meter.getLocals();
       expect(basisSize).toBe('50%');
     });
 
-    it('computes basisSize with custom min and max', ()  => {
+    it('computes basisSize with custom min and max', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 150,
@@ -77,7 +77,7 @@ describe('Meter', () => {
       expect(basisSize).toBe('50%');
     });
 
-    it('computes basisSize for custom negative min', ()  => {
+    it('computes basisSize for custom negative min', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 0,
@@ -89,7 +89,7 @@ describe('Meter', () => {
       expect(basisSize).toBe('50%');
     });
 
-    it('computes background color for filling', ()  => {
+    it('computes background color for filling', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 60,
@@ -102,7 +102,7 @@ describe('Meter', () => {
       expect(fillingStyle.backgroundColor).toBe(ranges[0].fillingColor);
     });
 
-    it('defaults to the base color as background color if there\'s no matching range', ()  => {
+    it('defaults to the base color as background color if there\'s no matching range', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 20,
@@ -116,7 +116,7 @@ describe('Meter', () => {
       expect(fillingStyle.backgroundColor).toBe(baseFillingColor);
     });
 
-    it('doesn\'t define a background color if there\'s no matching range and no default is given', ()  => {
+    it('doesn\'t define a background color if there\'s no matching range and no default is given', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 20,
@@ -129,7 +129,7 @@ describe('Meter', () => {
       expect(fillingStyle.backgroundColor).toBeUndefined();
     });
 
-    it('defaults to base color as bar background color should if there\'s no matching range', ()  => {
+    it('defaults to base color as bar background color should if there\'s no matching range', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 20,
@@ -143,7 +143,7 @@ describe('Meter', () => {
       expect(barStyle.backgroundColor).toBe(baseBackgroundColor);
     });
 
-    it('doesn\'t define a bar background color if there\'s no matching range and no default is given', ()  => {
+    it('doesn\'t define a bar background color if there\'s no matching range and no default is given', () => {
       const meter = new Meter({
         ...Meter.defaultProps,
         value: 20,
