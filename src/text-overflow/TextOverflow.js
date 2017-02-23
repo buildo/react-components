@@ -58,6 +58,7 @@ export default class TextOverflow extends React.Component {
           return ['WARNING: TextOverflow\'s parent doesn\'t have "width: 100%" nor "flex-basis: 100%"', styleNode];
         }
       }
+      return undefined;
     });
   };
 
