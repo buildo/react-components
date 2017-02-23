@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.2...HEAD)
 
+#### New features:
+
+- Be compatible with `consistent-return` eslint rule  [#784](https://github.com/buildo/react-components/issues/784)
+
 #### Fixes (bugs & defects):
 
 - `faker` and `debug` should be devDependencies [#745](https://github.com/buildo/react-components/issues/745)
