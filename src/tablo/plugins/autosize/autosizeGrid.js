@@ -52,7 +52,7 @@ export default (Grid) =>
 
       const content = (
         <FlexView grow column width='100%' ref='gridWrapper'>
-          <Grid {...tableProps} />
+          {tableProps.height > 0 && <Grid {...tableProps} />}
         </FlexView>
       );
 
