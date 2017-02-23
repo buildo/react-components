@@ -9,6 +9,7 @@
 
 #### Fixes (bugs & defects):
 
+- Tablo: scroll to selected row not working correctly [#777](https://github.com/buildo/react-components/issues/777)
 - `faker` and `debug` should be devDependencies [#745](https://github.com/buildo/react-components/issues/745)
 - Popover: debounced events are not canceled when component unmounts [#727](https://github.com/buildo/react-components/issues/727)
 
