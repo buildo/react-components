@@ -53,6 +53,7 @@ export default class LoadingSpinner extends React.Component {
         </div>
       );
     }
+    return undefined;
   };
 
   logWarnings = () => {
@@ -62,6 +63,7 @@ export default class LoadingSpinner extends React.Component {
       if (position !== 'relative' && position !== 'absolute') {
         return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];
       }
+      return undefined;
     });
   };
 

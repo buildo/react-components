@@ -62,8 +62,7 @@ export default (Grid) =>
         const target_index = list.indexOf(target);
         if (source_index <= target_index) {
           return [...list.slice(0, source_index), ...list.slice(source_index + 1, target_index + 1), source, ...list.slice(target_index + 1)];
-        }
-        if (target_index <= source_index) {
+        } else {
           return [...list.slice(0, target_index), source, ...list.slice(target_index, source_index), ...list.slice(source_index + 1)];
         }
       };
@@ -73,6 +72,7 @@ export default (Grid) =>
           const newColumnsOrder = moveColumn(orderedChildren.map(c => c.props.name), sourceName, targetName);
           return onColumnsReorder(newColumnsOrder);
         }
+        return undefined;
       };
 
       const isDragAllowed = ({ props: { fixed } }) => !fixed;
