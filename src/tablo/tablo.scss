@@ -5,24 +5,50 @@
 
 .tablo {
   /*
-    confinate here all the `fixed-data-table` css class overrides
-    whole table
+    try to avoid as much as possible to assign css rules to fdt classnames, use tablo ones instead
   */
 
-  // TODO problem: confinate all fdt classes here, or avoid all non-core feature css class in plugins stylesheets?
-  .public_fixedDataTableColumnResizerLine_main {
-    border-color: $border-color;
+  .tablo-row {
+    border-bottom: $row-border-width solid $row-border-color;
+  }
+
+  .fixedDataTableRowLayout_rowWrapper:last-child {
+    .tablo-row {
+      border-bottom: $last-row-border-width solid $last-row-border-color;
+    }
   }
 
   .public_fixedDataTable_main,
-  .public_fixedDataTable_hasBottomBorder {
-    border-color: $border-color;
-    border-width: $border-width;
+  .public_fixedDataTable_header,
+  .public_fixedDataTableCell_main {
+
+    // reset all the borders
+    border: none;
+  }
+
+  .public_fixedDataTable_main {
+
+    // border-right on .tablo selector doesn't work, so put all borders here
+    border-top: $table-border-top-width solid $table-border-top-color;
+    border-right: $table-border-right-width solid $table-border-right-color;
+    border-bottom: $table-border-bottom-width solid $table-border-bottom-color;
+    border-left: $table-border-left-width solid $table-border-left-color;
+  }
+
+  // TODO problem: confinate all fdt classes here, or avoid all non-core feature css class in plugins stylesheets?
+  .public_fixedDataTableColumnResizerLine_main {
+    border-width: 0; // to reset
+    border-right: $column-resizer-line-width solid $column-resizer-line-color;
+  }
+
+  .fixedDataTableLayout_hasBottomBorder {
+    border-width: 0; // reset ftd default borders
   }
 
   .public_fixedDataTableRow_fixedColumnsDivider {
-    border-color: $border-color;
-    border-width: $border-width + 1;
+    width: 0;
+    border-width: 0; // to reset
+    border-right: $fixed-columns-separator-width solid $fixed-columns-separator-color;
   }
 
   // bg color for odd/even rows (applied to cells for reliability)
@@ -117,10 +143,6 @@
   }
 
   font-size: 15px;
-
-  .public_fixedDataTableCell_main:last-child {
-    border-width: $border-width;
-  }
 }
 
 @import './Header/header.scss';

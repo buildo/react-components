@@ -10,28 +10,29 @@ const propsTypes = {
   rowIndex: maybe(t.Number), // should not be here
   columnKey: maybe(t.String),
   width: maybe(t.Number),
+  fixed: maybe(t.Boolean),
   height: maybe(t.Number),
   onClick: maybe(t.Function)
 };
 
 const getLocals = ({
   columnKey,
-  width, height,
+  width, height, fixed,
   onClick,
   children
 }) => {
 
   return {
-    width, height,
+    width, height, fixed,
     onClick: onClick && onClick(columnKey),
     children
   };
 };
 
-const template = ({ onClick, className, children }) => {
+const template = ({ onClick, className, children, fixed }) => {
   return (
     <FlexView
-      className={cx('tablo-header', className)}
+      className={cx('tablo-header', { 'tablo-header-fixed': fixed }, className)}
       height='100%'
       width='100%'
       vAlignContent='center'

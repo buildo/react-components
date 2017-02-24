@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { pure, skinnable, props, t } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';
@@ -7,6 +8,7 @@ const { maybe, enums, union } = t;
 
 const propsTypes = {
   data: t.Any,
+  fixed: maybe(t.Boolean),
   rowData: t.Any,
   rowIndex: maybe(t.Integer),
   children: union([t.Function, t.ReactChildren]),
@@ -19,6 +21,7 @@ const propsTypes = {
 
 const template = ({
   data,
+  fixed,
   rowData,
   rowIndex,
   children,
@@ -32,7 +35,7 @@ const template = ({
   return (
     <CellFDT>
       <FlexView
-        className='tablo-cell'
+        className={cx('tablo-cell', { 'tablo-cell-fixed': fixed, 'tablo-cell-even-row': rowIndex % 2 === 0, 'tablo-cell-odd-row': rowIndex % 2 === 1 })}
         style={{ backgroundColor, color, ...style }}
         grow={grow}
       >
