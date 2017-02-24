@@ -93,7 +93,7 @@ export default class Tablo extends React.Component {
     );
 
     const rowClassNameGetter = (index) => {
-      return cx('tablo-row', rcnGetter(index));
+      return cx('tablo-row', { 'tablo-row-even': index % 2 === 0, 'tablo-row-odd': index % 2 === 1 }, rcnGetter(index));
     };
 
     const rowsCount = data.length;

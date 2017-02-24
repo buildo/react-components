@@ -2,26 +2,32 @@
 @import '../tabloVariables.scss';
 
 .tablo {
-  .public_fixedDataTableCell_main {
-    border-width: 0; // to reset
-
-    &:not(:last-child) {
-      border-right: $cell-border-width solid $cell-border-color;
-    }
-
-    &:last-child {
-      border-right-width: 0;
-    }
-
-    .public_fixedDataTableCell_wrap3 {
-      vertical-align: baseline; // needed to enable `height: 100%` on our cell components
-    }
-  }
-
   .tablo-cell {
     .content {
       padding: 0 5px;
       white-space: nowrap;
+    }
+  }
+
+  .public_fixedDataTableCell_main {
+    &:not(:last-child) {
+      .tablo-cell {
+        border-right: $cell-border-width solid $cell-border-color;
+      }
+    }
+
+    &:last-child {
+      .tablo-cell {
+        border-right: $last-cell-border-width solid $last-cell-border-color;
+
+        &.tablo-cell-fixed {
+          border-right-width: 0;
+        }
+      }
+    }
+
+    .public_fixedDataTableCell_wrap3 {
+      vertical-align: baseline; // needed to enable `height: 100%` on our cell components
     }
   }
 }

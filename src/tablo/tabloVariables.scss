@@ -14,8 +14,10 @@ $table-border-right-width: $table-border-width !default;
 $table-border-top-width: $table-border-width !default;
 $table-border-bottom-width: $table-border-width !default;
 
-$cell-border-color: $table-border-color !default;
-$cell-border-width: $table-border-width !default;
+$cell-border-color: $border-color !default;
+$cell-border-width: $border-width !default;
+$last-cell-border-color: $cell-border-color !default;
+$last-cell-border-width: 0 !default;
 
 $cell-background-selected: #eaf4fd !default;
 $cell-background-hover: #f5fafe !default;
@@ -27,6 +29,8 @@ $header-background: $brc-paleGrey !default;
 $header-color: $brc-coolGrey !default;
 $header-cell-border-color: $cell-border-color !default;
 $header-cell-border-width: $cell-border-width !default;
+$last-header-cell-border-color: $header-cell-border-color !default;
+$last-header-cell-border-width: 0 !default;
 $header-row-border-color: $table-border-color !default;
 $header-row-border-width: $table-border-width !default;
 
@@ -35,6 +39,8 @@ $footer-color: $brc-coolGrey !default;
 
 $row-border-color: $cell-border-color !default;
 $row-border-width: 0 !default;
+$last-row-border-color: $row-border-color !default;
+$last-row-border-width: 0 !default;
 $odd-row-background: $brc-white !default;
 $even-row-background: $brc-white !default;
 

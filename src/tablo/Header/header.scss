@@ -4,31 +4,27 @@
 // no fixed-data-table css classes in subcomponents
 
 .tablo {
-  .public_fixedDataTable_header {
+  .tablo-header {
     background: $header-background;
-    border-width: 0; // to reset
     border-bottom: $header-row-border-width solid $header-row-border-color;
+    color: $header-color;
+    padding: 0 5px;
+  }
 
-    .public_fixedDataTableCell_main {
+  .public_fixedDataTableCell_main {
+    &:not(:last-child) {
       .tablo-header {
-        color: $header-color;
-        padding: 0 5px;
-
-        /*
-          > div, > div > div {
-            http://stackoverflow.com/a/25386261;  //TODO(frag) investigate this stuff
-            width: 100%;
-          }
-        */
-      }
-
-      &:not(:last-child) .tablo-header {
-        border-width: 0; // to reset
         border-right: $header-cell-border-width solid $header-cell-border-color;
       }
+    }
 
-      &:last-child .tablo-header {
-        border-right-width: 0;
+    &:last-child {
+      .tablo-header {
+        border-right: $last-header-cell-border-width solid $last-header-cell-border-color;
+
+        &.tablo-header-fixed {
+          border-right-width: 0;
+        }
       }
     }
   }

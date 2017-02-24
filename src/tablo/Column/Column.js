@@ -43,10 +43,10 @@ const Column = (args) => {
     const elem = find([].concat(children), child => child.type === Cell) || defaultCell;
     const rowData = data[rowIndex] || {};
     const dataCell = rowData[columnKey];
-    return React.cloneElement(elem, { data: dataCell, rowData, rowIndex });
+    return React.cloneElement(elem, { data: dataCell, rowData, rowIndex, fixed });
   };
 
-  const header = find([].concat(children), child => child.type === Header) || defaultHeader(name);
+  const header = React.cloneElement(find([].concat(children), child => child.type === Header) || defaultHeader(name), { fixed });
 
   const footer = find([].concat(children), child => child.type === Footer); // TODO onFooterClick
 
