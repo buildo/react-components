@@ -80,7 +80,8 @@ export default class Meter extends React.Component {
   static defaultProps = {
     min: 0,
     max: 100,
-    labelFormatter
+    labelFormatter,
+    ranges: []
   };
 
   componentDidMount() {
