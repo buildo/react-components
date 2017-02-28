@@ -226,7 +226,7 @@ $height-small: 30px !default;
     }
   }
 
-  &:not(.is-disabled):hover {
+  &:not(.is-disabled):not(.has-value):hover {
     background: $background-hover;
 
     .Select-control .Select-value .Select-value-label {
