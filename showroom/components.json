@@ -213,6 +213,11 @@
           {
             "title": "Modal without footer",
             "url": "modal/examples/noFooter.js"
+          },
+          {
+            "title": "Passing arbitrary React context",
+            "description": "Modal renders through a \"portal\", so React context is not propagated as expected.<br><br>*We know context isn't a public api, but it is required for <a href=\"https://github.com/reactjs/react-redux\">widely</a> <a href=\"https://github.com/yahoo/react-intl\">used</a> libraries to work. We also know there's `renderSubtreeIntoContainer`, which is unfortunately even more unstable.*<br/><br/>To solve this problem we export a handy `modalWithContext` that easily allows to pass context down correctly (look at the code!).",
+            "url": "modal/examples/withContext.js"
           }
         ]
       },
