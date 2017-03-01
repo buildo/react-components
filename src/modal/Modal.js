@@ -37,6 +37,8 @@ export const Props = {
  * @param onDismiss - called when modal is dismissed
  * @param transitionEnterTimeout - transition enter timeout
  * @param transitionLeaveTimeout - transition leave timeout
+ * @param childContextTypes: context types to pass to the modal React tree,
+ * @param getChildContext: should return context values to pass to the modal React tree
  */
 @skinnable()
 @props(Props)
