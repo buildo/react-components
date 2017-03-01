@@ -4,26 +4,34 @@ import ReactTransitionGroup from 'react-addons-transition-group';
 import { props, t } from '../utils';
 import TransitionWrapper from '../transition-wrapper';
 
-class ContextWrapper extends React.Component {
-  getChildContext = () => this.props.context;
-  render = () => this.props.modal();
-}
-
 let containerNode = null;
 
 export const Props = {
   children: t.ReactChildren,
   transitionEnterTimeout: t.Number,
   transitionLeaveTimeout: t.Number,
-  className: t.maybe(t.String)
+  className: t.maybe(t.String),
+  childContextTypes: t.maybe(t.Object),
+  getChildContext: t.maybe(t.Function)
 };
 
 @props(Props)
-export default class ModalPortal extends React.Component { // eslint-disable-line react/no-multi-comp
+export default class ModalPortal extends React.Component {
 
   render() {
     return null;
   }
+
+  _ContextWrapper = (() => {
+    const childContextTypes = this.props.childContextTypes || {};
+    return class ContextWrapper extends React.Component { // eslint-disable-line react/no-multi-comp
+      static childContextTypes = childContextTypes;
+      getChildContext = this.props.getChildContext || (() => ({}));
+      render() {
+        return this.props.modal();
+      }
+    };
+  })();
 
   componentDidMount() {
     this.isOpen = true;
@@ -55,8 +63,9 @@ export default class ModalPortal extends React.Component { // eslint-disable-lin
       document.body.appendChild(containerNode);
     }
 
-    const Modal = this._renderModal();
-    ReactDOM.render(<ContextWrapper modal={Modal} />, containerNode);
+    const modal = this._renderModal();
+    const ContextWrapper = this._ContextWrapper;
+    ReactDOM.render(<ContextWrapper modal={modal} />, containerNode);
   }
 
   _renderModal() {
