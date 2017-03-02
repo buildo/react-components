@@ -48,6 +48,9 @@ export const Props = t.refinement(t.struct({
 }), ({ min, max }) => min < max, 'Props');
 
 const isFullyFilled = (ranges, min, max) => {
+  if (!ranges) {
+    return false;
+  }
   const comparableRanges = ranges.concat({ startValue: max, endValue: min });
   const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(range => range.startValue);
   const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
@@ -92,17 +95,18 @@ export default class Meter extends React.Component {
       ranges,
       max,
       min,
-      baseFillingColor
+      baseFillingColor,
+      baseBackgroundColor
     } = this.props;
     warn(() => {
-      if (isFullyFilled(ranges, min, max) && baseFillingColor) {
-        return 'baseFillingColor not needed, ranges are fully filled';
+      if (isFullyFilled(ranges, min, max) && (baseFillingColor || baseBackgroundColor)) {
+        return 'baseFillingColor or baseBackgroundColor is not needed, ranges are fully filled';
       }
       return undefined;
     });
     warn(() => {
-      if (!(isFullyFilled(ranges, min, max) || baseFillingColor)) {
-        return 'You should pass baseFillingColor, ranges are not fully filled';
+      if (!(isFullyFilled(ranges, min, max) || (baseFillingColor && baseBackgroundColor))) {
+        return 'You should pass both baseFillingColor and baseBackgroundColor, ranges are not fully filled';
       }
       return undefined;
     });
