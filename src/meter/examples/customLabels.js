@@ -16,7 +16,7 @@ class Example extends React.Component {
 
     const ranges = [
       { startValue: 400, endValue: 665, fillingColor: '#34aa44', labelColor: '#34aa44' },
-      { startValue: 666, endValue: 667, fillingColor: '#ed1c24', labelColor: '#ed1c24' },
+      { startValue: 665, endValue: 667, fillingColor: '#ed1c24', labelColor: '#ed1c24' },
       { startValue: 667, endValue: 700, fillingColor: '#fdc018', labelColor: '#fdc018' }
     ];
 
