@@ -8,15 +8,15 @@ $border-color: $brc-silver !default;
 $border-color-open: $brc-waterBlue !default;
 $border-radius: 4px !default;
 $text-color: $brc-coolGrey !default;
-$text-color-hover: $brc-coolGrey !default;
 $text-color-open: $brc-coolGrey !default;
 $text-color-has-value: $brc-darkGrey !default;
+$text-color-hover: $text-color-has-value !default;
 $text-color-writing: $brc-coolGrey !default;
 $placeholder-color: #999 !default;
 $placeholder-color-hover: #666 !default;
 $placeholder-color-open: #666 !default;
 $arrow-color: $text-color !default;
-$arrow-color-hover: $text-color-hover !default;
+$arrow-color-hover: $text-color !default;
 $arrow-color-open: $text-color-open !default;
 $x-color: $text-color !default;
 $x-color-hover: $brc-red !default;
@@ -226,7 +226,7 @@ $height-small: 30px !default;
     }
   }
 
-  &:not(.is-disabled):not(.has-value):hover {
+  &:not(.is-disabled):hover {
     background: $background-hover;
 
     .Select-control .Select-value .Select-value-label {
