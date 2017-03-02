@@ -48,6 +48,9 @@ export const Props = t.refinement(t.struct({
 }), ({ min, max }) => min < max, 'Props');
 
 const isFullyFilled = (ranges, min, max) => {
+  if (!ranges) {
+    return false;
+  }
   const comparableRanges = ranges.concat({ startValue: max, endValue: min });
   const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(range => range.startValue);
   const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
@@ -80,8 +83,7 @@ export default class Meter extends React.Component {
   static defaultProps = {
     min: 0,
     max: 100,
-    labelFormatter,
-    ranges: []
+    labelFormatter
   };
 
   componentDidMount() {
