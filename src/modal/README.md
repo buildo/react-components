@@ -9,6 +9,8 @@ Render a modal window over a dimmed layer
 | **transitionEnterTimeout** | <code>Number</code> |  | **required**. Transition enter timeout |
 | **transitionLeaveTimeout** | <code>Number</code> |  | **required**. Transition leave timeout |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
+| **childContextTypes** | <code>Object</code> |  | *optional*. : context types to pass to the modal React tree |
+| **getChildContext** | <code>Function</code> |  | *optional*. : should return context values to pass to the modal React tree |
 | **title** | <code>String</code> |  | *optional*. Modal title |
 | **footer** | <code>ReactChildren</code> |  | *optional*. Modal footer |
 | **iconClose** | <code>ReactChildren</code> |  | *optional*. Close icon |

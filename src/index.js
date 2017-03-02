@@ -7,7 +7,7 @@ export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './lin
 export ScrollView from './ScrollView/ScrollView';
 export { Toaster, TimerToast } from './toaster';
 export { ModalManager, BasicModal } from './modal-manager';
-export Modal from './modal';
+export Modal, { modalWithContext } from './modal';
 export TransitionWrapper from './transition-wrapper';
 export BackgroundDimmer from './background-dimmer';
 export Divider from './Divider';
