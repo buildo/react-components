@@ -8,6 +8,10 @@
 - add the ability to pass custom React context to Modal render tree [#794](https://github.com/buildo/react-components/issues/794)
 - Use babel-preset-buildo [#764](https://github.com/buildo/react-components/issues/764)
 
+#### Fixes (bugs & defects):
+
+- Dropdown: text color should not change on hover [#724](https://github.com/buildo/react-components/issues/724)
+
 ## [v0.14.0](https://github.com/buildo/react-components/tree/v0.14.0) (2017-02-27)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.3...v0.14.0)
 
