@@ -24,6 +24,7 @@ export const Props = {
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
+  simpleValue: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -42,6 +43,7 @@ export const Props = {
  * @param multi - true if it should be possible to select multiple values
  * @param flat - whether it should have a flat style
  * @param autoBlur - whether it should blur automatically when the user selects a value
+ * @param simpleValue - if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -55,7 +57,8 @@ export default class Dropdown extends React.Component {
     clearable: false,
     multi: false,
     flat: false,
-    autoBlur: true
+    autoBlur: true,
+    simpleValue: true
   }
 
   componentDidMount() {
@@ -125,7 +128,6 @@ export default class Dropdown extends React.Component {
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       resetValue: null,
-      simpleValue: true,
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
       onInputKeyDown,
