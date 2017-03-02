@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Meter: ranges should have a default value [#753](https://github.com/buildo/react-components/issues/753)
 
 ## [v0.14.1](https://github.com/buildo/react-components/tree/v0.14.1) (2017-03-02)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.0...v0.14.1)
