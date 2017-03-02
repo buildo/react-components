@@ -5,6 +5,7 @@
 
 #### New features:
 
+- Dropdown should allow to pass simpleValue=false [#796](https://github.com/buildo/react-components/issues/796)
 - add the ability to pass custom React context to Modal render tree [#794](https://github.com/buildo/react-components/issues/794)
 - Use babel-preset-buildo [#764](https://github.com/buildo/react-components/issues/764)
 
