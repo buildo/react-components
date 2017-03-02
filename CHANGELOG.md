@@ -5,6 +5,7 @@
 
 #### New features:
 
+- add the ability to pass custom React context to Modal render tree [#794](https://github.com/buildo/react-components/issues/794)
 - Use babel-preset-buildo [#764](https://github.com/buildo/react-components/issues/764)
 
 ## [v0.14.0](https://github.com/buildo/react-components/tree/v0.14.0) (2017-02-27)
