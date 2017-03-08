@@ -1,10 +1,13 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...HEAD)
+
+
+## [v0.14.2](https://github.com/buildo/react-components/tree/v0.14.2) (2017-03-08)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...v0.14.2)
 
 #### New features:
 
+- TimePicker: add menuPosition prop [#802](https://github.com/buildo/react-components/issues/802)
 - Dropdown: open the menu on top [#800](https://github.com/buildo/react-components/issues/800)
 
 #### Fixes (bugs & defects):
