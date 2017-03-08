@@ -99,7 +99,7 @@ export default class Dropdown extends React.Component {
       'is-small': size === 'small',
       'is-flat': flat,
       'is-clearable': clearable,
-      top: menuPosition === 'top'
+      'menu-position-top': menuPosition === 'top'
     });
   }
 
