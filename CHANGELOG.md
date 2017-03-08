@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...HEAD)
 
+#### New features:
+
+- Dropdown: open the menu on top [#800](https://github.com/buildo/react-components/issues/800)
+
 #### Fixes (bugs & defects):
 
 - Meter: ranges should have a default value [#753](https://github.com/buildo/react-components/issues/753)
