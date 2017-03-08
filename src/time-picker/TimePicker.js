@@ -155,6 +155,7 @@ export const makeOptions = ({ minTime, maxTime, timeFormat }, inputValue) => {
  * @param placeholder - field placeholder, displayed when there's no value. Default[--:--]
  * @param timeFormat - format in which options are displayed (12h|24h)
  * @param searchable - enable the search feature
+ * @param menuPosition - whether the menu should open on top or bottom
  */
 @skinnable()
 @props(Props)

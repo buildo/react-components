@@ -15,3 +15,4 @@ TimePicker field, used to pick a time from a dropdown
 | **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+| **menuPosition** | <code>enum("bottom" &#124; "top")</code> | <code>"bottom"</code> | **required**. Whether the menu should open on top or bottom |
