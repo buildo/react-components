@@ -194,6 +194,14 @@ $height-small: 30px !default;
     }
   }
 
+  &.top {
+    .Select-menu-outer {
+      top: auto;
+      bottom: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
   &.Select--multi {
     &.has-value .Select-input {
       position: relative;
