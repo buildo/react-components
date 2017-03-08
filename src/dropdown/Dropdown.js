@@ -25,6 +25,7 @@ export const Props = {
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
   simpleValue: t.maybe(t.Boolean),
+  menuPosition: t.enums.of(['top', 'bottom']),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -44,6 +45,7 @@ export const Props = {
  * @param flat - whether it should have a flat style
  * @param autoBlur - whether it should blur automatically when the user selects a value
  * @param simpleValue - if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects
+ * @param menuPosition - whether the menu should be rendered on top or bottom when it's open
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -58,7 +60,8 @@ export default class Dropdown extends React.Component {
     multi: false,
     flat: false,
     autoBlur: true,
-    simpleValue: true
+    simpleValue: true,
+    menuPosition: 'bottom'
   }
 
   componentDidMount() {
@@ -90,12 +93,13 @@ export default class Dropdown extends React.Component {
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
   getCustomClassNames() {
-    const { size, flat, clearable } = this.props;
+    const { size, flat, clearable, menuPosition } = this.props;
     return cx({
       'is-medium': size === 'medium',
       'is-small': size === 'small',
       'is-flat': flat,
-      'is-clearable': clearable
+      'is-clearable': clearable,
+      'menu-position-top': menuPosition === 'top'
     });
   }
 
