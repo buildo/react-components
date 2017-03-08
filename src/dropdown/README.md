@@ -18,6 +18,7 @@ A dropdown field based on [react-select](https://github.com/JedWatson/react-sele
 | **flat** | <code>Boolean</code> | <code>false</code> | *optional*. Whether it should have a flat style |
 | **autoBlur** | <code>Boolean</code> | <code>true</code> | *optional*. Whether it should blur automatically when the user selects a value |
 | **simpleValue** | <code>Boolean</code> | <code>true</code> | *optional*. If true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects |
+| **menuPosition** | <code>enum("top" &#124; "bottom")</code> | <code>"bottom"</code> | **required**. Whether the menu should be rendered on top or bottom when it's open |
 | **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
