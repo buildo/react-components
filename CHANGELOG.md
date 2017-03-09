@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.2...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Dropdonw: in multiselect mode, values should have height: 100% [#804](https://github.com/buildo/react-components/issues/804)
 
 ## [v0.14.2](https://github.com/buildo/react-components/tree/v0.14.2) (2017-03-08)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...v0.14.2)
