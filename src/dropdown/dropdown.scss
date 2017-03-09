@@ -22,6 +22,8 @@ $x-color: $text-color !default;
 $x-color-hover: $brc-red !default;
 $menu-background: $brc-white !default;
 $menu-border-color: $brc-silver !default;
+$option-group-color: $brc-darkGrey !default;
+$option-group-background: $brc-paleGrey !default;
 $option-color: rgba($brc-darkGrey, .5) !default;
 $option-color-hover: $brc-darkGrey !default;
 $option-color-selected: $option-color !default;
@@ -167,6 +169,14 @@ $height-small: 30px !default;
     min-width: 185px;
     background-color: $menu-background;
     box-shadow: rgba(34, 36, 38, .12) 0 2px 4px 0;
+
+    .Select-option-group {
+      padding: 0 9px;
+      font-size: 15px;
+      font-weight: 600;
+      color: $option-group-color;
+      background: $option-group-background;
+    }
 
     .Select-option {
       padding: 0 10px;
