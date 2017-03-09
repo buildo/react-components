@@ -58,6 +58,11 @@
             "title": "Multiselect",
             "description": "Dropdown could also allow the selection of multiple values",
             "url": "dropdown/examples/multi.js"
+          },
+          {
+            "title": "Groups",
+            "description": "Dropdown could also allow the grouping",
+            "url": "dropdown/examples/groups.js"
           }
         ]
       },
