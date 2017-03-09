@@ -215,6 +215,13 @@ $height-small: 30px !default;
 
       @include height($height - 14px);
 
+      .Select-value-label {
+        @include height($height - 14px);
+
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
       .Select-value-icon {
         padding: 0 4px;
         border-color: $multiple-value-icon-border-color;
