@@ -3,10 +3,20 @@ import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
 import find from 'lodash/find';
 import omit from 'lodash/omit';
+import groupBy from 'lodash/groupBy';
+import map from 'lodash/map';
+import sortBy from 'lodash/orderBy';
+import FlexView from 'react-flexview';
 import cx from 'classnames';
 import { warn } from '../utils/log';
 
 const isEmptyArray = x => t.Array.is(x) && x.length === 0;
+
+const defaultOptionGroupRenderer = (title) => (
+  <FlexView>
+    {title}
+  </FlexView>
+);
 
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
@@ -27,7 +37,10 @@ export const Props = {
   simpleValue: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
-  style: t.maybe(t.Object)
+  style: t.maybe(t.Object),
+  menuRenderer: t.maybe(t.Function),
+  groupByKey: t.maybe(t.String),
+  optionGroupRenderer: t.maybe(t.Function)
 };
 
 /** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
@@ -44,6 +57,9 @@ export const Props = {
  * @param flat - whether it should have a flat style
  * @param autoBlur - whether it should blur automatically when the user selects a value
  * @param simpleValue - if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects
+ * @param menuRenderer - the function that can be used to override the default drop-down list of options
+ * @param groupByKey - the field name to group by
+ * @param optionGroupRenderer - the function that gets used to render the content of an option group
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -58,7 +74,9 @@ export default class Dropdown extends React.Component {
     multi: false,
     flat: false,
     autoBlur: true,
-    simpleValue: true
+    simpleValue: true,
+    groupByKey: 'optionGroup',
+    optionGroupRenderer: defaultOptionGroupRenderer
   }
 
   componentDidMount() {
@@ -115,10 +133,85 @@ export default class Dropdown extends React.Component {
 
   focus = () => { this.select.focus(); }
 
+  optionGroupRenderer = ( title ) => {
+    if (title === 'undefined') {
+      return null;
+    }
+    else {
+      return (
+        <FlexView className='Select-option-group'>
+          {this.props.optionGroupRenderer(title)}
+        </FlexView>
+      );
+    }
+  }
+
+  _menuRenderer = ({
+    focusedOption,
+    instancePrefix,
+    onFocus,
+    onSelect,
+    optionClassName,
+    optionComponent,
+    optionRenderer,
+    options,
+    valueArray,
+    valueKey
+  }) => {
+
+    const Option = optionComponent;
+    const propertyName = this.props.groupByKey;
+    const sortedOptions = sortBy(options, (option) => {
+      if (option[propertyName] === undefined) {
+        return '';
+      }
+      else {
+        return option[propertyName];
+      }
+    });
+
+    return map(groupBy(sortedOptions, propertyName), (optionGroup, optionGroupTitle) => {
+      return (
+        <FlexView column key={optionGroupTitle}>
+          {this.optionGroupRenderer(optionGroupTitle)}
+          {optionGroup.map((option, i) => {
+            const isSelected = valueArray && valueArray.indexOf(option) > -1;
+            const isFocused = option === focusedOption;
+            const optionRef = isFocused ? 'focused' : null;
+            const optionClass = cx(optionClassName, {
+              'Select-option': true,
+              'is-selected': isSelected,
+              'is-focused': isFocused,
+              'is-disabled': option.disabled
+            });
+            return (
+              <Option
+                className={optionClass}
+                instancePrefix={instancePrefix}
+                isDisabled={option.disabled}
+                isFocused={isFocused}
+                isSelected={isSelected}
+                key={`option-${i}-${option[valueKey]}`}
+                onFocus={onFocus}
+                onSelect={onSelect}
+                option={option}
+                optionIndex={i}
+                ref={optionRef}
+              >
+                {optionRenderer(option, i)}
+              </Option>
+            );
+          })}
+        </FlexView>
+      );
+    });
+  }
+
   getLocals() {
     const {
       _onChange,
       onInputKeyDown,
+      _menuRenderer,
       props: { className, options, backspaceRemoves, clearable, ...props }
     } = this;
 
@@ -131,7 +224,8 @@ export default class Dropdown extends React.Component {
       className: cx('dropdown', className, this.getCustomClassNames()),
       value: this.valueToOption(this.getValue(), options),
       onInputKeyDown,
-      onChange: _onChange
+      onChange: _onChange,
+      menuRenderer: _menuRenderer
     };
   }
 
