@@ -101,6 +101,17 @@ export default class Dropdown extends React.Component {
     return value;
   };
 
+  sortOptionsByGroup = (options) => {
+    return sortBy(options, (option) => {
+      if (option[this.props.groupByKey] === undefined) {
+        return '';
+      }
+      else {
+        return option[this.props.groupByKey];
+      }
+    });
+  }
+
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
   getCustomClassNames() {
@@ -157,16 +168,8 @@ export default class Dropdown extends React.Component {
 
     const Option = optionComponent;
     const propertyName = this.props.groupByKey;
-    const sortedOptions = sortBy(options, (option) => {
-      if (option[propertyName] === undefined) {
-        return '';
-      }
-      else {
-        return option[propertyName];
-      }
-    });
 
-    return map(groupBy(sortedOptions, propertyName), (optionGroup, optionGroupTitle) => {
+    return map(groupBy(options, propertyName), (optionGroup, optionGroupTitle) => {
       return (
         <FlexView column key={optionGroupTitle}>
           {this.optionGroupRenderer(optionGroupTitle)}
@@ -213,7 +216,7 @@ export default class Dropdown extends React.Component {
 
     return {
       ...omit(props, 'valueLink'),
-      options,
+      options: this.sortOptionsByGroup(options),
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       resetValue: null,
