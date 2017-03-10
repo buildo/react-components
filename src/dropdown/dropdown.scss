@@ -173,7 +173,7 @@ $height-small: 30px !default;
     .Select-option-group {
       padding: 0 9px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: $brc-semibold;
       color: $option-group-color;
       background: $option-group-background;
     }
