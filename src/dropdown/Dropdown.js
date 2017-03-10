@@ -74,7 +74,7 @@ export default class Dropdown extends React.Component {
     autoBlur: true,
     simpleValue: true,
     groupByKey: 'optionGroup',
-    optionGroupRenderer: defaultOptionGroupRenderer
+    optionGroupRenderer: defaultOptionGroupRenderer,
     menuPosition: 'bottom'
   }
 
