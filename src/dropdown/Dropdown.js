@@ -224,7 +224,7 @@ export default class Dropdown extends React.Component {
       value: this.valueToOption(this.getValue(), options),
       onInputKeyDown,
       onChange: _onChange,
-      menuRenderer: _menuRenderer
+      menuRenderer: this.props.menuRenderer || _menuRenderer
     };
   }
 
