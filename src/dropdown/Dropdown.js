@@ -12,11 +12,7 @@ import { warn } from '../utils/log';
 
 const isEmptyArray = x => t.Array.is(x) && x.length === 0;
 
-const defaultOptionGroupRenderer = (title) => (
-  <FlexView>
-    {title}
-  </FlexView>
-);
+const defaultOptionGroupRenderer = title => title;
 
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
