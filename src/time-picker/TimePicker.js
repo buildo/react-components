@@ -41,7 +41,8 @@ export const Props = t.refinement(t.struct({
   searchable: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
-  style: t.maybe(t.Object)
+  style: t.maybe(t.Object),
+  menuPosition: t.enums.of(['bottom', 'top'])
 }), ({ value, minTime, maxTime }) => (
   lteTime(minTime, maxTime) && (!value || (lteTime(value, maxTime) && lteTime(minTime, value)))
 ), 'Props');
@@ -154,6 +155,7 @@ export const makeOptions = ({ minTime, maxTime, timeFormat }, inputValue) => {
  * @param placeholder - field placeholder, displayed when there's no value. Default[--:--]
  * @param timeFormat - format in which options are displayed (12h|24h)
  * @param searchable - enable the search feature
+ * @param menuPosition - whether the menu should open on top or bottom
  */
 @skinnable()
 @props(Props)
@@ -164,7 +166,8 @@ export default class TimePicker extends React.Component {
     timeFormat: H24,
     minTime: { hours: 0, minutes: 0 },
     maxTime: { hours: 23, minutes: 59 },
-    searchable: true
+    searchable: true,
+    menuPosition: 'bottom'
   }
 
   state = { inputValue: '' }
@@ -201,7 +204,7 @@ export default class TimePicker extends React.Component {
     };
   }
 
-  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue }) {
+  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue, menuPosition }) {
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -212,6 +215,7 @@ export default class TimePicker extends React.Component {
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
+        menuPosition={menuPosition}
       />
     );
   }

@@ -50,6 +50,11 @@
             "url": "dropdown/examples/sizes.js"
           },
           {
+            "title": "Menu position",
+            "description": "When needed (e.g. when there isn't enough space under the dropdown to render the menu), it's possible to force the menu to open on top",
+            "url": "dropdown/examples/menuOnTop.js"
+          },
+          {
             "title": "Dropdowns options",
             "description": "* When the `searchable` prop is used, it's possible to search the desired value by writing into the dropdown.\n* Use `Clearable` if it should be possible to reset the selected value clicking on the `delete` icon that will appear once a value is selected.",
             "url": "dropdown/examples/options.js"

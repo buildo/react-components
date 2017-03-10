@@ -31,6 +31,7 @@ export const Props = {
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
   simpleValue: t.maybe(t.Boolean),
+  menuPosition: t.enums.of(['top', 'bottom']),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
@@ -56,6 +57,7 @@ export const Props = {
  * @param menuRenderer - the function that can be used to override the default drop-down list of options
  * @param groupByKey - the field name to group by
  * @param optionGroupRenderer - the function that gets used to render the content of an option group
+ * @param menuPosition - whether the menu should be rendered on top or bottom when it's open
  */
 @skinnable()
 @props(Props, { strict: false })
@@ -73,6 +75,7 @@ export default class Dropdown extends React.Component {
     simpleValue: true,
     groupByKey: 'optionGroup',
     optionGroupRenderer: defaultOptionGroupRenderer
+    menuPosition: 'bottom'
   }
 
   componentDidMount() {
@@ -115,12 +118,13 @@ export default class Dropdown extends React.Component {
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
 
   getCustomClassNames() {
-    const { size, flat, clearable } = this.props;
+    const { size, flat, clearable, menuPosition } = this.props;
     return cx({
       'is-medium': size === 'medium',
       'is-small': size === 'small',
       'is-flat': flat,
-      'is-clearable': clearable
+      'is-clearable': clearable,
+      'menu-position-top': menuPosition === 'top'
     });
   }
 
