@@ -64,7 +64,7 @@
     "buildo-normalize-css": "^1.0.0",
     "component-playground": "^1.2.0",
     "compression-webpack-plugin": "^0.3.1",
-    "css-loader": "^0.26.0",
+    "css-loader": "^0.27.3",
     "enzyme": "^2.4.1",
     "eslint": "^3.6.0",
     "eslint-config-buildo": "github:buildo/eslint-config",
