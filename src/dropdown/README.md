@@ -22,3 +22,6 @@ A dropdown field based on [react-select](https://github.com/JedWatson/react-sele
 | **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+| **menuRenderer** | <code>Function</code> |  | *optional*. The function that can be used to override the default drop-down list of options |
+| **groupByKey** | <code>String</code> | <code>"optionGroup"</code> | *optional*. The field name to group by |
+| **optionGroupRenderer** | <code>Function</code> | <code>"defaultOptionGroupRenderer"</code> | *optional*. The function that gets used to render the content of an option group |
