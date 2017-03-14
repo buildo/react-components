@@ -1,11 +1,17 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.2...HEAD)
+
+
+## [v0.14.3](https://github.com/buildo/react-components/tree/v0.14.3) (2017-03-14)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.2...v0.14.3)
 
 #### Fixes (bugs & defects):
 
 - Dropdonw: in multiselect mode, values should have height: 100% [#804](https://github.com/buildo/react-components/issues/804)
+
+#### New features:
+
+- Dropdown: implement grouped options [#798](https://github.com/buildo/react-components/issues/798)
 
 ## [v0.14.2](https://github.com/buildo/react-components/tree/v0.14.2) (2017-03-08)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...v0.14.2)
