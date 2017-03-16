@@ -2,6 +2,13 @@
 
 
 
+## [v0.14.4](https://github.com/buildo/react-components/tree/v0.14.4) (2017-03-16)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.3...v0.14.4)
+
+#### New features:
+
+- implement async status indicator component [#799](https://github.com/buildo/react-components/issues/799)
+
 ## [v0.14.3](https://github.com/buildo/react-components/tree/v0.14.3) (2017-03-14)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.2...v0.14.3)
 
