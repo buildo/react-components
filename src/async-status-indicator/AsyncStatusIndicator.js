@@ -18,7 +18,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-/** A simple component used to visually divide UI elements
+/** A component that shows the status of an async operation
  * @param state - One of ready | processing | success | error
  * @param icons - a dictionary of [state]: ReactElement
  * @param labels - a dictionary of [state]: string

@@ -1,6 +1,6 @@
 # AsyncStatusIndicator
 
-A simple component used to visually divide UI elements
+A component that shows the status of an async operation
 
 ## Props
 |Name|Type|Default|Description|
