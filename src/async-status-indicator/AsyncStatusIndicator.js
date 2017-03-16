@@ -19,9 +19,9 @@ export const Props = {
 };
 
 /** A component that shows the status of an async operation
- * @param state - One of ready | processing | success | error
- * @param icons - a dictionary of [state]: ReactElement
- * @param labels - a dictionary of [state]: string
+ * @param state - The state of the component
+ * @param icons - a dictionary of ReactElements for each state
+ * @param labels - a dictionary labels for each state
  * @param className - an optional class name to pass to top level element of the component
  * @param style - an optional style object to pass to top level element of the component
  */

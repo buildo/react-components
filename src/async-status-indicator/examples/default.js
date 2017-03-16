@@ -25,6 +25,7 @@ class Example extends React.Component {
       this.timeout = setTimeout(() => {
         this.setState({ state: 'ready' });
         clearTimeout(this.timeout);
+        delete this.timeout;
       }, 1987);
     }, 1987);
   }
@@ -33,7 +34,7 @@ class Example extends React.Component {
     <FlexView>
 
       <FlexView marginRight={30}>
-        <button onClick={this.onClick}>click!</button>
+        <Button buttonState='ready' onClick={this.onClick}>click!</Button>
       </FlexView>
 
       <FlexView>

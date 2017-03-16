@@ -635,20 +635,8 @@
             "url": "async-status-indicator/examples/default.js"
           },
           {
-            "title": "State: Ready",
-            "url": "async-status-indicator/examples/ready.js"
-          },
-          {
-            "title": "State: Processing",
-            "url": "async-status-indicator/examples/processing.js"
-          },
-          {
-            "title": "State: Success",
-            "url": "async-status-indicator/examples/success.js"
-          },
-          {
-            "title": "State: Error",
-            "url": "async-status-indicator/examples/error.js"
+            "title": "All the states",
+            "url": "async-status-indicator/examples/list.js"
           }
         ]
       }
