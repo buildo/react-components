@@ -621,6 +621,36 @@
             "url": "tablo/examples/scrollable.js"
           }
         ]
+      },
+      {
+        "id": "async-status-indicator",
+        "title": "Async Status Indicator",
+        "desc": "A component that shows the status of an async operation",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/async-status-indicator",
+        "readmeUrl": "async-status-indicator/README.md",
+        "examples": [
+          {
+            "title": "A typical usage", 
+            "url": "async-status-indicator/examples/default.js"
+          },
+          {
+            "title": "State: Ready",
+            "url": "async-status-indicator/examples/ready.js"
+          },
+          {
+            "title": "State: Processing",
+            "url": "async-status-indicator/examples/processing.js"
+          },
+          {
+            "title": "State: Success",
+            "url": "async-status-indicator/examples/success.js"
+          },
+          {
+            "title": "State: Error",
+            "url": "async-status-indicator/examples/error.js"
+          }
+        ]
       }
     ]
   }

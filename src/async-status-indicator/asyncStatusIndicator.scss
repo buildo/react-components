@@ -1,0 +1,34 @@
+@import '../utils/theme/variables.scss';
+
+$color-ready: $brc-darkGrey !default;
+$color-processing: $brc-darkGrey !default;
+$color-success: $brc-mediumGreen !default;
+$color-error: $brc-strawberry !default;
+$font-size: 14px !default;
+
+.async-status-indicator {
+  font-size: $font-size;
+  font-weight: $brc-semibold;
+
+  &.ready {
+    color: $color-ready;
+  }
+
+  &.processing {
+    color: $color-processing;
+  }
+
+  &.success {
+    color: $color-success;
+  }
+
+  &.error {
+    color: $color-error;
+  }
+
+  .async-status-indicator-icon {
+    position: relative;
+    width: $font-size;
+    margin-right: $font-size / 2;
+  }
+}
