@@ -20,12 +20,11 @@ class Example extends React.Component {
       return;
     }
     this.setState({ state: 'processing'});
-    this.timeout1 = setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ state: Math.random() > .5 ? 'success' : 'error'});
-      this.timeout2 = setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({ state: 'ready' });
-        clearTimeout(this.timeout1);
-        clearTimeout(this.timeout2);
+        clearTimeout(this.timeout);
       }, 1987);
     }, 1987);
   }
