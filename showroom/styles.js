@@ -25,6 +25,7 @@ import '../src/modal/modal.scss';
 import '../src/ScrollView/scrollView.scss';
 import '../src/tablo/tablo.scss';
 import '../src/kitchen-sink/style.scss';
+import '../src/async-status-indicator/asyncStatusIndicator.scss';
 
 
 // examples sass and resources
