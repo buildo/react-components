@@ -213,23 +213,59 @@ $height-small: 30px !default;
   }
 
   &.Select--multi {
+    height: auto;
+
     &.has-value .Select-input {
       position: relative;
     }
 
+    &.has-value .Select-control {
+      padding: 0;
+    }
+
+    .Select-placeholder {
+      padding: 0 10px;
+    }
+
+    .Select-control {
+      padding: 0;
+      display: table;
+      border-spacing: 0;
+      border-collapse: separate;
+      outline: none;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .Select-multi-value-wrapper,
+    .Select-arrow-zone,
+    .Select-clear-zone {
+      display: table-cell;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .Select-multi-value-wrapper {
+      width: auto;
+    }
+
     .Select-control .Select-value {
       margin-right: 5px;
+      margin-left: 5px;
+      margin-top: 5px;
+      vertical-align: top;
       border: 1px solid $multiple-value-border-color;
       background: $multiple-value-background-color;
       color: $multiple-value-color;
-
-      @include height($height - 14px);
+      display: inline-block;
+      height: $height - 12px;
+      line-height: $height - 14px;
 
       .Select-value-label {
-        @include height($height - 14px);
-
         padding-top: 0;
         padding-bottom: 0;
+        width: auto;
       }
 
       .Select-value-icon {
@@ -242,6 +278,31 @@ $height-small: 30px !default;
           border-color: $multiple-value-icon-border-color-hover;
           background: $multiple-value-icon-background-color-hover;
           color: $multiple-value-icon-color-hover;
+        }
+      }
+    }
+
+    .Select-arrow-zone {
+      padding-right: 5px;
+    }
+
+    .Select-arrow {
+      display: inline-block;
+      position: relative;
+    }
+
+    .Select-clear-zone {
+      width: 17px;
+      right: 0;
+      line-height: 1;
+    }
+
+    &.is-clearable.has-value {
+      .Select-clear-zone {
+        &:hover {
+          .Select-clear {
+            color: $x-color-hover;
+          }
         }
       }
     }
