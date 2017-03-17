@@ -106,7 +106,6 @@ $height-small: 30px !default;
   font-weight: 400;
 
   .Select-control {
-    padding-right: 25px;
     padding-left: 10px;
     border: none;
     background: transparent;
@@ -120,6 +119,11 @@ $height-small: 30px !default;
       width: 100%;
     }
 
+    .Select-multi-value-wrapper {
+      @include flex_flex-wrap(wrap);
+      @include flex_align-items(stretch);
+    }
+
     .Select-input {
       position: absolute;
       top: 0;
@@ -128,19 +132,17 @@ $height-small: 30px !default;
 
     .Select-arrow-zone,
     .Select-clear-zone {
-      position: absolute;
-      bottom: 0;
-      width: 30px;
-
+      @include flex_flex(0 0 auto);
       @include flex_justify-content(center);
     }
 
     .Select-arrow-zone {
-      right: 0;
+      height: 100%;
+      width: 30px;
     }
 
     .Select-clear-zone {
-      right: 20px;
+      width: 15px;
     }
 
     .Select-arrow,
@@ -213,12 +215,30 @@ $height-small: 30px !default;
   }
 
   &.Select--multi {
+    height: auto;
+
+    .Select-control {
+      height: auto;
+
+      .Select-multi-value-wrapper {
+        min-height: $height;
+        height: auto;
+      }
+    }
+
+    &.is-small {
+      .Select-multi-value-wrapper {
+        min-height: $height-small;
+      }
+    }
+
     &.has-value .Select-input {
       position: relative;
     }
 
     .Select-control .Select-value {
       margin-right: 5px;
+      margin-top: 5px;
       border: 1px solid $multiple-value-border-color;
       background: $multiple-value-background-color;
       color: $multiple-value-color;
@@ -286,8 +306,6 @@ $height-small: 30px !default;
   }
 
   &.has-value .Select-control {
-    padding-right: 45px;
-
     .Select-value .Select-value-label {
       color: $text-color-has-value;
     }
@@ -298,13 +316,17 @@ $height-small: 30px !default;
   }
 
   &.is-clearable.has-value {
-    .Select-clear {
-      bottom: 0;
-      padding: 0;
-      color: $x-color;
+    .Select-clear-zone {
+      .Select-clear {
+        bottom: 0;
+        padding: 0;
+        color: $x-color;
+      }
 
       &:hover {
-        color: $x-color-hover;
+        .Select-clear {
+          color: $x-color-hover;
+        }
       }
     }
   }
