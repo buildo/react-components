@@ -2,6 +2,20 @@
 
 
 
+## [v0.16.0](https://github.com/buildo/react-components/tree/v0.16.0) (2017-03-20)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.15.0...v0.16.0)
+
+#### Breaking:
+
+- dropdown: sass variables for `.Select-value-label` is overridden [#814](https://github.com/buildo/react-components/issues/814)
+
+## [v0.15.0](https://github.com/buildo/react-components/tree/v0.15.0) (2017-03-20)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.14.4...v0.15.0)
+
+#### Breaking:
+
+- Dropdown: in multi mode, values should wrap and input height should adapt size [#810](https://github.com/buildo/react-components/issues/810)
+
 ## [v0.14.4](https://github.com/buildo/react-components/tree/v0.14.4) (2017-03-16)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.3...v0.14.4)
 
