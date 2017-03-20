@@ -236,18 +236,18 @@ $height-small: 30px !default;
       position: relative;
     }
 
-    .Select-control .Select-value {
+    &.has-value .Select-control .Select-value {
       margin-right: 5px;
       margin-top: 5px;
       border: 1px solid $multiple-value-border-color;
-      background: $multiple-value-background-color;
-      color: $multiple-value-color;
 
       @include height($height - 14px);
 
       .Select-value-label {
         @include height($height - 14px);
 
+        background: $multiple-value-background-color;
+        color: $multiple-value-color;
         padding-top: 0;
         padding-bottom: 0;
       }
@@ -274,7 +274,7 @@ $height-small: 30px !default;
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
       color: $text-color-hover;
     }
 
@@ -291,7 +291,7 @@ $height-small: 30px !default;
     border-color: $border-color-open;
     background: $background-open;
 
-    .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
       color: $text-color-open;
     }
 
