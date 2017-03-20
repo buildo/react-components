@@ -31,9 +31,9 @@ $option-color-disabled: rgba($option-color, .2) !default;
 $option-background-hover: rgba($brc-azure, .15) !default;
 $option-background-selected: $menu-background !default;
 $option-background-disabled: $menu-background !default;
-$multiple-value-color: #007eff !default;
+$multiple-value-color: $brc-azure !default;
 $multiple-value-border-color: $multiple-value-color !default;
-$multiple-value-background-color: #daecf6 !default;
+$multiple-value-background-color: $brc-duckBlue !default;
 $multiple-value-icon-color: $multiple-value-color !default;
 $multiple-value-icon-background-color: $multiple-value-background-color !default;
 $multiple-value-icon-border-color: $multiple-value-icon-color !default;
@@ -236,18 +236,18 @@ $height-small: 30px !default;
       position: relative;
     }
 
-    .Select-control .Select-value {
+    &.has-value .Select-control .Select-value {
       margin-right: 5px;
       margin-top: 5px;
       border: 1px solid $multiple-value-border-color;
-      background: $multiple-value-background-color;
-      color: $multiple-value-color;
 
       @include height($height - 14px);
 
       .Select-value-label {
         @include height($height - 14px);
 
+        background: $multiple-value-background-color;
+        color: $multiple-value-color;
         padding-top: 0;
         padding-bottom: 0;
       }
@@ -274,7 +274,7 @@ $height-small: 30px !default;
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
       color: $text-color-hover;
     }
 
@@ -291,7 +291,7 @@ $height-small: 30px !default;
     border-color: $border-color-open;
     background: $background-open;
 
-    .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
       color: $text-color-open;
     }
 
