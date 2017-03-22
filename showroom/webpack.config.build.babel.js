@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 import webpackBase from './webpack.base.babel';
 import assign from 'lodash/assign';
 import fs from 'fs';
@@ -22,6 +23,11 @@ module.exports = assign({}, webpackBase, {
   },
 
   plugins: webpackBase.plugins.concat([
+    new StyleLintPlugin({
+      files: '**/*.scss',
+      failOnError: true,
+      syntax: 'scss'
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
