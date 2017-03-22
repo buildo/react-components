@@ -3,7 +3,7 @@ import { pure, skinnable, props, t } from '../utils';
 import cx from 'classnames';
 import View from 'react-flexview';
 
-const AsyncStatusIndicatorState = t.enums.of([
+export const AsyncStatusIndicatorState = t.enums.of([
   'ready',
   'processing',
   'success',
