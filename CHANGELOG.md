@@ -2,6 +2,13 @@
 
 
 
+## [v0.16.1](https://github.com/buildo/react-components/tree/v0.16.1) (2017-03-22)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.0...v0.16.1)
+
+#### Fixes (bugs & defects):
+
+- AsyncStatusIndicator should export `SavingState` model [#817](https://github.com/buildo/react-components/issues/817)
+
 ## [v0.16.0](https://github.com/buildo/react-components/tree/v0.16.0) (2017-03-20)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.15.0...v0.16.0)
 
