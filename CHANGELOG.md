@@ -2,6 +2,13 @@
 
 
 
+## [v0.16.2](https://github.com/buildo/react-components/tree/v0.16.2) (2017-03-23)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.1...v0.16.2)
+
+#### New features:
+
+- Dropdown: values in multi select mode are not aligned [#823](https://github.com/buildo/react-components/issues/823)
+
 ## [v0.16.1](https://github.com/buildo/react-components/tree/v0.16.1) (2017-03-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.0...v0.16.1)
 
