@@ -3,7 +3,6 @@ import { props, t, skinnable } from '../utils';
 import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/range';
-import compact from 'lodash/compact';
 import flatten from 'lodash/flatten';
 import uniqBy from 'lodash/uniqBy';
 import sortBy from 'lodash/sortBy';
