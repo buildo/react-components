@@ -3,6 +3,7 @@ import { props, t, skinnable } from '../utils';
 import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/range';
+import compact from 'lodash/compact';
 import flatten from 'lodash/flatten';
 
 export const H24 = '24h';
@@ -197,7 +198,7 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       value,
-      options: makeOptions({ minTime, maxTime, timeFormat }, this.state.inputValue),
+      options: makeOptions({ minTime, maxTime, timeFormat }, this.state.inputValue).concat(compact([userValue]).map(toOption)),
       className: cx('time-picker', className),
       onChange: this._onChange,
       updateInputValue: this.updateInputValue
