@@ -1,6 +1,6 @@
 class Example extends React.Component {
 
-  state = {}
+  state = { value: { hours: 11, minutes: 23 } }
 
   onChange = (value) => this.setState({ value });
 
