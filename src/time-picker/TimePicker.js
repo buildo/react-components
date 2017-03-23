@@ -5,6 +5,8 @@ import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/range';
 import compact from 'lodash/compact';
 import flatten from 'lodash/flatten';
+import uniqBy from 'lodash/uniqBy';
+import sortBy from 'lodash/sortBy';
 
 export const H24 = '24h';
 export const H12 = '12h';
@@ -137,13 +139,14 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
   return lteTime(minTime, time) && lteTime(time, maxTime) && startsWith(time, originalInput);
 };
 
-export const makeOptions = ({ minTime, maxTime, timeFormat }, inputValue) => {
+export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }, inputValue) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
-  const timeList = time === inputError ? [] : createTimeList(time, timeFormat);
+  const userTimeList = createTimeList(userValue, timeFormat);
+  const timeList = time === inputError ? [] : createTimeList(time, timeFormat).concat(userTimeList);
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: time.originalInput, minTime, maxTime
   }));
-  return filteredTimeList.map(toOption);
+  return uniqBy(sortBy(filteredTimeList.map(toOption), 'value'), 'value');
 };
 
 
@@ -198,7 +201,7 @@ export default class TimePicker extends React.Component {
     return {
       ...props,
       value,
-      options: makeOptions({ minTime, maxTime, timeFormat }, this.state.inputValue).concat(compact([userValue]).map(toOption)),
+      options: makeOptions({ minTime, maxTime, timeFormat, userValue }, this.state.inputValue),
       className: cx('time-picker', className),
       onChange: this._onChange,
       updateInputValue: this.updateInputValue
