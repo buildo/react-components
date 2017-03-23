@@ -140,7 +140,7 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
 
 export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }, inputValue) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
-  const userTimeList = createTimeList(userValue, timeFormat);
+  const userTimeList = userValue && userValue !== inputError ? createTimeList(userValue, timeFormat) : [];
   const timeList = time === inputError ? [] : createTimeList(time, timeFormat).concat(userTimeList);
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: time.originalInput, minTime, maxTime
