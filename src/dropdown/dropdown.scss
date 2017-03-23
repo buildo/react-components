@@ -238,7 +238,8 @@ $height-small: 30px !default;
 
     &.has-value .Select-control .Select-value {
       margin-right: 5px;
-      margin-top: 5px;
+      margin-top: auto;
+      margin-bottom: auto;
       border: 1px solid $multiple-value-border-color;
 
       @include height($height - 14px);
