@@ -86,7 +86,7 @@
     "react-test-renderer": "^15.4.0",
     "sass-loader": "^4.1.0",
     "smooth-release": "^7.0.0",
-    "style-loader": "^0.15.0",
+    "style-loader": "^0.16.0",
     "stylefmt": "^5.0.3",
     "stylelint": "^7.7.0",
     "stylelint-config-buildo": "^0.0.2",
