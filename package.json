@@ -2,7 +2,7 @@
   "name": "buildo-react-components",
   "version": "0.16.2",
   "description": "Collection of general React components used in buildo projects.",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "test": "jest",
     "test-dev": "jest --watch",
@@ -32,6 +32,10 @@
   "bugs": {
     "url": "https://github.com/buildo/react-components/issues"
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
     "bowser": "^1.0.0",
