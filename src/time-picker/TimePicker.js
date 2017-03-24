@@ -141,13 +141,12 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
 
 export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }, inputValue) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
-  //make sure the userValue has timeFormat so in H12 the day period will be shown
   if ( userValue && userValue !== inputError ) {
     userValue.timeFormat = timeFormat;
   }
-  const timeList = time === inputError ? [] : createTimeList(time, timeFormat).concat(compact([userValue]));
+  const timeList = (time === inputError ? [] : createTimeList(time, timeFormat)).concat(compact([userValue]));
   const filteredTimeList = timeList.filter(filterTime({
-    originalInput: time.originalInput, minTime, maxTime
+    originalInput: time.originalInput || '', minTime, maxTime
   }));
   return uniqBy(sortBy(filteredTimeList.map(toOption), 'value'), 'value');
 };
