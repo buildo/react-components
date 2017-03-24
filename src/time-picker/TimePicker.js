@@ -4,6 +4,7 @@ import cx from 'classnames';
 import Dropdown from '../dropdown/Dropdown';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
+import compact from 'lodash/compact';
 import uniqBy from 'lodash/uniqBy';
 import sortBy from 'lodash/sortBy';
 
@@ -140,8 +141,11 @@ export const filterTime = ({ originalInput, minTime, maxTime }) => time => {
 
 export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }, inputValue) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
-  const userTimeList = userValue && userValue !== inputError ? createTimeList(userValue, timeFormat) : [];
-  const timeList = time === inputError ? [] : createTimeList(time, timeFormat).concat(userTimeList);
+  //make sure the userValue has timeFormat so in H12 the day period will be shown
+  if ( userValue && userValue !== inputError ) {
+    userValue.timeFormat = timeFormat;
+  }
+  const timeList = time === inputError ? [] : createTimeList(time, timeFormat).concat(compact([userValue]));
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: time.originalInput, minTime, maxTime
   }));
