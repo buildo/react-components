@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.2...HEAD)
 
+#### Fixes (bugs & defects):
+
+- timePicker doesn't update the options with new input value [#825](https://github.com/buildo/react-components/issues/825)
 
 ## [v0.16.2](https://github.com/buildo/react-components/tree/v0.16.2) (2017-03-23)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.1...v0.16.2)
