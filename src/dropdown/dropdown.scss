@@ -121,7 +121,7 @@ $height-small: 30px !default;
 
     .Select-multi-value-wrapper {
       @include flex_flex-wrap(wrap);
-      @include flex_align-items(stretch);
+      @include flex_align-items(center);
     }
 
     .Select-input {
