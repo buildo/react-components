@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.3...HEAD)
 
+#### Fixes (bugs & defects):
+
+- dropdown:`Select-multi-value-wrapper` should be vertically centered [#827](https://github.com/buildo/react-components/issues/827)
 
 ## [v0.16.3](https://github.com/buildo/react-components/tree/v0.16.3) (2017-03-26)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.2...v0.16.3)
