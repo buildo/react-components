@@ -34,7 +34,8 @@
   },
   "files": [
     "lib",
-    "src"
+    "src",
+    "ghDepsInstall.sh"
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
