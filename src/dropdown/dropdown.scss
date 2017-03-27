@@ -232,42 +232,65 @@ $height-small: 30px !default;
       }
     }
 
-    &.has-value .Select-input {
-      position: relative;
-    }
+    &.has-value {
+      .Select-control {
+        .Select-multi-value-wrapper {
+          padding: 2px 0;
 
-    &.has-value .Select-control .Select-value {
-      margin-right: 5px;
+          .Select-input {
+            position: relative;
 
-      /*
-        vertical margin is needed to add some space between values when they wrap.
-        5px is not random: 10px is the gap to match .Select-input in height and avoid visual defects
-      */
-      margin-top: 5px;
-      margin-bottom: 5px;
-      border: 1px solid $multiple-value-border-color;
+            @include height($height - 12px);
 
-      @include height($height - 14px);
+            > input {
+              @include height($height - 12px);
+            }
+          }
 
-      .Select-value-label {
-        @include height($height - 14px);
+          .Select-value {
+            margin-right: 5px;
 
-        background: $multiple-value-background-color;
-        color: $multiple-value-color;
-        padding-top: 0;
-        padding-bottom: 0;
+            /*
+              vertical margin is needed to add some space between values when they wrap.
+              5px is not random: 10px is the gap to match .Select-input in height and avoid visual defects
+            */
+            margin-top: 2px;
+            margin-bottom: 2px;
+            border: 1px solid $multiple-value-border-color;
+
+            @include height($height - 14px);
+
+            .Select-value-label {
+              @include height($height - 14px);
+
+              background: $multiple-value-background-color;
+              color: $multiple-value-color;
+              padding-top: 0;
+              padding-bottom: 0;
+            }
+
+            .Select-value-icon {
+              padding: 0 4px;
+              border-color: $multiple-value-icon-border-color;
+              background: $multiple-value-icon-background-color;
+              color: $multiple-value-icon-color;
+
+              &:hover {
+                border-color: $multiple-value-icon-border-color-hover;
+                background: $multiple-value-icon-background-color-hover;
+                color: $multiple-value-icon-color-hover;
+              }
+            }
+          }
+        }
       }
 
-      .Select-value-icon {
-        padding: 0 4px;
-        border-color: $multiple-value-icon-border-color;
-        background: $multiple-value-icon-background-color;
-        color: $multiple-value-icon-color;
-
-        &:hover {
-          border-color: $multiple-value-icon-border-color-hover;
-          background: $multiple-value-icon-background-color-hover;
-          color: $multiple-value-icon-color-hover;
+      &.is-small {
+        .Select-control .Select-multi-value-wrapper {
+          .Select-input,
+          .Select-input > input {
+            @include height($height-small - 12px);
+          }
         }
       }
     }
