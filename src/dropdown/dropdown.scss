@@ -238,6 +238,11 @@ $height-small: 30px !default;
 
     &.has-value .Select-control .Select-value {
       margin-right: 5px;
+
+      /*
+        vertical margin is needed to add some space between values when they wrap.
+        5px is not random: 10px is the gap to match .combobox in height and avoid visual defects
+      */
       margin-top: 5px;
       margin-bottom: 5px;
       border: 1px solid $multiple-value-border-color;
