@@ -274,6 +274,10 @@ $height-small: 30px !default;
 
     &.is-small .Select-control .Select-value {
       @include height($height-small - 14px);
+
+      .Select-value-label {
+        @include height($height-small - 14px);
+      }
     }
   }
 
