@@ -37,7 +37,7 @@ const { maybe } = t;
  * @param sortDir - sorting direction
  * @param onSortChange - callback to be called when sorting change
  * @param rowClassNameGetter - a function index -> className
-
+ * @param touchScrollEnabled - enable touch scroll
  *
  * @param scrollToRow - Private
  * @param onRowClick - Private
@@ -64,6 +64,7 @@ const { maybe } = t;
   onScrollEnd: maybe(t.Function),
   children: t.ReactChildren,
   rowClassNameGetter: maybe(t.Function),
+  touchScrollEnabled: maybe(t.Boolean),
 
   // private
   scrollToRow: maybe(t.Integer),

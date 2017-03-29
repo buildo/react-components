@@ -21,6 +21,7 @@ A table component based on fixed-data-table-2
 | **onScrollEnd** | <code>Function</code> |  | *optional*. Callback to be called when scrolling ends |
 | **children** | <code>ReactChildren</code> |  | **required**. Table children (Column or ColumnGroup) |
 | **rowClassNameGetter** | <code>Function</code> | <code>"rowClassNameGetter"</code> | *optional*. A function index -> className |
+| **touchScrollEnabled** | <code>Boolean</code> |  | *optional*. Enable touch scroll |
 | **scrollToRow** | <code>Integer</code> |  | *optional*. Private |
 | **onRowClick** | <code>Function</code> |  | *optional*. Private |
 | **onColumnResizeEndCallback** | <code>Function</code> |  | *optional*. Private |

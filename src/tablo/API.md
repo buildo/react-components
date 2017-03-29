@@ -5,7 +5,7 @@ A table component based on fixed-data-table-2
 ## Props
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
-| **data** | <code>Array(Object)</code> |  | **required**. Data shown in the table. It must be an array of structs of the samey types |
+| **data** | <code>Array(Object)</code> |  | **required**. Data shown in the table. It must be an array of structs of the same types |
 | **autosize** | <code>Boolean</code> | <code>true</code> | *optional*. Whether the table should fit the container sizes or not. If set to <code>false</code>, <code>width</code> and <code>height</code> must be provided
 | **columnsOrder** | <code>Array(String)</code> | | *optional*. An optional reordering of the columns. An array with the columns' names must be provided. To be used together with <code>onColumnsReorder</code> to handle dynamically the reordering of the columns
 | **onColumnsReorder** | <code>Function</code> | | *optional*. Callback to handle the reordering of the columns. The new <code>columnsOrder</code> is passed as parameter.
@@ -29,6 +29,7 @@ A table component based on fixed-data-table-2
 | **onScrollEnd** | <code>Function</code> |  | *optional*. Callback to be called when scrolling ends |
 | **children** | <code>ReactChildren</code> |  | *optional*. Table children (Column or ColumnGroup). If left undefined, columns will be populated automatically with data|
 | **rowClassNameGetter** | <code>Function</code> |  | *optional*. Function: <code>(index) => className</code> of row of index <code>index</code>|
+| **touchScrollEnabled** | <code>Boolean</code> |   | *optional*. Enable touch scroll
 
 ## Column Props
 |Name|Type|Default|Description|
