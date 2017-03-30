@@ -221,14 +221,7 @@ $height-small: 30px !default;
       height: auto;
 
       .Select-multi-value-wrapper {
-        min-height: $height;
         height: auto;
-      }
-    }
-
-    &.is-small {
-      .Select-multi-value-wrapper {
-        min-height: $height-small;
       }
     }
 
