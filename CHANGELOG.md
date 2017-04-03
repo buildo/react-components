@@ -2,6 +2,13 @@
 
 
 
+## [v0.16.7](https://github.com/buildo/react-components/tree/v0.16.7) (2017-04-03)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.6...v0.16.7)
+
+#### Fixes (bugs & defects):
+
+- Tablo: resizing plugin should be disabled if onColumnsResize is missing [#842](https://github.com/buildo/react-components/issues/842)
+
 ## [v0.16.6](https://github.com/buildo/react-components/tree/v0.16.6) (2017-04-03)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.5...v0.16.6)
 
