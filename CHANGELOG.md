@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.5...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Dropdown: on IE11, values in multi-select mode are not vertically aligned when in single line [#830](https://github.com/buildo/react-components/issues/830)
 
 ## [v0.16.5](https://github.com/buildo/react-components/tree/v0.16.5) (2017-03-29)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.4...v0.16.5)
