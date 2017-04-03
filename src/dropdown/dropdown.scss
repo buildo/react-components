@@ -236,6 +236,7 @@ $height-small: 30px !default;
       .Select-control {
         .Select-multi-value-wrapper {
           padding: 2px 0;
+          min-height: auto;
 
           .Select-input {
             position: relative;
@@ -287,6 +288,8 @@ $height-small: 30px !default;
 
       &.is-small {
         .Select-control .Select-multi-value-wrapper {
+          min-height: auto;
+
           .Select-input,
           .Select-input > input {
             @include height($height-small - 12px);
