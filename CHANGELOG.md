@@ -2,6 +2,13 @@
 
 
 
+## [v0.16.8](https://github.com/buildo/react-components/tree/v0.16.8) (2017-04-03)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.16.7...v0.16.8)
+
+#### Fixes (bugs & defects):
+
+- Tablo: never pass onColumnResize down directly [#844](https://github.com/buildo/react-components/issues/844)
+
 ## [v0.16.7](https://github.com/buildo/react-components/tree/v0.16.7) (2017-04-03)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.6...v0.16.7)
 
