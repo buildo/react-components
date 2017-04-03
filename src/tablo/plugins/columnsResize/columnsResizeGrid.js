@@ -19,13 +19,14 @@ const propsTypes = {
   children: maybe(t.ReactChildren)
 };
 
-const getLocals = (props) => {
-  const { className, children, onColumnResize, ...gridProps } = props;
+const getLocals = ({ onColumnResize, ...props }) => {
 
   // if `onColumnResize` is missing bypass this plugin
   if (!onColumnResize) {
     return props;
   }
+
+  const { className, children, ...gridProps } = props;
 
   const onColumnResizeEndCallback = (width, key) => {
     onColumnResize({ width, key });
