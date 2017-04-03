@@ -15,11 +15,17 @@ const addSizeProps = ({ col }) => ( //eslint-disable-line
 
 const propsTypes = {
   className: maybe(t.String),
-  onColumnResize: t.Function,
+  onColumnResize: maybe(t.Function),
   children: maybe(t.ReactChildren)
 };
 
-const getLocals = ({ className, children, onColumnResize, ...gridProps }) => {
+const getLocals = (props) => {
+  const { className, children, onColumnResize, ...gridProps } = props;
+
+  // if `onColumnResize` is missing bypass this plugin
+  if (!onColumnResize) {
+    return props;
+  }
 
   const onColumnResizeEndCallback = (width, key) => {
     onColumnResize({ width, key });
