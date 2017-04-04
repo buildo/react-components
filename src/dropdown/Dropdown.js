@@ -40,6 +40,7 @@ export const Props = {
   optionGroupRenderer: t.maybe(t.Function),
   placeholder: t.maybe(t.union([t.String, t.ReactElement])),
   noResultsText: t.maybe(t.String),
+  allowCreate: t.maybe(t.Boolean),
   addLabelText: t.maybe(t.String),
   valueRenderer: t.maybe(t.Function),
   optionRenderer: t.maybe(t.Function),
