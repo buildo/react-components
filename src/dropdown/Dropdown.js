@@ -32,9 +32,6 @@ export const Props = {
   autoBlur: t.maybe(t.Boolean),
   simpleValue: t.maybe(t.Boolean),
   menuPosition: t.maybe(t.enums.of(['top', 'bottom'])),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object),
   menuRenderer: t.maybe(t.Function),
   groupByKey: t.maybe(t.String),
   optionGroupRenderer: t.maybe(t.Function),
@@ -44,7 +41,10 @@ export const Props = {
   addLabelText: t.maybe(t.String),
   valueRenderer: t.maybe(t.Function),
   optionRenderer: t.maybe(t.Function),
-  delimiter: t.maybe(t.String)
+  delimiter: t.maybe(t.String),
+  id: t.maybe(t.String),
+  className: t.maybe(t.String),
+  style: t.maybe(t.Object)
 };
 
 /** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
