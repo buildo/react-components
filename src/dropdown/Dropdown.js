@@ -42,6 +42,9 @@ export const Props = {
   valueRenderer: t.maybe(t.Function),
   optionRenderer: t.maybe(t.Function),
   delimiter: t.maybe(t.String),
+  onInputChange: t.maybe(t.Function),
+  onFocus: t.maybe(t.Function),
+  onBlur: t.maybe(t.Function),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -72,6 +75,9 @@ export const Props = {
  * @param allowCreate - whether it should be possible to create new options
  * @param addLabelText - if allowCreate is true, message shown to hint the user to press Enter to create a new option
  * @param delimiter - if multi is true, string used to separate selected values
+ * @param onFocus - called when dropdown is focused
+ * @param onBlur - called when dropdown is blurred
+ * @param onInputChange - called when the value of the `input` is changed
  */
 @skinnable()
 @props(Props, { strict: true })
