@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.17.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- add `onInputChange`, `onBlur` and `onFocus` to Dropdown proptypes [#848](https://github.com/buildo/react-components/issues/848)
 
 ## [v0.17.0](https://github.com/buildo/react-components/tree/v0.17.0) (2017-04-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.8...v0.17.0)
