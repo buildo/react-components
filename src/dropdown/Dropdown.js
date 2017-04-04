@@ -70,7 +70,7 @@ export const Props = {
  * @param placeholder - placeholder shown when no value is selected
  * @param noResultsText - if searchable, message shown in the menu when no results are found
  * @param allowCreate - whether it should be possible to create new options
- * @param addLabelText - if allowCrete is true, message shown to hint the user to press Enter to create a new option
+ * @param addLabelText - if allowCreate is true, message shown to hint the user to press Enter to create a new option
  * @param delimiter - if multi is true, string used to separate selected values
  */
 @skinnable()

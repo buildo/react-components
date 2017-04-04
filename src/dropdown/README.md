@@ -27,7 +27,8 @@ A dropdown field based on [react-select](https://github.com/JedWatson/react-sele
 | **optionGroupRenderer** | <code>Function</code> | <code>"defaultOptionGroupRenderer"</code> | *optional*. The function that gets used to render the content of an option group |
 | **placeholder** | <code>union(String &#124; ReactElement)</code> |  | *optional*. Placeholder shown when no value is selected |
 | **noResultsText** | <code>String</code> |  | *optional*. If searchable, message shown in the menu when no results are found |
-| **addLabelText** | <code>String</code> |  | *optional*. If allowCrete is true, message shown to hint the user to press Enter to create a new option |
+| **allowCreate** | <code>Boolean</code> |  | *optional*. Whether it should be possible to create new options |
+| **addLabelText** | <code>String</code> |  | *optional*. If allowCreate is true, message shown to hint the user to press Enter to create a new option |
 | **valueRenderer** | <code>Function</code> |  | *optional*. The function that can be used to override the default renderer of the selected value |
 | **optionRenderer** | <code>Function</code> |  | *optional*. The function that can be used to override the default renderer of options |
 | **delimiter** | <code>String</code> | <code>","</code> | *optional*. If multi is true, string used to separate selected values |
