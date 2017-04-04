@@ -22,7 +22,7 @@ export const Props = {
   })),
   onChange: t.maybe(t.Function),
   options: t.list(t.Object),
-  size: t.enums.of(['medium', 'small']),
+  size: t.maybe(t.enums.of(['medium', 'small'])),
   disabled: t.maybe(t.Boolean),
   searchable: t.maybe(t.Boolean),
   clearable: t.maybe(t.Boolean),
@@ -31,13 +31,20 @@ export const Props = {
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
   simpleValue: t.maybe(t.Boolean),
-  menuPosition: t.enums.of(['top', 'bottom']),
+  menuPosition: t.maybe(t.enums.of(['top', 'bottom'])),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
   menuRenderer: t.maybe(t.Function),
   groupByKey: t.maybe(t.String),
-  optionGroupRenderer: t.maybe(t.Function)
+  optionGroupRenderer: t.maybe(t.Function),
+  placeholder: t.maybe(t.union([t.String, t.ReactElement])),
+  noResultsText: t.maybe(t.String),
+  allowCreate: t.maybe(t.Boolean),
+  addLabelText: t.maybe(t.String),
+  valueRenderer: t.maybe(t.Function),
+  optionRenderer: t.maybe(t.Function),
+  delimiter: t.maybe(t.String)
 };
 
 /** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
@@ -54,13 +61,20 @@ export const Props = {
  * @param flat - whether it should have a flat style
  * @param autoBlur - whether it should blur automatically when the user selects a value
  * @param simpleValue - if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects
+ * @param optionRenderer - the function that can be used to override the default renderer of options
+ * @param valueRenderer - the function that can be used to override the default renderer of the selected value
  * @param menuRenderer - the function that can be used to override the default drop-down list of options
  * @param groupByKey - the field name to group by
  * @param optionGroupRenderer - the function that gets used to render the content of an option group
  * @param menuPosition - whether the menu should be rendered on top or bottom when it's open
+ * @param placeholder - placeholder shown when no value is selected
+ * @param noResultsText - if searchable, message shown in the menu when no results are found
+ * @param allowCreate - whether it should be possible to create new options
+ * @param addLabelText - if allowCreate is true, message shown to hint the user to press Enter to create a new option
+ * @param delimiter - if multi is true, string used to separate selected values
  */
 @skinnable()
-@props(Props, { strict: false })
+@props(Props, { strict: true })
 export default class Dropdown extends React.Component {
 
   static defaultProps = {
