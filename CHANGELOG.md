@@ -1,7 +1,9 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.17.0...HEAD)
+
+
+## [v0.17.1](https://github.com/buildo/react-components/tree/v0.17.1) (2017-04-04)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.17.0...v0.17.1)
 
 #### Fixes (bugs & defects):
 
@@ -726,12 +728,12 @@
 
 - ColumnGroupHeader should be fixed for fixed columns [#320](https://github.com/buildo/react-components/issues/320)
 - 'Add paths to icon with multipath' [#318](https://github.com/buildo/react-components/issues/318)
-- implement BrowserDetector [#316](https://github.com/buildo/react-components/issues/316)
 - linkState should patch value [#314](https://github.com/buildo/react-components/issues/314)
 - 'Panel schould accept ReactChildren as Children' [#311](https://github.com/buildo/react-components/issues/311)
 - [FlexView] basis should append 'px' also to string numbers [#305](https://github.com/buildo/react-components/issues/305)
 - fix components using `FlexView` + `auto` [#303](https://github.com/buildo/react-components/issues/303)
 - Create example for Dropdown [#298](https://github.com/buildo/react-components/issues/298)
+- remove FlexCell, Menu and PanelMenu [#286](https://github.com/buildo/react-components/issues/286)
 - remove FlexCell, Menu and PanelMenu [#286](https://github.com/buildo/react-components/issues/286)
 - [Meter] add unit test [#274](https://github.com/buildo/react-components/issues/274)
 - Add some general components from Labonline [#156](https://github.com/buildo/react-components/issues/156)
