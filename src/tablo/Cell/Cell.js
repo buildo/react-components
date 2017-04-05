@@ -42,7 +42,6 @@ const template = ({
         <FlexView
           className='content'
           grow={grow}
-          height='100%'
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
