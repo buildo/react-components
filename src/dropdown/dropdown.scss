@@ -6,6 +6,7 @@ $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;
 $border-color: $brc-silver !default;
 $border-color-open: $brc-waterBlue !default;
+$border-color-focus: $brc-waterBlue !default;
 $border-radius: 4px !default;
 $text-color: $brc-coolGrey !default;
 $text-color-open: $brc-coolGrey !default;
@@ -104,6 +105,10 @@ $height-small: 30px !default;
   color: $text-color;
   font-size: 15px;
   font-weight: 400;
+
+  &:not(.is-disabled).is-focused {
+    border-color: $border-color-focus;
+  }
 
   .Select-control {
     padding-left: 10px;
