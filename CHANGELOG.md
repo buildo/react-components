@@ -7,6 +7,10 @@
 
 - Tablo: cell content is not vertically centered in Safari [#852](https://github.com/buildo/react-components/issues/852)
 
+#### Breaking:
+
+- Dropdown: no style for focus [#850](https://github.com/buildo/react-components/issues/850)
+
 ## [v0.17.1](https://github.com/buildo/react-components/tree/v0.17.1) (2017-04-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.17.0...v0.17.1)
 
