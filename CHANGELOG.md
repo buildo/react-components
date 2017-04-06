@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- CollapsableSection: cannot override $border-color [#857](https://github.com/buildo/react-components/issues/857)
 
 ## [v0.20.0](https://github.com/buildo/react-components/tree/v0.20.0) (2017-04-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.19.0...v0.20.0)
