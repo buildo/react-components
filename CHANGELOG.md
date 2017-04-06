@@ -1,9 +1,14 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.18.0...HEAD)
 
-#### Breaking:
+
+## [v0.20.0](https://github.com/buildo/react-components/tree/v0.20.0) (2017-04-06)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.19.0...v0.20.0)
+
+## [v0.19.0](https://github.com/buildo/react-components/tree/v0.19.0) (2017-04-06)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.18.0...v0.19.0)
+
+#### New features:
 
 - Dropdown: add supported props [#855](https://github.com/buildo/react-components/issues/855)
 
