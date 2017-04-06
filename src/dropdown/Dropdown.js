@@ -21,6 +21,7 @@ export const Props = {
     requestChange: t.Function
   })),
   onChange: t.maybe(t.Function),
+  onValueClick: t.maybe(t.Function),
   options: t.list(t.Object),
   size: t.maybe(t.enums.of(['medium', 'small'])),
   disabled: t.maybe(t.Boolean),
@@ -45,6 +46,9 @@ export const Props = {
   onInputChange: t.maybe(t.Function),
   onFocus: t.maybe(t.Function),
   onBlur: t.maybe(t.Function),
+  onBlurResetsInput: t.maybe(t.Boolean),
+  onCloseResetsInput: t.maybe(t.Boolean),
+  isLoading: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -78,6 +82,10 @@ export const Props = {
  * @param onFocus - called when dropdown is focused
  * @param onBlur - called when dropdown is blurred
  * @param onInputChange - called when the value of the `input` is changed
+ * @param onValueClick - called when user clicks on the selected value
+ * @param onBlurResetsInput - whether it should clear the input box on blur
+ * @param onCloseResetsInput - wheter it should clear the input box on close
+ * @param isLoading - whether it is loading options asynchronously
  */
 @skinnable()
 @props(Props, { strict: true })
