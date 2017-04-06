@@ -4,7 +4,7 @@ $header-background: $brc-gradientGrey !default;
 $header-background-open: $brc-gradientGrey !default;
 $header-background-selected: transparent !default;
 $header-background-hover: $brc-gradientDarkGrey !default;
-$border-color: $brc-silver;
+$border-color: $brc-silver !default;
 
 .collapsable-section {
   border: 1px solid $border-color;
