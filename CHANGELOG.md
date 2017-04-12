@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Tablo throws when there are less then 2 children [#862](https://github.com/buildo/react-components/issues/862)
 
 ## [v0.20.1](https://github.com/buildo/react-components/tree/v0.20.1) (2017-04-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.0...v0.20.1)
