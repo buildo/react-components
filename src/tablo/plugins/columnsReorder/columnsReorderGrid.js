@@ -36,16 +36,16 @@ export default (Grid) =>
 
     getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }) {
 
-      const thereAreGroups = children.filter(c => c.type === ColumnGroup).length > 0;
+      const _children = [].concat(children || defaultColumns(gridProps.data));
+
+      const thereAreGroups = _children.filter(c => c.type === ColumnGroup).length > 0;
       if (thereAreGroups || !onColumnsReorder) {
         return {              // no reordering of columns if there are groups
           className,
-          children,
+          children: _children,
           ...gridProps
         };
       }
-
-      const _children = [].concat(children || defaultColumns(gridProps.data));
 
       const doOrderColumns = (child) => {
         if (child.type === Header) {
@@ -81,7 +81,7 @@ export default (Grid) =>
       const overrideHeader = ({ col, index }) => { //eslint-disable-line
         const { name, fixed } = col.props;
         const header = find([].concat(col.props.children), { type: Header }) || defaultHeader(col.props.name);
-        const otherChildren = [].concat(col.props.children).filter(ch => ch.type !== Header);
+        const otherChildren = col.props.children ? [].concat(col.props.children).filter(ch => ch.type !== Header) : [];
         const oncedOnColumnsSwitch = once(onColumnsSwitch, 200);
         const dndHeader = (
           <Header {...header.props}>
