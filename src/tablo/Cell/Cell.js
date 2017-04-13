@@ -16,6 +16,7 @@ const propsTypes = {
   color: maybe(t.String),
   vAlignContent: maybe(enums.of(['top', 'center', 'bottom'])),
   hAlignContent: maybe(enums.of(['left', 'center', 'right'])),
+  contentStyle: maybe(t.Object),
   style: maybe(t.Object)
 };
 
@@ -30,6 +31,7 @@ const template = ({
   vAlignContent = 'center',
   hAlignContent = 'left',
   grow = true,
+  contentStyle,
   style
 }) => {
   return (
@@ -40,6 +42,7 @@ const template = ({
         grow={grow}
       >
         <FlexView
+          style={contentStyle}
           className='content'
           grow={grow}
           vAlignContent={vAlignContent}
