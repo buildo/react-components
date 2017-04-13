@@ -1,11 +1,18 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.1...HEAD)
+
+
+## [v0.20.2](https://github.com/buildo/react-components/tree/v0.20.2) (2017-04-13)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.1...v0.20.2)
+
+#### New features:
+
+- Add contentStyle prop to tablo/Cell' [#867](https://github.com/buildo/react-components/issues/867)
 
 #### Fixes (bugs & defects):
 
 - Tablo throws when there are less then 2 children [#862](https://github.com/buildo/react-components/issues/862)
+- PanelMenu: clicking near a menu item may close the menu without calling the item's action [#836](https://github.com/buildo/react-components/issues/836)
 
 ## [v0.20.1](https://github.com/buildo/react-components/tree/v0.20.1) (2017-04-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.0...v0.20.1)
