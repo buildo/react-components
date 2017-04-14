@@ -1,5 +1,4 @@
 import React from 'react';
-import uniq from 'lodash/uniq';
 import { props, t, skinnable } from '../utils';
 
 export const Props = {
@@ -36,7 +35,7 @@ export default class FormattedParagraph extends React.Component {
   }
 
   getLocals({ content, paragraphSpacing, ...props }) {
-    const seriesOfNewParagraphs = uniq(content.match(/\n\n+/g));
+    const seriesOfNewParagraphs = content.match(/\n\n+/g);
     const paragraphs = content.split(/\n\n+/);
 
     const children = paragraphs.map((paragraph, i) => (
