@@ -30,3 +30,4 @@ export FocusableView from './focusable-view';
 export ResizeSensor from './resize-sensor';
 export Tablo, { Column as TabloColumn, Cell, Header, Footer } from './tablo';
 export AsyncStatusIndicator from './async-status-indicator';
+export FormattedParagraph from './formatted-paragraph';
