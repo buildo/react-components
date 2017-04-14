@@ -1,1 +1,3 @@
 src/*/examples/*.js
+showroom/build
+webpack.*.js
