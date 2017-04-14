@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.2...HEAD)
 
+#### New features:
+
+- Implement FormattedParagraph [#737](https://github.com/buildo/react-components/issues/737)
 
 ## [v0.20.2](https://github.com/buildo/react-components/tree/v0.20.2) (2017-04-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.1...v0.20.2)
@@ -51,6 +56,10 @@
 
 ## [v0.17.0](https://github.com/buildo/react-components/tree/v0.17.0) (2017-04-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.8...v0.17.0)
+
+#### Breaking:
+
+- Define and export strict Dropdown's Props types [#846](https://github.com/buildo/react-components/issues/846)
 
 ## [v0.16.8](https://github.com/buildo/react-components/tree/v0.16.8) (2017-04-03)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.7...v0.16.8)
