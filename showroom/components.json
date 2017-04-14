@@ -631,12 +631,26 @@
         "readmeUrl": "async-status-indicator/README.md",
         "examples": [
           {
-            "title": "A typical usage", 
+            "title": "A typical usage",
             "url": "async-status-indicator/examples/default.js"
           },
           {
             "title": "All the states",
             "url": "async-status-indicator/examples/list.js"
+          }
+        ]
+      },
+      {
+        "id": "formatted-paragraph",
+        "title": "FormattedParagraph",
+        "desc": "A component that handles multiple \"\\n\"",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/formatted-paragraph",
+        "readmeUrl": "formatted-paragraph/README.md",
+        "examples": [
+          {
+            "title": "A typical usage",
+            "url": "formatted-paragraph/examples/default.js"
           }
         ]
       }
