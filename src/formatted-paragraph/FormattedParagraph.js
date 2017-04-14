@@ -35,13 +35,15 @@ export default class FormattedParagraph extends React.Component {
   }
 
   getLocals({ content, paragraphSpacing, ...props }) {
+    const { Paragraph } = this;
+
     const seriesOfNewParagraphs = content.match(/\n\n+/g);
     const paragraphs = content.split(/\n\n+/);
 
     const children = paragraphs.map((paragraph, i) => (
-      <this.Paragraph marginTop={i !== 0 ? paragraphSpacing * (seriesOfNewParagraphs[i - 1].length - 1) : 0}>
+      <Paragraph marginTop={i !== 0 ? paragraphSpacing * (seriesOfNewParagraphs[i - 1].length - 1) : 0}>
         {paragraph}
-      </this.Paragraph>
+      </Paragraph>
     ));
 
     return {
