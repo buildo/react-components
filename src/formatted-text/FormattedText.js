@@ -7,7 +7,6 @@ const linkify = require('linkify-it')().tlds(tlds);
 
 export const Props = {
   content: t.String,
-  paragraphSpacing: t.union([t.String, t.Number]),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -19,7 +18,7 @@ export const Props = {
  */
 @skinnable()
 @props(Props)
-export default class FormattedParagraph extends React.Component {
+export default class FormattedText extends React.Component {
 
   linkify(string) {
     const matches = linkify.match(string);

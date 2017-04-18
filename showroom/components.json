@@ -641,16 +641,16 @@
         ]
       },
       {
-        "id": "formatted-paragraph",
-        "title": "FormattedParagraph",
-        "desc": "A component that handles multiple \"\\n\"",
+        "id": "formatted-text",
+        "title": "FormattedText",
+        "desc": "A component that transforms `\\n` in `<br>` and links in `<a>`",
         "repo": "react-components",
-        "url": "https://github.com/buildo/react-components/tree/master/src/formatted-paragraph",
-        "readmeUrl": "formatted-paragraph/README.md",
+        "url": "https://github.com/buildo/react-components/tree/master/src/formatted-text",
+        "readmeUrl": "formatted-text/README.md",
         "examples": [
           {
             "title": "A typical usage",
-            "url": "formatted-paragraph/examples/default.js"
+            "url": "formatted-text/examples/default.js"
           }
         ]
       }
