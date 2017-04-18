@@ -1,5 +1,5 @@
 {
-  "extends": "buildo",
+  "extends": "./node_modules/scriptoni/lib/scripts/eslint/eslintrc.json",
   "globals": {
     "describe": true,
     "it": true,
