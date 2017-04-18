@@ -47,7 +47,7 @@ export default class FormattedParagraph extends React.Component {
 
   template(locals) {
     return (
-      <div {...locals} />
+      <span {...locals} />
     );
   }
 
