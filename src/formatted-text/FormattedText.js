@@ -12,7 +12,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-/** A component that correctly formats multiple "\n"
+/** A component that transforms `\n` in `<br>` and links in `<a>`
  * @param content - The content of the paragraph
  * @param paragraphSpacing - The space occupied by an empty line
  */
