@@ -1,5 +1,6 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
+import flattenDeep from 'lodash/flattenDeep';
 
 export const Props = {
   content: t.String,
@@ -17,38 +18,30 @@ export const Props = {
 @props(Props)
 export default class FormattedParagraph extends React.Component {
 
-  Paragraph = ({ children, marginTop }) => {
-    const style = {
-      marginTop,
-      marginLeft: 0,
-      marginBottom: 0,
-      marginRight: 0
-    };
+  replaceBreaklinesWithBR(children) {
+    return flattenDeep([].concat(children).map((child) => {
+      if (t.String.is(child)) {
+        const paragraphs = child.split(/\n/g);
 
-    const _children = children.split('\n').map((p, i) => i > 0 ? [<br />, p] : p); // handle single breaklines ("\n") inside paragraph
-
-    return (
-      <p style={style}>
-        {_children}
-      </p>
-    );
+        return paragraphs.map((paragraph, i) => {
+          if (paragraph.length === 0) {
+            return <br />;
+          } else if (i < paragraphs.length - 1) {
+            return [paragraph, <br />];
+          } else {
+            return paragraph;
+          }
+        });
+      } else {
+        return child;
+      }
+    }));
   }
 
-  getLocals({ content, paragraphSpacing, ...props }) {
-    const { Paragraph } = this;
-
-    const seriesOfNewParagraphs = content.match(/\n\n+/g);
-    const paragraphs = content.split(/\n\n+/);
-
-    const children = paragraphs.map((paragraph, i) => (
-      <Paragraph marginTop={i !== 0 ? paragraphSpacing * (seriesOfNewParagraphs[i - 1].length - 1) : 0}>
-        {paragraph}
-      </Paragraph>
-    ));
-
+  getLocals({ content, ...props }) {
     return {
       ...props,
-      children
+      children: this.replaceBreaklinesWithBR(content)
     };
   }
 
