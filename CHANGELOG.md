@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.3...HEAD)
 
+#### New features:
+
+- Use scriptoni [#870](https://github.com/buildo/react-components/issues/870)
 
 ## [v0.20.3](https://github.com/buildo/react-components/tree/v0.20.3) (2017-04-15)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.2...v0.20.3)
