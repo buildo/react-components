@@ -1,6 +1,9 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
 import flattenDeep from 'lodash/flattenDeep';
+import tlds from 'tlds';
+
+const linkify = require('linkify-it')().tlds(tlds);
 
 export const Props = {
   content: t.String,
@@ -17,6 +20,33 @@ export const Props = {
 @skinnable()
 @props(Props)
 export default class FormattedParagraph extends React.Component {
+
+  linkify(string) {
+    const matches = linkify.match(string);
+    if (matches) {
+      return matches.reduce((acc, match, i) => {
+        const nextMatch = matches[i + 1];
+
+        return [
+          ...(acc || [string.slice(0, match.index)]),
+          <a href={match.url} target='_blank'>{match.raw}</a>,
+          string.slice(match.lastIndex, nextMatch ? nextMatch.index : undefined)
+        ];
+      }, null);
+    } else {
+      return string;
+    }
+  }
+
+  replaceLinksWithA(children) {
+    return flattenDeep([].concat(children).map((child) => {
+      if (t.String.is(child)) {
+        return this.linkify(child);
+      } else {
+        return child;
+      }
+    }));
+  }
 
   replaceBreaklinesWithBR(children) {
     return flattenDeep([].concat(children).map((child) => {
@@ -41,7 +71,7 @@ export default class FormattedParagraph extends React.Component {
   getLocals({ content, ...props }) {
     return {
       ...props,
-      children: this.replaceBreaklinesWithBR(content)
+      children: this.replaceLinksWithA(this.replaceBreaklinesWithBR(content))
     };
   }
 
