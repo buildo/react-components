@@ -6,7 +6,7 @@ import tlds from 'tlds';
 const linkify = require('linkify-it')().tlds(tlds);
 
 export const Props = {
-  content: t.String,
+  children: t.String,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -67,10 +67,10 @@ export default class FormattedText extends React.Component {
     }));
   }
 
-  getLocals({ content, ...props }) {
+  getLocals({ children, ...props }) {
     return {
       ...props,
-      children: this.replaceLinksWithA(this.replaceBreaklinesWithBR(content))
+      children: this.replaceLinksWithA(this.replaceBreaklinesWithBR(children))
     };
   }
 
