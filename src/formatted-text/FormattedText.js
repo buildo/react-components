@@ -13,7 +13,7 @@ export const Props = {
 };
 
 /** A component that transforms `\n` in `<br>` and links in `<a>`
- * @param content - The content of the paragraph
+ * @param children - The content of the paragraph
  * @param paragraphSpacing - The space occupied by an empty line
  */
 @skinnable()
