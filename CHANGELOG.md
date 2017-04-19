@@ -1,7 +1,13 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.3...HEAD)
+
+
+## [v0.21.0](https://github.com/buildo/react-components/tree/v0.21.0) (2017-04-19)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.20.3...v0.21.0)
+
+#### Breaking:
+
+- replace FormattedParagraph with FormattedText [#873](https://github.com/buildo/react-components/issues/873)
 
 #### New features:
 
