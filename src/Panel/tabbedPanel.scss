@@ -31,18 +31,6 @@ $tab-color-active: $brc-darkGrey !default;
         border-bottom: $tab-border-height-active solid $tab-border-color-active;
         color: $tab-color-active;
       }
-
-      > div {
-        text-align: center;
-
-        @include flex_flex(1 1 100%);
-        @include display_flex();
-        @include flex_align-items(center);
-
-        span {
-          width: 100%;
-        }
-      }
     }
   }
 }
