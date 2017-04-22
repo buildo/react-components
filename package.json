@@ -94,7 +94,7 @@
     "style-loader": "^0.16.0",
     "stylelint-webpack-plugin": "^0.7.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^2.2.1"
   },
   "peerDependencies": {
     "react": "^0.14 || ^15",
