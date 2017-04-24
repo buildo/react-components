@@ -105,7 +105,8 @@
       "react-router",
       "webpack",
       "webpack-dev-server",
-      "sass-loader"
+      "sass-loader",
+      "babel-loader"
     ]
   }
 }
