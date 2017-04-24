@@ -7,7 +7,7 @@ import FlexView from 'react-flexview';
 export const Props = t.subtype(t.struct({
   ...panelProps,
   tabs: t.struct({
-    headers: t.list(t.Str),
+    headers: t.list(t.String),
     activeIndex: t.maybe(t.Num),
     onSetActiveTab: t.maybe(t.Func)
   })
@@ -43,12 +43,11 @@ export default class TabbedPanel extends React.Component {
             basis='100%'
             key={i}
             className={cx('tabbed-panel-tab', { active: activeTabIndex === i })}
+            hAlignContent='center'
+            vAlignContent='center'
+            onClick={onSetActiveTab.bind(null, i)}
           >
-            <div onClick={onSetActiveTab.bind(null, i)}>
-              <span>
-                {header}
-              </span>
-            </div>
+            {header}
           </FlexView>
         ))}
       </FlexView>
