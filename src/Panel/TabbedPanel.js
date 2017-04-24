@@ -7,7 +7,7 @@ import FlexView from 'react-flexview';
 export const Props = t.subtype(t.struct({
   ...panelProps,
   tabs: t.struct({
-    headers: t.list(t.ReactChild),
+    headers: t.list(t.String),
     activeIndex: t.maybe(t.Num),
     onSetActiveTab: t.maybe(t.Func)
   })
