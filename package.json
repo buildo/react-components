@@ -60,7 +60,6 @@
     "tlds": "^1.185.0"
   },
   "devDependencies": {
-    "axios": "^0.15.0",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.21.0",
     "babel-jest": "^19.0.0",
