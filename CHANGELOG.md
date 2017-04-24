@@ -1,6 +1,12 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.21.0...HEAD)
 
+#### New features:
+
+- TabbedPanel should accept any content as tab header [#875](https://github.com/buildo/react-components/issues/875)
+- ScrollView: replace onWheel with onScroll [#243](https://github.com/buildo/react-components/issues/243)
 
 ## [v0.21.0](https://github.com/buildo/react-components/tree/v0.21.0) (2017-04-19)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.3...v0.21.0)
