@@ -9,7 +9,6 @@ const exampleProps = {
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },
   value: { value: 'test', label: 'Test', foo: 'bar' },
-  fakeProp: true,
   options: [
     { value: 'test', label: 'Test' },
     { value: 'test1', label: 'Test1' },
