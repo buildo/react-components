@@ -64,7 +64,7 @@
     "babel-cli": "^6.11.4",
     "babel-core": "^6.21.0",
     "babel-jest": "^19.0.0",
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^7.0.0",
     "babel-preset-buildo": "^0.1.1",
     "babel-register": "^6.11.6",
     "buildo-normalize-css": "^3.0.1",
