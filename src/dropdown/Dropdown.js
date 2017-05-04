@@ -5,6 +5,8 @@ import find from 'lodash/find';
 import omit from 'lodash/omit';
 import sortBy from 'lodash/orderBy';
 import findIndex from 'lodash/findIndex';
+import last from 'lodash/last';
+import dropRight from 'lodash/dropRight';
 import FlexView from 'react-flexview';
 import cx from 'classnames';
 import { warn } from '../utils/log';
@@ -202,8 +204,8 @@ export default class Dropdown extends React.Component {
         };
         return [...acc, newGroup];
       } else {
-        const lastGroup = acc.slice(-1)[0];
-        return [...acc.slice(0, -1), {
+        const lastGroup = last(acc);
+        return [...dropRight(acc), {
           optionGroupTitle: lastGroup.optionGroupTitle,
           optionGroup: [...lastGroup.optionGroup, o]
         }];
