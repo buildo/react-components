@@ -194,11 +194,16 @@ export default class Dropdown extends React.Component {
     const Option = optionComponent;
     const { groupByKey } = this.props;
     const groupedOptions = options.reduce((acc, o, i) => {
-      if (i === 0 || o[groupByKey] !== options[i - 1][groupByKey]) {
-        return [...acc, { optionGroupTitle: o[groupByKey] || '', optionGroup: [o] }];
+      const shouldCreateNewGroup = i === 0 || o[groupByKey] !== options[i - 1][groupByKey];
+      if (shouldCreateNewGroup) {
+        const newGroup = {
+          optionGroupTitle: o[groupByKey] || '',
+          optionGroup: [o]
+        };
+        return [...acc, newGroup];
       } else {
         const lastGroup = acc.slice(-1)[0];
-        return [...acc.slice(0, acc.length - 1), {
+        return [...acc.slice(0, -1), {
           optionGroupTitle: lastGroup.optionGroupTitle,
           optionGroup: [...lastGroup.optionGroup, o]
         }];
