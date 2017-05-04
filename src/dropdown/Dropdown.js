@@ -3,9 +3,10 @@ import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
 import find from 'lodash/find';
 import omit from 'lodash/omit';
-import groupBy from 'lodash/groupBy';
-import map from 'lodash/map';
 import sortBy from 'lodash/orderBy';
+import findIndex from 'lodash/findIndex';
+import last from 'lodash/last';
+import dropRight from 'lodash/dropRight';
 import FlexView from 'react-flexview';
 import cx from 'classnames';
 import { warn } from '../utils/log';
@@ -133,14 +134,8 @@ export default class Dropdown extends React.Component {
   };
 
   sortOptionsByGroup = (options) => {
-    return sortBy(options, (option) => {
-      if (option[this.props.groupByKey] === undefined) {
-        return '';
-      }
-      else {
-        return option[this.props.groupByKey];
-      }
-    });
+    const { groupByKey } = this.props;
+    return sortBy(options, option => option[groupByKey] ? findIndex(options, o => option[groupByKey] === o[groupByKey]) : -1);
   }
 
   getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
@@ -173,16 +168,11 @@ export default class Dropdown extends React.Component {
   focus = () => { this.select.focus(); }
 
   optionGroupRenderer = ( title ) => {
-    if (title === 'undefined') {
-      return null;
-    }
-    else {
-      return (
-        <FlexView className='Select-option-group'>
-          {this.props.optionGroupRenderer(title)}
-        </FlexView>
-      );
-    }
+    return title ? (
+      <FlexView className='Select-option-group'>
+        {this.props.optionGroupRenderer(title)}
+      </FlexView>
+    ) : null;
   }
 
   _menuRenderer = ({
@@ -199,11 +189,31 @@ export default class Dropdown extends React.Component {
   }) => {
 
     const Option = optionComponent;
-    const propertyName = this.props.groupByKey;
+    const { groupByKey } = this.props;
+    const groupedOptions = options.reduce((acc, o, i) => {
 
-    return map(groupBy(options, propertyName), (optionGroup, optionGroupTitle) => {
+      // options are already sorted by group, so we know when a new group starts
+      // just by checking the previous option
+      const shouldCreateNewGroup = i === 0 || o[groupByKey] !== options[i - 1][groupByKey];
+
+      if (shouldCreateNewGroup) {
+        const newGroup = {
+          optionGroupTitle: o[groupByKey],
+          optionGroup: [o]
+        };
+        return [...acc, newGroup];
+      } else {
+        const lastGroup = last(acc);
+        return [...dropRight(acc), {
+          optionGroupTitle: lastGroup.optionGroupTitle,
+          optionGroup: [...lastGroup.optionGroup, o]
+        }];
+      }
+    }, []);
+
+    return groupedOptions.map(({ optionGroup, optionGroupTitle }) => {
       return (
-        <FlexView column key={optionGroupTitle}>
+        <FlexView column key={optionGroupTitle || ''}>
           {this.optionGroupRenderer(optionGroupTitle)}
           {optionGroup.map((option, i) => {
             const isSelected = valueArray && valueArray.indexOf(option) > -1;

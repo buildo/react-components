@@ -9,6 +9,7 @@ class Example extends React.Component {
     const { onChange, state: { value } } = this;
 
     const options = [
+      { value: 'cucumber', label: 'Cucumber', category: 'Vegetable'},
       { value: 'apple', label: 'Apple', category: 'Fruit'},
       { value: 'orange', label: 'Orange', category: 'Fruit' },
       { value: 'mandarin', label: 'Mandarin', category: 'Fruit' },
@@ -17,8 +18,8 @@ class Example extends React.Component {
       { value: 'apricot', label: 'Apricot', category: 'Fruit' },
       { value: 'tomato', label: 'Tomato', category: 'Vegetable' },
       { value: 'pineapple', label: 'Pineapple', category: 'Fruit' },
-      { value: 'cucumber', label: 'Cucumber', category: 'Vegetable'},
-      { value: 'banana', label: 'Banana', category: 'Fruit'}
+      { value: 'banana', label: 'Banana', category: 'Fruit'},
+      { value: 'meat', label: 'Meat' }
     ];
     return (
       <Dropdown
