@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.21.0...HEAD)
 
+#### Breaking:
+
+- Dropdown: option groups should preserve the order in which they appear [#880](https://github.com/buildo/react-components/issues/880)
+
 #### New features:
 
 - TabbedPanel should accept any content as tab header [#875](https://github.com/buildo/react-components/issues/875)
