@@ -90,7 +90,7 @@ export default class LoadingSpinner extends React.Component {
     return (
       <div ref='loadingSpinner' className={className} style={style} id={id}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
-          <div className='spinner' style={spinnerStyle}/>
+          <div className='spinner' style={spinnerStyle} />
           {this.getMessage()}
         </div>
       </div>
