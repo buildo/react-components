@@ -167,7 +167,7 @@ export default class Button extends React.Component {
 
   templateLabel = ({ label, TextOverflow }) => (
     <FlexView className='button-label' column shrink={false} vAlignContent='center' hAlignContent='center'>
-      <TextOverflow label={label} popover={{ offsetY: -8 }}/>
+      <TextOverflow label={label} popover={{ offsetY: -8 }} />
     </FlexView>
   );
 
