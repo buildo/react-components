@@ -91,7 +91,7 @@
     "sass-loader": "^4.1.0",
     "scriptoni": "^0.5.0",
     "smooth-release": "^8.0.0",
-    "style-loader": "^0.17.0",
+    "style-loader": "^0.18.1",
     "stylelint-webpack-plugin": "^0.7.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
