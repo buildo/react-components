@@ -15,6 +15,77 @@ const isEmptyArray = x => t.Array.is(x) && x.length === 0;
 
 const defaultOptionGroupRenderer = title => title;
 
+export const defaultMenuRenderer = ({
+  focusedOption,
+  instancePrefix,
+  onFocus,
+  onSelect,
+  groupByKey,
+  optionClassName,
+  optionComponent,
+  optionRenderer,
+  optionGroupRenderer,
+  options,
+  valueArray,
+  valueKey
+}) => {
+  const Option = optionComponent;
+  const groupedOptions = options.reduce((acc, o, i) => {
+
+    // options are already sorted by group, so we know when a new group starts
+    // just by checking the previous option
+    const shouldCreateNewGroup = i === 0 || o[groupByKey] !== options[i - 1][groupByKey];
+
+    if (shouldCreateNewGroup) {
+      const newGroup = {
+        optionGroupTitle: o[groupByKey],
+        optionGroup: [o]
+      };
+      return [...acc, newGroup];
+    } else {
+      const lastGroup = last(acc);
+      return [...dropRight(acc), {
+        optionGroupTitle: lastGroup.optionGroupTitle,
+        optionGroup: [...lastGroup.optionGroup, o]
+      }];
+    }
+  }, []);
+
+  return groupedOptions.map(({ optionGroup, optionGroupTitle }) => (
+    <FlexView column key={optionGroupTitle || ''}>
+      {optionGroupRenderer(optionGroupTitle)}
+      {optionGroup.map((option, i) => {
+        const isSelected = valueArray && valueArray.indexOf(option) > -1;
+        const isFocused = option === focusedOption;
+        const optionRef = isFocused ? 'focused' : null;
+        const optionClass = cx(optionClassName, {
+          'Select-option': true,
+          'is-selected': isSelected,
+          'is-focused': isFocused,
+          'is-disabled': option.disabled
+        });
+        return (
+          <Option
+            className={optionClass}
+            instancePrefix={instancePrefix}
+            isDisabled={option.disabled}
+            isFocused={isFocused}
+            isSelected={isSelected}
+            key={`option-${i}-${option[valueKey]}`}
+            onFocus={onFocus}
+            onSelect={onSelect}
+            option={option}
+            optionIndex={i}
+            ref={optionRef}
+          >
+            {optionRenderer(option, i)}
+          </Option>
+        );
+      })}
+    </FlexView>
+  ));
+};
+
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
   valueLink: t.maybe(t.struct({
@@ -104,6 +175,7 @@ export default class Dropdown extends React.Component {
     simpleValue: true,
     groupByKey: 'optionGroup',
     optionGroupRenderer: defaultOptionGroupRenderer,
+    menuRenderer: defaultMenuRenderer,
     menuPosition: 'bottom'
   }
 
@@ -175,76 +247,12 @@ export default class Dropdown extends React.Component {
     ) : null;
   }
 
-  _menuRenderer = ({
-    focusedOption,
-    instancePrefix,
-    onFocus,
-    onSelect,
-    optionClassName,
-    optionComponent,
-    optionRenderer,
-    options,
-    valueArray,
-    valueKey
-  }) => {
-
-    const Option = optionComponent;
-    const { groupByKey } = this.props;
-    const groupedOptions = options.reduce((acc, o, i) => {
-
-      // options are already sorted by group, so we know when a new group starts
-      // just by checking the previous option
-      const shouldCreateNewGroup = i === 0 || o[groupByKey] !== options[i - 1][groupByKey];
-
-      if (shouldCreateNewGroup) {
-        const newGroup = {
-          optionGroupTitle: o[groupByKey],
-          optionGroup: [o]
-        };
-        return [...acc, newGroup];
-      } else {
-        const lastGroup = last(acc);
-        return [...dropRight(acc), {
-          optionGroupTitle: lastGroup.optionGroupTitle,
-          optionGroup: [...lastGroup.optionGroup, o]
-        }];
-      }
-    }, []);
-
-    return groupedOptions.map(({ optionGroup, optionGroupTitle }) => {
-      return (
-        <FlexView column key={optionGroupTitle || ''}>
-          {this.optionGroupRenderer(optionGroupTitle)}
-          {optionGroup.map((option, i) => {
-            const isSelected = valueArray && valueArray.indexOf(option) > -1;
-            const isFocused = option === focusedOption;
-            const optionRef = isFocused ? 'focused' : null;
-            const optionClass = cx(optionClassName, {
-              'Select-option': true,
-              'is-selected': isSelected,
-              'is-focused': isFocused,
-              'is-disabled': option.disabled
-            });
-            return (
-              <Option
-                className={optionClass}
-                instancePrefix={instancePrefix}
-                isDisabled={option.disabled}
-                isFocused={isFocused}
-                isSelected={isSelected}
-                key={`option-${i}-${option[valueKey]}`}
-                onFocus={onFocus}
-                onSelect={onSelect}
-                option={option}
-                optionIndex={i}
-                ref={optionRef}
-              >
-                {optionRenderer(option, i)}
-              </Option>
-            );
-          })}
-        </FlexView>
-      );
+  menuRenderer = args => {
+    const { optionGroupRenderer, props: { menuRenderer, groupByKey } } = this;
+    return menuRenderer({
+      ...args,
+      groupByKey,
+      optionGroupRenderer
     });
   }
 
@@ -252,7 +260,6 @@ export default class Dropdown extends React.Component {
     const {
       _onChange,
       onInputKeyDown,
-      _menuRenderer,
       props: { className, options, backspaceRemoves, clearable, ...props }
     } = this;
 
@@ -266,7 +273,7 @@ export default class Dropdown extends React.Component {
       value: this.valueToOption(this.getValue(), options),
       onInputKeyDown,
       onChange: _onChange,
-      menuRenderer: this.props.menuRenderer || _menuRenderer
+      menuRenderer: this.menuRenderer
     };
   }
 
