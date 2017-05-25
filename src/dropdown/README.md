@@ -20,7 +20,7 @@ A dropdown field based on [react-select](https://github.com/JedWatson/react-sele
 | **autoBlur** | <code>Boolean</code> | <code>true</code> | *optional*. Whether it should blur automatically when the user selects a value |
 | **simpleValue** | <code>Boolean</code> | <code>true</code> | *optional*. If true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects |
 | **menuPosition** | <code>enum("top" &#124; "bottom")</code> | <code>"bottom"</code> | *optional*. Whether the menu should be rendered on top or bottom when it's open |
-| **menuRenderer** | <code>Function</code> |  | *optional*. The function that can be used to override the default drop-down list of options |
+| **menuRenderer** | <code>Function</code> | <code>"defaultMenuRenderer"</code> | *optional*. The function that can be used to override the default drop-down list of options |
 | **groupByKey** | <code>String</code> | <code>"optionGroup"</code> | *optional*. The field name to group by |
 | **optionGroupRenderer** | <code>Function</code> | <code>"defaultOptionGroupRenderer"</code> | *optional*. The function that gets used to render the content of an option group |
 | **placeholder** | <code>union(String &#124; ReactElement)</code> |  | *optional*. Placeholder shown when no value is selected |
