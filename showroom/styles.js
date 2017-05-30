@@ -16,7 +16,6 @@ import '../src/dropdown/dropdown.scss';
 import '../src/confirmation-input/confirmationInput.scss';
 import '../src/badge/badge.scss';
 import '../src/toggle/toggle.scss';
-import '../src/table/table.scss';
 import '../src/Tooltip/tooltip.scss';
 import '../src/Panel/panel.scss';
 import '../src/Panel/tabbedPanel.scss';
