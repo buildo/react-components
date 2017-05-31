@@ -2,6 +2,13 @@
 
 
 
+## [v0.23.0](https://github.com/buildo/react-components/tree/v0.23.0) (2017-05-31)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.22.1...v0.23.0)
+
+#### Breaking:
+
+- Remove Table [#895](https://github.com/buildo/react-components/issues/895)
+
 ## [v0.22.1](https://github.com/buildo/react-components/tree/v0.22.1) (2017-05-30)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.22.0...v0.22.1)
 
