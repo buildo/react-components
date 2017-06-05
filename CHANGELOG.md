@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- React peerDependency is still <0.15 [#894](https://github.com/buildo/react-components/issues/894)
 
 ## [v0.23.0](https://github.com/buildo/react-components/tree/v0.23.0) (2017-05-31)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.22.1...v0.23.0)
