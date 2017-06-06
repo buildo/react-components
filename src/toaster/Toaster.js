@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import ReactTransitionGroup from 'react-addons-transition-group';
+import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import TransitionWrapper from '../transition-wrapper/TransitionWrapper';

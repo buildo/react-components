@@ -1,5 +1,5 @@
 import React from 'react';
-import { pure, skinnable, props, t, contains } from '../../../utils';
+import { skinnable, props, t, contains } from '../../../utils';
 
 import cx from 'classnames';
 import find from 'lodash/find';
@@ -25,9 +25,8 @@ export default (Grid) =>
     columnsOrder: maybe(list(t.String)),
     onColumnsReorder: maybe(t.Function)
   }, { strict: false })
-  @pure
   @skinnable(contains(Grid))
-  class ColumnsReorderGrid extends React.Component {
+  class ColumnsReorderGrid extends React.PureComponent {
 
     constructor() {
       super();

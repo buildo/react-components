@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../../utils';
+import { skinnable, props, t } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';
 
@@ -56,8 +56,7 @@ const template = ({
 };
 
 @skinnable(template)
-@pure
 @props(propsTypes)
-export default class Cell extends React.Component {}
+export default class Cell extends React.PureComponent {}
 
 export const defaultCell = <Cell>{dataCell => dataCell}</Cell>;

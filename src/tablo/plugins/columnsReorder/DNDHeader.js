@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
-import { pure, skinnable, props, t } from '../../../utils';
+import { skinnable, props, t } from '../../../utils';
 import FlexView from 'react-flexview';
 import flowRight from 'lodash/flowRight';
 import identity from 'lodash/identity';
@@ -71,7 +71,6 @@ const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
 @DragSource(columnType, columnSource, collectSource)
 @DropTarget(columnType, columnTarget, collectTarget)
 @skinnable()
-@pure
 @props({
   connectDragSource: t.Function,
   connectDragPreview: t.Function,
@@ -90,7 +89,7 @@ const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
   tabloUniqueId: t.String,
   children: t.ReactChildren
 })
-export default class DNDHeader extends React.Component {
+export default class DNDHeader extends React.PureComponent {
 
   getLocals({ connectDragSource, connectDropTarget, isDragAllowed, ...props }) {
     const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragSource) : identity;

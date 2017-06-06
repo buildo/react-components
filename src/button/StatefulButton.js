@@ -1,6 +1,6 @@
 import React from 'react';
 import pick from 'lodash/pick';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import Button, { ButtonPropTypes } from './Button';
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
@@ -43,7 +43,6 @@ import Button, { ButtonPropTypes } from './Button';
  * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
  */
 
-@pure
 @skinnable()
 @props({
   ...ButtonPropTypes,
@@ -51,7 +50,7 @@ import Button, { ButtonPropTypes } from './Button';
   stableSuccess: t.maybe(t.Boolean),
   timerMillis: t.maybe(t.Number)
 })
-export default class StatefulButton extends React.Component {
+export default class StatefulButton extends React.PureComponent {
 
   static defaultProps = {
     stableSuccess: false,

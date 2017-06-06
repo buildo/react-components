@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t, contains } from '../../../utils';
+import { skinnable, props, t, contains } from '../../../utils';
 
 import Column, { defaultColumns, updateColumns } from '../../Column';
 
@@ -49,9 +49,8 @@ const getLocals = ({ onColumnResize, ...props }) => {
 export default (Grid) =>
 
   @skinnable(contains(Grid))
-  @pure
   @props(propsTypes, { strict: false })
-  class ColumnResizeGrid extends React.Component {
+  class ColumnResizeGrid extends React.PureComponent {
 
     getLocals = getLocals
 

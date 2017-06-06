@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
-import { pure, skinnable, props, t } from '../../../utils';
+import { skinnable, props, t } from '../../../utils';
 
 const { enums } = t;
 
@@ -19,6 +19,5 @@ const template = ({ arrowDir, className }) => {
 };
 
 @skinnable(template)
-@pure
 @props(propsTypes)
-export default class Arrow extends React.Component {}
+export default class Arrow extends React.PureComponent {}

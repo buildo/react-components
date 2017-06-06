@@ -1,18 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../../../utils';
+import { skinnable, props, t } from '../../../utils';
 import FlexView from 'react-flexview';
 import Arrow from './Arrow';
 
 const { maybe, enums } = t;
 
 @skinnable()
-@pure
 @props({
   sortDir: maybe(enums.of(['asc', 'desc'], 'sortDir')),
   children: t.ReactChildren
 })
-export default class SortableHeader extends React.Component {
+export default class SortableHeader extends React.PureComponent {
 
   getLocals({ sortDir, children }) {
     return {

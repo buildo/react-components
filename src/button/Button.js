@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import every from 'lodash/every';
-import { pure, skinnable, props, t, stateClassUtil } from '../utils';
+import { skinnable, props, t, stateClassUtil } from '../utils';
 import _TextOverflow from '../text-overflow/TextOverflow';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
@@ -87,10 +87,9 @@ const makeProp = x => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // 
  * @param textOverflow - function to handle the overflow of too long labels, replacing with ellipsed string and tooltip
 
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Button extends React.Component {
+export default class Button extends React.PureComponent {
 
   static defaultProps = defaultProps;
 

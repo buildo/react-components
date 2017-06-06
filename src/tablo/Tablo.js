@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
@@ -45,7 +45,6 @@ const { maybe } = t;
  * @param isColumnResizing - Private
  */
 @skinnable()
-@pure
 @props({
   // public
   className: maybe(t.String),
@@ -72,7 +71,7 @@ const { maybe } = t;
   onColumnResizeEndCallback: maybe(t.Function),
   isColumnResizing: maybe(t.Boolean)
 })
-export default class Tablo extends React.Component {
+export default class Tablo extends React.PureComponent {
 
   static defaultProps = {
     rowClassNameGetter: () => '',

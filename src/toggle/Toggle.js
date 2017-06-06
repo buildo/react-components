@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import cx from 'classnames';
 import { getValueLink } from '../link-state';
 import { warn } from '../utils/log';
@@ -24,10 +24,9 @@ export const Props = {
  * @param valueLink - to be used together with `linkState`
  * @param size - The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2`
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Toggle extends React.Component {
+export default class Toggle extends React.PureComponent {
 
   componentDidMount() {
     this.updateCheckbox(this.props);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { pure, props, t, skinnable } from '../utils';
+import { props, t, skinnable } from '../utils';
 import Menu, { optionType } from './Menu';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
@@ -31,10 +31,9 @@ export const Props = {
  * @param size - small | medium | large
  * @param maxHeight - menu button max-height
  */
-@pure
 @skinnable()
 @props(Props)
-export default class DropdownMenu extends React.Component {
+export default class DropdownMenu extends React.PureComponent {
   static defaultProps = {
     isOpen: false,
     dismissOnClickOut: true

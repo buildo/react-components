@@ -1,5 +1,5 @@
 import React from 'react';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import cx from 'classnames';
 import View from 'react-flexview';
 
@@ -25,10 +25,9 @@ export const Props = {
  * @param className - an optional class name to pass to top level element of the component
  * @param style - an optional style object to pass to top level element of the component
  */
-@pure
 @skinnable()
 @props(Props)
-export default class AsyncStatusIndicator extends React.Component {
+export default class AsyncStatusIndicator extends React.PureComponent {
 
   getLocals({ state, icons, labels, className, style }) {
     const icon = icons[state] || null;
