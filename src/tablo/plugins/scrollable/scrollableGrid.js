@@ -1,6 +1,6 @@
 import React from 'react';
 import omit from 'lodash/omit';
-import { pure, skinnable, props, t, contains } from '../../../utils';
+import { skinnable, props, t, contains } from '../../../utils';
 import cx from 'classnames';
 
 const { maybe } = t;
@@ -13,9 +13,8 @@ export default (Grid) => (
     onScrollStart: maybe(t.Function),
     onScrollEnd: maybe(t.Function)
   }, { strict: false })
-  @pure
   @skinnable(contains(Grid))
-  class ScrollableGrid extends React.Component {
+  class ScrollableGrid extends React.PureComponent {
 
     state = {
       scrollTop: this.props.scrollTop

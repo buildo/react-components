@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t, contains } from '../../../utils';
+import { skinnable, props, t, contains } from '../../../utils';
 import includes from 'lodash/includes';
 
 const { list, maybe, enums } = t;
@@ -53,9 +53,8 @@ const getLocals = ({
 export default (Grid) =>
 
   @skinnable(contains(Grid))
-  @pure
   @props(propsTypes, { strict: false })
-  class SelectableGrid extends React.Component {
+  class SelectableGrid extends React.PureComponent {
 
     getLocals = getLocals
 

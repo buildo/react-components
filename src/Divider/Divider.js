@@ -1,5 +1,5 @@
 import React from 'react';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import cx from 'classnames';
 
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
@@ -21,10 +21,9 @@ const defaultDividerProps = {
  * @param orientation - vertical | horizontal
  * @param size - size of margins
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Divider extends React.Component {
+export default class Divider extends React.PureComponent {
 
   static defaultProps = defaultDividerProps;
 

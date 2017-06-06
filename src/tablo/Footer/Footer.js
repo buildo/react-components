@@ -1,6 +1,6 @@
 import React from 'react';
 import FlexView from 'react-flexview';
-import { pure, skinnable, props, t } from '../../utils';
+import { skinnable, props, t } from '../../utils';
 
 const { maybe } = t;
 
@@ -28,6 +28,5 @@ const template = ({ children }) => {
 };
 
 @skinnable(template)
-@pure
 @props(propsTypes)
-export default class Footer extends React.Component {}
+export default class Footer extends React.PureComponent {}

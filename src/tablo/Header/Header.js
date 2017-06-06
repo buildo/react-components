@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../../utils';
+import { skinnable, props, t } from '../../utils';
 import FlexView from 'react-flexview';
 
 const { maybe } = t;
@@ -47,9 +47,8 @@ const template = ({ onClick, className, children, fixed }) => {
 };
 
 @skinnable(template)
-@pure
 @props(propsTypes)
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
 
   getLocals = getLocals
 

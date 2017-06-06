@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { props, t, skinnable, pure } from '../utils';
+import { props, t, skinnable } from '../utils';
 import PanelHeader, { HeaderSize } from './PanelHeader';
 import capitalize from 'lodash/capitalize';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
@@ -41,10 +41,9 @@ export const Props = {
  * @param children - panel content
  * @param clearMargin: top | left | right | bottom
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Panel extends React.Component {
+export default class Panel extends React.PureComponent {
   static defaultProps = {
     style: {},
     loading: false,

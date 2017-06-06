@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { props, t, skinnable, pure } from '../utils';
+import { props, t, skinnable } from '../utils';
 import Panel, { Props as panelProps } from './Panel';
 import FlexView from 'react-flexview';
 
@@ -13,10 +13,9 @@ export const Props = t.subtype(t.struct({
   })
 }), ({ tabs }) => tabs.headers.length > 0);
 
-@pure
 @skinnable()
 @props(Props)
-export default class TabbedPanel extends React.Component {
+export default class TabbedPanel extends React.PureComponent {
 
   onSetActiveTab = activeTabIndex => {
     const { tabs: { onSetActiveTab } } = this.props;

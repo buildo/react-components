@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import FlexView from 'react-flexview';
 
 export const Props = {
@@ -14,10 +14,9 @@ export const Props = {
  * @param label - the descriptive content of the badge
  * @param active - tells if the badge is active (for styling purposes)
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Badge extends React.Component {
+export default class Badge extends React.PureComponent {
 
   getLocals() {
     const { label, active, className, style } = this.props;

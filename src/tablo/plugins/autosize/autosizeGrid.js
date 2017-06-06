@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { pure, skinnable, props, t } from '../../../utils';
+import { skinnable, props, t } from '../../../utils';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../resize-sensor/ResizeSensor';
@@ -13,9 +13,8 @@ export default (Grid) =>
     className: maybe(t.String),
     autosize: maybe(t.Boolean)
   }, { strict: false })
-  @pure
   @skinnable()
-  class AutosizeGrid extends React.Component {
+  class AutosizeGrid extends React.PureComponent {
 
     state = {}
 

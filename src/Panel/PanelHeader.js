@@ -1,5 +1,5 @@
 import React from 'react';
-import { props, t, pure, skinnable, stateClassUtil } from '../utils';
+import { props, t, skinnable, stateClassUtil } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 import cx from 'classnames';
@@ -14,7 +14,6 @@ const icons = {
 const headerSizes = ['tiny', 'small', 'medium'];
 export const HeaderSize = t.enums.of(headerSizes, 'HeaderSize');
 
-@pure
 @skinnable()
 @props({
   collapse: t.maybe(t.struct({
@@ -27,7 +26,7 @@ export const HeaderSize = t.enums.of(headerSizes, 'HeaderSize');
   content: t.maybe(t.ReactChildren),
   menu: t.maybe(t.ReactChildren)
 })
-export default class PanelHeader extends React.Component {
+export default class PanelHeader extends React.PureComponent {
 
   static defaultProps={
     size: HeaderSize('small')

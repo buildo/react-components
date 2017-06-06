@@ -1,6 +1,6 @@
 import React from 'react';
 import range from 'lodash/range';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import cx from 'classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
@@ -20,10 +20,9 @@ export const Props = {
  * @param paths - number of paths the icon is composed of
  * @param onClick - onClick callback
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Icon extends React.Component {
+export default class Icon extends React.PureComponent {
 
   static defaultProps = {
     paths: 1,

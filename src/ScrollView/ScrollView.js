@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { pure, skinnable, props, t } from '../utils';
+import { skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
 import ResizeSensor from '../resize-sensor/ResizeSensor';
 
@@ -24,10 +24,9 @@ export const Props = {
  * @param className - className to pass to the wrapper component
  * @param style - style to pass to the wrapper component
  */
-@pure
 @skinnable()
 @props(Props)
-export default class ScrollView extends React.Component {
+export default class ScrollView extends React.PureComponent {
 
   static defaultProps = {
     component: 'div',

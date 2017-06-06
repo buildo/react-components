@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { pure, props, t, skinnable } from '../utils';
+import { props, t, skinnable } from '../utils';
 import partial from 'lodash/partial';
 import FlexView from 'react-flexview';
 import Divider from '../Divider/Divider';
@@ -22,10 +22,9 @@ export const Props = {
   onClick: t.maybe(t.Func)
 };
 
-@pure
 @skinnable()
 @props(Props)
-export default class Menu extends React.Component {
+export default class Menu extends React.PureComponent {
 
   constructor(props) {
     super(props);

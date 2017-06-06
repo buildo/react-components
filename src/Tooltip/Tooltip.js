@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { pure, props, skinnable, t, stateClassUtil } from '../utils';
+import { props, skinnable, t, stateClassUtil } from '../utils';
 import Popover from '../popover/Popover';
 
 export const Props = {
@@ -19,10 +19,9 @@ export const Props = {
  * @param type - light | dark
  * @param size - small | big
  */
-@pure
 @skinnable()
 @props(Props)
-export default class Tooltip extends React.Component {
+export default class Tooltip extends React.PureComponent {
 
   static defaultProps = {
     type: 'dark',
