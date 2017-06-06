@@ -5,7 +5,12 @@
 
 #### Fixes (bugs & defects):
 
+- Warnings while installing [#899](https://github.com/buildo/react-components/issues/899)
 - React peerDependency is still <0.15 [#894](https://github.com/buildo/react-components/issues/894)
+
+#### New features:
+
+- Interested in cooperation? [#897](https://github.com/buildo/react-components/issues/897)
 
 ## [v0.23.0](https://github.com/buildo/react-components/tree/v0.23.0) (2017-05-31)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.22.1...v0.23.0)
