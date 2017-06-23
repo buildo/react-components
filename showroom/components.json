@@ -640,6 +640,20 @@
             "url": "formatted-text/examples/default.js"
           }
         ]
+      },
+      {
+        "id": "new-date-picker",
+        "title": "NewDatePicker",
+        "desc": "A datepicker component based on react-datepicker",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/NewDatePicker",
+        "readmeUrl": "NewDatePicker/README.md",
+        "examples": [
+          {
+            "title": "A typical usage",
+            "url": "NewDatePicker/examples/default.js"
+          }
+        ]
       }
     ]
   }

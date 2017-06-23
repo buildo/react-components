@@ -1,0 +1,174 @@
+@import '../utils/theme/variables.scss';
+
+$react-dates-width-input: 150px !default;
+$react-dates-color-primary: $brc-azure !default;
+
+$react-dates-color-primary-shade-1: $brc-azure30 !default;  // used as border of selected range
+$react-dates-color-primary-shade-2: $brc-azure10 !default;  // used as background of selected range
+$react-dates-color-primary-shade-3: $brc-azure !default;    // used as border on hover range
+$react-dates-color-primary-shade-4: $brc-azure30 !default;  // used as background of hover range
+
+$react-dates-color-secondary: $brc-darkGrey !default;       // font-color on hover range
+$react-dates-color-white: $brc-white !default;
+$react-dates-color-gray: $brc-darkGrey !default;
+$react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
+$react-dates-color-gray-light: $brc-coolGrey;
+$react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
+$react-dates-color-gray-lightest: lighten($react-dates-color-gray, 60%) !default;
+$react-dates-color-highlighted: #ffe8bc !default;
+
+$react-dates-color-border: $brc-paleGrey !default;
+$react-dates-color-border-light: $brc-paleGrey !default;
+$react-dates-color-border-medium: $brc-paleGrey !default;
+$react-dates-color-placeholder-text: $brc-coolGrey !default;
+$react-dates-color-text: $brc-darkGrey !default;
+$react-dates-color-text-focus: $brc-darkGrey !default;
+$react-dates-color-focus: transparent !default;
+
+$react-dates-z-index: 100 !default;
+
+@import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+
+.date-picker {
+  .CalendarMonth__caption {
+    background-image: linear-gradient(to top, #1789de, #2da1f8);
+    color: $brc-white;
+    margin-top: 0;
+    padding-top: 22px;
+  }
+
+  .SingleDatePickerInput {
+    height: 36px;
+
+    .DateInput {
+      padding: 0 8px;
+      font-size: 14px;
+      height: 100%;
+      line-height: 26px;
+
+      &.DateInput--with-caret {
+        &::before,
+        &::after {
+          top: 40px;
+        }
+
+        &::after {
+          border-bottom-color: #2da1f8;
+        }
+      }
+    }
+
+    .SingleDatePickerInput__clear-date {
+      padding: 0 2px;
+
+      svg {
+        height: 8px;
+        vertical-align: baseline;
+      }
+    }
+  }
+
+  .SingleDatePicker__picker {
+    top: 50px;
+  }
+
+  &.is-small {
+    .SingleDatePickerInput {
+      height: 25px;
+
+      .DateInput {
+        line-height: 15px;
+        font-size: 10px;
+
+        &.DateInput--with-caret {
+          &::before,
+          &::after {
+            top: 30px;
+          }
+        }
+      }
+    }
+
+    .SingleDatePicker__picker {
+      top: 40px;
+    }
+  }
+
+  .CalendarDay {
+    &.CalendarDay--valid {
+      &:not(.CalendarDay--outside):not(.CalendarDay--selected) {
+        background-color: $brc-paleGrey;
+      }
+    }
+
+    &.CalendarDay--blocked-calendar {
+      background-color: $brc-white;
+      color: $brc-coolGrey;
+    }
+
+    .CalendarDay--selected-span {
+      color: $brc-darkGrey;
+    }
+  }
+
+  .CalendarMonthGrid {
+    left: 0;
+  }
+
+  .CalendarMonth,
+  .DayPicker__week-header {
+    padding: 0;
+  }
+
+  .DayPicker--horizontal {
+    .DayPicker__week-headers {
+      position: absolute;
+      top: 55px;
+      z-index: 200;
+      width: 100%;
+      margin-left: 0;
+
+      .DayPicker__week-header {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0 !important;
+        margin-bottom: 2px;
+        color: $brc-white;
+        font-size: 16px;
+      }
+    }
+
+    .DayPickerNavigation__prev {
+      left: 5px;
+      background: transparent;
+      border: 0;
+    }
+
+    .DayPickerNavigation__next {
+      right: 5px;
+      background: transparent;
+      border: 0;
+    }
+
+    .DayPickerNavigation__prev,
+    .DayPickerNavigation__next {
+      .icon::before {
+        color: $brc-white;
+      }
+    }
+  }
+
+  .DayPicker,
+  .transition-container {
+    width: 212px !important;
+  }
+}
+
+.two-months {
+  .DayPicker,
+  .transition-container {
+    width: 424px !important;
+  }
+}
