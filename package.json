@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-dev": "jest --watch",
-    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel src -d lib",
+    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel src -d lib && (cd src; tar cf - ./**/*.d.ts) | (cd lib; tar xf -)",
     "lint": "scriptoni lint src showroom test",
     "lint-fix": "scriptoni lint --fix src showroom test",
     "lint-style": "scriptoni lint-style \"src/**/*.scss\" \"showroom/**/*.scss\"",
