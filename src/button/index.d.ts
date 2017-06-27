@@ -1,6 +1,4 @@
-import Button, { ButtonProps } from './Button';
-import StatefulButton, { StatefulButtonProps } from './StatefulButton';
-export {
-  Button, ButtonProps,
-  StatefulButton, StatefulButtonProps
-};
+import Button from './Button';
+import StatefulButton from './StatefulButton';
+export default Button;
+export { StatefulButton };
