@@ -1,4 +1,5 @@
 import { PureComponent, ReactChildren } from 'react';
+import { Type } from 'tcomb';
 import { PanelProps } from './Panel';
 
 
@@ -10,9 +11,15 @@ export type PanelHeaderProps = {
     isExpanded?: boolean
   },
   size?: PanelProps.HeaderSize,
-  content?: any,
-  title?: any,
-  menu?: any
+  content?: any, // TODO: t.ReactChildren
+  title?: any, // TODO: t.ReactChildren
+  menu?: any // TODO: t.ReactChildren
 }
 
 export default class PanelHeader extends PureComponent<PanelHeaderProps> {}
+
+export const Props: {
+  [key: string]: Type<any>
+}
+export const HeaderSize: PanelProps.HeaderSize
+

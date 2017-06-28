@@ -1,4 +1,5 @@
 import { CSSProperties, PureComponent } from 'react';
+import { Type } from 'tcomb';
 
 export namespace PanelProps {
 
@@ -14,10 +15,10 @@ export namespace PanelProps {
       isCollapsed?: boolean
     },
     size?: HeaderSize,
-    content?: any,
-    title?: any,
+    content?: any, // TODO: t.ReactChildren
+    title?: any, // TODO(typo): wtf
     hideTitleWhenExpanded?: boolean,
-    menu?: any
+    menu?: any // TODO: t.ReactChildren
   }
 }
 
@@ -35,3 +36,7 @@ export type PanelProps = {
 }
 
 export default class Panel extends PureComponent<PanelProps> {}
+
+export const Props: {
+  [key: string]: Type<any>
+}
