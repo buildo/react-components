@@ -1,0 +1,18 @@
+@import '../utils/theme/variables.scss';
+$outline-error: $brc-red !default;
+
+.date-field {
+  &.is-invalid input {
+    border-color: $outline-error;
+  }
+
+  input {
+    width: 50px;
+    margin-right: 15px;
+
+    &.year-field {
+      width: 80px;
+      margin-right: 0;
+    }
+  }
+}

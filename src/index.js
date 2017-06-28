@@ -31,3 +31,4 @@ export Tablo, { Column as TabloColumn, Cell, Header, Footer } from './tablo';
 export AsyncStatusIndicator from './async-status-indicator';
 export FormattedText from './formatted-text';
 export DatePicker from './DatePicker';
+export DateField from './date-field';
