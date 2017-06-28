@@ -11,8 +11,8 @@ export namespace ButtonProps {
 export type ButtonProps = {
     onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void,
     buttonState?: ButtonProps.ButtonState,
-    label?:string | object,
-    icon?:string | object,
+    label?: string | { [key in ButtonProps.ButtonState]: string },
+    icon?:string | { [key in ButtonProps.ButtonState]: string },
     children?: string,
     type?: ButtonProps.ButtonType,
     primary?: boolean,
@@ -21,7 +21,7 @@ export type ButtonProps = {
     fluid?: boolean,
     circular?: boolean,
     textOverflow?: React.ComponentClass<object>, // todo(typo) when translate text overflow, update here its props types
-    style?: object,
+    style?: React.CSSProperties,
     className?: string
   }
 
