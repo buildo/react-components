@@ -1,12 +1,13 @@
-import { PureComponent } from 'react';
+import { CSSProperties, PureComponent } from 'react';
 
 export type TextOverflowProps = {
-  label?: string | number,
-  popover?: object, // TODO(typo): Omit?
+  children?: (self: JSX.Element, isOpen: boolean) => any,
+  label: string,
   lazy?: boolean,
+  delayWhenLazy?: number,
   id?: string,
   className?: string,
-  style?: object
+  style?: CSSProperties
 }
 
 export default class TextOverflow extends PureComponent<TextOverflowProps, void> {}
