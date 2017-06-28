@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...HEAD)
 
+#### New features:
+
+- [typescript .d.ts] Add npm task to copy file in lib [#943](https://github.com/buildo/react-components/issues/943)
 
 ## [v0.23.1](https://github.com/buildo/react-components/tree/v0.23.1) (2017-06-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.0...v0.23.1)
