@@ -1,4 +1,4 @@
-import { PureComponent, ReactChildren, ReactNode } from 'react';
+import { PureComponent, ReactChildren } from 'react';
 import { PanelProps } from './Panel';
 
 
@@ -11,8 +11,8 @@ export type PanelHeaderProps = {
   },
   size?: PanelProps.HeaderSize,
   content?: any,
-  title?: ReactNode | string, // TODO(typo): wtf
-  menu?: ReactChildren
+  title?: any,
+  menu?: any
 }
 
 export default class PanelHeader extends PureComponent<PanelHeaderProps, void> {}

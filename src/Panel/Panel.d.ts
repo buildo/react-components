@@ -1,4 +1,4 @@
-import { PureComponent, ReactNode } from 'react';
+import { CSSProperties, PureComponent } from 'react';
 
 export namespace PanelProps {
 
@@ -15,23 +15,23 @@ export namespace PanelProps {
     },
     size?: HeaderSize,
     content?: any,
-    title?: ReactNode | string, // TODO(typo): wtf
+    title?: any,
     hideTitleWhenExpanded?: boolean,
     menu?: any
   }
 }
 
 export type PanelProps = {
-  children: ReactNode,
+  children: any,
   type: 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating',
   header?: PanelProps.Header,
   loading?: boolean,
   dark?: boolean,
   softLoading?: boolean,
-  softLoadingDelay?: boolean,
+  softLoadingDelay?: number,
   className?: string,
   clearMargin?: 'top' | 'left' | 'bottom' | 'right',
-  style?: Object
+  style?: CSSProperties
 }
 
 export default class Panel extends PureComponent<PanelProps, void> {}
