@@ -1,7 +1,15 @@
 #  Change Log
 
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.2...HEAD)
+
+#### New features:
+
+- [typescript .d.ts] NavBar [#932](https://github.com/buildo/react-components/issues/932)
+- [typescript .d.ts] BackgroundDimmer [#916](https://github.com/buildo/react-components/issues/916)
+
+## [v0.23.2](https://github.com/buildo/react-components/tree/v0.23.2) (2017-06-29)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...v0.23.2)
 
 #### New features:
 
