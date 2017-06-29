@@ -13,6 +13,7 @@ export type ButtonProps = {
     buttonState?: ButtonProps.ButtonState,
     label?: string | { [key in ButtonProps.ButtonState]: string },
     icon?:string | { [key in ButtonProps.ButtonState]: string },
+
     children?: string,
     type?: ButtonProps.ButtonType,
     primary?: boolean,
