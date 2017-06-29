@@ -7,6 +7,7 @@
 
 - [typescript .d.ts] Add npm task to copy file in lib [#943](https://github.com/buildo/react-components/issues/943)
 - [typescript .d.ts] TextOverflow [#937](https://github.com/buildo/react-components/issues/937)
+- [typescript .d.ts] Popover [#933](https://github.com/buildo/react-components/issues/933)
 - [typescript .d.ts] Button [#919](https://github.com/buildo/react-components/issues/919)
 - [typescript .d.ts] Badge [#917](https://github.com/buildo/react-components/issues/917)
 - [typescript .d.ts] Panel [#912](https://github.com/buildo/react-components/issues/912)
