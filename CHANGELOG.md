@@ -9,6 +9,8 @@
 - [typescript .d.ts] TextOverflow [#937](https://github.com/buildo/react-components/issues/937)
 - [typescript .d.ts] Button [#919](https://github.com/buildo/react-components/issues/919)
 - [typescript .d.ts] Badge [#917](https://github.com/buildo/react-components/issues/917)
+- [typescript .d.ts] Panel [#912](https://github.com/buildo/react-components/issues/912)
+- [typescript .d.ts] DropdownMenu [#910](https://github.com/buildo/react-components/issues/910)
 
 ## [v0.23.1](https://github.com/buildo/react-components/tree/v0.23.1) (2017-06-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.0...v0.23.1)
