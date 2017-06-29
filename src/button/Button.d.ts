@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export namespace ButtonProps {
 
-  type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
+  type ButtonBaseState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
   type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
   type ButtonSize = 'tiny' | 'small' | 'medium';
 
@@ -10,10 +10,9 @@ export namespace ButtonProps {
 
 export type ButtonProps = {
     onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void,
-    buttonState?: ButtonProps.ButtonState,
-    label?: string | { [key in ButtonProps.ButtonState]: string },
-    icon?:string | { [key in ButtonProps.ButtonState]: string },
-
+    buttonState?: ButtonProps.ButtonBaseState,
+    label?: string | { [key in ButtonProps.ButtonBaseState]?: string },
+    icon?: string | { [key in ButtonProps.ButtonBaseState]?: string },
     children?: string,
     type?: ButtonProps.ButtonType,
     primary?: boolean,
