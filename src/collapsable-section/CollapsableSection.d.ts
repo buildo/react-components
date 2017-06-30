@@ -3,7 +3,7 @@ import { CSSProperties, PureComponent } from 'react';
 export type CollapsableSectionProps = {
   children: any, // TODO: t.ReactChildren
   isOpen: boolean,
-  isSelected: boolean,
+  isSelected?: boolean,
   onChange: (isOpen: boolean) => void,
   onOpen?: () => void,
   onClose?: () => void,
