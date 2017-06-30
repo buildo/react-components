@@ -54,6 +54,7 @@ export default class DateField extends React.PureComponent {
     } else if ((nextProps.value && !this.props.value) || (nextProps.value && this.props.value && nextProps.value.getTime() !== this.props.value.getTime())) { // "value" exists and has changed
       const { day, month, year } = parseDate(nextProps.value);
 
+      // this logic is needed to avoid transforming the user input "07" in the parsed number "7"
       if (parseInt(day) !== parseInt(this.state.day) || parseInt(month) !== parseInt(this.state.month) || parseInt(year) !== parseInt(this.state.year)) {
         this.setState({ day, month, year });
       }
@@ -93,11 +94,11 @@ export default class DateField extends React.PureComponent {
       this.props.onValidChange(isValid);
     }
 
-    if (isValid && every([values.day, values.month, values.year], s => s.length > 0)) {
-      this.props.onChange(new Date(values.year, values.month - 1, values.day));
-    }
-
-    this.setState({ isValid, ...patch });
+    this.setState({ isValid, ...patch }, () => {
+      if (isValid && every([this.state.day, this.state.month, this.state.year], s => s.length > 0)) {
+        this.props.onChange(new Date(this.state.year, this.state.month - 1, this.state.day));
+      }
+    });
   }
 
   isValid({ year, month, day }) {
