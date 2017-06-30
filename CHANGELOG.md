@@ -5,6 +5,8 @@
 
 #### New features:
 
+- [typescript .d.ts] Toggle [#940](https://github.com/buildo/react-components/issues/940)
+- [typescript .d.ts] Toaster [#939](https://github.com/buildo/react-components/issues/939)
 - [typescript .d.ts] NavBar [#932](https://github.com/buildo/react-components/issues/932)
 - [typescript .d.ts] BackgroundDimmer [#916](https://github.com/buildo/react-components/issues/916)
 
@@ -19,7 +21,6 @@
 - [typescript .d.ts] Button [#919](https://github.com/buildo/react-components/issues/919)
 - [typescript .d.ts] Badge [#917](https://github.com/buildo/react-components/issues/917)
 - [typescript .d.ts] Panel [#912](https://github.com/buildo/react-components/issues/912)
-- [typescript .d.ts] DropdownMenu [#910](https://github.com/buildo/react-components/issues/910)
 
 ## [v0.23.1](https://github.com/buildo/react-components/tree/v0.23.1) (2017-06-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.0...v0.23.1)
