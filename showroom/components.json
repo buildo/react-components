@@ -650,6 +650,10 @@
           {
             "title": "A typical usage",
             "url": "date-field/examples/default.js"
+          },
+          {
+            "title": "Handle date validation",
+            "url": "date-field/examples/isValid.js"
           }
         ]
       }
