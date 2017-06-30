@@ -26,10 +26,11 @@ function parseDate(date) {
   };
 }
 
-const defaultState = {
+const initialState = {
   day: '',
   month: '',
   year: '',
+  isDirty: false,
   isValid: false
 };
 
@@ -46,11 +47,11 @@ export default class DateField extends React.PureComponent {
   state = this.props.value ? {
     ...parseDate(this.props.value),
     isValid: true
-  } : defaultState
+  } : initialState
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.value && this.props.value) { // "value" has become "undefined"
-      this.setState(defaultState);
+      this.setState({ day: '', month: '', year: '', isValid: false });
     } else if ((nextProps.value && !this.props.value) || (nextProps.value && this.props.value && nextProps.value.getTime() !== this.props.value.getTime())) { // "value" exists and has changed
       const { day, month, year } = parseDate(nextProps.value);
 
@@ -94,7 +95,7 @@ export default class DateField extends React.PureComponent {
       this.props.onValidChange(isValid);
     }
 
-    this.setState({ isValid, ...patch }, () => {
+    this.setState({ isValid, ...patch, isDirty: true }, () => {
       if (isValid && every([this.state.day, this.state.month, this.state.year], s => s.length > 0)) {
         this.props.onChange(new Date(this.state.year, this.state.month - 1, this.state.day));
       }
@@ -109,14 +110,14 @@ export default class DateField extends React.PureComponent {
   render() {
     const {
       props: { className, id, style, placeholders = {}, inputTypeNumber = false },
-      state: { day, month, year, isValid },
+      state: { day, month, year, isValid, isDirty },
       onChange
     } = this;
 
     const type = inputTypeNumber ? 'number' : undefined;
 
     return (
-      <View className={cx('date-field', className, { 'is-invalid': !isValid })} id={id} style={style}>
+      <View className={cx('date-field', className, { 'is-invalid': isDirty && !isValid })} id={id} style={style}>
         <input className='day-field' value={day} placeholder={placeholders.day} onChange={onChange('day')} type={type} />
         <input className='month-field' value={month} placeholder={placeholders.month} onChange={onChange('month')} type={type} />
         <input className='year-field' value={year} placeholder={placeholders.year} onChange={onChange('year')} type={type} />
