@@ -9,7 +9,13 @@ import './dateField.scss';
 export const Props = {
   value: t.maybe(t.Date),
   onChange: t.Function,
-  onValidChange: t.Function
+  onValidChange: t.Function,
+  placeholders: t.maybe(t.struct({
+    day: t.maybe(t.String),
+    month: t.maybe(t.String),
+    year: t.maybe(t.String)
+  })),
+  inputTypeNumber: t.maybe(t.Boolean)
 };
 
 function parseDate(date) {
@@ -29,8 +35,10 @@ const defaultState = {
 
 /** A simple component used to visually divide UI elements
  * @param value - JS Date
- * @param onChange - callback
- * @param onValidChange - callback
+ * @param onChange - called when there is a new valid value: (value: Date) => void
+ * @param onValidChange - called when validity changes: (isValid: boolean) => void
+ * @param placeholders - map to pass placeholders to each input field
+ * @param inputTypeNumber - if `true` it passes `type='number'` to every input field
  */
 @props(Props)
 export default class DateField extends React.PureComponent {
@@ -99,16 +107,18 @@ export default class DateField extends React.PureComponent {
 
   render() {
     const {
-      props: { className, id, style },
+      props: { className, id, style, placeholders = {}, inputTypeNumber = false },
       state: { day, month, year, isValid },
       onChange
     } = this;
 
+    const type = inputTypeNumber ? 'number' : undefined;
+
     return (
       <View className={cx('date-field', className, { 'is-invalid': !isValid })} id={id} style={style}>
-        <input className='day-field' value={day} placeholder='dd' onChange={onChange('day')} type='number' />
-        <input className='month-field' value={month} placeholder='mm' onChange={onChange('month')} type='number' />
-        <input className='year-field' value={year} placeholder='yyyy' onChange={onChange('year')} type='number' />
+        <input className='day-field' value={day} placeholder={placeholders.day} onChange={onChange('day')} type={type} />
+        <input className='month-field' value={month} placeholder={placeholders.month} onChange={onChange('month')} type={type} />
+        <input className='year-field' value={year} placeholder={placeholders.year} onChange={onChange('year')} type={type} />
       </View>
     );
   }
