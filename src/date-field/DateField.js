@@ -9,7 +9,7 @@ import './dateField.scss';
 export const Props = {
   value: t.maybe(t.Date),
   onChange: t.Function,
-  onValidChange: t.Function,
+  onValidChange: t.maybe(t.Function),
   placeholders: t.maybe(t.struct({
     day: t.maybe(t.String),
     month: t.maybe(t.String),
@@ -92,7 +92,7 @@ export default class DateField extends React.PureComponent {
     const isValid = this.isValid(values);
 
     if (this.state.isValid !== isValid) {
-      this.props.onValidChange(isValid);
+      this.props.onValidChange && this.props.onValidChange(isValid);
     }
 
     this.setState({ isValid, ...patch, isDirty: true }, () => {
