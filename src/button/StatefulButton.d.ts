@@ -11,4 +11,4 @@ export type StatefulButtonProps = ButtonProps & {
   timerMillis?: number
 };
 
-export default class StatefulButton extends PureComponent<StatefulButtonProps, void> {}
+export default class StatefulButton extends PureComponent<StatefulButtonProps> {}

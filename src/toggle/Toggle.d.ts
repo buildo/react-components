@@ -12,4 +12,4 @@ export type ToggleProps = {
   style?: CSSProperties
 }
 
-export default class Toggle extends PureComponent<ToggleProps, void> {}
+export default class Toggle extends PureComponent<ToggleProps> {}

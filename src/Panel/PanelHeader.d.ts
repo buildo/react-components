@@ -15,4 +15,4 @@ export type PanelHeaderProps = {
   menu?: any
 }
 
-export default class PanelHeader extends PureComponent<PanelHeaderProps, void> {}
+export default class PanelHeader extends PureComponent<PanelHeaderProps> {}

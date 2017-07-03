@@ -16,4 +16,4 @@ export type BackgroundDimmerProps = {
   style?: CSSProperties
 }
 
-export default class BackgroundDimmer extends PureComponent<BackgroundDimmerProps, void> {}
+export default class BackgroundDimmer extends PureComponent<BackgroundDimmerProps> {}

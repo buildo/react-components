@@ -34,4 +34,4 @@ export type PanelProps = {
   style?: CSSProperties
 }
 
-export default class Panel extends PureComponent<PanelProps, void> {}
+export default class Panel extends PureComponent<PanelProps> {}

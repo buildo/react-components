@@ -9,4 +9,4 @@ export type TabbedPanelProps = {
   }
 } & PanelProps;
 
-export default class TabbedPanel extends PureComponent<TabbedPanelProps, void> {}
+export default class TabbedPanel extends PureComponent<TabbedPanelProps> {}

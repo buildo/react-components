@@ -20,4 +20,4 @@ export type ConfirmationInputProps = {
   style?: CSSProperties
 }
 
-export default class ConfirmationInput extends PureComponent<ConfirmationInputProps, void> {}
+export default class ConfirmationInput extends PureComponent<ConfirmationInputProps> {}

@@ -12,4 +12,4 @@ export type AsyncStatusIndicatorProps = {
   style?: CSSProperties
 }
 
-export default class AsyncStatusIndicator extends PureComponent<AsyncStatusIndicatorProps, void> {}
+export default class AsyncStatusIndicator extends PureComponent<AsyncStatusIndicatorProps> {}

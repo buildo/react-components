@@ -56,7 +56,7 @@ export type DropdownProps = {
   style?: CSSProperties
 }
 
-export default class Dropdown extends PureComponent<DropdownProps, void> {}
+export default class Dropdown extends PureComponent<DropdownProps> {}
 
 export var Props: {
   [key: string]: t.Type<any>

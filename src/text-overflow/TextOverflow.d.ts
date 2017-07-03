@@ -10,4 +10,4 @@ export type TextOverflowProps = {
   style?: CSSProperties
 }
 
-export default class TextOverflow extends PureComponent<TextOverflowProps, void> {}
+export default class TextOverflow extends PureComponent<TextOverflowProps> {}

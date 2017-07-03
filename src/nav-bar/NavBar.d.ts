@@ -14,4 +14,4 @@ export type NavBarProps = {
   style?: CssProperties
 }
 
-export default class NavBar extends PureComponent<NavBarProps, void> {}
+export default class NavBar extends PureComponent<NavBarProps> {}

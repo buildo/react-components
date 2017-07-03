@@ -17,4 +17,4 @@ export type CollapsableSectionProps = {
   style?: CSSProperties
 }
 
-export default class CollapsableSection extends PureComponent<CollapsableSectionProps, void> {}
+export default class CollapsableSection extends PureComponent<CollapsableSectionProps> {}

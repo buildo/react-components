@@ -7,4 +7,4 @@ export type BadgeProps = {
   style?: object
 }
 
-export default class Badge extends PureComponent<BadgeProps, void> {}
+export default class Badge extends PureComponent<BadgeProps> {}
