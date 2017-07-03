@@ -1,22 +1,18 @@
-// TODO: use react-select types https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-select/index.d.ts
-
-import { CSSProperties, PureComponent, SyntheticEvent } from 'react'
+import { CSSProperties, PureComponent, SyntheticEvent, FocusEventHandler } from 'react'
 import * as t from 'tcomb';
+import { Option, MenuRendererProps } from 'react-select';
 
-type Value = number | string | object | object[];
+type Value = number | string | Option | Option[];
 
-type MenuItem = {
-  focusedOption: object,
+interface DropdownMenuRendererProps extends MenuRendererProps {
   instancePrefix: string,
   onFocus: (e: SyntheticEvent<HTMLDivElement>) => void,
-  onSelect: (option: object, e: SyntheticEvent<HTMLDivElement>) => void,
+  onSelect: (option: Option, e: SyntheticEvent<HTMLDivElement>) => void,
   groupByKey?: string,
   optionClassName: string,
   optionComponent: JSX.Element,
-  optionRenderer: () => JSX.Element,
-  optionGroupRenderer: () => JSX.Element
-  options: object[]
-  valueArray: any
+  optionRenderer: (option: Option) => JSX.Element,
+  optionGroupRenderer: (title: string) => JSX.Element
   valueKey: any
 }
 
@@ -27,8 +23,8 @@ export type DropdownProps = {
     requestChange: (value: Value) => void
   },
   onChange?: (value?: Value) => void,
-  onValueClick?: () => void,
-  options: object[],
+  onValueClick?: (value: string, event: Event) => void,
+  options: Option[],
   size?: 'small' | 'medium',
   disabled?: boolean,
   searchable?: boolean,
@@ -39,19 +35,19 @@ export type DropdownProps = {
   autoBlur?: boolean,
   simpleValue?: boolean,
   menuPosition?: 'top' | 'bottom',
-  menuRenderer?: (menuItem: object) => any, // TODO: t.ReactChildren
+  menuRenderer?: (menuItem: DropdownMenuRendererProps) => React.ReactElement<any>, // TODO: t.ReactChildren
   groupByKey?: string,
-  optionGroupRenderer?: (title: string) => any, // TODO: t.ReactChildren
-  placeholder?: JSX.Element | string, // TODO: t.maybe(t.union([t.String, t.ReactElement]))
-  noResultsText?: JSX.Element | string,
+  optionGroupRenderer?: (title: string) => JSX.Element, // TODO: t.ReactChildren
+  placeholder?: string | React.ReactElement<any>, // TODO: t.maybe(t.union([t.String, t.ReactElement]))
+  noResultsText?: string,
   allowCreate?: boolean,
-  addLabelText?: JSX.Element | string,
-  valueRenderer?: (option: object) => JSX.Element, // TODO: t.ReactChildren
-  optionRenderer?: (option: object) => JSX.Element, // TODO: t.ReactChildren
+  addLabelText?: string,
+  valueRenderer?: (option: Option) => JSX.Element, // TODO: t.ReactChildren
+  optionRenderer?: (option: Option) => JSX.Element, // TODO: t.ReactChildren
   delimiter?: string,
-  onInputChange?: () => void,
-  onFocus?: () => void,
-  onBlur?: () => void,
+  onInputChange?: (inputValue: string) => void,
+  onFocus?: FocusEventHandler<{}>,
+  onBlur?: FocusEventHandler<{}>,
   onBlurResetsInput?: boolean,
   onCloseResetsInput?: boolean,
   isLoading?: boolean,
