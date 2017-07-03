@@ -39,7 +39,7 @@
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
-    "@types/bowser": "^1.0.30",
+    "@types/react-select": "^1.0.48",
     "bowser": "^1.0.0",
     "classnames": "^2.2.3",
     "create-react-class": "^15.5.2",
