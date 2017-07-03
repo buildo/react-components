@@ -6,7 +6,7 @@ type Value = number | string | Option | Option[];
 
 interface DropdownMenuRendererProps extends MenuRendererProps {
   instancePrefix: string,
-  onFocus: (e: SyntheticEvent<HTMLDivElement>) => void,
+  onFocus: FocusEventHandler<HTMLDivElement>,
   onSelect: (option: Option, e: SyntheticEvent<HTMLDivElement>) => void,
   groupByKey?: string,
   optionClassName: string,
@@ -46,8 +46,8 @@ export type DropdownProps = {
   optionRenderer?: (option: Option) => JSX.Element, // TODO: t.ReactChildren
   delimiter?: string,
   onInputChange?: (inputValue: string) => void,
-  onFocus?: FocusEventHandler<{}>,
-  onBlur?: FocusEventHandler<{}>,
+  onFocus?: FocusEventHandler<HTMLDivElement>,
+  onBlur?: FocusEventHandler<HTMLDivElement>,
   onBlurResetsInput?: boolean,
   onCloseResetsInput?: boolean,
   isLoading?: boolean,
