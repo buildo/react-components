@@ -23,7 +23,7 @@ export type DropdownProps = {
     requestChange: (value: Value) => void
   },
   onChange?: (value?: Value) => void,
-  onValueClick?: (value: string, event: Event) => void,
+  onValueClick?: (value: string, event: SyntheticEvent<HTMLDivElement>) => void,
   options: Option[],
   size?: 'small' | 'medium',
   disabled?: boolean,
