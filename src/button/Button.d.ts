@@ -25,5 +25,5 @@ export type ButtonProps = {
     className?: string
   }
 
-export default class Button extends React.PureComponent<ButtonProps, void> {}
+export default class Button extends React.PureComponent<ButtonProps> {}
 

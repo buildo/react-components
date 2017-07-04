@@ -1,4 +1,5 @@
 import { CSSProperties, PureComponent } from 'react'
+import * as t from 'tcomb';
 
 export namespace PopoverProps {
 
@@ -37,4 +38,8 @@ export type PopoverProps = {
   id?: string,
 }
 
-export default class Popover extends PureComponent<PopoverProps, void> {}
+export default class Popover extends PureComponent<PopoverProps> {}
+
+export var Props: {
+  [key: string]: t.Type<any>
+}
