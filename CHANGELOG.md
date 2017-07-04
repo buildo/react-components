@@ -8,7 +8,12 @@
 - [typescript .d.ts] Toggle [#940](https://github.com/buildo/react-components/issues/940)
 - [typescript .d.ts] Toaster [#939](https://github.com/buildo/react-components/issues/939)
 - [typescript .d.ts] NavBar [#932](https://github.com/buildo/react-components/issues/932)
+- [typescript .d.ts] Dropdown [#922](https://github.com/buildo/react-components/issues/922)
+- [typescript .d.ts] ConfirmationInput [#921](https://github.com/buildo/react-components/issues/921)
+- [typescript .d.ts] CollapsableSection [#920](https://github.com/buildo/react-components/issues/920)
+- [typescript .d.ts] Browser Detector [#918](https://github.com/buildo/react-components/issues/918)
 - [typescript .d.ts] BackgroundDimmer [#916](https://github.com/buildo/react-components/issues/916)
+- [typescript .d.ts] Async Status Indicator [#915](https://github.com/buildo/react-components/issues/915)
 
 ## [v0.23.2](https://github.com/buildo/react-components/tree/v0.23.2) (2017-06-29)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...v0.23.2)
