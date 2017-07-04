@@ -1,12 +1,12 @@
 import { CSSProperties, PureComponent, ComponentType } from 'react';
 import { Type } from 'tcomb';
 
-export type ScrollViewProps = {
+export type ScrollViewProps<CP> = {
   children: any,
   autoshow?: boolean,
   forceGemini?: boolean,
-  component?: string | ComponentType,
-  componentProps?: { [p: string]: any },
+  component?: string | ComponentType<CP>,
+  componentProps?: CP,
   className?: string,
   style?: CSSProperties
 }
