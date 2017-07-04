@@ -1,7 +1,7 @@
 import { CSSProperties, PureComponent, ComponentType } from 'react';
 import { Type } from 'tcomb';
 
-export type ScrollViewProps<CP> = {
+export type ScrollViewProps<CP> = { // TODO(typo) not really working
   children: any,
   autoshow?: boolean,
   forceGemini?: boolean,
