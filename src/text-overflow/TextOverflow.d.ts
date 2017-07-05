@@ -4,8 +4,8 @@ import { Type } from 'tcomb';
 export type TextOverflowProps = {
   children?: (self: JSX.Element, isOpen: boolean) => any,
   label: string,
-  popover?: object, // TODO(typo): Omit?
   lazy?: boolean,
+  delayWhenLazy?: number,
   id?: string,
   className?: string,
   style?: CSSProperties
