@@ -1,20 +1,17 @@
 import { CSSProperties, PureComponent } from 'react';
 import { Type } from 'tcomb';
+import { PanelHeaderProps } from './PanelHeader';
 
 export namespace PanelProps {
 
-  type HeaderSize = 'tiny' | 'small' | 'medium';
-
-  type CollapseDirection = 'up' | 'left' | 'down' | 'right';
-
   type Header = {
     collapse?: {
-      direction: CollapseDirection,
+      direction: 'up' | 'left' | 'down' | 'right',
       onExpand: () => void,
       onCollapse: () => void,
       isCollapsed?: boolean
     },
-    size?: HeaderSize,
+    size?: PanelHeaderProps.HeaderSize,
     content?: any, // TODO: t.ReactChildren
     title?: any, // TODO(typo): wtf
     hideTitleWhenExpanded?: boolean,
@@ -29,7 +26,7 @@ export type PanelProps = {
   loading?: boolean,
   dark?: boolean,
   softLoading?: boolean,
-  softLoadingDelay?: number,
+  softLoadingDelay?: number, // TODO: should be non negative
   className?: string,
   clearMargin?: 'top' | 'left' | 'bottom' | 'right',
   style?: CSSProperties
