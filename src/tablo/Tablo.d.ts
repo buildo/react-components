@@ -13,8 +13,8 @@ export type ColumnGroupProps = {
   children?: any // TODO(typo) it should be Columns[]
 };
 
-export type CellProps = {
-  children?: any | ((data: any, rowData: any, rowIndex: number) => JSX.Element),
+export type CellProps<Data, Name> = {
+  children?: any | (<Data, Name, >(data: Data[Name], rowData: Data, rowIndex: number) => JSX.Element),
   backgroundColor?: React.CSSProperties['backgroundColor'],
   color?: React.CSSProperties['color'],
   vAlignContent?: 'top' | 'center' | 'bottom',
@@ -23,8 +23,8 @@ export type CellProps = {
   style?: React.CSSProperties
 };
 
-export type ColumnProps = {
-  name: string,
+export type ColumnProps<Columns> = {
+  name: Columns,
   width?: number,
   fixed?: boolean,
   isResizable?: boolean,
@@ -33,12 +33,12 @@ export type ColumnProps = {
   allowCellsRecycling?: boolean
 };
 
-type SelectedRows = string[];
-type SortBy = string;
+type SelectedRows = number[];
+type SortBy<Columns> = Columns;
 type SortDir = 'asc' | 'desc';
 
-export type TabloProps = {
-  data: any[],
+export type TabloProps<Data, Columns> = {
+  data: Data[],
   className?: string,
   rowHeight?: number,
   headerHeight?: number,
@@ -46,7 +46,7 @@ export type TabloProps = {
   footerHeight?: number,
   onRowMouseEnter?: (rowIndex: number) => void,
   onRowMouseLeave?: (rowIndex: number) => void,
-  columnsOrder?: string[],
+  columnsOrder?: Columns[],
   onColumnsReorder?: (columns: string[]) => void,
   onColumnResize?: (x: { width: number, key: string}) => void,
   children?: any, // TODO here should be Column[] | ColumnGroup[],
@@ -54,8 +54,8 @@ export type TabloProps = {
   scrollTop?: number,
   onScrollStart?: () => void,
   onScrollEnd?: (x: number, y: number) => void,
-  selectedRows?: number[],
-  onRowsSelect?: (selectedRows: number[]) => void,
+  selectedRows?: SelectedRows,
+  onRowsSelect?: (selectedRows: SelectedRows) => void,
   selectionType?: 'single' | 'multiple' | 'none',
   hoveredRowIndex?: number,
   onHoverRowChange?: (rowIndex: number) => void,
@@ -79,5 +79,5 @@ export const Footer: React.StatelessComponent<FooterProps>;
 export const Cell: React.StatelessComponent<CellProps>;
 export const ColumnGroup: React.StatelessComponent<ColumnGroupProps>;
 export const Column: React.StatelessComponent<ColumnProps>;
-export default class Tablo extends React.PureComponent<TabloProps> {}
-
+declare const Tablo: React.ComponentClass<TabloProps>;
+export default Tablo;
