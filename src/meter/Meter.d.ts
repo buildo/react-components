@@ -2,6 +2,7 @@ import { CSSProperties, PureComponent } from 'react';
 import { Type } from 'tcomb';
 
 export namespace MeterProps {
+  // TODO: refinement r.startValue < r.endValue
   type Range = {
     startValue: number,
     endValue: number,
@@ -13,10 +14,10 @@ export namespace MeterProps {
 
 export type MeterProps = {
   value: number,
-  min: number,
-  max: number,
+  min?: number,
+  max?: number,
   labelFormatter?: (value: number, min: number, max: number) => string,
-  ranges?: MeterProps.Range[],
+  ranges?: MeterProps.Range[], // TODO: how to check that ranges do not overlap?
   baseLabelColor?: string,
   baseFillingColor?: string,
   baseBackgroundColor?: string,
