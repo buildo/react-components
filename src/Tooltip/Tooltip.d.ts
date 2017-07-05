@@ -9,7 +9,7 @@ export namespace TooltipProps {
 
 export type TooltipProps = {
   children: any, // TODO: t.ReactChildren
-  popover: PopoverProps,
+  popover: PopoverProps, // TODO: p => t.String.is(p.content) && t.Nil.is(p.event))
   type: TooltipProps.Type,
   size: TooltipProps.Size,
   className?: string,
