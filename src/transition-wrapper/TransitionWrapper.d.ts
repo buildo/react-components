@@ -1,4 +1,4 @@
-import { CSSProperties, PureComponent } from 'react';
+import { ComponentType, CSSProperties, PureComponent } from 'react';
 import { Type } from 'tcomb';
 
 export namespace TransitionWrapperProps {
@@ -11,9 +11,9 @@ export namespace TransitionWrapperProps {
   }
 }
 
-export type TransitionWrapperProps = {
+export type TransitionWrapperProps<CP> = {
   children: any, // TODO: t.ReactChildren
-  component: React.ComponentClass | string,
+  component: ComponentType<CP>,
   transitionStyles: TransitionWrapperProps.TransitionStyles,
   transitionEnterTimeout: number,
   transitionLeaveTimeout: number,
