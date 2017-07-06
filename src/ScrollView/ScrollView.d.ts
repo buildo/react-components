@@ -15,4 +15,4 @@ export const Props: {
   [key: string]: Type<any>
 };
 
-export default class ScrollView extends PureComponent<ScrollViewProps> {}
+export default class ScrollView extends PureComponent<ScrollViewProps<any>> {}
