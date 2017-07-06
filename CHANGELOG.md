@@ -14,7 +14,6 @@
 - [typescript .d.ts] Browser Detector [#918](https://github.com/buildo/react-components/issues/918)
 - [typescript .d.ts] BackgroundDimmer [#916](https://github.com/buildo/react-components/issues/916)
 - [typescript .d.ts] Async Status Indicator [#915](https://github.com/buildo/react-components/issues/915)
-- [typescript .d.ts] ScrollView [#913](https://github.com/buildo/react-components/issues/913)
 
 ## [v0.23.2](https://github.com/buildo/react-components/tree/v0.23.2) (2017-06-29)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...v0.23.2)
