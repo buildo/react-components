@@ -1,4 +1,5 @@
 import { CSSProperties, PureComponent } from 'react';
+import { Enums, Type } from 'tcomb';
 
 export namespace AsyncStatusIndicatorProps {
   type AsyncStatusIndicatorState = 'ready' | 'processing' | 'success' | 'error';
@@ -13,3 +14,9 @@ export type AsyncStatusIndicatorProps = {
 }
 
 export default class AsyncStatusIndicator extends PureComponent<AsyncStatusIndicatorProps> {}
+
+export const AsyncStatusIndicatorState: Enums;
+
+export const Props: {
+  [key: string]: Type<any>
+}
