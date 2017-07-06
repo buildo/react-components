@@ -55,7 +55,7 @@
     "react-input-children": "1.0.1",
     "react-select": "1.0.0-rc.1",
     "react-skinnable": "^1.1.0",
-    "react-transition-group": "1.1.1",
+    "react-transition-group": "2.0.1",
     "sass-flex-mixins": "^0.1.0",
     "tcomb-react": "^0.9.0",
     "tlds": "^1.185.0"
