@@ -2,6 +2,9 @@
 
 
 
+## [v0.23.4](https://github.com/buildo/react-components/tree/v0.23.4) (2017-07-06)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.3...v0.23.4)
+
 ## [v0.23.3](https://github.com/buildo/react-components/tree/v0.23.3) (2017-07-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.2...v0.23.3)
 
