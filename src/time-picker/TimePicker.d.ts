@@ -1,5 +1,5 @@
 import { CSSProperties, ComponentClass, MouseEventHandler } from 'react';
-import { Type, Struct } from 'tcomb';
+import { Type } from 'tcomb';
 import { Option, MenuRendererProps } from 'react-select';
 
 type TimeFormat = '24h' | '12h';
