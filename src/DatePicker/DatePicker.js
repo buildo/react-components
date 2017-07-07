@@ -6,7 +6,7 @@ import { props, t, skinnable } from '../utils';
 import moment from 'moment';
 import Icon from '../Icon';
 
-import './newDatePicker.scss';
+import './datePicker.scss';
 
 /*
  * @param onShow - called when datepicker is opened
@@ -74,7 +74,7 @@ export const Props = {
  */
 @skinnable()
 @props(Props)
-export default class NewDatePicker extends React.PureComponent {
+export default class DatePicker extends React.PureComponent {
 
   static defaultProps = {
     disabled: false,
@@ -95,7 +95,7 @@ export default class NewDatePicker extends React.PureComponent {
   }
 
   state = {
-    value: valueToMomentDate(this.props.defaultValue || this.props.value),
+    value: valueToMomentDate(this.props.defaultValue || this.props.value),      // needed to handle defaultValue
     hoveredDay: undefined,
     focused: false
   }

@@ -30,4 +30,4 @@ export ResizeSensor from './resize-sensor';
 export Tablo, { Column as TabloColumn, Cell, Header, Footer } from './tablo';
 export AsyncStatusIndicator from './async-status-indicator';
 export FormattedText from './formatted-text';
-export NewDatePicker from './NewDatePicker';
+export DatePicker from './DatePicker';

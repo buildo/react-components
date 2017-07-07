@@ -2,8 +2,6 @@ import { sortBy, find } from 'lodash';
 
 function dynamicRequire({ repo, example: e }) {
   switch (repo) {
-    case 'rc-datepicker':
-      return { ...e, code: require(`raw!rc-datepicker/${e.url.replace('.example', '')}.example`) };
     case 'react-input-children':
       return { ...e, code: require(`raw!gh-deps/node_modules/react-input-children/${e.url.replace('.example', '')}.example`) };
     case 'react-autosize-textarea':

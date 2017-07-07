@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "rc-datepicker": "buildo/rc-datepicker",
     "react-autosize-textarea": "buildo/react-autosize-textarea",
     "react-cookie-banner": "buildo/react-cookie-banner",
     "react-flexview": "buildo/react-flexview",

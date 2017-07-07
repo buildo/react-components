@@ -13,7 +13,7 @@ class Example extends React.Component {
     return (
       <FlexView column grow>
         {!!this.state.value && this.state.value.toString()}
-        <NewDatePicker
+        <DatePicker
           value={this.state.value}
           onChange={this.onChange}
           displayFormat='MMMM Do YYYY'
