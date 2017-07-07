@@ -10,7 +10,7 @@ export type FooterProps = {
 
 export type ColumnGroupProps = {
   fixed?: boolean,
-  children?: any // TODO(typo) it should be Columns[]
+  children?: any
 };
 
 export type CellProps<Data> = {
