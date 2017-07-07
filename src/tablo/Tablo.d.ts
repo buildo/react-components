@@ -13,8 +13,8 @@ export type ColumnGroupProps = {
   children?: any // TODO(typo) it should be Columns[]
 };
 
-export type CellProps<Data, Name> = {
-  children?: any | (<Data, Name, >(data: Data[Name], rowData: Data, rowIndex: number) => JSX.Element),
+export type CellProps<Data> = {
+  children?: any | ((data: any , rowData: Data, rowIndex: number) => JSX.Element),
   backgroundColor?: React.CSSProperties['backgroundColor'],
   color?: React.CSSProperties['color'],
   vAlignContent?: 'top' | 'center' | 'bottom',
@@ -59,9 +59,9 @@ export type TabloProps<Data, Columns> = {
   selectionType?: 'single' | 'multiple' | 'none',
   hoveredRowIndex?: number,
   onHoverRowChange?: (rowIndex: number) => void,
-  sortBy?: SortBy,
+  sortBy?: SortBy<Columns>,
   sortDir?: SortDir,
-  onSortChange?: (x: { sortBy: SortBy, sortDir: SortDir }) => void,
+  onSortChange?: (x: { sortBy: SortBy<Columns>, sortDir: SortDir }) => void,
   rowClassNameGetter?: (rowIndex: number) => string | number | undefined | null,
   touchScrollEnabled?: boolean
 } & ({
@@ -76,8 +76,8 @@ export type TabloProps<Data, Columns> = {
 
 export const Header: React.StatelessComponent<HeaderProps>;
 export const Footer: React.StatelessComponent<FooterProps>;
-export const Cell: React.StatelessComponent<CellProps>;
+export const Cell: React.StatelessComponent<CellProps<any>>;
 export const ColumnGroup: React.StatelessComponent<ColumnGroupProps>;
-export const Column: React.StatelessComponent<ColumnProps>;
-declare const Tablo: React.ComponentClass<TabloProps>;
+export const Column: React.StatelessComponent<ColumnProps<string>>
+declare const Tablo: React.ComponentClass<TabloProps<any, string>>;
 export default Tablo;
