@@ -9,21 +9,20 @@ import Icon from '../Icon';
 import './datePicker.scss';
 
 /*
- * @param onShow - called when datepicker is opened
+ * TODO: missing rc-datepicker props
  *
+ * @param onShow - called when datepicker is opened
  * @param startMode - the start view of the datepicker
-
  * @param fixedMode - whether the user can use multiple views or not
-
  * @param showOnInputClick - whether the datepicker should open when user click on the input
  * @param closeOnClickOutside - whether the datepicker should close when user clicks outside of it
-
  * @param showInputButton - whether the input-button should be rendered
  * @param autoClose - pass true if you want the datepicker to close automatically after the user selects a value
  * @param floating - whether the datepicker should float over the page content (absolute position)
  * @param position - whether the datepicker should be rendered above or below the input field
  * @param iconClassName - classname used for the icon
  * @param iconClearClassName - classname used for the clear icon
+ *
  */
 
 const MomentDate = t.irreducible('MomentDate', x => moment.isMoment(x));
