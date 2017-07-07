@@ -5,11 +5,17 @@
 
 #### New features:
 
+- [typescript .d.ts] Transition Wrapper [#941](https://github.com/buildo/react-components/issues/941)
 - [typescript .d.ts] Tablo [#936](https://github.com/buildo/react-components/issues/936)
+- [typescript .d.ts] More Or Less [#931](https://github.com/buildo/react-components/issues/931)
+- [typescript .d.ts] Modal [#930](https://github.com/buildo/react-components/issues/930)
+- [typescript .d.ts] Meter [#927](https://github.com/buildo/react-components/issues/927)
 - [typescript .d.ts] LoadingSpinner [#926](https://github.com/buildo/react-components/issues/926)
+- [typescript .d.ts] LinkState [#925](https://github.com/buildo/react-components/issues/925)
 - [typescript .d.ts] FocusableView [#923](https://github.com/buildo/react-components/issues/923)
 - [typescript .d.ts] Tooltip [#914](https://github.com/buildo/react-components/issues/914)
 - [typescript .d.ts] Icon [#911](https://github.com/buildo/react-components/issues/911)
+- [typescript .d.ts] Divider [#909](https://github.com/buildo/react-components/issues/909)
 
 ## [v0.23.4](https://github.com/buildo/react-components/tree/v0.23.4) (2017-07-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.3...v0.23.4)
