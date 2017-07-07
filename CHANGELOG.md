@@ -1,7 +1,9 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.4...HEAD)
+
+
+## [v0.23.5](https://github.com/buildo/react-components/tree/v0.23.5) (2017-07-07)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.4...v0.23.5)
 
 #### New features:
 
