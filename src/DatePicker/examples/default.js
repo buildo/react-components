@@ -1,9 +1,6 @@
 class Example extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {};
-  }
+  state = {}
 
   onChange = value => {
     this.setState({ value });
