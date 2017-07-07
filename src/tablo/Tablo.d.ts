@@ -83,5 +83,6 @@ export const Footer: React.StatelessComponent<TabloProps.FooterProps>;
 export const Cell: React.StatelessComponent<TabloProps.CellProps<any>>;
 export const ColumnGroup: React.StatelessComponent<TabloProps.ColumnGroupProps>;
 export const Column: React.StatelessComponent<TabloProps.ColumnProps<string>>
+
 declare const Tablo: React.ComponentClass<TabloProps<any, string>>;
 export default Tablo;
