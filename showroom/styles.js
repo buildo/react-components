@@ -2,7 +2,6 @@
 
 // default sass
 import 'react-flexview/lib/flexView.css';
-import 'rc-datepicker/src/style.scss';
 
 import '../src/button/button.scss';
 import '../src/Divider/divider.scss';
@@ -25,6 +24,7 @@ import '../src/ScrollView/scrollView.scss';
 import '../src/tablo/tablo.scss';
 import '../src/kitchen-sink/style.scss';
 import '../src/async-status-indicator/asyncStatusIndicator.scss';
+import '../src/DatePicker/datePicker.scss';
 
 
 // examples sass and resources

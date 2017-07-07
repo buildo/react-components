@@ -22,8 +22,6 @@ export default class Component extends React.Component {
     ...scope,
     FlexView: componentId === 'react-flexview' ? require('gh-deps/node_modules/react-flexview/src').default : scope.FlexView,
     InputChildren: componentId === 'react-input-children' ? require('gh-deps/node_modules/react-input-children/src').default : scope.InputChildren,
-    DatePicker: componentId === 'rc-datepicker' ? require('rc-datepicker/src').DatePicker : scope.DatePicker,
-    DatePickerInput: componentId === 'rc-datepicker' ? require('rc-datepicker/src').DatePickerInput : scope.DatePickerInput,
     TextareaAutosize: componentId === 'react-autosize-textarea' ? require('react-autosize-textarea/src').default : scope.TextareaAutosize,
     CookieBanner: componentId === 'react-cookie-banner' ? require('react-cookie-banner/src').default : scope.CookieBanner,
     cookie: componentId === 'react-cookie-banner' ? require('react-cookie-banner/src').cookie : scope.cookie

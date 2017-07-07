@@ -49,6 +49,8 @@
     "linkify-it": "^2.0.3",
     "lodash": "^4.6.1",
     "mobile-detect": "^1.2.1",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-dates": "^12.1.2",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
     "react-flexview": "1.0.13",

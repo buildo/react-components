@@ -29,7 +29,6 @@ module.exports = {
         include: [
           paths.COMPONENTS,
           paths.SRC,
-          /rc-datepicker/,
           /react-input-children/,
           /react-autosize-textarea/,
           /react-cookie-banner/,
