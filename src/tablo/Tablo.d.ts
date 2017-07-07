@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export namespace Tablo {
+export namespace TabloProps {
   type HeaderProps = {
     children: any
   };
@@ -58,14 +58,14 @@ export type TabloProps<Data, Column> = {
   scrollTop?: number,
   onScrollStart?: () => void,
   onScrollEnd?: (x: number, y: number) => void,
-  selectedRows?: Tablo.SelectedRows,
-  onRowsSelect?: (selectedRows: Tablo.SelectedRows) => void,
+  selectedRows?: TabloProps.SelectedRows,
+  onRowsSelect?: (selectedRows: TabloProps.SelectedRows) => void,
   selectionType?: 'single' | 'multiple' | 'none',
   hoveredRowIndex?: number,
   onHoverRowChange?: (rowIndex: number) => void,
-  sortBy?: Tablo.SortBy<Column>,
-  sortDir?: Tablo.SortDir,
-  onSortChange?: (x: { sortBy: Tablo.SortBy<Column>, sortDir: Tablo.SortDir }) => void,
+  sortBy?: TabloProps.SortBy<Column>,
+  sortDir?: TabloProps.SortDir,
+  onSortChange?: (x: { sortBy: TabloProps.SortBy<Column>, sortDir: TabloProps.SortDir }) => void,
   rowClassNameGetter?: (rowIndex: number) => string | number | undefined | null,
   touchScrollEnabled?: boolean
 } & ({
@@ -78,10 +78,10 @@ export type TabloProps<Data, Column> = {
   autosize?: true
 });
 
-export const Header: React.StatelessComponent<Tablo.HeaderProps>;
-export const Footer: React.StatelessComponent<Tablo.FooterProps>;
-export const Cell: React.StatelessComponent<Tablo.CellProps<any>>;
-export const ColumnGroup: React.StatelessComponent<Tablo.ColumnGroupProps>;
-export const Column: React.StatelessComponent<Tablo.ColumnProps<string>>
+export const Header: React.StatelessComponent<TabloProps.HeaderProps>;
+export const Footer: React.StatelessComponent<TabloProps.FooterProps>;
+export const Cell: React.StatelessComponent<TabloProps.CellProps<any>>;
+export const ColumnGroup: React.StatelessComponent<TabloProps.ColumnGroupProps>;
+export const Column: React.StatelessComponent<TabloProps.ColumnProps<string>>
 declare const Tablo: React.ComponentClass<TabloProps<any, string>>;
 export default Tablo;
