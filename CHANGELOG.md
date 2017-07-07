@@ -7,6 +7,7 @@
 
 - [typescript .d.ts] FocusableView [#923](https://github.com/buildo/react-components/issues/923)
 - [typescript .d.ts] Tooltip [#914](https://github.com/buildo/react-components/issues/914)
+- [typescript .d.ts] Icon [#911](https://github.com/buildo/react-components/issues/911)
 
 ## [v0.23.4](https://github.com/buildo/react-components/tree/v0.23.4) (2017-07-06)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.3...v0.23.4)
