@@ -22,7 +22,7 @@ export type TransitionWrapperProps<CP> = {
   style?: CSSProperties
 }
 
-export default class TransitionWrapper extends PureComponent<TransitionWrapperProps> {}
+export default class TransitionWrapper extends PureComponent<TransitionWrapperProps<any>> {}
 
 export var Props: {
   [key: string]: Type<any>
