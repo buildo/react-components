@@ -16,7 +16,7 @@ export type TimePickerProps = {
   maxTime?: Time,
   placeholder?: string,
   timeFormat?: TimeFormat,
-  searchable: boolean,
+  searchable?: boolean,
   menuPosition: 'bottom' | 'top',
   id?: string,
   className?: string,
