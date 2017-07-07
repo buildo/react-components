@@ -1,41 +1,45 @@
 import * as React from 'react';
 
-export type HeaderProps = {
-  children: any
-};
+export namespace Tablo {
+  type HeaderProps = {
+    children: any
+  };
 
-export type FooterProps = {
-  children: any
+  type FooterProps = {
+    children: any
+  }
+
+  type ColumnGroupProps = {
+    fixed?: boolean,
+    children?: any
+  };
+
+  type CellProps<Data> = {
+    children?: any | ((data: any , rowData: Data, rowIndex: number) => JSX.Element),
+    backgroundColor?: React.CSSProperties['backgroundColor'],
+    color?: React.CSSProperties['color'],
+    vAlignContent?: 'top' | 'center' | 'bottom',
+    hAlignContent?: 'left' | 'center' | 'right',
+    contentStyle?: React.CSSProperties,
+    style?: React.CSSProperties
+  };
+
+  type ColumnProps<Columns> = {
+    name: Columns,
+    width?: number,
+    fixed?: boolean,
+    isResizable?: boolean,
+    flexGrow?: number,
+    children?: any, // TODO(typo) it should be (Header | Cell | Footer)[],
+    allowCellsRecycling?: boolean
+  };
+
+  type SelectedRows = number[];
+  type SortBy<Columns> = Columns;
+  type SortDir = 'asc' | 'desc';
+
 }
 
-export type ColumnGroupProps = {
-  fixed?: boolean,
-  children?: any
-};
-
-export type CellProps<Data> = {
-  children?: any | ((data: any , rowData: Data, rowIndex: number) => JSX.Element),
-  backgroundColor?: React.CSSProperties['backgroundColor'],
-  color?: React.CSSProperties['color'],
-  vAlignContent?: 'top' | 'center' | 'bottom',
-  hAlignContent?: 'left' | 'center' | 'right',
-  contentStyle?: React.CSSProperties,
-  style?: React.CSSProperties
-};
-
-export type ColumnProps<Columns> = {
-  name: Columns,
-  width?: number,
-  fixed?: boolean,
-  isResizable?: boolean,
-  flexGrow?: number,
-  children?: any, // TODO(typo) it should be (Header | Cell | Footer)[],
-  allowCellsRecycling?: boolean
-};
-
-type SelectedRows = number[];
-type SortBy<Columns> = Columns;
-type SortDir = 'asc' | 'desc';
 
 export type TabloProps<Data, Columns> = {
   data: Data[],
@@ -54,14 +58,14 @@ export type TabloProps<Data, Columns> = {
   scrollTop?: number,
   onScrollStart?: () => void,
   onScrollEnd?: (x: number, y: number) => void,
-  selectedRows?: SelectedRows,
-  onRowsSelect?: (selectedRows: SelectedRows) => void,
+  selectedRows?: Tablo.SelectedRows,
+  onRowsSelect?: (selectedRows: Tablo.SelectedRows) => void,
   selectionType?: 'single' | 'multiple' | 'none',
   hoveredRowIndex?: number,
   onHoverRowChange?: (rowIndex: number) => void,
-  sortBy?: SortBy<Columns>,
-  sortDir?: SortDir,
-  onSortChange?: (x: { sortBy: SortBy<Columns>, sortDir: SortDir }) => void,
+  sortBy?: Tablo.SortBy<Columns>,
+  sortDir?: Tablo.SortDir,
+  onSortChange?: (x: { sortBy: Tablo.SortBy<Columns>, sortDir: Tablo.SortDir }) => void,
   rowClassNameGetter?: (rowIndex: number) => string | number | undefined | null,
   touchScrollEnabled?: boolean
 } & ({
@@ -74,10 +78,10 @@ export type TabloProps<Data, Columns> = {
   autosize?: true
 });
 
-export const Header: React.StatelessComponent<HeaderProps>;
-export const Footer: React.StatelessComponent<FooterProps>;
-export const Cell: React.StatelessComponent<CellProps<any>>;
-export const ColumnGroup: React.StatelessComponent<ColumnGroupProps>;
-export const Column: React.StatelessComponent<ColumnProps<string>>
+export const Header: React.StatelessComponent<Tablo.HeaderProps>;
+export const Footer: React.StatelessComponent<Tablo.FooterProps>;
+export const Cell: React.StatelessComponent<Tablo.CellProps<any>>;
+export const ColumnGroup: React.StatelessComponent<Tablo.ColumnGroupProps>;
+export const Column: React.StatelessComponent<Tablo.ColumnProps<string>>
 declare const Tablo: React.ComponentClass<TabloProps<any, string>>;
 export default Tablo;
