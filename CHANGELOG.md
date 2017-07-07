@@ -6,6 +6,7 @@
 #### New features:
 
 - [typescript .d.ts] Transition Wrapper [#941](https://github.com/buildo/react-components/issues/941)
+- [typescript .d.ts] Time Picker [#938](https://github.com/buildo/react-components/issues/938)
 - [typescript .d.ts] Tablo [#936](https://github.com/buildo/react-components/issues/936)
 - [typescript .d.ts] More Or Less [#931](https://github.com/buildo/react-components/issues/931)
 - [typescript .d.ts] Modal [#930](https://github.com/buildo/react-components/issues/930)
