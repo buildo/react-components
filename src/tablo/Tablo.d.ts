@@ -24,8 +24,8 @@ export namespace Tablo {
     style?: React.CSSProperties
   };
 
-  type ColumnProps<Columns> = {
-    name: Columns,
+  type ColumnProps<Column> = {
+    name: Column,
     width?: number,
     fixed?: boolean,
     isResizable?: boolean,
@@ -35,13 +35,13 @@ export namespace Tablo {
   };
 
   type SelectedRows = number[];
-  type SortBy<Columns> = Columns;
+  type SortBy<Column> = Column;
   type SortDir = 'asc' | 'desc';
 
 }
 
 
-export type TabloProps<Data, Columns> = {
+export type TabloProps<Data, Column> = {
   data: Data[],
   className?: string,
   rowHeight?: number,
@@ -50,9 +50,9 @@ export type TabloProps<Data, Columns> = {
   footerHeight?: number,
   onRowMouseEnter?: (rowIndex: number) => void,
   onRowMouseLeave?: (rowIndex: number) => void,
-  columnsOrder?: Columns[],
-  onColumnsReorder?: (columns: Columns[]) => void,
-  onColumnResize?: (x: { width: number, key: Columns}) => void,
+  columnsOrder?: Column[],
+  onColumnsReorder?: (columns: Column[]) => void,
+  onColumnResize?: (x: { width: number, key: Column}) => void,
   children?: any, // TODO here should be Column[] | ColumnGroup[],
   scrollLeft?: number,
   scrollTop?: number,
@@ -63,9 +63,9 @@ export type TabloProps<Data, Columns> = {
   selectionType?: 'single' | 'multiple' | 'none',
   hoveredRowIndex?: number,
   onHoverRowChange?: (rowIndex: number) => void,
-  sortBy?: Tablo.SortBy<Columns>,
+  sortBy?: Tablo.SortBy<Column>,
   sortDir?: Tablo.SortDir,
-  onSortChange?: (x: { sortBy: Tablo.SortBy<Columns>, sortDir: Tablo.SortDir }) => void,
+  onSortChange?: (x: { sortBy: Tablo.SortBy<Column>, sortDir: Tablo.SortDir }) => void,
   rowClassNameGetter?: (rowIndex: number) => string | number | undefined | null,
   touchScrollEnabled?: boolean
 } & ({
