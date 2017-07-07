@@ -1,4 +1,5 @@
 import { CSSProperties, PureComponent } from 'react';
+import { Type } from 'tcomb';
 
 export type TextOverflowProps = {
   children?: (self: JSX.Element, isOpen: boolean) => any,
@@ -11,3 +12,7 @@ export type TextOverflowProps = {
 }
 
 export default class TextOverflow extends PureComponent<TextOverflowProps> {}
+
+export const Props: {
+  [key: string]: Type<any>
+}

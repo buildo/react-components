@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+import { Type } from 'tcomb';
 import { PanelProps } from './Panel';
 
 export type TabbedPanelProps = {
@@ -10,3 +11,7 @@ export type TabbedPanelProps = {
 } & PanelProps;
 
 export default class TabbedPanel extends PureComponent<TabbedPanelProps> {}
+
+export const Props: {
+  [key: string]: Type<any>
+}
