@@ -5,6 +5,8 @@
 
 #### New features:
 
+- [typescript .d.ts] Tablo [#936](https://github.com/buildo/react-components/issues/936)
+- [typescript .d.ts] LoadingSpinner [#926](https://github.com/buildo/react-components/issues/926)
 - [typescript .d.ts] FocusableView [#923](https://github.com/buildo/react-components/issues/923)
 - [typescript .d.ts] Tooltip [#914](https://github.com/buildo/react-components/issues/914)
 - [typescript .d.ts] Icon [#911](https://github.com/buildo/react-components/issues/911)
