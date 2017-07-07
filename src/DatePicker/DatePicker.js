@@ -6,8 +6,6 @@ import { props, t, skinnable } from '../utils';
 import moment from 'moment';
 import Icon from '../Icon';
 
-import './datePicker.scss';
-
 /*
  * TODO: missing rc-datepicker props
  *
