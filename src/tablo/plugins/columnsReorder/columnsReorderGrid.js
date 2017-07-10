@@ -25,7 +25,6 @@ export default (Grid) =>
     columnsOrder: maybe(list(t.String)),
     onColumnsReorder: maybe(t.Function)
   }, { strict: false })
-  // @skinnable(contains(Grid))
   class ColumnsReorderGrid extends React.PureComponent {
 
     constructor() {
