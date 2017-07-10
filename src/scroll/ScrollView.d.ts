@@ -29,6 +29,7 @@ export type ScrollViewProps = {
     | 'easeOutCirc'
     | 'easeInOutCirc',
   onScroll?: UIEventHandler<HTMLElement>,
+  style?: CSSProperties,
   [key: string]: any
 }
 
