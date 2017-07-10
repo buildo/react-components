@@ -15,6 +15,8 @@
 - [typescript .d.ts] ModalManager [#929](https://github.com/buildo/react-components/issues/929)
 - [typescript .d.ts] MobileDetector [#928](https://github.com/buildo/react-components/issues/928)
 - [typescript .d.ts] FormattedText [#924](https://github.com/buildo/react-components/issues/924)
+- [typescript .d.ts] DropdownMenu [#910](https://github.com/buildo/react-components/issues/910)
+- [typescript .d.ts] Create .d.ts [#908](https://github.com/buildo/react-components/issues/908)
 
 ## [v0.23.6](https://github.com/buildo/react-components/tree/v0.23.6) (2017-07-07)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.5...v0.23.6)
