@@ -5,6 +5,7 @@
 
 #### New features:
 
+- POC for new DatePicker [#972](https://github.com/buildo/react-components/issues/972)
 - [typescript .d.ts] Scroll [#935](https://github.com/buildo/react-components/issues/935)
 - [typescript .d.ts] FormattedText [#924](https://github.com/buildo/react-components/issues/924)
 
