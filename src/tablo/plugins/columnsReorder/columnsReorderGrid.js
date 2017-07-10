@@ -1,5 +1,5 @@
 import React from 'react';
-import { skinnable, props, t, contains } from '../../../utils';
+import { props, t } from '../../../utils';
 
 import cx from 'classnames';
 import find from 'lodash/find';
@@ -25,7 +25,6 @@ export default (Grid) =>
     columnsOrder: maybe(list(t.String)),
     onColumnsReorder: maybe(t.Function)
   }, { strict: false })
-  @skinnable(contains(Grid))
   class ColumnsReorderGrid extends React.PureComponent {
 
     constructor() {
@@ -113,6 +112,10 @@ export default (Grid) =>
         ...gridProps
       };
 
+    }
+
+    render() {
+      return <Grid {...this.getLocals(this.props)} />;
     }
 
   };

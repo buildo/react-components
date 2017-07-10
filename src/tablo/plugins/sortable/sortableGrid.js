@@ -4,7 +4,7 @@ import omitBy from 'lodash/fp/omitBy';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { skinnable, props, t, contains } from '../../../utils';
+import { props, t } from '../../../utils';
 
 const { maybe, enums } = t;
 
@@ -78,10 +78,11 @@ const getLocals = ({
 
 export default (Grid) =>
 
-  @skinnable(contains(Grid))
   @props(propsTypes, { strict: false })
   class SortableGrid extends React.PureComponent {
 
-    getLocals = getLocals
+    render() {
+      return <Grid {...getLocals(this.props)} />;
+    }
 
   };
