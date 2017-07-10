@@ -4,8 +4,6 @@ import every from 'lodash/every';
 import cx from 'classnames';
 import View from 'react-flexview';
 
-import './dateField.scss';
-
 export const Props = {
   value: t.maybe(t.Date),
   onChange: t.Function,

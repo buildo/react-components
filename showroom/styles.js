@@ -25,6 +25,7 @@ import '../src/tablo/tablo.scss';
 import '../src/kitchen-sink/style.scss';
 import '../src/async-status-indicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
+import '../src/date-field/dateField.scss';
 
 
 // examples sass and resources
