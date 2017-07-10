@@ -7,6 +7,7 @@
 
 - POC for new DatePicker [#972](https://github.com/buildo/react-components/issues/972)
 - [typescript .d.ts] Scroll [#935](https://github.com/buildo/react-components/issues/935)
+- [typescript .d.ts] ModalManager [#929](https://github.com/buildo/react-components/issues/929)
 - [typescript .d.ts] MobileDetector [#928](https://github.com/buildo/react-components/issues/928)
 - [typescript .d.ts] FormattedText [#924](https://github.com/buildo/react-components/issues/924)
 
