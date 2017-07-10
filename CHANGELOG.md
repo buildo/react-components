@@ -1,6 +1,12 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.6...HEAD)
 
+#### New features:
+
+- [typescript .d.ts] Scroll [#935](https://github.com/buildo/react-components/issues/935)
+- [typescript .d.ts] FormattedText [#924](https://github.com/buildo/react-components/issues/924)
 
 ## [v0.23.6](https://github.com/buildo/react-components/tree/v0.23.6) (2017-07-07)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.5...v0.23.6)
