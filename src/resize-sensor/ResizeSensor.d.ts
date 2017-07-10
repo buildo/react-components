@@ -3,7 +3,7 @@ import { Type } from 'tcomb';
 
 export type ResizeSensorProps = {
   children: any,
-  onResize: (elements: HTMLElement) => void,
+  onResize: () => void,
   debounce?: number // TODO: integer
 }
 
