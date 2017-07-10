@@ -1,5 +1,5 @@
 import { CSSProperties, PureComponent } from 'react';
-import { TransitionWrapperProps } from '../transition-wrapper';
+import { TransitionWrapperProps } from '../transition-wrapper/TransitionWrapper';
 import { Type } from 'tcomb';
 
 export type ToasterProps = {

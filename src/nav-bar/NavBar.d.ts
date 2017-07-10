@@ -1,4 +1,4 @@
-import { CssProperties, PureComponent } from 'react'
+import { CSSProperties, PureComponent } from 'react'
 
 export type NavBarProps = {
   content: {
@@ -11,7 +11,7 @@ export type NavBarProps = {
   height?: string | number,
   background?: string,
   className?: string,
-  style?: CssProperties
+  style?: CSSProperties
 }
 
 export default class NavBar extends PureComponent<NavBarProps> {}
