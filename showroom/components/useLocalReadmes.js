@@ -2,8 +2,6 @@ import { sortBy } from 'lodash';
 
 function dynamicRequireReadmes({ repo, readmeUrl }) {
   switch (repo) {
-    case 'rc-datepicker':
-      return require(`raw!rc-datepicker/${readmeUrl.replace('.md', '')}.md`);
     case 'react-input-children':
       return require(`raw!gh-deps/node_modules/react-input-children/${readmeUrl.replace('.md', '')}.md`);
     case 'react-autosize-textarea':

@@ -522,22 +522,6 @@
         ]
       },
       {
-        "id": "rc-datepicker",
-        "title": "Datepicker",
-        "desc": "A decent and pretty date picker to be used with React",
-        "repo": "rc-datepicker",
-        "url": "https://github.com/buildo/rc-datepicker",
-        "readmeUrl": "src/README.md",
-        "examples": [
-          {
-            "url": "examples/DatePickerInput.example"
-          },
-          {
-            "url": "examples/DatePicker.example"
-          }
-        ]
-      },
-      {
         "id": "react-input-children",
         "title": "InputChildren",
         "desc": "ReactInputChildren is a replacement for the base input react component capable of rendering a child (link, button...) inside the input itself. It supports the same props of react input.",
@@ -638,6 +622,20 @@
           {
             "title": "A typical usage",
             "url": "formatted-text/examples/default.js"
+          }
+        ]
+      },
+      {
+        "id": "date-picker",
+        "title": "DatePicker",
+        "desc": "A datepicker component based on react-dates",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/DatePicker",
+        "readmeUrl": "DatePicker/README.md",
+        "examples": [
+          {
+            "title": "A typical usage",
+            "url": "DatePicker/examples/default.js"
           }
         ]
       }
