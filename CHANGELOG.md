@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.6...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Fix tablo [#980](https://github.com/buildo/react-components/issues/980)
+
 #### New features:
 
 - POC for new DatePicker [#972](https://github.com/buildo/react-components/issues/972)
