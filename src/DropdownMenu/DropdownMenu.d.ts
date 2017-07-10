@@ -1,9 +1,9 @@
-import { PureComponet } from 'react';
+import { PureComponent } from 'react';
 import { MenuProps } from './Menu';
 
 export type DropdownMenuProps = {
   children?: any, // TODO: t.ReactChildren
-  menuRenderer?: (options: MenuProps.Option) => JSX.Element,
+  menuRenderer?: (options: MenuProps.Option[]) => JSX.Element,
   options: MenuProps.Option[],
   iconClassName?: string,
   isOpen?: boolean,
