@@ -638,6 +638,24 @@
             "url": "DatePicker/examples/default.js"
           }
         ]
+      },
+      {
+        "id": "date-field",
+        "title": "DateField",
+        "desc": "A component to enter dates in forms",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/date-field",
+        "readmeUrl": "date-field/README.md",
+        "examples": [
+          {
+            "title": "A typical usage",
+            "url": "date-field/examples/default.js"
+          },
+          {
+            "title": "Handle date validation",
+            "url": "date-field/examples/isValid.js"
+          }
+        ]
       }
     ]
   }
