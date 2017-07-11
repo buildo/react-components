@@ -1,4 +1,5 @@
 import { CSSProperties, ComponentType } from 'react';
+import { Type } from 'tcomb';
 
 export type DateFieldProps = {
   value?: Date,
@@ -11,6 +12,10 @@ export type DateFieldProps = {
   },
   inputTypeNumber?: boolean
 };
+
+export const Props: {
+  [key: string]: Type<any>
+}
 
 declare const DateField: ComponentType<DateFieldProps>;
 export default DateField;
