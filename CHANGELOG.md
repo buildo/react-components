@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.7...HEAD)
 
+#### New features:
+
+- implement `DateInputs` (better name?) [#219](https://github.com/buildo/react-components/issues/219)
 
 ## [v0.23.7](https://github.com/buildo/react-components/tree/v0.23.7) (2017-07-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.6...v0.23.7)
