@@ -11,7 +11,7 @@ export const Props = {
   popover: t.struct({
     content: t.ReactChildren,
     attachToBody: t.maybe(t.Boolean),
-    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
+    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right', 'auto'])),
     anchor: t.maybe(t.enums.of(['start', 'center', 'end'])),
     event: t.maybe(t.enums.of(['click', 'hover'])),
     onShow: t.maybe(t.Function),
@@ -68,7 +68,7 @@ export default class Popover extends React.Component {
 
   componentDidUpdate() {
     if (this.containerNode) {
-      const popover = this.getVisiblePopover();
+      const popover = this.getVisiblePopover(this.computePopoverStyle());
       ReactDOM.render(popover, this.containerNode);
     }
   }
@@ -180,7 +180,6 @@ export default class Popover extends React.Component {
 
     const top = Math.round(box.top + scrollTop - clientTop);
     const left = Math.round(box.left + scrollLeft - clientLeft);
-
     return { top, left };
   };
 
@@ -348,10 +347,10 @@ export default class Popover extends React.Component {
 
   // LOCALES
 
-  popoverTemplate = (_style) => {
+  popoverTemplate = ({ _autoPositionAs = '', ..._style }) => {
     const { position, anchor, className, content, id, event, style } = this.getPopoverProps();
     const { eventWrapper, onMouseEvent, isAbsolute } = this;
-    const positionClass = `position-${position}`;
+    const positionClass = `position-${_autoPositionAs ? _autoPositionAs : position}`;
     const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(onMouseEvent) } : undefined;
@@ -362,7 +361,7 @@ export default class Popover extends React.Component {
     );
   };
 
-  getVisiblePopover = () => this.popoverTemplate(this.computePopoverStyle());
+  getVisiblePopover = (style) => this.popoverTemplate(style);
 
   getHiddenPopover = () => {
     const style = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
@@ -397,6 +396,7 @@ export default class Popover extends React.Component {
 
     const anchorOffset = { top: 0, left: 0 };
     const positionOffset = { top: 0, left: 0 };
+    let _maxWidth, _autoPositionAs;
 
     switch (anchor) {
       case 'start':
@@ -425,20 +425,57 @@ export default class Popover extends React.Component {
       case 'right':
         positionOffset.left = child.width + distance;
         break;
+      /* eslint-disable no-case-declarations */
+      case 'auto':
+
+        const scrollX = (window.pageXOffset || document.scrollLeft || 0) - (document.clientLeft || 0);
+
+        const popoverTotalHorizontalSize = popover.x + popover.width + distance;
+        // if total popover's size is greater then viewport's width
+        if (popoverTotalHorizontalSize > window.innerWidth) {
+          positionOffset.left = window.innerWidth - popoverTotalHorizontalSize;
+          const leftDistanceFormViewport = popover.x - scrollX;
+          // when left offset is greater than left distance to viewport adjust left offset and width
+          if (Math.abs(positionOffset.left) > leftDistanceFormViewport) {
+            positionOffset.left = -leftDistanceFormViewport + distance;
+            _maxWidth = window.innerWidth - distance * 2;
+          }
+        }
+
+        const scrollY = (window.pageYOffset || document.scrollTop || 0) - (document.clientTop || 0);
+
+        _autoPositionAs = 'top';
+        // popover is higher than distance from viewport's top
+        if ((popover.height + distance) > (popover.y - scrollY)) {
+          // try to positioning in the bottom
+          positionOffset.top = child.height + distance;
+          _autoPositionAs = 'bottom';
+        } else {
+          const popoverTotalVerticalSize = popover.y + popover.height + distance;
+          if (popoverTotalVerticalSize > window.innerHeight) {
+            positionOffset.top = window.innerHeight - popoverTotalVerticalSize;
+          } else {
+            positionOffset.top = -(popover.height + distance);
+          }
+        }
+        break;
+        /* eslint-enable no-case-declarations */
     }
 
     return {
       position: 'absolute',
       top: (isAbsolute ? child.y : 0) + (positionOffset.top + anchorOffset.top + offsetY),
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
-      maxWidth
+      maxWidth: _maxWidth || maxWidth,
+      _autoPositionAs
     };
   };
 
   getLocals() {
     const isRelative = !this.isAbsolute();
     const isOpen = this.isOpen();
-    const popover = isRelative && (this.initialized && isOpen ? this.getVisiblePopover() : this.getHiddenPopover());
+    const popoverStyle = isRelative && this.initialized && isOpen && this.computePopoverStyle() || {};
+    const popover = isRelative && (this.initialized && isOpen ? this.getVisiblePopover(popoverStyle) : this.getHiddenPopover());
     return {
       ...this.props,
       style: {
@@ -448,18 +485,22 @@ export default class Popover extends React.Component {
       },
       className: cx('react-popover', this.props.className, { 'is-open': isOpen, 'is-closed': !isOpen }),
       eventCallbacks: this.getEventCallbacks(),
-      popover
+      popover,
+      position: popoverStyle._autoPositionAs || this.props.popover.position,
+      anchor: this.props.popover.anchor,
+      isAuto: !!popoverStyle._autoPositionAs
     };
   }
 
   // RENDER
 
   render() {
-    const { children, style, className, id, eventCallbacks, popover } = this.getLocals();
+    const { children, style, className, id, eventCallbacks, popover, position, anchor, isAuto } = this.getLocals();
     return (
       <div {...{ id, className, style }} {...eventCallbacks} ref='children'>
         {children}
         {popover}
+        {isAuto && <div className={`new-anchor ${position} ${anchor}`} />}
       </div>
     );
   }

@@ -19,7 +19,7 @@ class Example extends React.Component {
 
     const popoverProps = {
       content,
-      position: 'top',
+      position: 'auto',
       anchor: 'start',
       dismissOnClickOutside: true,
       dismissOnScroll: true,

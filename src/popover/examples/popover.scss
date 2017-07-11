@@ -1,9 +1,81 @@
 @import '../../utils/theme/variables.scss';
 
 .live-demo {
+  .react-popover {
+    .popover-content.baloon {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    .new-anchor {
+      position: absolute;
+      background: $brc-white;
+      z-index: 10000;
+
+      &::before,
+      &::after {
+        content: ' ';
+        position: absolute;
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        pointer-events: none;
+      }
+
+      &::before {
+        border-width: 11px;
+        left: -1px;
+      }
+
+      &::after {
+        border-width: 10px;
+      }
+
+      &.start {
+        left: 5px;
+      }
+
+      &.end {
+        right: 5px;
+      }
+
+      &.centered {
+        left: 50%;
+        margin-left: -4px;
+      }
+
+      &.top {
+        top: -13px;
+
+        &::before {
+          border-top-color: #ced0da;
+        }
+
+        &::after {
+          border-top-color: $brc-white;
+        }
+      }
+
+      &.bottom {
+        bottom: 7px;
+
+        &::before {
+          border-bottom-color: #ced0da;
+        }
+
+        &::after {
+          top: 3px;
+          border-bottom-color: $brc-white;
+        }
+      }
+    }
+  }
+
   .popover-content {
     &.baloon {
-      z-index: 10000;
+      z-index: 9999;
       margin-left: -1px;
       border: 1px solid #ced0da;
       border-radius: 4px;
