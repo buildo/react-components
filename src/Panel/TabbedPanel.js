@@ -7,6 +7,7 @@ import FlexView from 'react-flexview';
 export const Props = t.subtype(t.struct({
   ...panelProps,
   tabs: t.struct({
+    basis: t.maybe(t.Number),
     headers: t.list(t.String),
     activeIndex: t.maybe(t.Num),
     onSetActiveTab: t.maybe(t.Func)
@@ -28,18 +29,19 @@ export default class TabbedPanel extends React.PureComponent {
       panelProps,
       headers: tabs.headers,
       content: children,
+      basis: tabs.basis,
       activeTabIndex: tabs.activeIndex,
       onSetActiveTab: this.onSetActiveTab
     };
   }
 
-  headerTemplate({ headers, activeTabIndex, onSetActiveTab }) {
+  headerTemplate({ headers, activeTabIndex, onSetActiveTab, basis = '100%' }) {
     return (
       <FlexView grow className='tabbed-panel-tabs'>
         {headers.map((header, i) => (
           <FlexView
             shrink
-            basis='100%'
+            basis={basis}
             key={i}
             className={cx('tabbed-panel-tab', { active: activeTabIndex === i })}
             hAlignContent='center'
@@ -53,7 +55,7 @@ export default class TabbedPanel extends React.PureComponent {
     );
   }
 
-  template({ headers, content, activeTabIndex, onSetActiveTab, panelProps }) {
+  template({ headers, content, activeTabIndex, onSetActiveTab, basis, panelProps }) {
     const { header: panelHeader, className, ...otherPanelProps } = panelProps;
 
     return (
@@ -64,7 +66,7 @@ export default class TabbedPanel extends React.PureComponent {
           collapse: panelHeader.collapse,
           title: panelHeader.title,
           hideTitleWhenExpanded: true,
-          content: this.headerTemplate({ headers, activeTabIndex, onSetActiveTab }),
+          content: this.headerTemplate({ headers, activeTabIndex, onSetActiveTab, basis }),
           ...panelHeader
         }}
       >

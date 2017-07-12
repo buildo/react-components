@@ -4,6 +4,7 @@ import { PanelProps } from './Panel';
 
 export type TabbedPanelProps = {
   tabs: {
+    basis?: number,
     headers: string[],
     activeIndex?: number,
     onSetActiveTab: (x: number) => void
