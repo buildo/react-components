@@ -3,6 +3,7 @@ $tab-background: $brc-white !default;
 $tab-background-active: $brc-white !default;
 $tab-border-color: $brc-silver !default;
 $tab-border-color-active: $brc-azure !default;
+$tab-border-height: 1px !default;
 $tab-border-height-active: 3px !default;
 $tab-color: $brc-coolGrey !default;
 $tab-color-active: $brc-darkGrey !default;
@@ -22,7 +23,7 @@ $tab-color-active: $brc-darkGrey !default;
     }
 
     .tabbed-panel-tab {
-      border-bottom: 1px solid $tab-border-color;
+      border-bottom: $tab-border-height solid $tab-border-color;
       background: $tab-background;
       cursor: pointer;
       color: $tab-color;
