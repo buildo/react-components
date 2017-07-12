@@ -12,7 +12,7 @@ export const Props = {
     content: t.ReactChildren,
     attachToBody: t.maybe(t.Boolean),
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
-    anchor: t.maybe(t.enums.of(['start', 'center', 'end'])),
+    anchor: t.maybe(t.enums.of(['start', 'center', 'end', 'auto'])),
     event: t.maybe(t.enums.of(['click', 'hover'])),
     onShow: t.maybe(t.Function),
     onHide: t.maybe(t.Function),
@@ -348,11 +348,11 @@ export default class Popover extends React.Component {
 
   // LOCALES
 
-  popoverTemplate = (_style) => {
-    const { position, anchor, className, content, id, event, style } = this.getPopoverProps();
+  popoverTemplate = ({ _realAnchor, ..._style }) => {
+    const { position, className, content, id, event, style } = this.getPopoverProps();
     const { eventWrapper, onMouseEvent, isAbsolute } = this;
     const positionClass = `position-${position}`;
-    const anchorClass = `anchor-${anchor}`;
+    const anchorClass = `anchor-${_realAnchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(onMouseEvent) } : undefined;
     return (
@@ -397,6 +397,7 @@ export default class Popover extends React.Component {
 
     const anchorOffset = { top: 0, left: 0 };
     const positionOffset = { top: 0, left: 0 };
+    let _realAnchor = anchor;
 
     switch (anchor) {
       case 'start':
@@ -409,6 +410,36 @@ export default class Popover extends React.Component {
       case 'end':
         anchorOffset.left = isHorizontal ? (child.width - popover.width) : 0;
         anchorOffset.top = isVertical ? (child.height - popover.height) : 0;
+        break;
+      case 'auto':
+        _realAnchor = 'start';
+        if (isHorizontal) {
+          const scrollX = (window.pageXOffset || document.scrollLeft || 0) - (document.clientLeft || 0);
+          let popoverXBoundary = popover.x + popover.width + distance;
+          if (popoverXBoundary > (window.innerWidth + scrollX)) {
+            anchorOffset.left = (child.width - popover.width) / 2;
+            _realAnchor = 'center';
+            popoverXBoundary = popoverXBoundary + anchorOffset.left;
+            if (popoverXBoundary > (window.innerWidth + scrollX)) {
+              anchorOffset.left = child.width - popover.width;
+              _realAnchor = 'end';
+            }
+          }
+        }
+
+        if (isVertical) {
+          const scrollY = (window.pageYOffset || document.scrollTop || 0) - (document.clientTop || 0);
+          let popoverYBoundary = popover.y + popover.height + distance;
+          if (popoverYBoundary > (window.innerHeight + scrollY)) {
+            anchorOffset.top = (child.height - popover.height) / 2;
+            _realAnchor = 'center';
+            popoverYBoundary = popoverYBoundary + anchorOffset.top;
+            if (popoverYBoundary > (window.innerHeight + scrollY)) {
+              anchorOffset.top = child.height - popover.height;
+              _realAnchor = 'end';
+            }
+          }
+        }
         break;
     }
 
@@ -431,7 +462,8 @@ export default class Popover extends React.Component {
       position: 'absolute',
       top: (isAbsolute ? child.y : 0) + (positionOffset.top + anchorOffset.top + offsetY),
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
-      maxWidth
+      maxWidth,
+      _realAnchor
     };
   };
 
