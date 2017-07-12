@@ -4,7 +4,7 @@ import * as t from 'tcomb';
 export namespace PopoverProps {
 
   type Position = 'top' | 'bottom' | 'left' | 'right'
-  type Anchor = 'start' | 'center' | 'end'
+  type Anchor = 'start' | 'center' | 'end' | 'auto'
   type Event = 'click' | 'hover'
 
   type Popover = {
