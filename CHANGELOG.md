@@ -8,7 +8,7 @@
 #### New features:
 
 - TabbedPanel: users should be able to choose tab width [#987](https://github.com/buildo/react-components/issues/987)
-- implement `DateInputs` (better name?) [#219](https://github.com/buildo/react-components/issues/219)
+- New component: `DateField` [#219](https://github.com/buildo/react-components/issues/219)
 
 ## [v0.23.7](https://github.com/buildo/react-components/tree/v0.23.7) (2017-07-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.6...v0.23.7)
