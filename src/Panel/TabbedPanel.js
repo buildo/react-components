@@ -64,7 +64,8 @@ export default class TabbedPanel extends React.PureComponent {
           collapse: panelHeader.collapse,
           title: panelHeader.title,
           hideTitleWhenExpanded: true,
-          content: this.headerTemplate({ headers, activeTabIndex, onSetActiveTab })
+          content: this.headerTemplate({ headers, activeTabIndex, onSetActiveTab }),
+          ...panelHeader
         }}
       >
         {content}
