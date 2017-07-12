@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.8...HEAD)
 
+#### Fixes (bugs & defects):
+
+- export $tab-border-height sass variables for tabbed panel [#990](https://github.com/buildo/react-components/issues/990)
 
 ## [v0.23.8](https://github.com/buildo/react-components/tree/v0.23.8) (2017-07-12)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.7...v0.23.8)
