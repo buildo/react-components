@@ -1,4 +1,4 @@
-import { CSSProperties, PureComponent } from 'react'
+import { CSSProperties, PureComponent, ValidationMap } from 'react'
 import * as t from 'tcomb';
 
 export namespace PopoverProps {
@@ -26,7 +26,9 @@ export namespace PopoverProps {
     offsetX?: number,
     offsetY?: number,
     isOpen?: boolean,
-    delay?: number | { whenClosed?: number, whenOpen?: number }
+    delay?: number | { whenClosed?: number, whenOpen?: number },
+    contextTypes?: ValidationMap<any>,
+    context?: object
   }
 }
 
@@ -35,7 +37,7 @@ export type PopoverProps = {
   popover: PopoverProps.Popover,
   className?: string,
   style?: CSSProperties,
-  id?: string,
+  id?: string
 }
 
 export default class Popover extends PureComponent<PopoverProps> {}
