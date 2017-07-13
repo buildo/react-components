@@ -412,32 +412,44 @@ export default class Popover extends React.Component {
         anchorOffset.top = isVertical ? (child.height - popover.height) : 0;
         break;
       case 'auto':
-        _realAnchor = 'start';
+        _realAnchor = 'center';
         if (isHorizontal) {
           const scrollX = (window.pageXOffset || document.scrollLeft || 0) - (document.clientLeft || 0);
-          let popoverXBoundary = popover.x + popover.width + distance;
+          // center the popover horizontally as first step
+          anchorOffset.left = (child.width - popover.width) / 2;
+
+          // check its x boundary doesn't overflow on right
+          const popoverXBoundary = child.x + anchorOffset.left + popover.width + distance;
           if (popoverXBoundary > (window.innerWidth + scrollX)) {
-            anchorOffset.left = (child.width - popover.width) / 2;
-            _realAnchor = 'center';
-            popoverXBoundary = popoverXBoundary + anchorOffset.left;
-            if (popoverXBoundary > (window.innerWidth + scrollX)) {
-              anchorOffset.left = child.width - popover.width;
-              _realAnchor = 'end';
-            }
+            anchorOffset.left = child.width - popover.width;
+            _realAnchor = 'end';
+          }
+
+          // check it doesn't overflow on left
+          const leftAvailableSpace = child.x - scrollX + (child.width / 2);
+          if ((popover.width / 2) > leftAvailableSpace) {
+            _realAnchor = 'start';
+            anchorOffset.left = 0;
           }
         }
 
         if (isVertical) {
           const scrollY = (window.pageYOffset || document.scrollTop || 0) - (document.clientTop || 0);
-          let popoverYBoundary = popover.y + popover.height + distance;
+          // center the popover vertically as first step
+          anchorOffset.top = (child.height - popover.height) / 2 ;
+
+          // check its y boundary doesn't overflow on bottom
+          const popoverYBoundary = child.y + anchorOffset.top + popover.height + distance;
           if (popoverYBoundary > (window.innerHeight + scrollY)) {
-            anchorOffset.top = (child.height - popover.height) / 2;
-            _realAnchor = 'center';
-            popoverYBoundary = popoverYBoundary + anchorOffset.top;
-            if (popoverYBoundary > (window.innerHeight + scrollY)) {
-              anchorOffset.top = child.height - popover.height;
-              _realAnchor = 'end';
-            }
+            anchorOffset.top = child.height - popover.height;
+            _realAnchor = 'end';
+          }
+
+          // check it doesn't overflow on top
+          const topAvailableSpace = child.y - scrollY + (child.height / 2);
+          if ((popover.height / 2) > topAvailableSpace) {
+            _realAnchor = 'start';
+            anchorOffset.top = 0;
           }
         }
         break;
