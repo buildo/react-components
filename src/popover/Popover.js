@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import debounce from 'lodash/debounce';
-import { props, t } from '../utils';
+import { props, t, getContextWrapper } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
 
@@ -30,12 +30,15 @@ export const Props = {
     delay: t.maybe(t.union([
       t.Integer,
       t.interface({ whenClosed: t.maybe(t.Integer), whenOpen: t.maybe(t.Integer) })
-    ]))
+    ])),
+    contextTypes: t.maybe(t.Object),
+    context: t.maybe(t.Object)
   }),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
+
 
 /**
  * Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
@@ -69,7 +72,8 @@ export default class Popover extends React.Component {
   componentDidUpdate() {
     if (this.containerNode) {
       const popover = this.getVisiblePopover();
-      ReactDOM.render(popover, this.containerNode);
+      const ContextWrapper = getContextWrapper(this.props.popover.contextTypes);
+      ReactDOM.render(<ContextWrapper context={this.props.popover.context}>{popover}</ContextWrapper>, this.containerNode);
     }
   }
 
@@ -236,7 +240,8 @@ export default class Popover extends React.Component {
 
     // render invisible popover
     const hiddenPopover = this.getHiddenPopover();
-    ReactDOM.render(hiddenPopover, this.containerNode);
+    const ContextWrapper = getContextWrapper(this.props.popover.contextTypes);
+    ReactDOM.render(<ContextWrapper context={this.props.popover.context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
     // add pointer to popover node
     this.popoverNode = this.containerNode.childNodes[0];
@@ -463,5 +468,4 @@ export default class Popover extends React.Component {
       </div>
     );
   }
-
 }
