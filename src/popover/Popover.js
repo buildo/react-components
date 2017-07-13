@@ -12,7 +12,7 @@ export const Props = {
     content: t.ReactChildren,
     attachToBody: t.maybe(t.Boolean),
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
-    anchor: t.maybe(t.enums.of(['start', 'center', 'end'])),
+    anchor: t.maybe(t.enums.of(['start', 'center', 'end', 'auto'])),
     event: t.maybe(t.enums.of(['click', 'hover'])),
     onShow: t.maybe(t.Function),
     onHide: t.maybe(t.Function),
@@ -355,11 +355,11 @@ export default class Popover extends React.Component {
 
   // LOCALES
 
-  popoverTemplate = (_style) => {
-    const { position, anchor, className, content, id, event, style } = this.getPopoverProps();
+  popoverTemplate = ({ _realAnchor, ..._style }) => {
+    const { position, className, content, id, event, style } = this.getPopoverProps();
     const { eventWrapper, onMouseEvent, isAbsolute } = this;
     const positionClass = `position-${position}`;
-    const anchorClass = `anchor-${anchor}`;
+    const anchorClass = `anchor-${_realAnchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(onMouseEvent) } : undefined;
     return (
@@ -404,6 +404,7 @@ export default class Popover extends React.Component {
 
     const anchorOffset = { top: 0, left: 0 };
     const positionOffset = { top: 0, left: 0 };
+    let _realAnchor = anchor;
 
     switch (anchor) {
       case 'start':
@@ -416,6 +417,48 @@ export default class Popover extends React.Component {
       case 'end':
         anchorOffset.left = isHorizontal ? (child.width - popover.width) : 0;
         anchorOffset.top = isVertical ? (child.height - popover.height) : 0;
+        break;
+      case 'auto':
+        _realAnchor = 'center';
+        if (isHorizontal) {
+          const scrollX = (window.pageXOffset || document.scrollLeft || 0) - (document.clientLeft || 0);
+          // center the popover horizontally as first step
+          anchorOffset.left = (child.width - popover.width) / 2;
+
+          // check its x boundary doesn't overflow on right
+          const popoverXBoundary = child.x + anchorOffset.left + popover.width + distance;
+          if (popoverXBoundary > (window.innerWidth + scrollX)) {
+            anchorOffset.left = child.width - popover.width;
+            _realAnchor = 'end';
+          }
+
+          // check it doesn't overflow on left
+          const leftAvailableSpace = child.x - scrollX + (child.width / 2);
+          if ((popover.width / 2) > leftAvailableSpace) {
+            _realAnchor = 'start';
+            anchorOffset.left = 0;
+          }
+        }
+
+        if (isVertical) {
+          const scrollY = (window.pageYOffset || document.scrollTop || 0) - (document.clientTop || 0);
+          // center the popover vertically as first step
+          anchorOffset.top = (child.height - popover.height) / 2 ;
+
+          // check its y boundary doesn't overflow on bottom
+          const popoverYBoundary = child.y + anchorOffset.top + popover.height + distance;
+          if (popoverYBoundary > (window.innerHeight + scrollY)) {
+            anchorOffset.top = child.height - popover.height;
+            _realAnchor = 'end';
+          }
+
+          // check it doesn't overflow on top
+          const topAvailableSpace = child.y - scrollY + (child.height / 2);
+          if ((popover.height / 2) > topAvailableSpace) {
+            _realAnchor = 'start';
+            anchorOffset.top = 0;
+          }
+        }
         break;
     }
 
@@ -438,7 +481,8 @@ export default class Popover extends React.Component {
       position: 'absolute',
       top: (isAbsolute ? child.y : 0) + (positionOffset.top + anchorOffset.top + offsetY),
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
-      maxWidth
+      maxWidth,
+      _realAnchor
     };
   };
 
