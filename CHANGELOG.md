@@ -2,6 +2,13 @@
 
 
 
+## [v0.23.11](https://github.com/buildo/react-components/tree/v0.23.11) (2017-07-13)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.10...v0.23.11)
+
+#### Fixes (bugs & defects):
+
+- Missing default for contextTypes in getContextWrapper util [#996](https://github.com/buildo/react-components/issues/996)
+
 ## [v0.23.10](https://github.com/buildo/react-components/tree/v0.23.10) (2017-07-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.9...v0.23.10)
 
