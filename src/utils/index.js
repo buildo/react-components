@@ -6,7 +6,7 @@ export skinnable, { contains } from 'react-skinnable';
 export { props, t };
 export const stateClassUtil = (...classes) => cx([].concat(...classes).map(cl => `is-${cl}`));
 
-export const getContextWrapper = (contextTypes) => {
+export const getContextWrapper = (contextTypes = {}) => {
 
   @props({
     context: t.maybe(t.Object),
