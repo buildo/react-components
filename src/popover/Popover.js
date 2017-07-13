@@ -72,8 +72,9 @@ export default class Popover extends React.Component {
   componentDidUpdate() {
     if (this.containerNode) {
       const popover = this.getVisiblePopover();
-      const ContextWrapper = getContextWrapper(this.props.popover.contextTypes);
-      ReactDOM.render(<ContextWrapper context={this.props.popover.context}>{popover}</ContextWrapper>, this.containerNode);
+      const { contextTypes, context } = this.getPopoverProps();
+      const ContextWrapper = getContextWrapper(contextTypes);
+      ReactDOM.render(<ContextWrapper context={context}>{popover}</ContextWrapper>, this.containerNode);
     }
   }
 
@@ -240,8 +241,9 @@ export default class Popover extends React.Component {
 
     // render invisible popover
     const hiddenPopover = this.getHiddenPopover();
-    const ContextWrapper = getContextWrapper(this.props.popover.contextTypes);
-    ReactDOM.render(<ContextWrapper context={this.props.popover.context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
+    const { contextTypes, context } = this.getPopoverProps();
+    const ContextWrapper = getContextWrapper(contextTypes);
+    ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
     // add pointer to popover node
     this.popoverNode = this.containerNode.childNodes[0];
