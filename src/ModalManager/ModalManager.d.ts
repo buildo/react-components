@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { Type } from 'tcomb';
-import { TransitionWrapperProps } from '../transition-wrapper/TransitionWrapper';
+import { TransitionWrapperProps } from '../TransitionWrapper/TransitionWrapper';
 
 export type ModalManagerProps = {
   children?: any,

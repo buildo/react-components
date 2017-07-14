@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import LoadingSpinner from '../../src/loading-spinner';
+import LoadingSpinner from '../../src/LoadingSpinner';
 
 describe('LoadingSpinner', () => {
 

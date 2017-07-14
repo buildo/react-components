@@ -1,6 +1,6 @@
 import { ComponentType, CSSProperties, PureComponent } from 'react';
 import { Type } from 'tcomb';
-import { TextOverflowProps } from '../text-overflow';
+import { TextOverflowProps } from '../TextOverflow';
 
 export namespace ButtonProps {
 

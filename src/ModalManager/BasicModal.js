@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, t } from '../utils';
-import BackgroundDimmer from '../background-dimmer/BackgroundDimmer';
+import BackgroundDimmer from '../BackgroundDimmer/BackgroundDimmer';
 
 export const Props = {
   children: t.ReactElement,

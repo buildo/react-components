@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { skinnable, props, t } from '../../../utils';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
-import ResizeSensor from '../../../resize-sensor/ResizeSensor';
+import ResizeSensor from '../../../ResizeSensor/ResizeSensor';
 
 const { maybe } = t;
 

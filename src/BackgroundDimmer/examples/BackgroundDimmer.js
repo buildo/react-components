@@ -1,9 +1,9 @@
 const Card = ({ image, title, author, children }) => (
   <FlexView column width={350} className='card'>
-    <img src={`./src/background-dimmer/examples/${image}`} />
+    <img src={`./src/BackgroundDimmer/examples/${image}`} />
     <FlexView vAlignContent='center'>
       <FlexView grow className='card-title'>{title}</FlexView>
-      <FlexView shrink={false} className='card-rating'><img src='./src/background-dimmer/examples/rating.png' heigth={12} /></FlexView>
+      <FlexView shrink={false} className='card-rating'><img src='./src/BackgroundDimmer/examples/rating.png' heigth={12} /></FlexView>
     </FlexView>
     <FlexView className='card-author'>{author}</FlexView>
     {children}

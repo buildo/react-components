@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { modalWithContext } from '../../src/modal';
+import { modalWithContext } from '../../src/Modal';
 
 describe('Modal', () => {
 

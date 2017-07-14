@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t } from '../../utils';
-import LoadingSpinner from '../../loading-spinner';
+import LoadingSpinner from '../../LoadingSpinner';
 import ExampleCard from './ExampleCard';
 import Markdown from 'react-remarkable';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t } from '../utils';
-import TransitionWrapper from '../transition-wrapper';
+import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode = null;
 

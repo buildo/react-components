@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, skinnable, t, stateClassUtil } from '../utils';
-import Popover from '../popover/Popover';
+import Popover from '../Popover/Popover';
 
 export const Props = {
   children: t.ReactChildren,

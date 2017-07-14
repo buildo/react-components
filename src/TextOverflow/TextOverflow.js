@@ -4,8 +4,8 @@ import omit from 'lodash/omit';
 import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import Popover from '../popover/Popover';
-import ResizeSensor from '../resize-sensor/ResizeSensor';
+import Popover from '../Popover/Popover';
+import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.maybe(t.Function),

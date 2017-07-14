@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import every from 'lodash/every';
 import { skinnable, props, t, stateClassUtil } from '../utils';
-import _TextOverflow from '../text-overflow/TextOverflow';
+import _TextOverflow from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
-import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 // types
 export const buttonStates = ['ready', 'not-allowed', 'processing', 'error', 'success'];

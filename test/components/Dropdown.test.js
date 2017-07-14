@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Dropdown from '../../src/dropdown';
+import Dropdown from '../../src/Dropdown';
 
 const exampleProps = {
   ...Dropdown.defaultProps,

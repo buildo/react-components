@@ -4,7 +4,7 @@ import cx from 'classnames';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
+import TransitionWrapper from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
   children: t.ReactChildren,

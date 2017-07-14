@@ -22,7 +22,7 @@ class Example extends React.Component {
         </FlexView>
       </FlexView>
       <FlexView grow shrink={false} hAlignContent='right'>
-        <img src='./src/more-or-less/examples/image.png' />
+        <img src='./src/MoreOrLess/examples/image.png' />
       </FlexView>
     </FlexView>
   );
@@ -39,7 +39,7 @@ class Example extends React.Component {
         </FlexView>
       </FlexView>
       <FlexView grow hAlignContent='right' vAlignContent='center'>
-        <img src='./src/more-or-less/examples/image2.png' style={{ width: 'auto', height: 80 }} />
+        <img src='./src/MoreOrLess/examples/image2.png' style={{ width: 'auto', height: 80 }} />
       </FlexView>
     </FlexView>
   );

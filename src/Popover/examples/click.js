@@ -1,6 +1,6 @@
 const Option = ({ title, image }) => (
   <FlexView column hAlignContent='center' className='option'>
-    <img src={`../../src/popover/examples/${image}.png`} />
+    <img src={`../../src/Popover/examples/${image}.png`} />
     <Button size='medium' label={title} onClick={() => {}} />
   </FlexView>
 );

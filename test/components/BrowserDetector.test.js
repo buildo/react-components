@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BrowserDetector from '../../src/browser-detector';
+import BrowserDetector from '../../src/BrowserDetector';
 
 function forceUserAgent(ua) {
   navigator.__defineGetter__('userAgent', () => ua);

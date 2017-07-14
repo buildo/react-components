@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { skinnable, props, t } from '../utils';
 import cx from 'classnames';
-import { getValueLink } from '../link-state';
+import { getValueLink } from '../LinkState';
 import { warn } from '../utils/log';
 
 export const Props = {

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import TimePicker, {
   parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
-} from '../../src/time-picker/TimePicker';
+} from '../../src/TimePicker/TimePicker';
 
 const exampleProps = {
   ...TimePicker.defaultProps,

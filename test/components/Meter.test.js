@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Meter from '../../src/meter';
+import Meter from '../../src/Meter';
 
 const exampleProps = {
   ...Meter.defaultProps,

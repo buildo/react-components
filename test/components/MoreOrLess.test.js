@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import MoreOrLess from '../../src/more-or-less';
+import MoreOrLess from '../../src/MoreOrLess';
 
 const exampleProps = {
   ...MoreOrLess.defaultProps,

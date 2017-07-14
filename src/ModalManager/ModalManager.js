@@ -4,7 +4,7 @@ import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { warn } from '../utils/log';
 import { props, t } from '../utils';
 import FlexView from 'react-flexview';
-import TransitionWrapper from '../transition-wrapper/TransitionWrapper';
+import TransitionWrapper from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
   children: t.maybe(t.ReactElement),
