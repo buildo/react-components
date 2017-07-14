@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.11...HEAD)
 
+#### Fixes (bugs & defects):
+
+- TypeScript: StatefulButton's `onClick` should always return a Promise [#1000](https://github.com/buildo/react-components/issues/1000)
 
 ## [v0.23.11](https://github.com/buildo/react-components/tree/v0.23.11) (2017-07-13)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.10...v0.23.11)
