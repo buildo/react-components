@@ -46,7 +46,7 @@ class Example extends React.Component {
 
       {Object.keys(this.sections).map(section => (
 
-        <CollapsableSection
+        <CollapsibleSection
           isOpen={this.isSectionOpen(section)}
           onChange={this.onChange(section)}
           header={section}
@@ -54,7 +54,7 @@ class Example extends React.Component {
           icons={{ open: 'angleDown', closed: 'angleRight' }}
         >
           <SectionList items={this.sections[section]} />
-        </CollapsableSection>
+        </CollapsibleSection>
 
       ))}
 

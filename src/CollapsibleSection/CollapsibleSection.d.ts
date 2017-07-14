@@ -1,6 +1,6 @@
 import { CSSProperties, PureComponent } from 'react';
 
-export type CollapsableSectionProps = {
+export type CollapsibleSectionProps = {
   children: any, // TODO: t.ReactChildren
   isOpen: boolean,
   isSelected?: boolean,
@@ -17,4 +17,4 @@ export type CollapsableSectionProps = {
   style?: CSSProperties
 }
 
-export default class CollapsableSection extends PureComponent<CollapsableSectionProps> {}
+export default class CollapsibleSection extends PureComponent<CollapsibleSectionProps> {}

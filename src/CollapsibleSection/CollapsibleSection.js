@@ -21,7 +21,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-/** A collapsable panel, allowing you to toggle more/less content
+/** A collapsible panel, allowing you to toggle more/less content
  * @param children - panel content (visible only when expanded)
  * @param isOpen - true if panel is expanded
  * @param isSelected - true if panel has focus
@@ -33,7 +33,7 @@ export const Props = {
  */
 @skinnable()
 @props(Props)
-export default class CollapsableSection extends React.Component {
+export default class CollapsibleSection extends React.Component {
 
   static defaultProps = {
     onOpen: () => {},
@@ -69,7 +69,7 @@ export default class CollapsableSection extends React.Component {
       wrapperProps: {
         id,
         style,
-        className: cx(className, 'collapsable-section', { 'is-open': isOpen, 'is-selected': isSelected })
+        className: cx(className, 'collapsible-section', { 'is-open': isOpen, 'is-selected': isSelected })
       }
     };
   }

@@ -1,1 +1,1 @@
-export default from './CollapsableSection';
+export default from './CollapsibleSection';

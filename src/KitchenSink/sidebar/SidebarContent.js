@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t } from '../../utils';
 import Item from './Item';
 import SingleItemSection from './SingleItemSection';
-import CollapsableSection from '../../collapsable-section/CollapsableSection';
+import CollapsibleSection from '../../CollapsibleSection/CollapsibleSection';
 import Scroll from '../../scroll/ScrollView';
 import View from 'react-flexview';
 
@@ -38,11 +38,11 @@ export default class SidebarContent extends React.Component {
     if ((components || contents).length > 1) {
       return (
         <View shrink={false} column key={sectionId}>
-          <CollapsableSection onChange={this.onToggle(sectionId)} isOpen={this.isOpen(sectionId)} header={title} icons={{ open: 'angleUpsvg', closed: 'angleDown' }}>
+          <CollapsibleSection onChange={this.onToggle(sectionId)} isOpen={this.isOpen(sectionId)} header={title} icons={{ open: 'angleUpsvg', closed: 'angleDown' }}>
             <div className='items'>
               {this.getItems(sectionId, components || contents)}
             </div>
-          </CollapsableSection>
+          </CollapsibleSection>
         </View>
       );
     } else {

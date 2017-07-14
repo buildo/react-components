@@ -1,3 +1,3 @@
-import CollapsableSection, { CollapsableSectionProps } from './CollapsableSection';
-export default CollapsableSection;
-export { CollapsableSectionProps };
+import CollapsibleSection, { CollapsibleSectionProps } from './CollapsibleSection';
+export default CollapsibleSection;
+export { CollapsibleSectionProps };
