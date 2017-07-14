@@ -1,6 +1,6 @@
 import React from 'react';
 import FlexView from 'react-flexview';
-import KitchenSink from '../../src/kitchen-sink';
+import KitchenSink from '../../src/KitchenSink';
 import Button from '../../src/Button';
 import { t, props } from 'tcomb-react';
 import packageJson from 'json!../../package.json';
