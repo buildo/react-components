@@ -6,6 +6,7 @@ export namespace StatefulButtonProps {
 }
 
 export type StatefulButtonProps = ButtonProps & {
+  onClick: (e: React.SyntheticEvent<HTMLDivElement>) => Promise<any>,
   baseState?: StatefulButtonProps.ButtonBaseState,
   stableSuccess?: boolean,
   timerMillis?: number
