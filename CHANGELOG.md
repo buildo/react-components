@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.23.12...HEAD)
 
+#### Breaking:
+
+- Components folders should all follow the same name-convention [#492](https://github.com/buildo/react-components/issues/492)
 
 ## [v0.23.12](https://github.com/buildo/react-components/tree/v0.23.12) (2017-07-14)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.11...v0.23.12)
