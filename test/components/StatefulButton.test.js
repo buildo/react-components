@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import StatefulButton from '../../src/button/StatefulButton';
+import StatefulButton from '../../src/Button/StatefulButton';
 import clone from 'lodash/clone';
 
 function timeoutPromise(millis) {

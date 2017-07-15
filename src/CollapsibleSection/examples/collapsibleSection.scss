@@ -1,0 +1,34 @@
+@import '../../utils/theme/variables.scss';
+
+.live-demo .collapsible-section {
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 4px;
+
+  .content {
+    height: 48px;
+    color: $brc-darkGrey;
+    font-weight: $brc-semibold;
+
+    .icon {
+      color: $brc-coolGrey;
+    }
+  }
+
+  .section {
+    padding: 16px 42px;
+
+    .item {
+      border-bottom: 1px solid $brc-silver;
+      height: 50px;
+
+      .key {
+        font-weight: $brc-semibold;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

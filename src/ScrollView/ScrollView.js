@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
-import ResizeSensor from '../resize-sensor/ResizeSensor';
+import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.ReactChildren,

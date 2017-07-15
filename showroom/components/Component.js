@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t } from 'tcomb-react';
 import find from 'lodash/find';
 import Markdown from 'react-remarkable';
-import KitchenSink from '../../src/kitchen-sink';
+import KitchenSink from '../../src/KitchenSink';
 
 
 @props({

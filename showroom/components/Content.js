@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t } from 'tcomb-react';
-import KitchenSink from '../../src/kitchen-sink';
+import KitchenSink from '../../src/KitchenSink';
 
 @props({
   router: t.Function,

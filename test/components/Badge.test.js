@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Badge from '../../src/badge';
+import Badge from '../../src/Badge';
 
 describe('Badge', () => {
 

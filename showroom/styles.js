@@ -3,37 +3,37 @@
 // default sass
 import 'react-flexview/lib/flexView.css';
 
-import '../src/button/button.scss';
+import '../src/Button/button.scss';
 import '../src/Divider/divider.scss';
 import '../src/DropdownMenu/dropdownMenu.scss';
 import '../src/DropdownMenu/menu.scss';
 import '../src/Panel/tabbedPanel.scss';
-import '../src/collapsable-section/collapsableSection.scss';
-import '../src/more-or-less/moreOrLess.scss';
-import '../src/loading-spinner/loadingSpinner.scss';
-import '../src/dropdown/dropdown.scss';
-import '../src/confirmation-input/confirmationInput.scss';
-import '../src/badge/badge.scss';
-import '../src/toggle/toggle.scss';
+import '../src/CollapsibleSection/collapsibleSection.scss';
+import '../src/MoreOrLess/moreOrLess.scss';
+import '../src/LoadingSpinner/loadingSpinner.scss';
+import '../src/Dropdown/dropdown.scss';
+import '../src/ConfirmationInput/confirmationInput.scss';
+import '../src/Badge/badge.scss';
+import '../src/Toggle/toggle.scss';
 import '../src/Tooltip/tooltip.scss';
 import '../src/Panel/panel.scss';
 import '../src/Panel/tabbedPanel.scss';
-import '../src/meter/meter.scss';
-import '../src/modal/modal.scss';
+import '../src/Meter/meter.scss';
+import '../src/Modal/modal.scss';
 import '../src/ScrollView/scrollView.scss';
-import '../src/tablo/tablo.scss';
-import '../src/kitchen-sink/style.scss';
-import '../src/async-status-indicator/asyncStatusIndicator.scss';
+import '../src/Tablo/tablo.scss';
+import '../src/KitchenSink/style.scss';
+import '../src/AsyncStatusIndicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
-import '../src/date-field/dateField.scss';
+import '../src/DateField/dateField.scss';
 
 
 // examples sass and resources
-import '../src/modal/examples/transition.scss';
+import '../src/Modal/examples/transition.scss';
 
-import '../src/more-or-less/examples/default.scss';
-import '../src/more-or-less/examples/image.png';
-import '../src/more-or-less/examples/image2.png';
+import '../src/MoreOrLess/examples/default.scss';
+import '../src/MoreOrLess/examples/image.png';
+import '../src/MoreOrLess/examples/image2.png';
 
 import '../src/Panel/examples/default.scss';
 import '../src/Panel/examples/image1.png';
@@ -41,29 +41,29 @@ import '../src/Panel/examples/image2.png';
 import '../src/Panel/examples/image3.png';
 import '../src/Panel/examples/image4.png';
 
-import '../src/collapsable-section/examples/collapsableSection.scss';
+import '../src/CollapsibleSection/examples/collapsibleSection.scss';
 
-import '../src/background-dimmer/examples/backgroundDimmer.scss';
-import '../src/background-dimmer/examples/cover.png';
-import '../src/background-dimmer/examples/rating.png';
+import '../src/BackgroundDimmer/examples/backgroundDimmer.scss';
+import '../src/BackgroundDimmer/examples/cover.png';
+import '../src/BackgroundDimmer/examples/rating.png';
 
-import '../src/nav-bar/examples/navBar.scss';
+import '../src/NavBar/examples/navBar.scss';
 
 import '../src/DropdownMenu/examples/userMenu.scss';
 import '../src/DropdownMenu/examples/avatar.png';
 
-import '../src/dropdown/examples/dropdown.scss';
+import '../src/Dropdown/examples/dropdown.scss';
 
 import '../src/ScrollView/examples/scroll.gif';
 
-import '../src/meter/examples/meter.scss';
+import '../src/Meter/examples/meter.scss';
 
-import '../src/popover/examples/popover.scss';
-import '../src/popover/examples/popover.scss';
-import '../src/popover/examples/avatar1.png';
-import '../src/popover/examples/avatar2.png';
-import '../src/popover/examples/avatar3.png';
+import '../src/Popover/examples/popover.scss';
+import '../src/Popover/examples/popover.scss';
+import '../src/Popover/examples/avatar1.png';
+import '../src/Popover/examples/avatar2.png';
+import '../src/Popover/examples/avatar3.png';
 
-import '../src/browser-detector/examples/browserDetector.scss';
+import '../src/BrowserDetector/examples/browserDetector.scss';
 
-import '../src/input-children/examples/inputChildren.scss';
+import '../src/InputChildren/examples/inputChildren.scss';

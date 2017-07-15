@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import BackgroundDimmer from '../../src/background-dimmer';
+import BackgroundDimmer from '../../src/BackgroundDimmer';
 
 const content = <div className='content'>content</div>;
 

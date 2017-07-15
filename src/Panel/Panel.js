@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import PanelHeader, { HeaderSize } from './PanelHeader';
 import capitalize from 'lodash/capitalize';
-import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import FlexView from 'react-flexview';
 
 export const Props = {

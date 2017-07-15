@@ -1,6 +1,6 @@
 import { Type } from 'tcomb';
 import { CSSProperties ,PureComponent } from 'react';
-import { PopoverProps } from '../popover/Popover';
+import { PopoverProps } from '../Popover/Popover';
 
 export namespace TooltipProps {
   type Type = 'light' | 'dark';
