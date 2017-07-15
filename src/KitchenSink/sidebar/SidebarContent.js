@@ -3,7 +3,7 @@ import { props, t } from '../../utils';
 import Item from './Item';
 import SingleItemSection from './SingleItemSection';
 import CollapsibleSection from '../../CollapsibleSection/CollapsibleSection';
-import Scroll from '../../scroll/ScrollView';
+import Scroll from '../../Scroll/ScrollView';
 import View from 'react-flexview';
 
 @props({
