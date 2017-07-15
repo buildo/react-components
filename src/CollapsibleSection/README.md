@@ -1,6 +1,6 @@
-# CollapsableSection
+# CollapsibleSection
 
-A collapsable panel, allowing you to toggle more/less content
+A collapsible panel, allowing you to toggle more/less content
 
 ## Props
 |Name|Type|Default|Description|
