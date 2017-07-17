@@ -97,6 +97,7 @@
     "smooth-release": "^8.0.0",
     "style-loader": "^0.17.0",
     "stylelint-webpack-plugin": "^0.7.0",
+    "typelevel-ts": "^0.1.2",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
