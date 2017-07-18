@@ -1,0 +1,17 @@
+.text-overflow-touch {
+  max-width: 100%;
+
+  > .react-popover {
+    max-width: 100%;
+  }
+
+  > span,
+  > .react-popover > span {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    -o-text-overflow: ellipsis; // Opera
+    text-overflow: ellipsis;
+  }
+}

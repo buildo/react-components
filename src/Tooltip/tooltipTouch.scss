@@ -1,0 +1,14 @@
+.tooltip-touch.tooltip {
+  &.position-top {
+    margin-top: -13px;
+  }
+
+  &.is-small {
+    padding: 6px 12px;
+    font-size: 18px;
+  }
+
+  &.is-big {
+    font-size: 19px;
+  }
+}
