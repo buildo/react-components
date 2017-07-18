@@ -62,7 +62,8 @@
     "react-transition-group": "1.1.1",
     "sass-flex-mixins": "^0.1.0",
     "tcomb-react": "^0.9.0",
-    "tlds": "^1.185.0"
+    "tlds": "^1.185.0",
+    "typelevel-ts": "^0.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
@@ -97,7 +98,6 @@
     "smooth-release": "^8.0.0",
     "style-loader": "^0.17.0",
     "stylelint-webpack-plugin": "^0.7.0",
-    "typelevel-ts": "^0.1.2",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
