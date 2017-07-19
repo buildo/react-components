@@ -3,13 +3,14 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.0...HEAD)
 
+#### New features:
+
+- update @types/react to 15.0.38 [#1005](https://github.com/buildo/react-components/issues/1005)
+- backport mobile optimizations from alinity pro [#901](https://github.com/buildo/react-components/issues/901)
+
 #### Fixes (bugs & defects):
 
 - Tablo: border row should be applied to inner cells  [#1002](https://github.com/buildo/react-components/issues/1002)
-
-#### New features:
-
-- backport mobile optimizations from alinity pro [#901](https://github.com/buildo/react-components/issues/901)
 
 ## [v0.24.0](https://github.com/buildo/react-components/tree/v0.24.0) (2017-07-17)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.12...v0.24.0)
