@@ -9,12 +9,16 @@
   */
 
   .tablo-row {
-    border-bottom: $row-border-width solid $row-border-color;
+    .tablo-cell {
+      border-bottom: $row-border-width solid $row-border-color;
+    }
   }
 
   .fixedDataTableRowLayout_rowWrapper:last-child {
     .tablo-row {
-      border-bottom: $last-row-border-width solid $last-row-border-color;
+      .tablo-cell {
+        border-bottom: $last-row-border-width solid $last-row-border-color;
+      }
     }
   }
 
