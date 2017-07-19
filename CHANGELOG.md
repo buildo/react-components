@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Tablo: border row should be applied to inner cells  [#1002](https://github.com/buildo/react-components/issues/1002)
+
 #### New features:
 
 - backport mobile optimizations from alinity pro [#901](https://github.com/buildo/react-components/issues/901)
