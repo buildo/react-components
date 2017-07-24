@@ -53,6 +53,7 @@ export default class Popover extends React.Component {
   state = { isOpen: false };
 
   componentDidMount() {
+    this.ContextWrapper = getContextWrapper(this.getPopoverProps().contextTypes);
     this.updateDebouncedMousedEvents();
     this.saveValuesFromNodeTree();
     this.initialized = true;
@@ -72,8 +73,8 @@ export default class Popover extends React.Component {
   componentDidUpdate() {
     if (this.containerNode) {
       const popover = this.getVisiblePopover();
-      const { contextTypes, context } = this.getPopoverProps();
-      const ContextWrapper = getContextWrapper(contextTypes);
+      const { context } = this.getPopoverProps();
+      const { ContextWrapper } = this;
       ReactDOM.render(<ContextWrapper context={context}>{popover}</ContextWrapper>, this.containerNode);
     }
   }
@@ -241,8 +242,8 @@ export default class Popover extends React.Component {
 
     // render invisible popover
     const hiddenPopover = this.getHiddenPopover();
-    const { contextTypes, context } = this.getPopoverProps();
-    const ContextWrapper = getContextWrapper(contextTypes);
+    const { context } = this.getPopoverProps();
+    const { ContextWrapper } = this;
     ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
     // add pointer to popover node
@@ -356,10 +357,11 @@ export default class Popover extends React.Component {
   // LOCALES
 
   popoverTemplate = ({ _realAnchor, ..._style }) => {
-    const { position, className, content, id, event, style } = this.getPopoverProps();
+    const { position, className, anchor: _anchor, content, id, event, style } = this.getPopoverProps();
+    const anchor = _realAnchor || _anchor;
     const { eventWrapper, onMouseEvent, isAbsolute } = this;
     const positionClass = `position-${position}`;
-    const anchorClass = `anchor-${_realAnchor}`;
+    const anchorClass = `anchor-${anchor}`;
     const _className = `popover-content ${positionClass} ${anchorClass} ${className}`;
     const events = !isAbsolute() && event === 'hover' ? { onMouseEnter: eventWrapper(onMouseEvent) } : undefined;
     return (
