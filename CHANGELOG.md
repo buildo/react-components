@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.24.2...HEAD)
 
+#### New features:
+
+- Tooltip: wrap text with FormattedText [#1009](https://github.com/buildo/react-components/issues/1009)
 
 ## [v0.24.2](https://github.com/buildo/react-components/tree/v0.24.2) (2017-07-24)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.1...v0.24.2)
