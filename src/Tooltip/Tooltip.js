@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { props, skinnable, t, stateClassUtil } from '../utils';
+import FormattedText from '../FormattedText/FormattedText';
 import Popover from '../Popover/Popover';
 
 export const Props = {
@@ -32,6 +33,7 @@ export default class Tooltip extends React.PureComponent {
     const { children, type, size, ...props } = this.props;
     const popover = {
       ...props.popover,
+      content: <FormattedText>{props.popover.content}</FormattedText>,
       event: 'hover',
       className: cx('tooltip', stateClassUtil([type, size]), props.popover.className)
     };
