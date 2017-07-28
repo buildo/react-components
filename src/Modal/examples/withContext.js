@@ -1,3 +1,5 @@
+// import { modalWithContext } from 'buildo-react-components/lib/Modal';
+
 const FooType = React.PropTypes.string.isRequired;
 
 const ModalWithContext = modalWithContext({ foo: FooType });

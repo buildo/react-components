@@ -1,3 +1,5 @@
+// import BackgroundDimmer from 'buildo-react-components/lib/BackgroundDimmer';
+
 const Card = ({ image, title, author, children }) => (
   <FlexView column width={350} className='card'>
     <img src={`./src/BackgroundDimmer/examples/${image}`} />

@@ -1,3 +1,5 @@
+// import CollapsibleSection from 'buildo-react-components/lib/CollapsibleSection';
+
 const SectionList = ({ items }) => (
   <FlexView className='section' column>
     {Object.keys(items).map(k => (

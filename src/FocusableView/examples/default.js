@@ -1,3 +1,5 @@
+// import FocusableView from 'buildo-react-components/lib/FocusableView';
+
 class Example extends React.Component {
 
   getContent = (focused) => (

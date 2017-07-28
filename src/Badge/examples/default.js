@@ -1,3 +1,5 @@
+// import Badge from 'buildo-react-components/lib/Badge';
+
 class Example extends React.Component {
 
   render = () => (

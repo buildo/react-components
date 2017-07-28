@@ -1,3 +1,5 @@
+// import Popover from 'buildo-react-components/lib/Popover';
+
 const Option = ({ title, image }) => (
   <FlexView column hAlignContent='center' className='option'>
     <img src={`../../src/Popover/examples/${image}.png`} />

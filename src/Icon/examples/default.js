@@ -1,3 +1,5 @@
+// import Icon from 'buildo-react-components/lib/Icon';
+
 class Example extends React.Component {
 
   render() {

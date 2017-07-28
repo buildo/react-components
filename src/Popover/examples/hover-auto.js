@@ -1,3 +1,5 @@
+// import Popover from 'buildo-react-components/lib/Popover';
+
 const Option = ({ title, value }) => (
   <FlexView column hAlignContent='center' className='option'>
     <FlexView className='title'>{title}</FlexView>

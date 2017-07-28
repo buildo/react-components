@@ -1,3 +1,5 @@
+// import Badge from 'buildo-react-components/lib/Badge';
+
 const IconWithBadge = ({ icon, label }) => (
   <FlexView style={{ marginRight: 10 }}>
     <Icon icon={icon} style={{ fontSize: 20 }} />

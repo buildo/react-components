@@ -1,3 +1,5 @@
+// import Tooltip from 'buildo-react-components/lib/Tooltip';
+
 class Example extends React.Component {
 
   state = { isOpen: false }

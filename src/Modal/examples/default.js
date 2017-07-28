@@ -1,3 +1,5 @@
+// import Modal from 'buildo-react-components/lib/Modal';
+
 class Example extends React.Component {
   constructor() {
     super();

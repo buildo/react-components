@@ -1,3 +1,5 @@
+// import NavBar from 'buildo-react-components/lib/NavBar';
+
 class Example extends React.Component {
 
   left = () => <FlexView className='left'>

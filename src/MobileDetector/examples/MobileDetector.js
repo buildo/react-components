@@ -1,3 +1,5 @@
+// import MobileDetector from 'buildo-react-components/lib/MobileDetector';
+
 const CheckContext = React.createClass({
 
   contextTypes: {

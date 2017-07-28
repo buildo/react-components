@@ -1,3 +1,5 @@
+// import LoadingSpinner from 'buildo-react-components/lib/LoadingSpinner';
+
 class Example extends React.Component {
 
   render = () => (

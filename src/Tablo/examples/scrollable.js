@@ -1,3 +1,5 @@
+// import Tablo, { Column as TabloColumn, Header, Cell } from 'buildo-react-components/lib/Tablo';
+
 class Example extends React.Component {
 
   state = { scrollLeft: 0 }
