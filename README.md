@@ -19,7 +19,7 @@ You can import each package directly from the main lib:
 
 Or from the package folder:
 
-`import Button from 'buildo-react-components/lib/button';`
+`import Button from 'buildo-react-components/lib/Button';`
 
 **NOTE:** If you installed it as a GitHub dependency (`npm i --save buildo/react-component`) then import from `/src`:
 
