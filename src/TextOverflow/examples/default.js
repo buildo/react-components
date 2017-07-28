@@ -1,3 +1,5 @@
+// import TextOverflow from 'buildo-react-components/lib/TextOverflow';
+
 class Example extends React.Component {
 
   render() {

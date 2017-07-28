@@ -1,3 +1,5 @@
+// import BrowserDetector from 'buildo-react-components/lib/BrowserDetector';
+
 class Example extends React.Component {
 
   getPlaceholder = (detectedBrowser) => <FlexView vAlignContent='center'>{`"${detectedBrowser.name}" is not supported!`}</FlexView>;

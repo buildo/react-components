@@ -1,3 +1,5 @@
+// import { Panel } from 'buildo-react-components/lib/Panel';
+
 class Example extends React.Component {
 
   state = { isCollapsed: false };

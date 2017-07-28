@@ -1,3 +1,5 @@
+// import AsyncStatusIndicator from 'buildo-react-components/lib/AsyncStatusIndicator';
+
 const labels = {
   success: 'Success',
   error: 'Error',

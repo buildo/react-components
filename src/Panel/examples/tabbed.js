@@ -1,3 +1,5 @@
+// import { TabbedPanel } from 'buildo-react-components/lib/Panel';
+
 class Example extends React.Component {
 
   constructor(props) {

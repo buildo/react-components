@@ -1,3 +1,5 @@
+// import ConfirmationInput from 'buildo-react-components/lib/ConfirmationInput';
+
 class Example extends React.Component {
 
   constructor() {

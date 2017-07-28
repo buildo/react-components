@@ -1,3 +1,5 @@
+// import { Panel } from 'buildo-react-components/lib/Panel';
+
 const Card = ({ title, author, date, image, children }) => (
   <FlexView className='card'>
     <FlexView shrink basis='100%' className='description'>

@@ -1,3 +1,5 @@
+// import Toaster, { TimerToast } from 'buildo-react-components/lib/Toaster';
+
 const toastStyles = [
   {
     message: 'Saturday',

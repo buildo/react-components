@@ -1,3 +1,5 @@
+// import Meter from 'buildo-react-components/lib/Meter';
+
 class Example extends React.Component {
   render() {
 

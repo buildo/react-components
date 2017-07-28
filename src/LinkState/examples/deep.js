@@ -1,3 +1,5 @@
+// import { linkState } from 'buildo-react-components/lib/LinkState';
+
 class Example extends React.Component {
 
   constructor() {

@@ -1,3 +1,5 @@
+// import ResizeSensor from 'buildo-react-components/lib/ResizeSensor';
+
 class Example extends React.Component {
 
   constructor() {

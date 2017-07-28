@@ -1,3 +1,5 @@
+// import Button from 'buildo-react-components/lib/Button';
+
 class Example extends React.Component {
 
   onClick = () => alert('clicked!');

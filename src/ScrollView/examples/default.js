@@ -1,3 +1,5 @@
+// import ScrollView from 'buildo-react-components/lib/ScrollView';
+
 const Card = () => (
   <FlexView column style={{ paddingRight: 30 }}>
     <div style={{ fontSize: 28, fontWeight: 'bold', color: '#313d4f', marginBottom: 10 }}>The last days of disco</div>
