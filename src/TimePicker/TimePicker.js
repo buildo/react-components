@@ -41,7 +41,7 @@ export const Props = t.refinement(t.struct({
   maxTime: t.maybe(Time),
   placeholder: t.maybe(t.String),
   timeFormat: t.maybe(TimeFormat),
-  searchable: t.Boolean,
+  searchable: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
