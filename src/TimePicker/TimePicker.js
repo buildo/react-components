@@ -45,7 +45,8 @@ export const Props = t.refinement(t.struct({
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
-  menuPosition: t.enums.of(['bottom', 'top'])
+  menuPosition: t.enums.of(['bottom', 'top']),
+  disabled: t.maybe(t.Boolean)
 }), ({ value, minTime, maxTime }) => (
   lteTime(minTime, maxTime) && (!value || (lteTime(value, maxTime) && lteTime(minTime, value)))
 ), 'Props');
@@ -160,6 +161,7 @@ export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }, inputVa
  * @param timeFormat - format in which options are displayed (12h|24h)
  * @param searchable - enable the search feature
  * @param menuPosition - whether the menu should open on top or bottom
+ * @param disabled - optionally disable the control
  */
 @skinnable()
 @props(Props)
@@ -208,7 +210,7 @@ export default class TimePicker extends React.Component {
     };
   }
 
-  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue, menuPosition }) {
+  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue, menuPosition, disabled }) {
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -220,6 +222,7 @@ export default class TimePicker extends React.Component {
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
         menuPosition={menuPosition}
+        disabled={disabled}
       />
     );
   }
