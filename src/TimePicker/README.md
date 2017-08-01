@@ -11,7 +11,7 @@ TimePicker field, used to pick a time from a dropdown
 | **maxTime** | <code>Time</code> | <code>{   "hours": 23,   "minutes": 59 }</code> | *optional*. Maximum value. Have to be passed in 24h format. Default [23:59] |
 | **placeholder** | <code>String</code> | <code>"--:--"</code> | *optional*. Field placeholder, displayed when there's no value. Default[--:--] |
 | **timeFormat** | <code>enum("12h" &#124; "24h")</code> | <code>"24h"</code> | *optional*. Format in which options are displayed (12h&#124;24h) |
-| **searchable** | <code>Boolean</code> | <code>true</code> | **required**. Enable the search feature |
+| **searchable** | <code>Boolean</code> | <code>true</code> | *optional*. Enable the search feature |
 | **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
 | **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
 | **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
