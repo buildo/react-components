@@ -21,6 +21,7 @@ export type TimePickerProps = {
   id?: string,
   className?: string,
   style?: CSSProperties,
+  disabled?: boolean
 };
 
 export const Props: {
