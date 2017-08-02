@@ -22,8 +22,10 @@ class Example extends React.Component {
 
     const popoverProps = {
       content,
+      attachToBody: true,
+      auto: true,
       position: 'top',
-      anchor: 'auto',
+      anchor: 'center',
       event: 'hover',
       className: 'baloon',
       delay: { whenOpen: 100 }
