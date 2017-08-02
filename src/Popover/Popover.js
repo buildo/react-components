@@ -409,10 +409,13 @@ export default class Popover extends React.Component {
       const values = this.getValuesFromNodeTree();
 
       const positions = uniq([popoverProps.position, 'top', 'bottom', 'left', 'right']);
-      const anchors = uniq([popoverProps.anchor, 'start', 'center', 'end']);
 
       const popoverStyle = positions.reduce((acc, p) => {
         if (acc === null) {
+          const anchors = uniq(
+            (p === popoverProps.position ? [popoverProps.anchor] : []).concat(['center', 'start', 'end'])
+          );
+
           return anchors.reduce((workingPopoverStyle, a) => {
             if (workingPopoverStyle === null) {
               const _popoverStyle = this.computePopoverStyle(values, p, a);
