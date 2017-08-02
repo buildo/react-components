@@ -3,6 +3,7 @@ import { CSSProperties, PureComponent } from 'react'
 export type ToggleProps = {
   value?: boolean,
   onChange?: (value: boolean) => void,
+  disabled?: boolean,
   valueLink?: {
     value?: boolean,
     requestChange: (value: boolean) => void

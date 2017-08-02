@@ -8,6 +8,7 @@ import { warn } from '../utils/log';
 export const Props = {
   value: t.maybe(t.Boolean),
   onChange: t.maybe(t.Function),
+  disabled: t.maybe(t.Boolean),
   valueLink: t.maybe(t.struct({
     value: t.maybe(t.Boolean),
     requestChange: t.Function
@@ -21,6 +22,7 @@ export const Props = {
  * A nice animated Toggle rendered using only CSS
  * @param value - the current value (`true` if checked)
  * @param onChange - callback called when user clicks on the Toggle
+ * @param disabled - disable the onClick callback and renders with reduced opacity
  * @param valueLink - to be used together with `linkState`
  * @param size - The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2`
  */
@@ -61,7 +63,7 @@ export default class Toggle extends React.PureComponent {
 
   getLocals() {
     const {
-      props: { className, size, style },
+      props: { className, size, style, disabled },
       onButtonClick
     } = this;
     const { value } = getValueLink(this, this.props);
@@ -69,12 +71,12 @@ export default class Toggle extends React.PureComponent {
       style,
       value,
       buttonProps: {
-        onClick: onButtonClick,
+        onClick: disabled ? null : onButtonClick,
         style: size ?
           { width: size, height: this.getHalfSize(size), borderRadius: this.getHalfSize(size) } :
           undefined
       },
-      className: cx('toggle', className)
+      className: cx('toggle', { disabled }, className)
     };
   }
 

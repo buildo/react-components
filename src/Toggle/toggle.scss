@@ -3,6 +3,16 @@ $size: 3em !default;
 $background: $brc-cloudyGrey !default;
 $checked-background: $brc-gradientGreen !default;
 
+.toggle {
+  &.disabled {
+    opacity: .3;
+
+    .toggle-button {
+      cursor: not-allowed;
+    }
+  }
+}
+
 .toggle-input {
   display: none;
 
