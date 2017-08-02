@@ -2,6 +2,13 @@
 
 
 
+## [v0.25.0](https://github.com/buildo/react-components/tree/v0.25.0) (2017-08-02)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.24.5...v0.25.0)
+
+#### Fixes (bugs & defects):
+
+- Dropdown typings for `optionRenderer` and `optionGroupRenderer` are slightly broken [#1014](https://github.com/buildo/react-components/issues/1014)
+
 ## [v0.24.5](https://github.com/buildo/react-components/tree/v0.24.5) (2017-08-02)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.4...v0.24.5)
 
