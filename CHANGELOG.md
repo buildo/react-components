@@ -1,6 +1,15 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.24.4...HEAD)
 
+#### New features:
+
+- add disabled prop to Toggle [#1021](https://github.com/buildo/react-components/issues/1021)
+
+#### Fixes (bugs & defects):
+
+- [TS] TimePicker searchable props type is out of sync [#1019](https://github.com/buildo/react-components/issues/1019)
 
 ## [v0.24.4](https://github.com/buildo/react-components/tree/v0.24.4) (2017-08-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.3...v0.24.4)
