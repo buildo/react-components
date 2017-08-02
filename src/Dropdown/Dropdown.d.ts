@@ -11,8 +11,8 @@ interface DropdownMenuRendererProps extends MenuRendererProps {
   groupByKey?: string,
   optionClassName: string,
   optionComponent: JSX.Element,
-  optionRenderer: (option: Option) => JSX.Element,
-  optionGroupRenderer: (title: string) => JSX.Element
+  optionRenderer: (option: Option, i: number) => React.ReactNode,
+  optionGroupRenderer: (title: string) => React.ReactNode
   valueKey: any
 }
 
@@ -37,13 +37,13 @@ export type DropdownProps = {
   menuPosition?: 'top' | 'bottom',
   menuRenderer?: (menuItem: DropdownMenuRendererProps) => React.ReactElement<any>, // TODO: t.ReactChildren
   groupByKey?: string,
-  optionGroupRenderer?: (title: string) => JSX.Element, // TODO: t.ReactChildren
+  optionGroupRenderer?: DropdownMenuRendererProps['optionGroupRenderer'],
   placeholder?: string | React.ReactElement<any>, // TODO: t.maybe(t.union([t.String, t.ReactElement]))
   noResultsText?: string,
   allowCreate?: boolean,
   addLabelText?: string,
   valueRenderer?: (option: Option) => JSX.Element, // TODO: t.ReactChildren
-  optionRenderer?: (option: Option) => JSX.Element, // TODO: t.ReactChildren
+  optionRenderer?: DropdownMenuRendererProps['optionRenderer'],
   delimiter?: string,
   onInputChange?: (inputValue: string) => void,
   onFocus?: FocusEventHandler<HTMLDivElement>,
