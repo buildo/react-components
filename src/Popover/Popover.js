@@ -61,7 +61,6 @@ export default class Popover extends React.Component {
     this.initialized = true;
     if (this.isOpen()) {
       this.onPopoverOpenChange(this.props);
-      this.startAutoPositioning();
     }
   }
 
@@ -73,9 +72,6 @@ export default class Popover extends React.Component {
 
     if (!this.isStateful() && isOpenChanged) {
       this.onPopoverOpenChange(nextProps);
-    }
-    if (isOpenChanged) {
-      this.startAutoPositioning();
     }
   }
 
@@ -96,19 +92,6 @@ export default class Popover extends React.Component {
     }
     if (this.onMouseEventDebouncedWhenClosed) {
       this.onMouseEventDebouncedWhenClosed.cancel();
-    }
-    if (this.autoPositioningTimeout) {
-      clearTimeout(this.autoPositioningTimeout);
-    }
-
-  }
-
-  startAutoPositioning() {
-    if (this.getPopoverProps().auto && this.isOpen()) {
-      this.autoPositioningTimeout = setTimeout(() => {
-        this.forceUpdate();
-        this.startAutoPositioning();
-      }, 100);
     }
   }
 
@@ -211,7 +194,7 @@ export default class Popover extends React.Component {
     return { top, left };
   };
 
-  getValuesFromNodeTree() {
+  saveValuesFromNodeTree = (cb) => {
     const childrenNode = ReactDOM.findDOMNode(this.refs.children);
     const popoverNode = this.getPopoverNode();
 
@@ -221,7 +204,7 @@ export default class Popover extends React.Component {
       const { top: childY, left: childX } = this.getOffsetRect(childrenNode);
       const { top: popoverY, left: popoverX } = this.getOffsetRect(popoverNode);
 
-      return {
+      this.setState({
         child: {
           width: childWidth,
           height: childHeight,
@@ -234,16 +217,7 @@ export default class Popover extends React.Component {
           x: popoverX,
           y: popoverY
         }
-      };
-    }
-
-    return null;
-  }
-
-  saveValuesFromNodeTree = (cb) => {
-    const values = this.getValuesFromNodeTree();
-    if (values) {
-      this.setState(values, cb);
+      }, cb);
     }
   };
 
@@ -403,11 +377,10 @@ export default class Popover extends React.Component {
   };
 
   getVisiblePopover = () => {
+    const { popover } = this.state;
     const popoverProps = this.getPopoverProps();
 
     if (popoverProps.auto) {
-      const values = this.getValuesFromNodeTree();
-
       const positions = uniq([popoverProps.position, 'top', 'bottom', 'left', 'right']);
 
       const popoverStyle = positions.reduce((acc, p) => {
@@ -418,12 +391,12 @@ export default class Popover extends React.Component {
 
           return anchors.reduce((workingPopoverStyle, a) => {
             if (workingPopoverStyle === null) {
-              const _popoverStyle = this.computePopoverStyle(values, p, a);
+              const _popoverStyle = this.computePopoverStyle(p, a);
 
               // not enough space
               if (
-                _popoverStyle.top < 0 || _popoverStyle.top + values.popover.height > window.innerHeight ||
-                _popoverStyle.left < 0 || _popoverStyle.left + values.popover.width > window.innerWidth
+                _popoverStyle.top < 0 || _popoverStyle.top + popover.height > window.innerHeight ||
+                _popoverStyle.left < 0 || _popoverStyle.left + popover.width > window.innerWidth
               ) {
                 return null;
               }
@@ -442,10 +415,10 @@ export default class Popover extends React.Component {
         return acc;
       }, null);
 
-      return this.popoverTemplate(popoverStyle || this.computePopoverStyle(values, popoverProps.position, popoverProps.anchor));
+      return this.popoverTemplate(popoverStyle || this.computePopoverStyle(popoverProps.position, popoverProps.anchor));
     }
 
-    return this.popoverTemplate(this.computePopoverStyle(this.state, popoverProps.position, popoverProps.anchor));
+    return this.popoverTemplate(this.computePopoverStyle(popoverProps.position, popoverProps.anchor));
   }
 
   getHiddenPopover = () => {
@@ -471,7 +444,8 @@ export default class Popover extends React.Component {
     };
   };
 
-  computePopoverStyle = ({ child, popover }, position, anchor) => {
+  computePopoverStyle = (position, anchor) => {
+    const { child, popover } = this.state;
     const { maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
 
     const isAbsolute = this.isAbsolute();
