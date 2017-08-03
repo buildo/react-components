@@ -485,7 +485,7 @@ export default class Popover extends React.Component {
     }
 
     return {
-      position: isAbsolute ? 'fixed' : 'absolute',
+      position: 'absolute',
       top: (isAbsolute ? child.y : 0) + (positionOffset.top + anchorOffset.top + offsetY),
       left: (isAbsolute ? child.x : 0) + (positionOffset.left + anchorOffset.left + offsetX),
       maxWidth
