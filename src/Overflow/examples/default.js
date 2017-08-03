@@ -16,14 +16,14 @@ class Example extends React.Component {
     };
 
     const content = (
-      <FlexView width={200}>
+      <FlexView width={200} style={{ background: 'lightblue' }}>
         isOverflowing: {String(this.state.isOverflowing)}
       </FlexView>
     );
 
     return (
-      <FlexView style={{ maxWidth: 150 }}>
-        <Overflow onChange={this.onOverflowChange} verifyOverflowOn='hover'>
+      <FlexView style={{ background: 'lightgray' }}>
+        <Overflow onChange={this.onOverflowChange}>
           {isOverflowing ?
             <Tooltip popover={popover}>{content}</Tooltip> :
             content
