@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.ReactChild,
   onChange: t.Function,
-  verifyOverflowOn: t.maybe(t.enums.of(['resize', 'hover'])),
-  debounceVerifyOverflow: t.maybe(t.Number),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -18,38 +15,15 @@ export const Props = {
  * Util component which accepts calls a callback whenever the content starts or stop overflowing.
  * @param children - a function that will be called with the argument
  * @param onChange - tooltip delay if the component is lazy
- * @param verifyOverflowOn - check if the content is overflowing on one of the following events: "resize" | "hover"
- * @param debounceVerifyOverflow - use this to debounce the calls to verify if the content is overflowing
  */
 @props(Props)
 export default class Overflow extends React.Component {
 
-  static defaultProps = {
-    verifyOverflowOn: 'resize'
-  }
-
-  state = { isOverflowing: null };
+  isOverflowing = false
 
   componentDidMount() {
-    this.verifyOverflow({ force: true });
+    this.verifyOverflow();
   }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.verifyOverflowOn === 'resize' && nextProps.children !== this.props.children) {
-      this.reset();
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { isOverflowing } = this.state;
-    if (isOverflowing !== prevState.isOverflowing) {
-      this.props.onChange(isOverflowing);
-    }
-  }
-
-  reset = () => this.setState({
-    isOverflowing: false
-  }, () => this.verifyOverflow({ force: true, reset: true }));
 
   getElementWidth(element) {
     if (element && typeof window !== 'undefined') {
@@ -58,69 +32,34 @@ export default class Overflow extends React.Component {
     return null;
   }
 
-  verifyOverflow({ force, reset } = {}) {
-    const { verifyOverflowOn } = this.props;
-    const { isOverflowing: wasOverflowing } = this.state;
+  verifyOverflow() {
+    if (typeof window !== 'undefined') {
+      const node = ReactDOM.findDOMNode(this.ref);
 
-    if ((force || (verifyOverflowOn === 'resize' && wasOverflowing === false)) && typeof window !== 'undefined') {
-      const node = ReactDOM.findDOMNode(this);
-
-      if (node && node.children && node.parentNode) {
+      if (node && node.children) {
         const childrenWidth = this.getElementWidth(node.children[0]);
-        const parentWidth = this.getElementWidth(node.parentNode);
+        const parentWidth = this.getElementWidth(node);
 
         const isOverflowing = (childrenWidth > parentWidth);
-        if (isOverflowing && !wasOverflowing) {
-          this.setState({ isOverflowing: true });
-        } else if (!isOverflowing && reset && wasOverflowing) {
-          this.setState({ isOverflowing: false });
+        if (this.isOverflowing !== isOverflowing) {
+          this.isOverflowing = isOverflowing;
+          this.props.onChange(isOverflowing);
         }
       }
     }
   }
 
-  _onMouseEvent = (type) => (type === 'mouseenter') && this.onMouseEnter()
-
-  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.debounceVerifyOverflow)
-
-  onMouseEvent = ({ type }) => (
-    this.props.debounceVerifyOverflow ? this.onMouseEventDebounced(type) : this._onMouseEvent(type)
-  )
-
-  onMouseEnter = () => {
-    if (!this.state.isHovering) {
-      this.setState({
-        isHovering: true
-      }, () => this.props.verifyOverflowOn === 'hover' && this.verifyOverflow({ force: true, reset: true }));
-    }
-  }
-
-  onMouseLeave = () => this.state.isHovering && this.setState({ isHovering: false })
-
-  onResize = () => this.verifyOverflow({ force: true, reset: true })
+  onResize = () => this.verifyOverflow()
 
   render() {
-    const {
-      props: { children, verifyOverflowOn, style, className, id },
-      onMouseEvent,
-      onMouseLeave
-    } = this;
-
-    const events = verifyOverflowOn === 'hover' && {
-      onMouseEnter: onMouseEvent,
-      onMouseLeave: e => {
-        onMouseEvent(e);
-        onMouseLeave(e);
-      }
-    };
+    const { children, style, className, id } = this.props;
 
     return (
-      <div {...events} {...{ className, id }} style={{ ...style, width: '100%' }}>
-        {verifyOverflowOn === 'hover' ?
-          children :
-          <ResizeSensor onResize={this.onResize}>{children}</ResizeSensor>
-        }
-      </div>
+      <ResizeSensor debounce={10} onResize={this.onResize}>
+        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref; }}>
+          {children}
+        </div>
+      </ResizeSensor>
     );
   }
 
