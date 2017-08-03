@@ -2,6 +2,7 @@ export Dropdown from './Dropdown';
 export LoadingSpinner from './LoadingSpinner';
 export MobileDetector from './MobileDetector';
 export Popover from './Popover';
+export Overflow from './Overflow';
 export TextOverflow from './TextOverflow';
 export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './LinkState';
 export ScrollView from './ScrollView/ScrollView';
