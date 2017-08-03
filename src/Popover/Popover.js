@@ -381,10 +381,12 @@ export default class Popover extends React.Component {
     const popoverProps = this.getPopoverProps();
 
     if (popoverProps.auto) {
+      // give priority to the position passed by the user as _.uniq should maintain the order
       const positions = uniq([popoverProps.position, 'top', 'bottom', 'left', 'right']);
 
       const popoverStyle = positions.reduce((acc, p) => {
         if (acc === null) {
+          // give priority to the couple position/anchor passed by the user as _.uniq should maintain the order
           const anchors = uniq(
             (p === popoverProps.position ? [popoverProps.anchor] : []).concat(['center', 'start', 'end'])
           );
