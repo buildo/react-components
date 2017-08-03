@@ -293,10 +293,6 @@
             "url": "Popover/examples/hover.js"
           },
           {
-            "title": "Triggering on hover with 'auto' anchor",
-            "url": "Popover/examples/hover-auto.js"
-          },
-          {
             "title": "Triggering on click",
             "url": "Popover/examples/click.js"
           }

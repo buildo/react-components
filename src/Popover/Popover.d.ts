@@ -4,12 +4,13 @@ import * as t from 'tcomb';
 export namespace PopoverProps {
 
   type Position = 'top' | 'bottom' | 'left' | 'right'
-  type Anchor = 'start' | 'center' | 'end' | 'auto'
+  type Anchor = 'start' | 'center' | 'end'
   type Event = 'click' | 'hover'
 
   type Popover = {
     content: any, // TODO: t.ReactChildren
     attachToBody?: boolean,
+    auto?: boolean,
     position?: Position,
     anchor?: Anchor,
     event?: Event,
