@@ -25,6 +25,10 @@ export default class Overflow extends React.Component {
     this.verifyOverflow();
   }
 
+  componentDidUpdate() {
+    this.verifyOverflow();
+  }
+
   getElementWidth(element) {
     if (element && typeof window !== 'undefined') {
       return parseFloat(window.getComputedStyle(element).width);
