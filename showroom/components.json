@@ -289,7 +289,7 @@
         "readmeUrl": "Overflow/README.md",
         "examples": [
           {
-            "description": "`Overflow` will call `onChange` whenever the children starts/stops overflowing. The parent can use this information to change the render.",
+            "description": "`Overflow` will automatically render the node passed through `contentIfOverflowing` whenever the original `content` overflows its parent.",
             "url": "Overflow/examples/default.js"
           }
         ]
