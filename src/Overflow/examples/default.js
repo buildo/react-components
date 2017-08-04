@@ -2,33 +2,29 @@
 
 class Example extends React.Component {
 
-  state = { isOverflowing: null }
-
-  onOverflowChange = (isOverflowing) => this.setState({ isOverflowing })
-
-  render() {
-    const { isOverflowing } = this.state;
-
-    const popover = {
-      position: 'top',
-      anchor: 'start',
-      content: 'Tooltip content',
-    };
-
-    const content = (
-      <FlexView width={200} style={{ background: 'lightblue' }}>
-        isOverflowing: {String(this.state.isOverflowing)}
+  getContent(isOverflowing) {
+    return (
+      <FlexView
+        width={200}
+        vAlignContent='center'
+        style={{
+          color: 'white',
+          background: isOverflowing ? '#d1236d' : '#1a91eb',
+          padding: 10
+        }}
+      >
+        Is overflowing: {String(isOverflowing)}
       </FlexView>
     );
+  }
 
+  render() {
     return (
-      <FlexView style={{ background: 'lightgray' }}>
-        <Overflow onChange={this.onOverflowChange}>
-          {isOverflowing ?
-            <Tooltip popover={popover}>{content}</Tooltip> :
-            content
-          }
-        </Overflow>
+      <FlexView style={{ background: '#f0f3f8', borderRadius: 3, overflow: 'hidden' }}>
+        <Overflow
+          content={this.getContent(false)}
+          contentIfOverflowing={this.getContent(true)}
+        />
       </FlexView>
     );
   }

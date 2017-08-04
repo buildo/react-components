@@ -4,22 +4,22 @@ import { props, t } from '../utils';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
-  children: t.ReactChild,
-  onChange: t.Function,
+  content: t.ReactNode,
+  contentIfOverflowing: t.ReactNode,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
 
 /**
- * Util component which accepts calls a callback whenever the content starts or stop overflowing.
- * @param children - a function that will be called with the argument
- * @param onChange - tooltip delay if the component is lazy
+ * Util component to render a different react node if the original one overflows its parent.
+ * @param content - react node initially rendered
+ * @param contentIfOverflowing - react node rendered if `content` overflows its parent
  */
 @props(Props)
 export default class Overflow extends React.Component {
 
-  isOverflowing = false
+  state = { isOverflowing: false }
 
   componentDidMount() {
     this.verifyOverflow();
@@ -41,9 +41,8 @@ export default class Overflow extends React.Component {
         const parentWidth = this.getElementWidth(node);
 
         const isOverflowing = (childrenWidth > parentWidth);
-        if (this.isOverflowing !== isOverflowing) {
-          this.isOverflowing = isOverflowing;
-          this.props.onChange(isOverflowing);
+        if (this.state.isOverflowing !== isOverflowing) {
+          this.setState({ isOverflowing });
         }
       }
     }
@@ -52,12 +51,13 @@ export default class Overflow extends React.Component {
   onResize = () => this.verifyOverflow()
 
   render() {
-    const { children, style, className, id } = this.props;
+    const { content, contentIfOverflowing, style, className, id } = this.props;
+    const { isOverflowing } = this.state;
 
     return (
       <ResizeSensor debounce={10} onResize={this.onResize}>
         <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref; }}>
-          {children}
+          {isOverflowing ? contentIfOverflowing : content}
         </div>
       </ResizeSensor>
     );
