@@ -281,6 +281,20 @@
         ]
       },
       {
+        "id": "overflow",
+        "title": "Overflow",
+        "desc": "Overflow",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/Overflow",
+        "readmeUrl": "Overflow/README.md",
+        "examples": [
+          {
+            "description": "`Overflow` will automatically render the node passed through `contentIfOverflowing` whenever the original `content` overflows its parent.",
+            "url": "Overflow/examples/default.js"
+          }
+        ]
+      },
+      {
         "id": "popover",
         "title": "Popover",
         "desc": "Popover",
