@@ -38,6 +38,11 @@ export default class ScrollView extends React.PureComponent {
     innerComponent: 'div'
   }
 
+  state = {
+    isVerticalScrollbarVisible: false,
+    isHorizontalScrollbarVisible: false
+  }
+
   /**
    * Holds the reference to the GeminiScrollbar instance.
    * @property scrollbar <public> [Object]
@@ -52,17 +57,31 @@ export default class ScrollView extends React.PureComponent {
       element: ReactDOM.findDOMNode(this),
       createElements: false
     }).create();
+    this.saveScrollbarsState();
   }
 
   componentDidUpdate() {
     const scrollTop = this.scrollbar.getViewElement().scrollTop;
     this.scrollbar.update();
     this.scrollbar.getViewElement().scrollTop = scrollTop;
+    this.saveScrollbarsState();
   }
 
   componentWillUnmount() {
     this.scrollbar.destroy();
     this.scrollbar = null;
+  }
+
+  saveScrollbarsState() {
+    const isVerticalScrollbarVisible = !!(this.verticalThumb && this.verticalThumb.style.height && this.verticalThumb.style.height !== '0px');
+    const isHorizontalScrollbarVisible = !!(this.horizontalThumb && this.horizontalThumb.style.width && this.horizontalThumb.style.width !== '0px');
+
+    if (this.state.isVerticalScrollbarVisible !== isVerticalScrollbarVisible || this.state.isHorizontalScrollbarVisible !== isHorizontalScrollbarVisible) {
+      this.setState({ // eslint-disable-line react/no-did-update-set-state
+        isVerticalScrollbarVisible,
+        isHorizontalScrollbarVisible
+      });
+    }
   }
 
   wrapperRenderer = ({ children, ...wrapperProps }) => React.createElement(
@@ -79,9 +98,12 @@ export default class ScrollView extends React.PureComponent {
 
   getLocals() {
     const { componentProps, innerComponentProps, className, style, children } = this.props;
+    const { isVerticalScrollbarVisible, isHorizontalScrollbarVisible } = this.state;
 
     return {
       children,
+      isVerticalScrollbarVisible,
+      isHorizontalScrollbarVisible,
       Wrapper: this.wrapperRenderer,
       InnerWrapper: this.innerWrapperRenderer,
       innerWrapperProps: innerComponentProps,
@@ -93,15 +115,15 @@ export default class ScrollView extends React.PureComponent {
     };
   }
 
-  template({ children, Wrapper, wrapperProps, InnerWrapper, innerWrapperProps }) {
+  template({ children, Wrapper, wrapperProps, InnerWrapper, innerWrapperProps, isVerticalScrollbarVisible, isHorizontalScrollbarVisible }) {
     return (
       <ResizeSensor onResize={() => this.forceUpdate()}>
         <Wrapper {...wrapperProps}>
-          <div className='gm-scrollbar -vertical'>
-            <div className='thumb' />
+          <div className={cx('gm-scrollbar -vertical', { visible: isVerticalScrollbarVisible })}>
+            <div className='thumb' ref={ref => { this.verticalThumb = ref; }} />
           </div>
-          <div className='gm-scrollbar -horizontal'>
-            <div className='thumb' />
+          <div className={cx('gm-scrollbar -horizontal', { visible: isHorizontalScrollbarVisible })}>
+            <div className='thumb' ref={ref => { this.horizontalThumb = ref; }} />
           </div>
           <div className='gm-scroll-view'>
             <ResizeSensor onResize={() => this.forceUpdate()}>
