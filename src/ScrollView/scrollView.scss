@@ -33,25 +33,26 @@ body > div::-webkit-scrollbar {
       width: auto;
       transition-property: background-color width;
 
-      .thumb {
-        position: static;
-        width: 0;
-        transition: width 250ms ease;
+      &:not(.visible) {
+        visibility: hidden;
+        pointer-events: none;
       }
 
-      .thumb[style*='height'] {
+      .thumb {
+        position: static;
         margin: 0;
         width: $scrollbar-size;
+        transition: width 250ms ease;
       }
 
       &:hover,
       &:active {
-        .thumb[style*='height'] {
+        .thumb {
           width: $scrollbar-size-hover;
         }
       }
 
-      &:active .thumb[style*='height'] {
+      &:active .thumb {
         background-color: $scrollbar-color;
         transition: background-color 250ms ease;
       }
@@ -63,13 +64,14 @@ body > div::-webkit-scrollbar {
       height: auto;
       transition-property: background-color height;
 
-      .thumb {
-        position: static;
-        height: 0;
-        transition: height 250ms ease;
+      &:not(.visible) {
+        visibility: hidden;
+        pointer-events: none;
       }
 
-      .thumb[style*='width'] {
+      .thumb {
+        position: static;
+        transition: height 250ms ease;
         margin: 0;
         height: $scrollbar-size;
       }
@@ -78,12 +80,12 @@ body > div::-webkit-scrollbar {
       &:active {
         background: rgba($scrollbar-container-color, .8);
 
-        .thumb[style*='width'] {
+        .thumb {
           height: $scrollbar-size-hover;
         }
       }
 
-      &:active .thumb[style*='width'] {
+      &:active .thumb {
         background-color: $scrollbar-color;
         transition: background-color 250ms ease;
       }
