@@ -1,6 +1,12 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- ScrollView: scrollbars are visible even when thumb is hidden [#1029](https://github.com/buildo/react-components/issues/1029)
+- Tablo: readme is missing some propTypes [#835](https://github.com/buildo/react-components/issues/835)
 
 ## [v0.26.1](https://github.com/buildo/react-components/tree/v0.26.1) (2017-08-07)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.0...v0.26.1)
