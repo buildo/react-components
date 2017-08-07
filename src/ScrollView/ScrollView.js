@@ -11,6 +11,8 @@ export const Props = {
   forceGemini: t.maybe(t.Boolean),
   component: t.maybe(t.union([t.Function, t.String])),
   componentProps: t.maybe(t.Object),
+  innerComponent: t.maybe(t.union([t.Function, t.String])),
+  innerComponentProps: t.maybe(t.Object),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
@@ -21,6 +23,8 @@ export const Props = {
  * @param forceGemini - force ScrollView to use `gemini-scrollbar`s
  * @param component - component to use as the wrapper
  * @param componentProps - props to pass to the wrapper component
+ * @param innerComponent - component to use as the inner wrapper
+ * @param innerComponentProps - props to pass to the inner wrapper component
  * @param className - className to pass to the wrapper component
  * @param style - style to pass to the wrapper component
  */
@@ -30,7 +34,8 @@ export default class ScrollView extends React.PureComponent {
 
   static defaultProps = {
     component: 'div',
-    forceGemini: true
+    forceGemini: true,
+    innerComponent: 'div'
   }
 
   /**
@@ -66,12 +71,20 @@ export default class ScrollView extends React.PureComponent {
     children
   );
 
+  innerWrapperRenderer = ({ children, ...innerWrapperProps }) => React.createElement(
+    this.props.innerComponent,
+    innerWrapperProps,
+    children
+  );
+
   getLocals() {
-    const { componentProps, className, style, children } = this.props;
+    const { componentProps, innerComponentProps, className, style, children } = this.props;
 
     return {
       children,
       Wrapper: this.wrapperRenderer,
+      InnerWrapper: this.innerWrapperRenderer,
+      innerWrapperProps: innerComponentProps,
       wrapperProps: {
         ...componentProps,
         style,
@@ -80,7 +93,7 @@ export default class ScrollView extends React.PureComponent {
     };
   }
 
-  template({ children, Wrapper, wrapperProps }) {
+  template({ children, Wrapper, wrapperProps, InnerWrapper, innerWrapperProps }) {
     return (
       <ResizeSensor onResize={() => this.forceUpdate()}>
         <Wrapper {...wrapperProps}>
@@ -92,9 +105,9 @@ export default class ScrollView extends React.PureComponent {
           </div>
           <div className='gm-scroll-view'>
             <ResizeSensor onResize={() => this.forceUpdate()}>
-              <div>
+              <InnerWrapper {...innerWrapperProps}>
                 {children}
-              </div>
+              </InnerWrapper>
             </ResizeSensor>
           </div>
         </Wrapper>
