@@ -3,16 +3,13 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
-import ResizeSensor from '../ResizeSensor/ResizeSensor';
+import FlexView from 'react-flexview';
 
 export const Props = {
   children: t.ReactChildren,
   autoshow: t.maybe(t.Boolean),
   forceGemini: t.maybe(t.Boolean),
-  component: t.maybe(t.union([t.Function, t.String])),
   componentProps: t.maybe(t.Object),
-  innerComponent: t.maybe(t.union([t.Function, t.String])),
-  innerComponentProps: t.maybe(t.Object),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
@@ -21,10 +18,7 @@ export const Props = {
  * @param children - what to render inside the scroll view
  * @param autoshow - whether to automatically show scrollbars
  * @param forceGemini - force ScrollView to use `gemini-scrollbar`s
- * @param component - component to use as the wrapper
  * @param componentProps - props to pass to the wrapper component
- * @param innerComponent - component to use as the inner wrapper
- * @param innerComponentProps - props to pass to the inner wrapper component
  * @param className - className to pass to the wrapper component
  * @param style - style to pass to the wrapper component
  */
@@ -33,9 +27,7 @@ export const Props = {
 export default class ScrollView extends React.PureComponent {
 
   static defaultProps = {
-    component: 'div',
-    forceGemini: true,
-    innerComponent: 'div'
+    forceGemini: true
   }
 
   /**
@@ -77,41 +69,21 @@ export default class ScrollView extends React.PureComponent {
     children
   );
 
-  getLocals() {
-    const { componentProps, innerComponentProps, className, style, children } = this.props;
-
-    return {
-      children,
-      Wrapper: this.wrapperRenderer,
-      InnerWrapper: this.innerWrapperRenderer,
-      innerWrapperProps: innerComponentProps,
-      wrapperProps: {
-        ...componentProps,
-        style,
-        className: cx('scrollview', className)
-      }
-    };
-  }
-
-  template({ children, Wrapper, wrapperProps, InnerWrapper, innerWrapperProps }) {
+  template({ children, className, style, componentProps }) {
     return (
-      <ResizeSensor onResize={() => this.forceUpdate()}>
-        <Wrapper {...wrapperProps}>
-          <div className='gm-scrollbar -vertical'>
-            <div className='thumb' />
-          </div>
-          <div className='gm-scrollbar -horizontal'>
-            <div className='thumb' />
-          </div>
-          <div className='gm-scroll-view'>
-            <ResizeSensor onResize={() => this.forceUpdate()}>
-              <InnerWrapper {...innerWrapperProps}>
-                {children}
-              </InnerWrapper>
-            </ResizeSensor>
-          </div>
-        </Wrapper>
-      </ResizeSensor>
+      <FlexView style={style} className={cx('scrollview', className)} {...componentProps}>
+        <FlexView className='gm-scrollbar -vertical'>
+          <FlexView className='thumb' />
+        </FlexView>
+        <FlexView className='gm-scrollbar -horizontal'>
+          <FlexView className='thumb' />
+        </FlexView>
+        <FlexView column className='gm-scroll-view'>
+          <FlexView column shrink={false}>
+            {children}
+          </FlexView>
+        </FlexView>
+      </FlexView>
     );
   }
 }
