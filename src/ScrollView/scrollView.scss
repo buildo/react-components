@@ -101,6 +101,8 @@ body > div::-webkit-scrollbar {
   }
 
   > .gm-scroll-view {
+    height: 100% !important;
+    width: 100% !important;
     -ms-overflow-style: none;
 
     > * {
