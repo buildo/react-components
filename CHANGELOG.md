@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.0...HEAD)
 
+#### New features:
+
+- Implement `ComponentOverflow` [#1025](https://github.com/buildo/react-components/issues/1025)
 
 ## [v0.26.0](https://github.com/buildo/react-components/tree/v0.26.0) (2017-08-03)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.25.0...v0.26.0)
