@@ -1,10 +1,13 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.0...HEAD)
+
+
+## [v0.26.1](https://github.com/buildo/react-components/tree/v0.26.1) (2017-08-07)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.0...v0.26.1)
 
 #### New features:
 
+- add innerComponent and innerComponentProps [#1027](https://github.com/buildo/react-components/issues/1027)
 - Implement `ComponentOverflow` [#1025](https://github.com/buildo/react-components/issues/1025)
 
 ## [v0.26.0](https://github.com/buildo/react-components/tree/v0.26.0) (2017-08-03)
