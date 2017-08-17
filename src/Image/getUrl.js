@@ -1,9 +1,5 @@
 const cloudinaryId = 'buildo';
 const cloudinaryBaseUrl = `https://res.cloudinary.com/${cloudinaryId}/image/fetch/`;
-const defaultParams = {
-  quality: 'auto',
-  format: 'auto'
-};
 
 function isRetinaDisplay() {
   if (window.matchMedia) {
@@ -12,15 +8,7 @@ function isRetinaDisplay() {
   }
 }
 
-function getParamsWithDefaults(params) {
-  return {
-    ...defaultParams,
-    ...params
-  };
-}
-
-function getUrl(src, params) {
-  const { width: _width, height: _height, quality: _quality, format: _format } = getParamsWithDefaults(params);
+function getUrl(src, { width: _width, height: _height, quality: _quality, format: _format }) {
   const isAbsolute = src.indexOf('http') >= 0;
 
   const origin = !isAbsolute ? window.location.origin : '';
