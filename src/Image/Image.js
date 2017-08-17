@@ -25,7 +25,7 @@ export default class Image extends React.Component {
     const url = getUrl(src, { width, height, quality });
 
     return (
-      <img {...props} src={url} />
+      <img {...props} width={width} height={height} src={url} />
     );
   }
 
