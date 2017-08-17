@@ -8,6 +8,7 @@ import sortBy from 'lodash/sortBy';
 import { props, t } from 'tcomb-react';
 import FlexView from 'react-flexview';
 import * as brc from '../../src';
+import getUrl, { getBackgroundUrl } from '../../src/Image/getUrl';
 import json from 'raw!../components.json';
 import useLocalComponents from './useLocalComponents';
 import useLocalReadmes from './useLocalReadmes';
@@ -22,7 +23,8 @@ const scope = {
   find, partial, reject, sortBy,
   faker,
   ...brc,
-  FlexView
+  FlexView,
+  getUrl, getBackgroundUrl
 };
 
 const sections = useLocalReadmes(useLocalComponents(JSON.parse(json)));
