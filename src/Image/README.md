@@ -1,6 +1,6 @@
 # Image
 
-A replacement for <img> to serve optimized images through a CDN in production
+A replacement for `<img>` to serve optimized images through a CDN in production
 
 ## Props
 |Name|Type|Default|Description|
