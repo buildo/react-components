@@ -1,15 +1,10 @@
 import path from 'path';
 import fs from 'fs';
 import webpack from 'webpack';
-import webpackBase from './webpack.base.babel';
+import webpackBase, { paths } from './webpack.base.babel';
 import webpackConfig from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-const paths = {
-  SHOWROOM: path.resolve(__dirname),
-  ISOLATE_COMPONENT: path.resolve(__dirname, 'components/IsolatedComponentView/Component.js')
-};
 
 const getComponentFileStat = (path) => {
   try {

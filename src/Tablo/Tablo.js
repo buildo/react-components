@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { skinnable, props, t } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';

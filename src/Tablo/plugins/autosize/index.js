@@ -1,1 +1,2 @@
-export default from './autosizeGrid';
+import autosizeGrid from './autosizeGrid';
+export default autosizeGrid;

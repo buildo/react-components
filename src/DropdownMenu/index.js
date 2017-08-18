@@ -1,2 +1,4 @@
-export DropdownMenu from './DropdownMenu';
-export Menu from './Menu';
+import DropdownMenu from './DropdownMenu';
+export { DropdownMenu };
+import Menu from './Menu';
+export { Menu };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { props, t, skinnable } from '../utils';
 import { warn } from '../utils/log';
 

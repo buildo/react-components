@@ -3,7 +3,7 @@ import { props, t, skinnable } from '../utils';
 import Menu, { optionType } from './Menu';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 
 export const Props = {
   children: t.maybe(t.ReactChildren),

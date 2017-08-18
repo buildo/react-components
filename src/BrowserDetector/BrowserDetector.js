@@ -1,5 +1,5 @@
 import React from 'react';
-import some from 'lodash/some';
+import some from 'lodash.some';
 import { props, t, skinnable } from '../utils';
 import bowser from 'bowser';
 

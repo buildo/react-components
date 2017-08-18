@@ -1,14 +1,14 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
 import Select from 'react-select';
-import find from 'lodash/find';
-import omit from 'lodash/omit';
-import sortBy from 'lodash/orderBy';
-import findIndex from 'lodash/findIndex';
-import last from 'lodash/last';
-import dropRight from 'lodash/dropRight';
+import find from 'lodash.find';
+import omit from 'lodash.omit';
+import sortBy from 'lodash.orderby';
+import findIndex from 'lodash.findindex';
+import last from 'lodash.last';
+import dropRight from 'lodash.dropright';
 import FlexView from 'react-flexview';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { warn } from '../utils/log';
 
 const isEmptyArray = x => t.Array.is(x) && x.length === 0;
@@ -29,7 +29,7 @@ export const defaultMenuRenderer = ({
   valueArray,
   valueKey
 }) => {
-  const Option = optionComponent;
+  const OptionComponent = optionComponent;
   const groupedOptions = options.reduce((acc, o, i) => {
 
     // options are already sorted by group, so we know when a new group starts
@@ -65,7 +65,7 @@ export const defaultMenuRenderer = ({
           'is-disabled': option.disabled
         });
         return (
-          <Option
+          <OptionComponent
             className={optionClass}
             instancePrefix={instancePrefix}
             isDisabled={option.disabled}
@@ -79,7 +79,7 @@ export const defaultMenuRenderer = ({
             ref={optionRef}
           >
             {optionRenderer(option, i)}
-          </Option>
+          </OptionComponent>
         );
       })}
     </FlexView>

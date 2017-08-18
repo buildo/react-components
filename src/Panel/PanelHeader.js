@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t, skinnable, stateClassUtil } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 
 const icons = {
   up: ['angle-up', 'angle-down'],

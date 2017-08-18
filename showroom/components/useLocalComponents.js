@@ -1,17 +1,18 @@
-import { sortBy, find } from 'lodash';
+import sortBy from 'lodash.sortby';
+import find from 'lodash.find';
 
 function dynamicRequire({ repo, example: e }) {
   switch (repo) {
     case 'react-input-children':
-      return { ...e, code: require(`raw!gh-deps/node_modules/react-input-children/${e.url.replace('.example', '')}.example`) };
+      return { ...e, code: require(`raw-loader!gh-deps/node_modules/react-input-children/${e.url.replace('.example', '')}.example`) };
     case 'react-autosize-textarea':
-      return { ...e, code: require(`raw!react-autosize-textarea/${e.url.replace('.example', '')}.example`) };
+      return { ...e, code: require(`raw-loader!react-autosize-textarea/${e.url.replace('.example', '')}.example`) };
     case 'react-cookie-banner':
-      return { ...e, code: require(`raw!react-cookie-banner/${e.url.replace('.example', '')}.example`) };
+      return { ...e, code: require(`raw-loader!react-cookie-banner/${e.url.replace('.example', '')}.example`) };
     case 'react-flexview':
-      return { ...e, code: require(`raw!gh-deps/node_modules/react-flexview/${e.url.replace('.example', '')}.example`) };
+      return { ...e, code: require(`raw-loader!gh-deps/node_modules/react-flexview/${e.url.replace('.example', '')}.example`) };
     default:
-      return { ...e, code: require(`raw!../../src/${e.url.replace('.js', '')}.js`) };
+      return { ...e, code: require(`raw-loader!../../src/${e.url.replace('.js', '')}.js`) };
   }
 }
 

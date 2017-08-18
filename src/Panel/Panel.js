@@ -1,8 +1,8 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { props, t, skinnable } from '../utils';
 import PanelHeader, { HeaderSize } from './PanelHeader';
-import capitalize from 'lodash/capitalize';
+import capitalize from 'lodash.capitalize';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import FlexView from 'react-flexview';
 

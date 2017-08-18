@@ -1,2 +1,4 @@
-export default from './Button';
-export StatefulButton from './StatefulButton';
+import Button from './Button';
+export default Button;
+import StatefulButton from './StatefulButton';
+export { StatefulButton };

@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from '../../../utils/classnames';
 import { props, t } from '../../../utils';
 
 import Column, { defaultColumns, updateColumns } from '../../Column';
@@ -46,13 +46,14 @@ const getLocals = ({ onColumnResize, ...props }) => {
 
 };
 
-export default (Grid) =>
-
-  @props(propsTypes, { strict: false })
+export default (Grid) => {
   class ColumnResizeGrid extends React.PureComponent {
-
     render() {
       return <Grid {...getLocals(this.props)} />;
     }
+  }
 
-  };
+  props(propsTypes, { strict: false })(ColumnResizeGrid);
+
+  return ColumnResizeGrid;
+};

@@ -1,1 +1,2 @@
-export default from './columnsReorderGrid';
+import columnsReorderGrid from './columnsReorderGrid';
+export default columnsReorderGrid;

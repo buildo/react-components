@@ -1,5 +1,5 @@
 import React from 'react';
-import find from 'lodash/find';
+import find from 'lodash.find';
 import View from 'react-flexview';
 import { props, t } from '../utils';
 import Sidebar from './sidebar/Sidebar';

@@ -1,1 +1,2 @@
-export default from './FocusableView';
+import FocusableView from './FocusableView';
+export default FocusableView;

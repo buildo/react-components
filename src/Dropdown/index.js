@@ -1,1 +1,3 @@
-export default, { defaultMenuRenderer } from './Dropdown';
+import Dropdown from './Dropdown';
+export default Dropdown;
+export { defaultMenuRenderer } from './Dropdown';

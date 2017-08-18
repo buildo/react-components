@@ -1,5 +1,5 @@
-import omit from 'lodash/omit';
-import find from 'lodash/find';
+import omit from 'lodash.omit';
+import find from 'lodash.find';
 
 const lastRouteName = function(routes = []) {
   return find(routes.map(r => r.name || r.path).reverse(), rn => !!rn);

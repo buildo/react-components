@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { t } from '../../../utils';
-import find from 'lodash/find';
+import find from 'lodash.find';
 import Column from '../../Column';
 
 import Header, { defaultHeader } from '../../Header';

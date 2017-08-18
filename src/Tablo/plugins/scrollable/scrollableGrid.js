@@ -1,19 +1,11 @@
 import React from 'react';
-import omit from 'lodash/omit';
-import { skinnable, props, t, contains } from '../../../utils';
-import cx from 'classnames';
+import omit from 'lodash.omit';
+import { props, t } from '../../../utils';
+import cx from '../../../utils/classnames';
 
 const { maybe } = t;
 
-export default (Grid) => (
-  @props({
-    className: maybe(t.String),
-    scrollLeft: maybe(t.Integer),
-    scrollTop: maybe(t.Integer),
-    onScrollStart: maybe(t.Function),
-    onScrollEnd: maybe(t.Function)
-  }, { strict: false })
-  @skinnable(contains(Grid))
+export default (Grid) => {
   class ScrollableGrid extends React.PureComponent {
 
     state = {
@@ -38,5 +30,19 @@ export default (Grid) => (
         ...omit(tableProps, 'scrollTop')
       };
     }
+
+    render() {
+      return <Grid {...this.getLocals(this.props)} />;
+    }
   }
-);
+
+  props({
+    className: maybe(t.String),
+    scrollLeft: maybe(t.Integer),
+    scrollTop: maybe(t.Integer),
+    onScrollStart: maybe(t.Function),
+    onScrollEnd: maybe(t.Function)
+  }, { strict: false })(ScrollableGrid);
+
+  return ScrollableGrid;
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { skinnable, props, t } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
@@ -47,7 +47,7 @@ export default class ScrollView extends React.PureComponent {
    * Holds the reference to the GeminiScrollbar instance.
    * @property scrollbar <public> [Object]
    */
-  scrollbar: null
+  scrollbar = null
 
   componentDidMount() {
     const { autoshow, forceGemini } = this.props;

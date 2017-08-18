@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t } from '../utils';
 import getUrl from './getUrl';
 
-const Props = {
+export const Props = {
   src: t.String,
   width: t.maybe(t.Number),
   height: t.maybe(t.Number),

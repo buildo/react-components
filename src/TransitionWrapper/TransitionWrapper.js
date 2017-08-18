@@ -1,6 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
-import omit from 'lodash/omit';
+import cx from '../utils/classnames';
+import omit from 'lodash.omit';
 import { props, t } from '../utils';
 
 const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.prototype instanceof React.Component || t.Function.is(x.prototype.render)));

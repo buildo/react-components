@@ -1,12 +1,12 @@
 import React from 'react';
 import { props, t } from '../../../utils';
 
-import cx from 'classnames';
-import find from 'lodash/find';
-import sortBy from 'lodash/sortBy';
-import findIndex from 'lodash/findIndex';
-import once from 'lodash/once';
-import uniqueId from 'lodash/uniqueId';
+import cx from '../../../utils/classnames';
+import find from 'lodash.find';
+import sortBy from 'lodash.sortby';
+import findIndex from 'lodash.findindex';
+import once from 'lodash.once';
+import uniqueId from 'lodash.uniqueid';
 
 import dragDropContextHTML5Backend from './htmlBackend';
 import Column, { defaultColumns, updateColumns } from '../../Column';
@@ -16,15 +16,8 @@ import DNDHeader from './DNDHeader';
 
 const { maybe, list } = t;
 
-export default (Grid) =>
-  @dragDropContextHTML5Backend
-  @props({
-    // transform, manipulate
-    className: maybe(t.String),
-    // add
-    columnsOrder: maybe(list(t.String)),
-    onColumnsReorder: maybe(t.Function)
-  }, { strict: false })
+export default Grid => {
+
   class ColumnsReorderGrid extends React.PureComponent {
 
     constructor() {
@@ -118,4 +111,15 @@ export default (Grid) =>
       return <Grid {...this.getLocals(this.props)} />;
     }
 
-  };
+  }
+
+  props({
+    // transform, manipulate
+    className: maybe(t.String),
+    // add
+    columnsOrder: maybe(list(t.String)),
+    onColumnsReorder: maybe(t.Function)
+  }, { strict: false })(ColumnsReorderGrid);
+
+  return dragDropContextHTML5Backend(ColumnsReorderGrid);
+};

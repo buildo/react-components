@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
-import flattenDeep from 'lodash/flattenDeep';
+import flattenDeep from 'lodash.flattendeep';
 import tlds from 'tlds';
 
 const linkify = require('linkify-it')().tlds(tlds);

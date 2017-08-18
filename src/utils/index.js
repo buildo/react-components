@@ -1,8 +1,10 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { props, t } from 'tcomb-react';
 
-export skinnable, { contains } from 'react-skinnable';
+import skinnable from 'react-skinnable';
+export { skinnable };
+export { contains } from 'react-skinnable';
 export { props, t };
 export const stateClassUtil = (...classes) => cx([].concat(...classes).map(cl => `is-${cl}`));
 

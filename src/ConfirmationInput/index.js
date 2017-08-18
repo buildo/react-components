@@ -1,1 +1,2 @@
-export default from './ConfirmationInput';
+import ConfirmationInput from './ConfirmationInput';
+export default ConfirmationInput;

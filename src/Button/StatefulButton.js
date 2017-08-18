@@ -1,5 +1,5 @@
 import React from 'react';
-import pick from 'lodash/pick';
+import pick from 'lodash.pick';
 import { skinnable, props, t } from '../utils';
 import Button, { ButtonPropTypes } from './Button';
 

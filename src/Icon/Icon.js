@@ -1,7 +1,7 @@
 import React from 'react';
-import range from 'lodash/range';
+import range from 'lodash.range';
 import { skinnable, props, t } from '../utils';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
 

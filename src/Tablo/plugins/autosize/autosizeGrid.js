@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { skinnable, props, t } from '../../../utils';
-import cx from 'classnames';
+import { props, t } from '../../../utils';
+import cx from '../../../utils/classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../ResizeSensor/ResizeSensor';
 
 const { maybe } = t;
 
-export default (Grid) =>
+export default (Grid) => {
 
-  @props({
-    className: maybe(t.String),
-    autosize: maybe(t.Boolean)
-  }, { strict: false })
-  @skinnable()
   class AutosizeGrid extends React.PureComponent {
 
     state = {}
@@ -47,7 +42,9 @@ export default (Grid) =>
       };
     }
 
-    template({ autosize, ...tableProps }) {
+    render() {
+
+      const { autosize, ...tableProps } = this.getLocals(this.props);
 
       const content = (
         <FlexView grow column width='100%' ref='gridWrapper'>
@@ -61,4 +58,12 @@ export default (Grid) =>
         </ResizeSensor>
       ) : content;
     }
-  };
+  }
+
+  props({
+    className: maybe(t.String),
+    autosize: maybe(t.Boolean)
+  }, { strict: false })(AutosizeGrid);
+
+  return AutosizeGrid;
+};

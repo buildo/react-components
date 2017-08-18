@@ -1,10 +1,15 @@
 import Tablo from './Tablo';
 import { autosize, columnsResize, columnsReorder, scrollable, selectable, sortable } from './plugins';
 
-export ColumnGroup from './ColumnGroup';
-export Column from './Column';
-export Cell from './Cell';
-export Header from './Header';
-export Footer from './Footer';
+import ColumnGroup from './ColumnGroup';
+export { ColumnGroup };
+import Column from './Column';
+export { Column };
+import Cell from './Cell';
+export { Cell };
+import Header from './Header';
+export { Header };
+import Footer from './Footer';
+export { Footer };
 
 export default autosize(columnsResize(columnsReorder(scrollable(selectable(sortable(Tablo))))));

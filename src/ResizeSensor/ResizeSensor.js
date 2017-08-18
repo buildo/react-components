@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _debounce from 'lodash/debounce';
+import _debounce from 'lodash.debounce';
 import { props, t } from '../utils';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
