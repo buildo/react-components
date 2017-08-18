@@ -2,6 +2,13 @@
 
 
 
+## [v0.26.3](https://github.com/buildo/react-components/tree/v0.26.3) (2017-08-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.2...v0.26.3)
+
+#### New features:
+
+- Image: copy-paste Image from buildo.io [#1032](https://github.com/buildo/react-components/issues/1032)
+
 ## [v0.26.2](https://github.com/buildo/react-components/tree/v0.26.2) (2017-08-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.1...v0.26.2)
 
