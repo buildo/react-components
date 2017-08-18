@@ -17,7 +17,7 @@ const Props = {
  * @param quality - can be a number from 1 to 100 or "auto". Use "auto" to let cloudinary decide the quality for you
  * @param format - which format the image should be. Use "auto" to let cloudinary decide the format for you
  */
-@props(Props)
+@props(Props, { strict: false })
 export default class Image extends React.Component {
 
   render() {
