@@ -33,3 +33,4 @@ export AsyncStatusIndicator from './AsyncStatusIndicator';
 export FormattedText from './FormattedText';
 export DatePicker from './DatePicker';
 export DateField from './DateField';
+export Image from './Image';

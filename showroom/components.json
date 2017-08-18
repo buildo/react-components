@@ -670,6 +670,24 @@
             "url": "DateField/examples/isValid.js"
           }
         ]
+      },
+      {
+        "id": "image",
+        "title": "Image",
+        "desc": "A component to serve optimized images through a CDN in production",
+        "repo": "react-components",
+        "url": "https://github.com/buildo/react-components/tree/master/src/Image",
+        "readmeUrl": "Image/README.md",
+        "examples": [
+          {
+            "title": "Image component: a drop-in replacement for <img>",
+            "url": "Image/examples/image.js"
+          },
+          {
+            "title": "`getUrl` and `getBackgroundUrl` utils",
+            "url": "Image/examples/backgroundUrl.js"
+          }
+        ]
       }
     ]
   }
