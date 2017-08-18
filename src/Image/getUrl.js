@@ -8,7 +8,7 @@ function isRetinaDisplay() {
   }
 }
 
-function getUrl(src, { width: _width, height: _height, quality: _quality, format: _format }) {
+function getUrl(src, { width: _width, height: _height, quality: _quality, format: _format } = {}) {
   const isAbsolute = src.indexOf('http') >= 0;
 
   const origin = !isAbsolute ? window.location.origin : '';
