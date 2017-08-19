@@ -97,7 +97,7 @@
     "scriptoni": "^0.6.2",
     "smooth-release": "^8.0.0",
     "style-loader": "^0.17.0",
-    "stylelint-webpack-plugin": "^0.7.0",
+    "stylelint-webpack-plugin": "^0.8.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
