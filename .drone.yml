@@ -48,11 +48,18 @@ build:
   #   when:
   #     branch: master
 
+  # gh-pages-build:
+  #   image: node:6
+  #   commands:
+  #     - if [ "$$BRANCH" != "master" ]; then
+  #         npm run generate-all-readmes;
+  #         npm run build-showroom;
+  #       fi
+
   gh-pages-build:
     image: node:6
     commands:
       - if [ "$$BRANCH" != "master" ]; then
-          npm run generate-all-readmes;
           npm run build-showroom;
         fi
 
