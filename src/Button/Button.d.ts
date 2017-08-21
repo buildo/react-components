@@ -31,7 +31,7 @@ export type ButtonPropTypes = ButtonProps;
 
 export default class Button extends PureComponent<ButtonProps> {}
 
-export const Props: {
+export const ButtonPropTypes: {
   [key: string]: Type<any>
 }
 

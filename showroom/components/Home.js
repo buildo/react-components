@@ -3,7 +3,7 @@ import FlexView from 'react-flexview';
 import KitchenSink from '../../src/KitchenSink';
 import Button from '../../src/Button';
 import { t, props } from 'tcomb-react';
-import packageJson from 'json!../../package.json';
+import packageJson from 'json-loader!../../package.json';
 
 require('../icons/rocket.png');
 require('../icons/tools.png');

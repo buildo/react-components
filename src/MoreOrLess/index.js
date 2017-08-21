@@ -1,1 +1,2 @@
-export default from './MoreOrLess';
+import MoreOrLess from './MoreOrLess';
+export default MoreOrLess;

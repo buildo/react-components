@@ -1,6 +1,6 @@
 // import Popover from 'buildo-react-components/lib/Popover';
 
-const Option = ({ title, value }) => (
+const Item = ({ title, value }) => (
   <FlexView column hAlignContent='center' className='option'>
     <FlexView className='title'>{title}</FlexView>
     <FlexView className='value'>{`$${value}/month`}</FlexView>
@@ -10,9 +10,9 @@ const Option = ({ title, value }) => (
 
 const content = (
   <FlexView>
-    <Option title='Express' value={9} />
-    <Option title='Premium' value={12} />
-    <Option title='Enterprise' value={22} />
+    <Item title='Express' value={9} />
+    <Item title='Premium' value={12} />
+    <Item title='Enterprise' value={22} />
   </FlexView>
 );
 

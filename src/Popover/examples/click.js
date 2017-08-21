@@ -1,6 +1,6 @@
 // import Popover from 'buildo-react-components/lib/Popover';
 
-const Option = ({ title, image }) => (
+const Item = ({ title, image }) => (
   <FlexView column hAlignContent='center' className='option'>
     <img src={`../../src/Popover/examples/${image}.png`} />
     <Button size='medium' label={title} onClick={() => {}} />
@@ -9,9 +9,9 @@ const Option = ({ title, image }) => (
 
 const content = (
   <FlexView>
-    <Option title='Spider-Man' image='avatar1' />
-    <Option title='Iron Man' image='avatar2' />
-    <Option title='Daredevil' image='avatar3' />
+    <Item title='Spider-Man' image='avatar1' />
+    <Item title='Iron Man' image='avatar2' />
+    <Item title='Daredevil' image='avatar3' />
   </FlexView>
 );
 

@@ -19,7 +19,7 @@ case $TARGET in
 esac
 
 NODE_ENV=development webpack-dev-server \
-  --config showroom/webpack.${FILE_TARGET}config.babel.js \
+  --config webpack.${FILE_TARGET}config.babel.js \
   --progress \
   --hot \
   --inline

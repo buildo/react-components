@@ -1,1 +1,2 @@
-export default from './Meter';
+import Meter from './Meter';
+export default Meter;

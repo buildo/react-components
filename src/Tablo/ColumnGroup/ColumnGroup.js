@@ -1,6 +1,6 @@
 import React from 'react';
 import { t } from '../../utils';
-import find from 'lodash/find';
+import find from 'lodash.find';
 
 import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { skinnable, props, t } from '../utils';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
 const sizeType = t.enums.of(['small', 'medium', 'large', 'no-margin'], 'sizeType');

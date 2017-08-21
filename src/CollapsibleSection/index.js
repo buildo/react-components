@@ -1,1 +1,2 @@
-export default from './CollapsibleSection';
+import CollapsibleSection from './CollapsibleSection';
+export default CollapsibleSection;

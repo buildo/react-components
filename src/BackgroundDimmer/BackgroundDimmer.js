@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { props, t, skinnable } from '../utils';
 import FlexView from 'react-flexview';
-import omit from 'lodash/omit';
+import omit from 'lodash.omit';
 
 export const Props = {
   children: t.ReactChildren,

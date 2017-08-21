@@ -4,23 +4,14 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
-import webpackBase from './webpack.base.babel';
-import assign from 'lodash/assign';
+import webpackBase, { paths } from './webpack.base.babel';
 import fs from 'fs';
 
-const paths = {
-  SRC: path.resolve(__dirname),
-  DIST: path.resolve(__dirname, './build')
-};
+console.log(paths.SHOWROOM);
 
-module.exports = assign({}, webpackBase, {
+export default {
 
-  entry: `${paths.SRC}/app.js`,
-
-  output: {
-    path: paths.DIST,
-    filename: 'app.[hash].js'
-  },
+  ...webpackBase,
 
   plugins: webpackBase.plugins.concat([
     new StyleLintPlugin({
@@ -32,10 +23,9 @@ module.exports = assign({}, webpackBase, {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true
-      }
+      compress: { warnings: false, screw_ie8: true },
+      output: { comments: false },
+      sourceMap: true
     }),
     new CompressionPlugin({
       regExp: /\.js$|\.css$/
@@ -47,22 +37,38 @@ module.exports = assign({}, webpackBase, {
       gzip: '',
       buildPath: 'https://cdn.rawgit.com/buildo/react-components/master/showroom/build/'
     }),
-    new ExtractTextPlugin('style', 'style.[hash].min.css')
+    new ExtractTextPlugin({ filename: 'style.[hash].min.css' })
   ]),
 
-  module: assign({}, webpackBase.module, {
-    loaders: webpackBase.module.loaders.concat([
-      // style!css loaders
+  module: {
+    ...webpackBase.module,
+    rules: webpackBase.module.rules.concat([
+      // style!css rules
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       // SASS
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: 'css-loader',
+            options: { sourceMap: true }
+          }, {
+            loader: 'resolve-url-loader',
+            options: { sourceMap: true }
+          }, {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }]
+        })
       }
     ])
-  })
+  }
 
-});
+};

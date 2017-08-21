@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from 'classnames';
-import debounce from 'lodash/debounce';
-import uniq from 'lodash/uniq';
+import cx from '../utils/classnames';
+import debounce from 'lodash.debounce';
+import uniq from 'lodash.uniq';
 import { props, t, getContextWrapper } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';

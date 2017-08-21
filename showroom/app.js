@@ -24,7 +24,9 @@ const routes = (
 
 const router = patchReactRouter(create({ routes }));
 
-router.run((Handler, { params, query }) => {
-  // RENDERS
-  ReactDOM.render(<Handler {...{ router, params, query }} />, document.getElementById('app'));
-});
+export default () => {
+  router.run((Handler, { params, query }) => {
+    // RENDERS
+    ReactDOM.render(<Handler {...{ router, params, query }} />, document.getElementById('app'));
+  });
+};

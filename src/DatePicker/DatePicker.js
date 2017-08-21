@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { SingleDatePicker } from 'react-dates';
 import FlexView from 'react-flexview';
 import { props, t, skinnable } from '../utils';

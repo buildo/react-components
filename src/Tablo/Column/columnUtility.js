@@ -1,6 +1,7 @@
-import React, { Children } from 'react';
-import curry from 'lodash/curry';
-import flatMap from 'lodash/flatMap';
+import React from 'react';
+import { Children } from 'react';
+import curry from 'lodash.curry';
+import flatMap from 'lodash.flatmap';
 import Column from './Column';
 import ColumnGroup from '../ColumnGroup';
 

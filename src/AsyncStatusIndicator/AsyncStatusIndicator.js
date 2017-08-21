@@ -1,6 +1,6 @@
 import React from 'react';
 import { skinnable, props, t } from '../utils';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import View from 'react-flexview';
 
 export const AsyncStatusIndicatorState = t.enums.of([

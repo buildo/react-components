@@ -1,1 +1,2 @@
-export default from './ColumnGroup';
+import ColumnGroup from './ColumnGroup';
+export default ColumnGroup;

@@ -1,6 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
-import omitBy from 'lodash/fp/omitBy';
+import cx from '../../../utils/classnames';
+import omitBy from 'lodash.omitby';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
@@ -8,7 +8,7 @@ import { props, t } from '../../../utils';
 
 const { maybe, enums } = t;
 
-export const clean = omitBy(x => typeof x === 'undefined');
+export const clean = obj => omitBy(obj, x => typeof x === 'undefined');
 
 const propsTypes = {
   // transform
@@ -76,13 +76,13 @@ const getLocals = ({
 
 };
 
-export default (Grid) =>
-
-  @props(propsTypes, { strict: false })
+export default (Grid) => {
   class SortableGrid extends React.PureComponent {
-
     render() {
       return <Grid {...getLocals(this.props)} />;
     }
+  }
 
-  };
+  props(propsTypes, { strict: false })(SortableGrid);
+  return SortableGrid;
+};

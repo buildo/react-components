@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { skinnable, props, t } from '../utils';
-import cx from 'classnames';
+import cx from '../utils/classnames';
 import { getValueLink } from '../LinkState';
 import { warn } from '../utils/log';
 

@@ -1,6 +1,6 @@
 import { PureComponent, CSSProperties } from 'react';
 import { Type } from 'tcomb';
-import * as moment from 'moment';
+import moment from 'moment';
 
 type Value = string | Date | moment.Moment;
 
