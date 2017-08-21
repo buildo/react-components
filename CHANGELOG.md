@@ -1,11 +1,17 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...HEAD)
 
-#### New features:
 
-- [Typo] Initial setup [#1035](https://github.com/buildo/react-components/issues/1035)
+## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0)
+
+#### Fixes (bugs & defects):
+
+- Icon: should pass fontSize directly to paths [#1042](https://github.com/buildo/react-components/issues/1042)
+
+#### Breaking:
+
+- [Typo] add support for TypeScript [#1035](https://github.com/buildo/react-components/issues/1035)
 
 ## [v0.26.4](https://github.com/buildo/react-components/tree/v0.26.4) (2017-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.3...v0.26.4)
