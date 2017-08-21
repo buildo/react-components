@@ -1,6 +1,18 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...HEAD)
 
+#### New features:
+
+- [Typo] Initial setup [#1035](https://github.com/buildo/react-components/issues/1035)
+
+## [v0.26.4](https://github.com/buildo/react-components/tree/v0.26.4) (2017-08-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.3...v0.26.4)
+
+#### Fixes (bugs & defects):
+
+- Image's props should not be strict [#1037](https://github.com/buildo/react-components/issues/1037)
 
 ## [v0.26.3](https://github.com/buildo/react-components/tree/v0.26.3) (2017-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.2...v0.26.3)
