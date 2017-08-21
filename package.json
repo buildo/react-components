@@ -40,6 +40,7 @@
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
+    "@types/react": "15.6.1",
     "@types/react-select": "1.0.51",
     "bowser": "^1.0.0",
     "create-react-class": "^15.5.2",
