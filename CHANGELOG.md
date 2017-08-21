@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...HEAD)
 
+#### New features:
+
+- [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
 
 ## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0)
