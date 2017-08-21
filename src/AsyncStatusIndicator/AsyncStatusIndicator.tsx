@@ -9,10 +9,15 @@ export namespace AsyncStatusIndicatorProps {
 }
 
 export type AsyncStatusIndicatorProps = {
+  /** The state of the component */
   state: AsyncStatusIndicatorProps.AsyncStatusIndicatorState,
+  /** an optional class name to pass to top level element of the component */
   className?: string,
+  /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties,
+  /** a dictionary of ReactElements for each state */
   icons: { [key in AsyncStatusIndicatorProps.AsyncStatusIndicatorState]?: any },
+  /** a dictionary labels for each state */
   labels: { [key in AsyncStatusIndicatorProps.AsyncStatusIndicatorState]?: string },
 }
 
@@ -35,13 +40,7 @@ export const Props: TProps = {
   style: t.maybe(t.Object)
 };
 
-/** A component that shows the status of an async operation
- * @param state - The state of the component
- * @param icons - a dictionary of ReactElements for each state
- * @param labels - a dictionary labels for each state
- * @param className - an optional class name to pass to top level element of the component
- * @param style - an optional style object to pass to top level element of the component
- */
+/** A component that shows the status of an async operation */
 @props(Props)
 export default class AsyncStatusIndicator extends React.PureComponent<AsyncStatusIndicatorProps> {
   render() {
