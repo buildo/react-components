@@ -41,7 +41,7 @@ export default class Icon extends React.PureComponent {
   template({ icon, className, style, onClick, paths }) {
     return icon ? (
       <i className={className} style={style} onClick={onClick}>
-        {paths > 1 && range(paths).map(k => <span className={`path${k + 1}`} key={k} /> )}
+        {paths > 1 && range(paths).map(k => <span className={`path${k + 1}`} style={{ fontSize: 'inherit' }} key={k} /> )}
       </i>
     )
     : null;
