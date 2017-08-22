@@ -1,6 +1,6 @@
 import React from 'react';
 import find from 'lodash.find';
-import { t } from '../../utils';
+import { t, ReactChildren } from '../../utils';
 
 import { Column as ColumnFDT } from 'fixed-data-table-2';
 
@@ -19,7 +19,7 @@ const argsTypes = struct({
   name: t.String,
   fixed: maybe(t.Boolean),
   flexGrow: maybe(t.Number),
-  children: t.ReactChildren,
+  children: ReactChildren,
   allowCellsRecycling: maybe(t.Boolean),
 
   isResizable: maybe(t.Boolean)

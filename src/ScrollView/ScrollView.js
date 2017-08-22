@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
-import { skinnable, props, t } from '../utils';
+import { skinnable, props, t, ReactChildren } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   autoshow: t.maybe(t.Boolean),
   forceGemini: t.maybe(t.Boolean),
   component: t.maybe(t.union([t.Function, t.String])),

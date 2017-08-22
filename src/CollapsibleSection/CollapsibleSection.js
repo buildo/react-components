@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { skinnable, props, t } from '../utils';
+import { skinnable, props, t, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   isOpen: t.Boolean,
   isSelected: t.maybe(t.Boolean),
   onChange: t.Function,

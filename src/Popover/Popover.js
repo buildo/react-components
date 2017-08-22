@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
 import debounce from 'lodash.debounce';
 import uniq from 'lodash.uniq';
-import { props, t, getContextWrapper } from '../utils';
+import { props, t, ReactChildren, getContextWrapper } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   popover: t.struct({
-    content: t.ReactChildren,
+    content: ReactChildren,
     auto: t.maybe(t.Boolean),
     attachToBody: t.maybe(t.Boolean),
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),

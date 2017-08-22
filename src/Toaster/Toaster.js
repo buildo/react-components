@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
-import { props, t } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 import { warn } from '../utils/log';
 import TransitionWrapper from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   attachTo: t.maybe(t.String),
   transitionGroup: t.maybe(t.Object),
   transitionStyles: t.maybe(t.Object),

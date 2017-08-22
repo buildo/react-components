@@ -1,11 +1,11 @@
 import React from 'react';
 import View from 'react-flexview';
-import { props, t } from '../../utils';
+import { props, t, ReactChildren } from '../../utils';
 import LoadingSpinner from '../../LoadingSpinner';
 import SidebarContent from './SidebarContent';
 
 @props({
-  children: t.ReactChildren,
+  children: ReactChildren,
   sections: t.Array,
   openSections: t.Array,
   currentItemId: t.maybe(t.String),

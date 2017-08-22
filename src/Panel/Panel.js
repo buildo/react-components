@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { props, t, skinnable } from '../utils';
+import { props, t, ReactChildren, skinnable } from '../utils';
 import PanelHeader, { HeaderSize } from './PanelHeader';
 import capitalize from 'lodash.capitalize';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -25,7 +25,7 @@ export const Props = {
   dark: t.maybe(t.Bool),
   softLoading: t.maybe(t.Bool),
   softLoadingDelay: t.maybe(t.refinement(t.Num, v => v >= 0, 'NonNegativeNumber')),
-  children: t.ReactChildren,
+  children: ReactChildren,
   className: t.maybe(t.Str),
   clearMargin: t.maybe(t.enums.of(['top', 'left', 'right', 'bottom'])),
   style: t.maybe(t.Obj)

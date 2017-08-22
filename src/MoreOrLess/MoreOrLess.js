@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { props, t, skinnable } from '../utils';
+import { props, t, ReactChildren, skinnable } from '../utils';
 import Icon from '../Icon/Icon';
 import FlexView from 'react-flexview';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   expanded: t.Boolean,
   onExpandedChange: t.Function,
   icons: t.struct({

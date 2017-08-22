@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { props, t } from '../utils';
+import { props, t, ReactElement } from '../utils';
 import BackgroundDimmer from '../BackgroundDimmer/BackgroundDimmer';
 
 export const Props = {
-  children: t.ReactElement,
+  children: ReactElement,
   iconClose: t.maybe(t.ReactElement),
   onDismiss: t.maybe(t.Function),
   background: t.maybe(t.struct({

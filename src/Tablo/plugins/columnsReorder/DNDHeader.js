@@ -2,7 +2,7 @@ import React from 'react';
 import cx from '../../../utils/classnames';
 import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
-import { skinnable, props, t } from '../../../utils';
+import { skinnable, props, t, ReactChildren } from '../../../utils';
 import FlexView from 'react-flexview';
 import flowRight from 'lodash.flowright';
 import identity from 'lodash.identity';
@@ -87,7 +87,7 @@ const columnType = ({ tabloUniqueId }) => `${tabloUniqueId}_column`;
   index: t.Integer,
   isDropAllowed: t.Function,
   tabloUniqueId: t.String,
-  children: t.ReactChildren
+  children: ReactChildren
 })
 export default class DNDHeader extends React.PureComponent {
 

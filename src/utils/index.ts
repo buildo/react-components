@@ -1,11 +1,12 @@
 import * as React from 'react';
 import cx from '../utils/classnames';
-import { props, t } from 'tcomb-react';
+import { props, ReactElement, ReactChild, ReactChildren, ReactNode } from 'tcomb-react';
+import * as t from 'tcomb';
 
 import skinnable from 'react-skinnable';
 export { skinnable };
 export { contains } from 'react-skinnable';
-export { props, t };
+export { props, t, ReactElement, ReactChild, ReactChildren, ReactNode };
 export const stateClassUtil = (...classes: string[]): string => cx(classes.map(cl => `is-${cl}`));
 
 type Props = {
@@ -17,7 +18,7 @@ export const getContextWrapper = (contextTypes = {}): React.ComponentType<Props>
 
   @props({
     context: t.maybe(t.Object),
-    children: t.ReactChildren
+    children: ReactChildren
   })
   class ContextWrapper extends React.Component<Props> {
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Type } from 'tcomb';
-import { props, t } from '../utils';
+import { props, t, ReactElement } from '../utils';
 import cx from '../utils/classnames';
 import View from 'react-flexview';
 
@@ -21,20 +20,16 @@ export type AsyncStatusIndicatorProps = {
   labels: { [key in AsyncStatusIndicatorProps.AsyncStatusIndicatorState]?: string },
 }
 
-export const AsyncStatusIndicatorState: AsyncStatusIndicatorProps.AsyncStatusIndicatorState = t.enums.of([
+export const AsyncStatusIndicatorState = t.enums.of([
   'ready',
   'processing',
   'success',
   'error'
 ], 'AsyncStatusIndicatorState');
 
-export type TProps = {
-  [key: string]: Type<any> | AsyncStatusIndicatorProps.AsyncStatusIndicatorState
-};
-
-export const Props: TProps = {
+export const Props = {
   state: AsyncStatusIndicatorState,
-  icons: t.dict(AsyncStatusIndicatorState, t.ReactElement),
+  icons: t.dict(AsyncStatusIndicatorState, ReactElement),
   labels: t.dict(AsyncStatusIndicatorState, t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)

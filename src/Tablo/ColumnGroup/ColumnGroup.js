@@ -1,5 +1,5 @@
 import React from 'react';
-import { t } from '../../utils';
+import { t, ReactChildren } from '../../utils';
 import find from 'lodash.find';
 
 import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
@@ -11,7 +11,7 @@ const { union, maybe, struct } = t;
 const argsTypes = struct({
   key: union([t.String, t.Number]),
   fixed: maybe(t.Boolean),
-  children: t.ReactChildren
+  children: ReactChildren
 }, { strict: true, name: 'ColumnGroupProps' });
 
 const ColumnGroup = (args) => {

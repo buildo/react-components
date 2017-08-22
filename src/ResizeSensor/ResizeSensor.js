@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _debounce from 'lodash.debounce';
-import { props, t } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   onResize: t.Function,
   debounce: t.maybe(t.Integer)
 };

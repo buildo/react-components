@@ -4,7 +4,7 @@ import omitBy from 'lodash.omitby';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { props, t } from '../../../utils';
+import { props, t, ReactChildren } from '../../../utils';
 
 const { maybe, enums } = t;
 
@@ -14,7 +14,7 @@ const propsTypes = {
   // transform
   className: maybe(t.String),
   data: t.Array,
-  children: t.ReactChildren,
+  children: ReactChildren,
   // add
   sortBy: maybe(t.String),
   sortDir: maybe(enums.of(['asc', 'desc'])),
