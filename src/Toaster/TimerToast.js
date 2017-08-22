@@ -1,9 +1,9 @@
 import React from 'react';
 import omit from 'lodash.omit';
-import { props, t } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   onTimeout: t.Function,
   duration: t.Number,
   uniqueKey: t.maybe(t.String),

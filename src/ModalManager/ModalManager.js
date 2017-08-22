@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { warn } from '../utils/log';
-import { props, t } from '../utils';
+import { props, t, ReactElement } from '../utils';
 import FlexView from 'react-flexview';
 import TransitionWrapper from '../TransitionWrapper/TransitionWrapper';
 
@@ -46,7 +46,7 @@ export default class ModalManager extends React.Component {
     ContextWrapper.childContextTypes = childContextTypes;
     ContextWrapper.getChildContext = getChildContext;
 
-    props({ children: t.ReactElement })(ContextWrapper);
+    props({ children: ReactElement })(ContextWrapper);
 
     this.ContextWrapper = ContextWrapper;
   }

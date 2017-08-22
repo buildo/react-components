@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { skinnable, props, t } from '../utils';
+import { skinnable, props, t, ReactChildren } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
@@ -61,7 +61,7 @@ const { maybe } = t;
   scrollTop: maybe(t.Integer),
   onScrollStart: maybe(t.Function),
   onScrollEnd: maybe(t.Function),
-  children: t.ReactChildren,
+  children: ReactChildren,
   rowClassNameGetter: maybe(t.Function),
   touchScrollEnabled: maybe(t.Boolean),
 

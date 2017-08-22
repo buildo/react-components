@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { props, t } from '../utils';
+import { props, t, ReactNode } from '../utils';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
-  content: t.ReactNode,
-  contentIfOverflowing: t.ReactNode,
+  content: ReactNode,
+  contentIfOverflowing: ReactNode,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)

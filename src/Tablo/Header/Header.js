@@ -1,12 +1,12 @@
 import React from 'react';
 import cx from '../../utils/classnames';
-import { skinnable, props, t } from '../../utils';
+import { skinnable, props, t, ReactChildren } from '../../utils';
 import FlexView from 'react-flexview';
 
 const { maybe } = t;
 
 const propsTypes = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   rowIndex: maybe(t.Number), // should not be here
   columnKey: maybe(t.String),
   width: maybe(t.Number),

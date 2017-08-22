@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { t } from '../../../utils';
+import { t, ReactChildren } from '../../../utils';
 import find from 'lodash.find';
 import Column from '../../Column';
 
@@ -14,7 +14,7 @@ const argsTypes = struct({
   sortDir: maybe(t.enums.of(['asc', 'desc'], 'sortDir')),
   onHeaderClick: maybe(t.Function),
   name: t.String,
-  children: t.ReactChildren
+  children: ReactChildren
 }, { strict: false });
 
 const sortable = (args) => {

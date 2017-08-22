@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
-import { props, t, skinnable } from '../utils';
+import { props, t, skinnable, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
 import omit from 'lodash.omit';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   color: t.maybe(t.String),
   alpha: t.maybe(t.Number),
   zIndex: t.maybe(t.Number),

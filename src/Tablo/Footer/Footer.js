@@ -1,6 +1,6 @@
 import React from 'react';
 import FlexView from 'react-flexview';
-import { skinnable, props, t } from '../../utils';
+import { skinnable, props, t, ReactChildren } from '../../utils';
 
 const { maybe } = t;
 
@@ -8,7 +8,7 @@ const propsTypes = {
   columnKey: maybe(t.String),
   width: maybe(t.Number),
   height: maybe(t.Number),
-  children: t.ReactChildren
+  children: ReactChildren
 };
 
 const template = ({ children }) => {

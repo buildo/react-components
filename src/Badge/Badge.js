@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { skinnable, props, t } from '../utils';
+import { skinnable, props, t, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
 
 export const Props = {
-  label: t.ReactChildren,
+  label: ReactChildren,
   active: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)

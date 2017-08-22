@@ -1,6 +1,6 @@
 import React from 'react';
 import some from 'lodash.some';
-import { props, t, skinnable } from '../utils';
+import { props, t, ReactChildren, skinnable } from '../utils';
 import bowser from 'bowser';
 
 const Browser = t.enums.of([
@@ -13,7 +13,7 @@ const Browser = t.enums.of([
 ], 'Browser');
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   placeholder: t.Function,
   supportedBrowsers: t.maybe(t.list(Browser)),
   userAgent: t.maybe(t.String)

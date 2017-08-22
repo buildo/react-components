@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from '../utils/classnames';
 import omit from 'lodash.omit';
-import { props, t } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 
 const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.prototype instanceof React.Component || t.Function.is(x.prototype.render)));
 
@@ -15,7 +15,7 @@ const ReactClass = t.irreducible('ReactClass', x => x && x.prototype && (x.proto
  * @param onLeave - callback for componentDidLeave: useful if you need to do some cleanup
  */
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   component: t.maybe(t.union([ReactClass, t.String])),
   transitionStyles: t.maybe(t.struct({
     enter: t.maybe(t.Object),

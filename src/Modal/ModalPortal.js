@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
-import { props, t } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode = null;
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   transitionEnterTimeout: t.Number,
   transitionLeaveTimeout: t.Number,
   className: t.maybe(t.String),

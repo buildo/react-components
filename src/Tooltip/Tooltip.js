@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { props, skinnable, t, stateClassUtil } from '../utils';
+import { props, skinnable, t, ReactChildren, stateClassUtil } from '../utils';
 import FormattedText from '../FormattedText/FormattedText';
 import Popover from '../Popover/Popover';
 
 export const Props = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   popover: t.refinement(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
   type: t.enums.of(['light', 'dark']),
   size: t.enums.of(['small', 'big']),

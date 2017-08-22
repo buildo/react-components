@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import { props, t, skinnable } from '../utils';
+import { props, t, skinnable, ReactChildren } from '../utils';
 import omit from 'lodash.omit';
 import ModalPortal, { Props as ModalPortalProps } from './ModalPortal';
 import FlexView from 'react-flexview';
 import BackgroundDimmer from '../BackgroundDimmer';
 
 const ModalProps = {
-  children: t.ReactChildren,
+  children: ReactChildren,
   title: t.maybe(t.String),
   footer: t.maybe(t.ReactChildren),
   iconClose: t.maybe(t.ReactChildren),
