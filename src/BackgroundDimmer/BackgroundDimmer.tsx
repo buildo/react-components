@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
 import { props, t, ReactChildren } from '../utils';
 import FlexView, { IProps as FlexViewProps } from 'react-flexview';
-import omit = require('lodash.omit');
+import omit = require('lodash/omit');
 
 export type BackgroundDimmerProps = {
   /** children nodes/elements */
