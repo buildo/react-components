@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
-import { props, t, skinnable, ReactChildren } from '../utils';
+import { props, t, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
 import omit from 'lodash.omit';
 
@@ -35,7 +35,6 @@ export const Props = {
  * @param maxHeight - centeredContentWrapper max-height
  */
 @props(Props)
-@skinnable()
 export default class BackgroundDimmer extends React.Component {
 
   static defaultProps = {
@@ -70,46 +69,40 @@ export default class BackgroundDimmer extends React.Component {
     }
   };
 
-  getLocals() {
+  render() {
     const {
       onClick, stopPropagation, stopScrollPropagation,
-      props: { className, zIndex, color, alpha, width, maxWidth, height, maxHeight, ...props }
+      props: { className, zIndex, color, alpha, width, maxWidth, height, maxHeight, children, ...props }
     } = this;
 
     const fixedStyle = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
-    return {
-      ...omit(props, ['onClickOutside']),
-      className: cx('background-dimmer', className),
-      overlayProps: {
-        style: {
-          ...fixedStyle,
-          zIndex,
-          backgroundColor: color,
-          opacity: String(alpha)
-        }
-      },
-      mainContentWrapperProps: {
-        onClick,
-        onWheel: stopScrollPropagation,
-        onTouchMove: stopScrollPropagation,
-        style: { ...fixedStyle, zIndex: (zIndex + 1) },
-        className: 'main-content-wrapper',
-        vAlignContent: 'center',
-        hAlignContent: 'center',
-        ref: 'mainContentWrapper'
-      },
-      centeredContentWrapperProps: {
-        className: 'centered-content-wrapper',
-        style: { width, maxWidth, height, maxHeight },
-        onClick: stopPropagation,
-        column: true
+    const overlayProps = {
+      style: {
+        ...fixedStyle,
+        zIndex,
+        backgroundColor: color,
+        opacity: String(alpha)
       }
     };
-  }
+    const mainContentWrapperProps = {
+      onClick,
+      onWheel: stopScrollPropagation,
+      onTouchMove: stopScrollPropagation,
+      style: { ...fixedStyle, zIndex: (zIndex + 1) },
+      className: 'main-content-wrapper',
+      vAlignContent: 'center',
+      hAlignContent: 'center',
+      ref: 'mainContentWrapper'
+    };
+    const centeredContentWrapperProps = {
+      className: 'centered-content-wrapper',
+      style: { width, maxWidth, height, maxHeight },
+      onClick: stopPropagation,
+      column: true
+    };
 
-  template({ children, overlayProps, mainContentWrapperProps, centeredContentWrapperProps, ...locals }) {
     return (
-      <div {...locals}>
+      <div className={cx('background-dimmer', className)} {...omit(props, ['onClickOutside'])}>
         <div {...overlayProps} />
         <FlexView {...mainContentWrapperProps}>
           <FlexView {...centeredContentWrapperProps}>
