@@ -1,5 +1,5 @@
 import React from 'react';
-import find from 'lodash.find';
+import find from 'lodash/find';
 import { t, ReactChildren } from '../../utils';
 
 import { Column as ColumnFDT } from 'fixed-data-table-2';

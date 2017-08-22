@@ -4,8 +4,8 @@ import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
 import { skinnable, props, t, ReactChildren } from '../../../utils';
 import FlexView from 'react-flexview';
-import flowRight from 'lodash.flowright';
-import identity from 'lodash.identity';
+import flowRight from 'lodash/flowRight';
+import identity from 'lodash/identity';
 
 const columnTarget = {
   canDrop({ isDropAllowed, name: target }, monitor) {

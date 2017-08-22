@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
 import { props, t, skinnable } from '../utils';
-import partial from 'lodash.partial';
+import partial from 'lodash/partial';
 import FlexView from 'react-flexview';
 import Divider from '../Divider/Divider';
 

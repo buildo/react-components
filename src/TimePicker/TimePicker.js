@@ -2,11 +2,11 @@ import React from 'react';
 import { props, t, skinnable } from '../utils';
 import cx from '../utils/classnames';
 import Dropdown from '../Dropdown/Dropdown';
-import range from 'lodash.range';
-import flatten from 'lodash.flatten';
-import compact from 'lodash.compact';
-import uniqBy from 'lodash.uniqby';
-import sortBy from 'lodash.sortby';
+import range from 'lodash/range';
+import flatten from 'lodash/flatten';
+import compact from 'lodash/compact';
+import uniqBy from 'lodash/uniqBy';
+import sortBy from 'lodash/sortBy';
 
 export const H24 = '24h';
 export const H12 = '12h';
