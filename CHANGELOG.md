@@ -3,6 +3,10 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Don't use `t` from tcomb-react [#1048](https://github.com/buildo/react-components/issues/1048)
+
 #### New features:
 
 - [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
