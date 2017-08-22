@@ -7,3 +7,5 @@ generateChangelog.sh
 **/.tags1
 showroom/components/IsolatedComponentView/Component*.js
 .eslintcache
+
+temp
