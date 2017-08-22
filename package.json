@@ -152,7 +152,7 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "test/tsconfig.json"
+        "useBabelrc": true
       }
     },
     "transform": {
