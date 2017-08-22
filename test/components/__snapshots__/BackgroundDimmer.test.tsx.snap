@@ -1,56 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BackgroundDimmer getLocals uses default props 1`] = `
-Object {
-  "centeredContentWrapperProps": Object {
-    "className": "centered-content-wrapper",
-    "column": true,
-    "onClick": [Function],
-    "style": Object {
-      "height": "auto",
-      "maxHeight": "90%",
-      "maxWidth": "90%",
-      "width": "auto",
-    },
-  },
-  "children": <div
-    className="content"
->
-    content
-</div>,
-  "className": "background-dimmer",
-  "mainContentWrapperProps": Object {
-    "className": "main-content-wrapper",
-    "hAlignContent": "center",
-    "onClick": [Function],
-    "onTouchMove": [Function],
-    "onWheel": [Function],
-    "ref": "mainContentWrapper",
-    "style": Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "fixed",
-      "right": 0,
-      "top": 0,
-      "zIndex": 100000,
-    },
-    "vAlignContent": "center",
-  },
-  "overlayProps": Object {
-    "style": Object {
-      "backgroundColor": "black",
-      "bottom": 0,
-      "left": 0,
-      "opacity": "0.5",
-      "position": "fixed",
-      "right": 0,
-      "top": 0,
-      "zIndex": 99999,
-    },
-  },
-}
-`;
-
 exports[`BackgroundDimmer renders correctly 1`] = `
 <div
   className="background-dimmer"
@@ -61,7 +10,7 @@ exports[`BackgroundDimmer renders correctly 1`] = `
         "backgroundColor": "black",
         "bottom": 0,
         "left": 0,
-        "opacity": "0.5",
+        "opacity": 0.5,
         "position": "fixed",
         "right": 0,
         "top": 0,

@@ -7,7 +7,7 @@
     "test": "jest",
     "test-dev": "jest --watch",
     "remove-multiples-@types-react": "rm -rf node_modules/**/node_modules/@types/react",
-    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && mkdir temp && tsc && babel src -d lib && babel temp -d lib && (cd temp; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && (cd src; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && rm -rf temp",
+    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && rm -rf temp && mkdir temp && tsc && babel src -d lib && babel temp -d lib && (cd temp; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && (cd src; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && rm -rf temp",
     "lint": "scriptoni lint src showroom test",
     "lint-fix": "scriptoni lint --fix src showroom test",
     "lint-style": "scriptoni lint-style \"src/**/*.scss\" \"showroom/**/*.scss\"",
@@ -40,7 +40,9 @@
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
+    "@types/lodash": "^4.14.74",
     "@types/react": "15.6.1",
+    "@types/react-dom": "^15.5.3",
     "@types/react-select": "1.0.51",
     "bowser": "^1.0.0",
     "create-react-class": "^15.5.2",
@@ -149,6 +151,11 @@
     ]
   },
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"

@@ -1,5 +1,5 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 import BackgroundDimmer from '../../src/BackgroundDimmer';
@@ -37,19 +37,6 @@ describe('BackgroundDimmer', () => {
     );
     dimmer.find('.content').simulate('click');
     expect(onClickOutside).not.toBeCalled();
-  });
-
-  describe('getLocals', () => {
-
-    it('uses default props', () => {
-      const dimmer = new BackgroundDimmer({
-        ...BackgroundDimmer.defaultProps,
-        children: content
-      });
-      const locals = dimmer.getLocals();
-      expect(locals).toMatchSnapshot();
-    });
-
   });
 
 });
