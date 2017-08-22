@@ -150,6 +150,11 @@
     ]
   },
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "test/tsconfig.json"
+      }
+    },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
