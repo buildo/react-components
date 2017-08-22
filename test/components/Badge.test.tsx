@@ -22,7 +22,7 @@ describe('Badge', () => {
     expect(!badge.hasClass('active'));
   });
 
-  it('computes className', () => {
+  it('computes className when active', () => {
     const badge = shallow(
       <Badge label={42} className='awesome-class' />
     );
