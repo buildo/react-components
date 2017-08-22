@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { RouteHandler } from 'react-router';
-import find from 'lodash.find';
-import reject from 'lodash.reject';
-import partial from 'lodash.partial';
-import sortBy from 'lodash.sortby';
+import find from 'lodash/find';
+import reject from 'lodash/reject';
+import partial from 'lodash/partial';
+import sortBy from 'lodash/sortBy';
 import { props, t } from 'tcomb-react';
 import FlexView from 'react-flexview';
 import * as brc from '../../src';

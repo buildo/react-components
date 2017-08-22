@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t } from '../utils';
-import every from 'lodash.every';
+import every from 'lodash/every';
 import cx from '../utils/classnames';
 import View from 'react-flexview';
 

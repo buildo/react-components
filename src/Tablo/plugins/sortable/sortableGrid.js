@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from '../../../utils/classnames';
-import omitBy from 'lodash.omitby';
+import omitBy from 'lodash/omitBy';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';

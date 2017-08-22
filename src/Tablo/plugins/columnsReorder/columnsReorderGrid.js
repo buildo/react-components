@@ -2,11 +2,11 @@ import React from 'react';
 import { props, t } from '../../../utils';
 
 import cx from '../../../utils/classnames';
-import find from 'lodash.find';
-import sortBy from 'lodash.sortby';
-import findIndex from 'lodash.findindex';
-import once from 'lodash.once';
-import uniqueId from 'lodash.uniqueid';
+import find from 'lodash/find';
+import sortBy from 'lodash/sortBy';
+import findIndex from 'lodash/findIndex';
+import once from 'lodash/once';
+import uniqueId from 'lodash/uniqueId';
 
 import dragDropContextHTML5Backend from './htmlBackend';
 import Column, { defaultColumns, updateColumns } from '../../Column';

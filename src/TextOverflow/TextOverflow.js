@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import omit from 'lodash.omit';
-import debounce from 'lodash.debounce';
+import omit from 'lodash/omit';
+import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../Popover/Popover';

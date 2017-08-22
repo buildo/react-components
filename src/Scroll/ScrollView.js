@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import omit from 'lodash.omit';
+import omit from 'lodash/omit';
 import { props, t } from '../utils';
 import easing from './easingFunctions';
 

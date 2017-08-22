@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import every from 'lodash.every';
+import every from 'lodash/every';
 import { skinnable, props, t, stateClassUtil } from '../utils';
 import _TextOverflow from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';

@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from '../utils/classnames';
-import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 import { props, t, skinnable } from '../utils';
 
 export const Props = {

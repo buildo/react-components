@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from '../../../utils/classnames';
 import { props, t } from '../../../utils';
-import includes from 'lodash.includes';
+import includes from 'lodash/includes';
 
 const { list, maybe, enums } = t;
 
