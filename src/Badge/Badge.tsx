@@ -1,11 +1,11 @@
 import * as React from 'react';
 import cx from '../utils/classnames';
-import { props, t } from '../utils';
+import { props, t, ReactNode } from '../utils';
 import FlexView from 'react-flexview';
 
 export type BadgeProps = {
   /** the descriptive content of the badge */
-  label: React.ReactChildren,
+  label: React.ReactNode,
   /** tells if the badge is active (for styling purposes) */
   active?: boolean,
   /** an optional class name to pass to top level element of the component */
@@ -15,7 +15,7 @@ export type BadgeProps = {
 };
 
 export const Props = {
-  label: t.ReactChildren,
+  label: ReactNode,
   active: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
