@@ -10,6 +10,7 @@
 #### New features:
 
 - [Typo] Badge [#1045](https://github.com/buildo/react-components/issues/1045)
+- [Typo] BackgroundDimmer [#1044](https://github.com/buildo/react-components/issues/1044)
 - [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
 
 ## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
