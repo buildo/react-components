@@ -1,17 +1,20 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...HEAD)
+
+
+## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
+
+#### New features:
+
+- revert to single `lodash` dep [#1050](https://github.com/buildo/react-components/issues/1050)
+- [Typo] Badge [#1045](https://github.com/buildo/react-components/issues/1045)
+- [Typo] BackgroundDimmer [#1044](https://github.com/buildo/react-components/issues/1044)
+- [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
 
 #### Fixes (bugs & defects):
 
 - Don't use `t` from tcomb-react [#1048](https://github.com/buildo/react-components/issues/1048)
-
-#### New features:
-
-- [Typo] Badge [#1045](https://github.com/buildo/react-components/issues/1045)
-- [Typo] BackgroundDimmer [#1044](https://github.com/buildo/react-components/issues/1044)
-- [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
 
 ## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0)
