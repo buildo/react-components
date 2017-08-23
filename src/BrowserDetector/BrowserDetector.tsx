@@ -3,35 +3,34 @@ import some = require('lodash/some');
 import { props, t, ReactChildren } from '../utils';
 import * as bowser from 'bowser';
 
-// FIXME: this is hardcoded and there's no guarantee it matches with bowser's types
-const browsers = [
-  'chrome',
-  'firefox',
-  'msie',
-  'msedge',
-  'safari',
-  'android',
-  'ios',
-  'opera',
-  'phantom',
-  'blackberry',
-  'webos',
-  'silk',
-  'bada',
-  'tizen',
-  'seamonkey',
-  'sailfish',
-  'ucbrowser',
-  'qupzilla',
-  'vivaldi',
-  'sleipnir',
-  'kMeleon'
-];
+const browsers: bowser.IBowserVersions = {
+  chrome: true,
+  firefox: true,
+  msie: true,
+  msedge: true,
+  safari: true,
+  android: true,
+  ios: true,
+  opera: true,
+  phantom: true,
+  blackberry: true,
+  webos: true,
+  silk: true,
+  bada: true,
+  tizen: true,
+  seamonkey: true,
+  sailfish: true,
+  ucbrowser: true,
+  qupzilla: true,
+  vivaldi: true,
+  sleipnir: true,
+  kMeleon: true
+};
 
 export const Props = {
   children: ReactChildren,
   placeholder: t.Function,
-  supportedBrowsers: t.maybe(t.list(t.enums.of(browsers, 'Browser'))),
+  supportedBrowsers: t.maybe(t.list(t.enums.of(Object.keys(browsers), 'Browser'))),
   userAgent: t.maybe(t.String)
 };
 
