@@ -1,10 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import BrowserDetector from '../../src/BrowserDetector';
 
 function forceUserAgent(ua) {
-  navigator.__defineGetter__('userAgent', () => ua);
+  navigator['__defineGetter__']('userAgent', () => ua);
 }
 
 const placeholder = (ua) => <div>{`${ua.name} is not supported`}</div>;
