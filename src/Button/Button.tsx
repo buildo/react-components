@@ -2,7 +2,9 @@ import * as React from 'react';
 import cx from '../utils/classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
-import _TextOverflow, { TextOverflowProps } from '../TextOverflow/TextOverflow';
+import _TextOverflow from '../TextOverflow/TextOverflow';
+import { PopoverProps } from '../Popover/Popover';
+import { ObjectOverwrite } from 'typelevel-ts';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -15,14 +17,16 @@ export namespace ButtonProps {
 
 }
 
-export type ButtonPropTypes = ButtonProps;
-
 // TODO: TextOverflow should accept a popoverProps
-export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflowProps & {
-  popover?: any //TextOverflowProps['popover']
+export type TextOverflowCompatibleComponent = React.ComponentClass<{
+  label?: string | number,
+  popover?: ObjectOverwrite<PopoverProps.Popover, {
+    position?: PopoverProps.Position,
+    content?: void & string
+  }>
 }>
 
-export type ButtonProps = {
+export interface ButtonProps {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void,
   /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
@@ -50,6 +54,8 @@ export type ButtonProps = {
   style?: React.CSSProperties,
   className?: string
 }
+
+export type ButtonPropTypes = ButtonProps;
 
 export type ButtonPropsDefaults = {
   textOverflow: TextOverflowCompatibleComponent,

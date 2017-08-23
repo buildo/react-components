@@ -4,13 +4,13 @@ import omit from 'lodash/omit';
 import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import Popover, { Props as PopoverProps } from '../Popover/Popover';
+import Popover from '../Popover/Popover';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.maybe(t.Function),
   label: t.maybe(t.union([t.String, t.Number])),
-  popover: t.maybe(PopoverProps.popover.extend({
+  popover: t.maybe(t.interface({
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
     content: t.maybe(t.String)
   })),
