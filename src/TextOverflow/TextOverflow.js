@@ -4,12 +4,16 @@ import omit from 'lodash/omit';
 import debounce from 'lodash/debounce';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import Popover from '../Popover/Popover';
+import Popover, { Props as PopoverProps } from '../Popover/Popover';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.maybe(t.Function),
-  label: t.String,
+  label: t.maybe(t.union([t.String, t.Number])),
+  popover: t.maybe(PopoverProps.popover.extend({
+    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
+    content: t.maybe(t.String)
+  })),
   lazy: t.maybe(t.Boolean),
   delayWhenLazy: t.maybe(t.Integer),
   id: t.maybe(t.String),
@@ -147,7 +151,7 @@ export default class TextOverflow extends React.Component {
   templateOverflow = () => {
     const {
       state: { isHovering },
-      props: { children, label, style, lazy, ...other }
+      props: { children, label, style, lazy, popover, ...other }
     } = this;
 
     if (children) {
@@ -156,6 +160,7 @@ export default class TextOverflow extends React.Component {
       const props = {
         ...omit(other, ['delayWhenLazy']),
         popover: {
+          ...popover,
           content: label,
           event: 'hover',
           isOpen: lazy ? isHovering : undefined
