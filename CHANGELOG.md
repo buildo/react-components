@@ -1,6 +1,11 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
+#### New features:
+
+- [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
