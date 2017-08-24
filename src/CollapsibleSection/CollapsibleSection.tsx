@@ -60,9 +60,9 @@ const defaultProps: CollapsibleSectionDefaultProps = {
 
 /** A collapsible panel, allowing you to toggle more/less content */
 @props(Props)
-export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionRequiredProps> {
+export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionProps> {
 
-  getProps(): CollapsibleSectionProps {
+  getProps() {
     return { ...defaultProps, ...this.props };
   }
 
