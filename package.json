@@ -69,6 +69,7 @@
     "typelevel-ts": "^0.1.2"
   },
   "devDependencies": {
+    "@types/enzyme": "2.8.6",
     "@types/jest": "20.0.7",
     "babel-jest": "^20.0.0",
     "buildo-normalize-css": "^3.0.1",
