@@ -4,7 +4,14 @@ import { props, t, ReactChildren, ReactChild } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
-export type CollapsibleSectionProps = {
+export type CollapsibleSectionDefaultProps = {
+  /** called when panel is expanded */
+  onOpen: () => void,
+  /** called when panel is collapsed */
+  onClose: () => void,
+};
+
+export type CollapsibleSectionRequiredProps = {
   /** panel content (visible only when expanded) */
   children: JSX.Element,
   /** true if panel is expanded */
@@ -13,10 +20,6 @@ export type CollapsibleSectionProps = {
   isSelected?: boolean,
   /** called when panel is toggled */
   onChange: (isOpen: boolean) => void,
-  /** called when panel is expanded */
-  onOpen?: () => void,
-  /** called when panel is collapsed */
-  onClose?: () => void,
   /** header content (the only visible part when panel is collapsed) */
   header?: JSX.Element,
   /** icons for open/closed panel */
@@ -29,7 +32,9 @@ export type CollapsibleSectionProps = {
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties,
   id?: string,
-}
+};
+
+export type CollapsibleSectionProps = CollapsibleSectionDefaultProps & CollapsibleSectionRequiredProps;
 
 export const Props = {
   children: ReactChildren,
@@ -48,34 +53,36 @@ export const Props = {
   id: t.maybe(t.String)
 };
 
+const defaultProps: CollapsibleSectionDefaultProps = {
+  onOpen: () => {},
+  onClose: () => {}
+};
+
 /** A collapsible panel, allowing you to toggle more/less content */
 @props(Props)
-export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionProps> {
+export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionRequiredProps> {
 
-  static defaultProps = {
-    onOpen: () => {},
-    onClose: () => {}
-  };
+  getProps(): CollapsibleSectionProps {
+    return { ...defaultProps, ...this.props };
+  }
 
   onChange = () => {
-    const { onChange, onOpen, onClose, isOpen } = this.props;
+    const { onChange, onOpen, onClose, isOpen } = this.getProps();
     onChange(!isOpen);
-    if (isOpen && onClose) {
+    if (isOpen) {
       onClose();
-    } else if (onOpen) {
+    } else {
       onOpen();
     }
   };
 
   render() {
     const {
-      props: {
-        isOpen, isSelected,
-        children, header, icons,
-        className, id, style
-      },
-      onChange
-    } = this;
+      isOpen, isSelected,
+      children, header, icons,
+      className, id, style
+    } = this.getProps();
+    const { onChange } = this;
 
     const wrapperProps = {
       id,
