@@ -90,8 +90,6 @@ export default class CollapsibleSection extends React.PureComponent<CollapsibleS
       className: cx(className, 'collapsible-section', { 'is-open': isOpen, 'is-selected': isSelected })
     };
 
-    icons && <Icon icon={isOpen ? icons.open : icons.closed} />
-
     return (
       <FlexView {...wrapperProps} column>
         <FlexView className='content' vAlignContent='center' onClick={onChange}>
