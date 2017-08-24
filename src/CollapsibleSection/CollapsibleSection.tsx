@@ -34,7 +34,7 @@ export type CollapsibleSectionRequiredProps = {
   id?: string,
 };
 
-export type CollapsibleSectionProps = CollapsibleSectionDefaultProps & CollapsibleSectionRequiredProps;
+export type CollapsibleSectionProps = Partial<CollapsibleSectionDefaultProps> & CollapsibleSectionRequiredProps;
 
 export const Props = {
   children: ReactChildren,
