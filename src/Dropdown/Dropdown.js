@@ -87,7 +87,7 @@ export const defaultMenuRenderer = ({
 };
 
 export const Props = {
-  value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
+  value: t.maybe(t.union([t.Object, t.list(t.Object)])),
   onChange: t.maybe(t.Function),
   onValueClick: t.maybe(t.Function),
   options: t.list(t.Object),
@@ -183,18 +183,6 @@ export default class Dropdown extends React.Component {
     }
   };
 
-  valueToOption = (value, options) => {
-    if (t.String.is(value) || t.Number.is(value)) {
-      const { multi, delimiter } = this.props;
-      if (multi) {
-        const values = String(value).split(delimiter);
-        return values.map(v => find(options, { value: v }));
-      }
-      return find(options, { value });
-    }
-    return value;
-  };
-
   sortOptionsByGroup = (options) => {
     const { groupByKey } = this.props;
     return sortBy(options, option => option[groupByKey] ? findIndex(options, o => option[groupByKey] === o[groupByKey]) : -1);
@@ -257,7 +245,6 @@ export default class Dropdown extends React.Component {
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
-      value: this.valueToOption(this.props.value, options),
       onInputKeyDown,
       onChange: _onChange,
       menuRenderer: this.menuRenderer

@@ -53,7 +53,7 @@ describe('TimePicker', () => {
         value: { hours: 15, minutes: 33 }
       });
       const { value } = timePicker.getLocals();
-      expect(value).toBe('15:33');
+      expect(value.label).toBe('15:33');
     });
 
     it('passes an undefined value when value prop is undefined', () => {

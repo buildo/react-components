@@ -55,32 +55,4 @@ describe('Dropdown', () => {
     expect(value).toEqual(exampleProps.value);
   });
 
-  it('computes value from a string', () => {
-    const options = [
-      { value: 'test', label: 'Test' },
-      { value: 'test1', label: 'Test1' },
-      { value: 'test2', label: 'Test2' }
-    ];
-    const component = shallow(
-      <Dropdown {...Dropdown.defaultProps} value='test' options={options} />
-    );
-    const value = component.prop('value');
-    expect(typeof value).toBe('object');
-    expect(value).toEqual(options[0]);
-  });
-
-  it('computes value from a number', () => {
-    const options = [
-      { value: 0, label: 'Test' },
-      { value: 1, label: 'Test1' },
-      { value: 2, label: 'Test2' }
-    ];
-    const component = shallow(
-      <Dropdown {...Dropdown.defaultProps} value={2} options={options} />
-    );
-    const value = component.prop('value');
-    expect(typeof value).toBe('object');
-    expect(value).toEqual(options[2]);
-  });
-
 });
