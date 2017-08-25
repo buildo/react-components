@@ -88,26 +88,27 @@ export default class DateField extends React.PureComponent<DateFieldProps, DateF
     }
   }
 
-  parseValue(value: string) {
-    if (value.length === 0) {
-      return '';
-    } else if (/^\d+$/.test(value)) {
-      return value;
-    } else {
-      return null;
-    }
+  isDigit(value: string): boolean {
+    return (/^\d+$/.test(value));
   }
 
-  onChange: (key: keyof DateFieldState) => React.ChangeEventHandler<HTMLInputElement> = key => ({ target: { value } }) => {
-    const parsedValue = this.parseValue(value);
-
-    // exit if parsedValue is "null"
-    if (parsedValue === null) {
+  onChange: (key: 'day' | 'month' | 'year') => React.ChangeEventHandler<HTMLInputElement> = key => ({ target: { value } }) => {
+    if(value.length === 0) {
+      this.setState({
+        ...this.state,
+        [key]: value,
+        isValid: false,
+        isDirty: true
+      });
+      return;
+    }
+    // exit if value is not a number
+    if (!this.isDigit(value)) {
       return;
     }
 
     const patch = {
-      [key]: parsedValue
+      [key]: value
     };
 
     const values: DateFieldState = {
