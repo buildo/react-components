@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import LoadingSpinner from '../../src/LoadingSpinner';
@@ -77,17 +77,12 @@ describe('LoadingSpinner', () => {
     expect(overlayNode.prop('style').color).toBe(color);
   });
 
-  describe('getLocals', () => {
-
-    it('computes className', () => {
-      const spinner = new LoadingSpinner({
-        className: 'some-class'
-      });
-      const { className } = spinner.getLocals();
-      expect(className).toContain('loading-spinner');
-      expect(className).toContain('some-class');
-    });
-
+  it('computes className', () => {
+    const spinner = shallow(
+      <LoadingSpinner className='some-class' />
+    );
+    expect(spinner.hasClass('loading-spinner')).toBe(true);
+    expect(spinner.hasClass('some-class')).toBe(true);
   });
 
 });
