@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from '../utils/classnames';
 import { props, t } from '../utils';
 import omit = require('lodash/omit');
-import InputChildren from 'react-input-children';
+import * as InputChildren from 'react-input-children';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
