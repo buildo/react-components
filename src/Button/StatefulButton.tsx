@@ -114,7 +114,7 @@ export default class StatefulButton extends React.PureComponent<StatefulButtonPr
   }
 
   componentWillReceiveProps(props: StatefulButtonProps) {
-    if ((process as NodeJS.Process).env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       t.assert(props.stableSuccess === this.getProps().stableSuccess);
     }
 
