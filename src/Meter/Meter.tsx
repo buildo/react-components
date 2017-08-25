@@ -112,7 +112,7 @@ const defaultProps = {
  * A Meter displays a measurement (usually a percentage) on a known scale.
  */
 @props(Props)
-export default class Meter extends React.Component<MeterProps> {
+export default class Meter extends React.PureComponent<MeterProps> {
 
   componentDidMount() {
     this.logWarnings();
