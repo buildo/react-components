@@ -99,7 +99,6 @@ export const Props = {
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
-  simpleValue: t.maybe(t.Boolean),
   menuPosition: t.maybe(t.enums.of(['top', 'bottom'])),
   menuRenderer: t.maybe(t.Function),
   groupByKey: t.maybe(t.String),
@@ -134,7 +133,6 @@ export const Props = {
  * @param multi - true if it should be possible to select multiple values
  * @param flat - whether it should have a flat style
  * @param autoBlur - whether it should blur automatically when the user selects a value
- * @param simpleValue - if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects
  * @param optionRenderer - the function that can be used to override the default renderer of options
  * @param valueRenderer - the function that can be used to override the default renderer of the selected value
  * @param menuRenderer - the function that can be used to override the default drop-down list of options
@@ -166,7 +164,6 @@ export default class Dropdown extends React.Component {
     multi: false,
     flat: false,
     autoBlur: true,
-    simpleValue: true,
     groupByKey: 'optionGroup',
     optionGroupRenderer: defaultOptionGroupRenderer,
     menuRenderer: defaultMenuRenderer,
