@@ -94,7 +94,7 @@
     "react-readme-generator": "0.0.1",
     "react-remarkable": "^1.1.1",
     "react-router": "^0.13.5",
-    "react-test-renderer": "15.4.x",
+    "react-test-renderer": "~15.6.1",
     "sass-loader": "^4.1.0",
     "scriptoni": "^0.6.2",
     "smooth-release": "^8.0.0",
