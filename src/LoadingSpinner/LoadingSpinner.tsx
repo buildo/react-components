@@ -51,7 +51,7 @@ const defaultProps: LoadingSpinnerDefaultProps = {
  * Absolute dimmed layer with loading spinner in the center
  */
 @props(Props)
-export default class LoadingSpinner extends React.Component<LoadingSpinnerProps> {
+export default class LoadingSpinner extends React.PureComponent<LoadingSpinnerProps> {
 
   getProps() {
     return { ...defaultProps, ...this.props };
