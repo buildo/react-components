@@ -5,7 +5,7 @@ import { props, t, ReactChildren } from '../utils';
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
-  children: (focused: boolean) => void | JSX.Element,
+  children: ((focused: boolean) => React.ReactNode | React.ReactNode[]) | React.ReactNode | React.ReactNode[],
   /** When `true` the class "focused" is NOT added */
   ignoreFocus?: boolean,
   /** Debounce onFocus/onBlur events of x millis */
@@ -39,7 +39,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-const defaultProps = {
+const defaultProps: FocusableViewDefaultProps = {
   component: 'div',
   tabIndex: 0,
   onFocus: () => {},
@@ -77,7 +77,7 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
     this.getProps().onBlur();
   };
 
-  _onFocusBlurEvent = (type: 'blur' | 'focus') => {
+  _onFocusBlurEvent = (type: string) => {
     const { _mounted, state: { focused } } = this;
 
     if (!_mounted) {
@@ -93,7 +93,7 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
 
   onFocusBlurEventDebounced = debounce(this._onFocusBlurEvent, this.getProps().debounce)
 
-  onFocusBlurEvent = ({ type }: { type: 'blur' | 'focus' }) => (
+  onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) => (
     !t.Nil.is(this.getProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
   )
 
@@ -120,20 +120,28 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
       state: { focused },
     } = this;
 
-    const { className, ignoreFocus, children, component, ...props } = this.getProps()
+    const { className, ignoreFocus, children, component, debounce, ...props } = this.getProps();
 
-    const locals = {
+    const locals: React.HTMLAttributes<HTMLElement> & React.Attributes = {
       ...props,
       className: !ignoreFocus ? cx(className, { focused }) : className,
       onFocus: onFocusBlurEvent,
       onBlur: onFocusBlurEvent
-    }
+    };
 
-    return React.createElement(
-      component,
-      locals,
-      t.Function.is(children) ? children(focused) : children
-    );
+    if (typeof component === 'string') {
+      return React.createElement(
+        component,
+        locals,
+        t.Function.is(children) ? children(focused) : children
+      );
+    } else {
+      return React.createElement(
+        component,
+        locals,
+        t.Function.is(children) ? children(focused) : children
+      );
+    }
   }
 
 }
