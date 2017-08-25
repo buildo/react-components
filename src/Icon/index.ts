@@ -1,2 +1,3 @@
-import Icon from './Icon';
+import Icon, { IconProps } from './Icon';
 export default Icon;
+export { IconProps }
