@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapsibleSection renders correctly when closed 1`] = `
+<div
+  className="react-flex-view flex-column collapsible-section"
+  id={undefined}
+  style={
+    Object {
+      "MozBoxFlex": "0 1 auto",
+      "WebkitBoxFlex": "0 1 auto",
+      "WebkitFlex": "0 1 auto",
+      "flex": "0 1 auto",
+      "msFlex": "0 1 auto",
+    }
+  }
+>
+  <div
+    className="react-flex-view align-content-center content"
+    onClick={[Function]}
+    style={
+      Object {
+        "MozBoxFlex": "0 1 auto",
+        "WebkitBoxFlex": "0 1 auto",
+        "WebkitFlex": "0 1 auto",
+        "flex": "0 1 auto",
+        "msFlex": "0 1 auto",
+      }
+    }
+  >
+    <div
+      className="react-flex-view"
+      style={
+        Object {
+          "MozBoxFlex": "0 0 auto",
+          "WebkitBoxFlex": "0 0 auto",
+          "WebkitFlex": "0 0 auto",
+          "flex": "0 0 auto",
+          "marginLeft": "auto",
+          "msFlex": "0 0 auto",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`CollapsibleSection renders correctly when open 1`] = `
+<div
+  className="react-flex-view flex-column collapsible-section is-open"
+  id={undefined}
+  style={
+    Object {
+      "MozBoxFlex": "0 1 auto",
+      "WebkitBoxFlex": "0 1 auto",
+      "WebkitFlex": "0 1 auto",
+      "flex": "0 1 auto",
+      "msFlex": "0 1 auto",
+    }
+  }
+>
+  <div
+    className="react-flex-view align-content-center content"
+    onClick={[Function]}
+    style={
+      Object {
+        "MozBoxFlex": "0 1 auto",
+        "WebkitBoxFlex": "0 1 auto",
+        "WebkitFlex": "0 1 auto",
+        "flex": "0 1 auto",
+        "msFlex": "0 1 auto",
+      }
+    }
+  >
+    <div
+      className="react-flex-view"
+      style={
+        Object {
+          "MozBoxFlex": "0 0 auto",
+          "WebkitBoxFlex": "0 0 auto",
+          "WebkitFlex": "0 0 auto",
+          "flex": "0 0 auto",
+          "marginLeft": "auto",
+          "msFlex": "0 0 auto",
+        }
+      }
+    />
+  </div>
+  <div>
+    HI
+  </div>
+</div>
+`;
