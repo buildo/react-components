@@ -45,13 +45,15 @@ export interface ButtonProps {
   flat?: boolean,
   /** size of the button, one of 'tiny', 'small', 'medium' */
   size?: ButtonProps.ButtonSize,
-  /** fluid - fluid (block) button, takes the width of the container */
+  /** fluid (block) button, takes the width of the container */
   fluid?: boolean,
-  /** circular - circular button, this is allowed only if it's an icon button */
+  /** circular button, this is allowed only if it's an icon button */
   circular?: boolean,
-  /** textOverflow - function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
+  /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
   textOverflow?: TextOverflowCompatibleComponent,
+  /** an optional style object to pass to first inner element of the component */
   style?: React.CSSProperties,
+  /** an optional class name to pass to first inner element of the component */
   className?: string
 }
 
