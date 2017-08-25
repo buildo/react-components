@@ -114,6 +114,8 @@ const defaultProps = {
 @props(Props)
 export default class Meter extends React.PureComponent<MeterProps> {
 
+  static defaultProps = defaultProps;
+
   componentDidMount() {
     this.logWarnings();
   }
