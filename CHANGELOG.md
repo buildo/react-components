@@ -7,6 +7,7 @@
 
 - [Typo] CollapsibleSection [#1056](https://github.com/buildo/react-components/issues/1056)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
+- [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
