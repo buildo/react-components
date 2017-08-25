@@ -1,8 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
-import { props, t, skinnable } from '../utils';
+import { props, t } from '../utils';
 import { warn } from '../utils/log';
+
+export type LoadingSpinnerDefaultProps = {
+  /** spinner size */
+  size: string | number,
+  /** dimmed-overlay color */
+  overlayColor: string,
+  style: React.CSSProperties
+};
+
+export type LoadingSpinnerRequiredProps = {
+  /** spinner main color */
+  color?: string,
+  /** spinner message */
+  message?: {
+    content: string,
+    color?: string,
+    size?: string | number
+  },
+  id?: string,
+  className?: string,
+};
+
+export type LoadingSpinnerProps = Partial<LoadingSpinnerDefaultProps> & LoadingSpinnerRequiredProps;
 
 export const Props = {
   size: t.maybe(t.union([t.String, t.Number])),
@@ -18,29 +41,29 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
+const defaultProps: LoadingSpinnerDefaultProps = {
+  size: '3em',
+  overlayColor: 'rgba(255, 255, 255, .9)',
+  style: {}
+};
+
 /**
  * Absolute dimmed layer with loading spinner in the center
- * @param size - spinner size
- * @param color - spinner main color
- * @param message - spinner message
- * @param overlayColor - dimmed-overlay color
  */
 @props(Props)
-@skinnable()
-export default class LoadingSpinner extends React.Component {
+export default class LoadingSpinner extends React.PureComponent<LoadingSpinnerProps> {
 
-  static defaultProps = {
-    size: '3em',
-    overlayColor: 'rgba(255, 255, 255, .9)'
-  };
+  getProps() {
+    return { ...defaultProps, ...this.props };
+  }
 
   componentDidMount() {
     this.logWarnings();
   }
 
   getMessage = () => {
-    if (this.props.message) {
-      const { message, size } = this.props;
+    const { message, size } = this.getProps();
+    if (message) {
       const messageStyle = {
         marginTop: size,
         fontSize: message.size || 16,
@@ -58,35 +81,25 @@ export default class LoadingSpinner extends React.Component {
 
   logWarnings = () => {
     warn(() => {
-      const { parentNode } = ReactDOM.findDOMNode(this.refs.loadingSpinner);
-      const { position } = window.getComputedStyle(parentNode);
+      const { parentElement } = ReactDOM.findDOMNode(this.refs.loadingSpinner);
+      const { position } = window.getComputedStyle(parentElement!);
       if (position !== 'relative' && position !== 'absolute') {
-        return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentNode];
+        return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentElement];
       }
       return undefined;
     });
   };
 
-  getLocals() {
-    const { size, color, overlayColor, id, className, style } = this.props;
+  render() {
+    const { size, color, overlayColor, id, className: _className, style } = this.getProps();
 
     const overlayStyle = { backgroundColor: overlayColor };
     const spinnerStyle = {
       fontSize: size,
       color
     };
-    const computedClassName = cx('loading-spinner', className);
+    const className = cx('loading-spinner', _className);
 
-    return {
-      id,
-      style,
-      className: computedClassName,
-      overlayStyle,
-      spinnerStyle
-    };
-  }
-
-  template({ id, style, className, overlayStyle, spinnerStyle }) {
     return (
       <div ref='loadingSpinner' className={className} style={style} id={id}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
