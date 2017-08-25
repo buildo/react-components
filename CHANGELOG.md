@@ -5,6 +5,7 @@
 
 #### New features:
 
+- [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
 - [Typo] DateField [#1062](https://github.com/buildo/react-components/issues/1062)
 - [Typo] CollapsibleSection [#1056](https://github.com/buildo/react-components/issues/1056)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
