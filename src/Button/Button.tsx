@@ -26,52 +26,44 @@ export type TextOverflowCompatibleComponent = React.ComponentClass<{
   }>
 }>
 
-export interface ButtonProps {
+export type ButtonStateMap = { [key in ButtonProps.ButtonState]?: string };
+export interface ButtonRequiredProps {
   /** callback */
-  onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void,
-  /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
-  buttonState?: ButtonProps.ButtonState,
+  onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void
   /** can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates]) */
-  label?: string | { [key in ButtonProps.ButtonState]?: string },
-  /** can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])) */
-  icon?: string | { [key in ButtonProps.ButtonState]?: string },
+  label?: string | ButtonStateMap
   /** otherwise just pass a string as children */
-  children?: string,
+  children?: string
   /** type of the button (default, primary, positive, negative, flat) */
-  type?: ButtonProps.ButtonType,
-  /** shortcut for type "primary" */
-  primary?: boolean,
+  type?: ButtonProps.ButtonType
   /** shortcut for type "flat" */
   flat?: boolean,
-  /** size of the button, one of 'tiny', 'small', 'medium' */
-  size?: ButtonProps.ButtonSize,
-  /** fluid (block) button, takes the width of the container */
-  fluid?: boolean,
-  /** circular button, this is allowed only if it's an icon button */
-  circular?: boolean,
-  /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
-  textOverflow?: TextOverflowCompatibleComponent,
-  /** an optional style object to pass to first inner element of the component */
-  style?: React.CSSProperties,
-  /** an optional class name to pass to first inner element of the component */
-  className?: string
 }
 
-export type ButtonPropTypes = ButtonProps;
-
-export type ButtonPropsDefaults = {
-  textOverflow: TextOverflowCompatibleComponent,
-  buttonState: ButtonProps.ButtonState,
-  size: ButtonProps.ButtonSize,
-  fluid: boolean,
-  primary: boolean,
-  circular: boolean,
-  icon: string,
-  className: string,
+export interface ButtonDefaultProps {
+  /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
+  textOverflow: TextOverflowCompatibleComponent;
+  /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
+  buttonState: ButtonProps.ButtonState;
+  /** size of the button, one of 'tiny', 'small', 'medium' */
+  size: ButtonProps.ButtonSize;
+  /** fluid (block) button, takes the width of the container */
+  fluid: boolean;
+  /** shortcut for type "primary" */
+  primary: boolean;
+  /** circular button, this is allowed only if it's an icon button */
+  circular: boolean;
+  /** can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])) */
+  icon: string | ButtonStateMap;
+  /** an optional class name to pass to first inner element of the component */
+  className: string;
+  /** an optional style object to pass to first inner element of the component */
   style: object
 };
 
-type ButtonPropsWithDefaults = ButtonProps & ButtonPropsDefaults;
+
+export type ButtonProps = ButtonRequiredProps & Partial<ButtonDefaultProps>;
+export type ButtonPropTypes = ButtonProps;
 
 // types
 export const buttonStates: ButtonProps.ButtonState[] = ['ready', 'not-allowed', 'processing', 'error', 'success'];
@@ -83,10 +75,10 @@ const ButtonSize = t.enums.of(buttonSizes, 'ButtonSize');
 
 // util
 const notBoth = (a: any, b: any): boolean => !(a && b);
-const satisfyAll = (...conditions: Array<(props: Partial<ButtonProps>) => boolean>) => (props: ButtonProps) => every(conditions, c => c(props));
+const satisfyAll = (...conditions: Array<(props: ButtonProps) => boolean>) => (props: ButtonRequiredProps) => every(conditions, c => c(props));
 
 // invariants
-const propsInvariants: Array<(props: Partial<ButtonProps>) => boolean> = [
+const propsInvariants: Array<(props: ButtonProps) => boolean> = [
   ({ label, icon, children }) => notBoth(label || icon, children), // notBothChildrenAndLabelOrIcon
   ({ primary, flat }) => notBoth(primary, flat), // notBothFlatAndPrimary
   ({ fluid, circular }) => notBoth(fluid, circular), // notBothFluidAndCircular
@@ -126,20 +118,24 @@ const defaultIcons = {
 
 const makeProp = (x: any) => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
 
+const defaultProps: ButtonDefaultProps = {
+  textOverflow: _TextOverflow,
+  buttonState: 'ready',
+  size: 'medium',
+  fluid: false,
+  primary: false,
+  circular: false,
+  icon: '',
+  className: '',
+  style: {}
+};
+
 @props(Props)
 export default class Button extends React.PureComponent<ButtonProps> {
 
-  static defaultProps: ButtonPropsDefaults = {
-    textOverflow: _TextOverflow,
-    buttonState: 'ready' as ButtonProps.ButtonState,
-    size: 'medium' as ButtonProps.ButtonSize,
-    fluid: false,
-    primary: false,
-    circular: false,
-    icon: '',
-    className: '',
-    style: {}
-  };
+  getProps = () => {
+    return { ...defaultProps, ...this.props };
+  }
 
   templateLoading = () => (
     <FlexView className='button-loading' shrink={false} vAlignContent='center' hAlignContent='center'>
@@ -176,7 +172,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
       style,
       textOverflow,
       type
-    } = this.props as ButtonPropsWithDefaults;
+    } = this.getProps();
 
     const labels = {
       ...defaultLabels,
