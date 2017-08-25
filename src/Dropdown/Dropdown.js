@@ -1,5 +1,5 @@
 import React from 'react';
-import { props, t, skinnable } from '../utils';
+import { props, t } from '../utils';
 import Select from 'react-select';
 import find from 'lodash/find';
 import omit from 'lodash/omit';
@@ -154,7 +154,6 @@ export const Props = {
  * @param onCloseResetsInput - wheter it should clear the input box on close
  * @param isLoading - whether it is loading options asynchronously
  */
-@skinnable()
 @props(Props, { strict: true })
 export default class Dropdown extends React.Component {
 
@@ -244,14 +243,15 @@ export default class Dropdown extends React.Component {
     });
   }
 
-  getLocals() {
+  render() {
     const {
       _onChange,
       onInputKeyDown,
       props: { className, options, backspaceRemoves, clearable, ...props }
     } = this;
 
-    return {
+    const selectProps = {
+      ...props,
       options: this.sortOptionsByGroup(options),
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
@@ -262,9 +262,7 @@ export default class Dropdown extends React.Component {
       onChange: _onChange,
       menuRenderer: this.menuRenderer
     };
-  }
 
-  template(locals) {
-    return <Select {...locals} ref={select => { this.select = select; }} />;
+    return <Select {...selectProps} ref={select => { this.select = select; }} />;
   }
 }
