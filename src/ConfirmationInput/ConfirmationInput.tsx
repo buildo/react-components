@@ -7,12 +7,8 @@ import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
 export type ConfirmationInputRequiredProps = {
-  /** initial value */
-  initialValue?: string,
   /** input placeholder */
   placeholder?: string,
-  /** true if disabled */
-  disabled?: boolean,
   /** labels for 'clear' and 'toConfirm' buttons */
   text: {
     clear?: string,
@@ -32,6 +28,10 @@ export type ConfirmationInputRequiredProps = {
 }
 
 export type ConfirmationInputDefaultProps = {
+  /** initial value */
+  initialValue: string,
+  /** true if disabled */
+  disabled?: boolean,
   /** called when input box content is changed */
   onChange: (value: string) => void,
   /** called when confirming input content */
@@ -63,6 +63,8 @@ export const Props = {
 };
 
 const defaultProps: ConfirmationInputDefaultProps = {
+  initialValue: '',
+  disabled: false,
   onChange: () => {},
   onConfirm: () => {},
   onClear: () => {}
