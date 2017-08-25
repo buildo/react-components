@@ -88,10 +88,6 @@ export const defaultMenuRenderer = ({
 
 export const Props = {
   value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
-  valueLink: t.maybe(t.struct({
-    value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
-    requestChange: t.Function
-  })),
   onChange: t.maybe(t.Function),
   onValueClick: t.maybe(t.Function),
   options: t.list(t.Object),
@@ -128,7 +124,6 @@ export const Props = {
 
 /** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
  * @param value - selected value
- * @param valueLink - defines actions to be taken when a particular value is selected
  * @param onChange - called when value is changed
  * @param options - available options
  * @param size - medium | small
@@ -189,10 +184,6 @@ export default class Dropdown extends React.Component {
     }
   };
 
-  getValue = () => (
-    this.props.valueLink ? this.props.valueLink.value : this.props.value
-  );
-
   valueToOption = (value, options) => {
     if (t.String.is(value) || t.Number.is(value)) {
       const { multi, delimiter } = this.props;
@@ -210,8 +201,6 @@ export default class Dropdown extends React.Component {
     return sortBy(options, option => option[groupByKey] ? findIndex(options, o => option[groupByKey] === o[groupByKey]) : -1);
   }
 
-  getOnChange = () => this.props.valueLink ? this.props.valueLink.requestChange : this.props.onChange;
-
   getCustomClassNames() {
     const { size, flat, clearable, menuPosition } = this.props;
     return cx({
@@ -224,9 +213,8 @@ export default class Dropdown extends React.Component {
   }
 
   _onChange = _value => {
-    const onChange = this.getOnChange();
     const value = isEmptyArray(_value) ? null : _value;
-    return onChange(value);
+    return this.props.onChange(value);
   }
 
   onInputKeyDown = (e) => {
@@ -264,13 +252,12 @@ export default class Dropdown extends React.Component {
     } = this;
 
     return {
-      ...omit(props, 'valueLink'),
       options: this.sortOptionsByGroup(options),
       clearable,
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
-      value: this.valueToOption(this.getValue(), options),
+      value: this.valueToOption(this.props.value, options),
       onInputKeyDown,
       onChange: _onChange,
       menuRenderer: this.menuRenderer
