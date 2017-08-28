@@ -63,7 +63,6 @@ export interface ButtonDefaultProps {
 
 
 export type ButtonProps = ButtonRequiredProps & Partial<ButtonDefaultProps>;
-export type ButtonPropTypes = ButtonProps;
 
 // types
 export const buttonStates: ButtonProps.ButtonState[] = ['ready', 'not-allowed', 'processing', 'error', 'success'];
