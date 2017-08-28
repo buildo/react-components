@@ -38,6 +38,7 @@ export type DropdownMenuDefaultProps = {
 }
 
 export type DropdownMenuProps = DropdownMenuRequiredProps & Partial<DropdownMenuDefaultProps>;
+type DropdownMenuDefaultedProps = DropdownMenuRequiredProps & DropdownMenuDefaultProps;
 
 export const Props = {
   children: t.maybe(ReactChildren),
@@ -53,23 +54,19 @@ export const Props = {
   className: t.maybe(t.String)
 };
 
-const defaultProps: DropdownMenuDefaultProps = {
-  isOpen: false,
-  dismissOnClickOut: true
-};
-
 /**
  *  A toggleable dropdown menu
  */
 @props(Props)
 export default class DropdownMenu extends React.PureComponent<DropdownMenuProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: DropdownMenuDefaultProps = {
+    isOpen: false,
+    dismissOnClickOut: true
+  };
 
   toggleMenu = () => {
-    const { isOpen, onOpen, onClose } = this.getProps();
+    const { isOpen, onOpen, onClose } = this.props as DropdownMenuDefaultedProps;
     if (isOpen) {
       onClose();
     } else {
@@ -143,7 +140,7 @@ export default class DropdownMenu extends React.PureComponent<DropdownMenuProps>
       className,
       size,
       isOpen
-    } = this.getProps();
+    } = this.props as DropdownMenuDefaultedProps;
     const { toggleMenu, onMenuClick } = this;
 
     const height = maxHeight || this.getHeightFromSize(size);
