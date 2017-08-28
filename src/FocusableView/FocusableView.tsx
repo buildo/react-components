@@ -107,26 +107,18 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
 
     const { className, ignoreFocus, children, component, debounce, ...props } = this.defaultedProps();
 
-    const locals: React.HTMLAttributes<HTMLElement> & React.Attributes = {
+    const locals = {
       ...props,
       className: !ignoreFocus ? cx(className, { focused }) : className,
       onFocus: onFocusBlurEvent,
       onBlur: onFocusBlurEvent
     };
 
-    if (typeof component === 'string') {
-      return React.createElement(
-        component,
-        locals,
-        t.Function.is(children) ? children(focused) : children
-      );
-    } else {
-      return React.createElement(
-        component,
-        locals,
-        t.Function.is(children) ? children(focused) : children
-      );
-    }
+    return React.createElement(
+      component as any,
+      locals,
+      t.Function.is(children) ? children(focused) : children
+    );
   }
 
 }
