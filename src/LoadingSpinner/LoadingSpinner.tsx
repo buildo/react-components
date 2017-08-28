@@ -25,7 +25,8 @@ export type LoadingSpinnerRequiredProps = {
   className?: string,
 };
 
-export type LoadingSpinnerProps = Partial<LoadingSpinnerDefaultProps> & LoadingSpinnerRequiredProps;
+export type LoadingSpinnerProps = LoadingSpinnerRequiredProps & Partial<LoadingSpinnerDefaultProps>;
+type LoadingSpinnerDefaultedProps = LoadingSpinnerRequiredProps & LoadingSpinnerDefaultProps;
 
 export const Props = {
   size: t.maybe(t.union([t.String, t.Number])),
@@ -41,28 +42,24 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-const defaultProps: LoadingSpinnerDefaultProps = {
-  size: '3em',
-  overlayColor: 'rgba(255, 255, 255, .9)',
-  style: {}
-};
-
 /**
  * Absolute dimmed layer with loading spinner in the center
  */
 @props(Props)
 export default class LoadingSpinner extends React.PureComponent<LoadingSpinnerProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: LoadingSpinnerDefaultProps = {
+    size: '3em',
+    overlayColor: 'rgba(255, 255, 255, .9)',
+    style: {}
+  };
 
   componentDidMount() {
     this.logWarnings();
   }
 
   getMessage = () => {
-    const { message, size } = this.getProps();
+    const { message, size } = this.props as LoadingSpinnerDefaultedProps;
     if (message) {
       const messageStyle = {
         marginTop: size,
@@ -91,7 +88,7 @@ export default class LoadingSpinner extends React.PureComponent<LoadingSpinnerPr
   };
 
   render() {
-    const { size, color, overlayColor, id, className: _className, style } = this.getProps();
+    const { size, color, overlayColor, id, className: _className, style } = this.props as LoadingSpinnerDefaultedProps;
 
     const overlayStyle = { backgroundColor: overlayColor };
     const spinnerStyle = {
