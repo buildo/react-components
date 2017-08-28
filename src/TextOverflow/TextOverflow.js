@@ -25,6 +25,7 @@ export const Props = {
  * Text view which, if string content is too large, trims it and shows the full content on "hover".
  * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
  * @param label - this is the full string
+ * @param popover - additional props for Popover component used to display the entire text
  * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
  * @param delayWhenLazy - tooltip delay if the component is lazy
  */
