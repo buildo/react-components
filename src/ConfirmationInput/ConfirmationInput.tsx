@@ -25,13 +25,13 @@ export type ConfirmationInputRequiredProps = {
   id?: string,
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties
-}
+};
 
 export type ConfirmationInputDefaultProps = {
   /** initial value */
   initialValue: string,
   /** true if disabled */
-  disabled?: boolean,
+  disabled: boolean,
   /** called when input box content is changed */
   onChange: (value: string) => void,
   /** called when confirming input content */
@@ -40,7 +40,8 @@ export type ConfirmationInputDefaultProps = {
   onClear: () => void,
 };
 
-export type ConfirmationInputProps = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>
+export type ConfirmationInputProps = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
+export type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps & ConfirmationInputDefaultProps;
 
 export const Props = {
   initialValue: t.maybe(t.String),
@@ -62,14 +63,6 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-const defaultProps: ConfirmationInputDefaultProps = {
-  initialValue: '',
-  disabled: false,
-  onChange: () => {},
-  onConfirm: () => {},
-  onClear: () => {}
-};
-
 export type ConfirmationInputState = {
   focused: boolean,
   hoveringConfirm: boolean,
@@ -87,9 +80,13 @@ export type ConfirmProps = {
 @props(Props, { strict: false })
 export default class ConfirmationInput extends React.PureComponent<ConfirmationInputProps, ConfirmationInputState> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props  };
-  }
+  static defaultProps: ConfirmationInputDefaultProps = {
+    initialValue: '',
+    disabled: false,
+    onChange: () => {},
+    onConfirm: () => {},
+    onClear: () => {}
+  };
 
   constructor(props: ConfirmationInputProps) {
     super(props);
@@ -133,7 +130,7 @@ export default class ConfirmationInput extends React.PureComponent<ConfirmationI
 
   _onConfirm = () => {
 
-    const { initialValue, onConfirm, onChange } = this.getProps();
+    const { initialValue, onConfirm, onChange } = this.props as ConfirmationInputDefaultedProps;
     const {
       state: { value },
       onMouseLeave
@@ -150,7 +147,7 @@ export default class ConfirmationInput extends React.PureComponent<ConfirmationI
   };
 
   _onClear = () => {
-    const { onClear, onChange } = this.getProps();
+    const { onClear, onChange } = this.props as ConfirmationInputDefaultedProps;
     onClear();
     onChange(''); // props.onChange should always receive a string
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
@@ -165,7 +162,7 @@ export default class ConfirmationInput extends React.PureComponent<ConfirmationI
       text,
       icon,
       ...props
-    } = this.getProps();
+    } = this.props as ConfirmationInputDefaultedProps;
     const {
       state: { value, focused },
       _onClear: onClear,
