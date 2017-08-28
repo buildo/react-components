@@ -1,12 +1,12 @@
-import React from 'react';
-import { props, t, skinnable } from '../utils';
+import * as React from 'react';
+import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import cx from '../utils/classnames';
 import FlexView from 'react-flexview';
-import find from 'lodash/find';
-import every from 'lodash/every';
-import isEqual from 'lodash/isEqual';
-import sortBy from 'lodash/sortBy';
+import find = require('lodash/find');
+import every = require('lodash/every');
+import isEqual = require('lodash/isEqual');
+import sortBy = require('lodash/sortBy');
 
 const Range = t.refinement(t.struct({
   startValue: t.Number,
@@ -14,15 +14,15 @@ const Range = t.refinement(t.struct({
   fillingColor: t.maybe(t.String),
   labelColor: t.maybe(t.String),
   backgroundColor: t.maybe(t.String)
-}), r => r.startValue < r.endValue, 'Range');
+}), (r: any) => r.startValue < r.endValue, 'Range'); // FIXME: any
 
 const Ranges = t.refinement(t.list(Range), (rangeList) => {
 
-  const isOverlapped = (range1, range2) => (
+  const isOverlapped = (range1: MeterProps.Range, range2: MeterProps.Range) => (
     Math.max(range1.startValue, range2.startValue) < Math.min(range1.endValue, range2.endValue)
   );
 
-  const noOverlappingRanges = ranges => {
+  const noOverlappingRanges = (ranges: MeterProps.Range[]) => {
     return every(ranges, (range1, i) => {
       return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
         return !isOverlapped(range1, range2);
@@ -47,7 +47,7 @@ export const Props = t.refinement(t.struct({
   style: t.maybe(t.Object)
 }), ({ min, max }) => min < max, 'Props');
 
-const isFullyFilled = (ranges, min, max) => {
+const isFullyFilled = (ranges: MeterProps.Range[] | void, min: number, max: number) => {
   if (!ranges) {
     return false;
   }
@@ -57,34 +57,64 @@ const isFullyFilled = (ranges, min, max) => {
   return isEqual(sortedStartValueList, sortedEndValueList);
 };
 
-const computePercentage = (value, min, max) => (
+const computePercentage = (value: number, min: number, max: number) => (
   Math.abs((value - min) * 100 / (max - min))
 );
 
-const labelFormatter = (value, min, max) => (
+const labelFormatter = (value: number, min: number, max: number) => (
   `${computePercentage(value, min, max)}%`
 );
 
-/**
- * A Meter is a simple UI component used to display a measurement (usually a percentage) on a known scale.
- * @param value - current value
- * @param min - minimum value
- * @param max - maximum value
- * @param labelFormatter - function in which you can define a custom label format
- * @param ranges - array of Object in which you can define startValue, endValue, labelColor, fillingColor
- * @param baseLabelColor - fallback labelColor
- * @param baseFillingColor - fallback fillingColor
- * @param baseBackgroundColor - fallback backgroundColor
- */
-@skinnable()
-@props(Props)
-export default class Meter extends React.Component {
+export namespace MeterProps {
+  export type Range = {
+    startValue: number,
+    endValue: number,
+    fillingColor?: string,
+    labelColor?: string,
+    backgroundColor?: string
+  }
+};
 
-  static defaultProps = {
-    min: 0,
-    max: 100,
-    labelFormatter
-  };
+export type MeterDefaultProps = {
+  /** minimum value */
+  min: number,
+  /** maximum value */
+  max: number,
+  /** function in which you can define a custom label format */
+  labelFormatter: (value: number, min: number, max: number) => string,
+};
+
+export type MeterRequiredProps = {
+  /** current value */
+  value: number,
+  /** array of Object in which you can define startValue, endValue, labelColor, fillingColor */
+  ranges?: MeterProps.Range[],
+  /** fallback labelColor */
+  baseLabelColor?: string,
+  /** fallback fillingColor */
+  baseFillingColor?: string,
+  /** fallback backgroundColor */
+  baseBackgroundColor?: string,
+  id?: string,
+  className?: string,
+  style?: React.CSSProperties
+};
+
+export type MeterProps = Partial<MeterDefaultProps> & MeterRequiredProps;
+
+const defaultProps = {
+  min: 0,
+  max: 100,
+  labelFormatter
+};
+
+/**
+ * A Meter displays a measurement (usually a percentage) on a known scale.
+ */
+@props(Props)
+export default class Meter extends React.PureComponent<MeterProps> {
+
+  static defaultProps = defaultProps;
 
   componentDidMount() {
     this.logWarnings();
@@ -97,7 +127,7 @@ export default class Meter extends React.Component {
       min,
       baseFillingColor,
       baseBackgroundColor
-    } = this.props;
+    } = this.getProps();
     warn(() => {
       if (isFullyFilled(ranges, min, max) && (baseFillingColor || baseBackgroundColor)) {
         return 'baseFillingColor or baseBackgroundColor is not needed, ranges are fully filled';
@@ -121,7 +151,7 @@ export default class Meter extends React.Component {
       baseFillingColor,
       baseLabelColor,
       baseBackgroundColor
-    } = this.props;
+    } = this.getProps();
 
     const range = find(ranges, ({ startValue, endValue }) => (
       value >= startValue && value <= endValue
@@ -140,27 +170,25 @@ export default class Meter extends React.Component {
     };
   }
 
-  getLocals() {
-    const {
-      className,
-      labelFormatter,
-      ...props
-    } = this.props;
-
-    const styles = this.computeStyles();
-
-    return {
-      ...props,
-      className: cx('meter', className),
-      fillingStyle: styles.fillingStyle,
-      labelStyle: styles.labelStyle,
-      barStyle: styles.barStyle,
-      basisSize: styles.basisSize,
-      formattedLabel: labelFormatter(props.value, props.min, props.max)
-    };
+  getProps() {
+    return { ...defaultProps, ...this.props };
   }
 
-  template({ id, className, style, fillingStyle, labelStyle, barStyle, basisSize, formattedLabel }) {
+  render() {
+    const {
+      id,
+      style,
+      className: _className,
+      labelFormatter,
+      value,
+      min,
+      max
+    } = this.getProps();
+
+    const { basisSize, fillingStyle, labelStyle, barStyle } = this.computeStyles();
+    const className = cx('meter', _className);
+    const formattedLabel = labelFormatter(value, min, max);
+
     return (
       <FlexView {...{ id, className, style }} grow>
         <FlexView
@@ -184,4 +212,5 @@ export default class Meter extends React.Component {
       </FlexView>
     );
   }
+
 }
