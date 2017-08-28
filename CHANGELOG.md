@@ -7,8 +7,12 @@
 
 - [Typo] Meter [#1073](https://github.com/buildo/react-components/issues/1073)
 - [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
+- [Typo] DropdownMenu [#1067](https://github.com/buildo/react-components/issues/1067)
+- [Typo] Divider [#1065](https://github.com/buildo/react-components/issues/1065)
 - [Typo] DateField [#1062](https://github.com/buildo/react-components/issues/1062)
+- [Typo] ConfirmationInput [#1059](https://github.com/buildo/react-components/issues/1059)
 - [Typo] CollapsibleSection [#1056](https://github.com/buildo/react-components/issues/1056)
+- [Typo] Button [#1053](https://github.com/buildo/react-components/issues/1053)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
 
