@@ -17,7 +17,7 @@ export type DividerDefaultProps = {
 };
 
 export type DividerProps = Partial<DividerDefaultProps>;
-export type DividerDefaultedProps = DividerDefaultProps;
+type DividerDefaultedProps = DividerDefaultProps;
 
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
 const sizeType = t.enums.of(['small', 'medium', 'large', 'no-margin'], 'sizeType');

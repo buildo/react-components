@@ -41,7 +41,7 @@ export type ConfirmationInputDefaultProps = {
 };
 
 export type ConfirmationInputProps = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
-export type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps & ConfirmationInputDefaultProps;
+type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps & ConfirmationInputDefaultProps;
 
 export const Props = {
   initialValue: t.maybe(t.String),
