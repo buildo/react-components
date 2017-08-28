@@ -9,7 +9,11 @@ import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export const Props = {
   children: t.maybe(t.Function),
-  label: t.String,
+  label: t.maybe(t.union([t.String, t.Number])),
+  popover: t.maybe(t.interface({
+    position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
+    content: t.maybe(t.String)
+  })),
   lazy: t.maybe(t.Boolean),
   delayWhenLazy: t.maybe(t.Integer),
   id: t.maybe(t.String),
@@ -21,6 +25,7 @@ export const Props = {
  * Text view which, if string content is too large, trims it and shows the full content on "hover".
  * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
  * @param label - this is the full string
+ * @param popover - additional props for Popover component used to display the entire text
  * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
  * @param delayWhenLazy - tooltip delay if the component is lazy
  */
@@ -147,7 +152,7 @@ export default class TextOverflow extends React.Component {
   templateOverflow = () => {
     const {
       state: { isHovering },
-      props: { children, label, style, lazy, ...other }
+      props: { children, label, style, lazy, popover, ...other }
     } = this;
 
     if (children) {
@@ -156,6 +161,7 @@ export default class TextOverflow extends React.Component {
       const props = {
         ...omit(other, ['delayWhenLazy']),
         popover: {
+          ...popover,
           content: label,
           event: 'hover',
           isOpen: lazy ? isHovering : undefined
