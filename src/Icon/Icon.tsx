@@ -32,24 +32,21 @@ export type IconRequiredProps = {
   className?: string,
 };
 
-export type IconProps = Partial<IconDefaultProps> & IconRequiredProps;
-
-const defaultProps: IconDefaultProps = {
-  paths: 1,
-  onClick: () => {},
-  style: {}
-};
+export type IconProps = IconRequiredProps & Partial<IconDefaultProps>;
+type IconDefaultedProps = IconRequiredProps & IconDefaultProps;
 
 /** An icon */
 @props(Props)
 export default class Icon extends React.PureComponent<IconProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: IconDefaultProps = {
+    paths: 1,
+    onClick: () => {},
+    style: {}
+  };
 
   render() {
-    const { paths, onClick, className: _className, icon, color, style: _style } = this.getProps();
+    const { paths, onClick, className: _className, icon, color, style: _style } = this.props as IconDefaultedProps;
     const className = cx('icon', `icon-${icon}`, _className);
     const style =  { ..._style, color: color || _style.color };
     
