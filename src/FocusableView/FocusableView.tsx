@@ -6,8 +6,6 @@ import { props, t, ReactChildren } from '../utils';
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
   children: ((focused: boolean) => React.ReactNode | React.ReactNode[]) | React.ReactNode | React.ReactNode[],
-  /** When `true` the class "focused" is NOT added */
-  ignoreFocus?: boolean,
   /** Debounce onFocus/onBlur events of x millis */
   debounce?: number,
   className?: string,
@@ -15,6 +13,8 @@ export type FocusableViewRequiredProps = {
 }
 
 export type FocusableViewDefaultProps = {
+  /** When `true` the class "focused" is NOT added */
+  ignoreFocus: boolean,
   /** Callback function called on "focus" event */
   onFocus: () => void,
   /** Callback function called on "blur" event */
@@ -40,6 +40,7 @@ export const Props = {
 };
 
 const defaultProps: FocusableViewDefaultProps = {
+  ignoreFocus: false,
   component: 'div',
   tabIndex: 0,
   onFocus: () => {},
