@@ -27,6 +27,8 @@ export type FocusableViewDefaultProps = {
 
 export type FocusableViewProps = Partial<FocusableViewDefaultProps> & FocusableViewRequiredProps
 
+type FocusableViewDefaultedProps = FocusableViewRequiredProps & FocusableViewDefaultProps;
+
 export const Props = {
   children: t.union([ReactChildren, t.Function]),
   onFocus: t.maybe(t.Function),
@@ -39,23 +41,21 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-const defaultProps: FocusableViewDefaultProps = {
-  ignoreFocus: false,
-  component: 'div',
-  tabIndex: 0,
-  onFocus: () => {},
-  onBlur: () => {}
-};
-
 /**
  * A panel that can get focus
  */
 @props(Props, { strict: false })
 export default class FocusableView extends React.Component<FocusableViewProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: FocusableViewDefaultProps = {
+    ignoreFocus: false,
+    component: 'div',
+    tabIndex: 0,
+    onFocus: () => {},
+    onBlur: () => {}
+  };
+
+  defaultedProps = () => this.props as FocusableViewDefaultedProps;
 
   state = { focused: false };
   _mounted = false;
@@ -70,12 +70,12 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
 
   _onFocus = () => {
     this.setState({ focused: true });
-    this.getProps().onFocus();
+    this.defaultedProps().onFocus();
   };
 
   _onBlur = () => {
     this.setState({ focused: false });
-    this.getProps().onBlur();
+    this.defaultedProps().onBlur();
   };
 
   _onFocusBlurEvent = (type: string) => {
@@ -92,10 +92,10 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
     }
   }
 
-  onFocusBlurEventDebounced = debounce(this._onFocusBlurEvent, this.getProps().debounce)
+  onFocusBlurEventDebounced = debounce(this._onFocusBlurEvent, this.defaultedProps().debounce)
 
   onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) => (
-    !t.Nil.is(this.getProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
+    !t.Nil.is(this.defaultedProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
   )
 
   template() {
@@ -105,7 +105,7 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
       state: { focused },
     } = this;
 
-    const { className, ignoreFocus, children, component, debounce, ...props } = this.getProps();
+    const { className, ignoreFocus, children, component, debounce, ...props } = this.defaultedProps();
 
     const locals: React.HTMLAttributes<HTMLElement> & React.Attributes = {
       ...props,
