@@ -97,22 +97,6 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
     !t.Nil.is(this.getProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
   )
 
-  getLocals() {
-    const {
-      onFocusBlurEvent,
-      state: { focused },
-      props: { className, ignoreFocus, ...props }
-    } = this;
-
-    return {
-      ...props,
-      focused,
-      className: !ignoreFocus ? cx(className, { focused }) : className,
-      onFocus: onFocusBlurEvent,
-      onBlur: onFocusBlurEvent
-    };
-  }
-
   template() {
 
     const {
