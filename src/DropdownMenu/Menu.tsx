@@ -9,8 +9,8 @@ import Divider from '../Divider/Divider';
 export namespace MenuProps {
   export type Option = {
     type: 'title' | 'item' | 'divider',
-    title?: any, // TODO: t.ReactChildren
-    metadata?: any,
+    title?: JSX.Element | string,
+    metadata?: JSX.Element | string,
     selected?: boolean,
     disabled?: boolean,
     onClick?: MenuProps.OptionClickHandler

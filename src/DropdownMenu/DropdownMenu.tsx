@@ -12,7 +12,7 @@ export namespace DropdownMenuProps {
 
 export type DropdownMenuRequiredProps = {
   /** menu button content */
-  children?: JSX.Element,
+  children?: JSX.Element | string,
   /** renderer for menu items */
   menuRenderer?: (options: MenuProps.Option[]) => JSX.Element,
   /** menu options */
@@ -56,7 +56,7 @@ export const Props = {
 const defaultProps: DropdownMenuDefaultProps = {
   isOpen: false,
   dismissOnClickOut: true
-}
+};
 
 /**
  *  A toggleable dropdown menu
@@ -91,7 +91,7 @@ export default class DropdownMenu extends React.PureComponent<DropdownMenuProps>
   };
 
   templateToggler = ({ children, iconClassName, isOpen }: {
-    children?: JSX.Element,
+    children?: JSX.Element | string,
     iconClassName?: string,
     isOpen: boolean
   }) => {
