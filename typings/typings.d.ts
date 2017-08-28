@@ -1,1 +1,1 @@
-export declare const process : { env: { NODE_ENV: string } }
+export declare const process: { env: { NODE_ENV: 'development' | 'production' } }
