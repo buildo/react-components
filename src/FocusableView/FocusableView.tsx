@@ -98,7 +98,7 @@ export default class FocusableView extends React.Component<FocusableViewProps> {
     !t.Nil.is(this.defaultedProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
   )
 
-  template() {
+  render() {
 
     const {
       onFocusBlurEvent,
