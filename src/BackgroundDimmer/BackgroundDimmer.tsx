@@ -5,27 +5,11 @@ import { props, t, ReactChildren } from '../utils';
 import FlexView, { IProps as FlexViewProps } from 'react-flexview';
 import omit = require('lodash/omit');
 
-export type BackgroundDimmerProps = {
+export type BackgroundDimmerRequiredProps = {
   /** children nodes/elements */
   children: any, // TODO: t.ReactChildren
-  /** background-color */
-  color?: string,
-  /** opacity */
-  alpha?: number,
-  /** z-index (BackgroundDimmer has `position: fixed`) */
-  zIndex?: number,
-  /** avoid propagation for scroll events */
-  stopScrollPropagation?: boolean,
   /** called when user clicks outside children */
   onClickOutside?: (e: React.SyntheticEvent<HTMLDivElement>) => void,
-  /** centeredContentWrapper width */
-  width?: string | number,
-  /** centeredContentWrapper max-width */
-  maxWidth?: string | number,
-  /** centeredContentWrapper height */
-  height?: string | number,
-  /** centeredContentWrapper max-height */
-  maxHeight?: string | number,
   /** component's class */
   className?: string,
   /** component's id */
@@ -35,14 +19,26 @@ export type BackgroundDimmerProps = {
 };
 
 export type BackgroundDimmerDefaultProps = {
+  /** background-color */
   color: string,
+  /** opacity */
   alpha: number,
+  /** z-index (BackgroundDimmer has `position: fixed`) */
   zIndex: number,
+  /** centeredContentWrapper width */
   width: string | number,
+  /** centeredContentWrapper max-width */
   maxWidth: string | number,
+  /** centeredContentWrapper height */
   height: string | number,
-  maxHeight: string | number
-}
+  /** centeredContentWrapper max-height */
+  maxHeight: string | number,
+  /** avoid propagation for scroll events */
+  stopScrollPropagation: boolean,
+};
+
+type BackgroundDimmerDefaultedProps = BackgroundDimmerRequiredProps & BackgroundDimmerDefaultProps;
+export type BackgroundDimmerProps = BackgroundDimmerRequiredProps & Partial<BackgroundDimmerDefaultProps>;
 
 export const Props = {
   children: ReactChildren,
@@ -60,8 +56,6 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-type PropsWithDefault = BackgroundDimmerProps & BackgroundDimmerDefaultProps;
-
 @props(Props)
 export default class BackgroundDimmer extends React.PureComponent<BackgroundDimmerProps> {
 
@@ -72,7 +66,8 @@ export default class BackgroundDimmer extends React.PureComponent<BackgroundDimm
     width: 'auto',
     maxWidth: '90%',
     height: 'auto',
-    maxHeight: '90%'
+    maxHeight: '90%',
+    stopScrollPropagation: false
   };
 
   // srcElement is not declared in React.SyntheticEvent cause it's a key used by old
@@ -104,7 +99,7 @@ export default class BackgroundDimmer extends React.PureComponent<BackgroundDimm
 
     const {
       className, zIndex, color, alpha: opacity, width, maxWidth, height, maxHeight, children, ...props
-    } = this.props as PropsWithDefault;
+    } = this.props as BackgroundDimmerDefaultedProps;
     const { onClick, stopPropagation, stopScrollPropagation } = this;
 
     const fixedStyle: React.CSSProperties = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 };
@@ -134,7 +129,7 @@ export default class BackgroundDimmer extends React.PureComponent<BackgroundDimm
     };
 
     return (
-      <div className={cx('background-dimmer', className)} {...omit(props, ['onClickOutside'])}>
+      <div className={cx('background-dimmer', className)} {...omit(props, ['onClickOutside', 'stopScrollPropagation'])}>
         <div {...overlayProps} />
         <FlexView {...mainContentWrapperProps}>
           <FlexView {...centeredContentWrapperProps}>

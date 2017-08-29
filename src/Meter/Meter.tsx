@@ -100,13 +100,8 @@ export type MeterRequiredProps = {
   style?: React.CSSProperties
 };
 
-export type MeterProps = Partial<MeterDefaultProps> & MeterRequiredProps;
-
-const defaultProps = {
-  min: 0,
-  max: 100,
-  labelFormatter
-};
+export type MeterProps = MeterRequiredProps & Partial<MeterDefaultProps>;
+type MeterDefaultedProps = MeterRequiredProps & MeterDefaultProps;
 
 /**
  * A Meter displays a measurement (usually a percentage) on a known scale.
@@ -114,7 +109,11 @@ const defaultProps = {
 @props(Props)
 export default class Meter extends React.PureComponent<MeterProps> {
 
-  static defaultProps = defaultProps;
+  static defaultProps: MeterDefaultProps = {
+    min: 0,
+    max: 100,
+    labelFormatter
+  };
 
   componentDidMount() {
     this.logWarnings();
@@ -127,7 +126,7 @@ export default class Meter extends React.PureComponent<MeterProps> {
       min,
       baseFillingColor,
       baseBackgroundColor
-    } = this.getProps();
+    } = this.props as MeterDefaultedProps;
     warn(() => {
       if (isFullyFilled(ranges, min, max) && (baseFillingColor || baseBackgroundColor)) {
         return 'baseFillingColor or baseBackgroundColor is not needed, ranges are fully filled';
@@ -151,7 +150,7 @@ export default class Meter extends React.PureComponent<MeterProps> {
       baseFillingColor,
       baseLabelColor,
       baseBackgroundColor
-    } = this.getProps();
+    } = this.props as MeterDefaultedProps;
 
     const range = find(ranges, ({ startValue, endValue }) => (
       value >= startValue && value <= endValue
@@ -170,10 +169,6 @@ export default class Meter extends React.PureComponent<MeterProps> {
     };
   }
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
-
   render() {
     const {
       id,
@@ -183,7 +178,7 @@ export default class Meter extends React.PureComponent<MeterProps> {
       value,
       min,
       max
-    } = this.getProps();
+    } = this.props as MeterDefaultedProps;
 
     const { basisSize, fillingStyle, labelStyle, barStyle } = this.computeStyles();
     const className = cx('meter', _className);

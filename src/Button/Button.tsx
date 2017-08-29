@@ -27,7 +27,7 @@ export type TextOverflowCompatibleComponent = React.ComponentClass<{
 }>
 
 export type ButtonStateMap = { [key in ButtonProps.ButtonState]?: string };
-export interface ButtonRequiredProps {
+export type ButtonRequiredProps = {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void
   /** can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates]) */
@@ -40,7 +40,7 @@ export interface ButtonRequiredProps {
   flat?: boolean,
 }
 
-export interface ButtonDefaultProps {
+export type ButtonDefaultProps = {
   /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
   textOverflow: TextOverflowCompatibleComponent;
   /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
@@ -61,8 +61,8 @@ export interface ButtonDefaultProps {
   style: object
 };
 
-
 export type ButtonProps = ButtonRequiredProps & Partial<ButtonDefaultProps>;
+type ButtonDefaultedProps = ButtonRequiredProps & ButtonDefaultProps;
 
 // types
 export const buttonStates: ButtonProps.ButtonState[] = ['ready', 'not-allowed', 'processing', 'error', 'success'];
@@ -117,24 +117,20 @@ const defaultIcons = {
 
 const makeProp = (x: any) => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
 
-const defaultProps: ButtonDefaultProps = {
-  textOverflow: _TextOverflow,
-  buttonState: 'ready',
-  size: 'medium',
-  fluid: false,
-  primary: false,
-  circular: false,
-  icon: '',
-  className: '',
-  style: {}
-};
-
 @props(Props)
 export default class Button extends React.PureComponent<ButtonProps> {
 
-  getProps = () => {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: ButtonDefaultProps = {
+    textOverflow: _TextOverflow,
+    buttonState: 'ready',
+    size: 'medium',
+    fluid: false,
+    primary: false,
+    circular: false,
+    icon: '',
+    className: '',
+    style: {}
+  };
 
   templateLoading = () => (
     <FlexView className='button-loading' shrink={false} vAlignContent='center' hAlignContent='center'>
@@ -171,7 +167,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
       style,
       textOverflow,
       type
-    } = this.getProps();
+    } = this.props as ButtonDefaultedProps;
 
     const labels = {
       ...defaultLabels,

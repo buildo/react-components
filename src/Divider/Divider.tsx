@@ -17,6 +17,7 @@ export type DividerDefaultProps = {
 };
 
 export type DividerProps = Partial<DividerDefaultProps>;
+type DividerDefaultedProps = DividerDefaultProps;
 
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
 const sizeType = t.enums.of(['small', 'medium', 'large', 'no-margin'], 'sizeType');
@@ -27,24 +28,20 @@ export const Props = {
   size: t.maybe(sizeType)
 };
 
-const defaultProps: DividerDefaultProps = {
-  orientation: 'vertical',
-  size: 'small',
-  style: {}
-};
-
 /**
  * A simple component used to visually divide UI elements
  */
 @props(Props)
 export default class Divider extends React.PureComponent<DividerProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: DividerDefaultProps = {
+    orientation: 'vertical',
+    size: 'small',
+    style: {}
+  };
 
   render() {
-    const { orientation, style, size } = this.getProps();
+    const { orientation, style, size } = this.props as DividerDefaultedProps;
     return (
       <div className={cx('divider', orientation, size)} style={style} />
     );

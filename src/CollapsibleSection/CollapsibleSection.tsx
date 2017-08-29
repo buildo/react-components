@@ -4,13 +4,6 @@ import { props, t, ReactChildren, ReactChild } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 
-export type CollapsibleSectionDefaultProps = {
-  /** called when panel is expanded */
-  onOpen: () => void,
-  /** called when panel is collapsed */
-  onClose: () => void,
-};
-
 export type CollapsibleSectionRequiredProps = {
   /** panel content (visible only when expanded) */
   children: JSX.Element,
@@ -34,7 +27,15 @@ export type CollapsibleSectionRequiredProps = {
   id?: string,
 };
 
-export type CollapsibleSectionProps = Partial<CollapsibleSectionDefaultProps> & CollapsibleSectionRequiredProps;
+export type CollapsibleSectionDefaultProps = {
+  /** called when panel is expanded */
+  onOpen: () => void,
+  /** called when panel is collapsed */
+  onClose: () => void,
+};
+
+export type CollapsibleSectionProps = CollapsibleSectionRequiredProps & Partial<CollapsibleSectionDefaultProps>;
+type CollapsibleSectionDefaultedProps = CollapsibleSectionRequiredProps & CollapsibleSectionDefaultProps;
 
 export const Props = {
   children: ReactChildren,
@@ -53,21 +54,17 @@ export const Props = {
   id: t.maybe(t.String)
 };
 
-const defaultProps: CollapsibleSectionDefaultProps = {
-  onOpen: () => {},
-  onClose: () => {}
-};
-
 /** A collapsible panel, allowing you to toggle more/less content */
 @props(Props)
 export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionProps> {
 
-  getProps() {
-    return { ...defaultProps, ...this.props };
-  }
+  static defaultProps: CollapsibleSectionDefaultProps = {
+    onOpen: () => {},
+    onClose: () => {}
+  };
 
   onChange = () => {
-    const { onChange, onOpen, onClose, isOpen } = this.getProps();
+    const { onChange, onOpen, onClose, isOpen } = this.props as CollapsibleSectionDefaultedProps;
     onChange(!isOpen);
     if (isOpen) {
       onClose();
@@ -81,7 +78,7 @@ export default class CollapsibleSection extends React.PureComponent<CollapsibleS
       isOpen, isSelected,
       children, header, icons,
       className, id, style
-    } = this.getProps();
+    } = this.props as CollapsibleSectionDefaultedProps;
     const { onChange } = this;
 
     const wrapperProps = {
