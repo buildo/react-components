@@ -5,6 +5,7 @@
 
 #### New features:
 
+- The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
 - [Typo] Meter [#1073](https://github.com/buildo/react-components/issues/1073)
 - [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
 - [Typo] DropdownMenu [#1067](https://github.com/buildo/react-components/issues/1067)
