@@ -42,6 +42,7 @@
   "dependencies": {
     "@types/lodash": "4.14.74",
     "@types/react": "15.6.1",
+    "@types/react-dates": "^12.1.2",
     "@types/react-dom": "15.5.4",
     "@types/react-select": "1.0.51",
     "bowser": "^1.0.0",
