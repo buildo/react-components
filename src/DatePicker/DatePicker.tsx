@@ -111,7 +111,7 @@ export const Props = {
  * A decent and pretty date picker to be used with React
  */
 @props(Props)
-export default class DatePicker<T extends Value> extends React.PureComponent<DatePickerProps<T>, DatePickerState> {
+export default class DatePicker<T extends Value = never> extends React.PureComponent<DatePickerProps<T>, DatePickerState> {
 
 
   componentWillMount() {
