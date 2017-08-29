@@ -8,19 +8,27 @@ import Icon from '../Icon';
 
 export type Value = string | Date | moment.Moment;
 
-export type DatePickerProps = {
+export type OnChangeProps<T extends Value> = {
+  /** MomentJS format used to format date before returing through "onChange" */
+  returnFormat?: never
+  /** called when value changes */
+  onChange?: (date?: T) => void
+} | {
+  /** MomentJS format used to format date before returing through "onChange" */
+  returnFormat: string
+  /** called when value changes */
+  onChange?: (date?: string) => void
+}
+
+export type DatePickerProps<T extends Value> = {
   /** an optional id to pass to top level element of the component */
   id?: string,
   /** current date */
-  value?: Value,
+  value?: T,
   /** default date */
-  defaultValue?: Value,
-  //** called when value changes */
-  onChange?: (date?: Value) => void,
+  defaultValue?: T,
   /** called when datepicker is closed */
   onHide?: () => void,
-  /** MomentJS format used to format date before returing through "onChange" */
-  returnFormat?: string,
   /** MomentJS format used to display current date */
   displayFormat?: string,
   /** called when value is cleared */
@@ -47,7 +55,7 @@ export type DatePickerProps = {
   className?: string,
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties
-}
+} & OnChangeProps<T>;
 
 export type DatePickerState = {
   value?: Value
@@ -103,7 +111,7 @@ export const Props = {
  * A decent and pretty date picker to be used with React
  */
 @props(Props)
-export default class DatePicker extends React.PureComponent<DatePickerProps, DatePickerState> {
+export default class DatePicker<T extends Value> extends React.PureComponent<DatePickerProps<T>, DatePickerState> {
 
 
   componentWillMount() {
@@ -112,7 +120,7 @@ export default class DatePicker extends React.PureComponent<DatePickerProps, Dat
     }
   }
 
-  componentWillReceiveProps(newProps: DatePickerProps) {
+  componentWillReceiveProps(newProps: DatePickerProps<T>) {
     if (newProps.locale !== this.props.locale) {
       moment.locale(newProps.locale);
     }
@@ -126,13 +134,13 @@ export default class DatePicker extends React.PureComponent<DatePickerProps, Dat
 
   _onChange = (value: moment.Moment | null) => {
     const { returnFormat, defaultValue, onClear, onChange } = this.props;
-    const _value = returnFormat && value ? value.format(returnFormat) : value;
     if (!value) {
       this.setState({
         value: valueToMomentDate(defaultValue)
       }, onClear);
     } else {
-      this.setState({ value }, () => onChange && onChange(_value || undefined));
+      const _value = returnFormat ? value.format(returnFormat) : value;
+      this.setState({ value }, () => onChange && (onChange as any)(_value || undefined));
     }
   }
 
