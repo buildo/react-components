@@ -13,7 +13,7 @@ export type ImageProps = {
   quality?: number | 'auto',
   /** which format the image should be. Use "auto" to let cloudinary decide the format for you */
   format?: 'jpeg' | 'png' | 'wdp' | 'gif' | 'auto',
-}
+} & React.HTMLAttributes<HTMLImageElement>
 
 export const Props = {
   src: t.String,
