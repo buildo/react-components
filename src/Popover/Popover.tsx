@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import cx from '../utils/classnames';
-import debounce from 'lodash/debounce';
-import uniq from 'lodash/uniq';
+import debounce = require('lodash/debounce');
+import uniq = require('lodash/uniq');
 import { props, t, ReactChildren, getContextWrapper } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
@@ -41,18 +41,86 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
+export namespace PopoverProps {
+
+  export type Position = 'top' | 'bottom' | 'left' | 'right';
+  export type Anchor = 'start' | 'center' | 'end';
+  export type Event = 'click' | 'hover';
+
+  export type Delay = number | { whenClosed?: number, whenOpen?: number };
+
+  export type Popover = {
+    content: React.ReactNode,
+    attachToBody?: boolean,
+    auto?: boolean,
+    position?: Position,
+    anchor?: Anchor,
+    event?: Event,
+    onShow?: () => void,
+    onHide?: () => void,
+    onToggle?: () => void,
+    dismissOnScroll?: boolean,
+    dismissOnClickOutside?: boolean,
+    className?: string,
+    style?: React.CSSProperties,
+    id?: string,
+    maxWidth?: number | string,
+    distance?: number,
+    offsetX?: number,
+    offsetY?: number,
+    isOpen?: boolean,
+    delay?: Delay,
+    contextTypes?: React.ValidationMap<any>,
+    context?: object
+  };
+
+};
+  
+export type PopoverProps = {
+  /** the trigger node. It's always visible */
+  children: React.ReactNode,
+  /** popover settings. The popover is **not** always visible */
+  popover: PopoverProps.Popover,
+  className?: string,
+  style?: React.CSSProperties,
+  id?: string
+};
+
+export type PopoverElement = {
+  width: number,
+  height: number,
+  x: number,
+  y: number
+};
+
+export type PopoverState = {
+  isOpen: boolean,
+  popover?: PopoverElement,
+  child?: PopoverElement
+};
+
+type PopoverStyle = React.CSSProperties & {
+  _computedAnchor?: PopoverProps.Anchor,
+  _computedPosition?: PopoverProps.Position
+};
 
 /**
- * Composed of two children: trigger (children) and popover. After a particular event on the trigger (usually "hover" or "click") it renders the popover and positions it relative to it.
- * @param children - the trigger node. It's always visible
- * @param popover - popover settings. The popover is **not** always visible
+ * Composed of two children: trigger (children) and popover. After a particular event on the trigger
+ * (usually "hover" or "click") it renders the popover and positions it relative to it.
  */
 @props(Props)
-export default class Popover extends React.Component {
+export default class Popover extends React.Component<PopoverProps, PopoverState> {
+
+  private initialized: boolean;
+  private containerNode: Element | null;
+  private popoverNode: Element | null;
+  private onMouseEventDebouncedWhenOpen: ((_: string) => void) & _.Cancelable | null;
+  private onMouseEventDebouncedWhenClosed: ((_: string) => void) & _.Cancelable | null;
+  private ContextWrapper: React.ComponentType<{ context?: { [_: string]: any }, children: any }>;
 
   // LIFECYCLE
 
-  state = { isOpen: false };
+  state: PopoverState = { isOpen: false };
 
   componentDidMount() {
     this.ContextWrapper = getContextWrapper(this.getPopoverProps().contextTypes);
@@ -64,7 +132,7 @@ export default class Popover extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: PopoverProps) {
     this.updateDebouncedMousedEvents(nextProps);
     this.saveValuesFromNodeTree();
 
@@ -109,10 +177,12 @@ export default class Popover extends React.Component {
     }
   };
 
-  onClickOutside = (e) => {
+  onClickOutside = (e: MouseEvent) => {
     const childrenNode = ReactDOM.findDOMNode(this.refs.children);
-    const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.childNodes[1];
-    const el = e.target || e.srcElement;
+    const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.children[1];
+    // It's safe to assume that the target is going to be a DOM Element
+    // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
+    const el = (e.target || e.srcElement) as Element;
     if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
       this.hidePopover();
     }
@@ -145,13 +215,13 @@ export default class Popover extends React.Component {
   // UTILS
 
   // extend with default values
-  getPopoverProps = (_props) => {
+  getPopoverProps = (_props?: PopoverProps) => {
     const props = _props || this.props;
     return {
-      type: 'relative',
-      position: 'top',
-      anchor: 'center',
-      event: 'hover',
+      // type: 'relative', //FIXME(gabro): doesn't seem used
+      position: 'top' as PopoverProps.Position,
+      anchor: 'center' as PopoverProps.Anchor,
+      event: 'hover' as PopoverProps.Event,
       onShow: () => {},
       onHide: () => {},
       onToggle: () => {},
@@ -165,18 +235,18 @@ export default class Popover extends React.Component {
     };
   };
 
-  getPopoverNode = () => {
-    let popover;
+  getPopoverNode = (): Element => {
+    let popover: Element;
     if (this.isAbsolute()) {
-      popover = this.popoverNode;
+      popover = this.popoverNode!; // FIXME(gabro): is this safe?
     } else {
       const childrenNode = ReactDOM.findDOMNode(this.refs.children);
-      popover = childrenNode.childNodes[1];
+      popover = childrenNode.children[1];
     }
-    return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.childNodes[0] : popover;
+    return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.children[0] : popover;
   };
 
-  getOffsetRect = (target) => {
+  getOffsetRect = (target: Element) => {
     const box = target.getBoundingClientRect();
 
     const body = document.body;
@@ -194,7 +264,7 @@ export default class Popover extends React.Component {
     return { top, left };
   };
 
-  saveValuesFromNodeTree = (cb) => {
+  saveValuesFromNodeTree = (cb?: () => any) => {
     const childrenNode = ReactDOM.findDOMNode(this.refs.children);
     const popoverNode = this.getPopoverNode();
 
@@ -221,11 +291,11 @@ export default class Popover extends React.Component {
     }
   };
 
-  isStateful = (props) => typeof this.getPopoverProps(props).isOpen === 'undefined';
+  isStateful = (props?: PopoverProps) => typeof this.getPopoverProps(props).isOpen === 'undefined';
 
-  isOpen = (props) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
+  isOpen = (props?: PopoverProps) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
 
-  isEventInsideTarget = (el, target) => {
+  isEventInsideTarget = (el: Node, target: Node): boolean => {
     if (!el) {
       return false;
     } else if (el === target) {
@@ -251,7 +321,7 @@ export default class Popover extends React.Component {
     ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
     // add pointer to popover node
-    this.popoverNode = this.containerNode.childNodes[0];
+    this.popoverNode = this.containerNode.children[0];
 
     // save popover size (visible popover will be rendered in componentDidUpdate)
     this.saveValuesFromNodeTree();
@@ -264,7 +334,7 @@ export default class Popover extends React.Component {
     }
   };
 
-  onPopoverOpenChange = (props) => {
+  onPopoverOpenChange = (props?: PopoverProps) => {
     if (this.isOpen(props)) {
       if (this.isAbsolute()) {
         this.appendPopover();
@@ -289,21 +359,22 @@ export default class Popover extends React.Component {
     this.onPopoverOpenChange();
   };
 
-
-  eventWrapper = cb => e => {
+  eventWrapper = <E extends React.SyntheticEvent<HTMLElement>>(cb: (e: E) => void) => (e: E) => {
     const { event } = this.getPopoverProps();
-    const childrenNode = ReactDOM.findDOMNode(this.refs.children).childNodes[0];
-    const el = e.target || e.srcElement;
+    const childrenNode = ReactDOM.findDOMNode(this.refs.children).children[0];
+    // It's safe to assume that the target is going to be a DOM Element
+    // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
+    const el = e.target as Element;
     if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
       cb(e);
     }
   };
 
-  getDelayWhenClosed = delay => (delay || {}).whenClosed || delay;
+  getDelayWhenClosed = (delay?: PopoverProps.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenClosed;
 
-  getDelayWhenOpen = delay => (delay || {}).whenOpen || delay;
+  getDelayWhenOpen = (delay?: PopoverProps.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenOpen;
 
-  updateDebouncedMousedEvents = (nextProps) => {
+  updateDebouncedMousedEvents = (nextProps?: PopoverProps) => {
     const { delay } = this.getPopoverProps(nextProps);
     const delayWhenClosed = this.getDelayWhenClosed(delay);
     const delayWhenOpen = this.getDelayWhenOpen(delay);
@@ -321,7 +392,7 @@ export default class Popover extends React.Component {
     }
   };
 
-  _onMouseEvent = (type) => {
+  _onMouseEvent = (type: string) => {
     if (type === 'mouseenter') {
       this.showPopover();
     } else if (type === 'mouseleave') {
@@ -329,15 +400,15 @@ export default class Popover extends React.Component {
     }
   };
 
-  onMouseEvent = ({ type }) => {
+  onMouseEvent: React.MouseEventHandler<any> = ({ type }) => {
     const { delay } = this.getPopoverProps();
     const delayWhenClosed = this.getDelayWhenClosed(delay);
     const delayWhenOpen = this.getDelayWhenOpen(delay);
 
     if (this.isOpen()) {
-      return delayWhenOpen ? this.onMouseEventDebouncedWhenOpen(type) : this._onMouseEvent(type);
+      return delayWhenOpen ? this.onMouseEventDebouncedWhenOpen && this.onMouseEventDebouncedWhenOpen(type) : this._onMouseEvent(type);
     } else {
-      return delayWhenClosed ? this.onMouseEventDebouncedWhenClosed(type) : this._onMouseEvent(type);
+      return delayWhenClosed ? this.onMouseEventDebouncedWhenClosed && this.onMouseEventDebouncedWhenClosed(type) : this._onMouseEvent(type);
     }
   };
 
@@ -347,7 +418,7 @@ export default class Popover extends React.Component {
 
   togglePopover = () => this.setIsOpen(!this.isOpen());
 
-  setIsOpen = (isOpen) => {
+  setIsOpen = (isOpen: boolean) => {
     if (this.isStateful()) {
       this.setState({ isOpen }, this.onPopoverStateChange);
     } else {
@@ -360,7 +431,7 @@ export default class Popover extends React.Component {
 
   // LOCALES
 
-  popoverTemplate = ({ _computedAnchor, _computedPosition, ..._style }) => {
+  popoverTemplate = ({ _computedAnchor, _computedPosition, ..._style }: PopoverStyle) => {
     const { position: _position, className, anchor: _anchor, content, id, event, style } = this.getPopoverProps();
     const anchor = _computedAnchor || _anchor;
     const position = _computedPosition || _position;
@@ -377,14 +448,14 @@ export default class Popover extends React.Component {
   };
 
   getVisiblePopover = () => {
-    const { popover } = this.state;
+    const popover = this.state.popover!; // TODO(gabro): is this safe?
     const popoverProps = this.getPopoverProps();
 
     if (popoverProps.auto) {
       // give priority to the position passed by the user as _.uniq should maintain the order
-      const positions = uniq([popoverProps.position, 'top', 'bottom', 'left', 'right']);
+      const positions = uniq<PopoverProps.Position>([popoverProps.position, 'top', 'bottom', 'left', 'right']);
 
-      const popoverStyle = positions.reduce((acc, p) => {
+      const popoverStyle: PopoverStyle | null = positions.reduce((acc, p) => {
         if (acc === null) {
           // give priority to the couple position/anchor passed by the user as _.uniq should maintain the order
           const anchors = uniq(
@@ -413,7 +484,6 @@ export default class Popover extends React.Component {
             return workingPopoverStyle;
           }, null);
         }
-
         return acc;
       }, null);
 
@@ -424,7 +494,7 @@ export default class Popover extends React.Component {
   }
 
   getHiddenPopover = () => {
-    const style = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
+    const style: React.CSSProperties = { width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none' };
     return (
       <div id={NO_SIZE_WRAPPER} style={style}>
         {this.popoverTemplate({ position: 'absolute', visibility: 'hidden' })}
@@ -446,8 +516,9 @@ export default class Popover extends React.Component {
     };
   };
 
-  computePopoverStyle = (position, anchor) => {
-    const { child, popover } = this.state;
+  computePopoverStyle = (position: PopoverProps.Position, anchor: PopoverProps.Anchor): PopoverStyle => {
+    const child = this.state.child!; // TODO(gabro): is this safe?
+    const popover = this.state.popover!; // TODO(gabro): is this safe?
     const { maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
 
     const isAbsolute = this.isAbsolute();
@@ -498,13 +569,14 @@ export default class Popover extends React.Component {
     const isRelative = !this.isAbsolute();
     const isOpen = this.isOpen();
     const popover = isRelative && (this.initialized && isOpen ? this.getVisiblePopover() : this.getHiddenPopover());
+    const style: React.CSSProperties = {
+      display: 'inline-block',
+      position: isRelative ? 'relative' : undefined,
+      ...this.props.style
+    };
     return {
       ...this.props,
-      style: {
-        display: 'inline-block',
-        position: isRelative ? 'relative' : undefined,
-        ...this.props.style
-      },
+      style,
       className: cx('react-popover', this.props.className, { 'is-open': isOpen, 'is-closed': !isOpen }),
       eventCallbacks: this.getEventCallbacks(),
       popover
