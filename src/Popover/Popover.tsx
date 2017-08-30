@@ -218,7 +218,6 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
   getPopoverProps = (_props?: PopoverProps) => {
     const props = _props || this.props;
     return {
-      // type: 'relative', //FIXME(gabro): doesn't seem used
       position: 'top' as PopoverProps.Position,
       anchor: 'center' as PopoverProps.Anchor,
       event: 'hover' as PopoverProps.Event,
@@ -238,7 +237,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
   getPopoverNode = (): Element => {
     let popover: Element;
     if (this.isAbsolute()) {
-      popover = this.popoverNode!; // FIXME(gabro): is this safe?
+      popover = this.popoverNode!;
     } else {
       const childrenNode = ReactDOM.findDOMNode(this.refs.children);
       popover = childrenNode.children[1];
@@ -264,7 +263,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     return { top, left };
   };
 
-  saveValuesFromNodeTree = (cb?: () => any) => {
+  saveValuesFromNodeTree = () => {
     const childrenNode = ReactDOM.findDOMNode(this.refs.children);
     const popoverNode = this.getPopoverNode();
 
@@ -287,7 +286,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
           x: popoverX,
           y: popoverY
         }
-      }, cb);
+      });
     }
   };
 
@@ -448,7 +447,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
   };
 
   getVisiblePopover = () => {
-    const popover = this.state.popover!; // TODO(gabro): is this safe?
+    const popover = this.state.popover!;
     const popoverProps = this.getPopoverProps();
 
     if (popoverProps.auto) {
@@ -517,8 +516,8 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
   };
 
   computePopoverStyle = (position: PopoverProps.Position, anchor: PopoverProps.Anchor): PopoverStyle => {
-    const child = this.state.child!; // TODO(gabro): is this safe?
-    const popover = this.state.popover!; // TODO(gabro): is this safe?
+    const child = this.state.child!;
+    const popover = this.state.popover!;
     const { maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();
 
     const isAbsolute = this.isAbsolute();
