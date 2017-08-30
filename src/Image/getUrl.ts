@@ -8,7 +8,15 @@ function isRetinaDisplay() {
   }
 }
 
-function getUrl(src, { width: _width, height: _height, quality: _quality, format: _format } = {}) {
+export interface CloudinaryParams {
+  width?: number;
+  height?: number;
+  quality?: number | 'auto';
+  format?: 'jpeg' | 'png' | 'wdp' | 'gif' | 'auto';
+}
+
+
+function getUrl(src: string, { width: _width, height: _height, quality: _quality, format: _format }: CloudinaryParams = {}): string {
   const isAbsolute = src.indexOf('http') >= 0;
 
   const origin = !isAbsolute ? window.location.origin : '';
@@ -22,6 +30,7 @@ function getUrl(src, { width: _width, height: _height, quality: _quality, format
   return process.env.NODE_ENV !== 'development' ? cloudinaryUrl : src;
 }
 
-export const getBackgroundUrl = (...args) => `url(${getUrl(...args)})`;
+
+export const getBackgroundUrl = (src: string, cloudinaryParams: CloudinaryParams) => `url(${getUrl(src, cloudinaryParams)})`;
 
 export default getUrl;
