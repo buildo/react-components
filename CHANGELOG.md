@@ -10,6 +10,7 @@
 - [Typo] Meter [#1073](https://github.com/buildo/react-components/issues/1073)
 - [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
 - [Typo] Image [#1070](https://github.com/buildo/react-components/issues/1070)
+- [Typo] FormattedText [#1069](https://github.com/buildo/react-components/issues/1069)
 - [Typo] FocusableView [#1068](https://github.com/buildo/react-components/issues/1068)
 - [Typo] DropdownMenu [#1067](https://github.com/buildo/react-components/issues/1067)
 - [Typo] Divider [#1065](https://github.com/buildo/react-components/issues/1065)
