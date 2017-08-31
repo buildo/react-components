@@ -1,3 +1,3 @@
-import ResizeSensor, { ResizeSensorProps, Props } from './ResizeSensor';
+import ResizeSensor, { ResizeSensorProps } from './ResizeSensor';
 export default ResizeSensor;
-export { ResizeSensorProps, Props };
+export { ResizeSensorProps };
