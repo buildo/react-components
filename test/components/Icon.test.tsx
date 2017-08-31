@@ -4,6 +4,16 @@ import { shallow } from 'enzyme';
 
 import Icon from '../../src/Icon';
 
+let consoleError: jest.SpyInstance<{}>
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 describe('Icon', () => {
 
   it('renders correctly', () => {

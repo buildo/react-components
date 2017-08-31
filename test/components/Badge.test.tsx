@@ -4,6 +4,16 @@ import { shallow } from 'enzyme';
 
 import Badge from '../../src/Badge';
 
+let consoleError: jest.SpyInstance<{}>
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 describe('Badge', () => {
 
   it('renders correctly', () => {

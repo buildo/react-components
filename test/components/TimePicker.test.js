@@ -5,6 +5,16 @@ import TimePicker, {
   parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
 } from '../../src/TimePicker/TimePicker';
 
+let consoleError: jest.SpyInstance<{}>
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const exampleProps = {
   ...TimePicker.defaultProps,
   id: '12345',

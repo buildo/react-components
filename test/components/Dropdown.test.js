@@ -3,6 +3,16 @@ import renderer from 'react-test-renderer';
 
 import Dropdown from '../../src/Dropdown';
 
+let consoleError: jest.SpyInstance<{}>
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const exampleProps = {
   ...Dropdown.defaultProps,
   id: '12345',
