@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import _debounce from 'lodash/debounce';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import _debounce = require('lodash/debounce');
 import { props, t, ReactChildren } from '../utils';
-import _ResizeSensor from 'css-element-queries/src/ResizeSensor';
+import _ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
 export const Props = {
   children: ReactChildren,
@@ -10,18 +10,31 @@ export const Props = {
   debounce: t.maybe(t.Integer)
 };
 
+export type ResizeSensorProps = {
+  /** content */
+  children: JSX.Element,
+  /** called when a resize event is captured */
+  onResize: () => void,
+  /** callback delay (milliseconds) */
+  debounce?: number
+};
+
+interface ResizeSensorElement extends Element {
+  resizedAttached?: {}
+};
+
 /**
  * A component used to intercept window resize events
- * @param children - content
- * @param onResize - called when a resize event is captured
- * @param debounce - callback delay (milliseconds)
  */
 @props(Props)
-export default class ResizeSensor extends React.Component {
+export default class ResizeSensor extends React.Component<ResizeSensorProps> {
+
+  private elementQueries: boolean
+  private resizeSensor: {} | null
 
   attachResizeSensor = () => {
     const { debounce } = this.props;
-    const element = ReactDOM.findDOMNode(this);
+    const element = ReactDOM.findDOMNode<ResizeSensorElement>(this);
     if (!element.resizedAttached) {
       this.resizeSensor = new _ResizeSensor(element, debounce ? _debounce(this.onResize, debounce) : this.onResize);
     }
@@ -59,7 +72,7 @@ export default class ResizeSensor extends React.Component {
     return this.props.children;
   }
 
-  shouldComponentUpdate({ children, debounce }) {
+  shouldComponentUpdate({ children, debounce }: ResizeSensorProps) {
     /*
       we don't need to update if `onResize` has changed
       as we're using the constant `this.onResize` callback
