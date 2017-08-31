@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Badge from '../../src/Badge';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import Dropdown from '../../src/Dropdown';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

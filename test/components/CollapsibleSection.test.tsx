@@ -4,6 +4,16 @@ import { shallow } from 'enzyme';
 
 import CollapsibleSection from '../../src/CollapsibleSection';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const content = <div>HI</div>;
 
 describe('CollapsibleSection', () => {

@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import Divider from '../../src/Divider';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

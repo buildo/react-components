@@ -6,7 +6,7 @@ import BackgroundDimmer from '../../src/BackgroundDimmer';
 
 const content = <div className='content'>content</div>;
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

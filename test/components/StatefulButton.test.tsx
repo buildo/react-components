@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import StatefulButton, { StatefulButtonProps } from '../../src/Button/StatefulButton';
 import clone = require('lodash/clone');
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

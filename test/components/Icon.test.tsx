@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Icon from '../../src/Icon';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

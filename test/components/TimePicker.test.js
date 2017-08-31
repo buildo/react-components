@@ -5,7 +5,7 @@ import TimePicker, {
   parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
 } from '../../src/TimePicker/TimePicker';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');

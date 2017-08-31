@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { modalWithContext } from '../../src/Modal';
 
-let consoleError: jest.SpyInstance<{}>
+let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');
