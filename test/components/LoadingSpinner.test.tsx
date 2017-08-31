@@ -3,6 +3,16 @@ import { shallow, mount } from 'enzyme';
 
 import LoadingSpinner from '../../src/LoadingSpinner';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 describe('LoadingSpinner', () => {
 
   it('renders correctly', () => {

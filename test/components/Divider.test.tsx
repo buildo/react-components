@@ -3,6 +3,16 @@ import * as renderer from 'react-test-renderer';
 
 import Divider from '../../src/Divider';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 describe('Divider', () => {
 
   it('renders correctly vertical', () => {

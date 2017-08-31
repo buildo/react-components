@@ -3,6 +3,16 @@ import * as renderer from 'react-test-renderer';
 
 import BrowserDetector from '../../src/BrowserDetector';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 function forceUserAgent(ua) {
   navigator['__defineGetter__']('userAgent', () => ua);
 }

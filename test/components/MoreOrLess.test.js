@@ -3,6 +3,16 @@ import renderer from 'react-test-renderer';
 
 import MoreOrLess from '../../src/MoreOrLess';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const exampleProps = {
   ...MoreOrLess.defaultProps,
   children: 'content',

@@ -4,6 +4,16 @@ import { mount } from 'enzyme';
 import StatefulButton, { StatefulButtonProps } from '../../src/Button/StatefulButton';
 import clone = require('lodash/clone');
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 function timeoutPromise(millis) {
   return new Promise((resolve) => {
     setTimeout(resolve, millis);

@@ -2,6 +2,16 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Menu } from '../../src/DropdownMenu';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const exampleProps = {
   options: [
     { title: 'Preferences', type: 'item' },

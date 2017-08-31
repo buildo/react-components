@@ -2,6 +2,16 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { modalWithContext } from '../../src/Modal';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 describe('Modal', () => {
 
   it('should correctly pass context down if used via modalWithContext', () => {

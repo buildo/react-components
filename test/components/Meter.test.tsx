@@ -4,6 +4,16 @@ import { shallow } from 'enzyme';
 
 import Meter, { MeterProps } from '../../src/Meter';
 
+let consoleError: jest.SpyInstance<{}>;
+
+beforeAll(() => {
+  consoleError = jest.spyOn(console, 'error');
+});
+
+afterEach(() => {
+  expect(consoleError).not.toHaveBeenCalled();
+});
+
 const style: React.CSSProperties = {
   margin: 10,
   position: 'relative'
