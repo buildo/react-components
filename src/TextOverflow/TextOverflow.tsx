@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import omit from 'lodash/omit';
-import debounce from 'lodash/debounce';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import omit = require('lodash/omit');
+import debounce = require('lodash/debounce');
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 import Popover from '../Popover/Popover';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
+import { ObjectOverwrite } from 'typelevel-ts';
+import { PopoverProps } from '../Popover/Popover';
 
 export const Props = {
   children: t.maybe(t.Function),
@@ -21,28 +23,53 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
+export type TextOverflowDefaultProps = {
+  /** tooltip delay if the component is lazy */
+  delayWhenLazy: number
+  /** whether the tooltip appearance should be delayed after mouse entering or not */
+  lazy: boolean
+};
+
+export type TextOverflowRequiredProps = {
+  /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
+  children?: (self: JSX.Element, isOpen?: boolean) => any,
+  /** this is the full string */
+  label?: string | number,
+  /** additional props for Popover component used to display the entire text */
+  popover?: ObjectOverwrite<PopoverProps.Popover, {
+    content?: void & string
+  }>,
+  id?: string,
+  className?: string,
+  style?: React.CSSProperties
+};
+
+export type TextOverflowProps = TextOverflowRequiredProps & Partial<TextOverflowDefaultProps>;
+type TextOverflowDefaultedProps = TextOverflowRequiredProps & TextOverflowDefaultProps;
+
+export type TextOverflowState = {
+  isOverflowing: boolean,
+  isHovering: boolean
+};
+
 /**
  * Text view which, if string content is too large, trims it and shows the full content on "hover".
- * @param children - in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument
- * @param label - this is the full string
- * @param popover - additional props for Popover component used to display the entire text
- * @param lazy - whether the tooltip appearance should be delayed after mouse entering or not
- * @param delayWhenLazy - tooltip delay if the component is lazy
  */
 @props(Props, { strict: false })
-export default class TextOverflow extends React.Component {
+export default class TextOverflow extends React.Component<TextOverflowProps, TextOverflowState> {
 
-  static defaultProps = {
-    delayWhenLazy: 100
-  }
+  static defaultProps: TextOverflowDefaultProps = {
+    delayWhenLazy: 100,
+    lazy: false
+  };
 
-  state = { isOverflowing: false };
+  state = { isOverflowing: false, isHovering: false };
 
   componentDidMount() {
     !this.props.lazy && this.verifyOverflow();
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps(nextProps: TextOverflowProps) {
     if (!this.props.lazy && nextProps.label !== this.props.label) {
       this.reset();
     }
@@ -56,7 +83,7 @@ export default class TextOverflow extends React.Component {
     warn(() => {
       const node = ReactDOM.findDOMNode(this.refs.text);
       if (node) {
-        const styleNode = node.parentNode.parentNode;
+        const styleNode = node.parentElement!.parentElement!;
         const { width, flex } = styleNode.style;
         const flexBasis = flex ? flex.split(' ')[2] : null;
         if (width !== '100%' && flexBasis !== '100%') {
@@ -67,14 +94,15 @@ export default class TextOverflow extends React.Component {
     });
   };
 
-  getElementWidth = element => {
+  getElementWidth = (element?: Element): number | null => {
     if (element && typeof window !== 'undefined') {
-      return parseFloat(window.getComputedStyle(element).width);
+      const width = window.getComputedStyle(element).width;
+      return width ? parseFloat(width) : null;
     }
     return null;
   };
 
-  verifyOverflow = ({ force, reset } = {}) => {
+  verifyOverflow = ({ force, reset }: { force?: boolean, reset?: boolean } = {}) => {
     if ((force || (!this.props.lazy && this.state.isOverflowing === false)) && typeof window !== 'undefined') {
       const text = ReactDOM.findDOMNode(this.refs.text);
       const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
@@ -83,7 +111,7 @@ export default class TextOverflow extends React.Component {
         const textWidth = this.getElementWidth(text);
         const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
 
-        const isOverflowing = (textWidth < textWithoutEllipsisWidth);
+        const isOverflowing = (textWidth! < textWithoutEllipsisWidth!);
         if (isOverflowing && !this.state.isOverflowing) {
           this.setState({ isOverflowing: true }, this.logWarnings);
         } else if (!isOverflowing && reset && this.state.isOverflowing) {
@@ -95,13 +123,13 @@ export default class TextOverflow extends React.Component {
     }
   };
 
-  _onMouseEvent = (type) => (type === 'mouseenter') && this.onMouseEnter()
+  _onMouseEvent = (type: string) => (type === 'mouseenter') && this.onMouseEnter();
 
-  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy)
+  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy);
 
-  onMouseEvent = ({ type }) => (
+  onMouseEvent: React.MouseEventHandler<Element> = ({ type }) => {
     this.props.delayWhenLazy ? this.onMouseEventDebounced(type) : this._onMouseEvent(type)
-  )
+  };
 
   onMouseEnter = () => {
     if (!this.state.isHovering) {
@@ -109,15 +137,17 @@ export default class TextOverflow extends React.Component {
         isHovering: true
       }, () => this.props.lazy && this.verifyOverflow({ force: true, reset: true }));
     }
-  }
+  };
 
-  onMouseLeave = () => this.state.isHovering && this.setState({ isHovering: false })
+  onMouseLeave: React.MouseEventHandler<Element> = () => {
+    this.state.isHovering && this.setState({ isHovering: false })
+  };
 
-  onResize = () => this.verifyOverflow({ force: true, reset: true })
+  onResize = () => this.verifyOverflow({ force: true, reset: true });
 
   getContent = () => {
     const { onMouseEvent, onMouseLeave, props: { label, lazy } } = this;
-    const styleText = {
+    const styleText: React.CSSProperties = {
       display: 'block',
       whiteSpace: 'nowrap',
       width: '100%',
@@ -125,7 +155,7 @@ export default class TextOverflow extends React.Component {
       OTextOverflow: 'ellipsis', // Opera
       textOverflow: 'ellipsis'
     };
-    const styleTextWithoutEllipsis = {
+    const styleTextWithoutEllipsis: React.CSSProperties = {
       position: 'fixed',
       visibility: 'hidden',
       pointerEvents: 'none',
@@ -134,7 +164,7 @@ export default class TextOverflow extends React.Component {
     };
     const events = lazy && {
       onMouseEnter: onMouseEvent,
-      onMouseLeave: e => {
+      onMouseLeave: (e: React.MouseEvent<Element>) => {
         onMouseEvent(e);
         onMouseLeave(e);
       }
@@ -150,15 +180,15 @@ export default class TextOverflow extends React.Component {
   };
 
   templateOverflow = () => {
+    const { state: { isHovering } } = this;
     const {
-      state: { isHovering },
-      props: { children, label, style, lazy, popover, ...other }
-    } = this;
+      children, label, style, lazy, popover, ...other
+    } = this.props as TextOverflowDefaultedProps;
 
     if (children) {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
-      const props = {
+      const props: PopoverProps = {
         ...omit(other, ['delayWhenLazy']),
         popover: {
           ...popover,
