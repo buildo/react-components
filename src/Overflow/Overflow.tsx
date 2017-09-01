@@ -29,7 +29,7 @@ export const Props = {
 @props(Props)
 export default class Overflow extends React.Component<OverflowProps, State> {
 
-  ref: HTMLDivElement
+  private ref: HTMLDivElement
 
   state = { isOverflowing: false }
 
