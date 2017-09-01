@@ -25,7 +25,7 @@ export type TransitionWrapperDefaultProps<CP> = {
 
 export type TransitionWrapperRequiredProps = {
   /** the component you want to animate (it must have a unique "key") */
-  children: React.ReactNode,
+  children: JSX.Element,
   /** duration of enter transition in milliseconds */
   transitionEnterTimeout: number,
   /** duration of leave transition in milliseconds */
