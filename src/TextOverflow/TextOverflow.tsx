@@ -94,12 +94,12 @@ export default class TextOverflow extends React.Component<TextOverflowProps, Tex
     });
   };
 
-  getElementWidth = (element?: Element): number | null => {
+  getElementWidth = (element?: Element): number => {
     if (element && typeof window !== 'undefined') {
       const width = window.getComputedStyle(element).width;
-      return width ? parseFloat(width) : null;
+      return width ? parseFloat(width) : 0;
     }
-    return null;
+    return 0;
   };
 
   verifyOverflow = ({ force, reset }: { force?: boolean, reset?: boolean } = {}) => {
@@ -111,7 +111,7 @@ export default class TextOverflow extends React.Component<TextOverflowProps, Tex
         const textWidth = this.getElementWidth(text);
         const textWithoutEllipsisWidth = this.getElementWidth(textWithoutEllipsis);
 
-        const isOverflowing = (textWidth! < textWithoutEllipsisWidth!);
+        const isOverflowing = (textWidth < textWithoutEllipsisWidth);
         if (isOverflowing && !this.state.isOverflowing) {
           this.setState({ isOverflowing: true }, this.logWarnings);
         } else if (!isOverflowing && reset && this.state.isOverflowing) {
