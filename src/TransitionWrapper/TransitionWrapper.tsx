@@ -66,7 +66,7 @@ export const Props = {
  * To be used with `ReactTransitionGroup` to show transitions for a component
  */
 @props(Props, { strict: false })
-export default class TransitionWrapper<CP> extends React.PureComponent<TransitionWrapperProps<CP>, TransitionWrapperState> {
+export default class TransitionWrapper<CP extends {}> extends React.PureComponent<TransitionWrapperProps<CP>, TransitionWrapperState> {
 
   static defaultProps: TransitionWrapperDefaultProps<React.HTMLAttributes<HTMLDivElement>> = {
     transitionStyles: {},
