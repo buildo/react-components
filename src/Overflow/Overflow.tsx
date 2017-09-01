@@ -29,9 +29,9 @@ export const Props = {
 @props(Props)
 export default class Overflow extends React.Component<OverflowProps, State> {
 
-  state = { isOverflowing: false }
-
   ref: HTMLDivElement
+
+  state = { isOverflowing: false }
 
   componentDidMount() {
     this.verifyOverflow();
