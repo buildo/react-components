@@ -1,5 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 
 import MoreOrLess from '../../src/MoreOrLess';
 
@@ -14,7 +15,6 @@ afterEach(() => {
 });
 
 const exampleProps = {
-  ...MoreOrLess.defaultProps,
   children: 'content',
   className: 'fancy-class-name',
   icons: {
@@ -24,15 +24,9 @@ const exampleProps = {
   onExpandedChange: () => {}
 };
 
-const componentMore = new MoreOrLess({
-  ...exampleProps,
-  expanded: true
-});
+const componentMore = mount(<MoreOrLess {...exampleProps} expanded={true} />);
 
-const componentLess = new MoreOrLess({
-  ...exampleProps,
-  expanded: false
-});
+const componentLess = mount(<MoreOrLess {...exampleProps} expanded={false} />);
 
 
 describe('MoreOrLess', () => {
@@ -54,19 +48,13 @@ describe('MoreOrLess', () => {
   describe('getLocals', () => {
 
     it('computes className', () => {
-      const { wrapperProps: { className: classNameMore } } = componentMore.getLocals();
-      expect(classNameMore).toBe('more-or-less more fancy-class-name');
-
-      const { wrapperProps: { className: classNameLess } } = componentLess.getLocals();
-      expect(classNameLess).toBe('more-or-less less fancy-class-name');
+      expect(componentMore.render().find('.more-or-less').hasClass('more fancy-class-name')).toBe(true);
+      expect(componentLess.render().find('.more-or-less').hasClass('less fancy-class-name')).toBe(true);
     });
 
     it('computes icon', () => {
-      const { icon: iconMore } = componentMore.getLocals();
-      expect(iconMore).toBe('angle-up');
-
-      const { icon: iconLess } = componentLess.getLocals();
-      expect(iconLess).toBe('angle-down');
+      expect(componentMore.find('.expand-button-icon').hasClass('icon-angle-up')).toBe(true);
+      expect(componentLess.find('.expand-button-icon').hasClass('icon-angle-down')).toBe(true);
     });
 
   });
