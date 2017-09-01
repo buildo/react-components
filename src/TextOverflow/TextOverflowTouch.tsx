@@ -1,9 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import TooltipTouch, { Props } from '../Tooltip/TooltipTouch';
+import { TooltipProps } from '../Tooltip';
 import { props } from '../utils';
+import { ObjectOverwrite } from 'typelevel-ts';
+
+export type TextOverflowTouchProps = {
+  label?: string | number,
+  popover?: ObjectOverwrite<TooltipProps['popover'], {
+    content?: void & string
+  }>,
+  id?: string,
+  style?: object
+};
 
 @props(Props)
-export default class TextOverflowTouch extends React.PureComponent {
+export default class TextOverflowTouch extends React.PureComponent<TextOverflowTouchProps> {
 
   render() {
     const { label: _label, popover, ...props } = this.props;
