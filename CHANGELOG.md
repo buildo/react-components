@@ -10,6 +10,7 @@
 
 #### New features:
 
+- [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
 - [Typo] ResizeSensor [#1094](https://github.com/buildo/react-components/issues/1094)
 - [Typo] MobileDetector [#1091](https://github.com/buildo/react-components/issues/1091)
 - [Typo] Popover [#1089](https://github.com/buildo/react-components/issues/1089)
