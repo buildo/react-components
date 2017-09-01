@@ -41,7 +41,7 @@ export default class Overflow extends React.Component<OverflowProps, State> {
     this.verifyOverflow();
   }
 
-  getElementWidth(element: HTMLElement): number {
+  getElementWidth(element: Element): number {
     if (element && typeof window !== 'undefined') {
       return parseFloat(window.getComputedStyle(element).width || '');
     }
@@ -50,10 +50,10 @@ export default class Overflow extends React.Component<OverflowProps, State> {
 
   verifyOverflow() {
     if (typeof window !== 'undefined') {
-      const node = ReactDOM.findDOMNode<HTMLDivElement>(this.ref);
+      const node = ReactDOM.findDOMNode(this.ref);
 
       if (node && node.children) {
-        const childrenWidth = this.getElementWidth(node.children[0] as HTMLElement);
+        const childrenWidth = this.getElementWidth(node.children[0]);
         const parentWidth = this.getElementWidth(node);
 
         const isOverflowing = (childrenWidth > parentWidth);
