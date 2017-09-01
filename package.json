@@ -4,8 +4,8 @@
   "description": "Collection of general React components used in buildo projects.",
   "main": "lib",
   "scripts": {
-    "test": "jest",
-    "test-dev": "jest --watch",
+    "test": "node ./depsShouldBePinned.js && jest",
+    "test-dev": "npm test -- --watch",
     "remove-multiples-@types-react": "rm -rf node_modules/**/node_modules/@types/react",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && rm -rf temp && mkdir temp && tsc && babel src -d lib && babel temp -d lib && (cd temp; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && (cd src; tar cf - ./**/*.d.ts) | (cd lib; tar xf -) && rm -rf temp",
     "lint": "scriptoni lint src showroom test",
