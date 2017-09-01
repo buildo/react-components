@@ -2,9 +2,7 @@ import * as React from 'react';
 import cx from '../utils/classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
-import _TextOverflow from '../TextOverflow/TextOverflow';
-import { PopoverProps } from '../Popover/Popover';
-import { ObjectOverwrite } from 'typelevel-ts';
+import TextOverflow, { TextOverflowProps } from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -17,14 +15,7 @@ export namespace ButtonProps {
 
 }
 
-// TODO: TextOverflow should accept a popoverProps
-export type TextOverflowCompatibleComponent = React.ComponentClass<{
-  label?: string | number,
-  popover?: ObjectOverwrite<PopoverProps.Popover, {
-    position?: PopoverProps.Position,
-    content?: void & string
-  }>
-}>
+export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflowProps>;
 
 export type ButtonStateMap = { [key in ButtonProps.ButtonState]?: string };
 export type ButtonRequiredProps = {
@@ -121,7 +112,7 @@ const makeProp = (x: any) => (t.String.is(x) ? { ready: x, 'not-allowed': x } : 
 export default class Button extends React.PureComponent<ButtonProps> {
 
   static defaultProps: ButtonDefaultProps = {
-    textOverflow: _TextOverflow,
+    textOverflow: TextOverflow,
     buttonState: 'ready',
     size: 'medium',
     fluid: false,
