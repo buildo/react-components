@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { props, t, ReactNode } from '../utils';
+import { props, t, ReactElement } from '../utils';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export type OverflowProps = {
   /** react node initially rendered */
-  content: JSX.Element | string,
+  content: JSX.Element,
   /** react node rendered if `content` overflows its parent */
-  contentIfOverflowing: JSX.Element | string,
+  contentIfOverflowing: JSX.Element,
   id?: string,
   className?: string,
   style?: React.CSSProperties
@@ -18,8 +18,8 @@ export type State = {
 };
 
 export const Props = {
-  content: ReactNode,
-  contentIfOverflowing: ReactNode,
+  content: ReactElement,
+  contentIfOverflowing: ReactElement,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
