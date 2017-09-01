@@ -2,39 +2,35 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { props, t } from '../utils';
 import cx from '../utils/classnames';
-import { getValueLink } from '../LinkState';
 import { warn } from '../utils/log';
 
 export const Props = {
   value: t.maybe(t.Boolean),
   onChange: t.maybe(t.Function),
   disabled: t.maybe(t.Boolean),
-  valueLink: t.maybe(t.struct({
-    value: t.maybe(t.Boolean),
-    requestChange: t.Function
-  })),
   size: t.maybe(t.union([t.String, t.Number])),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
 
-export type ToggleProps = {
+export type ToggleDefaultProps = {
   /** the current value (`true` if checked) */
-  value?: boolean,
+  value: boolean
+};
+
+export type ToggleRequiredProps = {
   /** callback called when user clicks on the Toggle */
   onChange?: (value: boolean) => void,
   /** disable the onClick callback and renders with reduced opacity */
   disabled?: boolean,
-  /** to be used together with `linkState` */
-  valueLink?: {
-    value?: boolean,
-    requestChange: (value: boolean) => void
-  },
   /** The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2` */
   size?: number |string,
   className?: string,
   style?: React.CSSProperties
 };
+
+export type ToggleProps = ToggleRequiredProps & Partial<ToggleDefaultProps>;
+type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 
 /**
  * A nice animated Toggle rendered using only CSS
@@ -42,16 +38,20 @@ export type ToggleProps = {
 @props(Props)
 export default class Toggle extends React.PureComponent<ToggleProps> {
 
+  static defaultProps: ToggleDefaultProps = {
+    value: false
+  };
+
   componentDidMount() {
-    this.updateCheckbox(this.props);
+    this.updateCheckbox(this.props as ToggleDefaultedProps);
   }
 
   componentWillReceiveProps(nextProps: ToggleProps) {
-    this.updateCheckbox(nextProps);
+    this.updateCheckbox(nextProps as ToggleDefaultedProps);
   }
 
-  updateCheckbox = (props: ToggleProps) => {
-    const { value } = getValueLink(this, props);
+  updateCheckbox = (props: ToggleDefaultedProps) => {
+    const { value } = props;
     const checkboxNode = ReactDOM.findDOMNode<HTMLInputElement>(this.refs.checkbox);
     checkboxNode.checked = value;
   };
@@ -73,17 +73,17 @@ export default class Toggle extends React.PureComponent<ToggleProps> {
   }
 
   onButtonClick = () => {
-    const { value, requestChange } = getValueLink(this, this.props);
-    requestChange(!value);
+    const { value, onChange } = this.props;
+    onChange && onChange(!value);
   };
 
   render() {
     const {
-      props: { className: _className, size, style, disabled },
       onButtonClick
     } = this;
 
-    const { value } = getValueLink(this, this.props);
+    const { value, className: _className, size, style, disabled } = this.props as ToggleDefaultedProps;
+
     const buttonProps = {
       onClick: disabled ? undefined : onButtonClick,
       style: size ?
@@ -94,7 +94,7 @@ export default class Toggle extends React.PureComponent<ToggleProps> {
 
     return (
       <div {...{ className, style }}>
-        <input className='toggle-input' type='checkbox' ref='checkbox' value={value} readOnly />
+        <input className='toggle-input' type='checkbox' ref='checkbox' value={value.toString()} readOnly />
         <label className='toggle-button' {...buttonProps} />
       </div>
     );
