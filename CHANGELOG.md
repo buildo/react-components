@@ -3,6 +3,11 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
+#### Breaking:
+
+- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
+- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
+
 #### New features:
 
 - [Typo] ResizeSensor [#1094](https://github.com/buildo/react-components/issues/1094)
@@ -22,10 +27,6 @@
 - [Typo] Button [#1053](https://github.com/buildo/react-components/issues/1053)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
-
-#### Breaking:
-
-- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
