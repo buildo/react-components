@@ -1,23 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { props, t, ReactNode } from '../utils';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { props, t, ReactElement } from '../utils';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
+export type OverflowProps = {
+  /** react node initially rendered */
+  content: JSX.Element,
+  /** react node rendered if `content` overflows its parent */
+  contentIfOverflowing: JSX.Element,
+  id?: string,
+  className?: string,
+  style?: React.CSSProperties
+};
+
+export type State = {
+  isOverflowing: boolean
+};
+
 export const Props = {
-  content: ReactNode,
-  contentIfOverflowing: ReactNode,
+  content: ReactElement,
+  contentIfOverflowing: ReactElement,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
 
-/**
- * Util component to render a different react node if the original one overflows its parent.
- * @param content - react node initially rendered
- * @param contentIfOverflowing - react node rendered if `content` overflows its parent
- */
+/** Util component to render a different react node if the original one overflows its parent. */
 @props(Props)
-export default class Overflow extends React.Component {
+export default class Overflow extends React.Component<OverflowProps, State> {
+
+  private ref: HTMLDivElement
 
   state = { isOverflowing: false }
 
@@ -29,11 +41,11 @@ export default class Overflow extends React.Component {
     this.verifyOverflow();
   }
 
-  getElementWidth(element) {
+  getElementWidth(element: Element): number {
     if (element && typeof window !== 'undefined') {
-      return parseFloat(window.getComputedStyle(element).width);
+      return parseFloat(window.getComputedStyle(element).width || '');
     }
-    return null;
+    return 0;
   }
 
   verifyOverflow() {
@@ -60,7 +72,7 @@ export default class Overflow extends React.Component {
 
     return (
       <ResizeSensor debounce={10} onResize={this.onResize}>
-        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref; }}>
+        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref!; }}>
           {isOverflowing ? contentIfOverflowing : content}
         </div>
       </ResizeSensor>
