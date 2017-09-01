@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import cx from 'classnames';
-import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
+import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t, ReactChildren } from '../utils';
 import { warn } from '../utils/log';
-import TransitionWrapper from '../TransitionWrapper/TransitionWrapper';
+import TransitionWrapper, { TransitionWrapperProps } from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
   children: ReactChildren,
@@ -19,20 +19,41 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
+export type ToasterDefaultProps = {
+  /** custom settings for `ReactTransitionGroup` */
+  transitionGroup: ReactTransitionGroup.TransitionGroupProps,
+  /** toaster position on screen */
+  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+};
+
+export type ToasterRequiredProps = {
+  /** list of toasts (any node with a unique key) */
+  children: React.ReactNode[],
+  /** id of the element you want to render the `Toaster` in */
+  attachTo?: string,
+  /** object with style for each transition event (used by `TransitionWrapper`) */
+  transitionStyles?: TransitionWrapperProps.TransitionStyles,
+  /** duration of enter transition in milliseconds (used by `TransitionWrapper`) */
+  transitionEnterTimeout: number,
+  /** duration of leave transition in milliseconds (used by `TransitionWrapper`) */
+  transitionLeaveTimeout: number,
+  id?: string,
+  className?: string,
+  style?: React.CSSProperties
+};
+
+export type ToasterProps = ToasterRequiredProps & Partial<ToasterDefaultProps>;
+type ToasterDefaultedProps = ToasterRequiredProps & ToasterDefaultProps;
+
 /**
  * Renders and animates toasts (children) inline or in a portal
- * @param children - list of toasts (any node with a unique key)
- * @param attachTo - id of the element you want to render the `Toaster` in
- * @param transitionGroup - custom settings for `ReactTransitionGroup`
- * @param transitionStyles - object with style for each transition event (used by `TransitionWrapper`)
- * @param transitionEnterTimeout - duration of enter transition in milliseconds (used by `TransitionWrapper`)
- * @param transitionLeaveTimeout - duration of leave transition in milliseconds (used by `TransitionWrapper`)
- * @param position - top-left | top-right | bottom-left | bottom-right
  */
 @props(Props)
-export default class Toaster extends React.Component {
+export default class Toaster extends React.Component<ToasterProps> {
 
-  static defaultProps = {
+  private toaster: HTMLElement | null;
+
+  static defaultProps: ToasterDefaultProps = {
     transitionGroup: {},
     position: 'top-right'
   };
@@ -43,7 +64,7 @@ export default class Toaster extends React.Component {
   }
 
   componentDidMount() {
-    const node = this.props.attachTo ? this.toaster : ReactDOM.findDOMNode(this).parentNode;
+    const node = this.props.attachTo ? this.toaster! : ReactDOM.findDOMNode(this).parentElement!;
     const { position } = window.getComputedStyle(node);
     if (position !== 'relative' && position !== 'absolute') {
       warn(['Toaster\'s parent node should have "position: relative/absolute"', node]);
@@ -54,8 +75,8 @@ export default class Toaster extends React.Component {
     this.removeToaster();
   }
 
-  getTranslationStyle(i) {
-    const { position } = this.props;
+  getTranslationStyle(i: number): React.CSSProperties {
+    const { position } = this.props as ToasterDefaultedProps;
     const isTop = position.indexOf('top') !== -1;
     const isRight = position.indexOf('right') !== -1;
     const translationBase = isTop ? 100 : -100;
@@ -71,12 +92,13 @@ export default class Toaster extends React.Component {
 
   getToasts = () => {
     const { children, transitionStyles, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
-    return React.Children.map(children, (el, i) => {
+    return React.Children.map(children, (_el, i) => {
+      const el = _el as React.ReactElement<any>;
       return (
         <TransitionWrapper
           {...{ transitionStyles, transitionEnterTimeout, transitionLeaveTimeout }}
           style={this.getTranslationStyle(i)}
-          key={el.key}
+          key={el.key || undefined}
         >
           {React.cloneElement(el, { uniqueKey: el.key })}
         </TransitionWrapper>
@@ -97,10 +119,10 @@ export default class Toaster extends React.Component {
   };
 
   getToaster = () => {
-    const { style: styleProp, id, className, position } = this.props;
+    const { style: styleProp, id, className, position } = this.props as ToasterDefaultedProps;
     const isTop = position.indexOf('top') !== -1;
     const isRight = position.indexOf('right') !== -1;
-    const style = {
+    const style: React.CSSProperties = {
       position: 'absolute',
       right: isRight ? 0 : undefined,
       left: isRight ? undefined : 0,
@@ -137,7 +159,7 @@ export default class Toaster extends React.Component {
     this.renderToaster();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: ToasterProps) {
     if (this.props.attachTo !== nextProps.attachTo) {
       warn('You can\'t change "attachTo" prop after the first render!');
     }
