@@ -108,9 +108,7 @@ describe('StatefulButton', () => {
       const buttonInner = component.find('.button-inner');
       buttonInner.simulate('click');
       expect(buttonInner.hasClass('is-processing')).toBe(true);
-      const newProps = clone(component.props);
-      newProps.baseState = 'not-allowed';
-      component.setProps(newProps);
+      component.setProps({ baseState: 'not-allowed' });
       return timeoutPromise(7).then(() =>
         expect(buttonInner.hasClass('is-not-allowed')).toBe(true)
       );
