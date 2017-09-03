@@ -33,12 +33,12 @@ exports[`Meter renders correctly 1`] = `
       className="react-flex-view filling"
       style={
         Object {
-          "MozBoxFlex": "0 0 50%",
-          "WebkitBoxFlex": "0 0 50%",
-          "WebkitFlex": "0 0 50%",
+          "MozBoxFlex": "0 0 25%",
+          "WebkitBoxFlex": "0 0 25%",
+          "WebkitFlex": "0 0 25%",
           "backgroundColor": "green",
-          "flex": "0 0 50%",
-          "msFlex": "0 0 50%",
+          "flex": "0 0 25%",
+          "msFlex": "0 0 25%",
         }
       }
     />
