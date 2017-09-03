@@ -1,16 +1,48 @@
-import React from 'react';
-import cx from 'classnames';
-import { props, t, skinnable, ReactChildren } from '../utils';
-import omit from 'lodash/omit';
-import ModalPortal, { Props as ModalPortalProps } from './ModalPortal';
+import * as React from 'react';
+import * as cx from 'classnames';
+import { props, t, ReactChildren } from '../utils';
+import omit = require('lodash/omit');
+import ModalPortal, { Props as PortalProps, ModalPortalProps } from './ModalPortal';
 import FlexView from 'react-flexview';
 import BackgroundDimmer from '../BackgroundDimmer';
 
-const ModalProps = {
+export type ModalDefaultProps = {
+  /** whether the modal should be dismissed when clicking outside it */
+  dismissOnClickOutside: boolean,
+  /** called when modal is dismissed */
+  onDismiss: (e: React.SyntheticEvent<HTMLDivElement>) => void,
+  /** specify 'color' and 'alpha' for the overlay layer */
+  overlay: {
+    color: string,
+    alpha?: number
+  } | {
+    color?: string,
+    alpha: number
+  }
+}
+
+export type ModalRequiredProps = {
+  /** modal content */
+  children: JSX.Element,
+  /** modal title */
+  title?: string,
+  /** modal footer */
+  footer?: JSX.Element,
+  /** close icon */
+  iconClose?: JSX.Element,
+  className?: string,
+  style?: React.CSSProperties,
+  id?: string
+};
+
+export type ModalProps = ModalPortalProps & ModalRequiredProps & Partial<ModalDefaultProps>;
+export type ModalDefaultedProps = ModalPortalProps & ModalRequiredProps & ModalDefaultProps;
+
+const LocalProps = {
   children: ReactChildren,
   title: t.maybe(t.String),
-  footer: t.maybe(t.ReactChildren),
-  iconClose: t.maybe(t.ReactChildren),
+  footer: t.maybe(ReactChildren),
+  iconClose: t.maybe(ReactChildren),
   overlay: t.interface({
     color: t.maybe(t.String),
     alpha: t.maybe(t.Number)
@@ -23,28 +55,14 @@ const ModalProps = {
 };
 
 export const Props = {
-  ...ModalPortalProps,
-  ...ModalProps
+  ...PortalProps,
+  ...LocalProps
 };
 
-/** Render a modal window over a dimmed layer
- * @param children - modal content
- * @param title - modal title
- * @param footer - modal footer
- * @param iconClose - close icon
- * @param overlay - specify 'color' and 'alpha' for the overlay layer
- * @param dismissOnClickOutside - whether the modal should be dismissed when clicking outside it
- * @param onDismiss - called when modal is dismissed
- * @param transitionEnterTimeout - transition enter timeout
- * @param transitionLeaveTimeout - transition leave timeout
- * @param childContextTypes: context types to pass to the modal React tree
- * @param getChildContext: should return context values to pass to the modal React tree
- */
-@skinnable()
 @props(Props)
-export default class Modal extends React.Component {
+export default class Modal extends React.Component<ModalProps> {
 
-  static defaultProps = {
+  static defaultProps: ModalDefaultProps = {
     onDismiss: () => {},
     dismissOnClickOutside: true,
     overlay: {
@@ -53,28 +71,22 @@ export default class Modal extends React.Component {
     }
   };
 
-  getLocals() {
-    const { className, title, iconClose, footer, ...props } = this.props;
-    return {
-      ...props,
-      shouldRenderHeader: !!title || !!iconClose,
-      title, iconClose,
-      shouldRenderFooter: !!footer,
-      footer,
-      modalPortalProps: {
-        ...omit(props, Object.keys(ModalProps)),
-        className: cx('modal', className)
-      }
-    };
-  }
+  render() {
+    const {
+      className, style, id,
+      title, iconClose, footer, overlay,
+      dismissOnClickOutside, onDismiss,
+      children,
+      ...props
+    } = this.props as ModalDefaultedProps;
+    const shouldRenderHeader = !!title || !!iconClose;
+    const shouldRenderFooter = !!footer;
 
-  template({
-    shouldRenderHeader, title, iconClose,
-    children,
-    shouldRenderFooter, footer,
-    dismissOnClickOutside, onDismiss, overlay,
-    style, id, modalPortalProps
-  }) {
+    const modalPortalProps = {
+      ...omit<ModalPortalProps, Partial<ModalProps>>(props, Object.keys(LocalProps)),
+      className: cx('modal', className)
+    };
+
     return (
       <ModalPortal {...modalPortalProps}>
         <BackgroundDimmer

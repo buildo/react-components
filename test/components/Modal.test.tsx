@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
 import { modalWithContext } from '../../src/Modal';
 
@@ -12,13 +12,24 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
+interface ContextType {
+  foo: string
+};
+
+// `.isRequired` makes the test fail if context is not provided
+const FooType = React.PropTypes.string.isRequired;
+class ComponentAccessingContext extends React.Component {
+  static contextTypes = { foo: FooType };
+
+  render() {
+    return <div>{this.context.foo}</div>;
+  }
+}
+
 describe('Modal', () => {
 
   it('should correctly pass context down if used via modalWithContext', () => {
-    // `.isRequired` makes the test fail if context is not provided
-    const FooType = React.PropTypes.string.isRequired;
-    const ComponentAccessingContext = (_, ctx) => <div>{ctx.foo}</div>;
-    ComponentAccessingContext.contextTypes = { foo: FooType };
+
     const ModalPassingContext = modalWithContext({ foo: FooType });
     mount(
       <ModalPassingContext
