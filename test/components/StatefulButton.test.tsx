@@ -5,13 +5,31 @@ import StatefulButton, { StatefulButtonProps } from '../../src/Button/StatefulBu
 import clone = require('lodash/clone');
 
 let consoleError: jest.SpyInstance<{}>;
+const consoleWarn = console.warn;
+
+const loadingSpinnerWarning =
+  `LoadingSpinner's parent node style should have "position: relative" or "position: absolute"`;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');
+  console.warn = jest.fn((...message) => {
+    /* LoadingSpinner will emit warnings in the tests because we're not loading the Button's css,
+     * causing its parent's position to never be set to 'relative'.
+     * This will be ok in production (since the css will be loaded), so we patch console.warn in
+     * order not to pollute the test output with useless warnings.
+     */
+    if (message[0] !== loadingSpinnerWarning) {
+      consoleWarn(message);
+    }
+  });
 });
 
 afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
+});
+
+afterAll(() => {
+  console.warn = consoleWarn;
 });
 
 function timeoutPromise(millis) {
