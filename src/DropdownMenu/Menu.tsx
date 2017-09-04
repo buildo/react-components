@@ -94,7 +94,7 @@ export default class Menu extends React.PureComponent<MenuProps, MenuState> {
         <FlexView grow shrink className='menu-item-title'>
           {option.title}
         </FlexView>
-        <FlexView shrink={false} className='menu-item-metadata' hAlignContent='right'>
+        <FlexView grow shrink={false} className='menu-item-metadata' hAlignContent='right'>
           {option.metadata}
         </FlexView>
       </FlexView>
