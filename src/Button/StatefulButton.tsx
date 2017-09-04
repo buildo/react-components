@@ -56,9 +56,9 @@ export interface StatefulButtonRequiredProps extends ButtonProps {
 
 export interface StatefulButtonDefaultProps {
   /** keep success state  */
-  stableSuccess?: boolean
+  stableSuccess: boolean
   /** time in millisecons to wait before state reset  */
-  timerMillis?: number
+  timerMillis: number
 }
 
 export type StatefulButtonProps = StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
