@@ -31,10 +31,9 @@ const exampleProps = {
   style,
   value: 25,
   min: 0,
-  max: 50,
+  max: 100,
   ranges,
   baseLabelColor: '#000000',
-  baseFillingColor: '#ccc',
   labelFormatter: () => 'test'
 };
 
@@ -71,7 +70,7 @@ describe('Meter', () => {
   });
 
   it('computes basisSize', () => {
-    expect(meter.find('.filling').prop('basis')).toBe('50%');
+    expect(meter.find('.filling').prop('basis')).toBe('25%');
   });
 
   it('computes basisSize with custom min and max', () => {

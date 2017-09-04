@@ -1,18 +1,36 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
-import { Menu } from '../../src/DropdownMenu';
+import { Menu, MenuProps } from '../../src/DropdownMenu';
 
 let consoleError: jest.SpyInstance<{}>;
+const consoleWarn = console.warn;
+
+const flexViewGrowShrinkWarning =
+  `passing both "grow" and "shrink={false}" is a no-op!`;
 
 beforeAll(() => {
   consoleError = jest.spyOn(console, 'error');
+  console.warn = jest.fn((...message) => {
+    /* FlexView will emit warnings in the tests because we're passing both shrink={false} and grow
+     * in the menu item template.
+     * Removing grow will cause issues (e.g. with TextOverflow) so we have to keep it for now.
+     * We patch console.warn in order not to pollute the test output.
+     */
+    if (message[0] !== flexViewGrowShrinkWarning) {
+      consoleWarn(message);
+    }
+  });
 });
 
 afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps = {
+afterAll(() => {
+  console.warn = consoleWarn;
+});
+
+const exampleProps: MenuProps = {
   options: [
     { title: 'Preferences', type: 'item' },
     { title: 'Preferences', type: 'item' }
