@@ -53,7 +53,7 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
       background,
       content
     } = this.props;
-    const style = {
+    const style: React.CSSProperties = {
       ..._style,
       position: fixed ? 'fixed' : undefined,
       top: fixed ? 0 : undefined,
@@ -61,7 +61,7 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
       width: '100%',
       height,
       background
-    } as React.CSSProperties;
+    };
     const className = cx('nav-bar', _className);
     const { left, center, right, maxWidth } = content;
 
