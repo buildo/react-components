@@ -3,6 +3,11 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
+#### Fixes (bugs & defects):
+
+- Tooltip style is broken [#1121](https://github.com/buildo/react-components/issues/1121)
+- Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
+
 #### Breaking:
 
 - [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
@@ -31,10 +36,6 @@
 - [Typo] Button [#1053](https://github.com/buildo/react-components/issues/1053)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
-
-#### Fixes (bugs & defects):
-
-- Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
