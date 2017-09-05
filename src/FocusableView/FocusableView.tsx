@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx = require('classnames');
 import debounce = require('lodash/debounce');
 import { props, t, ReactChildren } from '../utils';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as cx from 'classnames';
+import cx = require('classnames');
 import { props, t, ReactChildren } from '../utils';
 import FlexView, { IProps as FlexViewProps } from 'react-flexview';
 import omit = require('lodash/omit');

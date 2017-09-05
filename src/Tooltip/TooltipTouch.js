@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import Tooltip, { Props } from './Tooltip';
 import View from 'react-flexview';
 import { props, skinnable } from '../utils';

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import FlexView from 'react-flexview';
 import { skinnable, props, t } from '../../../utils';
 

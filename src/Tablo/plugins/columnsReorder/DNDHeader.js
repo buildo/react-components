@@ -1,5 +1,5 @@
 import React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource } from 'react-dnd';
 import { skinnable, props, t, ReactChildren } from '../../../utils';

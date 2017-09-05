@@ -1,5 +1,5 @@
 import React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { props, t, ReactElement } from '../utils';
 import BackgroundDimmer from '../BackgroundDimmer/BackgroundDimmer';
 

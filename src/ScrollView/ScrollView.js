@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { skinnable, props, t, ReactChildren } from '../utils';
 import GeminiScrollbar from 'gemini-scrollbar';
 import ResizeSensor from '../ResizeSensor/ResizeSensor';

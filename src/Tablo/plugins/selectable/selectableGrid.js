@@ -1,5 +1,5 @@
 import React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { props, t } from '../../../utils';
 import includes from 'lodash/includes';
 

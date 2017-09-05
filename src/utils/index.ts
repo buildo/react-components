@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx = require('classnames');
 import { props, ReactElement, ReactChild, ReactChildren, ReactNode } from 'tcomb-react';
 import * as t from 'tcomb';
 

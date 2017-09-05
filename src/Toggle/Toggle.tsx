@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { props, t } from '../utils';
-import * as cx from 'classnames';
+import cx = require('classnames');
 import { warn } from '../utils/log';
 
 export const Props = {
