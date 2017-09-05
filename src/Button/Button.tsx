@@ -180,10 +180,10 @@ export default class Button extends React.PureComponent<ButtonProps> {
     const isIconButton = () => _icon && !_label;
 
     const className = cx(
-      stateClassUtil(getButtonType()),
+      stateClassUtil([getButtonType()]),
       { 'icon-button': isIconButton() },
       { circular },
-      stateClassUtil(size),
+      stateClassUtil([size]),
       _className
     );
 
@@ -194,7 +194,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
     return (
       <div className='button' style={wrapperStyle}>
         <FlexView
-          className={cx('button-inner', className, stateClassUtil(buttonState))}
+          className={cx('button-inner', className, stateClassUtil([buttonState]))}
           vAlignContent='center'
           hAlignContent='center'
           onClick={buttonState === 'ready' ? onClick : () => {}}

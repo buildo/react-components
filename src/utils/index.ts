@@ -7,7 +7,7 @@ import skinnable from 'react-skinnable';
 export { skinnable };
 export { contains } from 'react-skinnable';
 export { props, t, ReactElement, ReactChild, ReactChildren, ReactNode };
-export const stateClassUtil = (...classes: string[]): string => cx(classes.map(cl => `is-${cl}`));
+export const stateClassUtil = (classes: string[]): string => cx(classes.map(cl => `is-${cl}`));
 
 type Props = {
   context?: { [k: string]: any },
