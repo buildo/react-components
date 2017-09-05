@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import cx from '../../utils/classnames';
+import * as cx from 'classnames';
 import ReactDOMServer from 'react-dom/server';
 import { props, t } from '../../utils';
 import Icon from '../../Icon/Icon';

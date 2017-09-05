@@ -1,7 +1,7 @@
 import * as React from 'react';
 import range = require('lodash/range');
 import { props, t } from '../utils';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
 

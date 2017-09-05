@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../../../utils/classnames';
+import * as cx from 'classnames';
 import { props, t } from '../../../utils';
 
 import Column, { defaultColumns, updateColumns } from '../../Column';

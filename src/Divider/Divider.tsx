@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { props, t } from '../utils';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 
 export namespace DividerProps {
   export type Orientation = 'horizontal' | 'vertical'

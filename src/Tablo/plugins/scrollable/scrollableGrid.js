@@ -1,7 +1,7 @@
 import React from 'react';
 import omit from 'lodash/omit';
 import { props, t } from '../../../utils';
-import cx from '../../../utils/classnames';
+import * as cx from 'classnames';
 
 const { maybe } = t;
 

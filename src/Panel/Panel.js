@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import { props, t, ReactChildren, skinnable } from '../utils';
 import PanelHeader, { HeaderSize } from './PanelHeader';
 import capitalize from 'lodash/capitalize';
