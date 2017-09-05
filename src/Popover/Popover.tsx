@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import debounce = require('lodash/debounce');
 import uniq = require('lodash/uniq');
 import { props, t, ReactChildren, getContextWrapper } from '../utils';

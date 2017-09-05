@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
 import TextOverflow, { TextOverflowProps } from '../TextOverflow/TextOverflow';

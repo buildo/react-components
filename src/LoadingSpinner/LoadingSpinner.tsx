@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
 

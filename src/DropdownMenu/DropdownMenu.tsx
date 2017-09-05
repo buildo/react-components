@@ -3,7 +3,7 @@ import { props, t, ReactChildren } from '../utils';
 import Menu, { optionType } from './Menu';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import { MenuProps } from './Menu';
 
 export namespace DropdownMenuProps {

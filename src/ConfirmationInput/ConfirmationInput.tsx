@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import { props, t } from '../utils';
 import omit = require('lodash/omit');
 import * as InputChildren from 'react-input-children';

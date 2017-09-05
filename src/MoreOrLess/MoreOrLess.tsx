@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cx = require('classnames');
+import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import Icon from '../Icon/Icon';
 import FlexView from 'react-flexview';
