@@ -9,9 +9,9 @@ export type NavBarProps = {
   /** Right content. It doesn't shrink nor grow */
   /** Max Width. For css `max-width` */
   content: {
-    left?: any, // TODO: ReactChildren
-    center?: any, // TODO: t.ReactChildren
-    right?: any, // TODO: t.ReactChildren,
+    left?: React.ReactNode,
+    center?: React.ReactNode,
+    right?: React.ReactNode,
     maxWidth?: string | number
   },
   /** to set `position: fixed` */
