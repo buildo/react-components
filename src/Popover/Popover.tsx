@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import debounce = require('lodash/debounce');
 import uniq = require('lodash/uniq');
 import { props, t, ReactChildren, getContextWrapper } from '../utils';
@@ -75,7 +75,7 @@ export namespace PopoverProps {
   };
 
 };
-  
+
 export type PopoverProps = {
   /** the trigger node. It's always visible */
   children: React.ReactNode,

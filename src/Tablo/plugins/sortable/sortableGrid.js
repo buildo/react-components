@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../../../utils/classnames';
+import cx from 'classnames';
 import omitBy from 'lodash/omitBy';
 import { defaultColumns, updateColumns } from '../../Column';
 import cSortable from './columnSortable';

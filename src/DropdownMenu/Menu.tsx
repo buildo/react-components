@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import partial = require('lodash/partial');
 import FlexView from 'react-flexview';

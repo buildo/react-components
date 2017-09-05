@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { props, t, ReactElement } from '../utils';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import View from 'react-flexview';
 
 export namespace AsyncStatusIndicatorProps {

@@ -40,6 +40,7 @@
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
+    "@types/classnames": "2.2.3",
     "@types/linkify-it": "2.0.1",
     "@types/lodash": "4.14.74",
     "@types/react": "15.6.1",
@@ -47,6 +48,7 @@
     "@types/react-dom": "15.5.4",
     "@types/react-select": "1.0.51",
     "bowser": "1.7.3",
+    "classnames": "2.2.5",
     "css-element-queries": "0.3.2",
     "fixed-data-table-2": "0.7.17",
     "gemini-scrollbar": "1.5.2",

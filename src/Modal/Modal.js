@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 import { props, t, skinnable, ReactChildren } from '../utils';
 import omit from 'lodash/omit';
 import ModalPortal, { Props as ModalPortalProps } from './ModalPortal';

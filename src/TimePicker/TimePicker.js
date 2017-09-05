@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, t, skinnable } from '../utils';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 import Dropdown from '../Dropdown/Dropdown';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { props, t } from '../../../utils';
-import cx from '../../../utils/classnames';
+import cx from 'classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../ResizeSensor/ResizeSensor';
 

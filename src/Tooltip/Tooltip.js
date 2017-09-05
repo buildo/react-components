@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 import { props, skinnable, t, ReactChildren, stateClassUtil } from '../utils';
 import FormattedText from '../FormattedText/FormattedText';
 import Popover from '../Popover/Popover';

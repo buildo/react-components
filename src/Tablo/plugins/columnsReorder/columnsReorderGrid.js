@@ -1,7 +1,7 @@
 import React from 'react';
 import { props, t } from '../../../utils';
 
-import cx from '../../../utils/classnames';
+import cx from 'classnames';
 import find from 'lodash/find';
 import sortBy from 'lodash/sortBy';
 import findIndex from 'lodash/findIndex';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { props, t } from '../utils';
 import every = require('lodash/every');
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import View from 'react-flexview';
 
 export type DateFieldProps = {

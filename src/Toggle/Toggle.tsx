@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { props, t } from '../utils';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import { warn } from '../utils/log';
 
 export const Props = {

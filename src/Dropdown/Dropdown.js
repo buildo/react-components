@@ -8,7 +8,7 @@ import findIndex from 'lodash/findIndex';
 import last from 'lodash/last';
 import dropRight from 'lodash/dropRight';
 import FlexView from 'react-flexview';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 import { warn } from '../utils/log';
 
 const isEmptyArray = x => t.Array.is(x) && x.length === 0;

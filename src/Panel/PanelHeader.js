@@ -2,7 +2,7 @@ import React from 'react';
 import { props, t, skinnable, stateClassUtil } from '../utils';
 import FlexView from 'react-flexview';
 import Icon from '../Icon/Icon';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 
 const icons = {
   up: ['angle-up', 'angle-down'],
@@ -46,7 +46,7 @@ export default class PanelHeader extends React.PureComponent {
     const renderContent = content && renderInnerHeader;
     const renderMenu = menu && renderInnerHeader;
     const height = size === HeaderSize('tiny') ? 40 : size === HeaderSize('medium') ? 56 : 48;
-    const className = cx('panel-header', stateClassUtil(size));
+    const className = cx('panel-header', stateClassUtil([size]));
     return {
       collapse,
       className,

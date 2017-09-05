@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import FlexView from 'react-flexview';
 import find = require('lodash/find');
 import every = require('lodash/every');

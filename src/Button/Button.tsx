@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
 import TextOverflow, { TextOverflowProps } from '../TextOverflow/TextOverflow';
@@ -177,13 +177,13 @@ export default class Button extends React.PureComponent<ButtonProps> {
       width: fluid ? '100%' : null
     };
 
-    const isIconButton = () => _icon && !_label;
+    const isIconButton = (): boolean => !!_icon && !_label;
 
     const className = cx(
-      stateClassUtil(getButtonType()),
+      stateClassUtil([getButtonType()]),
       { 'icon-button': isIconButton() },
       { circular },
-      stateClassUtil(size),
+      stateClassUtil([size]),
       _className
     );
 
@@ -194,7 +194,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
     return (
       <div className='button' style={wrapperStyle}>
         <FlexView
-          className={cx('button-inner', className, stateClassUtil(buttonState))}
+          className={cx('button-inner', className, stateClassUtil([buttonState]))}
           vAlignContent='center'
           hAlignContent='center'
           onClick={buttonState === 'ready' ? onClick : () => {}}

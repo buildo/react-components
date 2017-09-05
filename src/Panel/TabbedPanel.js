@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from '../utils/classnames';
+import cx from 'classnames';
 import { props, t, skinnable } from '../utils';
 import Panel, { Props as panelProps } from './Panel';
 import FlexView from 'react-flexview';

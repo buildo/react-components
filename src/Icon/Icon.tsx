@@ -1,7 +1,7 @@
 import * as React from 'react';
 import range = require('lodash/range');
 import { props, t } from '../utils';
-import cx from '../utils/classnames';
+import * as cx from 'classnames';
 
 const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'PositiveInteger');
 
@@ -49,7 +49,7 @@ export default class Icon extends React.PureComponent<IconProps> {
     const { paths, onClick, className: _className, icon, color, style: _style } = this.props as IconDefaultedProps;
     const className = cx('icon', `icon-${icon}`, _className);
     const style =  { ..._style, color: color || _style.color };
-    
+
     return icon ? (
       <i className={className} style={style} onClick={onClick}>
         {paths > 1 && range(paths).map(k => <span className={`path${k + 1}`} style={{ fontSize: 'inherit' }} key={k} /> )}

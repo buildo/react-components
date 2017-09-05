@@ -18,7 +18,7 @@ class Example extends React.Component {
 
     return (
       <FlexView vAlignContent='center'>
-        <Tooltip popover={{ ...popover, event: 'hover' }}>
+        <Tooltip popover={popover}>
           <span>Hover me!</span>
         </Tooltip>
         <Divider size='large' orientation='horizontal' />
