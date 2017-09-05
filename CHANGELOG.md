@@ -16,6 +16,7 @@
 
 #### New features:
 
+- [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
 - [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
 - [Typo] Overflow [#1100](https://github.com/buildo/react-components/issues/1100)
 - [Typo] TextOverflow [#1098](https://github.com/buildo/react-components/issues/1098)
