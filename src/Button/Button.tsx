@@ -177,7 +177,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
       width: fluid ? '100%' : null
     };
 
-    const isIconButton = () => _icon && !_label;
+    const isIconButton = (): boolean => !!_icon && !_label;
 
     const className = cx(
       stateClassUtil([getButtonType()]),
