@@ -16,6 +16,7 @@
 
 #### New features:
 
+- [Typo] Toaster [#1108](https://github.com/buildo/react-components/issues/1108)
 - [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
 - [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
 - [Typo] Overflow [#1100](https://github.com/buildo/react-components/issues/1100)
