@@ -75,6 +75,7 @@
     "@types/enzyme": "2.8.6",
     "@types/jest": "20.0.7",
     "@types/node": "8.0.25",
+    "@types/react-transition-group": "2.0.4",
     "babel-jest": "20.0.3",
     "buildo-normalize-css": "3.0.2",
     "cloc": "2.2.0",
