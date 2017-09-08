@@ -12,6 +12,7 @@
 
 #### New features:
 
+- [Typo] Scroll + ScrollView [#1125](https://github.com/buildo/react-components/issues/1125)
 - [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
 - [Typo] Toaster [#1108](https://github.com/buildo/react-components/issues/1108)
 - [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
