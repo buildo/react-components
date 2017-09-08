@@ -127,12 +127,12 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
   };
 
-  scrollTo = (_x: number, _y: number, scrollDuration: number) => {
+  scrollTo = (_x?: number | null, _y?: number | null, scrollDuration?: number) => {
     const { scrollTop, scrollLeft } = this.getScrollView();
-    const x = _x === null ? scrollLeft : _x;
-    const y = _y === null ? scrollTop : _y;
+    const x = _x || scrollLeft;
+    const y = _y || scrollTop;
 
-    this._scrollTo(x, y, scrollDuration, Date.now(), scrollLeft, scrollTop);
+    this._scrollTo(x, y, scrollDuration || 0, Date.now(), scrollLeft, scrollTop);
   };
 
   _scrollTo = (x: number, y: number, scrollDuration: number, startTime: number, startX: number, startY: number) => {

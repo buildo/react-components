@@ -67,10 +67,6 @@ export default class ScrollView<CP extends React.HTMLAttributes<any>, ICP extend
     isHorizontalScrollbarVisible: false
   }
 
-  /**
-   * Holds the reference to the GeminiScrollbar instance.
-   * @property scrollbar <public> [Object]
-   */
   private scrollbar: GeminiScrollbar | null = null;
   private verticalThumb: HTMLDivElement | null = null;
   private horizontalThumb: HTMLDivElement | null = null;
