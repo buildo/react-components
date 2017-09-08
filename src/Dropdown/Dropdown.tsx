@@ -8,7 +8,7 @@ import last = require('lodash/last');
 import dropRight = require('lodash/dropRight');
 import omit = require('lodash/omit');
 import FlexView from 'react-flexview';
-import cx from 'classnames';
+import * as cx from 'classnames';
 import { warn } from '../utils/log';
 
 const isEmptyArray = (x: any) => t.Array.is(x) && x.length === 0;
