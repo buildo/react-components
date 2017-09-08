@@ -9,7 +9,7 @@ type ContextProps = {
 
 type ContextWrapperProps = ObjectOmit<ModalProps, keyof ContextProps>;
 
-export const modalWithContext = (contextTypes: object) =>
+export const modalWithContext = (contextTypes: React.ValidationMap<any>) =>
   class ContextWrapper extends React.Component<ContextWrapperProps> {
     static contextTypes = contextTypes;
 
