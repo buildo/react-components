@@ -20,7 +20,6 @@ export type PanelHeaderDefaultProps = {
 
 export type PanelHeaderRequiredProps = {
   collapse?: PanelHeaderProps.Collapse,
-  size?: PanelHeaderProps.HeaderSize,
   content?: React.ReactNode,
   title?: React.ReactNode
   menu?: React.ReactNode
