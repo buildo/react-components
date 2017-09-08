@@ -18,6 +18,7 @@
 - The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
 - [Typo] Meter [#1073](https://github.com/buildo/react-components/issues/1073)
 - [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
+- [Typo] LinkState [#1071](https://github.com/buildo/react-components/issues/1071)
 - [Typo] Image [#1070](https://github.com/buildo/react-components/issues/1070)
 - [Typo] FormattedText [#1069](https://github.com/buildo/react-components/issues/1069)
 - [Typo] FocusableView [#1068](https://github.com/buildo/react-components/issues/1068)
