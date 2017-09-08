@@ -3,6 +3,13 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
+#### Breaking:
+
+- Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
+- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
+- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
+- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
+
 #### New features:
 
 - [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
@@ -13,6 +20,7 @@
 - [Typo] TextOverflow [#1098](https://github.com/buildo/react-components/issues/1098)
 - [Typo] TransitionWrapper [#1097](https://github.com/buildo/react-components/issues/1097)
 - [Typo] ResizeSensor [#1094](https://github.com/buildo/react-components/issues/1094)
+- [Typo] Modal [#1092](https://github.com/buildo/react-components/issues/1092)
 - [Typo] MobileDetector [#1091](https://github.com/buildo/react-components/issues/1091)
 - [Typo] Popover [#1089](https://github.com/buildo/react-components/issues/1089)
 - The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
@@ -35,12 +43,6 @@
 
 - Tooltip style is broken [#1121](https://github.com/buildo/react-components/issues/1121)
 - Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
-
-#### Breaking:
-
-- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
-- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
-- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
