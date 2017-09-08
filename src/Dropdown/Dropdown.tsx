@@ -2,6 +2,7 @@ import * as React from 'react';
 import { props, t, ReactElement } from '../utils';
 import * as Select from 'react-select';
 import sortBy = require('lodash/sortBy');
+import find = require('lodash/find');
 import findIndex = require('lodash/findIndex');
 import last = require('lodash/last');
 import dropRight = require('lodash/dropRight');
@@ -14,6 +15,8 @@ function isEmptyArray(x: any): x is [] {
 }
 
 const defaultOptionGroupRenderer = (title: string) => title;
+
+export type Value = string | number;
 
 export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
 
@@ -113,9 +116,9 @@ export const defaultMenuRenderer: MenuRendererHandler = ({
 
 export interface RequiredProps {
   /** selected value */
-  value?: Select.Option | Select.Options
+  value?: Select.Option | Select.Options | Value
   /** called when value is changed */
-  onChange: (value?: Select.Option | Select.Options | null) => void
+  onChange: (value?: Select.Option | Select.Options | Value | null) => void
   /** the function that can be used to override the default renderer of the selected value */
   valueRenderer?: (option: Select.Option | Select.Options) => JSX.Element | null | false
   /** available options */
@@ -171,6 +174,8 @@ export interface DefaultProps {
   flat: boolean
   /** whether it should blur automatically when the user selects a value */
   autoBlur: boolean
+  /** if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects */
+  simpleValue: boolean,
   /** the function that gets used to render the content of an option group */
   optionGroupRenderer: OptionGroupRendererHandler
   /** the function that can be used to override the default drop-down list of options */
@@ -182,7 +187,7 @@ export interface DefaultProps {
 };
 
 export const Props = {
-  value: t.maybe(t.union([t.Object, t.list(t.Object)])),
+  value: t.maybe(t.union([t.Number, t.String, t.Object, t.list(t.Object)])),
   onChange: t.maybe(t.Function),
   onValueClick: t.maybe(t.Function),
   options: t.list(t.Object),
@@ -194,6 +199,7 @@ export const Props = {
   multi: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   autoBlur: t.maybe(t.Boolean),
+  simpleValue: t.maybe(t.Boolean),
   menuPosition: t.maybe(t.enums.of(['top', 'bottom'])),
   menuRenderer: t.maybe(t.Function),
   groupByKey: t.maybe(t.String),
@@ -232,6 +238,7 @@ export default class Dropdown extends React.Component<Props> {
     multi: false,
     flat: false,
     autoBlur: true,
+    simpleValue: true,
     groupByKey: 'optionGroup',
     optionGroupRenderer: defaultOptionGroupRenderer,
     menuRenderer: defaultMenuRenderer,
@@ -246,6 +253,18 @@ export default class Dropdown extends React.Component<Props> {
     if (this.props.children) {
       warn('You\'re passing children. Not expected behaviour');
     }
+  };
+
+  valueToOption = (value: Props['value'], options: Select.Options) => {
+    if (t.String.is(value) || t.Number.is(value)) {
+      const { multi, delimiter } = this.props as DefaultedProps;
+      if (multi) {
+        const values = String(value).split(delimiter);
+        return values.map(v => find(options, { value: v })!); // TODO: `!`
+      }
+      return find(options, { value })!; // TODO: `!`
+    }
+    return value;
   };
 
   sortOptionsByGroup = (options: Select.Options) => {
@@ -311,6 +330,7 @@ export default class Dropdown extends React.Component<Props> {
       backspaceRemoves: t.Nil.is(backspaceRemoves) ? clearable : backspaceRemoves,
       resetValue: null,
       className: cx('dropdown', className, this.getCustomClassNames()),
+      value: this.valueToOption(this.props.value, options),
       onInputKeyDown,
       onChange: _onChange,
       menuRenderer: this.menuRenderer as Select.MenuRendererHandler

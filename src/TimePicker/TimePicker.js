@@ -7,7 +7,6 @@ import flatten from 'lodash/flatten';
 import compact from 'lodash/compact';
 import uniqBy from 'lodash/uniqBy';
 import sortBy from 'lodash/sortBy';
-import find from 'lodash/find';
 
 export const H24 = '24h';
 export const H12 = '12h';
@@ -199,14 +198,12 @@ export default class TimePicker extends React.Component {
       ...props
     } = this.props;
 
-    const options = makeOptions({ minTime, maxTime, timeFormat, userValue }, this.state.inputValue);
-    const _value = userValue ? formatTime24(userValue) : undefined;
-    const value = find(options, { value: _value }) || undefined;
+    const value = userValue ? formatTime24(userValue) : undefined;
 
     return {
       ...props,
       value,
-      options,
+      options: makeOptions({ minTime, maxTime, timeFormat, userValue }, this.state.inputValue),
       className: cx('time-picker', className),
       onChange: this._onChange,
       updateInputValue: this.updateInputValue
