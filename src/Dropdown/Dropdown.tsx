@@ -1,21 +1,42 @@
-import React from 'react';
-import { props, t } from '../utils';
-import Select from 'react-select';
-import find from 'lodash/find';
-import omit from 'lodash/omit';
-import sortBy from 'lodash/sortBy';
-import findIndex from 'lodash/findIndex';
-import last from 'lodash/last';
-import dropRight from 'lodash/dropRight';
+import * as React from 'react';
+import { props, t, ReactElement } from '../utils';
+import * as Select from 'react-select';
+import sortBy = require('lodash/sortBy');
+import findIndex = require('lodash/findIndex');
+import last = require('lodash/last');
+import dropRight = require('lodash/dropRight');
 import FlexView from 'react-flexview';
-import cx from 'classnames';
+import * as cx from 'classnames';
 import { warn } from '../utils/log';
 
-const isEmptyArray = x => t.Array.is(x) && x.length === 0;
+function isEmptyArray(x: any): x is [] {
+  return t.Array.is(x) && x.length === 0;
+}
 
-const defaultOptionGroupRenderer = title => title;
+const defaultOptionGroupRenderer = (title: string) => title;
 
-export const defaultMenuRenderer = ({
+export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
+
+export type OptionGroupRendererHandler = (optionGroup: string) => JSX.Element | string | null;
+
+export interface SelectMissingMenuRendererProps {
+  // seem supported by react-select but missing in the @types file?
+  instancePrefix?: string
+  onFocus?: () => void
+  onSelect?: () => void
+  optionClassName?: string
+  optionComponent: React.ComponentType<{ [k: string]: any }> // TODO
+  optionRenderer: OptionRendererHandler
+  optionGroupRenderer: OptionGroupRendererHandler
+  valueKey: string
+}
+export interface CustomMenuRendererProps {
+  groupByKey?: string
+}
+export type MenuRendererProps = Select.MenuRendererProps & SelectMissingMenuRendererProps & CustomMenuRendererProps;
+export type MenuRendererHandler = (props: MenuRendererProps) => JSX.Element[] | Select.HandlerRendererResult;
+
+export const defaultMenuRenderer: MenuRendererHandler = ({
   focusedOption,
   instancePrefix,
   onFocus,
@@ -30,20 +51,24 @@ export const defaultMenuRenderer = ({
   valueKey
 }) => {
   const OptionComponent = optionComponent;
-  const groupedOptions = options.reduce((acc, o, i) => {
+  type U = { // not inline otherwise breaks VSCode syntax highlight :/
+    optionGroupTitle: string,
+    optionGroup: Select.Options
+  }[];
+  const groupedOptions = options.reduce<U>((acc, o, i) => {
 
     // options are already sorted by group, so we know when a new group starts
     // just by checking the previous option
-    const shouldCreateNewGroup = i === 0 || o[groupByKey] !== options[i - 1][groupByKey];
+    const shouldCreateNewGroup = i === 0 || groupByKey && o[groupByKey] !== options[i - 1][groupByKey];
 
-    if (shouldCreateNewGroup) {
+    if (groupByKey && shouldCreateNewGroup) {
       const newGroup = {
         optionGroupTitle: o[groupByKey],
         optionGroup: [o]
       };
       return [...acc, newGroup];
     } else {
-      const lastGroup = last(acc);
+      const lastGroup = last(acc)!;
       return [...dropRight(acc), {
         optionGroupTitle: lastGroup.optionGroupTitle,
         optionGroup: [...lastGroup.optionGroup, o]
@@ -86,6 +111,44 @@ export const defaultMenuRenderer = ({
   ));
 };
 
+export interface RequiredProps {
+  value?: Select.Option | Select.Options
+  onChange: (value?: Select.Option | Select.Options | null) => void
+  valueRenderer?: (option: Select.Option | Select.Options) => JSX.Element | null | false
+  options: Select.Options
+  backspaceRemoves?: boolean
+  placeholder?: string | JSX.Element
+  noResultsText?: string
+  allowCreate?: boolean
+  addLabelText?: string
+  optionRenderer?: (option: Select.Option) => JSX.Element | null | false
+  onInputChange?: (inputValue: string) => void
+  onFocus?: React.FocusEventHandler<HTMLDivElement>
+  onBlur?: React.FocusEventHandler<HTMLDivElement>
+  onBlurResetsInput?: boolean
+  onCloseResetsInput?: boolean
+  isLoading?: boolean
+  id?: string
+  className?: string
+  style?: React.CSSProperties
+  onValueClick?: Select.OnValueClickHandler
+};
+
+export interface DefaultProps {
+  multi: boolean
+  delimiter: string
+  size: 'medium' | 'small'
+  disabled: boolean
+  searchable: boolean
+  clearable: boolean
+  flat: boolean
+  autoBlur: boolean
+  optionGroupRenderer: OptionGroupRendererHandler
+  menuRenderer: MenuRendererHandler
+  groupByKey: string
+  menuPosition: 'top' | 'bottom'
+};
+
 export const Props = {
   value: t.maybe(t.union([t.Object, t.list(t.Object)])),
   onChange: t.maybe(t.Function),
@@ -103,7 +166,7 @@ export const Props = {
   menuRenderer: t.maybe(t.Function),
   groupByKey: t.maybe(t.String),
   optionGroupRenderer: t.maybe(t.Function),
-  placeholder: t.maybe(t.union([t.String, t.ReactElement])),
+  placeholder: t.maybe(t.union([t.String, ReactElement])),
   noResultsText: t.maybe(t.String),
   allowCreate: t.maybe(t.Boolean),
   addLabelText: t.maybe(t.String),
@@ -120,6 +183,10 @@ export const Props = {
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
+
+export type Props = RequiredProps & Partial<DefaultProps>
+
+type DefaultedProps = RequiredProps & DefaultProps;
 
 /** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
  * @param value - selected value
@@ -153,9 +220,9 @@ export const Props = {
  * @param isLoading - whether it is loading options asynchronously
  */
 @props(Props, { strict: true })
-export default class Dropdown extends React.Component {
+export default class Dropdown extends React.Component<Props> {
 
-  static defaultProps = {
+  static defaultProps: DefaultProps = {
     delimiter: ',',
     size: 'medium',
     disabled: false,
@@ -180,13 +247,13 @@ export default class Dropdown extends React.Component {
     }
   };
 
-  sortOptionsByGroup = (options) => {
-    const { groupByKey } = this.props;
+  sortOptionsByGroup = (options: Select.Options) => {
+    const { groupByKey } = this.props as DefaultedProps;
     return sortBy(options, option => option[groupByKey] ? findIndex(options, o => option[groupByKey] === o[groupByKey]) : -1);
   }
 
   getCustomClassNames() {
-    const { size, flat, clearable, menuPosition } = this.props;
+    const { size, flat, clearable, menuPosition } = this.props as DefaultedProps;
     return cx({
       'is-medium': size === 'medium',
       'is-small': size === 'small',
@@ -196,12 +263,12 @@ export default class Dropdown extends React.Component {
     });
   }
 
-  _onChange = _value => {
+  _onChange = (_value?: Select.Option | Select.Options | null) => {
     const value = isEmptyArray(_value) ? null : _value;
     return this.props.onChange(value);
   }
 
-  onInputKeyDown = (e) => {
+  onInputKeyDown: Select.OnInputKeyDownHandler = (e) => {
     if (e.keyCode === 38 || e.keyCode === 40) {
       if (isEmptyArray(this.props.options)) {
         e.preventDefault();
@@ -209,22 +276,23 @@ export default class Dropdown extends React.Component {
     }
   }
 
-  focus = () => { this.select.focus(); }
+  select: Select | null
+  focus = () => { this.select && this.select.focus(); }
 
-  optionGroupRenderer = ( title ) => {
+  optionGroupRenderer = (title?: string) => {
     return title ? (
       <FlexView className='Select-option-group'>
-        {this.props.optionGroupRenderer(title)}
+        {(this.props as DefaultedProps).optionGroupRenderer(title)}
       </FlexView>
     ) : null;
   }
 
-  menuRenderer = args => {
-    const { optionGroupRenderer, props: { menuRenderer, groupByKey } } = this;
+  menuRenderer = (args: Select.MenuRendererProps & SelectMissingMenuRendererProps) => {
+    const { menuRenderer, groupByKey } = this.props as DefaultedProps;
     return menuRenderer({
       ...args,
       groupByKey,
-      optionGroupRenderer
+      optionGroupRenderer: this.optionGroupRenderer
     });
   }
 
@@ -244,7 +312,7 @@ export default class Dropdown extends React.Component {
       className: cx('dropdown', className, this.getCustomClassNames()),
       onInputKeyDown,
       onChange: _onChange,
-      menuRenderer: this.menuRenderer
+      menuRenderer: this.menuRenderer as Select.MenuRendererHandler
     };
 
     return <Select {...selectProps} ref={select => { this.select = select; }} />;
