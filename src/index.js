@@ -10,7 +10,6 @@ import Overflow from './Overflow';
 export { Overflow };
 import TextOverflow from './TextOverflow';
 export { TextOverflow };
-export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './LinkState';
 import ScrollView from './ScrollView/ScrollView';
 export { ScrollView };
 export { Toaster, TimerToast } from './Toaster';
