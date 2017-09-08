@@ -1,6 +1,6 @@
 declare module 'gemini-scrollbar' {
 
-  export type GeminiScrollbarOptions = {
+  type GeminiScrollbarOptions = {
     element?: Element,
     autoshow?: boolean,
     createElements?: boolean,
@@ -9,11 +9,13 @@ declare module 'gemini-scrollbar' {
     minThumbSize?: number
   }
 
-  export default class GeminiScrollbar {
+  class GeminiScrollbar {
     constructor(options: GeminiScrollbarOptions);
     create: () => GeminiScrollbar;
     update: () => GeminiScrollbar;
     destroy: () => GeminiScrollbar | null;
     getViewElement(): Element
   }
+
+  export = GeminiScrollbar;
 }

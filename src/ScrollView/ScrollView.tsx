@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
-import GeminiScrollbar from 'gemini-scrollbar';
+import  GeminiScrollbar = require('gemini-scrollbar');
 import ResizeSensor from '../ResizeSensor/ResizeSensor';
 
 export type ScrollViewDefaultProps<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> = {
