@@ -14,7 +14,6 @@ export { linkState, getValueLink, LinkedStateMixin, ValueLinkMixin } from './Lin
 import ScrollView from './ScrollView/ScrollView';
 export { ScrollView };
 export { Toaster, TimerToast } from './Toaster';
-export { ModalManager, BasicModal } from './ModalManager';
 import Modal from './Modal';
 export { Modal };
 export { modalWithContext } from './Modal';
