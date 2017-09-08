@@ -464,21 +464,6 @@
         ]
       },
       {
-        "id": "link-state",
-        "title": "Link state",
-        "desc": "Link state",
-        "repo": "react-components",
-        "url": "https://github.com/buildo/react-components/tree/master/src/LinkState",
-        "examples": [
-          {
-            "url": "LinkState/examples/default.js"
-          },
-          {
-            "url": "LinkState/examples/deep.js"
-          }
-        ]
-      },
-      {
         "id": "browser-detector",
         "title": "BrowserDetector",
         "desc": "BrowserDetector",
