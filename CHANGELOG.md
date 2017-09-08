@@ -3,19 +3,9 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
-#### Fixes (bugs & defects):
-
-- Tooltip style is broken [#1121](https://github.com/buildo/react-components/issues/1121)
-- Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
-
-#### Breaking:
-
-- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
-- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
-- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
-
 #### New features:
 
+- [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
 - [Typo] Toaster [#1108](https://github.com/buildo/react-components/issues/1108)
 - [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
 - [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
@@ -39,6 +29,17 @@
 - [Typo] Button [#1053](https://github.com/buildo/react-components/issues/1053)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
+
+#### Fixes (bugs & defects):
+
+- Tooltip style is broken [#1121](https://github.com/buildo/react-components/issues/1121)
+- Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
+
+#### Breaking:
+
+- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
+- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
+- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
