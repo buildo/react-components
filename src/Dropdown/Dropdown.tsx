@@ -112,40 +112,72 @@ export const defaultMenuRenderer: MenuRendererHandler = ({
 };
 
 export interface RequiredProps {
+  /** selected value */
   value?: Select.Option | Select.Options
+  /** called when value is changed */
   onChange: (value?: Select.Option | Select.Options | null) => void
+  /** the function that can be used to override the default renderer of the selected value */
   valueRenderer?: (option: Select.Option | Select.Options) => JSX.Element | null | false
+  /** available options */
   options: Select.Options
+  /** whether pressing backspace removes the last item when there is no input value */
   backspaceRemoves?: boolean
+  /** placeholder shown when no value is selected */
   placeholder?: string | JSX.Element
+  /** if searchable, message shown in the menu when no results are found */
   noResultsText?: string
+  /** whether it should be possible to create new options */
   allowCreate?: boolean
+  /** if allowCreate is true, message shown to hint the user to press Enter to create a new option */
   addLabelText?: string
+  /** the function that can be used to override the default renderer of options */
   optionRenderer?: (option: Select.Option) => JSX.Element | null | false
+  /** called when the value of the `input` is changed */
   onInputChange?: (inputValue: string) => void
+  /** called when dropdown is focused */
   onFocus?: React.FocusEventHandler<HTMLDivElement>
+  /** called when dropdown is blurred */
   onBlur?: React.FocusEventHandler<HTMLDivElement>
+  /** whether it should clear the input box on blur */
   onBlurResetsInput?: boolean
+  /** wheter it should clear the input box on close */
   onCloseResetsInput?: boolean
+  /** whether it is loading options asynchronously */
   isLoading?: boolean
+  /** id passed to the wrapper element */
   id?: string
+  /** className passed to the wrapper element */
   className?: string
+  /** style passed to the wrapper element */
   style?: React.CSSProperties
+  /** called when user clicks on the selected value */
   onValueClick?: Select.OnValueClickHandler
 };
 
 export interface DefaultProps {
+  /** true if it should be possible to select multiple values */
   multi: boolean
+  /** if multi is true, string used to separate selected values */
   delimiter: string
+  /** medium | small */
   size: 'medium' | 'small'
+  /** true if disabled */
   disabled: boolean
+  /** true if it should be possible to search the desired value by writing into the dropdown */
   searchable: boolean
+  /** true if it should be possible to reset the selected value */
   clearable: boolean
+  /** whether it should have a flat style */
   flat: boolean
+  /** whether it should blur automatically when the user selects a value */
   autoBlur: boolean
+  /** the function that gets used to render the content of an option group */
   optionGroupRenderer: OptionGroupRendererHandler
+  /** the function that can be used to override the default drop-down list of options */
   menuRenderer: MenuRendererHandler
+  /** the field name to group by */
   groupByKey: string
+  /** whether the menu should be rendered on top or bottom when it's open */
   menuPosition: 'top' | 'bottom'
 };
 
@@ -188,37 +220,6 @@ export type Props = RequiredProps & Partial<DefaultProps>
 
 type DefaultedProps = RequiredProps & DefaultProps;
 
-/** A dropdown field based on [react-select](https://github.com/JedWatson/react-select)
- * @param value - selected value
- * @param onChange - called when value is changed
- * @param options - available options
- * @param size - medium | small
- * @param disabled - true if disabled
- * @param searchable - true if it should be possible to search the desired value by writing into the dropdown
- * @param clearable - true if it should be possible to reset the selected value
- * @param backspaceRemoves - whether pressing backspace removes the last item when there is no input value
- * @param multi - true if it should be possible to select multiple values
- * @param flat - whether it should have a flat style
- * @param autoBlur - whether it should blur automatically when the user selects a value
- * @param optionRenderer - the function that can be used to override the default renderer of options
- * @param valueRenderer - the function that can be used to override the default renderer of the selected value
- * @param menuRenderer - the function that can be used to override the default drop-down list of options
- * @param groupByKey - the field name to group by
- * @param optionGroupRenderer - the function that gets used to render the content of an option group
- * @param menuPosition - whether the menu should be rendered on top or bottom when it's open
- * @param placeholder - placeholder shown when no value is selected
- * @param noResultsText - if searchable, message shown in the menu when no results are found
- * @param allowCreate - whether it should be possible to create new options
- * @param addLabelText - if allowCreate is true, message shown to hint the user to press Enter to create a new option
- * @param delimiter - if multi is true, string used to separate selected values
- * @param onFocus - called when dropdown is focused
- * @param onBlur - called when dropdown is blurred
- * @param onInputChange - called when the value of the `input` is changed
- * @param onValueClick - called when user clicks on the selected value
- * @param onBlurResetsInput - whether it should clear the input box on blur
- * @param onCloseResetsInput - wheter it should clear the input box on close
- * @param isLoading - whether it is loading options asynchronously
- */
 @props(Props, { strict: true })
 export default class Dropdown extends React.Component<Props> {
 
