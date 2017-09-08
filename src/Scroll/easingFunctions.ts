@@ -1,6 +1,34 @@
 /*eslint-disable */
+
+export type EasingType = 'linear'
+  | 'easeInQuad'
+  | 'easeOutQuad'
+  | 'easeInOutQuad'
+  | 'easeInCubic'
+  | 'easeOutCubic'
+  | 'easeInOutCubic'
+  | 'easeInQuart'
+  | 'easeOutQuart'
+  | 'easeInOutQuart'
+  | 'easeInQuint'
+  | 'easeOutQuint'
+  | 'easeInOutQuint'
+  | 'easeInSine'
+  | 'easeOutSine'
+  | 'easeInOutSine'
+  | 'easeInExpo'
+  | 'easeOutExpo'
+  | 'easeInOutExpo'
+  | 'easeInCirc'
+  | 'easeOutCirc'
+  | 'easeInOutCirc';
+
+export type EasingFunction = (t: number, b: number, c: number, d: number) => number;
+
 // easing functions taken from http://gizma.com/easing/
-export default {
+const easing: {
+  [k in EasingType]: EasingFunction
+} = {
   linear: (t, b, c, d) => {
     return c*t/d + b;
   },
@@ -100,3 +128,5 @@ export default {
     return c/2 * (Math.sqrt(1 - t*t) + 1) + b;
   }
 };
+
+export default easing;
