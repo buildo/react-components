@@ -7,16 +7,19 @@ import findIndex = require('lodash/findIndex');
 import last = require('lodash/last');
 import dropRight = require('lodash/dropRight');
 import FlexView from 'react-flexview';
+import compact = require('lodash/compact');
 import * as cx from 'classnames';
 import { warn } from '../utils/log';
 
-function isEmptyArray(x: any): x is [] {
+function isEmptyArray(x: any): x is any[] {
   return t.Array.is(x) && x.length === 0;
 }
 
 const defaultOptionGroupRenderer = (title: string) => title;
 
-export type Value = string | number;
+export type SimpleValue = string | number;
+
+export type Value = Select.Option | Select.Options | SimpleValue;
 
 export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
 
@@ -116,9 +119,9 @@ export const defaultMenuRenderer: MenuRendererHandler = ({
 
 export interface RequiredProps {
   /** selected value */
-  value?: Select.Option | Select.Options | Value
+  value?: Value
   /** called when value is changed */
-  onChange: (value?: Select.Option | Select.Options | Value | null) => void
+  onChange: (value?: Value | null) => void
   /** the function that can be used to override the default renderer of the selected value */
   valueRenderer?: (option: Select.Option | Select.Options) => JSX.Element | null | false
   /** available options */
@@ -143,7 +146,7 @@ export interface RequiredProps {
   onBlur?: React.FocusEventHandler<HTMLDivElement>
   /** whether it should clear the input box on blur */
   onBlurResetsInput?: boolean
-  /** wheter it should clear the input box on close */
+  /** whether it should clear the input box on close */
   onCloseResetsInput?: boolean
   /** whether it is loading options asynchronously */
   isLoading?: boolean
@@ -255,14 +258,14 @@ export default class Dropdown extends React.Component<Props> {
     }
   };
 
-  valueToOption = (value: Props['value'], options: Select.Options) => {
+  valueToOption = (value: Value | undefined, options: Select.Options) => {
     if (t.String.is(value) || t.Number.is(value)) {
       const { multi, delimiter } = this.props as DefaultedProps;
       if (multi) {
         const values = String(value).split(delimiter);
-        return values.map(v => find(options, { value: v })!); // TODO: `!`
+        return compact(values.map(v => find(options, { value: v }) || undefined));
       }
-      return find(options, { value })!; // TODO: `!`
+      return find(options, { value }) || undefined;
     }
     return value;
   };
@@ -283,7 +286,7 @@ export default class Dropdown extends React.Component<Props> {
     });
   }
 
-  _onChange = (_value?: Select.Option | Select.Options | null) => {
+  _onChange = (_value?: Value | null) => {
     const value = isEmptyArray(_value) ? null : _value;
     return this.props.onChange(value);
   }
