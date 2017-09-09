@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import Dropdown from '../../src/Dropdown';
+import Dropdown, { Props } from '../../src/Dropdown';
 
 let consoleError: jest.SpyInstance<{}>;
 
@@ -14,8 +14,7 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps = {
-  ...Dropdown.defaultProps,
+const exampleProps: Props = {
   id: '12345',
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },
@@ -24,10 +23,9 @@ const exampleProps = {
     { value: 'test', label: 'Test' },
     { value: 'test1', label: 'Test1' },
     { value: 'test2', label: 'Test2' }
-  ]
+  ],
+  onChange: () => {}
 };
-
-const dropdown = new Dropdown(exampleProps);
 
 describe('Dropdown', () => {
 
@@ -62,7 +60,7 @@ describe('Dropdown', () => {
       { value: 'test2', label: 'Test2' }
     ];
     const component = shallow(
-      <Dropdown {...Dropdown.defaultProps} value='test' options={options} />
+      <Dropdown value='test' options={options} onChange={() => {}} />
     );
     const value = component.prop('value');
     expect(typeof value).toBe('object');
@@ -76,7 +74,7 @@ describe('Dropdown', () => {
       { value: 2, label: 'Test2' }
     ];
     const component = shallow(
-      <Dropdown {...Dropdown.defaultProps} value={2} options={options} />
+      <Dropdown value={2} options={options} onChange={() => {}} />
     );
     const value = component.prop('value');
     expect(typeof value).toBe('object');
