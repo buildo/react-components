@@ -97,11 +97,11 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
   render() {
     const { popover: _popover, children, className, id, style, type, size } = this.props as TooltipTouchDefaultedProps;
     const { isOpen } = this.state;
-    const popover = Object.assign({
+    const popover = {
       ..._popover,
       isOpen,
       className: cx(_popover.className, 'tooltip-touch')
-    });
+    };
     const spanStyle: React.CSSProperties = {
       display: 'hidden',
       position: 'fixed',
