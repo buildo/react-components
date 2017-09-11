@@ -1,15 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import cx from 'classnames';
-import Tooltip, { Props } from './Tooltip';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as cx from 'classnames';
+import Tooltip, { TooltipProps, TooltipDefaultProps, TooltipRequiredProps, Props  } from './Tooltip';
 import View from 'react-flexview';
-import { props, skinnable } from '../utils';
+import { props } from '../utils';
 
-@skinnable()
+
+export type TooltipTouchState = {
+  tooltipLeft: number,
+  tooltipTop: number,
+  tooltipBottom: number,
+  tooltipRight: number,
+  isOpen: boolean
+}
+
+type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
+
 @props(Props)
-export default class TooltipTouch extends React.PureComponent {
+export default class TooltipTouch extends React.PureComponent<TooltipProps, TooltipTouchState> {
 
-  static defaultProps = {
+  static defaultProps: TooltipDefaultProps = {
     type: 'dark',
     size: 'small'
   }
@@ -21,6 +31,10 @@ export default class TooltipTouch extends React.PureComponent {
     tooltipRight: 0,
     isOpen: false
   };
+
+  private ref: HTMLDivElement
+
+  timeout: number
 
   componentWillUnmount() {
     if (typeof this.timeout !== 'undefined') {
@@ -36,7 +50,7 @@ export default class TooltipTouch extends React.PureComponent {
       right: tooltipRight
     } = this.ref.getBoundingClientRect();
 
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.setState({
         tooltipLeft,
         tooltipTop,
@@ -47,7 +61,7 @@ export default class TooltipTouch extends React.PureComponent {
     }, 200);
   }
 
-  onTouchMove = (e) => {
+  onTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const {
       tooltipLeft,
       tooltipTop,
@@ -80,40 +94,31 @@ export default class TooltipTouch extends React.PureComponent {
     });
   }
 
-  getLocals({ popover, ...props }) {
+  render() {
+    const { popover, children, className, ..._tooltipProps } = this.props as TooltipTouchDefaultedProps;
     const { isOpen } = this.state;
-
-    return {
-      ...props,
-      isOpen,
-      touchListeners: {
-        onTouchStart: this.onTouchStart,
-        onTouchEnd: this.onTouchEnd,
-        onTouchMove: isOpen ? this.onTouchMove : undefined
-      },
-      popover: {
-        ...popover,
-        isOpen,
-        className: cx(popover.className, 'tooltip-touch')
-      },
-      spanStyle: isOpen ? {
-        display: 'hidden',
-        position: 'fixed',
-        top: -1000
-      } : undefined
+    const tooltipProps = {
+      ..._tooltipProps,
+      popover: { ...popover, isOpen, className: cx(popover.className, 'tooltip-touch') },
+      children
     };
-  }
+    const spanStyle: React.CSSProperties | undefined = isOpen ? {
+      display: 'hidden',
+      position: 'fixed',
+      top: -1000
+    } : undefined;
 
-  template({ children, className, isOpen, touchListeners, spanStyle, ...locals }) {
     return (
       <View
         vAlignContent='center'
         className={className}
         ref={r => { if (r) { this.ref = ReactDOM.findDOMNode(r); } }}
-        {...touchListeners}
+        onTouchStart={this.onTouchStart}
+        onTouchEnd={this.onTouchEnd}
+        onTouchMove={isOpen ? this.onTouchMove : undefined}
       >
         <span style={spanStyle}>{children}</span>
-        {isOpen && <Tooltip {...locals}>{children}</Tooltip>}
+        {isOpen && <Tooltip {...tooltipProps} />}
       </View>
     );
   }
