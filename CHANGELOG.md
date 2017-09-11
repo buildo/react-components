@@ -3,17 +3,9 @@
 ## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
 
-#### Breaking:
-
-- Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
-- Dropdown: drop support for `valueLink` [#1127](https://github.com/buildo/react-components/issues/1127)
-- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
-- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
-- [Typo] Dropdown [#1066](https://github.com/buildo/react-components/issues/1066)
-- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
-
 #### New features:
 
+- [Typo] TimePicker [#1131](https://github.com/buildo/react-components/issues/1131)
 - [Typo] Scroll + ScrollView [#1125](https://github.com/buildo/react-components/issues/1125)
 - [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
 - [Typo] Tooltip [#1113](https://github.com/buildo/react-components/issues/1113)
@@ -42,6 +34,15 @@
 - [Typo] Button [#1053](https://github.com/buildo/react-components/issues/1053)
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
+
+#### Breaking:
+
+- Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
+- Dropdown: drop support for `valueLink` [#1127](https://github.com/buildo/react-components/issues/1127)
+- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
+- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
+- [Typo] Dropdown [#1066](https://github.com/buildo/react-components/issues/1066)
+- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 
 #### Fixes (bugs & defects):
 
