@@ -102,11 +102,11 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
       isOpen,
       className: cx(_popover.className, 'tooltip-touch')
     };
-    const spanStyle: React.CSSProperties = {
+    const spanStyle: React.CSSProperties | undefined = isOpen ? {
       display: 'hidden',
       position: 'fixed',
       top: -1000
-    };
+    } : undefined;
 
     return (
       <View
