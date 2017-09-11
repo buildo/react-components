@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { t, ReactChildren, stateClassUtil } from '../utils';
+import { t, ReactChildren, stateClassUtil, props } from '../utils';
 import FormattedText from '../FormattedText/FormattedText';
-import Popover from '../Popover/Popover';
+import Popover, { PopoverProps } from '../Popover/Popover';
 import { ObjectOverwrite } from 'typelevel-ts';
-import { props } from '../utils';
-import { PopoverProps } from '../Popover/Popover';
 
 export namespace TooltipProps {
   export type Type = 'light' | 'dark';
