@@ -1,8 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import TimePicker, {
-  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
+  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError, Props
 } from '../../src/TimePicker/TimePicker';
 
 let consoleError: jest.SpyInstance<{}>;
@@ -15,8 +16,7 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps = {
-  ...TimePicker.defaultProps,
+const exampleProps: Props = {
   id: '12345',
   className: 'fancy-class-name',
   placeholder: '--:--',
@@ -28,8 +28,6 @@ const exampleProps = {
   onChange: () => {}
 };
 
-const timePicker = new TimePicker(exampleProps);
-
 describe('TimePicker', () => {
 
   it('renders correctly', () => {
@@ -39,26 +37,29 @@ describe('TimePicker', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-  describe('getLocals', () => {
+  describe('props', () => {
 
     it('computes className', () => {
-      const { className } = timePicker.getLocals();
-      expect(className).toContain('time-picker');
-      expect(className).toContain('fancy-class-name');
+      const component = shallow(
+        <TimePicker {...exampleProps} />
+      );
+      expect(component.hasClass('time-picker')).toBe(true);
+      expect(component.hasClass('fancy-class-name')).toBe(true);
     });
 
     it('passes value properly formatted', () => {
-      const timePicker = new TimePicker({
-        ...TimePicker.defaultProps,
-        value: { hours: 15, minutes: 33 }
-      });
-      const { value } = timePicker.getLocals();
+      const component = shallow(
+        <TimePicker value={{ hours: 15, minutes: 33 }} onChange={() => {}} />
+      );
+      const value = component.prop('value');
       expect(value).toBe('15:33');
     });
 
     it('passes an undefined value when value prop is undefined', () => {
-      const timePicker = new TimePicker({ ...TimePicker.defaultProps });
-      const { value } = timePicker.getLocals();
+      const component = shallow(
+        <TimePicker onChange={() => {}} />
+      );
+      const value = component.prop('value');
       expect(value).toBeUndefined();
     });
 

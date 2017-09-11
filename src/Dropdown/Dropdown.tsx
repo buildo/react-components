@@ -160,6 +160,8 @@ export interface RequiredProps {
   onValueClick?: Select.OnValueClickHandler
 };
 
+export type MenuPosition = 'top' | 'bottom';
+
 export interface DefaultProps {
   /** true if it should be possible to select multiple values */
   multi: boolean
@@ -186,7 +188,7 @@ export interface DefaultProps {
   /** the field name to group by */
   groupByKey: string
   /** whether the menu should be rendered on top or bottom when it's open */
-  menuPosition: 'top' | 'bottom'
+  menuPosition: MenuPosition
 };
 
 export const Props = {
