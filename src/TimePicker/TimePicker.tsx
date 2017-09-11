@@ -38,7 +38,7 @@ export const Time = t.struct({
   minutes: Minute
 }, 'Time');
 
-const isValidHoursInTimeFormat = (hours: string | number, timeFormat: TimeFormat) => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
+const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimeFormat): boolean => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
 export const Props = t.refinement(t.struct({
   onChange: t.Function,
@@ -102,20 +102,20 @@ const maybeInsertSeparator = (str: string) => {
   return str;
 };
 
-export const parseInTimeFormat = (inputStr: string, timeFormat: TimeFormat) => {
+export const parseInTimeFormat = (inputStr: string, timeFormat: TimeFormat): OnChangeInput => {
   if (inputStr === '') {
     return { originalInput: inputStr };
   }
   const cleanedInput = maybeAddTrailingZero(maybeInsertSeparator(cleanSeparator(inputStr)));
   const inputArray = cleanedInput.split(separator);
   const [_hours, _minutes] = inputArray;
-  const hours = numberRegex.test(_hours) ? parseInt(_hours, 10) : '';
-  const minutes = !_minutes || numberRegex.test(_minutes) ? parseInt(_minutes, 10) : '';
+  const hours = numberRegex.test(_hours) ? parseInt(_hours, 10) : null;
+  const minutes = !_minutes || numberRegex.test(_minutes) ? parseInt(_minutes, 10) : null;
   const validHours = isValidHoursInTimeFormat(hours, timeFormat);
   const validMinutes = Minute.is(minutes);
 
   if (validHours && validMinutes) {
-    return { hours, minutes, originalInput: cleanedInput };
+    return { hours: hours!, minutes: minutes!, originalInput: cleanedInput };
   } else if (validHours) {
     return { originalInput: cleanedInput };
   } else {
@@ -170,9 +170,13 @@ export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }: MakeOpt
   return uniqBy(sortBy(filteredTimeList.map(toOption), 'value'), 'value');
 };
 
+export type OnChangeInput = {
+  originalInput?: string
+} & Partial<Time>;
+
 export interface RequiredProps {
-  /** onChange handler. It will return an object */
-  onChange: (time?: Time) => void
+  /** onChange handler. It takes an object */
+  onChange: (time?: OnChangeInput) => void
   /** value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } */
   value?: Time
   /** optionally disable the control */
