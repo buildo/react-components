@@ -34,7 +34,7 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
 
   private ref: HTMLDivElement
 
-  timeout: NodeJS.Timer
+  timeout: number
 
   componentWillUnmount() {
     if (typeof this.timeout !== 'undefined') {
@@ -50,7 +50,7 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
       right: tooltipRight
     } = this.ref.getBoundingClientRect();
 
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.setState({
         tooltipLeft,
         tooltipTop,
@@ -61,7 +61,7 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
     }, 200);
   }
 
-  onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  onTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const {
       tooltipLeft,
       tooltipTop,

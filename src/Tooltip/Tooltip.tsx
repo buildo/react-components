@@ -12,7 +12,7 @@ export namespace TooltipProps {
 
 export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */
-  children: any, // TODO: t.ReactChildren
+  children: React.ReactNode
   /** popover props */
   popover: ObjectOverwrite<PopoverProps.Popover, {
     content: string,
