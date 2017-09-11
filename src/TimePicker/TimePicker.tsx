@@ -199,11 +199,11 @@ export interface DefaultProps {
   /** whether the menu should open on top or bottom */
   menuPosition: MenuPosition
 }
-export type Props = RequiredProps & Partial<DefaultProps>
-type DefaultedProps = RequiredProps & DefaultProps;
+export type TimePickerProps = RequiredProps & Partial<DefaultProps>
+type TimePickerDefaultedProps = RequiredProps & DefaultProps;
 
 @props(Props)
-export default class TimePicker extends React.Component<Props, { inputValue: string }> {
+export default class TimePicker extends React.Component<TimePickerProps, { inputValue: string }> {
 
   static defaultProps = {
     placeholder: `--${separator}--`,
@@ -234,7 +234,7 @@ export default class TimePicker extends React.Component<Props, { inputValue: str
       minTime, maxTime, timeFormat,
       value: userValue,
       searchable, placeholder, menuPosition, disabled
-    } = this.props as DefaultedProps;
+    } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
     const options = makeOptions({ minTime, maxTime, timeFormat, userValue }, this.state.inputValue);
