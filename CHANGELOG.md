@@ -6,8 +6,10 @@
 #### Breaking:
 
 - Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
+- Dropdown: drop support for `valueLink` [#1127](https://github.com/buildo/react-components/issues/1127)
 - [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
 - pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
+- [Typo] Dropdown [#1066](https://github.com/buildo/react-components/issues/1066)
 - [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 
 #### New features:
