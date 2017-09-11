@@ -16,6 +16,7 @@
 
 - [Typo] Scroll + ScrollView [#1125](https://github.com/buildo/react-components/issues/1125)
 - [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
+- [Typo] Tooltip [#1113](https://github.com/buildo/react-components/issues/1113)
 - [Typo] Toaster [#1108](https://github.com/buildo/react-components/issues/1108)
 - [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
 - [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
