@@ -95,12 +95,12 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
   }
 
   render() {
-    const { popover: _popover, children, className, id, style, type, size } = this.props as TooltipTouchDefaultedProps;
+    const { popover, children, className, ..._tooltipProps } = this.props as TooltipTouchDefaultedProps;
     const { isOpen } = this.state;
-    const popover = {
-      ..._popover,
-      isOpen,
-      className: cx(_popover.className, 'tooltip-touch')
+    const tooltipProps = {
+      ..._tooltipProps,
+      popover: { ...popover, isOpen, className: cx(popover.className, 'tooltip-touch') },
+      children
     };
     const spanStyle: React.CSSProperties | undefined = isOpen ? {
       display: 'hidden',
@@ -118,17 +118,7 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
         onTouchMove={isOpen ? this.onTouchMove : undefined}
       >
         <span style={spanStyle}>{children}</span>
-        {isOpen && (
-          <Tooltip
-            id={id}
-            style={style}
-            type={type}
-            size={size}
-            popover={popover}
-          >
-            {children}
-          </Tooltip>
-        )}
+        {isOpen && <Tooltip {...tooltipProps} />}
       </View>
     );
   }
