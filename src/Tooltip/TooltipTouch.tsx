@@ -121,7 +121,6 @@ export default class TooltipTouch extends React.PureComponent<TooltipProps, Tool
         {isOpen && (
           <Tooltip
             id={id}
-            className={className}
             style={style}
             type={type}
             size={size}
