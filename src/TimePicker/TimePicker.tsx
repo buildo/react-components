@@ -38,7 +38,8 @@ export const Time = t.struct({
   minutes: Minute
 }, 'Time');
 
-const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimeFormat): boolean => timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
+const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimeFormat): hours is number =>
+  timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
 export const Props = t.refinement(t.struct({
   onChange: t.Function,
@@ -111,12 +112,10 @@ export const parseInTimeFormat = (inputStr: string, timeFormat: TimeFormat): OnC
   const [_hours, _minutes] = inputArray;
   const hours = numberRegex.test(_hours) ? parseInt(_hours, 10) : null;
   const minutes = !_minutes || numberRegex.test(_minutes) ? parseInt(_minutes, 10) : null;
-  const validHours = isValidHoursInTimeFormat(hours, timeFormat);
-  const validMinutes = Minute.is(minutes);
 
-  if (validHours && validMinutes) {
-    return { hours: hours!, minutes: minutes!, originalInput: cleanedInput };
-  } else if (validHours) {
+  if (isValidHoursInTimeFormat(hours, timeFormat) && Minute.is(minutes)) {
+    return { hours, minutes, originalInput: cleanedInput };
+  } else if (isValidHoursInTimeFormat(hours, timeFormat)) {
     return { originalInput: cleanedInput };
   } else {
     return inputError;
