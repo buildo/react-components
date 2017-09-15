@@ -14,11 +14,11 @@ export namespace ColumnGroupProps {
   }
 }
 
-export type ColumnGroupProps<RT> = {
-  children: React.ReactElement<ColumnProps<RT, any>>[]
+export type ColumnGroupProps<T> = {
+  children: React.ReactElement<ColumnProps<T, keyof T>>[]
 }
 
-type ColumnIntrinsicProps<RT> = ColumnGroupProps<RT> & ColumnGroupProps.Intrinsic;
+type ColumnIntrinsicProps<T> = ColumnGroupProps<T> & ColumnGroupProps.Intrinsic;
 
 const { union, maybe, struct } = t;
 const argsTypes = struct({
@@ -27,25 +27,24 @@ const argsTypes = struct({
   children: ReactChildren
 }, { strict: true, name: 'ColumnGroupProps' });
 
-
-export default class ColumnGroup<RT> extends React.PureComponent<{}> {
+export default class ColumnGroup<T> extends React.PureComponent<ColumnGroupProps<T>> {
   render() {
     const {
       key,
       fixed,
       children
-    } = argsTypes(this.props) as ColumnIntrinsicProps<RT>;
+    } = argsTypes(this.props) as ColumnIntrinsicProps<T>;
 
-    const header = find(children, child => child.type === Header) || defaultHeader();
+    const header = find(children, child => child.type === Header) || defaultHeader('');
     const columns = children
       .filter(ch => ch.type === Column)
       .map((col, key) => {
-        const colProps: ColumnProps<RT, keyof RT> = {
+        const colProps: ColumnProps<T, keyof T> = {
           key,
           ...col.props,
           fixed
         };
-        const SpecificColumn: new() => Column<RT, keyof RT> = Column;
+        const SpecificColumn: new() => Column<T, keyof T> = Column;
         return <SpecificColumn {...colProps} />;
       });
 
