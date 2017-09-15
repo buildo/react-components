@@ -1,6 +1,6 @@
-import React from 'react';
-import cx from 'classnames';
-import { skinnable, props, t, ReactChildren } from '../utils';
+import * as React from 'react';
+import * as cx from 'classnames';
+import { props, t, ReactChildren } from '../utils';
 import { Table } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';

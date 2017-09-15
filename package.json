@@ -41,6 +41,7 @@
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {
     "@types/classnames": "2.2.3",
+    "@types/fixed-data-table": "^0.6.32",
     "@types/linkify-it": "2.0.1",
     "@types/lodash": "4.14.74",
     "@types/react": "15.6.1",
