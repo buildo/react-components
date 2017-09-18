@@ -87,12 +87,6 @@ type TabloIntrinsicProps = {
 type TabloDefaultedIntrinsicProps<T, K extends keyof T> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
 
 const { maybe } = t;
- /*
- * @param scrollToRow - Private
- * @param onRowClick - Private
- * @param onColumnResizeEndCallback - Private
- * @param isColumnResizing - Private
- */
 @props({
   // public
   className: maybe(t.String),
@@ -120,7 +114,6 @@ const { maybe } = t;
   isColumnResizing: maybe(t.Boolean)
 })
 export default class Tablo<T, K extends keyof T> extends React.PureComponent<TabloProps<T, K>> {
-
   static defaultProps: TabloDefaultProps = {
     rowClassNameGetter: () => '',
     rowHeight: 30,
@@ -131,12 +124,11 @@ export default class Tablo<T, K extends keyof T> extends React.PureComponent<Tab
   }
 
   render() {
-
     const { data, children, rowClassNameGetter: rcnGetter, className, ..._tableProps } = this.props as TabloDefaultedIntrinsicProps<T, K>;
 
-    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col:  React.ReactElement<ColumnProps<T, K>> }) => {
+    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col: React.ReactElement<ColumnProps<T, K>> }) => {
       return <Column {...{ key: col.props.name, ...col.props, data }} />;
-    }).map((ch, key) => ch.type({ key, ...ch.props }));
+    }).map((ch, key) => (ch.type as React.SFC<ColumnProps<T, K> | ColumnGroupProps<T>>)({ key, ...ch.props }));
 
     t.assert(
       columnsOrGroups.length === ([] as any[]).concat(children || Object.keys(data[0])).length,

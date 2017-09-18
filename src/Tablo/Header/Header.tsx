@@ -53,4 +53,6 @@ export default class Header<K> extends React.PureComponent<HeaderProps> {
   }
 }
 
-export const defaultHeader = (columnKey: string) => <Header>{columnKey}</Header>;
+export function defaultHeader<K>(columnKey: K) {
+  return <Header>{columnKey}</Header>;
+}

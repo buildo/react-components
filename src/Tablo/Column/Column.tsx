@@ -54,57 +54,46 @@ const argsTypes = struct({
   isResizable: maybe(t.Boolean)
 }, { strict: true });
 
-export default class Column<T, K> extends React.PureComponent<ColumnProps<T, K>> {
+const Column = <T, K extends keyof T>(args: ColumnProps<T, K>) => {
+  const {
+    key,
+    width,
+    flexGrow,
+    data = [],
+    name,
+    fixed,
+    isResizable,
+    children = [],
+    allowCellsRecycling
+  } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T, K>;
 
-  static defaultProps: ColumnProps.Default = {
-    width: defaultWidth,
-    allowCellsRecycling: true,
-    fixed: false
+  const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey: string | number}) => {
+    const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(children, child => child.type === Cell) || defaultCell;
+    const rowData = data[rowIndex] || {};
+    const dataCell = rowData[columnKey];
+    return React.cloneElement<CellIntrinsicProps<T, K>, CellProps.Intrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
   };
 
-  render() {
-    const {
-      key,
-      width,
-      flexGrow,
-      data = [],
-      name,
-      fixed,
-      isResizable,
-      children = [],
-      allowCellsRecycling
-    } = argsTypes(this.props) as ColumnDefaultedIntrinsicProps<RT, CT>;
+  const header = React.cloneElement<HeaderIntrinsicProps<T>, HeaderProps.Intrinsic>(find(children, child => child.type === Header) || defaultHeader(name), { fixed });
+  const footer = find(children, child => child.type === Footer) as React.ReactElement<FooterProps> | undefined; // TODO onFooterClick
 
-    const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey: string | number}) => {
-      const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(children, child => child.type === Cell) || defaultCell;
-      const rowData = data[rowIndex] || {};
-      const dataCell = rowData[columnKey];
-      return React.cloneElement<CellIntrinsicProps<T, K>, CellProps.Intrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
-    };
-
-    const header = React.cloneElement<HeaderIntrinsicProps<T>, HeaderProps.Intrinsic<T>>(find(children, child => child.type === Header) || defaultHeader(name), { fixed });
-    const footer = find(children, child => child.type === Footer) as React.ReactElement<FooterProps> | undefined; // TODO onFooterClick
-
-    return (
-      <ColumnFDT
-        key={key}
-        columnKey={name}
-        header={header}
-        cell={cell}
-        footer={footer}
-        width={width}
-        flexGrow={flexGrow}
-        fixed={fixed}
-        isResizable={isResizable}
-        allowCellsRecycling={allowCellsRecycling}
-      />
-    );
-  }
+  return (
+    <ColumnFDT
+      key={key}
+      columnKey={name}
+      header={header}
+      cell={cell}
+      footer={footer}
+      width={width}
+      flexGrow={flexGrow}
+      fixed={fixed}
+      isResizable={isResizable}
+      allowCellsRecycling={allowCellsRecycling}
+    />
+  );
 }
 
-export function defaultColumns<T, K extends keyof T>(data: T[]) {
-  return Object.keys(data[0] || {}).map((columnName: K) => {
-    const SpecificColumn: new() => Column<T, K> = Column;
-    return <SpecificColumn name={columnName} />;
-  });
-};
+export const defaultColumns = <T, K extends keyof T>(data: T[]) =>
+  Object.keys(data[0] || {}).map((columnName: K) => Column<T, K>({ name: columnName }));
+
+export default Column;
