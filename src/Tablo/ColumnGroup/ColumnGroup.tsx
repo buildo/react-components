@@ -7,18 +7,11 @@ import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 import Header, { defaultHeader } from '../Header';
 import Column, { ColumnProps } from '../Column';
 
-export namespace ColumnGroupProps {
-  export type Intrinsic = {
-    fixed: boolean,
-  }
-}
-
 export type ColumnGroupProps<T> = {
     key: string | number,
-    children: React.ReactElement<ColumnProps<T, keyof T>>[]
+    children: React.ReactElement<ColumnProps<T, keyof T>>[],
+    fixed?: boolean
 }
-
-type ColumnIntrinsicProps<T> = ColumnGroupProps<T> & ColumnGroupProps.Intrinsic;
 
 const { union, maybe, struct } = t;
 const argsTypes = struct({
@@ -32,7 +25,7 @@ function ColumnGroup<T>(args: ColumnGroupProps<T>) {
     key,
     fixed,
     children
-  } = argsTypes(args) as ColumnIntrinsicProps<T>;
+  } = argsTypes(args) as ColumnGroupProps<T>;
 
   const header = find(children, child => child.type === Header) || defaultHeader('');
   const columns = children
