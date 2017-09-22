@@ -78,13 +78,13 @@ export type TabloRequiredProps<T, K extends keyof T> = {
 
 export type TabloProps<T, K extends keyof T> = TabloRequiredProps<T, K> & Partial<TabloDefaultProps>;
 
-type TabloIntrinsicProps = {
+export type TabloIntrinsicProps = {
   scrollToRow?: number,
   onRowClick?: () => void,
   onColumnResizeEndCallback?: () => void,
   isColumnResizing?: boolean
 };
-type TabloDefaultedIntrinsicProps<T, K extends keyof T> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
+export type TabloDefaultedIntrinsicProps<T, K extends keyof T> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
 
 const { maybe } = t;
 @props({
