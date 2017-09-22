@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import Column, { defaultColumns, updateColumns } from '../../Column';
 import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
-import { UpdateHandler } from '../../Column/columnUtility';
+import { UpdateProps } from '../../Column/columnUtility';
 
-const addSizeProps: UpdateHandler<any, any> = ({ col }) => ( //eslint-disable-line
+const addSizeProps = <T, K extends keyof T>({ col }: UpdateProps<T, K>) => ( //eslint-disable-line
   <Column
     isResizable
     {...col.props}
