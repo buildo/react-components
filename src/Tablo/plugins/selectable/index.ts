@@ -1,2 +1,2 @@
-import selectableGrid from './selectableGrid.js';
+import selectableGrid from './selectableGrid';
 export default selectableGrid;

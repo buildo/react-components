@@ -3,6 +3,7 @@ import * as cx from 'classnames';
 import Column, { defaultColumns, updateColumns } from '../../Column';
 import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { UpdateColumnsProps } from '../../Column/columnUtility';
+import { getArrayChildren } from "../../utils";
 
 const addSizeProps = <T, K extends keyof T>({ col }: UpdateColumnsProps<T, K>) => ( //eslint-disable-line
   <Column
@@ -24,7 +25,7 @@ const getLocals = <T, K extends keyof T>({ onColumnResize, ...props }: TabloProp
     onColumnResize({ width, key });
   };
 
-  const _children = children ? (Array.isArray(children) ? children : [children]) : defaultColumns(gridProps.data);
+  const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
   const __children = updateColumns(_children, addSizeProps);
 

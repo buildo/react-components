@@ -1,6 +1,7 @@
 import * as React from 'react';
 import find = require('lodash/find');
 import { t, ReactChildren } from '../../utils';
+import { getArrayChildren } from '../utils';
 
 import { Column as ColumnFDT } from 'fixed-data-table-2';
 
@@ -20,7 +21,7 @@ export namespace ColumnProps {
     data?: T[],
     sortable?: boolean,
     sortDir?: 'asc' | 'desc',
-    onHeaderClick: (columnKey: keyof T) => () => void
+    onHeaderClick: () => void
   }
 
   export type Default = {
@@ -61,25 +62,25 @@ const argsTypes = struct({
 const Column = <T, K extends keyof T>(args: ColumnProps<T, K>) => {
   const {
     key,
-    width,
+    width = defaultWidth,
     flexGrow,
     data = [],
     name,
     fixed,
     isResizable,
     children = [],
-    allowCellsRecycling
+    allowCellsRecycling = true
   } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T, K>;
 
-  const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey: string | number}) => {
-    const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(children, child => child.type === Cell) || defaultCell;
+  const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey: string | number }) => {
+    const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(getArrayChildren(children), child => child.type === Cell) || defaultCell;
     const rowData = data[rowIndex] || {};
     const dataCell = rowData[columnKey];
     return React.cloneElement<CellIntrinsicProps<T, K>, CellProps.Intrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
   };
 
-  const header = React.cloneElement<HeaderIntrinsicProps<T>, HeaderProps.Intrinsic>(find(children, child => child.type === Header) || defaultHeader(name), { fixed });
-  const footer = find(children, child => child.type === Footer) as React.ReactElement<FooterProps> | undefined; // TODO onFooterClick
+  const header = React.cloneElement<HeaderIntrinsicProps<T>, HeaderProps.Intrinsic>(find(getArrayChildren(children), child => child.type === Header) || defaultHeader(name), { fixed });
+  const footer = find(getArrayChildren(children), child => child.type === Footer) as React.ReactElement<FooterProps> | undefined; // TODO onFooterClick
 
   return (
     <ColumnFDT

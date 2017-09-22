@@ -44,7 +44,8 @@ const propsTypes = {
   vAlignContent: maybe(enums.of(['top', 'center', 'bottom'])),
   hAlignContent: maybe(enums.of(['left', 'center', 'right'])),
   contentStyle: maybe(t.Object),
-  style: maybe(t.Object)
+  style: maybe(t.Object),
+  grow: maybe(t.Boolean)
 };
 
 @props(propsTypes)

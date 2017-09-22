@@ -5,7 +5,7 @@ import { defaultColumns, updateColumns, UpdateColumnsHandler, ColumnIntrinsicPro
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
 import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
-import { getArrayChildren } from './util';
+import { getArrayChildren } from '../../utils';
 
 export const clean = <T, K extends keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
 
@@ -41,7 +41,7 @@ const getLocals = <T, K extends keyof T>({
     onSortChange({ sortBy, sortDir });
   };
 
-  const _children = children? getArrayChildren(children) : defaultColumns(gridProps.data);
+  const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
   const addSortableProps: UpdateColumnsHandler<T, K> = ({ col, colGroup }) => { //eslint-disable-line
     const colGroupSortable = colGroup ? colGroup.props.sortable : undefined;
@@ -49,7 +49,7 @@ const getLocals = <T, K extends keyof T>({
       key: col.props.name, // TODO(frag) think about how to handle this stuff
       sortable: typeof colGroupSortable !== 'undefined' ? colGroupSortable : !!onSortChange,
       ...col.props,
-      onHeaderClick,
+      onHeaderClick: onHeaderClick(col.props.name),
       sortDir: (sortBy === col.props.name || col.type === ColumnGroup) ? sortDir : undefined
     }));
   };
@@ -65,7 +65,7 @@ const getLocals = <T, K extends keyof T>({
 };
 
 export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
-  
+
   return class SortableGrid extends React.PureComponent<TabloProps<T, K>> {
     render() {
       return <Grid {...getLocals(this.props)} />;

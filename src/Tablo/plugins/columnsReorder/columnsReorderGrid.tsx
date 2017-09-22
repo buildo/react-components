@@ -12,8 +12,9 @@ import { TabloProps } from '../../Tablo';
 import dragDropContextHTML5Backend from './htmlBackend';
 import Column, { defaultColumns, updateColumns, ColumnProps, UpdateColumnsHandler } from '../../Column';
 import ColumnGroup from '../../ColumnGroup';
-import Header, { defaultHeader, HeaderProps } from '../../Header';
+import Header, { defaultHeader } from '../../Header';
 import DNDHeader from './DNDHeader';
+import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
@@ -29,7 +30,7 @@ export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K
 
     getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: TabloProps<T, K>) {
 
-      const _children = children ? (Array.isArray(children) ? children : [children]) : defaultColumns(gridProps.data);
+      const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
       const thereAreGroups = _children.filter(c => c.type === ColumnGroup).length > 0;
       if (thereAreGroups || !onColumnsReorder) {
@@ -73,8 +74,8 @@ export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K
 
       const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
         const { name, fixed } = col.props;
-        const header = (find(React.Children.toArray(col.props.children), { type: Header }) || defaultHeader(col.props.name)) as React.ReactElement<HeaderProps>;
-        const otherChildren = col.props.children ? (React.Children.toArray(col.props.children) as ColumnProps.ColumnChildren<T, K>).filter(ch => ch.type !== Header) : [];
+        const header = find(getArrayChildren(col.props.children), { type: Header }) || defaultHeader(col.props.name);
+        const otherChildren = (getArrayChildren(col.props.children) || []).filter(ch => ch.type !== Header);
         const oncedOnColumnsSwitch = once(onColumnsSwitch);
         const dndHeader = (
           <Header {...header.props}>

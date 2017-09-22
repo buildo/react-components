@@ -93,6 +93,7 @@ export type TabloDefaultedIntrinsicProps<T, K extends keyof T> = TabloRequiredPr
 const { maybe } = t;
 @props({
   // public
+  autosize: maybe(t.Boolean),
   className: maybe(t.String),
   data: t.Array,
   width: t.Number,
@@ -145,7 +146,7 @@ export default class Tablo<T, K extends keyof T> extends React.PureComponent<Tab
 
     const rowsCount = data.length;
     const tableProps: TableProps = {
-      ...omit(_tableProps, 'columnsOrder'),
+      ...omit(_tableProps, 'columnsOrder', 'autosize'),
       rowsCount,
       rowClassNameGetter
     };
