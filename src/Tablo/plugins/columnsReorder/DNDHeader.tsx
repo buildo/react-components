@@ -17,7 +17,7 @@ export type DNDHeaderProps = {
   children: React.ReactNode
 };
 
-export type DNDHeaderIntrinsicProps = {
+export type DNDHeaderIntrinsicProps = DNDHeaderProps & {
   connectDragSource: () => void,
   connectDragPreview: () => void,
   connectDropTarget: () => void,
@@ -32,7 +32,7 @@ type DNDMonitorItem = {
   index: number
 };
 
-const columnTarget: DropTargetSpec<DNDHeaderProps> = {
+const columnTarget: DropTargetSpec<DNDHeaderIntrinsicProps> = {
   canDrop({ isDropAllowed, name: target }, monitor) {
     if (monitor) {
       const source = (monitor.getItem() as DNDMonitorItem).name;
@@ -79,7 +79,7 @@ const collectTarget: DropTargetCollector = (connect, monitor) => ({
   canDrop: monitor.canDrop()
 });
 
-const columnSource: DragSourceSpec<DNDHeaderProps> = {
+const columnSource: DragSourceSpec<DNDHeaderIntrinsicProps> = {
   beginDrag({ name, index }) {
     return { name, index };
   },
@@ -125,7 +125,7 @@ const columnType = ({ tabloUniqueId }: DNDHeaderProps) => `${tabloUniqueId}_colu
 export default class DNDHeader extends React.PureComponent<DNDHeaderProps> {
 
   render() {
-    const { connectDragSource, connectDropTarget, isDragAllowed, isDragging, canDrop, isOver, children } = this.props;
+    const { connectDragSource, connectDropTarget, isDragAllowed, isDragging, canDrop, isOver, children } = this.props as DNDHeaderIntrinsicProps;
     const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragSource) : identity;
 
     return dndWrapper(
