@@ -11,6 +11,10 @@ import './patch-fixed-data-table-2';
 
 export namespace TabloProps {
   export type SortDir = 'asc' | 'desc';
+  export type Sort<K> = {
+    sortBy?: K,
+    sortDir?: TabloProps.SortDir
+  }
 }
 
 export type TabloDefaultProps = {
@@ -67,7 +71,7 @@ export type TabloRequiredProps<T, K extends keyof T> = {
   /** sorting direction */
   sortDir?: TabloProps.SortDir,
   /** callback to be called when sorting change */
-  onSortChange?: (x: { sortBy: keyof T, sortDir: TabloProps.SortDir }) => void,
+  onSortChange?: (x: TabloProps.Sort<K>) => void,
   /** enable touch scroll */
   touchScrollEnabled?: boolean
   /** the desired width of the table. Unless autosize is false, this can be left undefined */

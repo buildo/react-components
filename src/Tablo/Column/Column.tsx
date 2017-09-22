@@ -18,6 +18,9 @@ export namespace ColumnProps {
 
   export type Intrinsic<T> = {
     data?: T[],
+    sortable?: boolean,
+    sortDir?: 'asc' | 'desc',
+    onHeaderClick: (columnKey: keyof T) => () => void
   }
 
   export type Default = {
@@ -36,7 +39,8 @@ export namespace ColumnProps {
 };
 
 export type ColumnProps<T, K> = ColumnProps.Required<T, K> & Partial<ColumnProps.Default>;
-type ColumnDefaultedIntrinsicProps<T, K> = ColumnProps.Required<T, K> & ColumnProps.Default & ColumnProps.Intrinsic<T>;
+export type ColumnDefaultedIntrinsicProps<T, K> = ColumnProps.Required<T, K> & ColumnProps.Default & ColumnProps.Intrinsic<T>;
+export type ColumnIntrinsicProps<T, K> = ColumnProps<T, K> & ColumnProps.Intrinsic<T>;
 
 const { union, maybe, struct } = t;
 export const defaultWidth = 200;

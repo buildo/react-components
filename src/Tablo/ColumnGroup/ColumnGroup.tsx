@@ -8,9 +8,10 @@ import Header, { defaultHeader } from '../Header';
 import Column, { ColumnProps } from '../Column';
 
 export type ColumnGroupProps<T> = {
-    key: string | number,
-    children: React.ReactElement<ColumnProps<T, keyof T>>[],
-    fixed?: boolean
+  key: string | number,
+  children: React.ReactElement<ColumnProps<T, keyof T>>[],
+  fixed?: boolean,
+  sortable?: boolean
 }
 
 const { union, maybe, struct } = t;
