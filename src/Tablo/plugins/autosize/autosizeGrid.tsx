@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { props, t } from '../../../utils';
-import cx from 'classnames';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as cx from 'classnames';
 import FlexView from 'react-flexview';
 import ResizeSensor from '../../../ResizeSensor/ResizeSensor';
+import { TabloProps } from '../../Tablo';
 
-const { maybe } = t;
+type AutosizeGridState = {
+  width?: number,
+  height?: number
+};
 
-export default (Grid) => {
+export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>) => {
 
-  class AutosizeGrid extends React.PureComponent {
+  return class AutosizeGrid extends React.PureComponent<TabloProps<T, K>, AutosizeGridState> {
 
-    state = {}
+    state: AutosizeGridState = {}
 
     static defaultProps = {
       autosize: true
@@ -29,22 +32,16 @@ export default (Grid) => {
       }
     }
 
-    getLocals({ autosize, className, ...tableProps }) {
-
+    render() {
+      const { autosize, className: _className, ..._tableProps } = this.props;
       const { width = 0, height = 0 } = autosize ? this.state : {};
-
-      return {
+      const className = cx('autosize-tablo', _className);
+      const tableProps = {
         width,
         height,
-        autosize,
-        className: cx('autosize-tablo', className),
-        ...tableProps
+        className,
+        ..._tableProps
       };
-    }
-
-    render() {
-
-      const { autosize, ...tableProps } = this.getLocals(this.props);
 
       const content = (
         <FlexView grow column width='100%' ref='gridWrapper'>
@@ -59,11 +56,4 @@ export default (Grid) => {
       ) : content;
     }
   }
-
-  props({
-    className: maybe(t.String),
-    autosize: maybe(t.Boolean)
-  }, { strict: false })(AutosizeGrid);
-
-  return AutosizeGrid;
 };
