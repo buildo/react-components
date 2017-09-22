@@ -1,4 +1,4 @@
-import Cell, { defaultCell, CellProps } from './Cell';
+import Cell, { defaultCell, CellProps, CellIntrinsicProps } from './Cell';
 
 export default Cell;
-export { defaultCell, CellProps };
+export { defaultCell, CellProps, CellIntrinsicProps };

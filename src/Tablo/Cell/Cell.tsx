@@ -28,6 +28,7 @@ export namespace CellProps {
 }
 
 export type CellProps<RT, CT> = CellProps.Required<RT, CT> & Partial<CellProps.Default>;
+export type CellIntrinsicProps<RT, CT> = CellProps<RT, CT> & CellProps.Intrinsic<RT, CT>;
 type CellDefaultedIntrinsicProps<RT, CT> = CellProps.Required<RT, CT> & CellProps.Default & CellProps.Intrinsic<RT, CT>;
 
 const { maybe, enums, union } = t;
