@@ -57,7 +57,7 @@ export type TabloRequiredProps<T, K extends keyof T> = {
   /** callback to be called when the currently selected rows change */
   onRowsSelect?: (selectedRows: number[]) => void,
   /** single = only one selected row at a time, multi = multiple selection, none = selection disabled */
-  selectionType?: 'single' | 'multiple' | 'none',
+  selectionType?: 'single' | 'multi' | 'none',
   /** the id of the hovered row */
   hoveredRowIndex?: number,
   /** callback to be called when the hovered row changes */
@@ -80,7 +80,7 @@ export type TabloProps<T, K extends keyof T> = TabloRequiredProps<T, K> & Partia
 
 export type TabloIntrinsicProps = {
   scrollToRow?: number,
-  onRowClick?: () => void,
+  onRowClick?: (event: React.SyntheticEvent<Table>, rowIndex: number) => void,
   onColumnResizeEndCallback?: () => void,
   isColumnResizing?: boolean
 };
