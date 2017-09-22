@@ -1,36 +1,24 @@
-import React from 'react';
-import cx from 'classnames';
-import omitBy from 'lodash/omitBy';
-import { defaultColumns, updateColumns } from '../../Column';
+import * as React from 'react';
+import * as cx from 'classnames';
+import omitBy = require ('lodash/omitBy');
+import { defaultColumns, updateColumns, UpdateColumnsHandler, ColumnIntrinsicProps } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { props, t, ReactChildren } from '../../../utils';
+import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { getArrayChildren } from './util';
 
-const { maybe, enums } = t;
+export const clean = <T, K extends keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
 
-export const clean = obj => omitBy(obj, x => typeof x === 'undefined');
-
-const propsTypes = {
-  // transform
-  className: maybe(t.String),
-  data: t.Array,
-  children: ReactChildren,
-  // add
-  sortBy: maybe(t.String),
-  sortDir: maybe(enums.of(['asc', 'desc'])),
-  onSortChange: maybe(t.Function)
-};
-
-const getLocals = ({
+const getLocals = <T, K extends keyof T>({
   className,
   sortBy,
   sortDir,
   onSortChange,
   children,
   ...gridProps
-}) => {
+}: TabloProps<T, K>): TabloDefaultedIntrinsicProps<T, K> | TabloProps<T, K> => {
 
-  const nextSort = (newSortBy) => {
+  const nextSort = (newSortBy: K): TabloProps.Sort<K> => {
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {
@@ -45,7 +33,7 @@ const getLocals = ({
     };
   };
 
-  const onHeaderClick = (columnKey) => () => {
+  const onHeaderClick = (columnKey: K) => () => {
     if (!onSortChange) {
       return;
     }
@@ -53,12 +41,12 @@ const getLocals = ({
     onSortChange({ sortBy, sortDir });
   };
 
-  const _children = [].concat(children || defaultColumns(gridProps.data));
+  const _children = children? getArrayChildren(children) : defaultColumns(gridProps.data);
 
-  const addSortableProps = ({ col, colGroup } ) => { //eslint-disable-line
+  const addSortableProps: UpdateColumnsHandler<T, K> = ({ col, colGroup }) => { //eslint-disable-line
     const colGroupSortable = colGroup ? colGroup.props.sortable : undefined;
     return cSortable(clean({
-      key: col.name, // TODO(frag) think about how to handle this stuff
+      key: col.props.name, // TODO(frag) think about how to handle this stuff
       sortable: typeof colGroupSortable !== 'undefined' ? colGroupSortable : !!onSortChange,
       ...col.props,
       onHeaderClick,
@@ -76,13 +64,12 @@ const getLocals = ({
 
 };
 
-export default (Grid) => {
-  class SortableGrid extends React.PureComponent {
+export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
+  
+  return class SortableGrid extends React.PureComponent<TabloProps<T, K>> {
     render() {
       return <Grid {...getLocals(this.props)} />;
     }
   }
 
-  props(propsTypes, { strict: false })(SortableGrid);
-  return SortableGrid;
 };
