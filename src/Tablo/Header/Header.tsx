@@ -4,7 +4,7 @@ import { props, t, ReactChildren } from '../../utils';
 import FlexView from 'react-flexview';
 
 export namespace HeaderProps {
-  export type FDTIntrinsic<K> = {
+  export type FDTIntrinsic<K extends string> = {
     columnKey: K,
   }
 
@@ -17,7 +17,7 @@ export namespace HeaderProps {
 export type HeaderProps = {
   children: React.ReactNode,
 };
-export type HeaderIntrinsicProps<K> = HeaderProps & HeaderProps.Intrinsic & HeaderProps.FDTIntrinsic<K>;
+export type HeaderIntrinsicProps<K extends string> = HeaderProps & HeaderProps.Intrinsic & HeaderProps.FDTIntrinsic<K>;
 
 const { maybe } = t;
 
@@ -32,7 +32,7 @@ const propsTypes = {
 };
 
 @props(propsTypes)
-export default class Header<K> extends React.PureComponent<HeaderProps> {
+export default class Header<K extends string> extends React.PureComponent<HeaderProps> {
   render() {
     const { fixed, onClick: onClick, children } = this.props as HeaderIntrinsicProps<K>;
 

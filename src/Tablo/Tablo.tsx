@@ -15,6 +15,8 @@ export namespace TabloProps {
     sortBy?: K,
     sortDir?: TabloProps.SortDir
   }
+  export type ColumnChild<T, K extends string> = React.ReactElement<ColumnProps<T, K>>
+  export type ColumnGroupChild<T, K extends string> = React.ReactElement<ColumnGroupProps<T, K>>
 }
 
 export type TabloDefaultProps = {
@@ -32,7 +34,7 @@ export type TabloDefaultProps = {
   autosize: boolean
 };
 
-export type TabloRequiredProps<T, K extends keyof T> = {
+export type TabloRequiredProps<T, K extends string> = {
   /** data shown in the table */
   data: T[],
   className?: string,
@@ -47,7 +49,7 @@ export type TabloRequiredProps<T, K extends keyof T> = {
   /** callback to be called when a column is resized */
   onColumnResize?: (x: { width: number, key: K}) => void,
   /** table children (Column or ColumnGroup) */
-  children?: React.ReactElement<ColumnProps<T, K>>[] | React.ReactElement<ColumnGroupProps<T>>[],
+  children?: TabloProps.ColumnChild<T, K> | TabloProps.ColumnChild<T, K>[] | TabloProps.ColumnGroupChild<T, K> | TabloProps.ColumnGroupChild<T, K>[],
   /** value of horizontal scroll */
   scrollLeft?: number,
   /** value of vertical scroll */
@@ -80,7 +82,7 @@ export type TabloRequiredProps<T, K extends keyof T> = {
   height?: number
 };
 
-export type TabloProps<T, K extends keyof T> = TabloRequiredProps<T, K> & Partial<TabloDefaultProps>;
+export type TabloProps<T, K extends string> = TabloRequiredProps<T, K> & Partial<TabloDefaultProps>;
 
 export type TabloIntrinsicProps = {
   scrollToRow?: number,
@@ -88,7 +90,7 @@ export type TabloIntrinsicProps = {
   onColumnResizeEndCallback?: () => void,
   isColumnResizing?: boolean
 };
-export type TabloDefaultedIntrinsicProps<T, K extends keyof T> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
+export type TabloDefaultedIntrinsicProps<T, K extends string> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
 
 const { maybe } = t;
 @props({
@@ -118,7 +120,7 @@ const { maybe } = t;
   onColumnResizeEndCallback: maybe(t.Function),
   isColumnResizing: maybe(t.Boolean)
 })
-export default class Tablo<T, K extends keyof T> extends React.PureComponent<TabloProps<T, K>> {
+export default class Tablo<T, K extends string> extends React.PureComponent<TabloProps<T, K>> {
   static defaultProps: TabloDefaultProps = {
     rowClassNameGetter: () => '',
     rowHeight: 30,
@@ -131,9 +133,9 @@ export default class Tablo<T, K extends keyof T> extends React.PureComponent<Tab
   render() {
     const { data, children, rowClassNameGetter: rcnGetter, className, ..._tableProps } = this.props as TabloDefaultedIntrinsicProps<T, K>;
 
-    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col: React.ReactElement<ColumnProps<T, K>> }) => {
+    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col: TabloProps.ColumnChild<T, K> }) => {
       return <Column {...{ key: col.props.name, ...col.props, data }} />;
-    }).map((ch, key) => (ch.type as React.SFC<ColumnProps<T, K> | ColumnGroupProps<T>>)({ key, ...ch.props }));
+    }).map((ch, key) => (ch.type as React.SFC<any>)({ key, ...ch.props }));
 
     t.assert(
       columnsOrGroups.length === ([] as any[]).concat(children || Object.keys(data[0])).length,

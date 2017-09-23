@@ -7,9 +7,9 @@ import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 import Header, { defaultHeader } from '../Header';
 import Column, { ColumnProps } from '../Column';
 
-export type ColumnGroupProps<T> = {
+export type ColumnGroupProps<T, K extends string> = {
   key: string | number,
-  children: React.ReactElement<ColumnProps<T, keyof T>>[],
+  children: React.ReactElement<ColumnProps<T, K, any>>[],
   fixed?: boolean,
   sortable?: boolean
 }
@@ -21,23 +21,23 @@ const argsTypes = struct({
   children: ReactChildren
 }, { strict: true, name: 'ColumnGroupProps' });
 
-function ColumnGroup<T>(args: ColumnGroupProps<T>) {
+function ColumnGroup<T, K extends string>(args: ColumnGroupProps<T, K>) {
   const {
     key,
     fixed,
     children
-  } = argsTypes(args) as ColumnGroupProps<T>;
+  } = argsTypes(args) as ColumnGroupProps<T, K>;
 
   const header = find(children, child => child.type === Header) || defaultHeader('');
   const columns = children
     .filter(ch => ch.type === Column)
     .map((col, key) => {
-      const colProps: ColumnProps<T, keyof T> = {
+      const colProps: ColumnProps<T, K, any> = {
         key,
         ...col.props,
         fixed
       };
-      return Column<T, keyof T>({...colProps});
+      return Column<T, K, any>({...colProps});
     });
 
   return (

@@ -39,7 +39,7 @@ const getLocals = <T, K extends keyof T>({ onColumnResize, ...props }: TabloProp
 
 };
 
-export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>) => {
+export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
 
   return class ColumnResizeGrid extends React.PureComponent<TabloProps<T, K>> {
 

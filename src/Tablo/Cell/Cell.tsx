@@ -3,11 +3,14 @@ import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';
+import { If, StringContains, StringIntersection } from 'typelevel-ts';
+
+export type PickIfExists<T, K extends string> = If<StringContains<keyof T, K>, T[StringIntersection<keyof T, K>], undefined>;
 
 export namespace CellProps {
-  export type Intrinsic<RT, CT> = {
-    data: CT,
-    rowData: RT,
+  export type Intrinsic<T, K extends string> = {
+    data: PickIfExists<T, K>,
+    rowData: T,
     rowIndex: number,
     fixed: boolean
   }
@@ -18,8 +21,8 @@ export namespace CellProps {
     grow: boolean
   }
 
-  export type Required<RT, CT> = {
-    children?: React.ReactNode | ((data: CT, rowData?: RT, rowIndex?: number) => JSX.Element),
+  export type Required<T, K extends string> = {
+    children?: React.ReactNode | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element),
     backgroundColor?: React.CSSProperties['backgroundColor'],
     color?: React.CSSProperties['color'],
     contentStyle?: React.CSSProperties,
@@ -27,9 +30,9 @@ export namespace CellProps {
   };
 }
 
-export type CellProps<RT, CT> = CellProps.Required<RT, CT> & Partial<CellProps.Default>;
-export type CellIntrinsicProps<RT, CT> = CellProps<RT, CT> & CellProps.Intrinsic<RT, CT>;
-type CellDefaultedIntrinsicProps<RT, CT> = CellProps.Required<RT, CT> & CellProps.Default & CellProps.Intrinsic<RT, CT>;
+export type CellProps<T, K extends string> = CellProps.Required<T, K> & Partial<CellProps.Default>;
+export type CellIntrinsicProps<T, K extends string> = CellProps<T, K> & CellProps.Intrinsic<T, K>;
+type CellDefaultedIntrinsicProps<T, K extends string> = CellProps.Required<T, K> & CellProps.Default & CellProps.Intrinsic<T, K>;
 
 const { maybe, enums, union } = t;
 
@@ -48,51 +51,45 @@ const propsTypes = {
   grow: maybe(t.Boolean)
 };
 
-@props(propsTypes)
-export default class Cell<RT, CT> extends React.PureComponent<CellProps<RT, CT>> {
+function Cell<T, K extends string>(props: CellProps<T, K>): React.ReactElement<CellProps<T, K>> {
 
-  static defaultProps: CellProps.Default = {
-    vAlignContent: 'center',
-    hAlignContent: 'left',
-    grow: true
-  }
+  const {
+    data,
+    fixed,
+    rowData,
+    rowIndex,
+    children,
+    backgroundColor,
+    color,
+    vAlignContent = 'center',
+    hAlignContent = 'left',
+    grow = true,
+    contentStyle,
+    style
+  } = props as CellDefaultedIntrinsicProps<T, K>;
 
-  render() {
-    const {
-      data,
-      fixed,
-      rowData,
-      rowIndex,
-      children,
-      backgroundColor,
-      color,
-      vAlignContent,
-      hAlignContent,
-      grow,
-      contentStyle,
-      style
-    } = this.props as CellDefaultedIntrinsicProps<RT, CT>;
-
-    return (
-      <CellFDT>
+  return (
+    <CellFDT>
+      <FlexView
+        className={cx('tablo-cell', { 'tablo-cell-fixed': fixed, 'tablo-cell-even-row': rowIndex % 2 === 0, 'tablo-cell-odd-row': rowIndex % 2 === 1 })}
+        style={{ backgroundColor, color, ...style }}
+        grow={grow}
+      >
         <FlexView
-          className={cx('tablo-cell', { 'tablo-cell-fixed': fixed, 'tablo-cell-even-row': rowIndex % 2 === 0, 'tablo-cell-odd-row': rowIndex % 2 === 1 })}
-          style={{ backgroundColor, color, ...style }}
+          style={contentStyle}
+          className='content'
           grow={grow}
+          vAlignContent={vAlignContent}
+          hAlignContent={hAlignContent}
         >
-          <FlexView
-            style={contentStyle}
-            className='content'
-            grow={grow}
-            vAlignContent={vAlignContent}
-            hAlignContent={hAlignContent}
-          >
-            {t.Function.is(children) ? children(data, rowData, rowIndex) : children}
-          </FlexView>
+          {t.Function.is(children) ? children(data, rowData, rowIndex) : children}
         </FlexView>
-      </CellFDT>
-    );
-  }
+      </FlexView>
+    </CellFDT>
+  );
 }
 
+props(propsTypes)(Cell);
+
+export default Cell;
 export const defaultCell = <Cell>{dataCell => dataCell}</Cell>;
