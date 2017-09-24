@@ -8,16 +8,30 @@ pipeline:
       volumes:
         - /tmp/cache:/cache
 
-  lint-and-test:
+  install-deps:
     image: node:6
     environment:
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
       - npm run postinstall
+
+  lint-and-test:
+    group: parallel
+    image: node:6
+    commands:
       - npm run lint
       - npm run lint-style
       - npm test
+
+  gh-pages-build:
+    group: parallel
+    image: node:6
+    commands:
+      - npm run build-showroom
+    when:
+      branch:
+        exclude: master
 
   generate-changelog:
     image: node:6
@@ -49,14 +63,6 @@ pipeline:
   #       fi
   #   when:
   #     branch: master
-
-  gh-pages-build:
-    image: node:6
-    commands:
-      npm run build-showroom;
-    when:
-      branch:
-        exclude: master
 
   gh-pages:
     image: node:6
