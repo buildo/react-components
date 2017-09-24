@@ -1,8 +1,16 @@
-build:
+pipeline:
+
+  restore-cache:
+      image: drillster/drone-volume-cache
+      restore: true
+      mount:
+        - ./node_modules
+      volumes:
+        - /tmp/cache:/cache
+
   lint-and-test:
     image: node:6
     environment:
-      - NPM_CONFIG_CACHE=/drone/.npm
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
@@ -11,26 +19,20 @@ build:
       - npm run lint-style
       - npm test
 
-  sync-repo:
-    image: node:6
-    commands:
-      - git pull --ff-only origin master
-    when:
-      branch: master
-
   generate-changelog:
     image: node:6
     commands:
+      - git pull --ff-only origin master
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
-      - node_modules/smooth-release/smooth-release --changelog --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish || true
     when:
       branch: master
 
   publishReleaseOnGitHub:
     image: node:6
     commands:
-      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
     when:
       branch: master
 
@@ -48,20 +50,13 @@ build:
   #   when:
   #     branch: master
 
-  # gh-pages-build:
-  #   image: node:6
-  #   commands:
-  #     - if [ "$$BRANCH" != "master" ]; then
-  #         npm run generate-all-readmes;
-  #         npm run build-showroom;
-  #       fi
-
   gh-pages-build:
     image: node:6
     commands:
-      - if [ "$$BRANCH" != "master" ]; then
-          npm run build-showroom;
-        fi
+      npm run build-showroom;
+    when:
+      branch:
+        exclude: master
 
   gh-pages:
     image: node:6
@@ -72,6 +67,11 @@ build:
     when:
       branch: master
 
-cache:
-  mount:
-    - /drone/.npm
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+
