@@ -1,36 +1,52 @@
-build:
-  lint-and-test:
+pipeline:
+
+  restore-cache:
+      image: drillster/drone-volume-cache
+      restore: true
+      mount:
+        - ./node_modules
+      volumes:
+        - /tmp/cache:/cache
+
+  install-deps:
     image: node:6
     environment:
-      - NPM_CONFIG_CACHE=/drone/.npm
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
       - npm run postinstall
+
+  lint-and-test:
+    group: parallel
+    image: node:6
+    commands:
       - npm run lint
       - npm run lint-style
       - npm test
 
-  sync-repo:
+  gh-pages-build:
+    group: parallel
     image: node:6
     commands:
-      - git pull --ff-only origin master
+      - npm run build-showroom
     when:
-      branch: master
+      branch:
+        exclude: master
 
   generate-changelog:
     image: node:6
     commands:
+      - git pull --ff-only origin master
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
-      - node_modules/smooth-release/smooth-release --changelog --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish || true
     when:
       branch: master
 
   publishReleaseOnGitHub:
     image: node:6
     commands:
-      - node_modules/smooth-release/smooth-release --gh-release --token=$$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
     when:
       branch: master
 
@@ -48,21 +64,6 @@ build:
   #   when:
   #     branch: master
 
-  # gh-pages-build:
-  #   image: node:6
-  #   commands:
-  #     - if [ "$$BRANCH" != "master" ]; then
-  #         npm run generate-all-readmes;
-  #         npm run build-showroom;
-  #       fi
-
-  gh-pages-build:
-    image: node:6
-    commands:
-      - if [ "$$BRANCH" != "master" ]; then
-          npm run build-showroom;
-        fi
-
   gh-pages:
     image: node:6
     commands:
@@ -72,6 +73,11 @@ build:
     when:
       branch: master
 
-cache:
-  mount:
-    - /drone/.npm
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+
