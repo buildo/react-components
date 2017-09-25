@@ -35,6 +35,7 @@ pipeline:
 
   generate-changelog:
     image: node:6
+    secrets: [ changelog_github_token ]
     commands:
       - git pull --ff-only origin master
       - git config --global user.name "nemobot";
@@ -45,6 +46,7 @@ pipeline:
 
   publishReleaseOnGitHub:
     image: node:6
+    secrets: [ changelog_github_token ]
     commands:
       - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
     when:
