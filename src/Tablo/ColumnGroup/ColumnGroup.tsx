@@ -9,7 +9,7 @@ import Column, { ColumnProps } from '../Column';
 
 export type ColumnGroupProps<T, K extends string> = {
   key: string | number,
-  children: React.ReactElement<ColumnProps<T, K, any>>[],
+  children: React.ReactElement<ColumnProps<T, K>>[],
   fixed?: boolean,
   sortable?: boolean
 }
@@ -32,12 +32,12 @@ function ColumnGroup<T, K extends string>(args: ColumnGroupProps<T, K>) {
   const columns = children
     .filter(ch => ch.type === Column)
     .map((col, key) => {
-      const colProps: ColumnProps<T, K, any> = {
+      const colProps: ColumnProps<T, K> = {
         key,
         ...col.props,
         fixed
       };
-      return Column<T, K, any>({...colProps});
+      return Column<T, K>({...colProps});
     });
 
   return (
