@@ -69,7 +69,7 @@ export type TabloRequiredProps<T, K extends string> = {
   /** callback to be called when the hovered row changes */
   onHoverRowChange?: (rowIndex: number) => void,
   /** id of the column according which the data should be ordered */
-  sortBy?: keyof T,
+  sortBy?: K,
   /** sorting direction */
   sortDir?: TabloProps.SortDir,
   /** callback to be called when sorting change */
