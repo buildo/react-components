@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES3",
     "module": "commonjs",
     "declaration": true,
     "allowSyntheticDefaultImports": false,
     "allowJs": false,
     "experimentalDecorators": true,
-    "outDir": "./temp",
+    "outDir": "./lib",
     "baseUrl": ".",
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
