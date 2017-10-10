@@ -48,6 +48,7 @@ export const Props = t.refinement(t.struct({
   maxTime: t.maybe(Time),
   placeholder: t.maybe(t.String),
   timeFormat: t.maybe(TimeFormat),
+  timeFormatter: t.maybe(t.Function),
   searchable: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -70,12 +71,14 @@ const formatTime12 = ({ hours, minutes }: Time) => {
     return `${pad(hours)}${separator}${pad(minutes)} am`;
   }
 };
-type TimeAndFormat = Time & { timeFormat: TimeFormat };
+export type TimeAndFormat = Time & { timeFormat: TimeFormat };
+export type TimeFormatter = (t: TimeAndFormat) => JSX.Element;
 const formatTime = ({ hours, minutes, timeFormat }: TimeAndFormat) => (
   timeFormat === H12 ? formatTime12({ hours, minutes }) : formatTime24({ hours, minutes })
 );
 
 export const toOption = (time: TimeAndFormat) => ({
+  time,
   value: formatTime24(time),
   label: formatTime(time)
 });
@@ -178,6 +181,7 @@ export interface RequiredProps {
   onChange: (time?: OnChangeInput) => void
   /** value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } */
   value?: Time
+  timeFormatter?: TimeFormatter
   /** optionally disable the control */
   disabled?: boolean
   className?: string
@@ -232,7 +236,8 @@ export default class TimePicker extends React.Component<TimePickerProps, { input
       className: _className, id, style,
       minTime, maxTime, timeFormat,
       value: userValue,
-      searchable, placeholder, menuPosition, disabled
+      searchable, placeholder, menuPosition, disabled,
+      timeFormatter: _timeFormatter
     } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
@@ -241,6 +246,8 @@ export default class TimePicker extends React.Component<TimePickerProps, { input
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
 
+    const timeFormatter  = _timeFormatter ? (o: any) => _timeFormatter(o.time) : undefined; // TODO(typo)
+
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -248,6 +255,8 @@ export default class TimePicker extends React.Component<TimePickerProps, { input
         value={value}
         onChange={onChange}
         options={options}
+        valueRenderer={timeFormatter}
+        optionRenderer={timeFormatter}
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
