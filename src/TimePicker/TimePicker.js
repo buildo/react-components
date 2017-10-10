@@ -41,6 +41,7 @@ export const Props = t.refinement(t.struct({
   maxTime: t.maybe(Time),
   placeholder: t.maybe(t.String),
   timeFormat: t.maybe(TimeFormat),
+  timeFormatter: t.maybe(t.Function),
   searchable: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
@@ -63,11 +64,13 @@ const formatTime12 = ({ hours, minutes }) => {
     return `${pad(hours)}${separator}${pad(minutes)} am`;
   }
 };
+
 const formatTime = ({ hours, minutes, timeFormat }) => (
   timeFormat === H12 ? formatTime12({ hours, minutes }) : formatTime24({ hours, minutes })
 );
 
 export const toOption = time => ({
+  time,
   value: formatTime24(time),
   label: formatTime(time)
 });
@@ -195,13 +198,16 @@ export default class TimePicker extends React.Component {
       className,
       minTime, maxTime, timeFormat,
       value: userValue,
+      timeFormatter: _timeFormatter,
       ...props
     } = this.props;
 
     const value = userValue ? formatTime24(userValue) : undefined;
+    const timeFormatter = _timeFormatter ? ({ time }) => _timeFormatter(time) : undefined;
 
     return {
       ...props,
+      timeFormatter,
       value,
       options: makeOptions({ minTime, maxTime, timeFormat, userValue }, this.state.inputValue),
       className: cx('time-picker', className),
@@ -210,7 +216,7 @@ export default class TimePicker extends React.Component {
     };
   }
 
-  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue, menuPosition, disabled }) {
+  template({ id, className, style, searchable, value, placeholder, options, onChange, updateInputValue, menuPosition, disabled, timeFormatter }) {
     return (
       <Dropdown
         {...{ id, className, style }}
@@ -218,6 +224,8 @@ export default class TimePicker extends React.Component {
         value={value}
         onChange={onChange}
         options={options}
+        valueRenderer={timeFormatter}
+        optionRenderer={timeFormatter}
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
