@@ -8,6 +8,7 @@ type Time = {
   minutes: number // [0,59]
 };
 type TimeWithTimeFormat = Time & { timeFormat: TimeFormat };
+type TimeFormatter = (t: TimeWithTimeFormat) => JSX.Element;
 
 export type TimePickerProps = {
   onChange: (t?: { originalInput?: string, hours?: number, minutes?: number }) => void,
@@ -16,6 +17,7 @@ export type TimePickerProps = {
   maxTime?: Time,
   placeholder?: string,
   timeFormat?: TimeFormat,
+  timeFormatter?: TimeFormatter,
   searchable?: boolean,
   menuPosition?: 'bottom' | 'top',
   id?: string,
