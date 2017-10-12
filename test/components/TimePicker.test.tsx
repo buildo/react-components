@@ -244,16 +244,16 @@ describe('TimePicker', () => {
       const inputStr = '';
       const results = makeOptions({ timeFormat: H24, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } }, inputStr);
       expect(results.length).toBe(4);
-      expect(results[0]).toEqual({ label: '05:30', value: '05:30' });
-      expect(results[3]).toEqual({ label: '07:00', value: '07:00' });
+      expect(results[0]).toEqual({ label: '05:30', value: '05:30', time: { hours: 5, minutes: 30, timeFormat: '24h' } });
+      expect(results[3]).toEqual({ label: '07:00', value: '07:00', time: { hours: 7, minutes: 0, timeFormat: '24h' } });
     });
 
     it('computes options based on min/max for 12H time', () => {
       const inputStr = '';
       const results = makeOptions({ timeFormat: H12, minTime: { hours: 5, minutes: 10 }, maxTime: { hours: 7, minutes: 20 } }, inputStr);
       expect(results.length).toBe(4);
-      expect(results[0]).toEqual({ label: '05:30 am', value: '05:30' });
-      expect(results[3]).toEqual({ label: '07:00 am', value: '07:00' });
+      expect(results[0]).toEqual({ label: '05:30 am', value: '05:30', time: { hours: 5, minutes: 30, timeFormat: '12h' } });
+      expect(results[3]).toEqual({ label: '07:00 am', value: '07:00', time: { hours: 7, minutes: 0, timeFormat: '12h' } });
     });
 
   });

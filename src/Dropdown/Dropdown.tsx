@@ -123,7 +123,7 @@ export interface RequiredProps {
   /** called when value is changed */
   onChange: (value?: Value | null) => void
   /** the function that can be used to override the default renderer of the selected value */
-  valueRenderer?: (option: Select.Option | Select.Options) => JSX.Element | null | false
+  valueRenderer?: (option: (Select.Option | Select.Options) & { [k: string]: any }) => JSX.Element | null | false
   /** available options */
   options: Select.Options
   /** whether pressing backspace removes the last item when there is no input value */
@@ -137,7 +137,7 @@ export interface RequiredProps {
   /** if allowCreate is true, message shown to hint the user to press Enter to create a new option */
   addLabelText?: string
   /** the function that can be used to override the default renderer of options */
-  optionRenderer?: (option: Select.Option) => JSX.Element | null | false
+  optionRenderer?: (option: Select.Option & { [k: string]: any }) => JSX.Element | null | false
   /** called when the value of the `input` is changed */
   onInputChange?: (inputValue: string) => void
   /** called when dropdown is focused */
