@@ -29,14 +29,16 @@ export type ToggleRequiredProps = {
   style?: React.CSSProperties
 };
 
-export type ToggleProps = ToggleRequiredProps & Partial<ToggleDefaultProps>;
+export namespace Toggle {
+  export type Props = ToggleRequiredProps & Partial<ToggleDefaultProps>;
+}
 type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 
 /**
  * A nice animated Toggle rendered using only CSS
  */
 @props(Props)
-export default class Toggle extends React.PureComponent<ToggleProps> {
+export class Toggle extends React.PureComponent<Toggle.Props> {
 
   static defaultProps: ToggleDefaultProps = {
     value: false
@@ -46,7 +48,7 @@ export default class Toggle extends React.PureComponent<ToggleProps> {
     this.updateCheckbox(this.props as ToggleDefaultedProps);
   }
 
-  componentWillReceiveProps(nextProps: ToggleProps) {
+  componentWillReceiveProps(nextProps: Toggle.Props) {
     this.updateCheckbox(nextProps as ToggleDefaultedProps);
   }
 

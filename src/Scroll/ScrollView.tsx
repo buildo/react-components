@@ -23,8 +23,11 @@ export type ScrollViewRequiredProps = {
   children: React.ReactNode,
 };
 
-export type ScrollViewProps = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps> & React.HTMLAttributes<HTMLDivElement>
 export type ScrollViewDefaultedProps = ScrollViewRequiredProps & ScrollViewDefaultProps & React.HTMLAttributes<HTMLDivElement>
+
+export namespace ScrollView {
+  export type Props = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps> & React.HTMLAttributes<HTMLDivElement>
+}
 
 
 export const Props = {
@@ -44,7 +47,7 @@ export const Props = {
  * - out of the box momentum scrolling on iOS
  */
 @props(Props, { strict: false })
-export default class ScrollView extends React.Component<ScrollViewProps> {
+export class ScrollView extends React.Component<ScrollView.Props> {
 
   private lastY: number = 0;
 

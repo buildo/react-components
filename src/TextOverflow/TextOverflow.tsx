@@ -4,10 +4,9 @@ import omit = require('lodash/omit');
 import debounce = require('lodash/debounce');
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
-import Popover from '../Popover/Popover';
-import ResizeSensor from '../ResizeSensor/ResizeSensor';
+import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 import { ObjectOverwrite } from 'typelevel-ts';
-import { PopoverProps } from '../Popover/Popover';
+import { Popover } from '../Popover/Popover';
 
 export const Props = {
   children: t.maybe(t.Function),
@@ -36,7 +35,7 @@ export type TextOverflowRequiredProps = {
   /** this is the full string */
   label?: string | number,
   /** additional props for Popover component used to display the entire text */
-  popover?: ObjectOverwrite<PopoverProps.Popover, {
+  popover?: ObjectOverwrite<Popover.Props['popover'], {
     content?: void & string
   }>,
   id?: string,
@@ -44,10 +43,12 @@ export type TextOverflowRequiredProps = {
   style?: React.CSSProperties
 };
 
-export type TextOverflowProps = TextOverflowRequiredProps & Partial<TextOverflowDefaultProps>;
+export namespace TextOverflow {
+  export type Props = TextOverflowRequiredProps & Partial<TextOverflowDefaultProps>;
+}
 type TextOverflowDefaultedProps = TextOverflowRequiredProps & TextOverflowDefaultProps;
 
-export type TextOverflowState = {
+export type State = {
   isOverflowing: boolean,
   isHovering: boolean
 };
@@ -56,7 +57,7 @@ export type TextOverflowState = {
  * Text view which, if string content is too large, trims it and shows the full content on "hover".
  */
 @props(Props, { strict: false })
-export default class TextOverflow extends React.Component<TextOverflowProps, TextOverflowState> {
+export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
   static defaultProps: TextOverflowDefaultProps = {
     delayWhenLazy: 100,
@@ -69,7 +70,7 @@ export default class TextOverflow extends React.Component<TextOverflowProps, Tex
     !this.props.lazy && this.verifyOverflow();
   }
 
-  componentWillReceiveProps(nextProps: TextOverflowProps) {
+  componentWillReceiveProps(nextProps: TextOverflow.Props) {
     if (!this.props.lazy && nextProps.label !== this.props.label) {
       this.reset();
     }
@@ -188,7 +189,7 @@ export default class TextOverflow extends React.Component<TextOverflowProps, Tex
     if (children) {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
-      const props: PopoverProps = {
+      const props: Popover.Props = {
         ...omit(other, ['delayWhenLazy']),
         popover: {
           ...popover,

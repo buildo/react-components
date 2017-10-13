@@ -1,28 +1,30 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import FlexView from 'react-flexview';
 
-export type MoreOrLessProps = {
-  /** panel content */
-  children: any, // TODO: t.ReactChildren
-  /** whether the panel should be expanded or not */
-  expanded: boolean,
-  /** called on toggle */
-  onExpandedChange: (expanded: boolean) => void,
-  /** icons for expanded and collapsed panel */
-  icons: {
-    expanded: string,
-    collapsed: string
-  },
-  /** props for wrapper FlexView */
-  wrapperProps?: object,
-  /** an optional class name to pass to the component */
-  className?: string,
-  /** an optional style object to pass to the component */
-  style?: React.CSSProperties
-};
+export namespace MoreOrLess {
+  export type Props = {
+    /** panel content */
+    children: any, // TODO: t.ReactChildren
+    /** whether the panel should be expanded or not */
+    expanded: boolean,
+    /** called on toggle */
+    onExpandedChange: (expanded: boolean) => void,
+    /** icons for expanded and collapsed panel */
+    icons: {
+      expanded: string,
+      collapsed: string
+    },
+    /** props for wrapper FlexView */
+    wrapperProps?: object,
+    /** an optional class name to pass to the component */
+    className?: string,
+    /** an optional style object to pass to the component */
+    style?: React.CSSProperties
+  };
+}
 
 export const Props = {
   children: ReactChildren,
@@ -41,7 +43,7 @@ export const Props = {
  * A panel used to alternately display short or long version of the content
  */
 @props(Props)
-export default class MoreOrLess extends React.PureComponent<MoreOrLessProps> {
+export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
 
   toggleExpanded = () => {
     this.props.onExpandedChange(!this.props.expanded);

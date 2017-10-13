@@ -1,3 +1,2 @@
-import MoreOrLess, { MoreOrLessProps } from './MoreOrLess';
+import { MoreOrLess } from './MoreOrLess';
 export default MoreOrLess;
-export { MoreOrLessProps };

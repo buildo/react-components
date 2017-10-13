@@ -1,3 +1,2 @@
-import BackgroundDimmer, { BackgroundDimmerProps, Props } from './BackgroundDimmer';
+import { BackgroundDimmer } from './BackgroundDimmer';
 export default BackgroundDimmer;
-export { BackgroundDimmerProps, Props };

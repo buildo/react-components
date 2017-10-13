@@ -8,7 +8,7 @@ import every = require('lodash/every');
 import isEqual = require('lodash/isEqual');
 import sortBy = require('lodash/sortBy');
 
-const Range = t.refinement(t.struct({
+const RangeT = t.refinement(t.struct({
   startValue: t.Number,
   endValue: t.Number,
   fillingColor: t.maybe(t.String),
@@ -16,13 +16,13 @@ const Range = t.refinement(t.struct({
   backgroundColor: t.maybe(t.String)
 }), (r: any) => r.startValue < r.endValue, 'Range'); // FIXME: any
 
-const Ranges = t.refinement(t.list(Range), (rangeList) => {
+const Ranges = t.refinement(t.list(RangeT), (rangeList) => {
 
-  const isOverlapped = (range1: MeterProps.Range, range2: MeterProps.Range) => (
+  const isOverlapped = (range1: Range, range2: Range) => (
     Math.max(range1.startValue, range2.startValue) < Math.min(range1.endValue, range2.endValue)
   );
 
-  const noOverlappingRanges = (ranges: MeterProps.Range[]) => {
+  const noOverlappingRanges = (ranges: Range[]) => {
     return every(ranges, (range1, i) => {
       return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
         return !isOverlapped(range1, range2);
@@ -47,7 +47,7 @@ export const Props = t.refinement(t.struct({
   style: t.maybe(t.Object)
 }), ({ min, max }) => min < max, 'Props');
 
-const isFullyFilled = (ranges: MeterProps.Range[] | void, min: number, max: number) => {
+const isFullyFilled = (ranges: Range[] | void, min: number, max: number) => {
   if (!ranges) {
     return false;
   }
@@ -65,15 +65,14 @@ const labelFormatter = (value: number, min: number, max: number) => (
   `${computePercentage(value, min, max)}%`
 );
 
-export namespace MeterProps {
-  export type Range = {
-    startValue: number,
-    endValue: number,
-    fillingColor?: string,
-    labelColor?: string,
-    backgroundColor?: string
-  }
-};
+
+export type Range = {
+  startValue: number,
+  endValue: number,
+  fillingColor?: string,
+  labelColor?: string,
+  backgroundColor?: string
+}
 
 export type MeterDefaultProps = {
   /** minimum value */
@@ -88,7 +87,7 @@ export type MeterRequiredProps = {
   /** current value */
   value: number,
   /** array of Object in which you can define startValue, endValue, labelColor, fillingColor */
-  ranges?: MeterProps.Range[],
+  ranges?: Range[],
   /** fallback labelColor */
   baseLabelColor?: string,
   /** fallback fillingColor */
@@ -100,14 +99,16 @@ export type MeterRequiredProps = {
   style?: React.CSSProperties
 };
 
-export type MeterProps = MeterRequiredProps & Partial<MeterDefaultProps>;
+export namespace Meter {
+  export type Props = MeterRequiredProps & Partial<MeterDefaultProps>;
+}
 type MeterDefaultedProps = MeterRequiredProps & MeterDefaultProps;
 
 /**
  * A Meter displays a measurement (usually a percentage) on a known scale.
  */
 @props(Props)
-export default class Meter extends React.PureComponent<MeterProps> {
+export class Meter extends React.PureComponent<Meter.Props> {
 
   static defaultProps: MeterDefaultProps = {
     min: 0,

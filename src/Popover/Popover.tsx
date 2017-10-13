@@ -41,49 +41,35 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export namespace PopoverProps {
+export type Position = 'top' | 'bottom' | 'left' | 'right';
+export type Anchor = 'start' | 'center' | 'end';
+export type Event = 'click' | 'hover';
 
-  export type Position = 'top' | 'bottom' | 'left' | 'right';
-  export type Anchor = 'start' | 'center' | 'end';
-  export type Event = 'click' | 'hover';
+export type Delay = number | { whenClosed?: number, whenOpen?: number };
 
-  export type Delay = number | { whenClosed?: number, whenOpen?: number };
-
-  export type Popover = {
-    content: React.ReactNode,
-    attachToBody?: boolean,
-    auto?: boolean,
-    position?: Position,
-    anchor?: Anchor,
-    event?: Event,
-    onShow?: () => void,
-    onHide?: () => void,
-    onToggle?: () => void,
-    dismissOnScroll?: boolean,
-    dismissOnClickOutside?: boolean,
-    className?: string,
-    style?: React.CSSProperties,
-    id?: string,
-    maxWidth?: number | string,
-    distance?: number,
-    offsetX?: number,
-    offsetY?: number,
-    isOpen?: boolean,
-    delay?: Delay,
-    contextTypes?: React.ValidationMap<any>,
-    context?: object
-  };
-
-};
-
-export type PopoverProps = {
-  /** the trigger node. It's always visible */
-  children: React.ReactNode,
-  /** popover settings. The popover is **not** always visible */
-  popover: PopoverProps.Popover,
+export type PopoverSettings = {
+  content: React.ReactNode,
+  attachToBody?: boolean,
+  auto?: boolean,
+  position?: Position,
+  anchor?: Anchor,
+  event?: Event,
+  onShow?: () => void,
+  onHide?: () => void,
+  onToggle?: () => void,
+  dismissOnScroll?: boolean,
+  dismissOnClickOutside?: boolean,
   className?: string,
   style?: React.CSSProperties,
-  id?: string
+  id?: string,
+  maxWidth?: number | string,
+  distance?: number,
+  offsetX?: number,
+  offsetY?: number,
+  isOpen?: boolean,
+  delay?: Delay,
+  contextTypes?: React.ValidationMap<any>,
+  context?: object
 };
 
 export type PopoverElement = {
@@ -93,15 +79,27 @@ export type PopoverElement = {
   y: number
 };
 
-export type PopoverState = {
+export type State = {
   isOpen: boolean,
   popover?: PopoverElement,
   child?: PopoverElement
 };
 
+export namespace Popover {
+  export type Props = {
+    /** the trigger node. It's always visible */
+    children: React.ReactNode,
+    /** popover settings. The popover is **not** always visible */
+    popover: PopoverSettings,
+    className?: string,
+    style?: React.CSSProperties,
+    id?: string
+  };
+}
+
 type PopoverStyle = React.CSSProperties & {
-  _computedAnchor?: PopoverProps.Anchor,
-  _computedPosition?: PopoverProps.Position
+  _computedAnchor?: Anchor,
+  _computedPosition?: Position
 };
 
 /**
@@ -109,7 +107,7 @@ type PopoverStyle = React.CSSProperties & {
  * (usually "hover" or "click") it renders the popover and positions it relative to it.
  */
 @props(Props)
-export default class Popover extends React.Component<PopoverProps, PopoverState> {
+export class Popover extends React.Component<Popover.Props, State> {
 
   private initialized: boolean;
   private containerNode: Element | null;
@@ -120,7 +118,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
 
   // LIFECYCLE
 
-  state: PopoverState = { isOpen: false };
+  state: State = { isOpen: false };
 
   componentDidMount() {
     this.ContextWrapper = getContextWrapper(this.getPopoverProps().contextTypes);
@@ -132,7 +130,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     }
   }
 
-  componentWillReceiveProps(nextProps: PopoverProps) {
+  componentWillReceiveProps(nextProps: Popover.Props) {
     this.updateDebouncedMousedEvents(nextProps);
     this.saveValuesFromNodeTree();
 
@@ -215,12 +213,12 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
   // UTILS
 
   // extend with default values
-  getPopoverProps = (_props?: PopoverProps) => {
+  getPopoverProps = (_props?: Popover.Props) => {
     const props = _props || this.props;
     return {
-      position: 'top' as PopoverProps.Position,
-      anchor: 'center' as PopoverProps.Anchor,
-      event: 'hover' as PopoverProps.Event,
+      position: 'top' as Position,
+      anchor: 'center' as Anchor,
+      event: 'hover' as Event,
       onShow: () => {},
       onHide: () => {},
       onToggle: () => {},
@@ -290,9 +288,9 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     }
   };
 
-  isStateful = (props?: PopoverProps) => typeof this.getPopoverProps(props).isOpen === 'undefined';
+  isStateful = (props?: Popover.Props) => typeof this.getPopoverProps(props).isOpen === 'undefined';
 
-  isOpen = (props?: PopoverProps) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
+  isOpen = (props?: Popover.Props) => this.isStateful() ? this.state.isOpen : this.getPopoverProps(props).isOpen;
 
   isEventInsideTarget = (el: Node, target: Node): boolean => {
     if (!el) {
@@ -333,7 +331,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     }
   };
 
-  onPopoverOpenChange = (props?: PopoverProps) => {
+  onPopoverOpenChange = (props?: Popover.Props) => {
     if (this.isOpen(props)) {
       if (this.isAbsolute()) {
         this.appendPopover();
@@ -369,11 +367,11 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     }
   };
 
-  getDelayWhenClosed = (delay?: PopoverProps.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenClosed;
+  getDelayWhenClosed = (delay?: Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenClosed;
 
-  getDelayWhenOpen = (delay?: PopoverProps.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenOpen;
+  getDelayWhenOpen = (delay?: Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenOpen;
 
-  updateDebouncedMousedEvents = (nextProps?: PopoverProps) => {
+  updateDebouncedMousedEvents = (nextProps?: Popover.Props) => {
     const { delay } = this.getPopoverProps(nextProps);
     const delayWhenClosed = this.getDelayWhenClosed(delay);
     const delayWhenOpen = this.getDelayWhenOpen(delay);
@@ -452,7 +450,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
 
     if (popoverProps.auto) {
       // give priority to the position passed by the user as _.uniq should maintain the order
-      const positions = uniq<PopoverProps.Position>([popoverProps.position, 'top', 'bottom', 'left', 'right']);
+      const positions = uniq<Position>([popoverProps.position, 'top', 'bottom', 'left', 'right']);
 
       const popoverStyle: PopoverStyle | null = positions.reduce((acc, p) => {
         if (acc === null) {
@@ -515,7 +513,7 @@ export default class Popover extends React.Component<PopoverProps, PopoverState>
     };
   };
 
-  computePopoverStyle = (position: PopoverProps.Position, anchor: PopoverProps.Anchor): PopoverStyle => {
+  computePopoverStyle = (position: Position, anchor: Anchor): PopoverStyle => {
     const child = this.state.child!;
     const popover = this.state.popover!;
     const { maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();

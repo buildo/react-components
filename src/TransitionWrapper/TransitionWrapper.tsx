@@ -3,19 +3,17 @@ import * as cx from 'classnames';
 import omit = require('lodash/omit');
 import { props, t, ReactChildren } from '../utils';
 
-export namespace TransitionWrapperProps {
-  export type TransitionStyles = {
-    enter?: React.CSSProperties,
-    enterActive?: React.CSSProperties,
-    default?: React.CSSProperties,
-    leave?: React.CSSProperties,
-    leaveActive?: React.CSSProperties
-  }
+export type TransitionStyles = {
+  enter?: React.CSSProperties,
+  enterActive?: React.CSSProperties,
+  default?: React.CSSProperties,
+  leave?: React.CSSProperties,
+  leaveActive?: React.CSSProperties
 }
 
 export type TransitionWrapperDefaultProps<CP> = {
   /** object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case) */
-  transitionStyles: TransitionWrapperProps.TransitionStyles,
+  transitionStyles: TransitionStyles,
   /** custom component to be used as wrapper for `children`. Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`) */
   component:  keyof React.ReactHTML | React.ComponentClass<CP>,
   /** callback for componentDidLeave: useful if you need to do some cleanup */
@@ -33,10 +31,13 @@ export type TransitionWrapperRequiredProps = {
   className?: string,
 };
 
-export type TransitionWrapperProps<CP> = TransitionWrapperRequiredProps & Partial<TransitionWrapperDefaultProps<CP>> & {[k in keyof CP]: CP[k]};
 export type TransitionWrapperDefaultedProps<CP> = TransitionWrapperRequiredProps & TransitionWrapperDefaultProps<CP> & {[k in keyof CP]: CP[k]};
 
-export type TransitionWrapperState = {
+export namespace TransitionWrapper {
+  export type Props<CP> = TransitionWrapperRequiredProps & Partial<TransitionWrapperDefaultProps<CP>> & {[k in keyof CP]: CP[k]};
+}
+
+export type State = {
   animationStart?: React.CSSProperties,
   animationEnd?: React.CSSProperties,
   defaultStyle?: React.CSSProperties,
@@ -66,7 +67,7 @@ export const Props = {
  * To be used with `ReactTransitionGroup` to show transitions for a component
  */
 @props(Props, { strict: false })
-export default class TransitionWrapper<CP extends {}> extends React.PureComponent<TransitionWrapperProps<CP>, TransitionWrapperState> {
+export class TransitionWrapper<CP extends {}> extends React.PureComponent<TransitionWrapper.Props<CP>, State> {
 
   static defaultProps: TransitionWrapperDefaultProps<React.HTMLAttributes<HTMLDivElement>> = {
     transitionStyles: {},
@@ -75,7 +76,7 @@ export default class TransitionWrapper<CP extends {}> extends React.PureComponen
     onLeave: () => {}
   };
 
-  _replaceState = (state: TransitionWrapperState) => {
+  _replaceState = (state: State) => {
     this.state = state;
     this.forceUpdate();
   };

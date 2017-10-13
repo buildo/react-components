@@ -5,11 +5,11 @@ import find = require('lodash/find');
 import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 
 import Header, { defaultHeader } from '../Header';
-import Column, { ColumnProps } from '../Column';
+import Column from '../Column';
 
 export type ColumnGroupProps<T, K extends string> = {
   key: string | number,
-  children: React.ReactElement<ColumnProps<T, K>>[],
+  children: React.ReactElement<Column.Props<T, K>>[],
   fixed?: boolean,
   sortable?: boolean
 }
@@ -32,7 +32,7 @@ function ColumnGroup<T, K extends string>(args: ColumnGroupProps<T, K>) {
   const columns = children
     .filter(ch => ch.type === Column)
     .map((col, key) => {
-      const colProps: ColumnProps<T, K> = {
+      const colProps: Column.Props<T, K> = {
         key,
         ...col.props,
         fixed

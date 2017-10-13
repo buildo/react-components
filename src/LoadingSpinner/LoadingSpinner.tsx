@@ -25,7 +25,9 @@ export type LoadingSpinnerRequiredProps = {
   className?: string,
 };
 
-export type LoadingSpinnerProps = LoadingSpinnerRequiredProps & Partial<LoadingSpinnerDefaultProps>;
+export namespace LoadingSpinner {
+  export type Props = LoadingSpinnerRequiredProps & Partial<LoadingSpinnerDefaultProps>;
+}
 type LoadingSpinnerDefaultedProps = LoadingSpinnerRequiredProps & LoadingSpinnerDefaultProps;
 
 export const Props = {
@@ -46,7 +48,7 @@ export const Props = {
  * Absolute dimmed layer with loading spinner in the center
  */
 @props(Props)
-export default class LoadingSpinner extends React.PureComponent<LoadingSpinnerProps> {
+export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
 
   static defaultProps: LoadingSpinnerDefaultProps = {
     size: '3em',

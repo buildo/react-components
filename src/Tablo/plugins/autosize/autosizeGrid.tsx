@@ -2,17 +2,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
 import FlexView from 'react-flexview';
-import ResizeSensor from '../../../ResizeSensor/ResizeSensor';
-import { TabloProps } from '../../Tablo';
+import { ResizeSensor } from '../../../ResizeSensor/ResizeSensor';
+import { Tablo } from '../../Tablo';
 
 type AutosizeGridState = {
   width?: number,
   height?: number
 };
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>> => {
 
-  return class AutosizeGrid extends React.PureComponent<TabloProps<T, K>, AutosizeGridState> {
+  return class AutosizeGrid extends React.PureComponent<Tablo.Props<T, K>, AutosizeGridState> {
 
     state: AutosizeGridState = {}
 

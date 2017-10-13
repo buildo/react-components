@@ -1,4 +1,5 @@
-import Panel, { PanelProps } from './Panel';
-import PanelHeader, { PanelHeaderProps } from './PanelHeader';
-import TabbedPanel, { TabbedPanelProps } from './TabbedPanel';
-export { Panel, PanelProps, PanelHeader, PanelHeaderProps, TabbedPanel, TabbedPanelProps };
+import { Panel } from './Panel';
+import { PanelHeader } from './PanelHeader';
+import { TabbedPanel } from './TabbedPanel';
+export default Panel;
+export { Panel, PanelHeader, TabbedPanel };

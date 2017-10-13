@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { props, t } from '../utils';
 import * as cx from 'classnames';
-import Dropdown, { MenuPosition } from '../Dropdown/Dropdown';
+import { Dropdown, MenuPosition } from '../Dropdown/Dropdown';
 import range = require('lodash/range');
 import flatten = require('lodash/flatten');
 import compact = require('lodash/compact');
@@ -202,11 +202,14 @@ export interface DefaultProps {
   /** whether the menu should open on top or bottom */
   menuPosition: MenuPosition
 }
-export type TimePickerProps = RequiredProps & Partial<DefaultProps>
+
+export namespace TimePicker {
+  export type Props = RequiredProps & Partial<DefaultProps>
+}
 type TimePickerDefaultedProps = RequiredProps & DefaultProps;
 
 @props(Props)
-export default class TimePicker extends React.Component<TimePickerProps, { inputValue: string }> {
+export class TimePicker extends React.Component<TimePicker.Props, { inputValue: string }> {
 
   static defaultProps = {
     placeholder: `--${separator}--`,

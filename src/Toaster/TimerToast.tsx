@@ -27,7 +27,7 @@ export type TimerToastState = {
 };
 
 @props(Props)
-export default class TimerToast extends React.Component<TimerToastProps, TimerToastState> {
+export class TimerToast extends React.Component<TimerToastProps, TimerToastState> {
 
   private timer: number | null;
 

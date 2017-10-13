@@ -10,7 +10,7 @@ import Overflow from './Overflow';
 export { Overflow };
 import TextOverflow from './TextOverflow';
 export { TextOverflow };
-import ScrollView from './ScrollView/ScrollView';
+import ScrollView from './ScrollView';
 export { ScrollView };
 export { Toaster, TimerToast } from './Toaster';
 import Modal from './Modal';

@@ -227,12 +227,14 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type Props = RequiredProps & Partial<DefaultProps>
+export namespace Dropdown {
+  export type Props = RequiredProps & Partial<DefaultProps>
+}
 
 type DefaultedProps = RequiredProps & DefaultProps;
 
 @props(Props, { strict: true })
-export default class Dropdown extends React.Component<Props> {
+export class Dropdown extends React.Component<Dropdown.Props> {
 
   static defaultProps: DefaultProps = {
     delimiter: ',',

@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import  GeminiScrollbar = require('gemini-scrollbar');
-import ResizeSensor from '../ResizeSensor/ResizeSensor';
+import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 
 export type ScrollViewDefaultProps<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> = {
   /** component to use as the wrapper */
@@ -34,8 +34,11 @@ export type ScrollViewState = {
   isHorizontalScrollbarVisible: boolean
 };
 
-export type ScrollViewProps<CP, ICP> = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps<CP, ICP>>;
 export type ScrollViewDefaultedProps<CP, ICP> = ScrollViewRequiredProps & ScrollViewDefaultProps<CP, ICP>;
+
+export namespace ScrollView {
+  export type Props<CP, ICP> = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps<CP, ICP>>;
+}
 
 export const Props = {
   children: ReactChildren,
@@ -51,7 +54,7 @@ export const Props = {
 
 /** A scrollable view */
 @props(Props)
-export default class ScrollView<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> extends React.PureComponent<ScrollViewProps<CP, ICP>, ScrollViewState> {
+export class ScrollView<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> extends React.PureComponent<ScrollView.Props<CP, ICP>, ScrollViewState> {
 
   static defaultProps: ScrollViewDefaultProps<React.HTMLAttributes<HTMLDivElement>, React.HTMLAttributes<HTMLDivElement>> = {
     component: 'div',

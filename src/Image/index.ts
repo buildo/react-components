@@ -1,5 +1,5 @@
-import Image, { ImageProps } from './Image';
+import { Image } from './Image';
 import getUrl, { getBackgroundUrl } from './getUrl';
 
 export default Image;
-export { ImageProps, getUrl, getBackgroundUrl };
+export { getUrl, getBackgroundUrl };

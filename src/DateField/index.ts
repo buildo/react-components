@@ -1,3 +1,2 @@
-import DateField, { DateFieldProps } from './DateField';
+import { DateField } from './DateField';
 export default DateField;
-export { DateFieldProps };

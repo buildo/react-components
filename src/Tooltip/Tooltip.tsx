@@ -1,20 +1,18 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { t, ReactChildren, stateClassUtil, props } from '../utils';
-import FormattedText from '../FormattedText/FormattedText';
-import Popover, { PopoverProps } from '../Popover/Popover';
+import { FormattedText } from '../FormattedText/FormattedText';
+import { Popover } from '../Popover/Popover';
 import { ObjectOverwrite } from 'typelevel-ts';
 
-export namespace TooltipProps {
-  export type Type = 'light' | 'dark';
-  export type Size = 'small' | 'big';
-}
+export type Type = 'light' | 'dark';
+export type Size = 'small' | 'big';
 
 export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */
   children: React.ReactNode
   /** popover props */
-  popover: ObjectOverwrite<PopoverProps.Popover, {
+  popover: ObjectOverwrite<Popover.Props['popover'], {
     content: string,
     event?: undefined
   }>,
@@ -28,18 +26,20 @@ export type TooltipRequiredProps = {
 
 export type TooltipDefaultProps = {
   /** type - light | dark */
-  type: TooltipProps.Type,
+  type: Type,
   /** size - small | big */
-  size: TooltipProps.Size,
+  size: Size,
 }
 
-export type TooltipProps = TooltipRequiredProps & Partial<TooltipDefaultProps>;
+export namespace Tooltip {
+  export type Props = TooltipRequiredProps & Partial<TooltipDefaultProps>;
+}
 
 type TooltipDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 export const Props = {
   children: ReactChildren,
-  popover: t.refinement<PopoverProps.Popover>(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
+  popover: t.refinement<Popover.Props['popover']>(t.Object, p => t.String.is(p.content) && t.Nil.is(p.event)),
   type: t.enums.of(['light', 'dark']),
   size: t.enums.of(['small', 'big']),
   className: t.maybe(t.String),
@@ -48,7 +48,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class Tooltip extends React.PureComponent<TooltipProps> {
+export class Tooltip extends React.PureComponent<Tooltip.Props> {
 
   static defaultProps: TooltipDefaultProps = {
     type: 'dark',
@@ -57,7 +57,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps> {
 
   render() {
     const { children, type, size, popover: _popover, className, id, style, } = this.props as TooltipDefaultedProps;
-    const popover: PopoverProps.Popover = {
+    const popover: Popover.Props['popover'] = {
       ..._popover,
       content: <FormattedText>{_popover.content}</FormattedText>,
       event: 'hover',

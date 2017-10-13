@@ -32,12 +32,14 @@ export type IconRequiredProps = {
   className?: string,
 };
 
-export type IconProps = IconRequiredProps & Partial<IconDefaultProps>;
+export namespace Icon {
+  export type Props = IconRequiredProps & Partial<IconDefaultProps>;
+}
 type IconDefaultedProps = IconRequiredProps & IconDefaultProps;
 
 /** An icon */
 @props(Props)
-export default class Icon extends React.PureComponent<IconProps> {
+export class Icon extends React.PureComponent<Icon.Props> {
 
   static defaultProps: IconDefaultProps = {
     paths: 1,

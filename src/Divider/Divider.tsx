@@ -2,21 +2,21 @@ import * as React from 'react';
 import { props, t } from '../utils';
 import * as cx from 'classnames';
 
-export namespace DividerProps {
-  export type Orientation = 'horizontal' | 'vertical'
-  export type Size = 'small' | 'medium' | 'large' | 'no-margin'
-};
+export type Orientation = 'horizontal' | 'vertical'
+export type Size = 'small' | 'medium' | 'large' | 'no-margin'
 
 export type DividerDefaultProps = {
   /** divider orientation (vertical | horizontal) */
-  orientation: DividerProps.Orientation,
+  orientation: Orientation,
   /** size of margins */
-  size: DividerProps.Size,
+  size: Size,
   /** an optional style object to pass to top level element of the component */
   style: React.CSSProperties,
 };
 
-export type DividerProps = Partial<DividerDefaultProps>;
+export namespace Divider {
+  export type Props = Partial<DividerDefaultProps>;
+}
 type DividerDefaultedProps = DividerDefaultProps;
 
 const orientation = t.enums.of(['horizontal', 'vertical'], 'orientation');
@@ -32,7 +32,7 @@ export const Props = {
  * A simple component used to visually divide UI elements
  */
 @props(Props)
-export default class Divider extends React.PureComponent<DividerProps> {
+export class Divider extends React.PureComponent<Divider.Props> {
 
   static defaultProps: DividerDefaultProps = {
     orientation: 'vertical',

@@ -9,7 +9,7 @@ import { props, t } from '../../utils';
   active: t.Boolean,
   onClick: t.Function
 })
-export default class Item extends React.Component {
+export class Item extends React.Component {
 
   onClick = () => this.props.onClick(this.props.sectionId, this.props.id);
 

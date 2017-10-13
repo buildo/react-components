@@ -4,7 +4,7 @@ import { props, t } from '../utils';
 import omit = require('lodash/omit');
 import * as InputChildren from 'react-input-children';
 import FlexView from 'react-flexview';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 export type ConfirmationInputRequiredProps = {
   /** input placeholder */
@@ -40,7 +40,9 @@ export type ConfirmationInputDefaultProps = {
   onClear: () => void,
 };
 
-export type ConfirmationInputProps = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
+export namespace ConfirmationInput {
+  export type Props = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
+}
 type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps & ConfirmationInputDefaultProps;
 
 export const Props = {
@@ -78,7 +80,7 @@ export type ConfirmProps = {
 } | undefined
 
 @props(Props, { strict: false })
-export default class ConfirmationInput extends React.PureComponent<ConfirmationInputProps, ConfirmationInputState> {
+export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Props, ConfirmationInputState> {
 
   static defaultProps: ConfirmationInputDefaultProps = {
     initialValue: '',
@@ -88,16 +90,13 @@ export default class ConfirmationInput extends React.PureComponent<ConfirmationI
     onClear: () => {}
   };
 
-  constructor(props: ConfirmationInputProps) {
-    super(props);
-    this.state = {
-      focused: false,
-      hoveringConfirm: false,
-      value: props.initialValue || ''
-    };
-  }
+  state = {
+    focused: false,
+    hoveringConfirm: false,
+    value: this.props.initialValue || ''
+  };
 
-  componentWillReceiveProps({ initialValue }: ConfirmationInputProps) {
+  componentWillReceiveProps({ initialValue }: ConfirmationInput.Props) {
     if (initialValue !== this.props.initialValue) {
       this.setState({
         value: initialValue || ''

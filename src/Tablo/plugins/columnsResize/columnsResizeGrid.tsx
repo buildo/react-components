@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import Column, { defaultColumns, updateColumns } from '../../Column';
-import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { UpdateColumnsProps } from '../../Column/columnUtility';
 import { getArrayChildren } from "../../utils";
 
@@ -12,7 +12,7 @@ const addSizeProps = <T, K extends string>({ col }: UpdateColumnsProps<T, K>) =>
   />
 );
 
-const getLocals = <T, K extends string>({ onColumnResize, ...props }: TabloProps<T, K>): TabloDefaultedIntrinsicProps<T, K> | TabloProps<T, K> => {
+const getLocals = <T, K extends string>({ onColumnResize, ...props }: Tablo.Props<T, K>): TabloDefaultedIntrinsicProps<T, K> | Tablo.Props<T, K> => {
 
   // if `onColumnResize` is missing bypass this plugin
   if (!onColumnResize) {
@@ -39,9 +39,9 @@ const getLocals = <T, K extends string>({ onColumnResize, ...props }: TabloProps
 
 };
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>> => {
 
-  return class ColumnResizeGrid extends React.PureComponent<TabloProps<T, K>> {
+  return class ColumnResizeGrid extends React.PureComponent<Tablo.Props<T, K>> {
 
     render() {
       return <Grid {...getLocals(this.props)} />;

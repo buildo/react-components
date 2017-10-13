@@ -1,3 +1,6 @@
-import DropdownMenu, { DropdownMenuProps } from './DropdownMenu';
-import Menu, { MenuProps } from './Menu';
-export { DropdownMenu, DropdownMenuProps, Menu, MenuProps };
+import { DropdownMenu } from './DropdownMenu';
+import { Menu } from './Menu';
+
+export default DropdownMenu;
+export { Menu, DropdownMenu }
+

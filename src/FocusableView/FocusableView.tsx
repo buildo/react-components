@@ -25,7 +25,9 @@ export type FocusableViewDefaultProps = {
   component: keyof React.ReactHTML | React.ComponentClass<{}>
 }
 
-export type FocusableViewProps = Partial<FocusableViewDefaultProps> & FocusableViewRequiredProps
+export namespace FocusableView {
+  export type Props = Partial<FocusableViewDefaultProps> & FocusableViewRequiredProps
+}
 
 type FocusableViewDefaultedProps = FocusableViewRequiredProps & FocusableViewDefaultProps;
 
@@ -45,7 +47,7 @@ export const Props = {
  * A panel that can get focus
  */
 @props(Props, { strict: false })
-export default class FocusableView extends React.Component<FocusableViewProps> {
+export class FocusableView extends React.Component<FocusableView.Props> {
 
   static defaultProps: FocusableViewDefaultProps = {
     ignoreFocus: false,

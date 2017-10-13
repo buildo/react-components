@@ -1,3 +1,2 @@
-import ConfirmationInput, { ConfirmationInputProps, Props } from './ConfirmationInput';
+import { ConfirmationInput } from './ConfirmationInput';
 export default ConfirmationInput;
-export { ConfirmationInputProps, Props };

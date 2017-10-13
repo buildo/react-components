@@ -4,7 +4,7 @@ import omitBy = require ('lodash/omitBy');
 import { defaultColumns, updateColumns, UpdateColumnsHandler, ColumnIntrinsicProps } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { Tablo, Sort, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { getArrayChildren } from '../../utils';
 
 export const clean = <T, K extends string = keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
@@ -16,9 +16,9 @@ const getLocals = <T, K extends string>({
   onSortChange,
   children,
   ...gridProps
-}: TabloProps<T, K>): TabloDefaultedIntrinsicProps<T, K> | TabloProps<T, K> => {
+}: Tablo.Props<T, K>): TabloDefaultedIntrinsicProps<T, K> | Tablo.Props<T, K> => {
 
-  const nextSort = (newSortBy: K): TabloProps.Sort<K> => {
+  const nextSort = (newSortBy: K): Sort<K> => {
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {
@@ -64,9 +64,9 @@ const getLocals = <T, K extends string>({
 
 };
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>> => {
 
-  return class SortableGrid extends React.PureComponent<TabloProps<T, K>> {
+  return class SortableGrid extends React.PureComponent<Tablo.Props<T, K>> {
     render() {
       return <Grid {...getLocals(this.props)} />;
     }

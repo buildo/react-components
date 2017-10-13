@@ -1,5 +1,5 @@
-import Toaster, { ToasterProps } from './Toaster';
-import TimerToast from './TimerToast';
+import { Toaster } from './Toaster';
+import { TimerToast } from './TimerToast';
 
 export default Toaster;
-export { Toaster, TimerToast, ToasterProps };
+export { Toaster, TimerToast };

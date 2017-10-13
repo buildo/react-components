@@ -1,3 +1,2 @@
-import Popover, { PopoverProps, Props } from './Popover';
+import { Popover } from './Popover';
 export default Popover;
-export { PopoverProps, Props };
