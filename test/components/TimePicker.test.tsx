@@ -2,8 +2,9 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { shallow } from 'enzyme';
 
-import TimePicker, {
-  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError, Props
+import TimePicker from '../../src/TimePicker';
+import {
+  parseInTimeFormat, H24, H12, toOption, filterTime, createTimeList, makeOptions, inputError
 } from '../../src/TimePicker/TimePicker';
 
 let consoleError: jest.SpyInstance<{}>;
@@ -16,7 +17,7 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps: Props = {
+const exampleProps: TimePicker.Props = {
   id: '12345',
   className: 'fancy-class-name',
   placeholder: '--:--',

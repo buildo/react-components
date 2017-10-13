@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import Dropdown, { Props } from '../../src/Dropdown';
+import Dropdown from '../../src/Dropdown';
 
 let consoleError: jest.SpyInstance<{}>;
 
@@ -14,7 +14,7 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps: Props = {
+const exampleProps: Dropdown.Props = {
   id: '12345',
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },
