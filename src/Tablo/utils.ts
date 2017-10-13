@@ -1,0 +1,1 @@
+export const getArrayChildren = (maybeArrayChildren?: React.ReactElement<any> | React.ReactElement<any>[]): React.ReactElement<any>[] | undefined => maybeArrayChildren ? Array.isArray(maybeArrayChildren) ? maybeArrayChildren : [maybeArrayChildren] : undefined;

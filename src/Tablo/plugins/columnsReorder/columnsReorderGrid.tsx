@@ -1,33 +1,36 @@
-import React from 'react';
+import * as React from 'react';
 import { props, t } from '../../../utils';
 
-import cx from 'classnames';
-import find from 'lodash/find';
-import sortBy from 'lodash/sortBy';
-import findIndex from 'lodash/findIndex';
-import once from 'lodash/once';
-import uniqueId from 'lodash/uniqueId';
+import * as cx from 'classnames';
+import find = require('lodash/find');
+import sortBy = require('lodash/sortBy');
+import findIndex = require('lodash/findIndex');
+import once = require('lodash/once');
+import uniqueId = require('lodash/uniqueId');
 
+import { TabloProps } from '../../Tablo';
 import dragDropContextHTML5Backend from './htmlBackend';
-import Column, { defaultColumns, updateColumns } from '../../Column';
+import Column, { defaultColumns, updateColumns, ColumnProps, UpdateColumnsHandler } from '../../Column';
 import ColumnGroup from '../../ColumnGroup';
 import Header, { defaultHeader } from '../../Header';
 import DNDHeader from './DNDHeader';
+import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
-export default Grid => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>>  => {
 
-  class ColumnsReorderGrid extends React.PureComponent {
+  class ColumnsReorderGrid extends React.PureComponent<TabloProps<T, K>> {
+    private uniqueId: string;
 
     constructor() {
       super();
       this.uniqueId = uniqueId('tablo_');
     }
 
-    getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }) {
+    getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: TabloProps<T, K>) {
 
-      const _children = [].concat(children || defaultColumns(gridProps.data));
+      const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
       const thereAreGroups = _children.filter(c => c.type === ColumnGroup).length > 0;
       if (thereAreGroups || !onColumnsReorder) {
@@ -38,7 +41,7 @@ export default Grid => {
         };
       }
 
-      const doOrderColumns = (child) => {
+      const doOrderColumns = (child: React.ReactElement<ColumnProps<T, K>>) => {
         if (child.type === Header) {
           return -1;
         }
@@ -48,7 +51,7 @@ export default Grid => {
 
       const orderedChildren = sortBy(_children, doOrderColumns);
 
-      const moveColumn = (list = [], source, target) => {
+      const moveColumn = (list: K[] = [], source: K, target: K) => {
         const source_index = list.indexOf(source);
         const target_index = list.indexOf(target);
         if (source_index <= target_index) {
@@ -58,7 +61,7 @@ export default Grid => {
         }
       };
 
-      const onColumnsSwitch = (sourceName, targetName) => {
+      const onColumnsSwitch = (sourceName: K, targetName: K) => {
         if (onColumnsReorder && sourceName && targetName && sourceName !== targetName) {
           const newColumnsOrder = moveColumn(orderedChildren.map(c => c.props.name), sourceName, targetName);
           return onColumnsReorder(newColumnsOrder);
@@ -66,14 +69,14 @@ export default Grid => {
         return undefined;
       };
 
-      const isDragAllowed = ({ props: { fixed } }) => !fixed;
-      const isDropAllowed = (fixed) => (source, target) => !fixed && source !== target;
+      const isDragAllowed = ({ props: { fixed } }: React.ReactElement<ColumnProps<T, K>>) => !fixed;
+      const isDropAllowed = (fixed: boolean) => (source: K, target: K) => !fixed && source !== target;
 
-      const overrideHeader = ({ col, index }) => { //eslint-disable-line
+      const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
         const { name, fixed } = col.props;
-        const header = find([].concat(col.props.children), { type: Header }) || defaultHeader(col.props.name);
-        const otherChildren = col.props.children ? [].concat(col.props.children).filter(ch => ch.type !== Header) : [];
-        const oncedOnColumnsSwitch = once(onColumnsSwitch, 200);
+        const header = find(getArrayChildren(col.props.children), { type: Header }) || defaultHeader(col.props.name);
+        const otherChildren = (getArrayChildren(col.props.children) || []).filter(ch => ch.type !== Header);
+        const oncedOnColumnsSwitch = once(onColumnsSwitch);
         const dndHeader = (
           <Header {...header.props}>
             <DNDHeader
@@ -82,7 +85,7 @@ export default Grid => {
               index={index}
               name={name}
               isDragAllowed={isDragAllowed(col)}
-              isDropAllowed={isDropAllowed(fixed)}
+              isDropAllowed={isDropAllowed(!!fixed)}
               tabloUniqueId={this.uniqueId}
             >
               {header.props.children}
@@ -90,10 +93,11 @@ export default Grid => {
           </Header>
         );
         const children = [dndHeader, ...otherChildren].map((el, index) => React.cloneElement(el, { key: index }));
+        const Col: React.SFC<ColumnProps<T, K>> = Column;
         return (
-          <Column {...col.props} key={name}>
+          <Col {...col.props} key={name}>
             {children}
-          </Column>
+          </Col>
         );
       };
 
