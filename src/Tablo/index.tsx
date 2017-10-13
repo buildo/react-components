@@ -15,6 +15,6 @@ import Footer, { FooterProps } from './Footer';
 export { Footer, FooterProps };
 
 const Component = autosize(columnsResize(columnsReorder(scrollable(selectable(sortable(_Tablo))))));
-export default function Tablo<T, K extends keyof T>(props: TabloProps<T, K>): React.ReactElement<TabloProps<T, K>> {
+export default function Tablo<T, K extends string = keyof T>(props: TabloProps<T, K>): React.ReactElement<TabloProps<T, K>> {
   return <Component {...props} />;
 }

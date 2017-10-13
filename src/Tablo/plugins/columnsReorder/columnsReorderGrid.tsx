@@ -18,7 +18,7 @@ import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
-export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>>  => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>>  => {
 
   class ColumnsReorderGrid extends React.PureComponent<TabloProps<T, K>> {
     private uniqueId: string;

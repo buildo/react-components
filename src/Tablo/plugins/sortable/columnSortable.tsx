@@ -6,7 +6,7 @@ import Header, { defaultHeader } from '../../Header';
 import SortableHeader from './SortableHeader';
 import { getArrayChildren } from '../../utils';
 
-const sortable = <T, K extends keyof T>(args: ColumnIntrinsicProps<T, K>) => {
+const sortable = <T, K extends string = keyof T>(args: ColumnIntrinsicProps<T, K>) => {
 
   const {
     sortable,

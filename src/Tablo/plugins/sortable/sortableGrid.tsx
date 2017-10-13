@@ -7,9 +7,9 @@ import ColumnGroup from '../../ColumnGroup';
 import { TabloProps, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { getArrayChildren } from '../../utils';
 
-export const clean = <T, K extends keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
+export const clean = <T, K extends string = keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
 
-const getLocals = <T, K extends keyof T>({
+const getLocals = <T, K extends string>({
   className,
   sortBy,
   sortDir,
@@ -64,7 +64,7 @@ const getLocals = <T, K extends keyof T>({
 
 };
 
-export default <T, K extends keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
 
   return class SortableGrid extends React.PureComponent<TabloProps<T, K>> {
     render() {
