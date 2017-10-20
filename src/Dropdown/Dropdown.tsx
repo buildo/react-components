@@ -289,7 +289,7 @@ export default class Dropdown extends React.Component<Props> {
   }
 
   _onChange = (_value?: Value | null) => {
-    const value = isEmptyArray(_value) ? null : _value;
+    const value = (_value === '' || isEmptyArray(_value)) ? null : _value;
     return this.props.onChange(value);
   }
 
