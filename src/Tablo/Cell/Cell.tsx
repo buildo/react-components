@@ -51,7 +51,7 @@ const propsTypes = {
   grow: maybe(t.Boolean)
 };
 
-function Cell<T, K extends string>(props: Cell.Props<T, K>): React.ReactElement<Cell.Props<T, K>> {
+export function _Cell<T, K extends string>(props: Cell.Props<T, K>): React.ReactElement<Cell.Props<T, K>> {
 
   const {
     data,
@@ -89,8 +89,8 @@ function Cell<T, K extends string>(props: Cell.Props<T, K>): React.ReactElement<
   );
 }
 
-props(propsTypes)(Cell);
+props(propsTypes)(_Cell);
 
-export { Cell }
+export const Cell = _Cell;
 
 export const defaultCell = <Cell>{dataCell => dataCell}</Cell>;

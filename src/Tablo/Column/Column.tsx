@@ -58,7 +58,7 @@ const argsTypes = struct({
   isResizable: maybe(t.Boolean)
 }, { strict: true });
 
-const Column = <T, K extends string>(args: Column.Props<T, K>): React.ReactElement<Column.Props<T, K>> => {
+export const Column = <T, K extends string>(args: Column.Props<T, K>): React.ReactElement<Column.Props<T, K>> => {
   const {
     key,
     width = defaultWidth,
@@ -99,5 +99,3 @@ const Column = <T, K extends string>(args: Column.Props<T, K>): React.ReactEleme
 
 export const defaultColumns = <T, K extends keyof T>(data: T[]) =>
   Object.keys(data[0] || {}).map((columnName: K) => Column<T, K>({ name: columnName }));
-
-export { Column };
