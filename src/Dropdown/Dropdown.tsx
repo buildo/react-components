@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { props, t, ReactElement } from '../utils';
-import * as Select from 'react-select';
+import * as SelectT from 'react-select'; // @types/react-select hasn't updated to "default export" yet
+import Select from 'react-select';
 import sortBy = require('lodash/sortBy');
 import find = require('lodash/find');
 import findIndex = require('lodash/findIndex');
@@ -19,9 +20,9 @@ const defaultOptionGroupRenderer = (title: string) => title;
 
 export type SimpleValue = string | number;
 
-export type Value = Select.Option | Select.Options | SimpleValue;
+export type Value = SelectT.Option | SelectT.Options | SimpleValue;
 
-export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
+export type OptionRendererHandler = (option: SelectT.Option, i: number) => SelectT.HandlerRendererResult;
 
 export type OptionGroupRendererHandler = (optionGroup: string) => JSX.Element | string | null;
 
@@ -39,8 +40,8 @@ export interface SelectMissingMenuRendererProps {
 export interface CustomMenuRendererProps {
   groupByKey?: string
 }
-export type MenuRendererProps = Select.MenuRendererProps & SelectMissingMenuRendererProps & CustomMenuRendererProps;
-export type MenuRendererHandler = (props: MenuRendererProps) => JSX.Element[] | Select.HandlerRendererResult;
+export type MenuRendererProps = SelectT.MenuRendererProps & SelectMissingMenuRendererProps & CustomMenuRendererProps;
+export type MenuRendererHandler = (props: MenuRendererProps) => JSX.Element[] | SelectT.HandlerRendererResult;
 
 export const defaultMenuRenderer: MenuRendererHandler = ({
   focusedOption,
@@ -59,7 +60,7 @@ export const defaultMenuRenderer: MenuRendererHandler = ({
   const OptionComponent = optionComponent;
   type U = { // not inline otherwise breaks VSCode syntax highlight :/
     optionGroupTitle: string,
-    optionGroup: Select.Options
+    optionGroup: SelectT.Options
   }[];
   const groupedOptions = options.reduce<U>((acc, o, i) => {
 
@@ -123,9 +124,9 @@ export interface RequiredProps {
   /** called when value is changed */
   onChange: (value?: Value | null) => void
   /** the function that can be used to override the default renderer of the selected value */
-  valueRenderer?: (option: (Select.Option | Select.Options) & { [k: string]: any }) => JSX.Element | null | false
+  valueRenderer?: (option: (SelectT.Option | SelectT.Options) & { [k: string]: any }) => JSX.Element | null | false
   /** available options */
-  options: Select.Options
+  options: SelectT.Options
   /** whether pressing backspace removes the last item when there is no input value */
   backspaceRemoves?: boolean
   /** placeholder shown when no value is selected */
@@ -137,7 +138,7 @@ export interface RequiredProps {
   /** if allowCreate is true, message shown to hint the user to press Enter to create a new option */
   addLabelText?: string
   /** the function that can be used to override the default renderer of options */
-  optionRenderer?: (option: Select.Option & { [k: string]: any }) => JSX.Element | null | false
+  optionRenderer?: (option: SelectT.Option & { [k: string]: any }) => JSX.Element | null | false
   /** called when the value of the `input` is changed */
   onInputChange?: (inputValue: string) => void
   /** called when dropdown is focused */
@@ -157,7 +158,7 @@ export interface RequiredProps {
   /** style passed to the wrapper element */
   style?: React.CSSProperties
   /** called when user clicks on the selected value */
-  onValueClick?: Select.OnValueClickHandler
+  onValueClick?: SelectT.OnValueClickHandler
 };
 
 export type MenuPosition = 'top' | 'bottom';
@@ -260,7 +261,7 @@ export default class Dropdown extends React.Component<Props> {
     }
   };
 
-  valueToOption = (value: Value | undefined, options: Select.Options) => {
+  valueToOption = (value: Value | undefined, options: SelectT.Options) => {
     if (t.String.is(value) || t.Number.is(value)) {
       const { multi, delimiter } = this.props as DefaultedProps;
       if (multi) {
@@ -272,7 +273,7 @@ export default class Dropdown extends React.Component<Props> {
     return value;
   };
 
-  sortOptionsByGroup = (options: Select.Options) => {
+  sortOptionsByGroup = (options: SelectT.Options) => {
     const { groupByKey } = this.props as DefaultedProps;
     return sortBy(options, option => option[groupByKey] ? findIndex(options, o => option[groupByKey] === o[groupByKey]) : -1);
   }
@@ -293,7 +294,7 @@ export default class Dropdown extends React.Component<Props> {
     return this.props.onChange(value);
   }
 
-  onInputKeyDown: Select.OnInputKeyDownHandler = (e) => {
+  onInputKeyDown: SelectT.OnInputKeyDownHandler = (e) => {
     if (e.keyCode === 38 || e.keyCode === 40) {
       if (isEmptyArray(this.props.options)) {
         e.preventDefault();
@@ -312,7 +313,7 @@ export default class Dropdown extends React.Component<Props> {
     ) : null;
   }
 
-  menuRenderer = (args: Select.MenuRendererProps & SelectMissingMenuRendererProps) => {
+  menuRenderer = (args: SelectT.MenuRendererProps & SelectMissingMenuRendererProps) => {
     const { menuRenderer, groupByKey } = this.props as DefaultedProps;
     return menuRenderer({
       ...args,
@@ -338,7 +339,7 @@ export default class Dropdown extends React.Component<Props> {
       value: this.valueToOption(this.props.value, options),
       onInputKeyDown,
       onChange: _onChange,
-      menuRenderer: this.menuRenderer as Select.MenuRendererHandler
+      menuRenderer: this.menuRenderer as SelectT.MenuRendererHandler
     };
 
     return <Select {...selectProps} ref={select => { this.select = select; }} />;
