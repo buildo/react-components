@@ -3,7 +3,7 @@ import * as cx from 'classnames';
 import { t, ReactChildren, stateClassUtil, props } from '../utils';
 import FormattedText from '../FormattedText/FormattedText';
 import Popover, { PopoverProps } from '../Popover/Popover';
-import { ObjectOverwrite } from 'typelevel-ts';
+import { ObjectOmit } from 'typelevel-ts';
 
 export namespace TooltipProps {
   export type Type = 'light' | 'dark';
@@ -14,10 +14,10 @@ export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */
   children: React.ReactNode
   /** popover props */
-  popover: ObjectOverwrite<PopoverProps.Popover, {
+  popover: ObjectOmit<PopoverProps.Popover, 'content' | 'event'> & {
     content: string,
     event?: undefined
-  }>,
+  },
   /** add class name */
   className?: string,
   /** add id */
