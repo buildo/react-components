@@ -13,7 +13,7 @@ export const Props = {
   label: t.maybe(t.union([t.String, t.Number])),
   popover: t.maybe(t.interface({
     position: t.maybe(t.enums.of(['top', 'bottom', 'left', 'right'])),
-    content: t.maybe(t.String)
+    content: t.Nil
   })),
   lazy: t.maybe(t.Boolean),
   delayWhenLazy: t.maybe(t.Integer),
@@ -36,7 +36,7 @@ export type TextOverflowRequiredProps = {
   label?: string | number,
   /** additional props for Popover component used to display the entire text */
   popover?: ObjectOverwrite<Popover.Props['popover'], {
-    content?: void & string
+    content?: undefined
   }>,
   id?: string,
   className?: string,
