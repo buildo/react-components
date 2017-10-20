@@ -34,10 +34,9 @@ export const Props = {
   userAgent: t.maybe(t.String)
 };
 
-export type Browser = keyof bowser.IBowserVersions;
-export type DetectedBrowser = bowser.IBowserGrade
-
 export namespace BrowserDetector {
+  export type Browser = keyof bowser.IBowserVersions;
+  export type DetectedBrowser = bowser.IBowserGrade
   export type Props = {
     /** children node rendered when using a supported browser */
     children: JSX.Element,
@@ -57,11 +56,11 @@ export namespace BrowserDetector {
 @props(Props)
 export class BrowserDetector extends React.PureComponent<BrowserDetector.Props> {
 
-  detectBrowser(userAgent: string): DetectedBrowser {
+  detectBrowser(userAgent: string): BrowserDetector.DetectedBrowser {
     return bowser._detect(userAgent);
   }
 
-  shouldRenderPlaceholder(supportedBrowsers: Browser[], detectedBrowser: DetectedBrowser): boolean {
+  shouldRenderPlaceholder(supportedBrowsers: BrowserDetector.Browser[], detectedBrowser: BrowserDetector.DetectedBrowser): boolean {
     return supportedBrowsers && !some(supportedBrowsers, b => detectedBrowser[b])
   }
 

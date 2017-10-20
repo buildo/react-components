@@ -29,7 +29,7 @@ export type ScrollViewRequiredProps = {
   className?: string,
 }
 
-export type ScrollViewState = {
+export type State = {
   isVerticalScrollbarVisible: boolean,
   isHorizontalScrollbarVisible: boolean
 };
@@ -54,7 +54,7 @@ export const Props = {
 
 /** A scrollable view */
 @props(Props)
-export class ScrollView<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> extends React.PureComponent<ScrollView.Props<CP, ICP>, ScrollViewState> {
+export class ScrollView<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> extends React.PureComponent<ScrollView.Props<CP, ICP>, State> {
 
   static defaultProps: ScrollViewDefaultProps<React.HTMLAttributes<HTMLDivElement>, React.HTMLAttributes<HTMLDivElement>> = {
     component: 'div',

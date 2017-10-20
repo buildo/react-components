@@ -4,7 +4,7 @@ import omitBy = require ('lodash/omitBy');
 import { defaultColumns, updateColumns, UpdateColumnsHandler, ColumnIntrinsicProps } from '../../Column';
 import cSortable from './columnSortable';
 import ColumnGroup from '../../ColumnGroup';
-import { Tablo, Sort, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { getArrayChildren } from '../../utils';
 
 export const clean = <T, K extends string = keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
@@ -18,7 +18,7 @@ const getLocals = <T, K extends string>({
   ...gridProps
 }: Tablo.Props<T, K>): TabloDefaultedIntrinsicProps<T, K> | Tablo.Props<T, K> => {
 
-  const nextSort = (newSortBy: K): Sort<K> => {
+  const nextSort = (newSortBy: K): Tablo.Sort<K> => {
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {

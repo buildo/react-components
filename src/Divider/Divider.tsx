@@ -2,19 +2,19 @@ import * as React from 'react';
 import { props, t } from '../utils';
 import * as cx from 'classnames';
 
-export type Orientation = 'horizontal' | 'vertical'
-export type Size = 'small' | 'medium' | 'large' | 'no-margin'
-
 export type DividerDefaultProps = {
   /** divider orientation (vertical | horizontal) */
-  orientation: Orientation,
+  orientation: Divider.Orientation,
   /** size of margins */
-  size: Size,
+  size: Divider.Size,
   /** an optional style object to pass to top level element of the component */
   style: React.CSSProperties,
 };
 
 export namespace Divider {
+  export type Orientation = 'horizontal' | 'vertical'
+  export type Size = 'small' | 'medium' | 'large' | 'no-margin'
+
   export type Props = Partial<DividerDefaultProps>;
 }
 type DividerDefaultedProps = DividerDefaultProps;

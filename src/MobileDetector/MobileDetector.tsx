@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as MobileDetect from 'mobile-detect';
 import { props, t } from '../utils';
 
-export type ChildrenArgs = {
-  isDesktop: boolean,
-  isMobile: boolean,
-  isPhone: boolean,
-  isTablet: boolean
-};
-
 export namespace MobileDetector {
+  export type ChildrenArgs = {
+    isDesktop: boolean,
+    isMobile: boolean,
+    isPhone: boolean,
+    isTablet: boolean
+  };
+
   export type Props = {
     /** children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback */
     children: (childrenArgs: ChildrenArgs) => JSX.Element

@@ -4,19 +4,11 @@ import { props, t, ReactChildren } from '../utils';
 import { Table, TableProps } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';
-import { ColumnGroupProps } from './ColumnGroup';
+import ColumnGroup from './ColumnGroup';
 import { autosize, columnsResize, columnsReorder, scrollable, selectable, sortable } from './plugins';
 import omit = require('lodash/omit');
 
 import './patch-fixed-data-table-2';
-
-export type SortDir = 'asc' | 'desc';
-export type Sort<K> = {
-  sortBy?: K,
-  sortDir?: SortDir
-}
-export type ColumnChild<T, K extends string> = React.ReactElement<Column.Props<T, K>>
-export type ColumnGroupChild<T, K extends string> = React.ReactElement<ColumnGroupProps<T, K>>
 
 export type TabloDefaultProps = {
   /** height in pixel of every row */
@@ -48,7 +40,7 @@ export type TabloRequiredProps<T, K extends string> = {
   /** callback to be called when a column is resized */
   onColumnResize?: (x: { width: number, key: K}) => void,
   /** table children (Column or ColumnGroup) */
-  children?: ColumnChild<T, K> | ColumnChild<T, K>[] | ColumnGroupChild<T, K> | ColumnGroupChild<T, K>[],
+  children?: Tablo.ColumnChild<T, K> | Tablo.ColumnChild<T, K>[] | Tablo.ColumnGroupChild<T, K> | Tablo.ColumnGroupChild<T, K>[],
   /** value of horizontal scroll */
   scrollLeft?: number,
   /** value of vertical scroll */
@@ -70,9 +62,9 @@ export type TabloRequiredProps<T, K extends string> = {
   /** id of the column according which the data should be ordered */
   sortBy?: K,
   /** sorting direction */
-  sortDir?: SortDir,
+  sortDir?: Tablo.SortDir,
   /** callback to be called when sorting change */
-  onSortChange?: (x: Sort<K>) => void,
+  onSortChange?: (x: Tablo.Sort<K>) => void,
   /** enable touch scroll */
   touchScrollEnabled?: boolean
   /** the desired width of the table. Unless autosize is false, this can be left undefined */
@@ -90,6 +82,14 @@ export type TabloIntrinsicProps = {
 export type TabloDefaultedIntrinsicProps<T, K extends string> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
 
 export namespace Tablo {
+  export type SortDir = 'asc' | 'desc';
+  export type Sort<K> = {
+    sortBy?: K,
+    sortDir?: SortDir
+  }
+  export type ColumnChild<T, K extends string> = React.ReactElement<Column.Props<T, K>>
+  export type ColumnGroupChild<T, K extends string> = React.ReactElement<ColumnGroup.Props<T, K>>
+
   export type Props<T, K extends string> = TabloRequiredProps<T, K> & Partial<TabloDefaultProps>;
 };
 
@@ -134,7 +134,7 @@ class TabloComponent<T, K extends string> extends React.PureComponent<Tablo.Prop
   render() {
     const { data, children, rowClassNameGetter: rcnGetter, className, ..._tableProps } = this.props as TabloDefaultedIntrinsicProps<T, K>;
 
-    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col: ColumnChild<T, K> }) => {
+    const columnsOrGroups = updateColumns(children || defaultColumns(data), ({ col }: { col: Tablo.ColumnChild<T, K> }) => {
       return <Column {...{ key: col.props.name, ...col.props, data }} />;
     }).map((ch, key) => (ch.type as React.SFC<any>)({ key, ...ch.props }));
 

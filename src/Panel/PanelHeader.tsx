@@ -4,20 +4,12 @@ import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 import * as cx from 'classnames';
 
-export type CollapseDirection =  'up' | 'left' | 'down' | 'right';
-export type HeaderSize = 'tiny' | 'small' | 'medium';
-export type Collapse = {
-  direction: CollapseDirection,
-  onToggleExpanded: () => void,
-  isExpanded?: boolean
-}
-
 export type PanelHeaderDefaultProps = {
-  size: HeaderSize
+  size: PanelHeader.HeaderSize
 }
 
 export type PanelHeaderRequiredProps = {
-  collapse?: Collapse,
+  collapse?: PanelHeader.Collapse,
   content?: React.ReactNode,
   title?: React.ReactNode
   menu?: React.ReactNode
@@ -26,6 +18,14 @@ export type PanelHeaderRequiredProps = {
 export type PanelHeaderDefaultedProps = PanelHeaderRequiredProps & PanelHeaderDefaultProps;
 
 export namespace PanelHeader {
+  export type CollapseDirection =  'up' | 'left' | 'down' | 'right';
+  export type HeaderSize = 'tiny' | 'small' | 'medium';
+  export type Collapse = {
+    direction: CollapseDirection,
+    onToggleExpanded: () => void,
+    isExpanded?: boolean
+  }
+
   export type Props = PanelHeaderRequiredProps & Partial<PanelHeaderDefaultProps>;
 }
 
@@ -56,7 +56,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
     size: 'small'
   };
 
-  getIcon = (collapse: Collapse) => {
+  getIcon = (collapse: PanelHeader.Collapse) => {
     const { direction, isExpanded } = collapse;
     return isExpanded ? icons[direction][0] : icons[direction][1];
   }
@@ -80,7 +80,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
     );
   }
 
-  templateExpandIcon = (collapse: Collapse) => {
+  templateExpandIcon = (collapse: PanelHeader.Collapse) => {
     return (
       <FlexView
         vAlignContent='center'
@@ -98,7 +98,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
   templateTitle = ({ renderTitle, title, collapse }: {
     renderTitle: boolean,
     title: React.ReactNode,
-    collapse?: Collapse
+    collapse?: PanelHeader.Collapse
   }) => {
     return (
       <FlexView vAlignContent='center' shrink={false} onClick={!!collapse && collapse.isExpanded ? collapse.onToggleExpanded : undefined} className='panel-header-title-wrapper'>

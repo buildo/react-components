@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { props, t } from '../utils';
 import * as cx from 'classnames';
-import { Dropdown, MenuPosition } from '../Dropdown/Dropdown';
+import { Dropdown } from '../Dropdown/Dropdown';
 import range = require('lodash/range');
 import flatten = require('lodash/flatten');
 import compact = require('lodash/compact');
@@ -16,15 +16,9 @@ const numberRegex = /^\d+$/;
 const separator = ':';
 const interval = 30;
 
-export type Time = {
-  hours: number,
-  minutes: number
-};
-export type TimeFormat = '12h' | '24h';
-
 const pad = (num: number) => num <= 9 ? `0${num}` : num;
 const normalizeHoursToH24 = (hour: number) => hour + 12 !== 24 ? hour + 12 : 0;
-const lteTime = (minTime: Time, maxTime: Time) => (
+const lteTime = (minTime: TimePicker.Time, maxTime: TimePicker.Time) => (
   maxTime.hours > minTime.hours || (maxTime.hours === minTime.hours && maxTime.minutes >= minTime.minutes)
 );
 
@@ -38,7 +32,7 @@ export const Time = t.struct({
   minutes: Minute
 }, 'Time');
 
-const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimeFormat): hours is number =>
+const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimePicker.TimeFormat): hours is number =>
   timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
 export const Props = t.refinement(t.struct({
@@ -59,8 +53,8 @@ export const Props = t.refinement(t.struct({
   lteTime(minTime, maxTime) && (!value || (lteTime(value, maxTime) && lteTime(minTime, value)))
 ), 'Props');
 
-const formatTime24 = ({ hours, minutes }: Time) => `${pad(hours)}:${pad(minutes)}`;
-const formatTime12 = ({ hours, minutes }: Time) => {
+const formatTime24 = ({ hours, minutes }: TimePicker.Time) => `${pad(hours)}:${pad(minutes)}`;
+const formatTime12 = ({ hours, minutes }: TimePicker.Time) => {
   if (hours === 0 || (hours > 12 && hours % 12 === 0)) {
     return `12${separator}${pad(minutes)} am`;
   } else if (hours === 12) {
@@ -71,13 +65,12 @@ const formatTime12 = ({ hours, minutes }: Time) => {
     return `${pad(hours)}${separator}${pad(minutes)} am`;
   }
 };
-export type TimeAndFormat = Time & { timeFormat: TimeFormat };
-export type TimeFormatter = (t: TimeAndFormat) => JSX.Element;
-const formatTime = ({ hours, minutes, timeFormat }: TimeAndFormat) => (
+
+const formatTime = ({ hours, minutes, timeFormat }: TimePicker.TimeAndFormat) => (
   timeFormat === H12 ? formatTime12({ hours, minutes }) : formatTime24({ hours, minutes })
 );
 
-export const toOption = (time: TimeAndFormat) => ({
+export const toOption = (time: TimePicker.TimeAndFormat) => ({
   time,
   value: formatTime24(time),
   label: formatTime(time)
@@ -106,7 +99,7 @@ const maybeInsertSeparator = (str: string) => {
   return str;
 };
 
-export const parseInTimeFormat = (inputStr: string, timeFormat: TimeFormat): OnChangeInput => {
+export const parseInTimeFormat = (inputStr: string, timeFormat: TimePicker.TimeFormat): TimePicker.OnChangeInput => {
   if (inputStr === '') {
     return { originalInput: inputStr };
   }
@@ -125,7 +118,7 @@ export const parseInTimeFormat = (inputStr: string, timeFormat: TimeFormat): OnC
   }
 };
 
-export const createTimeList = ({ hours, minutes }: Time, timeFormat: TimeFormat) => {
+export const createTimeList = ({ hours, minutes }: TimePicker.Time, timeFormat: TimePicker.TimeFormat) => {
   if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
     const hoursList = range(0, 24);
     const minutesList = range(0, 60, interval);
@@ -140,31 +133,31 @@ export const createTimeList = ({ hours, minutes }: Time, timeFormat: TimeFormat)
   }
 };
 
-const startsWith = (time: TimeAndFormat, originalInput: string) => {
+const startsWith = (time: TimePicker.TimeAndFormat, originalInput: string) => {
   const timeStr = formatTime(time);
   return timeStr.substr(0, originalInput.length) === originalInput;
 };
 
 type FilterTimeInput = {
   originalInput: string
-  minTime: Time
-  maxTime: Time
+  minTime: TimePicker.Time
+  maxTime: TimePicker.Time
 };
-export const filterTime = ({ originalInput, minTime, maxTime }: FilterTimeInput) => (time: TimeAndFormat) => {
+export const filterTime = ({ originalInput, minTime, maxTime }: FilterTimeInput) => (time: TimePicker.TimeAndFormat) => {
   return lteTime(minTime, time) && lteTime(time, maxTime) && startsWith(time, originalInput);
 };
 
 type MakeOptionsInput = {
-  timeFormat: TimeFormat
-  minTime: Time
-  maxTime: Time
-  userValue?: Time
+  timeFormat: TimePicker.TimeFormat
+  minTime: TimePicker.Time
+  maxTime: TimePicker.Time
+  userValue?: TimePicker.Time
 };
 export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }: MakeOptionsInput, inputValue: string) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
   const selectedValue = (userValue && userValue !== inputError) ? { ...userValue, timeFormat } : userValue;
   const timeList = (
-    (time === inputError ? [] : createTimeList(time as Time, timeFormat)) as (Time | TimeAndFormat)[] // TODO(typo)
+    (time === inputError ? [] : createTimeList(time as TimePicker.Time, timeFormat)) as (TimePicker.Time | TimePicker.TimeAndFormat)[] // TODO(typo)
   ).concat(compact([selectedValue]));
   const filteredTimeList = timeList.filter(filterTime({
     originalInput: (time as any).originalInput || '', minTime, maxTime // TODO(typo)
@@ -172,16 +165,12 @@ export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }: MakeOpt
   return uniqBy(sortBy(filteredTimeList.map(toOption), 'value'), 'value');
 };
 
-export type OnChangeInput = {
-  originalInput?: string
-} & Partial<Time>;
-
 export interface RequiredProps {
   /** onChange handler. It takes an object */
-  onChange: (time?: OnChangeInput) => void
+  onChange: (time?: TimePicker.OnChangeInput) => void
   /** value provided as input. Have to be passed in 24h format. E.g. { hours: 10, minutes: 30 } */
-  value?: Time
-  timeFormatter?: TimeFormatter
+  value?: TimePicker.Time
+  timeFormatter?: TimePicker.TimeFormatter
   /** optionally disable the control */
   disabled?: boolean
   className?: string
@@ -192,18 +181,31 @@ export interface DefaultProps {
   /** field placeholder, displayed when there's no value. Default[--:--] */
   placeholder: string
   /** format in which options are displayed (12h|24h) */
-  timeFormat: TimeFormat
+  timeFormat: TimePicker.TimeFormat
   /** minimum value. Have to be passed in 24h format. Default [00:00] */
-  minTime: Time
+  minTime: TimePicker.Time
   /** maximum value. Have to be passed in 24h format. Default [23:59] */
-  maxTime: Time
+  maxTime: TimePicker.Time
   /** enable the search feature */
   searchable: boolean
   /** whether the menu should open on top or bottom */
-  menuPosition: MenuPosition
+  menuPosition: Dropdown.MenuPosition
 }
 
 export namespace TimePicker {
+  export type Time = {
+    hours: number,
+    minutes: number
+  };
+  export type TimeFormat = '12h' | '24h';
+
+  export type TimeAndFormat = Time & { timeFormat: TimeFormat };
+  export type TimeFormatter = (t: TimeAndFormat) => JSX.Element;
+
+  export type OnChangeInput = {
+    originalInput?: string
+  } & Partial<Time>;
+
   export type Props = RequiredProps & Partial<DefaultProps>
 }
 type TimePickerDefaultedProps = RequiredProps & DefaultProps;

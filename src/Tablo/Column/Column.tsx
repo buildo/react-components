@@ -9,12 +9,6 @@ import { Cell, defaultCell, CellIntrinsicProps, Intrinsic as CellIntrinsic } fro
 import { Header, defaultHeader, HeaderIntrinsicProps, Intrinsic as HeaderIntrinsic } from '../Header/Header';
 import Footer from '../Footer';
 
-export type ColumnChildren<T, K extends string> = (
-  React.ReactElement<Header.Props> |
-  React.ReactElement<Footer.Props> |
-  React.ReactElement<Cell.Props<T, K>>
-)[]
-
 export type Intrinsic<T> = {
   data?: T[],
   sortable?: boolean,
@@ -33,10 +27,15 @@ export type Required<T, K extends string> = {
   name: K,
   isResizable?: boolean,
   flexGrow?: number,
-  children?: ColumnChildren<T, K>
+  children?: Column.ColumnChildren<T, K>
 };
 
 export namespace Column {
+  export type ColumnChildren<T, K extends string> = (
+    React.ReactElement<Header.Props> |
+    React.ReactElement<Footer.Props> |
+    React.ReactElement<Cell.Props<T, K>>
+  )[]
   export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
 }
 export type ColumnDefaultedIntrinsicProps<T, K extends string> = Required<T, K> & Default & Intrinsic<T>;

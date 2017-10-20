@@ -4,7 +4,7 @@ import * as cx from 'classnames';
 import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t, ReactChildren } from '../utils';
 import { warn } from '../utils/log';
-import { TransitionWrapper, TransitionStyles } from '../TransitionWrapper/TransitionWrapper';
+import { TransitionWrapper } from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
   children: ReactChildren,
@@ -32,7 +32,7 @@ export type ToasterRequiredProps = {
   /** id of the element you want to render the `Toaster` in */
   attachTo?: string,
   /** object with style for each transition event (used by `TransitionWrapper`) */
-  transitionStyles?: TransitionStyles,
+  transitionStyles?: TransitionWrapper.TransitionStyles,
   /** duration of enter transition in milliseconds (used by `TransitionWrapper`) */
   transitionEnterTimeout: number,
   /** duration of leave transition in milliseconds (used by `TransitionWrapper`) */

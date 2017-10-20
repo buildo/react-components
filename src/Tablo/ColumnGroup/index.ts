@@ -1,3 +1,2 @@
-import ColumnGroup, { ColumnGroupProps } from './ColumnGroup';
+import { ColumnGroup } from './ColumnGroup';
 export default ColumnGroup;
-export { ColumnGroupProps };

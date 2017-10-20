@@ -6,22 +6,6 @@ import capitalize = require('lodash/capitalize');
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import FlexView from 'react-flexview';
 
-export type PanelType = 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating';
-export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
-export type Header = {
-  collapse?: {
-    direction: 'up' | 'left' | 'down' | 'right',
-    onExpand: () => void,
-    onCollapse: () => void,
-    isCollapsed?: boolean
-  },
-  size?: PanelHeader.Props['size'],
-  content?: any, // TODO: t.ReactChildren
-  title?: any, // TODO(typo): wtf
-  hideTitleWhenExpanded?: boolean,
-  menu?: any // TODO: t.ReactChildren
-}
-
 export type PanelDefaultProps = {
   style: React.CSSProperties,
   /** whether it's loading or not */
@@ -38,17 +22,33 @@ export type PanelRequiredProps = {
   /** panel content */
   children: React.ReactNode,
   /** The type of panel (docked or floating) */
-  type: PanelType,
+  type: Panel.PanelType,
   /** header props (collapse, content, title, menu) */
-  header?: Header,
+  header?: Panel.Header,
   /** top | left | right | bottom */
-  clearMargin?: ClearMargin,
+  clearMargin?: Panel.ClearMargin,
   className?: string,
 }
 
 export type PanelDefaultedProps = PanelRequiredProps & PanelDefaultProps;
 
 export namespace Panel {
+  export type PanelType = 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating';
+  export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
+  export type Header = {
+    collapse?: {
+      direction: 'up' | 'left' | 'down' | 'right',
+      onExpand: () => void,
+      onCollapse: () => void,
+      isCollapsed?: boolean
+    },
+    size?: PanelHeader.Props['size'],
+    content?: any, // TODO: t.ReactChildren
+    title?: any, // TODO(typo): wtf
+    hideTitleWhenExpanded?: boolean,
+    menu?: any // TODO: t.ReactChildren
+  }
+
   export type Props = PanelRequiredProps & Partial<PanelDefaultProps>;
 }
 
@@ -163,7 +163,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
   };
 
   templateHeader = ({ header, isExpanded, toggleExpanded }: {
-    header?: Header,
+    header?: Panel.Header,
     isExpanded: boolean,
     toggleExpanded: () => void
   }) => {
@@ -196,7 +196,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
   };
 
   templateCollapsedContent = ({ header, verticalDirection }: {
-    header?: Header,
+    header?: Panel.Header,
     verticalDirection?: boolean
   }) => {
     return (

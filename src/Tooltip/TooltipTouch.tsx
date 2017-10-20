@@ -6,7 +6,7 @@ import View from 'react-flexview';
 import { props } from '../utils';
 
 
-export type TooltipTouchState = {
+export type State = {
   tooltipLeft: number,
   tooltipTop: number,
   tooltipBottom: number,
@@ -17,7 +17,7 @@ export type TooltipTouchState = {
 type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 @props(Props)
-export class TooltipTouch extends React.PureComponent<Tooltip.Props, TooltipTouchState> {
+export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
 
   static defaultProps: TooltipDefaultProps = {
     type: 'dark',

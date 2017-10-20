@@ -6,20 +6,8 @@ import partial = require('lodash/partial');
 import FlexView from 'react-flexview';
 import { Divider } from '../Divider/Divider';
 
-
-export type Option = {
-  type: 'title' | 'item' | 'divider',
-  title?: JSX.Element | string,
-  metadata?: JSX.Element | string,
-  selected?: boolean,
-  disabled?: boolean,
-  onClick?: OptionClickHandler
-}
-
-export type OptionClickHandler = (o: Option) => void;
-
 export type MenuRequiredProps = {
-  options?: Option[],
+  options?: Menu.Option[],
   maxHeight?: number
 }
 
@@ -29,6 +17,17 @@ export type MenuDefaultProps = {
 }
 
 export namespace Menu {
+  export type Option = {
+    type: 'title' | 'item' | 'divider',
+    title?: JSX.Element | string,
+    metadata?: JSX.Element | string,
+    selected?: boolean,
+    disabled?: boolean,
+    onClick?: OptionClickHandler
+  }
+
+  export type OptionClickHandler = (o: Option) => void;
+
   export type Props = MenuRequiredProps & Partial<MenuDefaultProps>;
 }
 
@@ -81,7 +80,7 @@ export class Menu extends React.PureComponent<Menu.Props, State> {
     }
   }
 
-  onOptionClick: OptionClickHandler = option => {
+  onOptionClick: Menu.OptionClickHandler = option => {
     const { onClick } = this.getProps();
     onClick();
     if (!option.disabled && option.onClick) {
@@ -89,7 +88,7 @@ export class Menu extends React.PureComponent<Menu.Props, State> {
     }
   };
 
-  menuItemTemplate = (option: Option, onOptionClick: OptionClickHandler) => {
+  menuItemTemplate = (option: Menu.Option, onOptionClick: Menu.OptionClickHandler) => {
     return (
       <FlexView className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)} vAlignContent='center'>
         <FlexView grow shrink className='menu-item-title'>
@@ -102,7 +101,7 @@ export class Menu extends React.PureComponent<Menu.Props, State> {
     );
   };
 
-  templateRenderedOptions = ({ options, onOptionClick }: { options?: Option[], onOptionClick: OptionClickHandler }) => {
+  templateRenderedOptions = ({ options, onOptionClick }: { options?: Menu.Option[], onOptionClick: Menu.OptionClickHandler }) => {
     return options && options.map((option, i) => (
       <div className='menu-row' key={i}>
         {option.type === 'title' && <div className='menu-title'>{option.title}</div>}

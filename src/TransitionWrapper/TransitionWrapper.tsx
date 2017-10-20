@@ -3,17 +3,9 @@ import * as cx from 'classnames';
 import omit = require('lodash/omit');
 import { props, t, ReactChildren } from '../utils';
 
-export type TransitionStyles = {
-  enter?: React.CSSProperties,
-  enterActive?: React.CSSProperties,
-  default?: React.CSSProperties,
-  leave?: React.CSSProperties,
-  leaveActive?: React.CSSProperties
-}
-
 export type TransitionWrapperDefaultProps<CP> = {
   /** object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case) */
-  transitionStyles: TransitionStyles,
+  transitionStyles: TransitionWrapper.TransitionStyles,
   /** custom component to be used as wrapper for `children`. Can be either an html tag name string (eg. 'div', 'span', etc), or a `ReactClass` (eg. `FlexView`) */
   component:  keyof React.ReactHTML | React.ComponentClass<CP>,
   /** callback for componentDidLeave: useful if you need to do some cleanup */
@@ -34,6 +26,14 @@ export type TransitionWrapperRequiredProps = {
 export type TransitionWrapperDefaultedProps<CP> = TransitionWrapperRequiredProps & TransitionWrapperDefaultProps<CP> & {[k in keyof CP]: CP[k]};
 
 export namespace TransitionWrapper {
+  export type TransitionStyles = {
+    enter?: React.CSSProperties,
+    enterActive?: React.CSSProperties,
+    default?: React.CSSProperties,
+    leave?: React.CSSProperties,
+    leaveActive?: React.CSSProperties
+  }
+
   export type Props<CP> = TransitionWrapperRequiredProps & Partial<TransitionWrapperDefaultProps<CP>> & {[k in keyof CP]: CP[k]};
 }
 

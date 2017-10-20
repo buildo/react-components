@@ -41,6 +41,13 @@ export type ConfirmationInputDefaultProps = {
 };
 
 export namespace ConfirmationInput {
+  export type ConfirmProps = {
+    text?: string,
+    icon?: string,
+    onMouseDown: () => void,
+    onMouseEnter: () => void,
+    onMouseLeave: () => void
+  } | undefined
   export type Props = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
 }
 type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps & ConfirmationInputDefaultProps;
@@ -65,22 +72,14 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type ConfirmationInputState = {
+export type State = {
   focused: boolean,
   hoveringConfirm: boolean,
   value: string
 }
 
-export type ConfirmProps = {
-  text?: string,
-  icon?: string,
-  onMouseDown: () => void,
-  onMouseEnter: () => void,
-  onMouseLeave: () => void
-} | undefined
-
 @props(Props, { strict: false })
-export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Props, ConfirmationInputState> {
+export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Props, State> {
 
   static defaultProps: ConfirmationInputDefaultProps = {
     initialValue: '',

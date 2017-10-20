@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { props, t, ReactChildren } from '../utils';
-import { Menu, Option, optionType } from './Menu';
+import { Menu, optionType } from './Menu';
 import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 import * as cx from 'classnames';
-
-export type Size =  'small' | 'medium' | 'large';
 
 export type DropdownMenuRequiredProps = {
   /** menu button content */
   children?: JSX.Element | string,
   /** renderer for menu items */
-  menuRenderer?: (options: Option[]) => JSX.Element,
+  menuRenderer?: (options: Menu.Option[]) => JSX.Element,
   /** menu options */
-  options: Option[],
+  options: Menu.Option[],
   /** className for menu button icon (if children is passed, this is ignored) */
   iconClassName?: string,
   /** called when menu is open */
@@ -21,7 +19,7 @@ export type DropdownMenuRequiredProps = {
   /** called when menu is closed */
   onClose: () => void,
   /** the height of the menu button */
-  size?: Size,
+  size?: DropdownMenu.Size,
   /** menu button max-height */
   maxHeight?: number,
   className?: string
@@ -35,6 +33,8 @@ export type DropdownMenuDefaultProps = {
 }
 
 export namespace DropdownMenu {
+  export type Size =  'small' | 'medium' | 'large';
+
   export type Props = DropdownMenuRequiredProps & Partial<DropdownMenuDefaultProps>;
 }
 type DropdownMenuDefaultedProps = DropdownMenuRequiredProps & DropdownMenuDefaultProps;
@@ -77,7 +77,7 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
     this.toggleMenu();
   };
 
-  getHeightFromSize = (size?: Size) => {
+  getHeightFromSize = (size?: DropdownMenu.Size) => {
     switch (size) {
       case 'small': return 250;
       case 'medium': return 400;
@@ -106,7 +106,7 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
 
   templateMenu = ({ isOpen, options, height, onMenuClick }: {
     isOpen: boolean,
-    options: Option[],
+    options: Menu.Option[],
     height: number | null,
     onMenuClick: () => void
   }) => {

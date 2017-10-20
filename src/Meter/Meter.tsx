@@ -18,11 +18,11 @@ const RangeT = t.refinement(t.struct({
 
 const Ranges = t.refinement(t.list(RangeT), (rangeList) => {
 
-  const isOverlapped = (range1: Range, range2: Range) => (
+  const isOverlapped = (range1: Meter.Range, range2: Meter.Range) => (
     Math.max(range1.startValue, range2.startValue) < Math.min(range1.endValue, range2.endValue)
   );
 
-  const noOverlappingRanges = (ranges: Range[]) => {
+  const noOverlappingRanges = (ranges: Meter.Range[]) => {
     return every(ranges, (range1, i) => {
       return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
         return !isOverlapped(range1, range2);
@@ -47,7 +47,7 @@ export const Props = t.refinement(t.struct({
   style: t.maybe(t.Object)
 }), ({ min, max }) => min < max, 'Props');
 
-const isFullyFilled = (ranges: Range[] | void, min: number, max: number) => {
+const isFullyFilled = (ranges: Meter.Range[] | void, min: number, max: number) => {
   if (!ranges) {
     return false;
   }
@@ -65,15 +65,6 @@ const labelFormatter = (value: number, min: number, max: number) => (
   `${computePercentage(value, min, max)}%`
 );
 
-
-export type Range = {
-  startValue: number,
-  endValue: number,
-  fillingColor?: string,
-  labelColor?: string,
-  backgroundColor?: string
-}
-
 export type MeterDefaultProps = {
   /** minimum value */
   min: number,
@@ -87,7 +78,7 @@ export type MeterRequiredProps = {
   /** current value */
   value: number,
   /** array of Object in which you can define startValue, endValue, labelColor, fillingColor */
-  ranges?: Range[],
+  ranges?: Meter.Range[],
   /** fallback labelColor */
   baseLabelColor?: string,
   /** fallback fillingColor */
@@ -100,6 +91,14 @@ export type MeterRequiredProps = {
 };
 
 export namespace Meter {
+  export type Range = {
+    startValue: number,
+    endValue: number,
+    fillingColor?: string,
+    labelColor?: string,
+    backgroundColor?: string
+  }
+
   export type Props = MeterRequiredProps & Partial<MeterDefaultProps>;
 }
 type MeterDefaultedProps = MeterRequiredProps & MeterDefaultProps;

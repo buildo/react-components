@@ -41,51 +41,51 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type Position = 'top' | 'bottom' | 'left' | 'right';
-export type Anchor = 'start' | 'center' | 'end';
-export type Event = 'click' | 'hover';
-
-export type Delay = number | { whenClosed?: number, whenOpen?: number };
-
-export type PopoverSettings = {
-  content: React.ReactNode,
-  attachToBody?: boolean,
-  auto?: boolean,
-  position?: Position,
-  anchor?: Anchor,
-  event?: Event,
-  onShow?: () => void,
-  onHide?: () => void,
-  onToggle?: () => void,
-  dismissOnScroll?: boolean,
-  dismissOnClickOutside?: boolean,
-  className?: string,
-  style?: React.CSSProperties,
-  id?: string,
-  maxWidth?: number | string,
-  distance?: number,
-  offsetX?: number,
-  offsetY?: number,
-  isOpen?: boolean,
-  delay?: Delay,
-  contextTypes?: React.ValidationMap<any>,
-  context?: object
-};
-
-export type PopoverElement = {
-  width: number,
-  height: number,
-  x: number,
-  y: number
-};
-
 export type State = {
   isOpen: boolean,
-  popover?: PopoverElement,
-  child?: PopoverElement
+  popover?: Popover.PopoverElement,
+  child?: Popover.PopoverElement
 };
 
 export namespace Popover {
+  export type Position = 'top' | 'bottom' | 'left' | 'right';
+  export type Anchor = 'start' | 'center' | 'end';
+  export type Event = 'click' | 'hover';
+
+  export type Delay = number | { whenClosed?: number, whenOpen?: number };
+
+  export type PopoverSettings = {
+    content: React.ReactNode,
+    attachToBody?: boolean,
+    auto?: boolean,
+    position?: Position,
+    anchor?: Anchor,
+    event?: Event,
+    onShow?: () => void,
+    onHide?: () => void,
+    onToggle?: () => void,
+    dismissOnScroll?: boolean,
+    dismissOnClickOutside?: boolean,
+    className?: string,
+    style?: React.CSSProperties,
+    id?: string,
+    maxWidth?: number | string,
+    distance?: number,
+    offsetX?: number,
+    offsetY?: number,
+    isOpen?: boolean,
+    delay?: Delay,
+    contextTypes?: React.ValidationMap<any>,
+    context?: object
+  };
+
+  export type PopoverElement = {
+    width: number,
+    height: number,
+    x: number,
+    y: number
+  };
+
   export type Props = {
     /** the trigger node. It's always visible */
     children: React.ReactNode,
@@ -98,8 +98,8 @@ export namespace Popover {
 }
 
 type PopoverStyle = React.CSSProperties & {
-  _computedAnchor?: Anchor,
-  _computedPosition?: Position
+  _computedAnchor?: Popover.Anchor,
+  _computedPosition?: Popover.Position
 };
 
 /**
@@ -216,9 +216,9 @@ export class Popover extends React.Component<Popover.Props, State> {
   getPopoverProps = (_props?: Popover.Props) => {
     const props = _props || this.props;
     return {
-      position: 'top' as Position,
-      anchor: 'center' as Anchor,
-      event: 'hover' as Event,
+      position: 'top' as Popover.Position,
+      anchor: 'center' as Popover.Anchor,
+      event: 'hover' as Popover.Event,
       onShow: () => {},
       onHide: () => {},
       onToggle: () => {},
@@ -367,9 +367,9 @@ export class Popover extends React.Component<Popover.Props, State> {
     }
   };
 
-  getDelayWhenClosed = (delay?: Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenClosed;
+  getDelayWhenClosed = (delay?: Popover.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenClosed;
 
-  getDelayWhenOpen = (delay?: Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenOpen;
+  getDelayWhenOpen = (delay?: Popover.Delay) => (typeof delay === 'number') ? delay : (delay || {}).whenOpen;
 
   updateDebouncedMousedEvents = (nextProps?: Popover.Props) => {
     const { delay } = this.getPopoverProps(nextProps);
@@ -450,7 +450,7 @@ export class Popover extends React.Component<Popover.Props, State> {
 
     if (popoverProps.auto) {
       // give priority to the position passed by the user as _.uniq should maintain the order
-      const positions = uniq<Position>([popoverProps.position, 'top', 'bottom', 'left', 'right']);
+      const positions = uniq<Popover.Position>([popoverProps.position, 'top', 'bottom', 'left', 'right']);
 
       const popoverStyle: PopoverStyle | null = positions.reduce((acc, p) => {
         if (acc === null) {
@@ -513,7 +513,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     };
   };
 
-  computePopoverStyle = (position: Position, anchor: Anchor): PopoverStyle => {
+  computePopoverStyle = (position: Popover.Position, anchor: Popover.Anchor): PopoverStyle => {
     const child = this.state.child!;
     const popover = this.state.popover!;
     const { maxWidth, offsetX, offsetY, distance } = this.getPopoverProps();

@@ -7,14 +7,11 @@ import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 
-export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflow.Props>;
-
-export type ButtonStateMap = { [key in Button.ButtonState]?: string };
 export type ButtonRequiredProps = {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void
   /** can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates]) */
-  label?: string | ButtonStateMap
+  label?: string | Button.ButtonStateMap
   /** otherwise just pass a string as children */
   children?: string
   /** type of the button (default, primary, positive, negative, flat) */
@@ -25,7 +22,7 @@ export type ButtonRequiredProps = {
 
 export type ButtonDefaultProps = {
   /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
-  textOverflow: TextOverflowCompatibleComponent;
+  textOverflow: Button.TextOverflowCompatibleComponent;
   /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
   buttonState: Button.ButtonState;
   /** size of the button, one of 'tiny', 'small', 'medium' */
@@ -37,7 +34,7 @@ export type ButtonDefaultProps = {
   /** circular button, this is allowed only if it's an icon button */
   circular: boolean;
   /** can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])) */
-  icon: string | ButtonStateMap;
+  icon: string | Button.ButtonStateMap;
   /** an optional class name to pass to first inner element of the component */
   className: string;
   /** an optional style object to pass to first inner element of the component */
@@ -45,6 +42,8 @@ export type ButtonDefaultProps = {
 };
 
 export namespace Button {
+  export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflow.Props>;
+  export type ButtonStateMap = { [key in Button.ButtonState]?: string };
   export type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
   export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
   export type ButtonSize = 'tiny' | 'small' | 'medium';
@@ -135,7 +134,7 @@ export class Button extends React.PureComponent<Button.Props> {
   );
 
   // TODO: the popover props is not handled by TextOverflow
-  templateLabel = (label: string, TextOverflow: TextOverflowCompatibleComponent) => (
+  templateLabel = (label: string, TextOverflow: Button.TextOverflowCompatibleComponent) => (
     <FlexView className='button-label' column shrink={false} vAlignContent='center' hAlignContent='center'>
       <TextOverflow label={label} popover={{ offsetY: -8 }} />
     </FlexView>

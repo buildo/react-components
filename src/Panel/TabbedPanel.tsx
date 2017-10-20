@@ -4,14 +4,14 @@ import { props, t } from '../utils';
 import { Panel, Props as panelProps } from './Panel';
 import FlexView from 'react-flexview';
 
-export type Tabs = {
-  basis?: number,
-  headers: string[],
-  activeIndex?: number,
-  onSetActiveTab: (x: number) => void
-};
-
 export namespace TabbedPanel {
+  export type Tabs = {
+    basis?: number,
+    headers: string[],
+    activeIndex?: number,
+    onSetActiveTab: (x: number) => void
+  };
+
   export type Props = {
     tabs: Tabs
   } & Panel.Props;
@@ -35,7 +35,7 @@ export class TabbedPanel extends React.PureComponent<TabbedPanel.Props> {
     onSetActiveTab(activeTabIndex);
   };
 
-  headerTemplate({ headers, activeIndex, onSetActiveTab, basis = '100%' }: Tabs) {
+  headerTemplate({ headers, activeIndex, onSetActiveTab, basis = '100%' }: TabbedPanel.Tabs) {
     return (
       <FlexView grow className='tabbed-panel-tabs'>
         {headers.map((header, i) => (

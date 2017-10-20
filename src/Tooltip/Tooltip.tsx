@@ -5,9 +5,6 @@ import { FormattedText } from '../FormattedText/FormattedText';
 import { Popover } from '../Popover/Popover';
 import { ObjectOverwrite } from 'typelevel-ts';
 
-export type Type = 'light' | 'dark';
-export type Size = 'small' | 'big';
-
 export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */
   children: React.ReactNode
@@ -26,12 +23,15 @@ export type TooltipRequiredProps = {
 
 export type TooltipDefaultProps = {
   /** type - light | dark */
-  type: Type,
+  type: Tooltip.Type,
   /** size - small | big */
-  size: Size,
+  size: Tooltip.Size,
 }
 
 export namespace Tooltip {
+  export type Type = 'light' | 'dark';
+  export type Size = 'small' | 'big';
+
   export type Props = TooltipRequiredProps & Partial<TooltipDefaultProps>;
 }
 
