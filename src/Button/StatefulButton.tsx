@@ -1,7 +1,9 @@
 import * as React from 'react';
 import pick = require('lodash/pick');
+import { ObjectOmit } from 'typelevel-ts';
 import { props, t } from '../utils';
 import { Button, ButtonPropTypes } from './Button';
+
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -59,7 +61,7 @@ export interface StatefulButtonDefaultProps {
 
 export namespace StatefulButton {
   export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
-  export type Props = StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
+  export type Props = ObjectOmit<Button.Props, 'onClick'> & StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
 }
 
 export type State = {
