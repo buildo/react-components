@@ -43,13 +43,11 @@ import { Button, ButtonPropTypes } from './Button';
  * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
  */
 
-export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
-
 export interface StatefulButtonRequiredProps extends Button.Props {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => Promise<any>
   /** ready, not-allowed, success, use it if you want button to be a functional component */
-  baseState?: ButtonBaseState
+  baseState?: StatefulButton.ButtonBaseState
 };
 
 export interface StatefulButtonDefaultProps {
@@ -60,6 +58,7 @@ export interface StatefulButtonDefaultProps {
 }
 
 export namespace StatefulButton {
+  export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
   export type Props = StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
 }
 

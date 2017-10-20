@@ -6,21 +6,20 @@ import { props, t } from '../utils';
 import * as moment from 'moment';
 import Icon from '../Icon';
 
-export type Value = string | Date | moment.Moment;
-
-export type OnChangeProps<T extends Value> = {
-  /** MomentJS format used to format date before returing through "onChange" */
-  returnFormat?: never
-  /** called when value changes */
-  onChange?: (date?: T) => void
-} | {
-  /** MomentJS format used to format date before returing through "onChange" */
-  returnFormat: string
-  /** called when value changes */
-  onChange?: (date?: string) => void
-}
-
 export namespace DatePicker {
+  export type Value = string | Date | moment.Moment;
+  export type OnChangeProps<T extends Value> = {
+    /** MomentJS format used to format date before returing through "onChange" */
+    returnFormat?: never
+    /** called when value changes */
+    onChange?: (date?: T) => void
+  } | {
+    /** MomentJS format used to format date before returing through "onChange" */
+    returnFormat: string
+    /** called when value changes */
+    onChange?: (date?: string) => void
+  }
+
   export type Props<T extends Value> = {
     /** an optional id to pass to top level element of the component */
     id?: string,
@@ -60,7 +59,7 @@ export namespace DatePicker {
 }
 
 export type State = {
-  value?: Value
+  value?: DatePicker.Value
   hoveredDay?: moment.Moment,
   focused: boolean
 }
@@ -85,7 +84,7 @@ export type State = {
 const MomentDate = t.irreducible('MomentDate', x => moment.isMoment(x));
 const ValueType = t.union([t.String, t.Date, MomentDate]);
 
-const valueToMomentDate: (value?: Value) => moment.Moment | undefined = value => !value ? undefined : moment(value);
+const valueToMomentDate: (value?: DatePicker.Value) => moment.Moment | undefined = value => !value ? undefined : moment(value);
 
 export const Props = {
   id: t.maybe(t.String),
@@ -113,7 +112,7 @@ export const Props = {
  * A decent and pretty date picker to be used with React
  */
 @props(Props)
-export class DatePicker<T extends Value = never> extends React.PureComponent<DatePicker.Props<T>, State> {
+export class DatePicker<T extends DatePicker.Value = never> extends React.PureComponent<DatePicker.Props<T>, State> {
 
 
   componentWillMount() {

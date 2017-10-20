@@ -14,6 +14,10 @@ export type State = {
   isOpen: boolean
 }
 
+export namespace TooltipTouch {
+  export type Props = Tooltip.Props;
+}
+
 type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 @props(Props)
