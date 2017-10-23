@@ -17,32 +17,7 @@ function isEmptyArray(x: any): x is any[] {
 
 const defaultOptionGroupRenderer = (title: string) => title;
 
-export type SimpleValue = string | number;
-
-export type Value = Select.Option | Select.Options | SimpleValue;
-
-export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
-
-export type OptionGroupRendererHandler = (optionGroup: string) => JSX.Element | string | null;
-
-export interface SelectMissingMenuRendererProps {
-  // seem supported by react-select but missing in the @types file?
-  instancePrefix?: string
-  onFocus?: () => void
-  onSelect?: () => void
-  optionClassName?: string
-  optionComponent: React.ComponentType<{ [k: string]: any }> // TODO
-  optionRenderer: OptionRendererHandler
-  optionGroupRenderer: OptionGroupRendererHandler
-  valueKey: string
-}
-export interface CustomMenuRendererProps {
-  groupByKey?: string
-}
-export type MenuRendererProps = Select.MenuRendererProps & SelectMissingMenuRendererProps & CustomMenuRendererProps;
-export type MenuRendererHandler = (props: MenuRendererProps) => JSX.Element[] | Select.HandlerRendererResult;
-
-export const defaultMenuRenderer: MenuRendererHandler = ({
+export const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
   focusedOption,
   instancePrefix,
   onFocus,
@@ -119,9 +94,9 @@ export const defaultMenuRenderer: MenuRendererHandler = ({
 
 export interface RequiredProps {
   /** selected value */
-  value?: Value
+  value?: Dropdown.Value
   /** called when value is changed */
-  onChange: (value?: Value | null) => void
+  onChange: (value?: Dropdown.Value | null) => void
   /** the function that can be used to override the default renderer of the selected value */
   valueRenderer?: (option: (Select.Option | Select.Options) & { [k: string]: any }) => JSX.Element | null | false
   /** available options */
@@ -160,8 +135,6 @@ export interface RequiredProps {
   onValueClick?: Select.OnValueClickHandler
 };
 
-export type MenuPosition = 'top' | 'bottom';
-
 export interface DefaultProps {
   /** true if it should be possible to select multiple values */
   multi: boolean
@@ -182,13 +155,13 @@ export interface DefaultProps {
   /** if true, selected values will be passed to onChange as comma-separated string of values (eg "1,2,3") instead of array of objects */
   simpleValue: boolean,
   /** the function that gets used to render the content of an option group */
-  optionGroupRenderer: OptionGroupRendererHandler
+  optionGroupRenderer: Dropdown.OptionGroupRendererHandler
   /** the function that can be used to override the default drop-down list of options */
-  menuRenderer: MenuRendererHandler
+  menuRenderer: Dropdown.MenuRendererHandler
   /** the field name to group by */
   groupByKey: string
   /** whether the menu should be rendered on top or bottom when it's open */
-  menuPosition: MenuPosition
+  menuPosition: Dropdown.MenuPosition
 };
 
 export const Props = {
@@ -227,12 +200,41 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type Props = RequiredProps & Partial<DefaultProps>
+export namespace Dropdown {
+  export type SimpleValue = string | number;
+
+  export type Value = Select.Option | Select.Options | SimpleValue;
+
+  export type OptionRendererHandler = (option: Select.Option, i: number) => Select.HandlerRendererResult;
+
+  export type OptionGroupRendererHandler = (optionGroup: string) => JSX.Element | string | null;
+
+  export interface SelectMissingMenuRendererProps {
+    // seem supported by react-select but missing in the @types file?
+    instancePrefix?: string
+    onFocus?: () => void
+    onSelect?: () => void
+    optionClassName?: string
+    optionComponent: React.ComponentType<{ [k: string]: any }> // TODO
+    optionRenderer: OptionRendererHandler
+    optionGroupRenderer: OptionGroupRendererHandler
+    valueKey: string
+  }
+  export interface CustomMenuRendererProps {
+    groupByKey?: string
+  }
+  export type MenuRendererProps = Select.MenuRendererProps & SelectMissingMenuRendererProps & CustomMenuRendererProps;
+  export type MenuRendererHandler = (props: MenuRendererProps) => JSX.Element[] | Select.HandlerRendererResult;
+
+  export type MenuPosition = 'top' | 'bottom';
+
+  export type Props = RequiredProps & Partial<DefaultProps>
+}
 
 type DefaultedProps = RequiredProps & DefaultProps;
 
 @props(Props, { strict: true })
-export default class Dropdown extends React.Component<Props> {
+export class Dropdown extends React.Component<Dropdown.Props> {
 
   static defaultProps: DefaultProps = {
     delimiter: ',',
@@ -260,7 +262,7 @@ export default class Dropdown extends React.Component<Props> {
     }
   };
 
-  valueToOption = (value: Value | undefined, options: Select.Options) => {
+  valueToOption = (value: Dropdown.Value | undefined, options: Select.Options) => {
     if (t.String.is(value) || t.Number.is(value)) {
       const { multi, delimiter } = this.props as DefaultedProps;
       if (multi) {
@@ -288,7 +290,7 @@ export default class Dropdown extends React.Component<Props> {
     });
   }
 
-  _onChange = (_value?: Value | null) => {
+  _onChange = (_value?: Dropdown.Value | null) => {
     const value = (_value === '' || isEmptyArray(_value)) ? null : _value;
     return this.props.onChange(value);
   }
@@ -312,7 +314,7 @@ export default class Dropdown extends React.Component<Props> {
     ) : null;
   }
 
-  menuRenderer = (args: Select.MenuRendererProps & SelectMissingMenuRendererProps) => {
+  menuRenderer = (args: Select.MenuRendererProps & Dropdown.SelectMissingMenuRendererProps) => {
     const { menuRenderer, groupByKey } = this.props as DefaultedProps;
     return menuRenderer({
       ...args,

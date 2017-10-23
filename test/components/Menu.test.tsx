@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Menu, MenuProps } from '../../src/DropdownMenu';
+import { Menu } from '../../src/DropdownMenu';
 
 let consoleError: jest.SpyInstance<{}>;
 const consoleWarn = console.warn;
@@ -30,7 +30,7 @@ afterAll(() => {
   console.warn = consoleWarn;
 });
 
-const exampleProps: MenuProps = {
+const exampleProps: Menu.Props = {
   options: [
     { title: 'Preferences', type: 'item' },
     { title: 'Preferences', type: 'item' }

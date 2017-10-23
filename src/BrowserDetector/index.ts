@@ -1,3 +1,2 @@
-import BrowserDetector, { BrowserDetectorProps } from './BrowserDetector';
+import { BrowserDetector } from './BrowserDetector';
 export default BrowserDetector;
-export { BrowserDetectorProps };

@@ -17,7 +17,7 @@ const footerISO = '\n__renderISO(Example);';
   scope: t.Object,
   codeText: t.String
 })
-export default class LiveDemo extends React.Component {
+export class LiveDemo extends React.Component {
 
   constructor(props) {
     super(props);

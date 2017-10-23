@@ -3,27 +3,29 @@ import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
 
-export type NavBarProps = {
-  /** Left content: It doesn't shrink nor grow */
-  /** Center content. It grows to use all the available space */
-  /** Right content. It doesn't shrink nor grow */
-  /** Max Width. For css `max-width` */
-  content: {
-    left?: React.ReactNode,
-    center?: React.ReactNode,
-    right?: React.ReactNode,
-    maxWidth?: string | number
-  },
-  /** to set `position: fixed` */
-  fixed?: boolean,
-  /** shorthand for css `height` */
-  height?: string | number,
-  /** shorthand for css `background` */
-  background?: string,
-  /** add class name */
-  className?: string,
-  /** add custom css style */
-  style?: React.CSSProperties
+export namespace NavBar {
+  export type Props = {
+    /** Left content: It doesn't shrink nor grow */
+    /** Center content. It grows to use all the available space */
+    /** Right content. It doesn't shrink nor grow */
+    /** Max Width. For css `max-width` */
+    content: {
+      left?: React.ReactNode,
+      center?: React.ReactNode,
+      right?: React.ReactNode,
+      maxWidth?: string | number
+    },
+    /** to set `position: fixed` */
+    fixed?: boolean,
+    /** shorthand for css `height` */
+    height?: string | number,
+    /** shorthand for css `background` */
+    background?: string,
+    /** add class name */
+    className?: string,
+    /** add custom css style */
+    style?: React.CSSProperties
+  }
 }
 
 export const Props = {
@@ -41,7 +43,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class NavBar extends React.PureComponent<NavBarProps> {
+export class NavBar extends React.PureComponent<NavBar.Props> {
 
   render() {
 

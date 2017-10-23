@@ -1,3 +1,2 @@
-import ScrollView, { ScrollViewProps } from './ScrollView';
+import { ScrollView } from './ScrollView';
 export default ScrollView;
-export { ScrollViewProps };

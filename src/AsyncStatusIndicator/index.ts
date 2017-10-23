@@ -1,3 +1,2 @@
-import AsyncStatusIndicator, { AsyncStatusIndicatorProps, AsyncStatusIndicatorState } from './AsyncStatusIndicator';
+import { AsyncStatusIndicator } from './AsyncStatusIndicator';
 export default AsyncStatusIndicator;
-export { AsyncStatusIndicatorProps, AsyncStatusIndicatorState };

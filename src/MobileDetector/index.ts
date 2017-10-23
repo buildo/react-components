@@ -1,3 +1,2 @@
-import MobileDetector, { MobileDetectorProps } from './MobileDetector';
+import { MobileDetector } from './MobileDetector';
 export default MobileDetector;
-export { MobileDetectorProps };

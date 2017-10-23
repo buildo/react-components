@@ -1,3 +1,2 @@
-import Meter, { MeterProps } from './Meter';
+import { Meter } from './Meter';
 export default Meter;
-export { MeterProps };

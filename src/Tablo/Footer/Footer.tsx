@@ -2,9 +2,11 @@ import * as React from 'react';
 import FlexView from 'react-flexview';
 import { props, t, ReactChildren } from '../../utils';
 
-export type FooterProps = {
-  children: React.ReactNode
-};
+export namespace Footer {
+  export type Props = {
+    children: React.ReactNode
+  };
+}
 
 const { maybe } = t;
 
@@ -16,7 +18,7 @@ const propsTypes = {
 };
 
 @props(propsTypes)
-export default class Footer extends React.PureComponent<FooterProps> {
+export class Footer extends React.PureComponent<Footer.Props> {
   render() {
     const { children } = this.props;
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import Meter, { MeterProps } from '../../src/Meter';
+import Meter from '../../src/Meter';
 
 let consoleError: jest.SpyInstance<{}>;
 
@@ -19,7 +19,7 @@ const style: React.CSSProperties = {
   position: 'relative'
 };
 
-const ranges: MeterProps.Range[] = [
+const ranges: Meter.Props['ranges'] = [
   { startValue: 0, endValue: 50, fillingColor: 'green', labelColor: 'red', backgroundColor: 'grey' },
   { startValue: 50, endValue: 80, fillingColor: 'yellow' },
   { startValue: 80, endValue: 100 }

@@ -1,32 +1,33 @@
 import * as React from 'react';
 import { props, t, stateClassUtil, ReactChildren } from '../utils';
 import FlexView from 'react-flexview';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import * as cx from 'classnames';
 
-export namespace PanelHeaderProps {
-  export type CollapseDirection =  'up' | 'left' | 'down' | 'right';
-  export type HeaderSize = 'tiny' | 'small' | 'medium';
-  export type Collapse = {
-    direction: PanelHeaderProps.CollapseDirection,
-    onToggleExpanded: () => void,
-    isExpanded?: boolean
-  }
-}
-
 export type PanelHeaderDefaultProps = {
-  size: PanelHeaderProps.HeaderSize
+  size: PanelHeader.HeaderSize
 }
 
 export type PanelHeaderRequiredProps = {
-  collapse?: PanelHeaderProps.Collapse,
+  collapse?: PanelHeader.Collapse,
   content?: React.ReactNode,
   title?: React.ReactNode
   menu?: React.ReactNode
 }
 
-export type PanelHeaderProps = PanelHeaderRequiredProps & Partial<PanelHeaderDefaultProps>;
 export type PanelHeaderDefaultedProps = PanelHeaderRequiredProps & PanelHeaderDefaultProps;
+
+export namespace PanelHeader {
+  export type CollapseDirection =  'up' | 'left' | 'down' | 'right';
+  export type HeaderSize = 'tiny' | 'small' | 'medium';
+  export type Collapse = {
+    direction: CollapseDirection,
+    onToggleExpanded: () => void,
+    isExpanded?: boolean
+  }
+
+  export type Props = PanelHeaderRequiredProps & Partial<PanelHeaderDefaultProps>;
+}
 
 const icons = {
   up: ['angle-up', 'angle-down'],
@@ -49,13 +50,13 @@ export const HeaderSize = t.enums.of(headerSizes, 'HeaderSize');
   content: t.maybe(ReactChildren),
   menu: t.maybe(ReactChildren)
 })
-export default class PanelHeader extends React.PureComponent<PanelHeaderProps> {
+export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
 
   static defaultProps: PanelHeaderDefaultProps = {
     size: 'small'
   };
 
-  getIcon = (collapse: PanelHeaderProps.Collapse) => {
+  getIcon = (collapse: PanelHeader.Collapse) => {
     const { direction, isExpanded } = collapse;
     return isExpanded ? icons[direction][0] : icons[direction][1];
   }
@@ -79,7 +80,7 @@ export default class PanelHeader extends React.PureComponent<PanelHeaderProps> {
     );
   }
 
-  templateExpandIcon = (collapse: PanelHeaderProps.Collapse) => {
+  templateExpandIcon = (collapse: PanelHeader.Collapse) => {
     return (
       <FlexView
         vAlignContent='center'
@@ -97,7 +98,7 @@ export default class PanelHeader extends React.PureComponent<PanelHeaderProps> {
   templateTitle = ({ renderTitle, title, collapse }: {
     renderTitle: boolean,
     title: React.ReactNode,
-    collapse?: PanelHeaderProps.Collapse
+    collapse?: PanelHeader.Collapse
   }) => {
     return (
       <FlexView vAlignContent='center' shrink={false} onClick={!!collapse && collapse.isExpanded ? collapse.onToggleExpanded : undefined} className='panel-header-title-wrapper'>

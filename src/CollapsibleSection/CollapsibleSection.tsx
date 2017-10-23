@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t, ReactChildren, ReactChild } from '../utils';
 import FlexView from 'react-flexview';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 export type CollapsibleSectionRequiredProps = {
   /** panel content (visible only when expanded) */
@@ -34,7 +34,9 @@ export type CollapsibleSectionDefaultProps = {
   onClose: () => void,
 };
 
-export type CollapsibleSectionProps = CollapsibleSectionRequiredProps & Partial<CollapsibleSectionDefaultProps>;
+export namespace CollapsibleSection {
+  export type Props = CollapsibleSectionRequiredProps & Partial<CollapsibleSectionDefaultProps>;
+}
 type CollapsibleSectionDefaultedProps = CollapsibleSectionRequiredProps & CollapsibleSectionDefaultProps;
 
 export const Props = {
@@ -56,7 +58,7 @@ export const Props = {
 
 /** A collapsible panel, allowing you to toggle more/less content */
 @props(Props)
-export default class CollapsibleSection extends React.PureComponent<CollapsibleSectionProps> {
+export class CollapsibleSection extends React.PureComponent<CollapsibleSection.Props> {
 
   static defaultProps: CollapsibleSectionDefaultProps = {
     onOpen: () => {},

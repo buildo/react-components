@@ -4,30 +4,32 @@ import every = require('lodash/every');
 import * as cx from 'classnames';
 import View from 'react-flexview';
 
-export type DateFieldProps = {
-  /** current value expressed as JS Date */
-  value?: Date,
-  /** called when there is a new valid value */
-  onChange: (value: Date) => void,
-  /** called when validity changes */
-  onValidChange: (isValid: boolean) => void,
-  /** map to pass placeholders to each input field */
-  placeholders?: {
-    day?: string,
-    month?: string,
-    year?: string
-  },
-  /** if `true`, it passes `type='number'` to every input field */
-  inputTypeNumber?: boolean,
-  /** an optional class name to pass to top level element of the component */
-  className?: string,
-  /** an optional style object to pass to top level element of the component */
-  style?: React.CSSProperties,
-  /** an optional id to pass to top level element of the component */
-  id?: string
-};
+export namespace DateField {
+  export type Props = {
+    /** current value expressed as JS Date */
+    value?: Date,
+    /** called when there is a new valid value */
+    onChange: (value: Date) => void,
+    /** called when validity changes */
+    onValidChange: (isValid: boolean) => void,
+    /** map to pass placeholders to each input field */
+    placeholders?: {
+      day?: string,
+      month?: string,
+      year?: string
+    },
+    /** if `true`, it passes `type='number'` to every input field */
+    inputTypeNumber?: boolean,
+    /** an optional class name to pass to top level element of the component */
+    className?: string,
+    /** an optional style object to pass to top level element of the component */
+    style?: React.CSSProperties,
+    /** an optional id to pass to top level element of the component */
+    id?: string
+  };
+}
 
-export type DateFieldState = {
+export type State = {
   day: string,
   month: string,
   year: string,
@@ -55,7 +57,7 @@ function parseDate(date: Date) {
   };
 }
 
-const initialState: DateFieldState = {
+const initialState: State = {
   day: '',
   month: '',
   year: '',
@@ -67,7 +69,7 @@ const initialState: DateFieldState = {
  *  A simple component used to visually divide UI elements
  */
 @props(Props)
-export default class DateField extends React.PureComponent<DateFieldProps, DateFieldState> {
+export class DateField extends React.PureComponent<DateField.Props, State> {
 
   state = this.props.value ? {
     ...parseDate(this.props.value),
@@ -75,7 +77,7 @@ export default class DateField extends React.PureComponent<DateFieldProps, DateF
     isDirty: false
   } : initialState
 
-  componentWillReceiveProps(nextProps: DateFieldProps) {
+  componentWillReceiveProps(nextProps: DateField.Props) {
     if (!nextProps.value && this.props.value) { // "value" has become "undefined"
       this.setState({ day: '', month: '', year: '', isValid: false });
     } else if ((nextProps.value && !this.props.value) || (nextProps.value && this.props.value && nextProps.value.getTime() !== this.props.value.getTime())) { // "value" exists and has changed
@@ -111,7 +113,7 @@ export default class DateField extends React.PureComponent<DateFieldProps, DateF
       [key]: value
     };
 
-    const values: DateFieldState = {
+    const values: State = {
       ...this.state,
       ...patch
     };
@@ -129,7 +131,7 @@ export default class DateField extends React.PureComponent<DateFieldProps, DateF
     });
   }
 
-  isValid({ year, month, day }: DateFieldState) {
+  isValid({ year, month, day }: State) {
     const _date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
     return parseInt(year) === _date.getFullYear() && parseInt(month) === _date.getMonth() + 1 && parseInt(day) === _date.getDate();
   }

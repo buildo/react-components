@@ -1,7 +1,9 @@
 import * as React from 'react';
 import pick = require('lodash/pick');
+import { ObjectOmit } from 'typelevel-ts';
 import { props, t } from '../utils';
-import Button, { ButtonProps, ButtonPropTypes } from './Button';
+import { Button, ButtonPropTypes } from './Button';
+
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -43,15 +45,11 @@ import Button, { ButtonProps, ButtonPropTypes } from './Button';
  * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
  */
 
-export namespace StatefulButtonProps {
-  export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
-};
-
-export interface StatefulButtonRequiredProps extends ButtonProps {
+export interface StatefulButtonRequiredProps extends Button.Props {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => Promise<any>
   /** ready, not-allowed, success, use it if you want button to be a functional component */
-  baseState?: StatefulButtonProps.ButtonBaseState
+  baseState?: StatefulButton.ButtonBaseState
 };
 
 export interface StatefulButtonDefaultProps {
@@ -61,9 +59,12 @@ export interface StatefulButtonDefaultProps {
   timerMillis: number
 }
 
-export type StatefulButtonProps = StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
+export namespace StatefulButton {
+  export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
+  export type Props = ObjectOmit<Button.Props, 'onClick'> & StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
+}
 
-export type StatefulButtonState = {
+export type State = {
   internalState: 'error' | 'processing' | 'success' | null
 };
 
@@ -73,7 +74,7 @@ export type StatefulButtonState = {
   stableSuccess: t.maybe(t.Boolean),
   timerMillis: t.maybe(t.Number)
 })
-export default class StatefulButton extends React.PureComponent<StatefulButtonProps, StatefulButtonState> {
+export class StatefulButton extends React.PureComponent<StatefulButton.Props, State> {
 
   private timeoutId: number | null
   private resetInternalStateAfterProcessing: boolean
@@ -88,7 +89,7 @@ export default class StatefulButton extends React.PureComponent<StatefulButtonPr
     internalState: null
   };
 
-  constructor(props: StatefulButtonProps) {
+  constructor(props: StatefulButton.Props) {
     super(props);
     this.timeoutId = null;
     this.resetInternalStateAfterProcessing = false;
@@ -110,7 +111,7 @@ export default class StatefulButton extends React.PureComponent<StatefulButtonPr
     }
   }
 
-  componentWillReceiveProps(props: StatefulButtonProps) {
+  componentWillReceiveProps(props: StatefulButton.Props) {
     if (process.env.NODE_ENV !== 'production') {
       t.assert(props.stableSuccess === this.props.stableSuccess);
     }

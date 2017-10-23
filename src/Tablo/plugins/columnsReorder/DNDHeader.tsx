@@ -7,17 +7,19 @@ import FlexView from 'react-flexview';
 import flowRight = require('lodash/flowRight');
 import identity = require('lodash/identity');
 
-export type DNDHeaderProps = {
-  onDragHover?: (source: string, target: string) => void,
-  index: number,
-  name: string,
-  isDragAllowed: boolean,
-  isDropAllowed: (source: string, target: string) => boolean,
-  tabloUniqueId: string,
-  children: React.ReactNode
-};
+export namespace DNDHeader {
+  export type Props = {
+    onDragHover?: (source: string, target: string) => void,
+    index: number,
+    name: string,
+    isDragAllowed: boolean,
+    isDropAllowed: (source: string, target: string) => boolean,
+    tabloUniqueId: string,
+    children: React.ReactNode
+  };
+}
 
-export type DNDHeaderIntrinsicProps = DNDHeaderProps & {
+export type DNDHeaderIntrinsicProps = DNDHeader.Props & {
   connectDragSource: () => void,
   connectDragPreview: () => void,
   connectDropTarget: () => void,
@@ -100,7 +102,7 @@ const collectSource: DragSourceCollector = (connect, monitor) => {
   });
 };
 
-const columnType = ({ tabloUniqueId }: DNDHeaderProps) => `${tabloUniqueId}_column`;
+const columnType = ({ tabloUniqueId }: DNDHeader.Props) => `${tabloUniqueId}_column`;
 
 @DragSource(columnType, columnSource, collectSource)
 @DropTarget(columnType, columnTarget, collectTarget)
@@ -122,7 +124,7 @@ const columnType = ({ tabloUniqueId }: DNDHeaderProps) => `${tabloUniqueId}_colu
   tabloUniqueId: t.String,
   children: ReactChildren
 })
-export default class DNDHeader extends React.PureComponent<DNDHeaderProps> {
+export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
 
   render() {
     const { connectDragSource, connectDropTarget, isDragAllowed, isDragging, canDrop, isOver, children } = this.props as DNDHeaderIntrinsicProps;

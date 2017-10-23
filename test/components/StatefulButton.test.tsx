@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 
-import StatefulButton, { StatefulButtonProps } from '../../src/Button/StatefulButton';
+import { StatefulButton } from '../../src/Button/StatefulButton';
 import clone = require('lodash/clone');
 
 let consoleError: jest.SpyInstance<{}>;
@@ -38,7 +38,7 @@ function timeoutPromise(millis) {
   });
 }
 
-const exampleProps: StatefulButtonProps = {
+const exampleProps: StatefulButton.Props = {
   ...StatefulButton.defaultProps,
   label: 'BeautifulButton',
   onClick: timeoutPromise.bind(this, 5),

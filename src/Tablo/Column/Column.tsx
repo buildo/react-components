@@ -5,43 +5,41 @@ import { getArrayChildren } from '../utils';
 
 import { Column as ColumnFDT } from 'fixed-data-table-2';
 
-import Cell, { defaultCell, CellProps, CellIntrinsicProps } from '../Cell';
-import Header, { defaultHeader, HeaderProps, HeaderIntrinsicProps } from '../Header';
-import Footer, { FooterProps } from '../Footer';
+import { Cell, defaultCell, CellIntrinsicProps, Intrinsic as CellIntrinsic } from '../Cell/Cell';
+import { Header, defaultHeader, HeaderIntrinsicProps, Intrinsic as HeaderIntrinsic } from '../Header/Header';
+import Footer from '../Footer';
 
-export namespace ColumnProps {
+export type Intrinsic<T> = {
+  data?: T[],
+  sortable?: boolean,
+  sortDir?: 'asc' | 'desc',
+  onHeaderClick: () => void
+}
 
-  export type ColumnChildren<T, K extends string> = (
-    React.ReactElement<HeaderProps> |
-    React.ReactElement<FooterProps> |
-    React.ReactElement<CellProps<T, K>>
-  )[]
+export type Default = {
+  width: number,
+  allowCellsRecycling: boolean
+  fixed: boolean
+}
 
-  export type Intrinsic<T> = {
-    data?: T[],
-    sortable?: boolean,
-    sortDir?: 'asc' | 'desc',
-    onHeaderClick: () => void
-  }
-
-  export type Default = {
-    width: number,
-    allowCellsRecycling: boolean
-    fixed: boolean
-  }
-
-  export type Required<T, K extends string> = {
-    key?: string | number
-    name: K,
-    isResizable?: boolean,
-    flexGrow?: number,
-    children?: ColumnChildren<T, K>
-  }
+export type Required<T, K extends string> = {
+  key?: string | number
+  name: K,
+  isResizable?: boolean,
+  flexGrow?: number,
+  children?: Column.ColumnChildren<T, K>
 };
 
-export type ColumnProps<T, K extends string> = ColumnProps.Required<T, K> & Partial<ColumnProps.Default>;
-export type ColumnDefaultedIntrinsicProps<T, K extends string> = ColumnProps.Required<T, K> & ColumnProps.Default & ColumnProps.Intrinsic<T>;
-export type ColumnIntrinsicProps<T, K extends string> = ColumnProps<T, K> & ColumnProps.Intrinsic<T>;
+export namespace Column {
+  export type ColumnChildren<T, K extends string> = (
+    React.ReactElement<Header.Props> |
+    React.ReactElement<Footer.Props> |
+    React.ReactElement<Cell.Props<T, K>>
+  )[]
+  export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
+}
+export type ColumnDefaultedIntrinsicProps<T, K extends string> = Required<T, K> & Default & Intrinsic<T>;
+export type ColumnIntrinsicProps<T, K extends string> = Column.Props<T, K> & Intrinsic<T>;
 
 const { union, maybe, struct } = t;
 export const defaultWidth = 200;
@@ -59,7 +57,7 @@ const argsTypes = struct({
   isResizable: maybe(t.Boolean)
 }, { strict: true });
 
-const Column = <T, K extends string>(args: ColumnProps<T, K>): React.ReactElement<ColumnProps<T, K>> => {
+export const Column = <T, K extends string>(args: Column.Props<T, K>): React.ReactElement<Column.Props<T, K>> => {
   const {
     key,
     width = defaultWidth,
@@ -76,11 +74,11 @@ const Column = <T, K extends string>(args: ColumnProps<T, K>): React.ReactElemen
     const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(getArrayChildren(children), child => child.type === Cell) || defaultCell;
     const rowData = data[rowIndex] || {};
     const dataCell = rowData[columnKey];
-    return React.cloneElement<CellIntrinsicProps<T, K>, CellProps.Intrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
+    return React.cloneElement<CellIntrinsicProps<T, K>, CellIntrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
   };
 
-  const header = React.cloneElement<HeaderIntrinsicProps<K>, HeaderProps.Intrinsic>(find(getArrayChildren(children), child => child.type === Header) || defaultHeader(name), { fixed });
-  const footer = find(getArrayChildren(children), child => child.type === Footer) as React.ReactElement<FooterProps> | undefined; // TODO onFooterClick
+  const header = React.cloneElement<HeaderIntrinsicProps<K>, HeaderIntrinsic>(find(getArrayChildren(children), child => child.type === Header) || defaultHeader(name), { fixed });
+  const footer = find(getArrayChildren(children), child => child.type === Footer) as React.ReactElement<Footer.Props> | undefined; // TODO onFooterClick
 
   return (
     <ColumnFDT
@@ -100,5 +98,3 @@ const Column = <T, K extends string>(args: ColumnProps<T, K>): React.ReactElemen
 
 export const defaultColumns = <T, K extends keyof T>(data: T[]) =>
   Object.keys(data[0] || {}).map((columnName: K) => Column<T, K>({ name: columnName }));
-
-export default Column;

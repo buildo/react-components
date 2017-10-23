@@ -7,32 +7,32 @@ import { If, StringContains, StringIntersection } from 'typelevel-ts';
 
 export type PickIfExists<T, K extends string> = If<StringContains<keyof T, K>, T[StringIntersection<keyof T, K>], undefined>;
 
-export namespace CellProps {
-  export type Intrinsic<T, K extends string> = {
-    data: PickIfExists<T, K>,
-    rowData: T,
-    rowIndex: number,
-    fixed: boolean
-  }
-
-  export type Default = {
-    vAlignContent: 'top' | 'center' | 'bottom',
-    hAlignContent: 'left' | 'center' | 'right',
-    grow: boolean
-  }
-
-  export type Required<T, K extends string> = {
-    children?: React.ReactNode | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element),
-    backgroundColor?: React.CSSProperties['backgroundColor'],
-    color?: React.CSSProperties['color'],
-    contentStyle?: React.CSSProperties,
-    style?: React.CSSProperties
-  };
+export type Intrinsic<T, K extends string> = {
+  data: PickIfExists<T, K>,
+  rowData: T,
+  rowIndex: number,
+  fixed: boolean
 }
 
-export type CellProps<T, K extends string> = CellProps.Required<T, K> & Partial<CellProps.Default>;
-export type CellIntrinsicProps<T, K extends string> = CellProps<T, K> & CellProps.Intrinsic<T, K>;
-type CellDefaultedIntrinsicProps<T, K extends string> = CellProps.Required<T, K> & CellProps.Default & CellProps.Intrinsic<T, K>;
+export type Default = {
+  vAlignContent: 'top' | 'center' | 'bottom',
+  hAlignContent: 'left' | 'center' | 'right',
+  grow: boolean
+}
+
+export type Required<T, K extends string> = {
+  children?: React.ReactNode | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element),
+  backgroundColor?: React.CSSProperties['backgroundColor'],
+  color?: React.CSSProperties['color'],
+  contentStyle?: React.CSSProperties,
+  style?: React.CSSProperties
+};
+
+export namespace Cell {
+  export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
+}
+export type CellIntrinsicProps<T, K extends string> = Cell.Props<T, K> & Intrinsic<T, K>;
+type CellDefaultedIntrinsicProps<T, K extends string> = Required<T, K> & Default & Intrinsic<T, K>;
 
 const { maybe, enums, union } = t;
 
@@ -51,7 +51,7 @@ const propsTypes = {
   grow: maybe(t.Boolean)
 };
 
-function Cell<T, K extends string>(props: CellProps<T, K>): React.ReactElement<CellProps<T, K>> {
+export function _Cell<T, K extends string>(props: Cell.Props<T, K>): React.ReactElement<Cell.Props<T, K>> {
 
   const {
     data,
@@ -89,7 +89,8 @@ function Cell<T, K extends string>(props: CellProps<T, K>): React.ReactElement<C
   );
 }
 
-props(propsTypes)(Cell);
+props(propsTypes)(_Cell);
 
-export default Cell;
+export const Cell = _Cell;
+
 export const defaultCell = <Cell>{dataCell => dataCell}</Cell>;

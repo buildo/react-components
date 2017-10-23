@@ -40,7 +40,7 @@ export const Props = {
  * @param loading - whether it's loading or not
  */
 @props(Props)
-export default class KitchenSink extends React.Component {
+export class KitchenSink extends React.Component {
 
   static defaultProps = {
     openSections: []

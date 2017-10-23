@@ -1,22 +1,17 @@
 import * as React from 'react';
 import { props, t, ReactChildren } from '../utils';
-import Menu, { optionType } from './Menu';
+import { Menu, optionType } from './Menu';
 import FlexView from 'react-flexview';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import * as cx from 'classnames';
-import { MenuProps } from './Menu';
-
-export namespace DropdownMenuProps {
-  export type size =  'small' | 'medium' | 'large';
-}
 
 export type DropdownMenuRequiredProps = {
   /** menu button content */
   children?: JSX.Element | string,
   /** renderer for menu items */
-  menuRenderer?: (options: MenuProps.Option[]) => JSX.Element,
+  menuRenderer?: (options: Menu.Option[]) => JSX.Element,
   /** menu options */
-  options: MenuProps.Option[],
+  options: Menu.Option[],
   /** className for menu button icon (if children is passed, this is ignored) */
   iconClassName?: string,
   /** called when menu is open */
@@ -24,7 +19,7 @@ export type DropdownMenuRequiredProps = {
   /** called when menu is closed */
   onClose: () => void,
   /** the height of the menu button */
-  size?: DropdownMenuProps.size,
+  size?: DropdownMenu.Size,
   /** menu button max-height */
   maxHeight?: number,
   className?: string
@@ -37,7 +32,11 @@ export type DropdownMenuDefaultProps = {
   dismissOnClickOut: boolean
 }
 
-export type DropdownMenuProps = DropdownMenuRequiredProps & Partial<DropdownMenuDefaultProps>;
+export namespace DropdownMenu {
+  export type Size =  'small' | 'medium' | 'large';
+
+  export type Props = DropdownMenuRequiredProps & Partial<DropdownMenuDefaultProps>;
+}
 type DropdownMenuDefaultedProps = DropdownMenuRequiredProps & DropdownMenuDefaultProps;
 
 export const Props = {
@@ -58,7 +57,7 @@ export const Props = {
  *  A toggleable dropdown menu
  */
 @props(Props)
-export default class DropdownMenu extends React.PureComponent<DropdownMenuProps> {
+export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
 
   static defaultProps: DropdownMenuDefaultProps = {
     isOpen: false,
@@ -78,7 +77,7 @@ export default class DropdownMenu extends React.PureComponent<DropdownMenuProps>
     this.toggleMenu();
   };
 
-  getHeightFromSize = (size?: DropdownMenuProps.size) => {
+  getHeightFromSize = (size?: DropdownMenu.Size) => {
     switch (size) {
       case 'small': return 250;
       case 'medium': return 400;
@@ -107,7 +106,7 @@ export default class DropdownMenu extends React.PureComponent<DropdownMenuProps>
 
   templateMenu = ({ isOpen, options, height, onMenuClick }: {
     isOpen: boolean,
-    options: MenuProps.Option[],
+    options: Menu.Option[],
     height: number | null,
     onMenuClick: () => void
   }) => {

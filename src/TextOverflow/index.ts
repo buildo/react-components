@@ -1,4 +1,4 @@
-import TextOverflow, { TextOverflowProps } from './TextOverflow';
-import TextOverflowTouch, { TextOverflowTouchProps } from './TextOverflowTouch';
+import { TextOverflow } from './TextOverflow';
+import { TextOverflowTouch } from './TextOverflowTouch';
 export default TextOverflow;
-export { TextOverflowProps, TextOverflowTouch, TextOverflowTouchProps };
+export { TextOverflowTouch };

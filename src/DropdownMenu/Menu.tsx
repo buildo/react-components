@@ -4,23 +4,10 @@ import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import partial = require('lodash/partial');
 import FlexView from 'react-flexview';
-import Divider from '../Divider/Divider';
-
-export namespace MenuProps {
-  export type Option = {
-    type: 'title' | 'item' | 'divider',
-    title?: JSX.Element | string,
-    metadata?: JSX.Element | string,
-    selected?: boolean,
-    disabled?: boolean,
-    onClick?: MenuProps.OptionClickHandler
-  }
-
-  export type OptionClickHandler = (o: MenuProps.Option) => void;
-}
+import { Divider } from '../Divider/Divider';
 
 export type MenuRequiredProps = {
-  options?: MenuProps.Option[],
+  options?: Menu.Option[],
   maxHeight?: number
 }
 
@@ -29,9 +16,22 @@ export type MenuDefaultProps = {
   onClick: () => void
 }
 
-export type MenuProps = MenuRequiredProps & Partial<MenuDefaultProps>;
+export namespace Menu {
+  export type Option = {
+    type: 'title' | 'item' | 'divider',
+    title?: JSX.Element | string,
+    metadata?: JSX.Element | string,
+    selected?: boolean,
+    disabled?: boolean,
+    onClick?: OptionClickHandler
+  }
 
-export type MenuState = {
+  export type OptionClickHandler = (o: Option) => void;
+
+  export type Props = MenuRequiredProps & Partial<MenuDefaultProps>;
+}
+
+export type State = {
   height: number | null
 };
 
@@ -57,9 +57,9 @@ const defaultProps: MenuDefaultProps = {
 };
 
 @props(Props)
-export default class Menu extends React.PureComponent<MenuProps, MenuState> {
+export class Menu extends React.PureComponent<Menu.Props, State> {
 
-  constructor(props: MenuProps) {
+  constructor(props: Menu.Props) {
     super(props);
     this.state = {
       height: null
@@ -80,7 +80,7 @@ export default class Menu extends React.PureComponent<MenuProps, MenuState> {
     }
   }
 
-  onOptionClick: MenuProps.OptionClickHandler = option => {
+  onOptionClick: Menu.OptionClickHandler = option => {
     const { onClick } = this.getProps();
     onClick();
     if (!option.disabled && option.onClick) {
@@ -88,7 +88,7 @@ export default class Menu extends React.PureComponent<MenuProps, MenuState> {
     }
   };
 
-  menuItemTemplate = (option: MenuProps.Option, onOptionClick: MenuProps.OptionClickHandler) => {
+  menuItemTemplate = (option: Menu.Option, onOptionClick: Menu.OptionClickHandler) => {
     return (
       <FlexView className={cx('menu-item', { disabled: option.disabled, selected: option.selected })} onClick={partial(onOptionClick, option)} vAlignContent='center'>
         <FlexView grow shrink className='menu-item-title'>
@@ -101,7 +101,7 @@ export default class Menu extends React.PureComponent<MenuProps, MenuState> {
     );
   };
 
-  templateRenderedOptions = ({ options, onOptionClick }: { options?: MenuProps.Option[], onOptionClick: MenuProps.OptionClickHandler }) => {
+  templateRenderedOptions = ({ options, onOptionClick }: { options?: Menu.Option[], onOptionClick: Menu.OptionClickHandler }) => {
     return options && options.map((option, i) => (
       <div className='menu-row' key={i}>
         {option.type === 'title' && <div className='menu-title'>{option.title}</div>}

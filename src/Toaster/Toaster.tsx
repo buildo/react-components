@@ -4,7 +4,7 @@ import * as cx from 'classnames';
 import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import { props, t, ReactChildren } from '../utils';
 import { warn } from '../utils/log';
-import TransitionWrapper, { TransitionWrapperProps } from '../TransitionWrapper/TransitionWrapper';
+import { TransitionWrapper } from '../TransitionWrapper/TransitionWrapper';
 
 export const Props = {
   children: ReactChildren,
@@ -32,7 +32,7 @@ export type ToasterRequiredProps = {
   /** id of the element you want to render the `Toaster` in */
   attachTo?: string,
   /** object with style for each transition event (used by `TransitionWrapper`) */
-  transitionStyles?: TransitionWrapperProps.TransitionStyles,
+  transitionStyles?: TransitionWrapper.TransitionStyles,
   /** duration of enter transition in milliseconds (used by `TransitionWrapper`) */
   transitionEnterTimeout: number,
   /** duration of leave transition in milliseconds (used by `TransitionWrapper`) */
@@ -42,14 +42,16 @@ export type ToasterRequiredProps = {
   style?: React.CSSProperties
 };
 
-export type ToasterProps = ToasterRequiredProps & Partial<ToasterDefaultProps>;
+export namespace Toaster {
+  export type Props = ToasterRequiredProps & Partial<ToasterDefaultProps>;
+}
 type ToasterDefaultedProps = ToasterRequiredProps & ToasterDefaultProps;
 
 /**
  * Renders and animates toasts (children) inline or in a portal
  */
 @props(Props)
-export default class Toaster extends React.Component<ToasterProps> {
+export class Toaster extends React.Component<Toaster.Props> {
 
   private toaster: HTMLElement | null;
 
@@ -159,7 +161,7 @@ export default class Toaster extends React.Component<ToasterProps> {
     this.renderToaster();
   }
 
-  componentWillReceiveProps(nextProps: ToasterProps) {
+  componentWillReceiveProps(nextProps: Toaster.Props) {
     if (this.props.attachTo !== nextProps.attachTo) {
       warn('You can\'t change "attachTo" prop after the first render!');
     }

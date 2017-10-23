@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
-import Tooltip, { TooltipProps, TooltipDefaultProps, TooltipRequiredProps, Props  } from './Tooltip';
+import { Tooltip, TooltipDefaultProps, TooltipRequiredProps, Props  } from './Tooltip';
 import View from 'react-flexview';
 import { props } from '../utils';
 
 
-export type TooltipTouchState = {
+export type State = {
   tooltipLeft: number,
   tooltipTop: number,
   tooltipBottom: number,
@@ -14,10 +14,14 @@ export type TooltipTouchState = {
   isOpen: boolean
 }
 
+export namespace TooltipTouch {
+  export type Props = Tooltip.Props;
+}
+
 type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 @props(Props)
-export default class TooltipTouch extends React.PureComponent<TooltipProps, TooltipTouchState> {
+export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
 
   static defaultProps: TooltipDefaultProps = {
     type: 'dark',

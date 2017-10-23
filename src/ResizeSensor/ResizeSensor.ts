@@ -10,14 +10,16 @@ export const Props = {
   debounce: t.maybe(t.Integer)
 };
 
-export type ResizeSensorProps = {
-  /** content */
-  children: JSX.Element,
-  /** called when a resize event is captured */
-  onResize: () => void,
-  /** callback delay (milliseconds) */
-  debounce?: number
-};
+export namespace ResizeSensor {
+  export type Props = {
+    /** content */
+    children: JSX.Element,
+    /** called when a resize event is captured */
+    onResize: () => void,
+    /** callback delay (milliseconds) */
+    debounce?: number
+  };
+}
 
 interface ResizeSensorElement extends Element {
   resizedAttached?: {}
@@ -27,7 +29,7 @@ interface ResizeSensorElement extends Element {
  * A component used to intercept window resize events
  */
 @props(Props)
-export default class ResizeSensor extends React.Component<ResizeSensorProps> {
+export class ResizeSensor extends React.Component<ResizeSensor.Props> {
 
   private elementQueries: boolean
   private resizeSensor: {} | null
@@ -72,7 +74,7 @@ export default class ResizeSensor extends React.Component<ResizeSensorProps> {
     return this.props.children;
   }
 
-  shouldComponentUpdate({ children, debounce }: ResizeSensorProps) {
+  shouldComponentUpdate({ children, debounce }: ResizeSensor.Props) {
     /*
       we don't need to update if `onResize` has changed
       as we're using the constant `this.onResize` callback

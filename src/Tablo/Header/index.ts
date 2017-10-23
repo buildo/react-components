@@ -1,3 +1,3 @@
-import Header, { defaultHeader, HeaderProps, HeaderIntrinsicProps } from './Header';
+import { defaultHeader, Header, HeaderIntrinsicProps } from './Header';
 export default Header;
-export { defaultHeader, HeaderProps, HeaderIntrinsicProps };
+export { defaultHeader, HeaderIntrinsicProps };

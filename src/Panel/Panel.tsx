@@ -1,28 +1,10 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
-import PanelHeader, { PanelHeaderProps, HeaderSize } from './PanelHeader';
+import { PanelHeader, HeaderSize } from './PanelHeader';
 import capitalize = require('lodash/capitalize');
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import FlexView from 'react-flexview';
-
-export namespace PanelProps {
-  export type PanelType = 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating';
-  export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
-  export type Header = {
-    collapse?: {
-      direction: 'up' | 'left' | 'down' | 'right',
-      onExpand: () => void,
-      onCollapse: () => void,
-      isCollapsed?: boolean
-    },
-    size?: PanelHeaderProps.HeaderSize,
-    content?: any, // TODO: t.ReactChildren
-    title?: any, // TODO(typo): wtf
-    hideTitleWhenExpanded?: boolean,
-    menu?: any // TODO: t.ReactChildren
-  }
-}
 
 export type PanelDefaultProps = {
   style: React.CSSProperties,
@@ -40,16 +22,35 @@ export type PanelRequiredProps = {
   /** panel content */
   children: React.ReactNode,
   /** The type of panel (docked or floating) */
-  type: PanelProps.PanelType,
+  type: Panel.PanelType,
   /** header props (collapse, content, title, menu) */
-  header?: PanelProps.Header,
+  header?: Panel.Header,
   /** top | left | right | bottom */
-  clearMargin?: PanelProps.ClearMargin,
+  clearMargin?: Panel.ClearMargin,
   className?: string,
 }
 
-export type PanelProps = PanelRequiredProps & Partial<PanelDefaultProps>;
 export type PanelDefaultedProps = PanelRequiredProps & PanelDefaultProps;
+
+export namespace Panel {
+  export type PanelType = 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating';
+  export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
+  export type Header = {
+    collapse?: {
+      direction: 'up' | 'left' | 'down' | 'right',
+      onExpand: () => void,
+      onCollapse: () => void,
+      isCollapsed?: boolean
+    },
+    size?: PanelHeader.Props['size'],
+    content?: any, // TODO: t.ReactChildren
+    title?: any, // TODO(typo): wtf
+    hideTitleWhenExpanded?: boolean,
+    menu?: any // TODO: t.ReactChildren
+  }
+
+  export type Props = PanelRequiredProps & Partial<PanelDefaultProps>;
+}
 
 export const Props = {
   type: t.enums.of(['docked-top', 'docked-left', 'docked-right', 'docked-bottom', 'floating']),
@@ -78,7 +79,7 @@ export const Props = {
 
 /** A simple component used to group elements in a box. */
 @props(Props)
-export default class Panel extends React.PureComponent<PanelProps> {
+export class Panel extends React.PureComponent<Panel.Props> {
   static defaultProps: PanelDefaultProps = {
     style: {},
     loading: false,
@@ -162,7 +163,7 @@ export default class Panel extends React.PureComponent<PanelProps> {
   };
 
   templateHeader = ({ header, isExpanded, toggleExpanded }: {
-    header?: PanelProps.Header,
+    header?: Panel.Header,
     isExpanded: boolean,
     toggleExpanded: () => void
   }) => {
@@ -195,7 +196,7 @@ export default class Panel extends React.PureComponent<PanelProps> {
   };
 
   templateCollapsedContent = ({ header, verticalDirection }: {
-    header?: PanelProps.Header,
+    header?: Panel.Header,
     verticalDirection?: boolean
   }) => {
     return (

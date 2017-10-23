@@ -38,7 +38,10 @@ export type BackgroundDimmerDefaultProps = {
 };
 
 type BackgroundDimmerDefaultedProps = BackgroundDimmerRequiredProps & BackgroundDimmerDefaultProps;
-export type BackgroundDimmerProps = BackgroundDimmerRequiredProps & Partial<BackgroundDimmerDefaultProps>;
+
+export namespace BackgroundDimmer {
+  export type Props = BackgroundDimmerRequiredProps & Partial<BackgroundDimmerDefaultProps>;
+}
 
 export const Props = {
   children: ReactChildren,
@@ -57,7 +60,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class BackgroundDimmer extends React.PureComponent<BackgroundDimmerProps> {
+export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props> {
 
   static defaultProps: BackgroundDimmerDefaultProps = {
     color: 'black',

@@ -2,42 +2,31 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
-import TextOverflow, { TextOverflowProps } from '../TextOverflow/TextOverflow';
+import { TextOverflow } from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
-import Icon from '../Icon/Icon';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { Icon } from '../Icon/Icon';
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 
-export namespace ButtonProps {
-
-  export type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
-  export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
-  export type ButtonSize = 'tiny' | 'small' | 'medium';
-
-}
-
-export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflowProps>;
-
-export type ButtonStateMap = { [key in ButtonProps.ButtonState]?: string };
 export type ButtonRequiredProps = {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void
   /** can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates]) */
-  label?: string | ButtonStateMap
+  label?: string | Button.ButtonStateMap
   /** otherwise just pass a string as children */
   children?: string
   /** type of the button (default, primary, positive, negative, flat) */
-  type?: ButtonProps.ButtonType
+  type?: Button.ButtonType
   /** shortcut for type "flat" */
   flat?: boolean,
 }
 
 export type ButtonDefaultProps = {
   /** function to handle the overflow of too long labels, replacing with ellipsed string and tooltip */
-  textOverflow: TextOverflowCompatibleComponent;
+  textOverflow: Button.TextOverflowCompatibleComponent;
   /** ready, not-allowed, processing, success, error; overrides `baseState`, use it if you want button to be a functional component */
-  buttonState: ButtonProps.ButtonState;
+  buttonState: Button.ButtonState;
   /** size of the button, one of 'tiny', 'small', 'medium' */
-  size: ButtonProps.ButtonSize;
+  size: Button.ButtonSize;
   /** fluid (block) button, takes the width of the container */
   fluid: boolean;
   /** shortcut for type "primary" */
@@ -45,30 +34,39 @@ export type ButtonDefaultProps = {
   /** circular button, this is allowed only if it's an icon button */
   circular: boolean;
   /** can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])) */
-  icon: string | ButtonStateMap;
+  icon: string | Button.ButtonStateMap;
   /** an optional class name to pass to first inner element of the component */
   className: string;
   /** an optional style object to pass to first inner element of the component */
   style: object
 };
 
-export type ButtonProps = ButtonRequiredProps & Partial<ButtonDefaultProps>;
+export namespace Button {
+  export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflow.Props>;
+  export type ButtonStateMap = { [key in Button.ButtonState]?: string };
+  export type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
+  export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
+  export type ButtonSize = 'tiny' | 'small' | 'medium';
+
+  export type Props = ButtonRequiredProps & Partial<ButtonDefaultProps>;
+}
+
 type ButtonDefaultedProps = ButtonRequiredProps & ButtonDefaultProps;
 
 // types
-export const buttonStates: ButtonProps.ButtonState[] = ['ready', 'not-allowed', 'processing', 'error', 'success'];
+export const buttonStates: Button.ButtonState[] = ['ready', 'not-allowed', 'processing', 'error', 'success'];
 const ButtonState = t.enums.of(buttonStates, 'ButtonState');
-export const buttonTypes: ButtonProps.ButtonType[] = ['default', 'primary', 'positive', 'negative', 'flat'];
+export const buttonTypes: Button.ButtonType[] = ['default', 'primary', 'positive', 'negative', 'flat'];
 const ButtonType = t.enums.of(buttonTypes, 'ButtonType');
-export const buttonSizes: ButtonProps.ButtonSize[] = ['tiny', 'small', 'medium'];
+export const buttonSizes: Button.ButtonSize[] = ['tiny', 'small', 'medium'];
 const ButtonSize = t.enums.of(buttonSizes, 'ButtonSize');
 
 // util
 const notBoth = (a: any, b: any): boolean => !(a && b);
-const satisfyAll = (...conditions: Array<(props: ButtonProps) => boolean>) => (props: ButtonRequiredProps) => every(conditions, c => c(props));
+const satisfyAll = (...conditions: Array<(props: Button.Props) => boolean>) => (props: ButtonRequiredProps) => every(conditions, c => c(props));
 
 // invariants
-const propsInvariants: Array<(props: ButtonProps) => boolean> = [
+const propsInvariants: Array<(props: Button.Props) => boolean> = [
   ({ label, icon, children }) => notBoth(label || icon, children), // notBothChildrenAndLabelOrIcon
   ({ primary, flat }) => notBoth(primary, flat), // notBothFlatAndPrimary
   ({ fluid, circular }) => notBoth(fluid, circular), // notBothFluidAndCircular
@@ -109,7 +107,7 @@ const defaultIcons = {
 const makeProp = (x: any) => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
 
 @props(Props)
-export default class Button extends React.PureComponent<ButtonProps> {
+export class Button extends React.PureComponent<Button.Props> {
 
   static defaultProps: ButtonDefaultProps = {
     textOverflow: TextOverflow,
@@ -136,7 +134,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
   );
 
   // TODO: the popover props is not handled by TextOverflow
-  templateLabel = (label: string, TextOverflow: TextOverflowCompatibleComponent) => (
+  templateLabel = (label: string, TextOverflow: Button.TextOverflowCompatibleComponent) => (
     <FlexView className='button-label' column shrink={false} vAlignContent='center' hAlignContent='center'>
       <TextOverflow label={label} popover={{ offsetY: -8 }} />
     </FlexView>

@@ -13,7 +13,7 @@ import View from 'react-flexview';
   onSelectItem: t.Function,
   onToggleSection: t.maybe(t.Function)
 })
-export default class SidebarContent extends React.Component {
+export class SidebarContent extends React.Component {
 
   isActive = (id) => id === this.props.currentItemId;
 

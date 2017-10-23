@@ -8,9 +8,9 @@ import findIndex = require('lodash/findIndex');
 import once = require('lodash/once');
 import uniqueId = require('lodash/uniqueId');
 
-import { TabloProps } from '../../Tablo';
+import { Tablo } from '../../Tablo';
 import dragDropContextHTML5Backend from './htmlBackend';
-import Column, { defaultColumns, updateColumns, ColumnProps, UpdateColumnsHandler } from '../../Column';
+import Column, { defaultColumns, updateColumns, UpdateColumnsHandler } from '../../Column';
 import ColumnGroup from '../../ColumnGroup';
 import Header, { defaultHeader } from '../../Header';
 import DNDHeader from './DNDHeader';
@@ -18,9 +18,9 @@ import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>>  => {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>>  => {
 
-  class ColumnsReorderGrid extends React.PureComponent<TabloProps<T, K>> {
+  class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T, K>> {
     private uniqueId: string;
 
     constructor() {
@@ -28,7 +28,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloP
       this.uniqueId = uniqueId('tablo_');
     }
 
-    getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: TabloProps<T, K>) {
+    getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: Tablo.Props<T, K>) {
 
       const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
@@ -41,7 +41,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloP
         };
       }
 
-      const doOrderColumns = (child: React.ReactElement<ColumnProps<T, K>>) => {
+      const doOrderColumns = (child: React.ReactElement<Column.Props<T, K>>) => {
         if (child.type === Header) {
           return -1;
         }
@@ -69,7 +69,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloP
         return undefined;
       };
 
-      const isDragAllowed = ({ props: { fixed } }: React.ReactElement<ColumnProps<T, K>>) => !fixed;
+      const isDragAllowed = ({ props: { fixed } }: React.ReactElement<Column.Props<T, K>>) => !fixed;
       const isDropAllowed = (fixed: boolean) => (source: K, target: K) => !fixed && source !== target;
 
       const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
@@ -93,7 +93,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloP
           </Header>
         );
         const children = [dndHeader, ...otherChildren].map((el, index) => React.cloneElement(el, { key: index }));
-        const Col: React.SFC<ColumnProps<T, K>> = Column;
+        const Col: React.SFC<Column.Props<T, K>> = Column;
         return (
           <Col {...col.props} key={name}>
             {children}

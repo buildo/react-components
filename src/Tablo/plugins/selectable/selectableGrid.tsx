@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import includes = require('lodash/includes');
-import { TabloProps } from '../../Tablo';
+import { Tablo } from '../../Tablo';
 import { Table } from 'fixed-data-table-2';
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<TabloProps<T, K>>): React.ComponentClass<TabloProps<T, K>> => {
-  return class SelectableGrid extends React.PureComponent<TabloProps<T, K>> {
+export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>> => {
+  return class SelectableGrid extends React.PureComponent<Tablo.Props<T, K>> {
     render() {
       const {
         selectedRows = [],

@@ -34,32 +34,33 @@ export const Props = {
   userAgent: t.maybe(t.String)
 };
 
-export type Browser = keyof bowser.IBowserVersions;
-export type DetectedBrowser = bowser.IBowserGrade
-
-export type BrowserDetectorProps = {
-  /** children node rendered when using a supported browser */
-  children: JSX.Element,
-  /** called when using a non-supported browser. Expected to return a valid ReactNode */
-  placeholder: (detectedBrowser: DetectedBrowser) => JSX.Element
-  /** whitelist of supported browsers. If `undefined` they're all supported */
-  supportedBrowsers?: Browser[],
-  /** custom user-agent */
-  userAgent?: string
-};
+export namespace BrowserDetector {
+  export type Browser = keyof bowser.IBowserVersions;
+  export type DetectedBrowser = bowser.IBowserGrade
+  export type Props = {
+    /** children node rendered when using a supported browser */
+    children: JSX.Element,
+    /** called when using a non-supported browser. Expected to return a valid ReactNode */
+    placeholder: (detectedBrowser: DetectedBrowser) => JSX.Element
+    /** whitelist of supported browsers. If `undefined` they're all supported */
+    supportedBrowsers?: Browser[],
+    /** custom user-agent */
+    userAgent?: string
+  };
+}
 
 /**
  * Top-level component which detects browser and renders children/placeholder
  * based on a given whitelist of supported browsers.
  */
 @props(Props)
-export default class BrowserDetector extends React.PureComponent<BrowserDetectorProps> {
+export class BrowserDetector extends React.PureComponent<BrowserDetector.Props> {
 
-  detectBrowser(userAgent: string): DetectedBrowser {
+  detectBrowser(userAgent: string): BrowserDetector.DetectedBrowser {
     return bowser._detect(userAgent);
   }
 
-  shouldRenderPlaceholder(supportedBrowsers: Browser[], detectedBrowser: DetectedBrowser): boolean {
+  shouldRenderPlaceholder(supportedBrowsers: BrowserDetector.Browser[], detectedBrowser: BrowserDetector.DetectedBrowser): boolean {
     return supportedBrowsers && !some(supportedBrowsers, b => detectedBrowser[b])
   }
 

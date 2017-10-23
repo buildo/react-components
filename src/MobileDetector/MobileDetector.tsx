@@ -2,20 +2,22 @@ import * as React from 'react';
 import * as MobileDetect from 'mobile-detect';
 import { props, t } from '../utils';
 
-export type ChildrenArgs = {
-  isDesktop: boolean,
-  isMobile: boolean,
-  isPhone: boolean,
-  isTablet: boolean
-};
+export namespace MobileDetector {
+  export type ChildrenArgs = {
+    isDesktop: boolean,
+    isMobile: boolean,
+    isPhone: boolean,
+    isTablet: boolean
+  };
 
-export type MobileDetectorProps = {
-  /** children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback */
-  children: (childrenArgs: ChildrenArgs) => JSX.Element
-  /** ignores real device type and considers it as desktop */
-  forceDesktop?: boolean,
-  /** custom user-agent */
-  userAgent?: string
+  export type Props = {
+    /** children must be passed as function so to propagte context correctly. Environment info is also passed as first argument to the callback */
+    children: (childrenArgs: ChildrenArgs) => JSX.Element
+    /** ignores real device type and considers it as desktop */
+    forceDesktop?: boolean,
+    /** custom user-agent */
+    userAgent?: string
+  }
 }
 
 export const Props = {
@@ -28,7 +30,7 @@ export const Props = {
  * Top-level component which detects device type and passes this info to children as context
  */
 @props(Props)
-export default class MobileDetector extends React.Component<MobileDetectorProps> {
+export class MobileDetector extends React.Component<MobileDetector.Props> {
 
   static childContextTypes = {
     isDesktop: React.PropTypes.bool.isRequired,

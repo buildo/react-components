@@ -1,17 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { props, t, ReactElement } from '../utils';
-import ResizeSensor from '../ResizeSensor/ResizeSensor';
+import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 
-export type OverflowProps = {
-  /** react node initially rendered */
-  content: JSX.Element,
-  /** react node rendered if `content` overflows its parent */
-  contentIfOverflowing: JSX.Element,
-  id?: string,
-  className?: string,
-  style?: React.CSSProperties
-};
+export namespace Overflow {
+  export type Props = {
+    /** react node initially rendered */
+    content: JSX.Element,
+    /** react node rendered if `content` overflows its parent */
+    contentIfOverflowing: JSX.Element,
+    id?: string,
+    className?: string,
+    style?: React.CSSProperties
+  };
+}
 
 export type State = {
   isOverflowing: boolean
@@ -27,7 +29,7 @@ export const Props = {
 
 /** Util component to render a different react node if the original one overflows its parent. */
 @props(Props)
-export default class Overflow extends React.Component<OverflowProps, State> {
+export class Overflow extends React.Component<Overflow.Props, State> {
 
   private ref: HTMLDivElement
 

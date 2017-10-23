@@ -1,3 +1,2 @@
-import ResizeSensor, { ResizeSensorProps } from './ResizeSensor';
+import { ResizeSensor } from './ResizeSensor';
 export default ResizeSensor;
-export { ResizeSensorProps };

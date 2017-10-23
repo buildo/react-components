@@ -22,12 +22,12 @@ export type TimerToastProps = {
   style?: React.CSSProperties
 };
 
-export type TimerToastState = {
+export type State = {
   completed: boolean
 };
 
 @props(Props)
-export default class TimerToast extends React.Component<TimerToastProps, TimerToastState> {
+export class TimerToast extends React.Component<TimerToastProps, State> {
 
   private timer: number | null;
 

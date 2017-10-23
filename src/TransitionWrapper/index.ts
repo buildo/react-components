@@ -1,3 +1,2 @@
-import TransitionWrapper, { TransitionWrapperProps } from './TransitionWrapper';
+import { TransitionWrapper } from './TransitionWrapper';
 export default TransitionWrapper;
-export { TransitionWrapperProps };

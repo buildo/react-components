@@ -3,16 +3,18 @@ import * as cx from 'classnames';
 import { props, t, ReactNode } from '../utils';
 import FlexView from 'react-flexview';
 
-export type BadgeProps = {
-  /** the descriptive content of the badge */
-  label: React.ReactNode,
-  /** tells if the badge is active (for styling purposes) */
-  active?: boolean,
-  /** an optional class name to pass to top level element of the component */
-  className?: string,
-  /** an optional style object to pass to top level element of the component */
-  style?: React.CSSProperties
-};
+export namespace Badge {
+  export type Props = {
+    /** the descriptive content of the badge */
+    label: React.ReactNode,
+    /** tells if the badge is active (for styling purposes) */
+    active?: boolean,
+    /** an optional class name to pass to top level element of the component */
+    className?: string,
+    /** an optional style object to pass to top level element of the component */
+    style?: React.CSSProperties
+  };
+}
 
 export const Props = {
   label: ReactNode,
@@ -22,7 +24,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class Badge extends React.PureComponent<BadgeProps> {
+export class Badge extends React.PureComponent<Badge.Props> {
 
   render() {
     const { label, active, className: _className, style } = this.props;

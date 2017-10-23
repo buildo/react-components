@@ -6,17 +6,19 @@ import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode: Element | null = null;
 
-export type ModalPortalProps = {
-  children: JSX.Element,
-  /** transition enter timeout */
-  transitionEnterTimeout: number,
-  /** transition leave timeout */
-  transitionLeaveTimeout: number,
-  /** context types to pass to the modal React tree */
-  childContextTypes?: React.ValidationMap<any>,
-  /** should return context values to pass to the modal React tree */
-  getChildContext?: () => object
-  className?: string,
+export namespace ModalPortal {
+  export type Props = {
+    children: JSX.Element,
+    /** transition enter timeout */
+    transitionEnterTimeout: number,
+    /** transition leave timeout */
+    transitionLeaveTimeout: number,
+    /** context types to pass to the modal React tree */
+    childContextTypes?: React.ValidationMap<any>,
+    /** should return context values to pass to the modal React tree */
+    getChildContext?: () => object
+    className?: string,
+  }
 }
 
 export const Props = {
@@ -34,7 +36,7 @@ type ContextWrapperProps = {
 }
 
 @props(Props)
-export default class ModalPortal extends React.Component<ModalPortalProps> {
+export class ModalPortal extends React.Component<ModalPortal.Props> {
 
   private isOpen: boolean;
 

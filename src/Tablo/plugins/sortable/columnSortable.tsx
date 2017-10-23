@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import find = require('lodash/find');
-import Column, { ColumnProps, ColumnIntrinsicProps } from '../../Column';
+import Column, { ColumnIntrinsicProps } from '../../Column';
 import Header, { defaultHeader } from '../../Header';
 import SortableHeader from './SortableHeader';
 import { getArrayChildren } from '../../utils';
@@ -28,7 +28,7 @@ const sortable = <T, K extends string = keyof T>(args: ColumnIntrinsicProps<T, K
   ) : header;
   const children = [sortableHeader, ...otherChildren].map((el, index) => React.cloneElement(el, { key: index }));
 
-  const Col: React.SFC<ColumnProps<T, K>> = Column;
+  const Col: React.SFC<Column.Props<T, K>> = Column;
   return (
     <Col name={name} key={name} {...otherArgs}>
       {children}

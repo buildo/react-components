@@ -21,6 +21,7 @@
     "build-showroom": "npm run remove-multiples-@types-react && rm -rf ./showroom/build && webpack --config webpack.config.build.babel.js --progress && cp ./showroom/build/index.html ./index.html",
     "deploy-showroom": "./deployShowroom.sh",
     "generate-all-readmes": "babel-node ./generateReadmes.js",
+    "typecheck": "tsc --noEmit",
     "release-version": "smooth-release --validations --npm-version --npm-publish"
   },
   "repository": {
@@ -36,7 +37,8 @@
   "files": [
     "lib",
     "src",
-    "ghDepsInstall.sh"
+    "ghDepsInstall.sh",
+    "typings"
   ],
   "homepage": "https://github.com/buildo/react-components",
   "dependencies": {

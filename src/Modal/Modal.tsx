@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import omit = require('lodash/omit');
-import ModalPortal, { Props as PortalProps, ModalPortalProps } from './ModalPortal';
+import { ModalPortal, Props as PortalProps } from './ModalPortal';
 import FlexView from 'react-flexview';
 import BackgroundDimmer from '../BackgroundDimmer';
 
@@ -35,8 +35,11 @@ export type ModalRequiredProps = {
   id?: string
 };
 
-export type ModalProps = ModalPortalProps & ModalRequiredProps & Partial<ModalDefaultProps>;
-export type ModalDefaultedProps = ModalPortalProps & ModalRequiredProps & ModalDefaultProps;
+export type ModalDefaultedProps = ModalPortal.Props & ModalRequiredProps & ModalDefaultProps;
+
+export namespace Modal {
+  export type Props = ModalPortal.Props & ModalRequiredProps & Partial<ModalDefaultProps>;
+}
 
 const LocalProps = {
   children: ReactChildren,
@@ -60,7 +63,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class Modal extends React.Component<ModalProps> {
+export class Modal extends React.Component<Modal.Props> {
 
   static defaultProps: ModalDefaultProps = {
     onDismiss: () => {},
@@ -83,7 +86,7 @@ export default class Modal extends React.Component<ModalProps> {
     const shouldRenderFooter = !!footer;
 
     const modalPortalProps = {
-      ...omit<ModalPortalProps, Partial<ModalProps>>(props, Object.keys(LocalProps)),
+      ...omit<ModalPortal.Props, Partial<Modal.Props>>(props, Object.keys(LocalProps)),
       className: cx('modal', className)
     };
 

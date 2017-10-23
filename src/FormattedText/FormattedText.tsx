@@ -6,12 +6,14 @@ import { LinkifyIt } from 'linkify-it';
 
 const linkify: LinkifyIt = require('linkify-it')().tlds(tlds);
 
-export type FormattedTextProps = {
-  /** The content of the paragraph */
-  children: string,
-  id?: string,
-  className?: string,
-  style?: React.CSSProperties
+export namespace FormattedText {
+  export type Props = {
+    /** The content of the paragraph */
+    children: string,
+    id?: string,
+    className?: string,
+    style?: React.CSSProperties
+  }
 }
 
 export const Props = {
@@ -22,7 +24,7 @@ export const Props = {
 };
 
 @props(Props)
-export default class FormattedText extends React.PureComponent<FormattedTextProps> {
+export class FormattedText extends React.PureComponent<FormattedText.Props> {
 
   linkify(string: string): React.ReactNode {
     const matches = linkify.match(string);

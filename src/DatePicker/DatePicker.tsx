@@ -6,59 +6,60 @@ import { props, t } from '../utils';
 import * as moment from 'moment';
 import Icon from '../Icon';
 
-export type Value = string | Date | moment.Moment;
+export namespace DatePicker {
+  export type Value = string | Date | moment.Moment;
+  export type OnChangeProps<T extends Value> = {
+    /** MomentJS format used to format date before returing through "onChange" */
+    returnFormat?: never
+    /** called when value changes */
+    onChange?: (date?: T) => void
+  } | {
+    /** MomentJS format used to format date before returing through "onChange" */
+    returnFormat: string
+    /** called when value changes */
+    onChange?: (date?: string) => void
+  }
 
-export type OnChangeProps<T extends Value> = {
-  /** MomentJS format used to format date before returing through "onChange" */
-  returnFormat?: never
-  /** called when value changes */
-  onChange?: (date?: T) => void
-} | {
-  /** MomentJS format used to format date before returing through "onChange" */
-  returnFormat: string
-  /** called when value changes */
-  onChange?: (date?: string) => void
+  export type Props<T extends Value> = {
+    /** an optional id to pass to top level element of the component */
+    id?: string,
+    /** current date */
+    value?: T,
+    /** default date */
+    defaultValue?: T,
+    /** called when datepicker is closed */
+    onHide?: () => void,
+    /** MomentJS format used to display current date */
+    displayFormat?: string,
+    /** called when value is cleared */
+    onClear?: () => void,
+    /** minimum date selectable by the user */
+    minDate?: Value,
+    /** maximum date selectable by the user */
+    maxDate?: Value,
+    /** if set, the datepicker will highlight days in the range starting from this date and ending to the hovered or selected date */
+    fromDate?: Value,
+    /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
+    toDate?: Value,
+    /** set to true to display two month */
+    displayTwoMonths?: boolean,
+    /** whether the input box should be small or not */
+    small?: boolean,
+    /** specify an initial "visible" date with no need to select a defaultValue */
+    startDate?: Value,
+    /** locale used for translations */
+    locale?: string,
+    /** whether the datepicker should be disabled or not */
+    disabled?: boolean,
+    /** an optional class name to pass to top level element of the component */
+    className?: string,
+    /** an optional style object to pass to top level element of the component */
+    style?: React.CSSProperties
+  } & OnChangeProps<T>;
 }
 
-export type DatePickerProps<T extends Value> = {
-  /** an optional id to pass to top level element of the component */
-  id?: string,
-  /** current date */
-  value?: T,
-  /** default date */
-  defaultValue?: T,
-  /** called when datepicker is closed */
-  onHide?: () => void,
-  /** MomentJS format used to display current date */
-  displayFormat?: string,
-  /** called when value is cleared */
-  onClear?: () => void,
-  /** minimum date selectable by the user */
-  minDate?: Value,
-  /** maximum date selectable by the user */
-  maxDate?: Value,
-  /** if set, the datepicker will highlight days in the range starting from this date and ending to the hovered or selected date */
-  fromDate?: Value,
-  /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
-  toDate?: Value,
-  /** set to true to display two month */
-  displayTwoMonths?: boolean,
-  /** whether the input box should be small or not */
-  small?: boolean,
-  /** specify an initial "visible" date with no need to select a defaultValue */
-  startDate?: Value,
-  /** locale used for translations */
-  locale?: string,
-  /** whether the datepicker should be disabled or not */
-  disabled?: boolean,
-  /** an optional class name to pass to top level element of the component */
-  className?: string,
-  /** an optional style object to pass to top level element of the component */
-  style?: React.CSSProperties
-} & OnChangeProps<T>;
-
-export type DatePickerState = {
-  value?: Value
+export type State = {
+  value?: DatePicker.Value
   hoveredDay?: moment.Moment,
   focused: boolean
 }
@@ -83,7 +84,7 @@ export type DatePickerState = {
 const MomentDate = t.irreducible('MomentDate', x => moment.isMoment(x));
 const ValueType = t.union([t.String, t.Date, MomentDate]);
 
-const valueToMomentDate: (value?: Value) => moment.Moment | undefined = value => !value ? undefined : moment(value);
+const valueToMomentDate: (value?: DatePicker.Value) => moment.Moment | undefined = value => !value ? undefined : moment(value);
 
 export const Props = {
   id: t.maybe(t.String),
@@ -111,7 +112,7 @@ export const Props = {
  * A decent and pretty date picker to be used with React
  */
 @props(Props)
-export default class DatePicker<T extends Value = never> extends React.PureComponent<DatePickerProps<T>, DatePickerState> {
+export class DatePicker<T extends DatePicker.Value = never> extends React.PureComponent<DatePicker.Props<T>, State> {
 
 
   componentWillMount() {
@@ -120,7 +121,7 @@ export default class DatePicker<T extends Value = never> extends React.PureCompo
     }
   }
 
-  componentWillReceiveProps(newProps: DatePickerProps<T>) {
+  componentWillReceiveProps(newProps: DatePicker.Props<T>) {
     if (newProps.locale !== this.props.locale) {
       moment.locale(newProps.locale);
     }
