@@ -22,6 +22,7 @@ pipeline:
     commands:
       - npm run lint
       - npm run lint-style
+      - npm run typecheck
       - npm test
 
   gh-pages-build:
