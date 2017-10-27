@@ -9,14 +9,11 @@
 
 - [Typo] Tablo  [#1134](https://github.com/buildo/react-components/issues/1134)
 - Use TS namespaces for exported types [#1083](https://github.com/buildo/react-components/issues/1083)
+- [Typo] convert the whole codebase to TypeScript [#1034](https://github.com/buildo/react-components/issues/1034)
 
 #### Fixes (bugs & defects):
 
 - Dropdown: clearing returns `null` to `onChange` when `multi = true` [#1133](https://github.com/buildo/react-components/issues/1133)
-
-#### New features:
-
-- [Typo] convert the whole codebase to TypeScript [#1034](https://github.com/buildo/react-components/issues/1034)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
