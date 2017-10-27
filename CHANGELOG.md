@@ -1,15 +1,65 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...HEAD)
+
+
+## [v0.28.0](https://github.com/buildo/react-components/tree/v0.28.0) (2017-10-27)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...v0.28.0)
+
+#### Breaking:
+
+- [Typo] Tablo  [#1134](https://github.com/buildo/react-components/issues/1134)
+- Use TS namespaces for exported types [#1083](https://github.com/buildo/react-components/issues/1083)
+
+#### Fixes (bugs & defects):
+
+- Dropdown: clearing returns `null` to `onChange` when `multi = true` [#1133](https://github.com/buildo/react-components/issues/1133)
 
 #### New features:
 
+- [Typo] convert the whole codebase to TypeScript [#1034](https://github.com/buildo/react-components/issues/1034)
+
+## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
+
+#### New features:
+
+- revert to single `lodash` dep [#1050](https://github.com/buildo/react-components/issues/1050)
+
+#### Fixes (bugs & defects):
+
+- Don't use `t` from tcomb-react [#1048](https://github.com/buildo/react-components/issues/1048)
+
+#### Breaking:
+
+- [Typo] Badge [#1045](https://github.com/buildo/react-components/issues/1045)
+- [Typo] BackgroundDimmer [#1044](https://github.com/buildo/react-components/issues/1044)
+- [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
+
+## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0-1...v0.27.0)
+
+#### Fixes (bugs & defects):
+
+- Icon: should pass fontSize directly to paths [#1042](https://github.com/buildo/react-components/issues/1042)
+
+#### Breaking:
+
+- [Typo] add support for TypeScript [#1035](https://github.com/buildo/react-components/issues/1035)
+
+## [v0.27.0-1](https://github.com/buildo/react-components/tree/v0.27.0-1) (2017-10-11)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0-1)
+
+#### Breaking:
+
 - [Typo] TimePicker [#1131](https://github.com/buildo/react-components/issues/1131)
+- Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
+- Dropdown: drop support for `valueLink` [#1127](https://github.com/buildo/react-components/issues/1127)
 - [Typo] Scroll + ScrollView [#1125](https://github.com/buildo/react-components/issues/1125)
 - [Typo] Panel [#1123](https://github.com/buildo/react-components/issues/1123)
 - [Typo] Tooltip [#1113](https://github.com/buildo/react-components/issues/1113)
+- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
 - [Typo] Toaster [#1108](https://github.com/buildo/react-components/issues/1108)
+- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
 - [Typo] Navbar [#1103](https://github.com/buildo/react-components/issues/1103)
 - [Typo] MoreOrLess [#1101](https://github.com/buildo/react-components/issues/1101)
 - [Typo] Overflow [#1100](https://github.com/buildo/react-components/issues/1100)
@@ -19,7 +69,6 @@
 - [Typo] Modal [#1092](https://github.com/buildo/react-components/issues/1092)
 - [Typo] MobileDetector [#1091](https://github.com/buildo/react-components/issues/1091)
 - [Typo] Popover [#1089](https://github.com/buildo/react-components/issues/1089)
-- The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
 - [Typo] Meter [#1073](https://github.com/buildo/react-components/issues/1073)
 - [Typo] LoadingSpinner [#1072](https://github.com/buildo/react-components/issues/1072)
 - [Typo] LinkState [#1071](https://github.com/buildo/react-components/issues/1071)
@@ -27,7 +76,9 @@
 - [Typo] FormattedText [#1069](https://github.com/buildo/react-components/issues/1069)
 - [Typo] FocusableView [#1068](https://github.com/buildo/react-components/issues/1068)
 - [Typo] DropdownMenu [#1067](https://github.com/buildo/react-components/issues/1067)
+- [Typo] Dropdown [#1066](https://github.com/buildo/react-components/issues/1066)
 - [Typo] Divider [#1065](https://github.com/buildo/react-components/issues/1065)
+- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
 - [Typo] DateField [#1062](https://github.com/buildo/react-components/issues/1062)
 - [Typo] ConfirmationInput [#1059](https://github.com/buildo/react-components/issues/1059)
 - [Typo] CollapsibleSection [#1056](https://github.com/buildo/react-components/issues/1056)
@@ -35,44 +86,14 @@
 - [Typo] Browser Detector [#1052](https://github.com/buildo/react-components/issues/1052)
 - [Typo] Icon [#1036](https://github.com/buildo/react-components/issues/1036)
 
-#### Breaking:
-
-- Deprecation: remove ModalManager and LinkState [#1128](https://github.com/buildo/react-components/issues/1128)
-- Dropdown: drop support for `valueLink` [#1127](https://github.com/buildo/react-components/issues/1127)
-- [Typo] Toggle [#1110](https://github.com/buildo/react-components/issues/1110)
-- pin every dependency [#1105](https://github.com/buildo/react-components/issues/1105)
-- [Typo] Dropdown [#1066](https://github.com/buildo/react-components/issues/1066)
-- [Typo] DatePicker [#1064](https://github.com/buildo/react-components/issues/1064)
-
 #### Fixes (bugs & defects):
 
 - Tooltip style is broken [#1121](https://github.com/buildo/react-components/issues/1121)
 - Toggle: crash on click if onChange is undefined [#1008](https://github.com/buildo/react-components/issues/1008)
 
-## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
-
 #### New features:
 
-- revert to single `lodash` dep [#1050](https://github.com/buildo/react-components/issues/1050)
-- [Typo] Badge [#1045](https://github.com/buildo/react-components/issues/1045)
-- [Typo] BackgroundDimmer [#1044](https://github.com/buildo/react-components/issues/1044)
-- [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
-
-#### Fixes (bugs & defects):
-
-- Don't use `t` from tcomb-react [#1048](https://github.com/buildo/react-components/issues/1048)
-
-## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0)
-
-#### Fixes (bugs & defects):
-
-- Icon: should pass fontSize directly to paths [#1042](https://github.com/buildo/react-components/issues/1042)
-
-#### Breaking:
-
-- [Typo] add support for TypeScript [#1035](https://github.com/buildo/react-components/issues/1035)
+- The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
 
 ## [v0.26.4](https://github.com/buildo/react-components/tree/v0.26.4) (2017-08-18)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.3...v0.26.4)
