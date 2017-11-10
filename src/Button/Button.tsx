@@ -17,7 +17,9 @@ export type ButtonRequiredProps = {
   /** type of the button (default, primary, positive, negative, flat) */
   type?: Button.ButtonType
   /** shortcut for type "flat" */
-  flat?: boolean,
+  flat?: boolean
+  /** custom prefix for the Icon, if any */
+  iconPrefix?: string
 }
 
 export type ButtonDefaultProps = {
@@ -79,6 +81,7 @@ export const ButtonPropTypes = {
   onClick: t.Function,
   label: t.maybe(t.union([t.String, t.Object])),
   icon: t.maybe(t.union([t.String, t.Object])),
+  iconPrefix: t.maybe(t.String),
   children: t.maybe(t.String),
   type: t.maybe(ButtonType),
   primary: t.maybe(t.Boolean),
@@ -127,9 +130,9 @@ export class Button extends React.PureComponent<Button.Props> {
     </FlexView>
   );
 
-  templateIcon = (icon: string) => (
+  templateIcon = (icon: string, iconPrefix?: string) => (
     <FlexView className='button-icon' shrink={false}>
-      <Icon icon={icon} />
+      <Icon icon={icon} prefix={iconPrefix} />
     </FlexView>
   );
 
@@ -149,6 +152,7 @@ export class Button extends React.PureComponent<Button.Props> {
       flat,
       fluid,
       icon: _icon,
+      iconPrefix,
       label: _label, children,
       onClick,
       primary,
@@ -199,7 +203,7 @@ export class Button extends React.PureComponent<Button.Props> {
           style={style}
         >
           {loading && this.templateLoading()}
-          {icon && this.templateIcon(icon)}
+          {icon && this.templateIcon(icon, iconPrefix)}
           {label && this.templateLabel(label, textOverflow)}
         </FlexView>
       </div>

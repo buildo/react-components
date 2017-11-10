@@ -7,6 +7,7 @@ const PositiveInteger = t.refinement(t.Number, x => x % 1 === 0 && x > 0, 'Posit
 
 export const Props = {
   icon: t.maybe(t.String),
+  prefix: t.maybe(t.String),
   color: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
@@ -20,7 +21,9 @@ export type IconDefaultProps = {
   /** onClick callback*/
   onClick: React.MouseEventHandler<HTMLElement>,
   /** an optional style object to pass to top level element of the component */
-  style: React.CSSProperties
+  style: React.CSSProperties,
+  /** prefix for the icons. Defaults to 'icon' */
+  prefix: string
 };
 
 export type IconRequiredProps = {
@@ -44,12 +47,13 @@ export class Icon extends React.PureComponent<Icon.Props> {
   static defaultProps: IconDefaultProps = {
     paths: 1,
     onClick: () => {},
-    style: {}
+    style: {},
+    prefix: 'icon'
   };
 
   render() {
-    const { paths, onClick, className: _className, icon, color, style: _style } = this.props as IconDefaultedProps;
-    const className = cx('icon', `icon-${icon}`, _className);
+    const { paths, onClick, className: _className, icon, color, style: _style, prefix } = this.props as IconDefaultedProps;
+    const className = cx(prefix, `${prefix}-${icon}`, _className);
     const style =  { ..._style, color: color || _style.color };
 
     return icon ? (
