@@ -66,6 +66,14 @@ describe('Icon', () => {
     expect(component.hasClass('myicon')).toBe(true);
   });
 
+  it('computes className with custom prefix', () => {
+    const component = shallow(
+      <Icon icon='foo' prefix='fa' />
+    );
+    expect(component.hasClass('fa')).toBe(true);
+    expect(component.hasClass('fa-foo')).toBe(true);
+  });
+
   it('computes color when not provided', () => {
     const component = shallow(
       <Icon icon='foo' />
