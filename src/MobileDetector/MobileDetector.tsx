@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as MobileDetect from 'mobile-detect';
 import { props, t } from '../utils';
+import * as PropTypes from 'prop-types';
 
 export namespace MobileDetector {
   export type ChildrenArgs = {
@@ -33,10 +34,10 @@ export const Props = {
 export class MobileDetector extends React.Component<MobileDetector.Props> {
 
   static childContextTypes = {
-    isDesktop: React.PropTypes.bool.isRequired,
-    isMobile: React.PropTypes.bool.isRequired,
-    isPhone: React.PropTypes.bool.isRequired,
-    isTablet: React.PropTypes.bool.isRequired
+    isDesktop: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    isPhone: PropTypes.bool.isRequired,
+    isTablet: PropTypes.bool.isRequired
   };
 
   getChildContext = () => this.getEnvironmentInfo();
