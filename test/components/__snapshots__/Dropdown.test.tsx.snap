@@ -40,7 +40,7 @@ exports[`Dropdown renders correctly 1`] = `
       <div
         aria-activedescendant="react-select-2--value"
         aria-expanded={false}
-        aria-owns="react-select-2--value"
+        aria-owns=""
         aria-readonly="false"
         className="Select-input"
         onBlur={[Function]}
