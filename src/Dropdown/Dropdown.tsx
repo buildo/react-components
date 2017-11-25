@@ -17,7 +17,7 @@ function isEmptyArray(x: any): x is any[] {
 
 const defaultOptionGroupRenderer = (title: string) => title;
 
-export const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
+const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
   focusedOption,
   instancePrefix,
   onFocus,
@@ -346,3 +346,6 @@ export class Dropdown extends React.Component<Dropdown.Props> {
     return <Select {...selectProps} ref={select => { this.select = select; }} />;
   }
 }
+
+// must be exported after Dropdown class in order to be compatible with react-styleguide (see #1153)
+export { defaultMenuRenderer };
