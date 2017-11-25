@@ -26,8 +26,8 @@ const Integer = t.refinement(t.Number, n => n % 1 === 0, 'Integer');
 const Hour = t.refinement(Integer, n => n >= 0 && n <= 23, 'Hour');
 const Hour12 = t.refinement(Integer, n => n >= 1 && n <= 12, 'Hour12');
 const Minute = t.refinement(Integer, n => n >= 0 && n <= 59, 'Minute');
-export const TimeFormat = t.enums.of([H12, H24], 'TimeFormat');
-export const Time = t.struct({
+const TimeFormat = t.enums.of([H12, H24], 'TimeFormat');
+const Time = t.struct({
   hours: Hour,
   minutes: Minute
 }, 'Time');
@@ -35,7 +35,7 @@ export const Time = t.struct({
 const isValidHoursInTimeFormat = (hours: number | null, timeFormat: TimePicker.TimeFormat): hours is number =>
   timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours);
 
-export const Props = t.refinement(t.struct({
+const Props = t.refinement(t.struct({
   onChange: t.Function,
   value: t.maybe(Time),
   minTime: t.maybe(Time),
@@ -70,7 +70,7 @@ const formatTime = ({ hours, minutes, timeFormat }: TimePicker.TimeAndFormat) =>
   timeFormat === H12 ? formatTime12({ hours, minutes }) : formatTime24({ hours, minutes })
 );
 
-export const toOption = (time: TimePicker.TimeAndFormat) => ({
+const toOption = (time: TimePicker.TimeAndFormat) => ({
   time,
   value: formatTime24(time),
   label: formatTime(time)
@@ -99,7 +99,7 @@ const maybeInsertSeparator = (str: string) => {
   return str;
 };
 
-export const parseInTimeFormat = (inputStr: string, timeFormat: TimePicker.TimeFormat): TimePicker.OnChangeInput => {
+const parseInTimeFormat = (inputStr: string, timeFormat: TimePicker.TimeFormat): TimePicker.OnChangeInput => {
   if (inputStr === '') {
     return { originalInput: inputStr };
   }
@@ -118,7 +118,7 @@ export const parseInTimeFormat = (inputStr: string, timeFormat: TimePicker.TimeF
   }
 };
 
-export const createTimeList = ({ hours, minutes }: TimePicker.Time, timeFormat: TimePicker.TimeFormat) => {
+const createTimeList = ({ hours, minutes }: TimePicker.Time, timeFormat: TimePicker.TimeFormat) => {
   if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
     const hoursList = range(0, 24);
     const minutesList = range(0, 60, interval);
@@ -143,7 +143,7 @@ type FilterTimeInput = {
   minTime: TimePicker.Time
   maxTime: TimePicker.Time
 };
-export const filterTime = ({ originalInput, minTime, maxTime }: FilterTimeInput) => (time: TimePicker.TimeAndFormat) => {
+const filterTime = ({ originalInput, minTime, maxTime }: FilterTimeInput) => (time: TimePicker.TimeAndFormat) => {
   return lteTime(minTime, time) && lteTime(time, maxTime) && startsWith(time, originalInput);
 };
 
@@ -153,7 +153,7 @@ type MakeOptionsInput = {
   maxTime: TimePicker.Time
   userValue?: TimePicker.Time
 };
-export const makeOptions = ({ minTime, maxTime, timeFormat, userValue }: MakeOptionsInput, inputValue: string) => {
+const makeOptions = ({ minTime, maxTime, timeFormat, userValue }: MakeOptionsInput, inputValue: string) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
   const selectedValue = (userValue && userValue !== inputError) ? { ...userValue, timeFormat } : userValue;
   const timeList = (
@@ -270,4 +270,16 @@ export class TimePicker extends React.Component<TimePicker.Props, { inputValue: 
       />
     );
   }
+}
+
+// must be exported after TimePicker class in order to be compatible with react-styleguide (see #1153)
+export {
+  TimeFormat,
+  Time,
+  Props,
+  toOption,
+  parseInTimeFormat,
+  createTimeList,
+  filterTime,
+  makeOptions
 }
