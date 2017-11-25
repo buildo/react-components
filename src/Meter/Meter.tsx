@@ -33,7 +33,7 @@ const Ranges = t.refinement(t.list(RangeT), (rangeList) => {
   return noOverlappingRanges(rangeList);
 }, 'Ranges');
 
-export const Props = t.refinement(t.struct({
+const Props = t.refinement(t.struct({
   value: t.Number,
   min: t.maybe(t.Number),
   max: t.maybe(t.Number),
@@ -209,3 +209,6 @@ export class Meter extends React.PureComponent<Meter.Props> {
   }
 
 }
+
+// must be exported after Meeter class in order to be compatible with react-styleguide (see #1153)
+export { Props };
