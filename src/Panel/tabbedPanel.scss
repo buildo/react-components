@@ -11,7 +11,7 @@ $tab-color-active: $brc-darkGrey !default;
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 
 .panel.tabbed-panel {
-  .panel-header {
+  > .panel-header {
     padding: 0;
     border-bottom: 0;
     min-height: 70px;
