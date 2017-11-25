@@ -2,8 +2,8 @@ import React from 'react';
 import { props, t } from '../../utils';
 import Item from './Item';
 import SingleItemSection from './SingleItemSection';
-import CollapsibleSection from '../../CollapsibleSection/CollapsibleSection';
-import Scroll from '../../Scroll/ScrollView';
+import CollapsibleSection from '../../CollapsibleSection';
+import Scroll from '../../Scroll';
 import View from 'react-flexview';
 
 @props({
@@ -13,7 +13,7 @@ import View from 'react-flexview';
   onSelectItem: t.Function,
   onToggleSection: t.maybe(t.Function)
 })
-export class SidebarContent extends React.Component {
+export default class SidebarContent extends React.Component {
 
   isActive = (id) => id === this.props.currentItemId;
 

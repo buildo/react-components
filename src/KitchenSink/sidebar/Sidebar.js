@@ -13,7 +13,7 @@ import SidebarContent from './SidebarContent';
   onToggleSection: t.maybe(t.Function),
   loading: t.maybe(t.Boolean)
 })
-export class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
 
   getLoadingSpinner = () => {
     return (

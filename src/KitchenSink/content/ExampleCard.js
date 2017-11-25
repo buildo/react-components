@@ -7,7 +7,7 @@ import LiveDemo from './LiveDemo';
   scope: t.Object,
   codeText: t.String
 })
-export class ExampleCard extends React.Component {
+export default class ExampleCard extends React.Component {
 
   render() {
     const { scope, codeText, iso } = this.props;

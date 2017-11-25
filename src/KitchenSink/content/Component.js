@@ -11,7 +11,7 @@ import Markdown from 'react-remarkable';
   header: t.maybe(t.ReactChildren),
   footer: t.maybe(t.ReactChildren)
 })
-export class Component extends React.Component {
+export default class Component extends React.Component {
 
   getLoadingSpinner() {
     return (

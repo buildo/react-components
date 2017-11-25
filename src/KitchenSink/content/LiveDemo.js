@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import ReactDOMServer from 'react-dom/server';
 import { props, t } from '../../utils';
-import Icon from '../../Icon/Icon';
+import Icon from '../../Icon';
 
 const Playground = typeof window !== 'undefined' ?
   require('component-playground').default :
@@ -17,7 +17,7 @@ const footerISO = '\n__renderISO(Example);';
   scope: t.Object,
   codeText: t.String
 })
-export class LiveDemo extends React.Component {
+export default class LiveDemo extends React.Component {
 
   constructor(props) {
     super(props);
