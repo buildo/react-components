@@ -2,6 +2,20 @@
 
 
 
+## [v0.29.0](https://github.com/buildo/react-components/tree/v0.29.0) (2017-11-10)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.28.1...v0.29.0)
+
+#### Breaking:
+
+- Add support for React 16 [#1151](https://github.com/buildo/react-components/issues/1151)
+
+## [v0.28.1](https://github.com/buildo/react-components/tree/v0.28.1) (2017-11-10)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.28.0...v0.28.1)
+
+#### New features:
+
+- Allow custom prefixes for icons (in Icon and Button) [#1150](https://github.com/buildo/react-components/issues/1150)
+
 ## [v0.28.0](https://github.com/buildo/react-components/tree/v0.28.0) (2017-10-27)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...v0.28.0)
 
