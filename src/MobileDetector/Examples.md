@@ -1,21 +1,19 @@
 ### Examples
 
 ```js
-const CheckContext = React.createClass({
-
-  contextTypes: {
-    isDesktop: React.PropTypes.bool.isRequired,
-    isMobile: React.PropTypes.bool.isRequired,
-    isPhone: React.PropTypes.bool.isRequired,
-    isTablet: React.PropTypes.bool.isRequired
-  },
-
+class CheckContext extends React.Component {
   render() {
     console.log(JSON.stringify(this.context, null, 2));
     return <div>{JSON.stringify(this.context, null, 2)}</div>;
   }
+}
 
-});
+CheckContext.contextTypes = {
+  isDesktop: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  isPhone: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired
+};
 
 <div>
   <MobileDetector>

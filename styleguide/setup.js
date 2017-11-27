@@ -1,6 +1,5 @@
-// import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-// import * as PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import FlexView from 'react-flexview';
 import * as faker from 'faker';
 import * as find from 'lodash/find';
@@ -10,11 +9,6 @@ import * as sortBy from 'lodash/sortBy';
 
 import 'buildo-normalize-css';
 import 'react-flexview/src/flexView.scss';
-// import './main.scss';
-// import './codemirror.scss';
-
-// monkey patch React.PropTypes
-// React.PropTypes = PropTypes;
 
 const getRandomRow = () => {
   return {
@@ -30,6 +24,7 @@ const tabloData = Array.apply(null, Array(1000)).map(getRandomRow);
 
 // available in examples
 global.ReactDOM = ReactDOM;
+global.PropTypes = PropTypes;
 global.FlexView = FlexView;
 global.tabloData = tabloData;
 global.find = find;

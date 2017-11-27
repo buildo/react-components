@@ -14,7 +14,6 @@
     "preversion": "npm run lint && npm run lint-style && npm run test",
     "prepublish": "npm run build",
     "start": "styleguidist server",
-    "generate-all-readmes": "babel-node ./generateReadmes.js",
     "typecheck": "tsc --noEmit",
     "release-version": "smooth-release --validations --npm-version --npm-publish"
   },
@@ -95,7 +94,6 @@
     "react-addons-test-utils": "15.4.2",
     "react-docgen-typescript": "1.1.0",
     "react-dom": "15.4.2",
-    "react-readme-generator": "0.0.1",
     "react-remarkable": "1.1.1",
     "react-router": "0.13.6",
     "react-styleguidist": "6.0.33",
