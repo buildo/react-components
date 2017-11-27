@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node ./depsShouldBePinned.js && jest",
     "test-dev": "npm test -- --watch",
-    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && babel src -d lib && tsc",
+    "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && tsc",
     "lint": "scriptoni lint src showroom test",
     "lint-fix": "scriptoni lint --fix src showroom test",
     "lint-style": "scriptoni lint-style \"src/**/*.scss\" \"showroom/**/*.scss\"",
