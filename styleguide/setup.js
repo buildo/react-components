@@ -57,7 +57,6 @@ import '../src/Meter/meter.scss';
 import '../src/Modal/modal.scss';
 import '../src/ScrollView/scrollView.scss';
 import '../src/Tablo/tablo.scss';
-import '../src/KitchenSink/style.scss';
 import '../src/AsyncStatusIndicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
 import '../src/DateField/dateField.scss';

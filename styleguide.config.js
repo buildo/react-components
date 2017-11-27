@@ -7,7 +7,7 @@ function brc(name) {
 }
 
 const brcComponents = fs.readdirSync(path.resolve(__dirname, 'src'))
-  .filter(c => ['index.ts', '.DS_Store', 'utils', 'KitchenSink', 'InputChildren', 'Scroll', 'TransitionWrapper'].indexOf(c) === -1)
+  .filter(c => ['index.ts', '.DS_Store', 'utils', 'Scroll', 'TransitionWrapper'].indexOf(c) === -1)
   .map(brc);
 
 module.exports = {
