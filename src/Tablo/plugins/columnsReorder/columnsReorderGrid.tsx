@@ -21,12 +21,8 @@ const { maybe, list } = t;
 export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>>  => {
 
   class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T, K>> {
-    private uniqueId: string;
 
-    constructor() {
-      super();
-      this.uniqueId = uniqueId('tablo_');
-    }
+    private uniqueId: string = uniqueId('tablo_')
 
     getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: Tablo.Props<T, K>) {
 

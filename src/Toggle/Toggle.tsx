@@ -54,7 +54,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
 
   updateCheckbox = (props: ToggleDefaultedProps) => {
     const { value } = props;
-    const checkboxNode = ReactDOM.findDOMNode<HTMLInputElement>(this.refs.checkbox);
+    const checkboxNode = ReactDOM.findDOMNode(this.refs.checkbox) as HTMLInputElement;
     checkboxNode.checked = value;
   };
 

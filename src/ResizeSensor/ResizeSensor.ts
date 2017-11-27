@@ -36,7 +36,7 @@ export class ResizeSensor extends React.Component<ResizeSensor.Props> {
 
   attachResizeSensor = () => {
     const { debounce } = this.props;
-    const element = ReactDOM.findDOMNode<ResizeSensorElement>(this);
+    const element: ResizeSensorElement = ReactDOM.findDOMNode(this);
     if (!element.resizedAttached) {
       this.resizeSensor = new _ResizeSensor(element, debounce ? _debounce(this.onResize, debounce) : this.onResize);
     }
