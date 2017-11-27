@@ -1,0 +1,54 @@
+@import '../utils/theme/variables.scss';
+
+.panel {
+  &.collapsed.collapse-left {
+    .panel-content-title {
+      margin-left: 15px;
+    }
+  }
+
+  .panel-header {
+    .icon {
+      margin-right: 10px;
+      color: $brc-cloudyGrey;
+    }
+  }
+
+  .card {
+    .description {
+      margin-right: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+
+      .title {
+        font-size: 28px;
+        font-weight: $brc-bold;
+      }
+
+      .subtitle {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        font-size: 14px;
+
+        .author {
+          padding-right: 9px;
+          border-right: 1px solid $brc-silver;
+          color: $brc-azure;
+
+          &::before {
+            content: 'by\00a0';
+            color: $brc-darkGrey;
+          }
+        }
+
+        .date {
+          padding-left: 9px;
+        }
+      }
+    }
+  }
+
+  .divider {
+    margin: 30px 0;
+  }
+}

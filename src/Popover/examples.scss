@@ -1,0 +1,124 @@
+@import '../utils/theme/variables.scss';
+
+.popover-content {
+  &.baloon {
+    z-index: 10000;
+    margin-left: -1px;
+    border: 1px solid #ced0da;
+    border-radius: 4px;
+    width: 519px;
+    background: $brc-white;
+    color: #354052;
+    text-align: center;
+    word-wrap: break-word;
+
+    .option {
+      padding: 18px 0;
+      border-right: 1px solid #ced0da;
+      width: 173px;
+
+      &:last-child {
+        border: 0;
+      }
+
+      .title {
+        color: #1a91eb;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .value {
+        margin-bottom: 26px;
+        color: #354052;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      img {
+        margin-bottom: 10px;
+        height: 60px;
+        width: 60px;
+      }
+    }
+
+    &::after,
+    &::before {
+      content: ' ';
+      position: absolute;
+      border: solid transparent;
+      border-width: 8px;
+      height: 0;
+      width: 0;
+      pointer-events: none;
+    }
+
+    &::before {
+      border-width: 9px;
+    }
+
+    &.position-bottom {
+
+      // take into account arrow-size for positioning
+      margin-top: 9px;
+
+      &::after,
+      &::before {
+        bottom: 100%;
+      }
+
+      &::after {
+        border-bottom-color: $brc-white;
+      }
+
+      &::before {
+        border-bottom-color: #ced0da;
+      }
+    }
+
+    &.position-top {
+      margin-top: -9px;
+
+      &::after,
+      &::before {
+        top: 100%;
+      }
+
+      &::after {
+        border-top-color: $brc-white;
+      }
+
+      &::before {
+        border-top-color: #ced0da;
+      }
+    }
+
+    &.anchor-start::after,
+    &.anchor-start::before {
+      left: 8px;
+    }
+
+    &.anchor-center {
+      &::after,
+      &::before {
+        left: 50%;
+      }
+
+      &::after {
+        margin-left: -8px;
+      }
+
+      &::before {
+        margin-left: -9px;
+      }
+    }
+
+    &.anchor-end::after,
+    &.anchor-end::before {
+      right: 9px;
+    }
+
+    &::before {
+      margin-left: -1px;
+    }
+  }
+}
