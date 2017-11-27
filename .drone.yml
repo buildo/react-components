@@ -13,8 +13,7 @@ pipeline:
     environment:
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
-      - curl -o- -L https://yarnpkg.com/install.sh | bash
-      - yarn --no-lockfile
+      - npm i
 
   lint-and-test:
     group: parallel
