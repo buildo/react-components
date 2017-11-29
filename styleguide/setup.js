@@ -70,3 +70,5 @@ import '../src/Meter/examples.scss';
 import '../src/Popover/examples.scss';
 import '../src/Popover/examples.scss';
 import '../src/BrowserDetector/examples.scss';
+
+require.context('./assets', false, /\.(png|jpg|gif)$/);

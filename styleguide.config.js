@@ -24,7 +24,6 @@ module.exports = {
 
   // content
   title: 'buildo-react-components',
-  assetsDir: 'styleguide/assets',
   template: 'styleguide/index.html',
   propsParser: require('react-docgen-typescript').parse, // detect docs using TS information
   sections: [{
