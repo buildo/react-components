@@ -14,7 +14,6 @@ pipeline:
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
-      - npm run postinstall
 
   lint-and-test:
     group: parallel
@@ -24,15 +23,6 @@ pipeline:
       - npm run lint-style
       - npm run typecheck
       - npm test
-
-  gh-pages-build:
-    group: parallel
-    image: node:6
-    commands:
-      - npm run build-showroom
-    when:
-      branch:
-        exclude: master
 
   generate-changelog:
     image: node:6
@@ -50,29 +40,6 @@ pipeline:
     secrets: [ changelog_github_token ]
     commands:
       - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
-    when:
-      branch: master
-
-  # generate-readmes:
-  #   image: node:6
-  #   commands:
-  #     - npm run generate-all-readmes
-  #     - git add src/**/README.md
-  #     - if ! git diff-index --quiet HEAD -- src/**/README.md; then
-  #         git config --global user.name "nemobot";
-  #         git config --global user.email "our-bots@buildo.io";
-  #         git commit -m "Update READMES [skip CI]";
-  #         git push origin master;
-  #       fi
-  #   when:
-  #     branch: master
-
-  gh-pages:
-    image: node:6
-    commands:
-      - git config --global user.email "ci@buildo.io"
-      - git config --global user.name "Drone CI"
-      - npm run deploy-showroom
     when:
       branch: master
 
