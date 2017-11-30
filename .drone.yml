@@ -9,23 +9,22 @@ pipeline:
         - /tmp/cache:/cache
 
   install-deps:
-    image: node:6
+    image: node:8
     environment:
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
       - npm i
 
-  lint-and-test:
+  test:
     group: parallel
-    image: node:6
+    image: node:8
     commands:
-      - npm run lint
       - npm run lint-style
       - npm run typecheck
       - npm test
 
   generate-changelog:
-    image: node:6
+    image: node:8
     secrets: [ changelog_github_token ]
     commands:
       - git pull --ff-only origin master
@@ -36,7 +35,7 @@ pipeline:
       branch: master
 
   publishReleaseOnGitHub:
-    image: node:6
+    image: node:8
     secrets: [ changelog_github_token ]
     commands:
       - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
