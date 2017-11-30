@@ -1,5 +1,3980 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LoadingSpinner computes className 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <div
+    style={
+        Object {
+            "position": "relative",
+          }
+    }
+>
+    <LoadingSpinner
+        className="some-class"
+        overlayColor="rgba(255, 255, 255, .9)"
+        size="3em"
+        style={Object {}}
+    />
+</div>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": <div
+      style="position: relative;"
+>
+      <div
+            class="loading-spinner some-class"
+      >
+            <div
+                  class="loading-spinner-overlay"
+                  style="background-color: rgba(255, 255, 255, 0.9);"
+            >
+                  <div
+                        class="spinner"
+                        style="font-size: 3em;"
+                  />
+            </div>
+      </div>
+</div>,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <LoadingSpinner
+        className="some-class"
+        overlayColor="rgba(255, 255, 255, .9)"
+        size="3em"
+        style={Object {}}
+/>,
+      "style": Object {
+        "position": "relative",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": LoadingSpinner {
+          "_reactInternalFiber": FiberNode {
+            "_debugID": 55,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": FiberNode {
+              "_debugID": 56,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 57,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 58,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="spinner"
+                    style="font-size: 3em;"
+/>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner-overlay"
+                  style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                  <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                  />
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "effectTag": 128,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <div
+                class="loading-spinner some-class"
+>
+                <div
+                                class="loading-spinner-overlay"
+                                style="background-color: rgba(255, 255, 255, 0.9);"
+                >
+                                <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                                />
+                </div>
+</div>,
+              "tag": 5,
+              "type": "div",
+              "updateQueue": null,
+            },
+            "effectTag": 5,
+            "expirationTime": 0,
+            "firstEffect": FiberNode {
+              "_debugID": 56,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 57,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 58,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="spinner"
+                    style="font-size: 3em;"
+/>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner-overlay"
+                  style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                  <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                  />
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "effectTag": 128,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <div
+                class="loading-spinner some-class"
+>
+                <div
+                                class="loading-spinner-overlay"
+                                style="background-color: rgba(255, 255, 255, 0.9);"
+                >
+                                <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                                />
+                </div>
+</div>,
+              "tag": 5,
+              "type": "div",
+              "updateQueue": null,
+            },
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": FiberNode {
+              "_debugID": 56,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 57,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 58,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="spinner"
+                    style="font-size: 3em;"
+/>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner-overlay"
+                  style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                  <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                  />
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "effectTag": 128,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": [Function],
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <div
+                class="loading-spinner some-class"
+>
+                <div
+                                class="loading-spinner-overlay"
+                                style="background-color: rgba(255, 255, 255, 0.9);"
+                >
+                                <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                                />
+                </div>
+</div>,
+              "tag": 5,
+              "type": "div",
+              "updateQueue": null,
+            },
+            "memoizedProps": Object {
+              "className": "some-class",
+              "overlayColor": "rgba(255, 255, 255, .9)",
+              "size": "3em",
+              "style": Object {},
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 54,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": FiberNode {
+                "_debugID": 53,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": null,
+                "child": [Circular],
+                "effectTag": 1,
+                "expirationTime": 0,
+                "firstEffect": FiberNode {
+                  "_debugID": 56,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 57,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 58,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="spinner"
+                        style="font-size: 3em;"
+/>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner-overlay"
+                      style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                      <div
+                                            class="spinner"
+                                            style="font-size: 3em;"
+                      />
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 128,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": [Function],
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner some-class"
+>
+                    <div
+                                        class="loading-spinner-overlay"
+                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                    >
+                                        <div
+                                                            class="spinner"
+                                                            style="font-size: 3em;"
+                                        />
+                    </div>
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": [Circular],
+                "memoizedProps": Object {
+                  "Component": "div",
+                  "context": null,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
+                "memoizedState": Object {
+                  "context": null,
+                  "mount": true,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": FiberNode {
+                  "_debugID": 51,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": null,
+                  "_debugSource": null,
+                  "alternate": FiberNode {
+                    "_debugID": 51,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": null,
+                    "_debugSource": null,
+                    "alternate": [Circular],
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 1,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": null,
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": null,
+                    "sibling": null,
+                    "stateNode": Object {
+                      "containerInfo": <div>
+                        <div
+                                                style="position: relative;"
+                        >
+                                                <div
+                                                                        class="loading-spinner some-class"
+                                                >
+                                                                        <div
+                                                                                                class="loading-spinner-overlay"
+                                                                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                        >
+                                                                                                <div
+                                                                                                                        class="spinner"
+                                                                                                                        style="font-size: 3em;"
+                                                                                                />
+                                                                        </div>
+                                                </div>
+                        </div>
+</div>,
+                      "context": Object {},
+                      "current": [Circular],
+                      "finishedWork": null,
+                      "hydrate": false,
+                      "isReadyForCommit": false,
+                      "nextScheduledRoot": null,
+                      "pendingChildren": null,
+                      "pendingContext": null,
+                      "remainingExpirationTime": 0,
+                    },
+                    "tag": 3,
+                    "type": null,
+                    "updateQueue": Object {
+                      "baseState": null,
+                      "callbackList": null,
+                      "expirationTime": 1,
+                      "first": Object {
+                        "callback": null,
+                        "expirationTime": 1,
+                        "isForced": false,
+                        "isReplace": false,
+                        "next": null,
+                        "nextCallback": null,
+                        "partialState": Object {
+                          "element": <WrapperComponent
+                            Component="div"
+                            context={null}
+                            props={
+                                                        Object {
+                                                                                    "children": <LoadingSpinner
+                                                                                      className="some-class"
+                                                                                      overlayColor="rgba(255, 255, 255, .9)"
+                                                                                      size="3em"
+                                                                                      style={Object {}}
+                                                        />,
+                                                                                    "style": Object {
+                                                                                      "position": "relative",
+                                                                                    },
+                                                                                  }
+                            }
+/>,
+                        },
+                      },
+                      "hasForceUpdate": false,
+                      "isInitialized": false,
+                      "isProcessing": false,
+                      "last": Object {
+                        "callback": null,
+                        "expirationTime": 1,
+                        "isForced": false,
+                        "isReplace": false,
+                        "next": null,
+                        "nextCallback": null,
+                        "partialState": Object {
+                          "element": <WrapperComponent
+                            Component="div"
+                            context={null}
+                            props={
+                                                        Object {
+                                                                                    "children": <LoadingSpinner
+                                                                                      className="some-class"
+                                                                                      overlayColor="rgba(255, 255, 255, .9)"
+                                                                                      size="3em"
+                                                                                      style={Object {}}
+                                                        />,
+                                                                                    "style": Object {
+                                                                                      "position": "relative",
+                                                                                    },
+                                                                                  }
+                            }
+/>,
+                        },
+                      },
+                    },
+                  },
+                  "child": [Circular],
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": FiberNode {
+                    "_debugID": 56,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 57,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 58,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="spinner"
+                          style="font-size: 3em;"
+/>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                        <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                        />
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 128,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": [Function],
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner some-class"
+>
+                      <div
+                                            class="loading-spinner-overlay"
+                                            style="background-color: rgba(255, 255, 255, 0.9);"
+                      >
+                                            <div
+                                                                  class="spinner"
+                                                                  style="font-size: 3em;"
+                                            />
+                      </div>
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": [Circular],
+                  "memoizedProps": null,
+                  "memoizedState": Object {
+                    "element": <WrapperComponent
+                      Component="div"
+                      context={null}
+                      props={
+                                            Object {
+                                                                  "children": <LoadingSpinner
+                                                                    className="some-class"
+                                                                    overlayColor="rgba(255, 255, 255, .9)"
+                                                                    size="3em"
+                                                                    style={Object {}}
+                                            />,
+                                                                  "style": Object {
+                                                                    "position": "relative",
+                                                                  },
+                                                                }
+                      }
+/>,
+                  },
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": null,
+                  "sibling": null,
+                  "stateNode": Object {
+                    "containerInfo": <div>
+                      <div
+                                            style="position: relative;"
+                      >
+                                            <div
+                                                                  class="loading-spinner some-class"
+                                            >
+                                                                  <div
+                                                                                        class="loading-spinner-overlay"
+                                                                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                  >
+                                                                                        <div
+                                                                                                              class="spinner"
+                                                                                                              style="font-size: 3em;"
+                                                                                        />
+                                                                  </div>
+                                            </div>
+                      </div>
+</div>,
+                    "context": Object {},
+                    "current": [Circular],
+                    "finishedWork": null,
+                    "hydrate": false,
+                    "isReadyForCommit": false,
+                    "nextScheduledRoot": null,
+                    "pendingChildren": null,
+                    "pendingContext": null,
+                    "remainingExpirationTime": 0,
+                  },
+                  "tag": 3,
+                  "type": null,
+                  "updateQueue": null,
+                },
+                "sibling": null,
+                "stateNode": WrapperComponent {
+                  "_reactInternalFiber": [Circular],
+                  "_reactInternalInstance": Object {},
+                  "context": Object {},
+                  "props": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "refs": Object {},
+                  "state": Object {
+                    "context": null,
+                    "mount": true,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "updater": Object {
+                    "enqueueForceUpdate": [Function],
+                    "enqueueReplaceState": [Function],
+                    "enqueueSetState": [Function],
+                    "isMounted": [Function],
+                  },
+                },
+                "tag": 2,
+                "type": [Function],
+                "updateQueue": null,
+              },
+              "_debugSource": null,
+              "alternate": null,
+              "child": [Circular],
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": FiberNode {
+                "_debugID": 56,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 57,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 58,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="spinner"
+                      style="font-size: 3em;"
+/>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner-overlay"
+                    style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                    <div
+                                        class="spinner"
+                                        style="font-size: 3em;"
+                    />
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 128,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner some-class"
+>
+                  <div
+                                    class="loading-spinner-overlay"
+                                    style="background-color: rgba(255, 255, 255, 0.9);"
+                  >
+                                    <div
+                                                      class="spinner"
+                                                      style="font-size: 3em;"
+                                    />
+                  </div>
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": Object {
+                "children": <LoadingSpinner
+                  className="some-class"
+                  overlayColor="rgba(255, 255, 255, .9)"
+                  size="3em"
+                  style={Object {}}
+/>,
+                "style": Object {
+                  "position": "relative",
+                },
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": FiberNode {
+                "_debugID": 53,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": null,
+                "child": [Circular],
+                "effectTag": 1,
+                "expirationTime": 0,
+                "firstEffect": FiberNode {
+                  "_debugID": 56,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 57,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 58,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="spinner"
+                        style="font-size: 3em;"
+/>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner-overlay"
+                      style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                      <div
+                                            class="spinner"
+                                            style="font-size: 3em;"
+                      />
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 128,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": [Function],
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner some-class"
+>
+                    <div
+                                        class="loading-spinner-overlay"
+                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                    >
+                                        <div
+                                                            class="spinner"
+                                                            style="font-size: 3em;"
+                                        />
+                    </div>
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": [Circular],
+                "memoizedProps": Object {
+                  "Component": "div",
+                  "context": null,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
+                "memoizedState": Object {
+                  "context": null,
+                  "mount": true,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": FiberNode {
+                  "_debugID": 51,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": null,
+                  "_debugSource": null,
+                  "alternate": FiberNode {
+                    "_debugID": 51,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": null,
+                    "_debugSource": null,
+                    "alternate": [Circular],
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 1,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": null,
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": null,
+                    "sibling": null,
+                    "stateNode": Object {
+                      "containerInfo": <div>
+                        <div
+                                                style="position: relative;"
+                        >
+                                                <div
+                                                                        class="loading-spinner some-class"
+                                                >
+                                                                        <div
+                                                                                                class="loading-spinner-overlay"
+                                                                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                        >
+                                                                                                <div
+                                                                                                                        class="spinner"
+                                                                                                                        style="font-size: 3em;"
+                                                                                                />
+                                                                        </div>
+                                                </div>
+                        </div>
+</div>,
+                      "context": Object {},
+                      "current": [Circular],
+                      "finishedWork": null,
+                      "hydrate": false,
+                      "isReadyForCommit": false,
+                      "nextScheduledRoot": null,
+                      "pendingChildren": null,
+                      "pendingContext": null,
+                      "remainingExpirationTime": 0,
+                    },
+                    "tag": 3,
+                    "type": null,
+                    "updateQueue": Object {
+                      "baseState": null,
+                      "callbackList": null,
+                      "expirationTime": 1,
+                      "first": Object {
+                        "callback": null,
+                        "expirationTime": 1,
+                        "isForced": false,
+                        "isReplace": false,
+                        "next": null,
+                        "nextCallback": null,
+                        "partialState": Object {
+                          "element": <WrapperComponent
+                            Component="div"
+                            context={null}
+                            props={
+                                                        Object {
+                                                                                    "children": <LoadingSpinner
+                                                                                      className="some-class"
+                                                                                      overlayColor="rgba(255, 255, 255, .9)"
+                                                                                      size="3em"
+                                                                                      style={Object {}}
+                                                        />,
+                                                                                    "style": Object {
+                                                                                      "position": "relative",
+                                                                                    },
+                                                                                  }
+                            }
+/>,
+                        },
+                      },
+                      "hasForceUpdate": false,
+                      "isInitialized": false,
+                      "isProcessing": false,
+                      "last": Object {
+                        "callback": null,
+                        "expirationTime": 1,
+                        "isForced": false,
+                        "isReplace": false,
+                        "next": null,
+                        "nextCallback": null,
+                        "partialState": Object {
+                          "element": <WrapperComponent
+                            Component="div"
+                            context={null}
+                            props={
+                                                        Object {
+                                                                                    "children": <LoadingSpinner
+                                                                                      className="some-class"
+                                                                                      overlayColor="rgba(255, 255, 255, .9)"
+                                                                                      size="3em"
+                                                                                      style={Object {}}
+                                                        />,
+                                                                                    "style": Object {
+                                                                                      "position": "relative",
+                                                                                    },
+                                                                                  }
+                            }
+/>,
+                        },
+                      },
+                    },
+                  },
+                  "child": [Circular],
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": FiberNode {
+                    "_debugID": 56,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 57,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 58,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="spinner"
+                          style="font-size: 3em;"
+/>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                        <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                        />
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 128,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": [Function],
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner some-class"
+>
+                      <div
+                                            class="loading-spinner-overlay"
+                                            style="background-color: rgba(255, 255, 255, 0.9);"
+                      >
+                                            <div
+                                                                  class="spinner"
+                                                                  style="font-size: 3em;"
+                                            />
+                      </div>
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": [Circular],
+                  "memoizedProps": null,
+                  "memoizedState": Object {
+                    "element": <WrapperComponent
+                      Component="div"
+                      context={null}
+                      props={
+                                            Object {
+                                                                  "children": <LoadingSpinner
+                                                                    className="some-class"
+                                                                    overlayColor="rgba(255, 255, 255, .9)"
+                                                                    size="3em"
+                                                                    style={Object {}}
+                                            />,
+                                                                  "style": Object {
+                                                                    "position": "relative",
+                                                                  },
+                                                                }
+                      }
+/>,
+                  },
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": null,
+                  "sibling": null,
+                  "stateNode": Object {
+                    "containerInfo": <div>
+                      <div
+                                            style="position: relative;"
+                      >
+                                            <div
+                                                                  class="loading-spinner some-class"
+                                            >
+                                                                  <div
+                                                                                        class="loading-spinner-overlay"
+                                                                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                  >
+                                                                                        <div
+                                                                                                              class="spinner"
+                                                                                                              style="font-size: 3em;"
+                                                                                        />
+                                                                  </div>
+                                            </div>
+                      </div>
+</div>,
+                    "context": Object {},
+                    "current": [Circular],
+                    "finishedWork": null,
+                    "hydrate": false,
+                    "isReadyForCommit": false,
+                    "nextScheduledRoot": null,
+                    "pendingChildren": null,
+                    "pendingContext": null,
+                    "remainingExpirationTime": 0,
+                  },
+                  "tag": 3,
+                  "type": null,
+                  "updateQueue": null,
+                },
+                "sibling": null,
+                "stateNode": WrapperComponent {
+                  "_reactInternalFiber": [Circular],
+                  "_reactInternalInstance": Object {},
+                  "context": Object {},
+                  "props": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "refs": Object {},
+                  "state": Object {
+                    "context": null,
+                    "mount": true,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "updater": Object {
+                    "enqueueForceUpdate": [Function],
+                    "enqueueReplaceState": [Function],
+                    "enqueueSetState": [Function],
+                    "isMounted": [Function],
+                  },
+                },
+                "tag": 2,
+                "type": [Function],
+                "updateQueue": null,
+              },
+              "sibling": null,
+              "stateNode": <div
+                style="position: relative;"
+>
+                <div
+                                class="loading-spinner some-class"
+                >
+                                <div
+                                                class="loading-spinner-overlay"
+                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                                >
+                                                <div
+                                                                class="spinner"
+                                                                style="font-size: 3em;"
+                                                />
+                                </div>
+                </div>
+</div>,
+              "tag": 5,
+              "type": "div",
+              "updateQueue": null,
+            },
+            "sibling": null,
+            "stateNode": [Circular],
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "_reactInternalInstance": Object {},
+          "context": Object {},
+          "getMessage": [Function],
+          "logWarnings": [Function],
+          "props": Object {
+            "className": "some-class",
+            "overlayColor": "rgba(255, 255, 255, .9)",
+            "size": "3em",
+            "style": Object {},
+          },
+          "refs": Object {
+            "loadingSpinner": <div
+              class="loading-spinner some-class"
+>
+              <div
+                            class="loading-spinner-overlay"
+                            style="background-color: rgba(255, 255, 255, 0.9);"
+              >
+                            <div
+                                          class="spinner"
+                                          style="font-size: 3em;"
+                            />
+              </div>
+</div>,
+          },
+          "state": null,
+          "updater": Object {
+            "enqueueForceUpdate": [Function],
+            "enqueueReplaceState": [Function],
+            "enqueueSetState": [Function],
+            "isMounted": [Function],
+          },
+        },
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "className": "some-class",
+          "overlayColor": "rgba(255, 255, 255, .9)",
+          "size": "3em",
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": <div
+            class="loading-spinner some-class"
+>
+            <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+            >
+                        <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                        />
+            </div>
+</div>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="loading-spinner-overlay"
+              style={
+                            Object {
+                                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                                        }
+              }
+>
+              <div
+                            className="spinner"
+                            style={
+                                          Object {
+                                                        "color": undefined,
+                                                        "fontSize": "3em",
+                                                      }
+                            }
+              />
+</div>,
+            "className": "loading-spinner some-class",
+            "id": undefined,
+            "style": Object {},
+          },
+          "ref": [Function],
+          "rendered": Array [
+            Object {
+              "instance": <div
+                class="loading-spinner-overlay"
+                style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                <div
+                                class="spinner"
+                                style="font-size: 3em;"
+                />
+</div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="spinner"
+                    style={
+                                        Object {
+                                                            "color": undefined,
+                                                            "fontSize": "3em",
+                                                          }
+                    }
+/>,
+                  undefined,
+                ],
+                "className": "loading-spinner-overlay",
+                "style": Object {
+                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <div
+                    class="spinner"
+                    style="font-size: 3em;"
+/>,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": <div
+        style="position: relative;"
+>
+        <div
+                class="loading-spinner some-class"
+        >
+                <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+                >
+                        <div
+                                class="spinner"
+                                style="font-size: 3em;"
+                        />
+                </div>
+        </div>
+</div>,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <LoadingSpinner
+          className="some-class"
+          overlayColor="rgba(255, 255, 255, .9)"
+          size="3em"
+          style={Object {}}
+/>,
+        "style": Object {
+          "position": "relative",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": LoadingSpinner {
+            "_reactInternalFiber": FiberNode {
+              "_debugID": 55,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 56,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 57,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 58,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="spinner"
+                      style="font-size: 3em;"
+/>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner-overlay"
+                    style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                    <div
+                                        class="spinner"
+                                        style="font-size: 3em;"
+                    />
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 128,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner some-class"
+>
+                  <div
+                                    class="loading-spinner-overlay"
+                                    style="background-color: rgba(255, 255, 255, 0.9);"
+                  >
+                                    <div
+                                                      class="spinner"
+                                                      style="font-size: 3em;"
+                                    />
+                  </div>
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "effectTag": 5,
+              "expirationTime": 0,
+              "firstEffect": FiberNode {
+                "_debugID": 56,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 57,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 58,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="spinner"
+                      style="font-size: 3em;"
+/>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner-overlay"
+                    style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                    <div
+                                        class="spinner"
+                                        style="font-size: 3em;"
+                    />
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 128,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner some-class"
+>
+                  <div
+                                    class="loading-spinner-overlay"
+                                    style="background-color: rgba(255, 255, 255, 0.9);"
+                  >
+                                    <div
+                                                      class="spinner"
+                                                      style="font-size: 3em;"
+                                    />
+                  </div>
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": FiberNode {
+                "_debugID": 56,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 57,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 58,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="spinner"
+                      style="font-size: 3em;"
+/>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner-overlay"
+                    style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                    <div
+                                        class="spinner"
+                                        style="font-size: 3em;"
+                    />
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "effectTag": 128,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": [Function],
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <div
+                  class="loading-spinner some-class"
+>
+                  <div
+                                    class="loading-spinner-overlay"
+                                    style="background-color: rgba(255, 255, 255, 0.9);"
+                  >
+                                    <div
+                                                      class="spinner"
+                                                      style="font-size: 3em;"
+                                    />
+                  </div>
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "memoizedProps": Object {
+                "className": "some-class",
+                "overlayColor": "rgba(255, 255, 255, .9)",
+                "size": "3em",
+                "style": Object {},
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": FiberNode {
+                "_debugID": 54,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": FiberNode {
+                  "_debugID": 53,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": null,
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": [Circular],
+                  "effectTag": 1,
+                  "expirationTime": 0,
+                  "firstEffect": FiberNode {
+                    "_debugID": 56,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 57,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 58,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="spinner"
+                          style="font-size: 3em;"
+/>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                        <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                        />
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 128,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": [Function],
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner some-class"
+>
+                      <div
+                                            class="loading-spinner-overlay"
+                                            style="background-color: rgba(255, 255, 255, 0.9);"
+                      >
+                                            <div
+                                                                  class="spinner"
+                                                                  style="font-size: 3em;"
+                                            />
+                      </div>
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": [Circular],
+                  "memoizedProps": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "memoizedState": Object {
+                    "context": null,
+                    "mount": true,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": FiberNode {
+                    "_debugID": 51,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": null,
+                    "_debugSource": null,
+                    "alternate": FiberNode {
+                      "_debugID": 51,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": null,
+                      "_debugSource": null,
+                      "alternate": [Circular],
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 1,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": null,
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": null,
+                      "sibling": null,
+                      "stateNode": Object {
+                        "containerInfo": <div>
+                          <div
+                                                    style="position: relative;"
+                          >
+                                                    <div
+                                                                              class="loading-spinner some-class"
+                                                    >
+                                                                              <div
+                                                                                                        class="loading-spinner-overlay"
+                                                                                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                              >
+                                                                                                        <div
+                                                                                                                                  class="spinner"
+                                                                                                                                  style="font-size: 3em;"
+                                                                                                        />
+                                                                              </div>
+                                                    </div>
+                          </div>
+</div>,
+                        "context": Object {},
+                        "current": [Circular],
+                        "finishedWork": null,
+                        "hydrate": false,
+                        "isReadyForCommit": false,
+                        "nextScheduledRoot": null,
+                        "pendingChildren": null,
+                        "pendingContext": null,
+                        "remainingExpirationTime": 0,
+                      },
+                      "tag": 3,
+                      "type": null,
+                      "updateQueue": Object {
+                        "baseState": null,
+                        "callbackList": null,
+                        "expirationTime": 1,
+                        "first": Object {
+                          "callback": null,
+                          "expirationTime": 1,
+                          "isForced": false,
+                          "isReplace": false,
+                          "next": null,
+                          "nextCallback": null,
+                          "partialState": Object {
+                            "element": <WrapperComponent
+                              Component="div"
+                              context={null}
+                              props={
+                                                            Object {
+                                                                                          "children": <LoadingSpinner
+                                                                                            className="some-class"
+                                                                                            overlayColor="rgba(255, 255, 255, .9)"
+                                                                                            size="3em"
+                                                                                            style={Object {}}
+                                                            />,
+                                                                                          "style": Object {
+                                                                                            "position": "relative",
+                                                                                          },
+                                                                                        }
+                              }
+/>,
+                          },
+                        },
+                        "hasForceUpdate": false,
+                        "isInitialized": false,
+                        "isProcessing": false,
+                        "last": Object {
+                          "callback": null,
+                          "expirationTime": 1,
+                          "isForced": false,
+                          "isReplace": false,
+                          "next": null,
+                          "nextCallback": null,
+                          "partialState": Object {
+                            "element": <WrapperComponent
+                              Component="div"
+                              context={null}
+                              props={
+                                                            Object {
+                                                                                          "children": <LoadingSpinner
+                                                                                            className="some-class"
+                                                                                            overlayColor="rgba(255, 255, 255, .9)"
+                                                                                            size="3em"
+                                                                                            style={Object {}}
+                                                            />,
+                                                                                          "style": Object {
+                                                                                            "position": "relative",
+                                                                                          },
+                                                                                        }
+                              }
+/>,
+                          },
+                        },
+                      },
+                    },
+                    "child": [Circular],
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": FiberNode {
+                      "_debugID": 56,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 57,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": FiberNode {
+                          "_debugID": 58,
+                          "_debugIsCurrentlyTiming": false,
+                          "_debugOwner": [Circular],
+                          "_debugSource": null,
+                          "alternate": null,
+                          "child": null,
+                          "effectTag": 0,
+                          "expirationTime": 0,
+                          "firstEffect": null,
+                          "index": 0,
+                          "internalContextTag": 0,
+                          "key": null,
+                          "lastEffect": null,
+                          "memoizedProps": Object {
+                            "className": "spinner",
+                            "style": Object {
+                              "color": undefined,
+                              "fontSize": "3em",
+                            },
+                          },
+                          "memoizedState": null,
+                          "nextEffect": null,
+                          "pendingProps": null,
+                          "ref": null,
+                          "return": [Circular],
+                          "sibling": null,
+                          "stateNode": <div
+                            class="spinner"
+                            style="font-size: 3em;"
+/>,
+                          "tag": 5,
+                          "type": "div",
+                          "updateQueue": null,
+                        },
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "children": Array [
+                            <div
+                              className="spinner"
+                              style={
+                                                            Object {
+                                                                                          "color": undefined,
+                                                                                          "fontSize": "3em",
+                                                                                        }
+                              }
+/>,
+                            undefined,
+                          ],
+                          "className": "loading-spinner-overlay",
+                          "style": Object {
+                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="loading-spinner-overlay"
+                          style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                          <div
+                                                    class="spinner"
+                                                    style="font-size: 3em;"
+                          />
+</div>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 128,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": <div
+                          className="loading-spinner-overlay"
+                          style={
+                                                    Object {
+                                                                              "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                            }
+                          }
+>
+                          <div
+                                                    className="spinner"
+                                                    style={
+                                                                              Object {
+                                                                                                        "color": undefined,
+                                                                                                        "fontSize": "3em",
+                                                                                                      }
+                                                    }
+                          />
+</div>,
+                        "className": "loading-spinner some-class",
+                        "id": undefined,
+                        "style": Object {},
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": [Function],
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner some-class"
+>
+                        <div
+                                                class="loading-spinner-overlay"
+                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                        >
+                                                <div
+                                                                        class="spinner"
+                                                                        style="font-size: 3em;"
+                                                />
+                        </div>
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": [Circular],
+                    "memoizedProps": null,
+                    "memoizedState": Object {
+                      "element": <WrapperComponent
+                        Component="div"
+                        context={null}
+                        props={
+                                                Object {
+                                                                        "children": <LoadingSpinner
+                                                                          className="some-class"
+                                                                          overlayColor="rgba(255, 255, 255, .9)"
+                                                                          size="3em"
+                                                                          style={Object {}}
+                                                />,
+                                                                        "style": Object {
+                                                                          "position": "relative",
+                                                                        },
+                                                                      }
+                        }
+/>,
+                    },
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": null,
+                    "sibling": null,
+                    "stateNode": Object {
+                      "containerInfo": <div>
+                        <div
+                                                style="position: relative;"
+                        >
+                                                <div
+                                                                        class="loading-spinner some-class"
+                                                >
+                                                                        <div
+                                                                                                class="loading-spinner-overlay"
+                                                                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                        >
+                                                                                                <div
+                                                                                                                        class="spinner"
+                                                                                                                        style="font-size: 3em;"
+                                                                                                />
+                                                                        </div>
+                                                </div>
+                        </div>
+</div>,
+                      "context": Object {},
+                      "current": [Circular],
+                      "finishedWork": null,
+                      "hydrate": false,
+                      "isReadyForCommit": false,
+                      "nextScheduledRoot": null,
+                      "pendingChildren": null,
+                      "pendingContext": null,
+                      "remainingExpirationTime": 0,
+                    },
+                    "tag": 3,
+                    "type": null,
+                    "updateQueue": null,
+                  },
+                  "sibling": null,
+                  "stateNode": WrapperComponent {
+                    "_reactInternalFiber": [Circular],
+                    "_reactInternalInstance": Object {},
+                    "context": Object {},
+                    "props": Object {
+                      "Component": "div",
+                      "context": null,
+                      "props": Object {
+                        "children": <LoadingSpinner
+                          className="some-class"
+                          overlayColor="rgba(255, 255, 255, .9)"
+                          size="3em"
+                          style={Object {}}
+/>,
+                        "style": Object {
+                          "position": "relative",
+                        },
+                      },
+                    },
+                    "refs": Object {},
+                    "state": Object {
+                      "context": null,
+                      "mount": true,
+                      "props": Object {
+                        "children": <LoadingSpinner
+                          className="some-class"
+                          overlayColor="rgba(255, 255, 255, .9)"
+                          size="3em"
+                          style={Object {}}
+/>,
+                        "style": Object {
+                          "position": "relative",
+                        },
+                      },
+                    },
+                    "updater": Object {
+                      "enqueueForceUpdate": [Function],
+                      "enqueueReplaceState": [Function],
+                      "enqueueSetState": [Function],
+                      "isMounted": [Function],
+                    },
+                  },
+                  "tag": 2,
+                  "type": [Function],
+                  "updateQueue": null,
+                },
+                "_debugSource": null,
+                "alternate": null,
+                "child": [Circular],
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": FiberNode {
+                  "_debugID": 56,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 57,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 58,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="spinner"
+                        style="font-size: 3em;"
+/>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner-overlay"
+                      style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                      <div
+                                            class="spinner"
+                                            style="font-size: 3em;"
+                      />
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 128,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": [Function],
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="loading-spinner some-class"
+>
+                    <div
+                                        class="loading-spinner-overlay"
+                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                    >
+                                        <div
+                                                            class="spinner"
+                                                            style="font-size: 3em;"
+                                        />
+                    </div>
+</div>,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": [Circular],
+                "memoizedProps": Object {
+                  "children": <LoadingSpinner
+                    className="some-class"
+                    overlayColor="rgba(255, 255, 255, .9)"
+                    size="3em"
+                    style={Object {}}
+/>,
+                  "style": Object {
+                    "position": "relative",
+                  },
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": FiberNode {
+                  "_debugID": 53,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": null,
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": [Circular],
+                  "effectTag": 1,
+                  "expirationTime": 0,
+                  "firstEffect": FiberNode {
+                    "_debugID": 56,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 57,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 58,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="spinner"
+                          style="font-size: 3em;"
+/>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                        <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                        />
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 128,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": [Function],
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="loading-spinner some-class"
+>
+                      <div
+                                            class="loading-spinner-overlay"
+                                            style="background-color: rgba(255, 255, 255, 0.9);"
+                      >
+                                            <div
+                                                                  class="spinner"
+                                                                  style="font-size: 3em;"
+                                            />
+                      </div>
+</div>,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": [Circular],
+                  "memoizedProps": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "memoizedState": Object {
+                    "context": null,
+                    "mount": true,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": FiberNode {
+                    "_debugID": 51,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": null,
+                    "_debugSource": null,
+                    "alternate": FiberNode {
+                      "_debugID": 51,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": null,
+                      "_debugSource": null,
+                      "alternate": [Circular],
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 1,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": null,
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": null,
+                      "return": null,
+                      "sibling": null,
+                      "stateNode": Object {
+                        "containerInfo": <div>
+                          <div
+                                                    style="position: relative;"
+                          >
+                                                    <div
+                                                                              class="loading-spinner some-class"
+                                                    >
+                                                                              <div
+                                                                                                        class="loading-spinner-overlay"
+                                                                                                        style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                              >
+                                                                                                        <div
+                                                                                                                                  class="spinner"
+                                                                                                                                  style="font-size: 3em;"
+                                                                                                        />
+                                                                              </div>
+                                                    </div>
+                          </div>
+</div>,
+                        "context": Object {},
+                        "current": [Circular],
+                        "finishedWork": null,
+                        "hydrate": false,
+                        "isReadyForCommit": false,
+                        "nextScheduledRoot": null,
+                        "pendingChildren": null,
+                        "pendingContext": null,
+                        "remainingExpirationTime": 0,
+                      },
+                      "tag": 3,
+                      "type": null,
+                      "updateQueue": Object {
+                        "baseState": null,
+                        "callbackList": null,
+                        "expirationTime": 1,
+                        "first": Object {
+                          "callback": null,
+                          "expirationTime": 1,
+                          "isForced": false,
+                          "isReplace": false,
+                          "next": null,
+                          "nextCallback": null,
+                          "partialState": Object {
+                            "element": <WrapperComponent
+                              Component="div"
+                              context={null}
+                              props={
+                                                            Object {
+                                                                                          "children": <LoadingSpinner
+                                                                                            className="some-class"
+                                                                                            overlayColor="rgba(255, 255, 255, .9)"
+                                                                                            size="3em"
+                                                                                            style={Object {}}
+                                                            />,
+                                                                                          "style": Object {
+                                                                                            "position": "relative",
+                                                                                          },
+                                                                                        }
+                              }
+/>,
+                          },
+                        },
+                        "hasForceUpdate": false,
+                        "isInitialized": false,
+                        "isProcessing": false,
+                        "last": Object {
+                          "callback": null,
+                          "expirationTime": 1,
+                          "isForced": false,
+                          "isReplace": false,
+                          "next": null,
+                          "nextCallback": null,
+                          "partialState": Object {
+                            "element": <WrapperComponent
+                              Component="div"
+                              context={null}
+                              props={
+                                                            Object {
+                                                                                          "children": <LoadingSpinner
+                                                                                            className="some-class"
+                                                                                            overlayColor="rgba(255, 255, 255, .9)"
+                                                                                            size="3em"
+                                                                                            style={Object {}}
+                                                            />,
+                                                                                          "style": Object {
+                                                                                            "position": "relative",
+                                                                                          },
+                                                                                        }
+                              }
+/>,
+                          },
+                        },
+                      },
+                    },
+                    "child": [Circular],
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": FiberNode {
+                      "_debugID": 56,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 57,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": FiberNode {
+                          "_debugID": 58,
+                          "_debugIsCurrentlyTiming": false,
+                          "_debugOwner": [Circular],
+                          "_debugSource": null,
+                          "alternate": null,
+                          "child": null,
+                          "effectTag": 0,
+                          "expirationTime": 0,
+                          "firstEffect": null,
+                          "index": 0,
+                          "internalContextTag": 0,
+                          "key": null,
+                          "lastEffect": null,
+                          "memoizedProps": Object {
+                            "className": "spinner",
+                            "style": Object {
+                              "color": undefined,
+                              "fontSize": "3em",
+                            },
+                          },
+                          "memoizedState": null,
+                          "nextEffect": null,
+                          "pendingProps": null,
+                          "ref": null,
+                          "return": [Circular],
+                          "sibling": null,
+                          "stateNode": <div
+                            class="spinner"
+                            style="font-size: 3em;"
+/>,
+                          "tag": 5,
+                          "type": "div",
+                          "updateQueue": null,
+                        },
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "internalContextTag": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "children": Array [
+                            <div
+                              className="spinner"
+                              style={
+                                                            Object {
+                                                                                          "color": undefined,
+                                                                                          "fontSize": "3em",
+                                                                                        }
+                              }
+/>,
+                            undefined,
+                          ],
+                          "className": "loading-spinner-overlay",
+                          "style": Object {
+                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                          },
+                        },
+                        "memoizedState": null,
+                        "nextEffect": null,
+                        "pendingProps": null,
+                        "ref": null,
+                        "return": [Circular],
+                        "sibling": null,
+                        "stateNode": <div
+                          class="loading-spinner-overlay"
+                          style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                          <div
+                                                    class="spinner"
+                                                    style="font-size: 3em;"
+                          />
+</div>,
+                        "tag": 5,
+                        "type": "div",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 128,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "internalContextTag": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": <div
+                          className="loading-spinner-overlay"
+                          style={
+                                                    Object {
+                                                                              "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                            }
+                          }
+>
+                          <div
+                                                    className="spinner"
+                                                    style={
+                                                                              Object {
+                                                                                                        "color": undefined,
+                                                                                                        "fontSize": "3em",
+                                                                                                      }
+                                                    }
+                          />
+</div>,
+                        "className": "loading-spinner some-class",
+                        "id": undefined,
+                        "style": Object {},
+                      },
+                      "memoizedState": null,
+                      "nextEffect": null,
+                      "pendingProps": null,
+                      "ref": [Function],
+                      "return": [Circular],
+                      "sibling": null,
+                      "stateNode": <div
+                        class="loading-spinner some-class"
+>
+                        <div
+                                                class="loading-spinner-overlay"
+                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                        >
+                                                <div
+                                                                        class="spinner"
+                                                                        style="font-size: 3em;"
+                                                />
+                        </div>
+</div>,
+                      "tag": 5,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "index": 0,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": [Circular],
+                    "memoizedProps": null,
+                    "memoizedState": Object {
+                      "element": <WrapperComponent
+                        Component="div"
+                        context={null}
+                        props={
+                                                Object {
+                                                                        "children": <LoadingSpinner
+                                                                          className="some-class"
+                                                                          overlayColor="rgba(255, 255, 255, .9)"
+                                                                          size="3em"
+                                                                          style={Object {}}
+                                                />,
+                                                                        "style": Object {
+                                                                          "position": "relative",
+                                                                        },
+                                                                      }
+                        }
+/>,
+                    },
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": null,
+                    "sibling": null,
+                    "stateNode": Object {
+                      "containerInfo": <div>
+                        <div
+                                                style="position: relative;"
+                        >
+                                                <div
+                                                                        class="loading-spinner some-class"
+                                                >
+                                                                        <div
+                                                                                                class="loading-spinner-overlay"
+                                                                                                style="background-color: rgba(255, 255, 255, 0.9);"
+                                                                        >
+                                                                                                <div
+                                                                                                                        class="spinner"
+                                                                                                                        style="font-size: 3em;"
+                                                                                                />
+                                                                        </div>
+                                                </div>
+                        </div>
+</div>,
+                      "context": Object {},
+                      "current": [Circular],
+                      "finishedWork": null,
+                      "hydrate": false,
+                      "isReadyForCommit": false,
+                      "nextScheduledRoot": null,
+                      "pendingChildren": null,
+                      "pendingContext": null,
+                      "remainingExpirationTime": 0,
+                    },
+                    "tag": 3,
+                    "type": null,
+                    "updateQueue": null,
+                  },
+                  "sibling": null,
+                  "stateNode": WrapperComponent {
+                    "_reactInternalFiber": [Circular],
+                    "_reactInternalInstance": Object {},
+                    "context": Object {},
+                    "props": Object {
+                      "Component": "div",
+                      "context": null,
+                      "props": Object {
+                        "children": <LoadingSpinner
+                          className="some-class"
+                          overlayColor="rgba(255, 255, 255, .9)"
+                          size="3em"
+                          style={Object {}}
+/>,
+                        "style": Object {
+                          "position": "relative",
+                        },
+                      },
+                    },
+                    "refs": Object {},
+                    "state": Object {
+                      "context": null,
+                      "mount": true,
+                      "props": Object {
+                        "children": <LoadingSpinner
+                          className="some-class"
+                          overlayColor="rgba(255, 255, 255, .9)"
+                          size="3em"
+                          style={Object {}}
+/>,
+                        "style": Object {
+                          "position": "relative",
+                        },
+                      },
+                    },
+                    "updater": Object {
+                      "enqueueForceUpdate": [Function],
+                      "enqueueReplaceState": [Function],
+                      "enqueueSetState": [Function],
+                      "isMounted": [Function],
+                    },
+                  },
+                  "tag": 2,
+                  "type": [Function],
+                  "updateQueue": null,
+                },
+                "sibling": null,
+                "stateNode": <div
+                  style="position: relative;"
+>
+                  <div
+                                    class="loading-spinner some-class"
+                  >
+                                    <div
+                                                      class="loading-spinner-overlay"
+                                                      style="background-color: rgba(255, 255, 255, 0.9);"
+                                    >
+                                                      <div
+                                                                        class="spinner"
+                                                                        style="font-size: 3em;"
+                                                      />
+                                    </div>
+                  </div>
+</div>,
+                "tag": 5,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "sibling": null,
+              "stateNode": [Circular],
+              "tag": 2,
+              "type": [Function],
+              "updateQueue": null,
+            },
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "getMessage": [Function],
+            "logWarnings": [Function],
+            "props": Object {
+              "className": "some-class",
+              "overlayColor": "rgba(255, 255, 255, .9)",
+              "size": "3em",
+              "style": Object {},
+            },
+            "refs": Object {
+              "loadingSpinner": <div
+                class="loading-spinner some-class"
+>
+                <div
+                                class="loading-spinner-overlay"
+                                style="background-color: rgba(255, 255, 255, 0.9);"
+                >
+                                <div
+                                                class="spinner"
+                                                style="font-size: 3em;"
+                                />
+                </div>
+</div>,
+            },
+            "state": null,
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "className": "some-class",
+            "overlayColor": "rgba(255, 255, 255, .9)",
+            "size": "3em",
+            "style": Object {},
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": <div
+              class="loading-spinner some-class"
+>
+              <div
+                            class="loading-spinner-overlay"
+                            style="background-color: rgba(255, 255, 255, 0.9);"
+              >
+                            <div
+                                          class="spinner"
+                                          style="font-size: 3em;"
+                            />
+              </div>
+</div>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="loading-spinner-overlay"
+                style={
+                                Object {
+                                                "backgroundColor": "rgba(255, 255, 255, .9)",
+                                              }
+                }
+>
+                <div
+                                className="spinner"
+                                style={
+                                                Object {
+                                                                "color": undefined,
+                                                                "fontSize": "3em",
+                                                              }
+                                }
+                />
+</div>,
+              "className": "loading-spinner some-class",
+              "id": undefined,
+              "style": Object {},
+            },
+            "ref": [Function],
+            "rendered": Array [
+              Object {
+                "instance": <div
+                  class="loading-spinner-overlay"
+                  style="background-color: rgba(255, 255, 255, 0.9);"
+>
+                  <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                  />
+</div>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": <div
+                      class="spinner"
+                      style="font-size: 3em;"
+/>,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      undefined,
+                    ],
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
 exports[`LoadingSpinner renders correctly 1`] = `"<div style=\\"position: relative;\\"><div class=\\"loading-spinner\\"><div class=\\"loading-spinner-overlay\\" style=\\"background-color: rgba(255, 255, 255, 0.9);\\"><div class=\\"spinner\\" style=\\"font-size: 3em;\\"></div></div></div></div>"`;
 
 exports[`LoadingSpinner renders correctly with a message 1`] = `"<div style=\\"position: relative;\\"><div class=\\"loading-spinner\\"><div class=\\"loading-spinner-overlay\\" style=\\"background-color: rgba(255, 255, 255, 0.9);\\"><div class=\\"spinner\\" style=\\"font-size: 3em;\\"></div><div class=\\"message\\" style=\\"margin-top: 3em; font-size: 16px;\\">loading awesome content</div></div></div></div>"`;

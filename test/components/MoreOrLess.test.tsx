@@ -45,14 +45,4 @@ describe('MoreOrLess', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('computes className', () => {
-    expect(componentMore.render().find('.more-or-less').hasClass('more fancy-class-name')).toBe(true);
-    expect(componentLess.render().find('.more-or-less').hasClass('less fancy-class-name')).toBe(true);
-  });
-
-  it('computes icon', () => {
-    expect(componentMore.find('.expand-button-icon').hasClass('icon-angle-up')).toBe(true);
-    expect(componentLess.find('.expand-button-icon').hasClass('icon-angle-down')).toBe(true);
-  });
-
 });

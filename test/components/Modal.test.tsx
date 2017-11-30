@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { modalWithContext } from '../../src/Modal';
 
@@ -17,7 +18,7 @@ interface ContextType {
 };
 
 // `.isRequired` makes the test fail if context is not provided
-const FooType = React.PropTypes.string.isRequired;
+const FooType = PropTypes.string.isRequired;
 class ComponentAccessingContext extends React.Component {
   static contextTypes = { foo: FooType };
 

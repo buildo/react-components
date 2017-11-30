@@ -57,8 +57,10 @@ describe('LoadingSpinner', () => {
       color: 'blue'
     };
     const size = '5em';
-    const spinner = shallow(
-      <LoadingSpinner message={message} size={size} />
+    const spinner = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner message={message} size={size} />
+      </div>
     );
     const messageNode = spinner.find('.message');
     expect(messageNode.text()).toBe(message.content);
@@ -69,8 +71,10 @@ describe('LoadingSpinner', () => {
 
   it('computes overlay style', () => {
     const overlayColor = 'green';
-    const spinner = shallow(
-      <LoadingSpinner overlayColor={overlayColor} />
+    const spinner = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner overlayColor={overlayColor} />
+      </div>
     );
     const overlayNode = spinner.find('.loading-spinner-overlay');
     expect(overlayNode.prop('style').backgroundColor).toBe(overlayColor);
@@ -79,8 +83,10 @@ describe('LoadingSpinner', () => {
   it('computes spinner style', () => {
     const size = '5em';
     const color = 'green';
-    const spinner = shallow(
-      <LoadingSpinner size={size} color={color} />
+    const spinner = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner size={size} color={color} />
+      </div>
     );
     const overlayNode = spinner.find('.spinner');
     expect(overlayNode.prop('style').fontSize).toBe(size);
@@ -88,11 +94,12 @@ describe('LoadingSpinner', () => {
   });
 
   it('computes className', () => {
-    const spinner = shallow(
-      <LoadingSpinner className='some-class' />
+    const spinner = mount(
+      <div style={{ position: 'relative' }}>
+        <LoadingSpinner className='some-class' />
+      </div>
     );
-    expect(spinner.hasClass('loading-spinner')).toBe(true);
-    expect(spinner.hasClass('some-class')).toBe(true);
+    expect(spinner).toMatchSnapshot();
   });
 
 });

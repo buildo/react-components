@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import { StatefulButton } from '../../src/Button/StatefulButton';
 import clone = require('lodash/clone');
@@ -59,18 +59,19 @@ function jsxComponent({ children, ...overrides } : Overrides) {
 describe('StatefulButton', () => {
 
   it('renders correctly', () => {
-    const component = mount(
+    const component = shallow(
       <StatefulButton {...exampleProps} />
     );
     expect(component.html()).toMatchSnapshot();
   });
 
   it('behaves correctly in base state', () => {
-    const component = mount(jsxComponent({
+    const component = shallow(jsxComponent({
+      baseState: 'ready',
       stableSuccess: false
     }));
-    expect(component.prop('baseState')).toBe('ready');
-    expect(component.find('.button-label span').first().text()).toBe('BeautifulButton');
+
+    expect(component.html()).toContain('BeautifulButton');
   });
 
   it('passes through state if provided as prop', () => {
@@ -78,58 +79,60 @@ describe('StatefulButton', () => {
       children: 'Button with error',
       buttonState: 'error'
     }));
-    const buttonInner = component.find('.button-inner');
+    const buttonInner = component.find('.button-inner').first();
     expect(buttonInner.hasClass('is-error')).toBe(true);
     expect(buttonInner.children()).toBeDefined();
     expect(component.prop('label')).toBe('Button with error');
   });
 
   describe('with unstable success state', () => {
-    it('switches to processing, success, ready on click', () => {
-      const component = mount(jsxComponent({
+    it('switches to processing, success, ready on click', async () => {
+      const component = shallow(jsxComponent({
         stableSuccess: false
       }));
-      const buttonInner = component.find('.button-inner');
-      buttonInner.simulate('click');
-      expect(buttonInner.hasClass('is-processing')).toBe(true);
-      return timeoutPromise(6).then(() => {
-        expect(buttonInner.hasClass('is-success')).toBe(true);
-        return timeoutPromise(5);
-      }).then(() =>
-        expect(buttonInner.hasClass('is-ready')).toBe(true)
-      );
-    });
+
+      component.simulate('click');
+      expect(component.html()).toContain('is-processing');
+
+      await timeoutPromise(6);
+      component.update();
+      expect(component.html()).toContain('is-success');
+
+      await timeoutPromise(5);
+      component.update();
+      expect(component.html()).toContain('is-ready');
   });
 
   describe('with stable success state', () => {
-    it('switches to processing, success and stop there, on click', () => {
-      const component = mount(jsxComponent({
+    it('switches to processing, success and stop there, on click', async () => {
+      const component = shallow(jsxComponent({
         stableSuccess: true
       }));
 
-      const buttonInner = component.find('.button-inner');
-      buttonInner.simulate('click');
-      expect(buttonInner.hasClass(`is-processing`)).toBe(true);
+      component.simulate('click');
+      expect(component.html()).toContain('is-processing');
 
-      return timeoutPromise(6).then(() => {
-        expect(buttonInner.hasClass('is-success')).toBe(true);
-        return timeoutPromise(5);
-      }).then(() =>
-        expect(buttonInner.hasClass('is-success')).toBe(true)
-      );
+      await timeoutPromise(6);
+      component.update();
+      expect(component.html()).toContain('is-success');
+
+      await timeoutPromise(5);
+      component.update();
+      expect(component.html()).toContain('is-success');
     });
 
-    it('switches to processing, success and back to baseState when baseState is changed after click', () => {
-      const component = mount(jsxComponent({
+    it('switches to processing, success and back to baseState when baseState is changed after click', async () => {
+      const component = shallow(jsxComponent({
         stableSuccess: true
       }));
-      const buttonInner = component.find('.button-inner');
-      buttonInner.simulate('click');
-      expect(buttonInner.hasClass('is-processing')).toBe(true);
+
+      component.simulate('click');
+      expect(component.html()).toContain('is-processing');
+
       component.setProps({ baseState: 'not-allowed' });
-      return timeoutPromise(7).then(() =>
-        expect(buttonInner.hasClass('is-not-allowed')).toBe(true)
-      );
+      await timeoutPromise(7);
+      component.update();
+      expect(component.html()).toContain('is-not-allowed');
     });
   });
 
