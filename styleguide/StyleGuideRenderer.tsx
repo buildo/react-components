@@ -19,7 +19,7 @@ export default class StyleGuideRenderer extends React.Component {
         global[k] = brc[k];
       }
     });
-    global.getBackgroundUrl = getBackgroundUrl;
+    global['getBackgroundUrl'] = getBackgroundUrl;
   }
 
   render() {

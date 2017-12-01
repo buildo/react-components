@@ -3,16 +3,13 @@ import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import FlexView from 'react-flexview';
 import * as faker from 'faker';
-import * as find from 'lodash/find';
-import * as reject from 'lodash/reject';
-import * as partial from 'lodash/partial';
-import * as sortBy from 'lodash/sortBy';
+import { find, reject, partial, sortBy } from 'lodash';
 
 import 'buildo-normalize-css';
 import 'react-flexview/src/flexView.scss';
 
 // monkey-patch React.PropTypes
-React.PropTypes = PropTypes;
+(React as any).PropTypes = PropTypes;
 
 const getRandomRow = () => {
   return {
@@ -27,14 +24,14 @@ const getRandomRow = () => {
 const tabloData = Array.apply(null, Array(1000)).map(getRandomRow);
 
 // available in examples
-global.ReactDOM = ReactDOM;
-global.PropTypes = PropTypes;
-global.FlexView = FlexView;
-global.tabloData = tabloData;
-global.find = find;
-global.partial = partial;
-global.reject = reject;
-global.sortBy = sortBy;
+(global as any).ReactDOM = ReactDOM;
+(global as any).PropTypes = PropTypes;
+(global as any).FlexView = FlexView;
+(global as any).tabloData = tabloData;
+(global as any).find = find;
+(global as any).partial = partial;
+(global as any).reject = reject;
+(global as any).sortBy = sortBy;
 
 // components sass
 import '../src/Button/button.scss';
@@ -75,4 +72,4 @@ import '../src/Popover/examples.scss';
 import '../src/Popover/examples.scss';
 import '../src/BrowserDetector/examples.scss';
 
-require.context('./assets', false, /\.(png|jpg|gif)$/);
+(require as any).context('./assets', false, /\.(png|jpg|gif)$/);

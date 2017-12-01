@@ -72,7 +72,9 @@
   },
   "devDependencies": {
     "@types/enzyme": "2.8.6",
+    "@types/faker": "4.1.2",
     "@types/jest": "20.0.7",
+    "@types/lodash": "4.14.74",
     "@types/node": "8.0.25",
     "buildo-normalize-css": "3.0.2",
     "css-loader": "0.28.7",
@@ -109,7 +111,9 @@
     ]
   },
   "jest": {
-    "setupFiles": ["<rootDir>/test/setup.js"],
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
