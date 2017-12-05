@@ -1,6 +1,22 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.30.0...HEAD)
 
+#### Breaking:
+
+- Refactor build script, start script and examples [#1162](https://github.com/buildo/react-components/issues/1162)
+
+## [v0.30.0](https://github.com/buildo/react-components/tree/v0.30.0) (2017-11-27)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.29.0...v0.30.0)
+
+#### Breaking:
+
+- Update react-select to version 1 [#1158](https://github.com/buildo/react-components/issues/1158)
+
+#### Fixes (bugs & defects):
+
+- Panel inside TabbedPanel has wrong style [#1155](https://github.com/buildo/react-components/issues/1155)
 
 ## [v0.29.0](https://github.com/buildo/react-components/tree/v0.29.0) (2017-11-10)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.28.1...v0.29.0)
