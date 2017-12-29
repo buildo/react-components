@@ -317,7 +317,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
     // save popover size (visible popover will be rendered in componentDidUpdate)
-    this.saveValuesFromNodeTree();
+    setTimeout(this.saveValuesFromNodeTree);
   };
 
   removePopover = () => {
