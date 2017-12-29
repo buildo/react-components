@@ -113,7 +113,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   private containerNode: Element | null;
   private onMouseEventDebouncedWhenOpen: ((_: string) => void) & _.Cancelable | null;
   private onMouseEventDebouncedWhenClosed: ((_: string) => void) & _.Cancelable | null;
-  private ContextWrapper: React.ComponentType<{ context?: { [_: string]: any }, children: any }>;
+  private ContextWrapper: React.ComponentType<{ onMount?: () => void, context?: { [_: string]: any }, children: any }>;
 
   // LIFECYCLE
 
@@ -314,10 +314,18 @@ export class Popover extends React.Component<Popover.Props, State> {
     const hiddenPopover = this.getHiddenPopover();
     const { context } = this.getPopoverProps();
     const { ContextWrapper } = this;
-    ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
-    // save popover size (visible popover will be rendered in componentDidUpdate)
-    setTimeout(this.saveValuesFromNodeTree);
+    // render Popover and save popover size in "onMount" cb (visible popover will be rendered in componentDidUpdate)
+    ReactDOM.render(
+      <ContextWrapper
+        onMount={this.saveValuesFromNodeTree}
+        context={context}
+      >
+        {hiddenPopover}
+      </ContextWrapper>,
+
+      this.containerNode
+    );
   };
 
   removePopover = () => {
