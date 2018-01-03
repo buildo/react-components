@@ -11,26 +11,20 @@ export const stateClassUtil = (classes: string[]): string => cx(classes.map(cl =
 
 type Props = {
   context?: { [k: string]: any },
-  children: any,
-  onMount?: () => void
+  children: any
 };
 
 export const getContextWrapper = (contextTypes = {}): React.ComponentType<Props> => {
 
   @props({
     context: t.maybe(t.Object),
-    children: ReactChildren,
-    onMount: t.maybe(t.Function)
+    children: ReactChildren
   })
   class ContextWrapper extends React.Component<Props> {
 
     static childContextTypes = contextTypes;
 
     getChildContext = () => this.props.context || {};
-
-    componentDidMount() {
-      this.props.onMount && this.props.onMount();
-    }
 
     render() {
       return this.props.children;
