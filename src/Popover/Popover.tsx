@@ -111,7 +111,6 @@ export class Popover extends React.Component<Popover.Props, State> {
 
   private initialized: boolean;
   private containerNode: Element | null;
-  private popoverNode: Element | null;
   private onMouseEventDebouncedWhenOpen: ((_: string) => void) & _.Cancelable | null;
   private onMouseEventDebouncedWhenClosed: ((_: string) => void) & _.Cancelable | null;
   private ContextWrapper: React.ComponentType<{ context?: { [_: string]: any }, children: any }>;
@@ -232,10 +231,10 @@ export class Popover extends React.Component<Popover.Props, State> {
     };
   };
 
-  getPopoverNode = (): Element => {
-    let popover: Element;
+  getPopoverNode = (): Element | null => {
+    let popover: Element | null;
     if (this.isAbsolute()) {
-      popover = this.popoverNode!;
+      popover = this.containerNode ? this.containerNode.children[0] : null;
     } else {
       const childrenNode = ReactDOM.findDOMNode(this.refs.children);
       popover = childrenNode.children[1];
@@ -315,13 +314,13 @@ export class Popover extends React.Component<Popover.Props, State> {
     const hiddenPopover = this.getHiddenPopover();
     const { context } = this.getPopoverProps();
     const { ContextWrapper } = this;
-    ReactDOM.render(<ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>, this.containerNode);
 
-    // add pointer to popover node
-    this.popoverNode = this.containerNode.children[0];
-
-    // save popover size (visible popover will be rendered in componentDidUpdate)
-    this.saveValuesFromNodeTree();
+    // render Popover and save popover size in "onMount" cb (visible popover will be rendered in componentDidUpdate)
+    ReactDOM.render(
+      <ContextWrapper context={context}>{hiddenPopover}</ContextWrapper>,
+      this.containerNode,
+      this.saveValuesFromNodeTree
+    );
   };
 
   removePopover = () => {
