@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
-import FlexView, { IProps as FlexViewProps } from 'react-flexview';
+import FlexView from 'react-flexview';
 import omit = require('lodash/omit');
 
 export type BackgroundDimmerRequiredProps = {
@@ -114,7 +114,7 @@ export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props
         opacity
       }
     };
-    const mainContentWrapperProps: FlexViewProps & { ref: string } = {
+    const mainContentWrapperProps: FlexView.Props & { ref: string } = {
       onClick,
       onWheel: stopScrollPropagation,
       onTouchMove: stopScrollPropagation,
