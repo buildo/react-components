@@ -68,7 +68,7 @@
     "@types/fixed-data-table": "0.6.32",
     "@types/linkify-it": "2.0.1",
     "@types/prop-types": "15.5.2",
-    "@types/react": "15.6.1",
+    "@types/react": "^15.6.1",
     "@types/react-dates": "12.1.2",
     "@types/react-dnd": "2.0.33",
     "@types/react-dnd-html5-backend": "2.1.8",
