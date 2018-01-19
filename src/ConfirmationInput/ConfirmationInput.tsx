@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t } from '../utils';
 import omit = require('lodash/omit');
-import * as InputChildren from 'react-input-children';
+import InputChildren from 'react-input-children';
 import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 
@@ -103,7 +103,7 @@ export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Pro
     }
   }
 
-  onEnter = (e: KeyboardEvent) => {
+  onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.which === 13 || e.keyCode === 13) { // if Enter key
       this._onConfirm();
       (document.activeElement as HTMLElement).blur(); // remove focus

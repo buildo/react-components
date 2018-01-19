@@ -116,7 +116,7 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
       <View
         vAlignContent='center'
         className={className}
-        ref={r => { if (r) { this.ref = ReactDOM.findDOMNode(r); } }}
+        ref={(r: any) => { if (r) { this.ref = ReactDOM.findDOMNode(r); } }}
         onTouchStart={this.onTouchStart}
         onTouchEnd={this.onTouchEnd}
         onTouchMove={isOpen ? this.onTouchMove : undefined}

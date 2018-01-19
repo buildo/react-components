@@ -7,10 +7,3 @@ _.forEach(packageJson.dependencies, (value, key) => {
     process.exit(1);
   }
 });
-
-_.forEach(packageJson.devDependencies, (value, key) => {
-  if (!(/^\d+\.\d+\.\d+/).test(value)) {
-    console.error(`\npackage.json.devDependencies.${key} is not pinned! it should be in the form of "1.2.3"\n`);
-    process.exit(1);
-  }
-});
