@@ -126,7 +126,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
   _onMouseEvent = (type: string) => (type === 'mouseenter') && this.onMouseEnter();
 
-  onMouseEventDebounced = debounce(this._onMouseEvent, this.props.delayWhenLazy);
+  onMouseEventDebounced: ((type: string) => false | void) & _.Cancelable = debounce(this._onMouseEvent, this.props.delayWhenLazy);
 
   onMouseEvent: React.MouseEventHandler<Element> = ({ type }) => {
     this.props.delayWhenLazy ? this.onMouseEventDebounced(type) : this._onMouseEvent(type)

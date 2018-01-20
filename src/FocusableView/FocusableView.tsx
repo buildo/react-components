@@ -94,7 +94,7 @@ export class FocusableView extends React.Component<FocusableView.Props> {
     }
   }
 
-  onFocusBlurEventDebounced = debounce(this._onFocusBlurEvent, this.defaultedProps().debounce)
+  onFocusBlurEventDebounced: ((type: string) => void) & _.Cancelable = debounce(this._onFocusBlurEvent, this.defaultedProps().debounce)
 
   onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) => (
     !t.Nil.is(this.defaultedProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
