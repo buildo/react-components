@@ -95,7 +95,7 @@
     "style-loader": "0.17.0",
     "ts-jest": "20.0.10",
     "ts-loader": "2.3.4",
-    "typescript": "2.4.2",
+    "typescript": "2.6.2",
     "webpack": "3.5.5"
   },
   "peerDependencies": {
