@@ -22,7 +22,7 @@ export const getColumnList = <T, K extends string>(children: TabloChildren<T, K>
   return thereAreGroups ? flatMap(chArray, ch => Children.toArray(ch.props.children)) : chArray;
 };
 
-export const updateColumns = curry(<T, K extends string>(children: TabloChildren<T, K>, update: UpdateColumnsHandler<T, K>): JSX.Element[] => {
+export const updateColumns: _.CurriedFunction2<{}, {}, JSX.Element[]> = curry(<T, K extends string>(children: TabloChildren<T, K>, update: UpdateColumnsHandler<T, K>): JSX.Element[] => {
   const updateIfColumn = (colGroup?: React.ReactElement<ColumnGroup.Props<T, K>>) => (col: React.ReactElement<Column.Props<T, K>>, index: number) => col.type === Column ? update({ col , index, colGroup }) : col;
   const chArray = Children.toArray(children) as React.ReactElement<Column.Props<T, K> | ColumnGroup.Props<T, K>>[];
   const thereAreGroups = chArray.filter(ch => ch.type === ColumnGroup).length > 0;

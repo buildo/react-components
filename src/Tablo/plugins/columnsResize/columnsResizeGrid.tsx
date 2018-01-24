@@ -35,7 +35,7 @@ const getLocals = <T, K extends string>({ onColumnResize, ...props }: Tablo.Prop
     isColumnResizing: false,
     children: __children,
     ...gridProps
-  };
+  } as Tablo.Props<T, K>; // TODO: remove cast -> error on `onColumnsResizeEndCallback`
 
 };
 
