@@ -8,7 +8,7 @@ Utilizza una label corta, chiaramente formulata, veloce da leggere e che descriv
 ![default button](https://user-images.githubusercontent.com/10867086/35446594-7fcb3448-02b5-11e8-8921-62aa75347463.jpg)
 
 ## Tipi di Button e il loro utilizzo
-___
+
 Eistono diversi tipi di Button, la scelta di quale utilizzare dipende  dall’ importanza dell’azione legata a quel pulsante.
 
 | Type | Name | Description |
@@ -21,7 +21,7 @@ Eistono diversi tipi di Button, la scelta di quale utilizzare dipende  dall’ i
 | ![icon button](https://user-images.githubusercontent.com/10867086/35452203-0d301244-02c6-11e8-9c8e-a80e81a2a656.jpg) | **Icon Button** | I Utilizza gli Icon Button quando vuoi porre più attenzione sul “Button”, oppure quando pensi che l’icona possa essere maggiormente esplicativa del solo testo contenuto nel “Button”  |
 
 ## Stati
-___
+
 | Type | Name | Description |
 | ------ | ------ |------ |
 | ![normal](https://user-images.githubusercontent.com/10867086/35452658-92262730-02c7-11e8-8c6e-11779f9b4146.jpg) |**Normal** | Nessuna interazione da parte dell’utente, il Button è abilitato e può essere cliccato. |
