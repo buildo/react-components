@@ -1,4 +1,4 @@
-# Button
+# BUTTON
 
 A stateful button element
 
