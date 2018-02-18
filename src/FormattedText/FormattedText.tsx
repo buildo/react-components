@@ -10,6 +10,8 @@ export namespace FormattedText {
   export type Props = {
     /** The content of the paragraph */
     children: string,
+    /** Pass `true` to linkify links */
+    linkify?: boolean,
     id?: string,
     className?: string,
     style?: React.CSSProperties
@@ -18,6 +20,7 @@ export namespace FormattedText {
 
 export const Props = {
   children: t.String,
+  linkify: t.Boolean,
   id: t.maybe(t.String),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -67,11 +70,14 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
   }
 
   render() {
-    const { children, ...props } = this.props;
+    const { children, linkify, ...props } = this.props;
+
+    const formattedText = this.replaceBreaklinesWithBR(children);
     const newProps = {
       ...props,
-      children: this.replaceLinksWithA(this.replaceBreaklinesWithBR(children))
+      children: linkify ? this.replaceLinksWithA(formattedText) : formattedText
     }
+
     return (
       <span {...newProps} />
     );
