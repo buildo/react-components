@@ -1,6 +1,33 @@
 #  Change Log
 
+## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.33.0...HEAD)
 
+#### Breaking:
+
+- FormattedText: there is no way to disable linkify feature [#1179](https://github.com/buildo/react-components/issues/1179)
+
+#### Fixes (bugs & defects):
+
+- FormattedText detects some words as urls incorectly [#1178](https://github.com/buildo/react-components/issues/1178)
+
+## [v0.33.0](https://github.com/buildo/react-components/tree/v0.33.0) (2018-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.32.0...v0.33.0)
+
+#### Breaking:
+
+- upgrade typescript version to 2.6.2 [#1170](https://github.com/buildo/react-components/issues/1170)
+
+## [v0.32.0](https://github.com/buildo/react-components/tree/v0.32.0) (2018-01-19)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.31.0...v0.32.0)
+
+#### Breaking:
+
+- move @types deps to dev deps, do not pin @types/react in order to dedupe it [#1169](https://github.com/buildo/react-components/issues/1169)
+
+#### Fixes (bugs & defects):
+
+- Popover does not work on React16 when attached to body [#1164](https://github.com/buildo/react-components/issues/1164)
 
 ## [v0.31.0](https://github.com/buildo/react-components/tree/v0.31.0) (2017-12-05)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.30.0...v0.31.0)
