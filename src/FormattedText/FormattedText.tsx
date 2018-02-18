@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { props, t } from '../utils';
 import flattenDeep = require('lodash/flattenDeep');
-import tlds from 'tlds';
+import * as _linkify from 'linkify-it';
 import { LinkifyIt } from 'linkify-it';
 
-const linkify: LinkifyIt = require('linkify-it')().tlds(tlds);
+// TODO: replace "require" with "import"... for some reason they're workin only with "require"
+const tlds = require('tlds');
+const linkify: LinkifyIt = _linkify();
+linkify.tlds(tlds);
 
 export namespace FormattedText {
   export type Props = {
