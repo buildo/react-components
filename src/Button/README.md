@@ -31,7 +31,7 @@ There exist different kinds of Buttons, the choice on which one to use depends o
 
 ### Fluid Button
 
-Fluid Buttons occupy all the horizontal space available in their container. There must be only one Fluid Button on a single line: if more than one is present, they stacked vertically.
+Fluid Buttons occupy all the horizontal space available in their container. There must be only one Fluid Button on a single line.
 
 ![fluidbutton](https://user-images.githubusercontent.com/10867086/35729101-f20a324a-080d-11e8-9194-5c485790c253.jpg)
 
