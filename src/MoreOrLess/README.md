@@ -1,4 +1,3 @@
-# MoreOrLess
 A panel used to alternately display a short (less) or a long (more) version of the content.
 
 ![less](https://user-images.githubusercontent.com/10867086/36533761-7b550daa-17bc-11e8-9be2-a406e1716adf.jpg)
