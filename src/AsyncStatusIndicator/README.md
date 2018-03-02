@@ -1,8 +1,7 @@
-# AsyncStatusIndicator
 
 A component that shows the status of an async operation.
 
-## Usage
+# Usage
 `AsyncStatusIndicator` is useful whenever the UI needs to display a status of an asynchronous operation over which the user has no control.
 
 The status indicator usually starts in `ready` state, it changes to `processing` in response to a user action, and it becomes either `success` or `error` when the operation has ended.
@@ -14,14 +13,14 @@ One typical use case is giving feedback to a user whenever their input is automa
 ![ftimytdce3](https://user-images.githubusercontent.com/691940/36896618-a8d7cb8e-1e13-11e8-80ca-4f710b01dfe6.gif)
 
 
-## Icons
+# Icons
 You can specify any icon (or no icon at all) for each state, however you're encouraged to:
 
 - use no icon for the `ready` state
 - use a dynamic icon (e.g. a [`LoadingSpinner`](/#loadingspinner)) for the `processing` state
 - use icons that clearly convey the semantics of `success` and `error` for the respective states
 
-## Labels
+# Labels
 Similarly to icons, you can specify a label for each state. We advise to use:
 
 - no text at all for the `ready` state or neutral text such as *"All settings are in sync"* to directly inform the user that everything is ok and stable
