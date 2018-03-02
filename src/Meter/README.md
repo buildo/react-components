@@ -26,8 +26,11 @@ In this use case, the value starts from 0 and can only go up, typically to 100%.
 
 Follow these high-level rules:
 - do not show a progress indicator for actions that typically require less than a second
+  - *example: loading a simple modal view*
 - show a simple indicator (no label) for actions that typically require less than 10 seconds
+  - *example: preparing a PDF document for download*
 - show a full indicator with the percentage for longer actions and, if possible, a time estimate
+  - *example: upgrading an on-premises application via a web admin console*
 
 Only use one color for the progress indicator.
 
