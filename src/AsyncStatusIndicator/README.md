@@ -18,7 +18,7 @@ One typical use case is giving feedback to a user whenever their input is automa
 You can specify any icon (or not icons at all) for each state, you're encouraged to:
 
 - use no icon for the `ready` state
-- use a dynamic icon (e.g. a [`LoadingSpinner`](#loadingspinner)) for the `processing` state
+- use a dynamic icon (e.g. a [`LoadingSpinner`](/#loadingspinner)) for the `processing` state
 - use icons that clearly convey the semantics of `success` and `error` for the respective states
 
 ## Labels
