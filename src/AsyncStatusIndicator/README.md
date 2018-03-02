@@ -1,5 +1,7 @@
-
 A component that shows the status of an async operation.
+
+<img src="https://user-images.githubusercontent.com/10867086/36914808-d1d62f7c-1e4e-11e8-8642-dbd245a24bad.jpg">
+
 
 # Usage
 `AsyncStatusIndicator` is useful whenever the UI needs to display a status of an asynchronous operation over which the user has no control.
