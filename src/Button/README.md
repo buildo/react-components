@@ -1,12 +1,10 @@
-# Button
-
 UI component that allows the user to execute an action.
 
 *Advice: use a short and expressive label, fast to read, and that concisely describes the action that the user can execute.*
 
 ![defaultbutton](https://user-images.githubusercontent.com/10867086/35729079-e11273c6-080d-11e8-8044-061366af23f3.jpg)
 
-## Button types and their usage
+# Button types and their usage
 
 There exist different kinds of Buttons, the choice on which one to use depends on the importance of the corresponding action.
 
@@ -19,7 +17,7 @@ There exist different kinds of Buttons, the choice on which one to use depends o
 | ![flat button](https://user-images.githubusercontent.com/10867086/35727788-92731c7e-0809-11e8-8b7d-ce65ebda3915.jpg) | **Flat Button** | Flat Buttons are similar to Default Buttons; the choice between the two depends on the style of the user interface. Use Flat Buttons when there are more actions in the same area; for example, a list of actions that have equal importance. |
 | ![icon button](https://user-images.githubusercontent.com/10867086/35727803-a7c71aa8-0809-11e8-9a4b-6f47bf0dcc34.jpg) | **Icon Button** | Use Icon Buttons when you want to attract attention on buttons, or when you think that the icon could be more explicative than the bare text contained in them. |
 
-## States
+# States
 
 | Type | Name | Description |
 | ------ | ------ |------ |
@@ -27,15 +25,15 @@ There exist different kinds of Buttons, the choice on which one to use depends o
 | ![hover](https://user-images.githubusercontent.com/10867086/35728088-aee38186-080a-11e8-8b49-85e54155c2af.jpg) |**Hover** | The user is hovering the Button, which is active and clickable. |
 | ![disabled](https://user-images.githubusercontent.com/10867086/35728396-be2655aa-080b-11e8-8cf6-d8aa87ba5cee.jpg)|**Disabled** | Independently from the user's action, the Button is disabled and not clickable. |
 
-## Variants
+# Variants
 
-### Fluid Button
+## Fluid Button
 
 Fluid Buttons occupy all the horizontal space available in their container. There must be only one Fluid Button on a single line.
 
 ![fluidbutton](https://user-images.githubusercontent.com/10867086/35729101-f20a324a-080d-11e8-9194-5c485790c253.jpg)
 
-### Async Button
+## Async Button
 
 | Type | Name | Description |
 | ------ | ------ |------ |
@@ -44,7 +42,7 @@ Fluid Buttons occupy all the horizontal space available in their container. Ther
 |![success](https://user-images.githubusercontent.com/10867086/35728705-bb1786ee-080c-11e8-9ed1-1431534f9bac.jpg)|**Success**| The Success State indicated that the executed action did complete successfully. |
 |![error](https://user-images.githubusercontent.com/10867086/35728860-416bd29a-080d-11e8-8425-eb055c2c2f4e.jpg)|**Error**| The Error State indicates that an error has occurred while performing the corresponding action. When possible, give feedback to the user about the reason behind the failure and explain how to solve it. |
 
-## Sizes
+# Sizes
 
 Buttons, depending on the needs, can have three different sizes:
 
