@@ -1,3 +1,5 @@
+This component mainly used internally inside `Modal`. Please refer to the [Modal Design Guidelines](/#modal&tab=1).
+
 ### Examples
 
 ```js
