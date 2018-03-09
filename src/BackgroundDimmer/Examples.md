@@ -1,4 +1,4 @@
-This component mainly used internally inside `Modal`. Please refer to the [Modal Design Guidelines](/#modal&tab=1).
+This component is mainly used internally inside `Modal`. Please refer to the [Modal Design Guidelines](/#modal&tab=1).
 
 ### Examples
 
