@@ -2,435 +2,216 @@
 
 exports[`build build script generates every needed file 1`] = `
 Array [
-  "AsyncStatusIndicator",
-  "BackgroundDimmer",
-  "Badge",
-  "BrowserDetector",
-  "Button",
-  "CollapsibleSection",
-  "ConfirmationInput",
-  "DateField",
-  "DatePicker",
-  "Divider",
-  "Dropdown",
-  "DropdownMenu",
-  "FocusableView",
-  "FormattedText",
-  "Icon",
-  "Image",
-  "LoadingSpinner",
-  "Meter",
-  "MobileDetector",
-  "Modal",
-  "MoreOrLess",
-  "NavBar",
-  "Overflow",
-  "Panel",
-  "Popover",
-  "ResizeSensor",
-  "Scroll",
-  "ScrollView",
-  "Tablo",
-  "TextOverflow",
-  "TimePicker",
-  "Toaster",
-  "Toggle",
-  "Tooltip",
-  "TransitionWrapper",
+  "AsyncStatusIndicator/AsyncStatusIndicator.d.ts",
+  "AsyncStatusIndicator/AsyncStatusIndicator.js",
+  "AsyncStatusIndicator/asyncStatusIndicator.css",
+  "AsyncStatusIndicator/index.d.ts",
+  "AsyncStatusIndicator/index.js",
+  "Badge/Badge.d.ts",
+  "Badge/Badge.js",
+  "Badge/badge.css",
+  "Badge/index.d.ts",
+  "Badge/index.js",
+  "BrowserDetector/BrowserDetector.d.ts",
+  "BrowserDetector/BrowserDetector.js",
+  "BrowserDetector/examples.css",
+  "BrowserDetector/index.d.ts",
+  "BrowserDetector/index.js",
+  "Button/Button.d.ts",
+  "Button/Button.js",
+  "Button/StatefulButton.d.ts",
+  "Button/StatefulButton.js",
+  "Button/button.css",
+  "Button/index.d.ts",
+  "Button/index.js",
+  "CollapsibleSection/CollapsibleSection.d.ts",
+  "CollapsibleSection/CollapsibleSection.js",
+  "CollapsibleSection/collapsibleSection.css",
+  "CollapsibleSection/examples.css",
+  "CollapsibleSection/index.d.ts",
+  "CollapsibleSection/index.js",
+  "ConfirmationInput/ConfirmationInput.d.ts",
+  "ConfirmationInput/ConfirmationInput.js",
+  "ConfirmationInput/confirmationInput.css",
+  "ConfirmationInput/index.d.ts",
+  "ConfirmationInput/index.js",
+  "DateField/DateField.d.ts",
+  "DateField/DateField.js",
+  "DateField/dateField.css",
+  "DateField/index.d.ts",
+  "DateField/index.js",
+  "DatePicker/DatePicker.d.ts",
+  "DatePicker/DatePicker.js",
+  "DatePicker/datePicker.css",
+  "DatePicker/index.d.ts",
+  "DatePicker/index.js",
+  "Divider/Divider.d.ts",
+  "Divider/Divider.js",
+  "Divider/divider.css",
+  "Divider/index.d.ts",
+  "Divider/index.js",
+  "Dropdown/Dropdown.d.ts",
+  "Dropdown/Dropdown.js",
+  "Dropdown/dropdown.css",
+  "Dropdown/examples.css",
+  "Dropdown/index.d.ts",
+  "Dropdown/index.js",
+  "DropdownMenu/DropdownMenu.d.ts",
+  "DropdownMenu/DropdownMenu.js",
+  "DropdownMenu/Menu.d.ts",
+  "DropdownMenu/Menu.js",
+  "DropdownMenu/dropdownMenu.css",
+  "DropdownMenu/examples.css",
+  "DropdownMenu/index.d.ts",
+  "DropdownMenu/index.js",
+  "DropdownMenu/menu.css",
+  "FocusableView/FocusableView.d.ts",
+  "FocusableView/FocusableView.js",
+  "FocusableView/index.d.ts",
+  "FocusableView/index.js",
+  "FormattedText/FormattedText.d.ts",
+  "FormattedText/FormattedText.js",
+  "FormattedText/index.d.ts",
+  "FormattedText/index.js",
+  "Icon/Icon.d.ts",
+  "Icon/Icon.js",
+  "Icon/index.d.ts",
+  "Icon/index.js",
+  "Image/Image.d.ts",
+  "Image/Image.js",
+  "Image/getUrl.d.ts",
+  "Image/getUrl.js",
+  "Image/index.d.ts",
+  "Image/index.js",
+  "LoadingSpinner/LoadingSpinner.d.ts",
+  "LoadingSpinner/LoadingSpinner.js",
+  "LoadingSpinner/index.d.ts",
+  "LoadingSpinner/index.js",
+  "LoadingSpinner/loadingSpinner.css",
+  "Meter/Meter.d.ts",
+  "Meter/Meter.js",
+  "Meter/examples.css",
+  "Meter/index.d.ts",
+  "Meter/index.js",
+  "Meter/meter.css",
+  "MobileDetector/MobileDetector.d.ts",
+  "MobileDetector/MobileDetector.js",
+  "MobileDetector/index.d.ts",
+  "MobileDetector/index.js",
+  "Modal/BackgroundDimmer.d.ts",
+  "Modal/BackgroundDimmer.js",
+  "Modal/Modal.d.ts",
+  "Modal/Modal.js",
+  "Modal/ModalPortal.d.ts",
+  "Modal/ModalPortal.js",
+  "Modal/examples.css",
+  "Modal/index.d.ts",
+  "Modal/index.js",
+  "Modal/modal.css",
+  "Modal/modalWithContext.d.ts",
+  "Modal/modalWithContext.js",
+  "MoreOrLess/MoreOrLess.d.ts",
+  "MoreOrLess/MoreOrLess.js",
+  "MoreOrLess/examples.css",
+  "MoreOrLess/index.d.ts",
+  "MoreOrLess/index.js",
+  "MoreOrLess/moreOrLess.css",
+  "NavBar/NavBar.d.ts",
+  "NavBar/NavBar.js",
+  "NavBar/examples.css",
+  "NavBar/index.d.ts",
+  "NavBar/index.js",
+  "Overflow/Overflow.d.ts",
+  "Overflow/Overflow.js",
+  "Overflow/index.d.ts",
+  "Overflow/index.js",
+  "Panel/Panel.d.ts",
+  "Panel/Panel.js",
+  "Panel/PanelHeader.d.ts",
+  "Panel/PanelHeader.js",
+  "Panel/TabbedPanel.d.ts",
+  "Panel/TabbedPanel.js",
+  "Panel/examples.css",
+  "Panel/index.d.ts",
+  "Panel/index.js",
+  "Panel/panel.css",
+  "Panel/tabbedPanel.css",
+  "Popover/Popover.d.ts",
+  "Popover/Popover.js",
+  "Popover/examples.css",
+  "Popover/index.d.ts",
+  "Popover/index.js",
+  "ResizeSensor/ResizeSensor.d.ts",
+  "ResizeSensor/ResizeSensor.js",
+  "ResizeSensor/index.d.ts",
+  "ResizeSensor/index.js",
+  "Scroll/ScrollView.d.ts",
+  "Scroll/ScrollView.js",
+  "Scroll/easingFunctions.d.ts",
+  "Scroll/easingFunctions.js",
+  "Scroll/index.d.ts",
+  "Scroll/index.js",
+  "ScrollView/ScrollView.d.ts",
+  "ScrollView/ScrollView.js",
+  "ScrollView/index.d.ts",
+  "ScrollView/index.js",
+  "ScrollView/scrollView.css",
+  "Tablo/Cell",
+  "Tablo/Column",
+  "Tablo/ColumnGroup",
+  "Tablo/Footer",
+  "Tablo/Header",
+  "Tablo/Tablo.d.ts",
+  "Tablo/Tablo.js",
+  "Tablo/index.d.ts",
+  "Tablo/index.js",
+  "Tablo/patch-fixed-data-table-2.d.ts",
+  "Tablo/patch-fixed-data-table-2.js",
+  "Tablo/plugins",
+  "Tablo/tablo.css",
+  "Tablo/tabloVariables.css",
+  "Tablo/utils.d.ts",
+  "Tablo/utils.js",
+  "TextOverflow/TextOverflow.d.ts",
+  "TextOverflow/TextOverflow.js",
+  "TextOverflow/TextOverflowTouch.d.ts",
+  "TextOverflow/TextOverflowTouch.js",
+  "TextOverflow/index.d.ts",
+  "TextOverflow/index.js",
+  "TextOverflow/textOverflowTouch.css",
+  "TimePicker/TimePicker.d.ts",
+  "TimePicker/TimePicker.js",
+  "TimePicker/index.d.ts",
+  "TimePicker/index.js",
+  "Toaster/TimerToast.d.ts",
+  "Toaster/TimerToast.js",
+  "Toaster/Toaster.d.ts",
+  "Toaster/Toaster.js",
+  "Toaster/index.d.ts",
+  "Toaster/index.js",
+  "Toggle/Toggle.d.ts",
+  "Toggle/Toggle.js",
+  "Toggle/index.d.ts",
+  "Toggle/index.js",
+  "Toggle/toggle.css",
+  "Tooltip/Tooltip.d.ts",
+  "Tooltip/Tooltip.js",
+  "Tooltip/TooltipTouch.d.ts",
+  "Tooltip/TooltipTouch.js",
+  "Tooltip/index.d.ts",
+  "Tooltip/index.js",
+  "Tooltip/tooltip.css",
+  "Tooltip/tooltipTouch.css",
+  "TransitionWrapper/TransitionWrapper.d.ts",
+  "TransitionWrapper/TransitionWrapper.js",
+  "TransitionWrapper/index.d.ts",
+  "TransitionWrapper/index.js",
   "index.d.ts",
   "index.js",
-  "utils",
-]
-`;
-
-exports[`build build script generates every needed file 2`] = `
-Array [
-  "AsyncStatusIndicator.d.ts",
-  "AsyncStatusIndicator.js",
-  "asyncStatusIndicator.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 3`] = `
-Array [
-  "BackgroundDimmer.d.ts",
-  "BackgroundDimmer.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 4`] = `
-Array [
-  "Badge.d.ts",
-  "Badge.js",
-  "badge.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 5`] = `
-Array [
-  "BrowserDetector.d.ts",
-  "BrowserDetector.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 6`] = `
-Array [
-  "Button.d.ts",
-  "Button.js",
-  "StatefulButton.d.ts",
-  "StatefulButton.js",
-  "button.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 7`] = `
-Array [
-  "CollapsibleSection.d.ts",
-  "CollapsibleSection.js",
-  "collapsibleSection.css",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 8`] = `
-Array [
-  "ConfirmationInput.d.ts",
-  "ConfirmationInput.js",
-  "confirmationInput.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 9`] = `
-Array [
-  "DateField.d.ts",
-  "DateField.js",
-  "dateField.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 10`] = `
-Array [
-  "DatePicker.d.ts",
-  "DatePicker.js",
-  "datePicker.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 11`] = `
-Array [
-  "Divider.d.ts",
-  "Divider.js",
-  "divider.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 12`] = `
-Array [
-  "Dropdown.d.ts",
-  "Dropdown.js",
-  "dropdown.css",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 13`] = `
-Array [
-  "DropdownMenu.d.ts",
-  "DropdownMenu.js",
-  "Menu.d.ts",
-  "Menu.js",
-  "dropdownMenu.css",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-  "menu.css",
-]
-`;
-
-exports[`build build script generates every needed file 14`] = `
-Array [
-  "FocusableView.d.ts",
-  "FocusableView.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 15`] = `
-Array [
-  "FormattedText.d.ts",
-  "FormattedText.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 16`] = `
-Array [
-  "Icon.d.ts",
-  "Icon.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 17`] = `
-Array [
-  "Image.d.ts",
-  "Image.js",
-  "getUrl.d.ts",
-  "getUrl.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 18`] = `
-Array [
-  "LoadingSpinner.d.ts",
-  "LoadingSpinner.js",
-  "index.d.ts",
-  "index.js",
-  "loadingSpinner.css",
-]
-`;
-
-exports[`build build script generates every needed file 19`] = `
-Array [
-  "Meter.d.ts",
-  "Meter.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-  "meter.css",
-]
-`;
-
-exports[`build build script generates every needed file 20`] = `
-Array [
-  "MobileDetector.d.ts",
-  "MobileDetector.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 21`] = `
-Array [
-  "Modal.d.ts",
-  "Modal.js",
-  "ModalPortal.d.ts",
-  "ModalPortal.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-  "modal.css",
-  "modalWithContext.d.ts",
-  "modalWithContext.js",
-]
-`;
-
-exports[`build build script generates every needed file 22`] = `
-Array [
-  "MoreOrLess.d.ts",
-  "MoreOrLess.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-  "moreOrLess.css",
-]
-`;
-
-exports[`build build script generates every needed file 23`] = `
-Array [
-  "NavBar.d.ts",
-  "NavBar.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 24`] = `
-Array [
-  "Overflow.d.ts",
-  "Overflow.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 25`] = `
-Array [
-  "Panel.d.ts",
-  "Panel.js",
-  "PanelHeader.d.ts",
-  "PanelHeader.js",
-  "TabbedPanel.d.ts",
-  "TabbedPanel.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-  "panel.css",
-  "tabbedPanel.css",
-]
-`;
-
-exports[`build build script generates every needed file 26`] = `
-Array [
-  "Popover.d.ts",
-  "Popover.js",
-  "examples.css",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 27`] = `
-Array [
-  "ResizeSensor.d.ts",
-  "ResizeSensor.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 28`] = `
-Array [
-  "ScrollView.d.ts",
-  "ScrollView.js",
-  "easingFunctions.d.ts",
-  "easingFunctions.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 29`] = `
-Array [
-  "ScrollView.d.ts",
-  "ScrollView.js",
-  "index.d.ts",
-  "index.js",
-  "scrollView.css",
-]
-`;
-
-exports[`build build script generates every needed file 30`] = `
-Array [
-  "Cell",
-  "Column",
-  "ColumnGroup",
-  "Footer",
-  "Header",
-  "Tablo.d.ts",
-  "Tablo.js",
-  "index.d.ts",
-  "index.js",
-  "patch-fixed-data-table-2.d.ts",
-  "patch-fixed-data-table-2.js",
-  "plugins",
-  "tablo.css",
-  "tabloVariables.css",
-  "utils.d.ts",
-  "utils.js",
-]
-`;
-
-exports[`build build script generates every needed file 31`] = `
-Array [
-  "TextOverflow.d.ts",
-  "TextOverflow.js",
-  "TextOverflowTouch.d.ts",
-  "TextOverflowTouch.js",
-  "index.d.ts",
-  "index.js",
-  "textOverflowTouch.css",
-]
-`;
-
-exports[`build build script generates every needed file 32`] = `
-Array [
-  "TimePicker.d.ts",
-  "TimePicker.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 33`] = `
-Array [
-  "TimerToast.d.ts",
-  "TimerToast.js",
-  "Toaster.d.ts",
-  "Toaster.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 34`] = `
-Array [
-  "Toggle.d.ts",
-  "Toggle.js",
-  "index.d.ts",
-  "index.js",
-  "toggle.css",
-]
-`;
-
-exports[`build build script generates every needed file 35`] = `
-Array [
-  "Tooltip.d.ts",
-  "Tooltip.js",
-  "TooltipTouch.d.ts",
-  "TooltipTouch.js",
-  "index.d.ts",
-  "index.js",
-  "tooltip.css",
-  "tooltipTouch.css",
-]
-`;
-
-exports[`build build script generates every needed file 36`] = `
-Array [
-  "TransitionWrapper.d.ts",
-  "TransitionWrapper.js",
-  "index.d.ts",
-  "index.js",
-]
-`;
-
-exports[`build build script generates every needed file 37`] = `
-Array [
-  "index.d.ts",
-  "index.js",
-  "log.d.ts",
-  "log.js",
-  "theme",
+  "utils/index.d.ts",
+  "utils/index.js",
+  "utils/log.d.ts",
+  "utils/log.js",
+  "utils/theme",
 ]
 `;

@@ -4,7 +4,7 @@ import { props, t, ReactChildren } from '../utils';
 import omit = require('lodash/omit');
 import { ModalPortal, Props as PortalProps } from './ModalPortal';
 import FlexView from 'react-flexview';
-import BackgroundDimmer from '../BackgroundDimmer';
+import { BackgroundDimmer } from './BackgroundDimmer';
 
 export type ModalDefaultProps = {
   /** whether the modal should be dismissed when clicking outside it */

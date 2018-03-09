@@ -63,7 +63,6 @@ import '../src/Modal/examples.scss';
 import '../src/MoreOrLess/examples.scss';
 import '../src/Panel/examples.scss';
 import '../src/CollapsibleSection/examples.scss';
-import '../src/BackgroundDimmer/examples.scss';
 import '../src/NavBar/examples.scss';
 import '../src/DropdownMenu/examples.scss';
 import '../src/Dropdown/examples.scss';
