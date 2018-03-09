@@ -18,8 +18,6 @@ export { Modal };
 export { modalWithContext } from './Modal';
 import TransitionWrapper from './TransitionWrapper';
 export { TransitionWrapper };
-import BackgroundDimmer from './BackgroundDimmer';
-export { BackgroundDimmer };
 import Divider from './Divider';
 export { Divider };
 import Icon from './Icon';
