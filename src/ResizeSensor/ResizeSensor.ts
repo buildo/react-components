@@ -26,7 +26,7 @@ interface ResizeSensorElement extends Element {
 };
 
 /**
- * A component used to intercept window resize events
+ * A component that exposes an `onResize` callback called whenever his parent's size changes.
  */
 @props(Props)
 export class ResizeSensor extends React.Component<ResizeSensor.Props> {
