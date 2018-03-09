@@ -5,7 +5,7 @@
 ```js
 const getContent = (isOverflowing) => (
   <FlexView
-    width={200}
+    width={700}
     vAlignContent='center'
     style={{
       color: 'white',
