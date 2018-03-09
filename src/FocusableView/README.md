@@ -1,16 +1,10 @@
-# FocusableView
+A wrapper to make any component focusable.
 
-A panel that can get focus
+# Usage
+Whenever a component can react to keyboard shortcuts, you should focus that component or its parent view by adding a colored border.
 
-## Props
-|Name|Type|Default|Description|
-|----|----|-------|-----------|
-| **children** | <code>union(ReactChildren &#124; Function)</code> |  | **required**. FocusableView content. If a function it gets called with the boolean "focused" |
-| **onFocus** | <code>Function</code> | <code>"onFocus"</code> | *optional*. Callback function called on "focus" event |
-| **onBlur** | <code>Function</code> | <code>"onBlur"</code> | *optional*. Callback function called on "blur" event |
-| **tabIndex** | <code>Number</code> | <code>0</code> | *optional*. "tabindex" attribute |
-| **component** | <code>union(Function &#124; String)</code> | <code>"div"</code> | *optional*. Wrapper component for `children` |
-| **ignoreFocus** | <code>Boolean</code> |  | *optional*. When `true` the class "focused" is NOT added |
-| **debounce** | <code>Integer</code> |  | *optional*. Debounce onFocus/onBlur events of x millis |
-| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
-| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+`FocusableView` makes this easy as it receives any focus event generated within its component tree enabling you to change the style of itself or any of its children based on the current focus state.
+
+One typical use case is giving feedback to a user interacting with a table that they can navigate with the keyboard:
+
+<img src="https://user-images.githubusercontent.com/4029499/37204041-09588850-2390-11e8-9f64-59241964db4c.png" />
