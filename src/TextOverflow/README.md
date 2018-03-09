@@ -1,14 +1,13 @@
-# TextOverflow
+A wrapper to automatically "ellipsise" strings based on the currently available width, and show the complete view only on "hover".
 
-Text view which, if string content is too large, trims it and shows the full content on "hover".
+# Usage
 
-## Props
-|Name|Type|Default|Description|
-|----|----|-------|-----------|
-| **children** | <code>Function</code> |  | *optional*. In case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument |
-| **label** | <code>String</code> |  | **required**. This is the full string |
-| **lazy** | <code>Boolean</code> |  | *optional*. Whether the tooltip appearance should be delayed after mouse entering or not |
-| **delayWhenLazy** | <code>Integer</code> | <code>100</code> | *optional*. Tooltip delay if the component is lazy |
-| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
-| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
-| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+`TextOverflow` can be used to show a single-line label whenever it is ok to assume that the full string may not appear complete at all times. The user *can* then show show the complete label by "hovering" on the ellipsised one.
+
+As show in the various examples, the complete view can be presented in a Tooltip customized as needed (typically, you'll reuse the custom Tooltip you use everywhere in the app).
+
+![](https://user-images.githubusercontent.com/2643520/37216812-0dc8d29c-23bc-11e8-8a42-e1002e7e4535.png)
+
+## When not to use it
+
+Use `TextOverflow` wisely: if the information presented in the string is of primary importance for the user, **do not** use a `TextOverflow`. Instead, adapt your layout to make sure it is always shown completely.
