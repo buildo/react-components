@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
+import flatten = require('lodash/flatten');
 
 describe('build', () => {
 
@@ -8,14 +9,16 @@ describe('build', () => {
     execSync('npm run build', { stdio:[] })
 
     const libFiles = fs.readdirSync(path.resolve(__dirname, '../../lib'));
-    expect(libFiles).toMatchSnapshot()
 
-    libFiles.forEach(_ => {
-      const filePath = path.resolve(__dirname, '../../lib', _);
+    const files = flatten(libFiles.map(fileInRoot => {
+      const filePath = path.resolve(__dirname, '../../lib', fileInRoot);
       if (fs.lstatSync(filePath).isDirectory()) {
-        expect(fs.readdirSync(filePath)).toMatchSnapshot();
+        return fs.readdirSync(filePath).map(fileInFolder => `${fileInRoot}/${fileInFolder}`);
       }
-    })
+      return fileInRoot;
+    }));
+
+    expect(files).toMatchSnapshot();
   })
 
 })
