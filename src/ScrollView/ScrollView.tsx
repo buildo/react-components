@@ -52,7 +52,7 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-/** A scrollable view */
+/** A scrollable view to be used in projects where you want the same scrollbar style across different browsers */
 @props(Props)
 export class ScrollView<CP extends React.HTMLAttributes<any>, ICP extends React.HTMLAttributes<any>> extends React.PureComponent<ScrollView.Props<CP, ICP>, State> {
 
