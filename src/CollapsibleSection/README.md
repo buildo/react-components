@@ -1,18 +1,15 @@
-# CollapsibleSection
+A component that renders a collapsible panel, allowing the user to toggle visibility of the content
 
-A collapsible panel, allowing you to toggle more/less content
+# Usage
 
-## Props
-|Name|Type|Default|Description|
-|----|----|-------|-----------|
-| **children** | <code>ReactChildren</code> |  | **required**. Panel content (visible only when expanded) |
-| **isOpen** | <code>Boolean</code> |  | **required**. True if panel is expanded |
-| **isSelected** | <code>Boolean</code> |  | *optional*. True if panel has focus |
-| **onChange** | <code>Function</code> |  | **required**. Called when panel is toggled |
-| **onOpen** | <code>Function</code> | <code>"onOpen"</code> | *optional*. Called when panel is expanded |
-| **onClose** | <code>Function</code> | <code>"onClose"</code> | *optional*. Called when panel is collapsed |
-| **header** | <code>ReactChild</code> |  | *optional*. Header content (the only visible part when panel is collapsed) |
-| **icons** | <code>Struct{open: ?String, closed: ?String}</code> |  | *optional*. Icons for open/closed panel |
-| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
-| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
-| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+A CollapsibleSection is composed of an header (the string "Collapsible Section" in the example below), an optional icon, and a content ("Collapsible content" in the example below)
+
+<img width="660" alt="screen shot 2018-03-16 at 16 10 56" src="https://user-images.githubusercontent.com/2643520/37528506-1bcbdd52-2935-11e8-914d-baeb56257515.png">
+
+The icon, shown in the header, can be customized based on the current state of the section (collappsed or not - `isOpen` prop).
+
+CollapsibleSections are often used to create UIs for settings views, or to hide by default portions of UI that are not always relevant.
+
+CollapsibleSections are also handly to create a list of potentially coordinated sections. When a single section is expanded at any given time in the list, we obtain a vertical accordion UI.
+
+<img width="609" alt="screen shot 2018-03-16 at 16 08 28" src="https://user-images.githubusercontent.com/2643520/37528964-366fabe2-2936-11e8-90ac-0265408a28e8.png">
