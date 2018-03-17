@@ -1,17 +1,15 @@
 # Panel
+UI component that allows you to visually organize information.
 
-A simple component used to group elements in a box.
+A panel is usually a box surrounding components that should be grouped togheter:
+![image](https://user-images.githubusercontent.com/925635/37534497-48b4ed58-2945-11e8-9fde-90a1b07883a0.png)
 
-## Props
-|Name|Type|Default|Description|
-|----|----|-------|-----------|
-| **type** | <code>enum("docked-top" &#124; "docked-left" &#124; "docked-right" &#124; "docked-bottom" &#124; "floating")</code> |  | **required**. Docked-top &#124; docked-left &#124; docked-right &#124; docked-bottom &#124; floating |
-| **header** | <code>Struct{collapse: ?Struct{direction: "up" &#124; "left" &#124; "right" &#124; "down", onExpand: Function, onCollapse: Function, isCollapsed: ?Boolean}, size: ?HeaderSize, content: ?ReactChildren, title: ?ReactChildren, hideTitleWhenExpanded: ?Boolean, menu: ?ReactChildren}</code> |  | *optional*. Header props (collapse, content, title, menu) |
-| **loading** | <code>Boolean</code> | <code>false</code> | *optional*. Whether it's loading or not |
-| **dark** | <code>Boolean</code> | <code>false</code> | *optional*. True if it should use dark theme |
-| **softLoading** | <code>Boolean</code> | <code>false</code> | *optional*. Soft loading |
-| **softLoadingDelay** | <code>NonNegativeNumber</code> | <code>0</code> | *optional*. Soft loading delay |
-| **children** | <code>ReactChildren</code> |  | **required**. Panel content |
-| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
-| **clearMargin** | <code>enum("top" &#124; "left" &#124; "right" &#124; "bottom")</code> |  | *optional*. : top &#124; left &#124; right &#124; bottom |
-| **style** | <code>Object</code> | <code>{}</code> | *optional*. Inline-style overrides for wrapper element |
+If needed, a panel could also have a header showing a title (to better understand what's inside it) or any component that should have effects on the entity the group refers to (e.g. CTA or filters):
+
+![image](https://user-images.githubusercontent.com/925635/37535199-4daa83f2-2947-11e8-98f0-2c2bc442c635.png)
+
+## Default panel attributes
+A panel could be `floated` or `docked`.
+
+When `floated`, its sides don't touch any other component.
+
