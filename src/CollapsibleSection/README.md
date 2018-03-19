@@ -9,7 +9,3 @@ A CollapsibleSection is composed of an header (the string "Collapsible Section" 
 The icon, shown in the header, can be customized based on the current state of the section (collappsed or not - `isOpen` prop).
 
 CollapsibleSections are often used to create UIs for settings views, or to hide by default portions of UI that are not always relevant.
-
-CollapsibleSections are also handly to create a list of potentially coordinated sections. When a single section is expanded at any given time in the list, we obtain a vertical accordion UI.
-
-<img width="609" alt="screen shot 2018-03-16 at 16 08 28" src="https://user-images.githubusercontent.com/2643520/37528964-366fabe2-2936-11e8-90ac-0265408a28e8.png">
