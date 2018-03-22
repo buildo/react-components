@@ -109,6 +109,11 @@
       "sass-loader"
     ]
   },
+  "resolutions": {
+    "@types/react": "15.6.14",
+    "@types/react-dom": "15.5.7",
+    "@types/react-dnd": "2.0.33"
+  },
   "jest": {
     "setupFiles": [
       "<rootDir>/test/setup.js"
