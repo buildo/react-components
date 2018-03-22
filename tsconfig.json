@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES3",
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "allowSyntheticDefaultImports": false,
     "allowJs": false,
     "experimentalDecorators": true,
