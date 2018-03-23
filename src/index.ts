@@ -41,8 +41,6 @@ import Toggle from './Toggle';
 export { Toggle };
 import Meter from './Meter';
 export { Meter };
-import CollapsibleSection from './CollapsibleSection';
-export { CollapsibleSection };
 import BrowserDetector from './BrowserDetector';
 export { BrowserDetector };
 import TimePicker from './TimePicker';
