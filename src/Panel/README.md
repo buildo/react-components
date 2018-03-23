@@ -19,6 +19,7 @@ A collapsible panel allows you to conditionally show or hide its content. This i
 A `collapsible` panel must always show an arrow in its header. The arrow must be clickable, in order to expand or collapse the panel.
 
 When the panel is expanded, the arrow should point in the direction of closing:
+
 ![image_preview](https://user-images.githubusercontent.com/925635/37839217-2ae1f792-2eba-11e8-8911-b99d48972124.png)
 
 When the panel is collapsed, the arrow should point in the opposite direction, and only the header should be visible. Clicking anywhere in the header itself should expand the panel.
