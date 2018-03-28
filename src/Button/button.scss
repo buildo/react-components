@@ -62,6 +62,18 @@ $tiny-font-size: 14px !default;
 $tiny-border-radius: $border-radius !default;
 $disabled-button-opacity: .6 !default;
 $disabled-button-cursor: not-allowed !default;
+$disabled-default-background: $default-background !default;
+$disabled-primary-background: $primary-background !default;
+$disabled-positive-background: $positive-background !default;
+$disabled-negative-background: $negative-background !default;
+$disabled-default-border-color: $default-border-color !default;
+$disabled-primary-border-color: $primary-border-color !default;
+$disabled-positive-border-color: $positive-border-color !default;
+$disabled-negative-border-color: $negative-border-color !default;
+$disabled-default-color: $default-color !default;
+$disabled-primary-color: $primary-color !default;
+$disabled-positive-color: $positive-color !default;
+$disabled-negative-color: $negative-color !default;
 
 .button .button-inner {
 
@@ -98,7 +110,7 @@ $disabled-button-cursor: not-allowed !default;
     width: 1em;
   }
 
-  //types
+  // types
   &.is-default {
     border: $default-border-width solid $default-border-color;
     background: $default-background;
@@ -108,6 +120,12 @@ $disabled-button-cursor: not-allowed !default;
       background: $default-background-hover;
       border: $default-border-width solid $default-border-color-hover;
       color: $default-color-hover;
+    }
+
+    &.is-not-allowed {
+      border: $default-border-width solid $disabled-default-border-color;
+      background: $disabled-default-background;
+      color: $disabled-default-color;
     }
   }
 
@@ -120,6 +138,12 @@ $disabled-button-cursor: not-allowed !default;
       background: $primary-background-hover;
       border: $primary-border-width solid $primary-border-color-hover;
       color: $primary-color-hover;
+    }
+
+    &.is-not-allowed {
+      border: $primary-border-width solid $disabled-primary-border-color;
+      background: $disabled-primary-background;
+      color: $disabled-primary-color;
     }
   }
 
@@ -134,6 +158,12 @@ $disabled-button-cursor: not-allowed !default;
       border: $positive-border-width solid $positive-border-color-hover;
       color: $positive-color-hover;
     }
+
+    &.is-not-allowed {
+      border: $positive-border-width solid $disabled-positive-border-color;
+      background: $disabled-positive-background;
+      color: $disabled-positive-color;
+    }
   }
 
   &.is-negative,
@@ -147,10 +177,16 @@ $disabled-button-cursor: not-allowed !default;
       border: $negative-border-width solid $negative-border-color-hover;
       color: $negative-color-hover;
     }
+
+    &.is-not-allowed {
+      border: $negative-border-width solid $disabled-negative-border-color;
+      background: $disabled-negative-background;
+      color: $disabled-negative-color;
+    }
   }
 
   &.is-flat {
-    padding: 0 $flat-horizontal-padding !important; //!important because it should not be ovverridden by small/tiny variations
+    padding: 0 $flat-horizontal-padding !important; // !important because it should not be ovverridden by small/tiny variations
     border: $flat-border-width solid $flat-border-color;
     background: $flat-background;
     color: $flat-color;
@@ -164,10 +200,10 @@ $disabled-button-cursor: not-allowed !default;
 
   // variations
   &.icon-button {
-    padding: 0 $icon-button-horizontal-padding !important;//!important because it should not be ovverridden by small/tiny variations
+    padding: 0 $icon-button-horizontal-padding !important; // !important because it should not be ovverridden by small/tiny variations
     &.circular {
       padding: $icon-button-circular-padding !important;
-      border-radius: 100% !important;//!important because it should not be ovverridden by small/tiny variations//!important because it should not be ovverridden by small/tiny variations
+      border-radius: 100% !important; // !important because it should not be ovverridden by small/tiny variations//!important because it should not be ovverridden by small/tiny variations
       &.is-medium {
         width: $medium-height;
       }
