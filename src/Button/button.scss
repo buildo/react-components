@@ -51,12 +51,15 @@ $icon-button-circular-padding: 11px !default;
 $medium-height: 44px !default;
 $medium-horizontal-padding: 18px !default;
 $medium-font-size: 16px !default;
+$medium-border-radius: $border-radius !default;
 $small-height: 36px !default;
 $small-horizontal-padding: 14px !default;
 $small-font-size: 14px !default;
+$small-border-radius: $border-radius !default;
 $tiny-height: 32px !default;
 $tiny-horizontal-padding: 6px !default;
 $tiny-font-size: 14px !default;
+$tiny-border-radius: $border-radius !default;
 $disabled-button-opacity: .6 !default;
 $disabled-button-cursor: not-allowed !default;
 
@@ -184,18 +187,21 @@ $disabled-button-cursor: not-allowed !default;
     padding: 0 $tiny-horizontal-padding;
     height: $tiny-height;
     font-size: $tiny-font-size;
+    border-radius: $tiny-border-radius;
   }
 
   &.is-small {
     padding: 0 $small-horizontal-padding;
     height: $small-height;
     font-size: $small-font-size;
+    border-radius: $small-border-radius;
   }
 
   &.is-medium {
     padding: 0 $medium-horizontal-padding;
     height: $medium-height;
     font-size: $medium-font-size;
+    border-radius: $medium-border-radius;
   }
 
   &.is-not-allowed {
