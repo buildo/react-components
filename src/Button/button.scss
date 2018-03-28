@@ -14,24 +14,28 @@ $default-border-color: $brc-silver !default;
 $default-border-width: 1px !default;
 $default-color: $brc-darkGrey !default;
 $default-background-hover: $brc-gradientDarkGrey, !default;
+$default-color-hover: $brc-darkGrey !default;
 $default-border-color-hover: $brc-silver !default;
 $primary-background: $brc-gradientAzure !default;
 $primary-border-color: $brc-waterBlue !default;
 $primary-border-width: 1px !default;
 $primary-color: $brc-white !default;
 $primary-background-hover: $brc-gradientDarkAzure !default;
+$primary-color-hover: $brc-white !default;
 $primary-border-color-hover: $brc-waterBlue !default;
 $positive-background: $brc-gradientGreen !default;
 $positive-border-color: $brc-seaGreen !default;
 $positive-border-width: 1px !default;
 $positive-color: $brc-white !default;
 $positive-background-hover: $brc-gradientDarkGreen !default;
+$positive-color-hover: $brc-white !default;
 $positive-border-color-hover: $brc-seaGreen !default;
 $negative-background: $brc-gradientRed !default;
 $negative-border-color: $brc-alizarinCrimson !default;
 $negative-border-width: 1px !default;
 $negative-color: $brc-white !default;
 $negative-background-hover: $brc-gradientDarkRed !default;
+$negative-color-hover: $brc-white !default;
 $negative-border-color-hover: $brc-alizarinCrimson !default;
 $flat-background: none !default;
 $flat-border-color: $brc-silver !default;
@@ -100,6 +104,7 @@ $disabled-button-cursor: not-allowed !default;
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $default-background-hover;
       border: $default-border-width solid $default-border-color-hover;
+      color: $default-color-hover;
     }
   }
 
@@ -111,6 +116,7 @@ $disabled-button-cursor: not-allowed !default;
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $primary-background-hover;
       border: $primary-border-width solid $primary-border-color-hover;
+      color: $primary-color-hover;
     }
   }
 
@@ -123,6 +129,7 @@ $disabled-button-cursor: not-allowed !default;
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $positive-background-hover;
       border: $positive-border-width solid $positive-border-color-hover;
+      color: $positive-color-hover;
     }
   }
 
@@ -135,6 +142,7 @@ $disabled-button-cursor: not-allowed !default;
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $negative-background-hover;
       border: $negative-border-width solid $negative-border-color-hover;
+      color: $negative-color-hover;
     }
   }
 
