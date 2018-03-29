@@ -1,27 +1,37 @@
 @import '../utils/theme/variables.scss';
+$height: 28px !default;
 $padding-h: 12px !default;
 $font-size: 14px !default;
-$font-weight: $brc-semibold !default;
-$color: $brc-azure !default;
-$color-hover: $brc-azure !default;
+$input-font-weight: $brc-regular !default;
+$confirmation-font-weight: $brc-semibold !default;
+$placeholder-color: $brc-coolGrey !default;
+$input-color: $brc-darkGrey !default;
+$confirmation-color: $brc-azure !default;
+$border-color: $brc-silver !default;
+$input-color-focus: $brc-azure !default;
+$confirmation-color-focus: $brc-azure !default;
+$border-color-focus: $brc-waterBlue !default;
 $disabled-opacity: .6 !default;
 
 .confirmation-input {
-  border: 1px solid $brc-silver;
+  border: 1px solid $border-color;
   border-radius: 4px;
 
   input {
+    height: $height;
     padding-left: $padding-h;
     border: 0;
-    color: $brc-darkGrey;
-    font-weight: $brc-semibold;
+    color: $input-color;
+    font-weight: $input-font-weight;
+    font-size: $font-size;
+    line-height: $font-size;
 
     /* placeholder */
     &::-webkit-input-placeholder,
     &::-moz-placeholder,
     &:-ms-input-placeholder,
     &:-moz-placeholder {
-      color: $brc-coolGrey;
+      color: $placeholder-color;
     }
 
     &:disabled {
@@ -36,19 +46,21 @@ $disabled-opacity: .6 !default;
   }
 
   .confirmation {
+    height: $height;
     margin: 0 $padding-h;
-    color: $color;
+    color: $confirmation-color;
     font-size: $font-size;
-    font-weight: $font-weight;
+    line-height: $font-size;
+    font-weight: $confirmation-font-weight;
   }
 
   &.focused {
-    border: 1px solid $brc-waterBlue;
+    border: 1px solid $border-color-focus;
     outline: none;
 
     .confirmation {
       cursor: pointer;
-      color: $color-hover;
+      color: $confirmation-color-focus;
     }
   }
 }
