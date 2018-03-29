@@ -3,23 +3,16 @@ import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../utils';
 import omit = require('lodash/omit');
 import InputChildren from 'react-input-children';
+import { ObjectOverwrite } from 'typelevel-ts';
 
-export type InputRequiredProps = {
-  /** input placeholder */
-  placeholder?: string,
-  /** an optional class name to pass to top level element of the component */
-  className?: string,
-  /** component's id */
-  id?: string,
-  /** an optional style object to pass to top level element of the component */
-  style?: React.CSSProperties,
+export type InputRequiredProps = ObjectOverwrite<React.HTMLProps<HTMLInputElement>, {
   /** value */
   value: string,
   /** onChange */
   onChange: (value: string) => void,
   /** input children */
   children?: React.ReactNode
-};
+}>;
 
 export type InputDefaultProps = {
   /** true if disabled */
