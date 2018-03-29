@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import { props, t } from '../utils';
 import omit = require('lodash/omit');
-import InputChildren from 'react-input-children';
+import { Input } from '../Input/Input';
 import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 
@@ -151,7 +151,7 @@ export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Pro
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
   };
 
-  _onChange: React.ChangeEventHandler<HTMLInputElement> = ({ target: { value } }) => this.setState({ value });
+  _onChange = (value: string) => this.setState({ value });
 
   render() {
     const {
@@ -192,20 +192,18 @@ export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Pro
       onKeyUp: this.onEnter,
       onBlur: this.onBlur,
       onFocus: this.onFocus,
-      wrapper: {
-        className: cx('confirmation-input', { focused }, className)
-      }
+      className: cx('confirmation-input', { focused }, className)
     };
 
     return (
-      <InputChildren {...inputProps}>
+      <Input {...inputProps}>
         {confirmProps && (
           <FlexView {...confirmProps.wrapper}>
             {icon && <Icon icon={confirmProps.icon} />}
             {confirmProps.text}
           </FlexView>
         )}
-      </InputChildren>
+      </Input>
     );
   }
 

@@ -55,6 +55,7 @@ import '../src/Tablo/tablo.scss';
 import '../src/AsyncStatusIndicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
 import '../src/DateField/dateField.scss';
+import '../src/Input/input.scss';
 
 
 // examples sass and resources

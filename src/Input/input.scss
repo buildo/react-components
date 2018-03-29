@@ -1,0 +1,85 @@
+@import '../utils/theme/variables.scss';
+$height: 28px !default;
+$padding-h: 12px !default;
+$font-size: 14px !default;
+$font-weight: $brc-regular !default;
+$placeholder-color: $brc-coolGrey !default;
+$color: $brc-darkGrey !default;
+$border-color: $brc-silver !default;
+$color-focus: $brc-darkGrey !default;
+$border-color-focus: $brc-waterBlue !default;
+$opacity-disabled: .6 !default;
+$color-success: $brc-seaGreen !default;
+$color-failure: $brc-alizarinCrimson !default;
+$border-color-success: $brc-seaGreen !default;
+$border-color-failure: $brc-alizarinCrimson !default;
+
+.input {
+  input {
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    height: $height;
+    padding: 0 $padding-h;
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $font-size;
+
+    /* placeholder */
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder {
+      color: $placeholder-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+
+    &:focus {
+      border: 1px solid $border-color-focus;
+      outline: none;
+      box-shadow: 0;
+      color: $color-focus;
+    }
+  }
+
+  &:not(.has-value) {
+    input {
+      color: $placeholder-color;
+    }
+  }
+
+  &.is-success,
+  &.is-failure {
+    .icon {
+      margin: 0 $padding-h;
+      line-height: $font-size;
+      font-size: $font-size;
+    }
+  }
+
+  &.is-success {
+    input {
+      border: 1px solid $border-color-success;
+      color: $color-success;
+    }
+
+    .icon {
+      color: $color-success;
+    }
+  }
+
+  &.is-failure {
+    input {
+      border: 1px solid $border-color-failure;
+      color: $color-failure;
+    }
+
+    .icon {
+      color: $color-failure;
+    }
+  }
+}
