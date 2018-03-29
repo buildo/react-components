@@ -1,0 +1,50 @@
+@import '../utils/theme/variables.scss';
+$height: 28px !default;
+$padding-h: 12px !default;
+$font-size: 14px !default;
+$font-weight: $brc-regular !default;
+$placeholder-color: $brc-coolGrey !default;
+$color: $brc-darkGrey !default;
+$border-color: $brc-silver !default;
+$color-focus: $brc-darkGrey !default;
+$border-color-focus: $brc-waterBlue !default;
+$disabled-opacity: .6 !default;
+
+.input {
+  input {
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    height: $height;
+    padding: 0 $padding-h;
+    color: $color;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $font-size;
+
+    /* placeholder */
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder {
+      color: $placeholder-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: $disabled-opacity;
+    }
+
+    &:focus {
+      border: 1px solid $border-color-focus;
+      outline: none;
+      box-shadow: 0;
+      color: $color-focus;
+    }
+  }
+
+  &.empty-value {
+    input {
+      color: $placeholder-color;
+    }
+  }
+}

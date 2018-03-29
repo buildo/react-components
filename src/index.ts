@@ -62,3 +62,5 @@ import DateField from './DateField';
 export { DateField };
 import Image from './Image';
 export { Image };
+import Input from './Input';
+export { Input };
