@@ -80,7 +80,7 @@ export class Input extends React.PureComponent<Input.Props> {
       wrapper: {
         ...wrapper,
         className: cx('input', {
-          'empty-value': value === '',
+          'has-value': value !== '',
           'is-success': isSuccess,
           'is-failure': isFailure
         }, wrapper.className, className)

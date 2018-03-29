@@ -46,7 +46,7 @@ $border-color-failure: $brc-alizarinCrimson !default;
     }
   }
 
-  &.empty-value {
+  &:not(.has-value) {
     input {
       color: $placeholder-color;
     }
