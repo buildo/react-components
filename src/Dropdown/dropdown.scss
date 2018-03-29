@@ -5,6 +5,7 @@ $background: $brc-gradientGrey !default;
 $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;
 $border-color: $brc-silver !default;
+$border-color-hover: $border-color !default;
 $border-color-open: $brc-waterBlue !default;
 $border-color-focus: $brc-waterBlue !default;
 $border-radius: 4px !default;
@@ -44,6 +45,8 @@ $multiple-value-icon-border-color-hover: $multiple-value-icon-border-color !defa
 $disabled-opacity: .6 !default;
 $height: 38px !default;
 $height-small: 30px !default;
+$padding-left-small: 10px !default;
+$padding-left: 10px !default;
 
 // NORMALIZE
 @mixin normalize {
@@ -106,12 +109,22 @@ $height-small: 30px !default;
   font-size: 15px;
   font-weight: 400;
 
+  &:hover {
+    border-color: $border-color-hover;
+  }
+
   &:not(.is-disabled).is-focused {
     border-color: $border-color-focus;
   }
 
+  &.is-small {
+    .Select-control {
+      padding-left: $padding-left-small;
+    }
+  }
+
   .Select-control {
-    padding-left: 10px;
+    padding-left: $padding-left;
     border: none;
     background: transparent;
     cursor: pointer;
