@@ -1,10 +1,20 @@
 #  Change Log
 
-## [Unreleased](https://github.com/buildo/react-components/tree/HEAD)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.33.0...HEAD)
+
+
+## [v0.34.0](https://github.com/buildo/react-components/tree/v0.34.0) (2018-03-29)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.33.0...v0.34.0)
+
+#### New features:
+
+- improve Dropdown sass variables [#1208](https://github.com/buildo/react-components/issues/1208)
 
 #### Breaking:
 
+- Add a basic Input component [#1207](https://github.com/buildo/react-components/issues/1207)
+- Improve ConfirmationInput sass variables api [#1205](https://github.com/buildo/react-components/issues/1205)
+- kill CollapsibleSection [#1203](https://github.com/buildo/react-components/issues/1203)
+- do not re-export BackgroundDimmer [#1199](https://github.com/buildo/react-components/issues/1199)
 - FormattedText: there is no way to disable linkify feature [#1179](https://github.com/buildo/react-components/issues/1179)
 
 #### Fixes (bugs & defects):
