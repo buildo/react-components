@@ -8,7 +8,11 @@ $color: $brc-darkGrey !default;
 $border-color: $brc-silver !default;
 $color-focus: $brc-darkGrey !default;
 $border-color-focus: $brc-waterBlue !default;
-$disabled-opacity: .6 !default;
+$opacity-disabled: .6 !default;
+$color-success: $brc-seaGreen !default;
+$color-failure: $brc-alizarinCrimson !default;
+$border-color-success: $brc-seaGreen !default;
+$border-color-failure: $brc-alizarinCrimson !default;
 
 .input {
   input {
@@ -31,7 +35,7 @@ $disabled-opacity: .6 !default;
 
     &:disabled {
       cursor: not-allowed;
-      opacity: $disabled-opacity;
+      opacity: $opacity-disabled;
     }
 
     &:focus {
@@ -45,6 +49,37 @@ $disabled-opacity: .6 !default;
   &.empty-value {
     input {
       color: $placeholder-color;
+    }
+  }
+
+  &.is-success,
+  &.is-failure {
+    .icon {
+      margin: 0 $padding-h;
+      line-height: $font-size;
+      font-size: $font-size;
+    }
+  }
+
+  &.is-success {
+    input {
+      border: 1px solid $border-color-success;
+      color: $color-success;
+    }
+
+    .icon {
+      color: $color-success
+    }
+  }
+
+  &.is-failure {
+    input {
+      border: 1px solid $border-color-failure;
+      color: $color-failure;
+    }
+
+    .icon {
+      color: $color-failure
     }
   }
 }
