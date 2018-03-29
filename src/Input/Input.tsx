@@ -64,8 +64,8 @@ export class Input extends React.PureComponent<Input.Props> {
       _onChange: onChange
     } = this;
 
-    const isSuccess = status === InputStatusT('success');
-    const isFailure = status === InputStatusT('failure');
+    const isSuccess = status === 'success';
+    const isFailure = status === 'failure';
     const children = this.props.children || (
       isSuccess ? <View vAlignContent='center'><Icon icon='check-circle' /></View> :
       isFailure ? <View vAlignContent='center'><Icon icon='times-circle' /></View> :
