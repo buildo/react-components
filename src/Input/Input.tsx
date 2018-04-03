@@ -69,8 +69,8 @@ export class Input extends React.PureComponent<Input.Props> {
     const isSuccess = status === 'success';
     const isFailure = status === 'failure';
     const children = this.props.children || (
-      isSuccess ? <View vAlignContent='center'><Icon icon='check-circle' /></View> :
-      isFailure ? <View vAlignContent='center'><Icon icon='times-circle' /></View> :
+      isSuccess ? <View vAlignContent='center'><Icon icon='success' /></View> :
+      isFailure ? <View vAlignContent='center'><Icon icon='error' /></View> :
       undefined
     );
 
