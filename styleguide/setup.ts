@@ -56,6 +56,7 @@ import '../src/AsyncStatusIndicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
 import '../src/DateField/dateField.scss';
 import '../src/Input/input.scss';
+import '../src/PasswordInput/passwordInput.scss';
 
 
 // examples sass and resources

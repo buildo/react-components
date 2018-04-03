@@ -64,3 +64,5 @@ import Image from './Image';
 export { Image };
 import Input from './Input';
 export { Input };
+import PasswordInput from './PasswordInput';
+export { PasswordInput };

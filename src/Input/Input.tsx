@@ -18,7 +18,9 @@ export type InputRequiredProps = ObjectOverwrite<InputChildren.Props, {
   /** input children */
   children?: React.ReactNode,
   /** optional input status */
-  status?: InputStatus
+  status?: InputStatus,
+  /** don't use this. Use `innerRef` instead */
+  ref?: never
 }>;
 
 export type InputDefaultProps = {
