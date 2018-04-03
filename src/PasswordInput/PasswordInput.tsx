@@ -6,7 +6,9 @@ import View from 'react-flexview';
 export type PasswordInputRequiredProps = InputRequiredProps;
 
 export type PasswordInputDefaultProps = InputDefaultProps & {
+  /** text label for the "hide" button */
   hideText: string,
+  /** text label for the "show" button */
   showText: string
 };
 
@@ -48,7 +50,7 @@ export class PasswordInput extends React.PureComponent<PasswordInput.Props, Stat
     const text = this.state.show ? props.hideText : props.showText;
     const toggleProps = {
       onClick: this.onToggleClick,
-      className: 'toggle',
+      className: 'password-input-toggle',
       vAlignContent: 'center' as View.Props['vAlignContent']
     };
     const inputProps = {
