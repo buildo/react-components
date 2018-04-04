@@ -185,7 +185,7 @@ export class Meter extends React.PureComponent<Meter.Props> {
     const formattedLabel = labelFormatter(value, min, max);
 
     return (
-      <FlexView {...{ id, className, style }} grow>
+      <FlexView {...{ id, className, style }} grow vAlignContent='center'>
         <FlexView
           className='bar'
           grow
