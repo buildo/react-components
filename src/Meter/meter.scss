@@ -1,15 +1,27 @@
 @import '../utils/theme/variables.scss';
 
+$height: 18px !default;
+$font-size: 14px !default;
+$font-weight: $brc-regular !default;
+$border-radius: 10px !default;
+$label-margin: 5px !default;
+
 .meter {
   .bar {
     overflow: hidden;
-    border-radius: 10px;
-    height: 18px;
+    border-radius: $border-radius;
+    height: $height;
     background-color: $brc-paleGrey;
+
+    .filling {
+      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+    }
   }
 
-  .filling {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+  .label {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    padding-left: $label-margin;
   }
 }
