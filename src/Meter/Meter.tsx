@@ -158,13 +158,13 @@ export class Meter extends React.PureComponent<Meter.Props> {
     return {
       basisSize: `${computePercentage(value, min, max)}%`,
       fillingStyle: {
-        background: range ? range.fillingColor : baseFillingColor
+        background: range && range.fillingColor || baseFillingColor
       },
       labelStyle: {
-        color: range ? range.labelColor : baseLabelColor
+        color: range && range.labelColor || baseLabelColor
       },
       barStyle: {
-        background: range ? range.backgroundColor : baseBackgroundColor
+        background: range && range.backgroundColor || baseBackgroundColor
       }
     };
   }

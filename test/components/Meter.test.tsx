@@ -137,4 +137,28 @@ describe('Meter', () => {
     expect(meter.find('.bar').prop('style').background).toBeUndefined();
   });
 
+  it('computes colors respecting base colors', () => {
+    const ranges = [
+      { startValue: 0, endValue: 50, fillingColor: 'yellow' },
+      { startValue: 50, endValue: 80 }
+    ];
+    const baseColors = {
+      baseBackgroundColor: 'red',
+      baseFillingColor: 'green',
+      baseLabelColor: 'blue',
+    };
+    const meter1 = shallow(
+      <Meter value={30} ranges={ranges} {...baseColors} />
+    );
+    expect(meter1.find('.bar').prop('style').background).toBe('red');
+    expect(meter1.find('.filling').prop('style').background).toBe('yellow');
+    expect(meter1.find('.label').prop('style').color).toBe('blue');
+    const meter2 = shallow(
+      <Meter value={60} ranges={ranges} {...baseColors} />
+    );
+    expect(meter2.find('.bar').prop('style').background).toBe('red');
+    expect(meter2.find('.filling').prop('style').background).toBe('green');
+    expect(meter2.find('.label').prop('style').color).toBe('blue');
+  });
+
 });
