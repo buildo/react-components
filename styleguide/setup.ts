@@ -42,7 +42,6 @@ import '../src/Panel/tabbedPanel.scss';
 import '../src/MoreOrLess/moreOrLess.scss';
 import '../src/LoadingSpinner/loadingSpinner.scss';
 import '../src/Dropdown/dropdown.scss';
-import '../src/ConfirmationInput/confirmationInput.scss';
 import '../src/Badge/badge.scss';
 import '../src/Toggle/toggle.scss';
 import '../src/Tooltip/tooltip.scss';
@@ -56,7 +55,6 @@ import '../src/AsyncStatusIndicator/asyncStatusIndicator.scss';
 import '../src/DatePicker/datePicker.scss';
 import '../src/DateField/dateField.scss';
 import '../src/Input/input.scss';
-import '../src/PasswordInput/passwordInput.scss';
 
 
 // examples sass and resources
