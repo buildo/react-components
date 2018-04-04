@@ -58,11 +58,11 @@ describe('Meter', () => {
   });
 
   it('computes barStyle', () => {
-    expect(meter.find('.bar').prop('style').backgroundColor).toBe(ranges[0].backgroundColor);
+    expect(meter.find('.bar').prop('style').background).toBe(ranges[0].backgroundColor);
   });
 
   it('computes fillingStyle', () => {
-    expect(meter.find('.filling').prop('style').backgroundColor).toBe(ranges[0].fillingColor);
+    expect(meter.find('.filling').prop('style').background).toBe(ranges[0].fillingColor);
   });
 
   it('computes labelStyle', () => {
@@ -94,7 +94,7 @@ describe('Meter', () => {
     const meter = shallow(
       <Meter value={60} ranges={ranges} />
     );
-    expect(meter.find('.filling').prop('style').backgroundColor).toBe(ranges[0].fillingColor);
+    expect(meter.find('.filling').prop('style').background).toBe(ranges[0].fillingColor);
   });
 
   it('defaults to the base color as background color if there\'s no matching range', () => {
@@ -104,7 +104,7 @@ describe('Meter', () => {
     const meter = shallow(
       <Meter value={20} ranges={ranges} baseFillingColor='#ccc' />
     );
-    expect(meter.find('.filling').prop('style').backgroundColor).toBe('#ccc');
+    expect(meter.find('.filling').prop('style').background).toBe('#ccc');
   });
 
   it('doesn\'t define a background color if there\'s no matching range and no default is given', () => {
@@ -114,7 +114,7 @@ describe('Meter', () => {
     const meter = shallow(
       <Meter value={20} ranges={ranges} />
     );
-    expect(meter.find('.filling').prop('style').backgroundColor).toBeUndefined();
+    expect(meter.find('.filling').prop('style').background).toBeUndefined();
   });
 
   it('defaults to base color as bar background color should if there\'s no matching range', () => {
@@ -124,7 +124,7 @@ describe('Meter', () => {
     const meter = shallow(
       <Meter value={20} ranges={ranges} baseBackgroundColor='#ccc' />
     );
-    expect(meter.find('.bar').prop('style').backgroundColor).toBe('#ccc');
+    expect(meter.find('.bar').prop('style').background).toBe('#ccc');
   });
 
   it('doesn\'t define a bar background color if there\'s no matching range and no default is given', () => {
@@ -134,7 +134,7 @@ describe('Meter', () => {
     const meter = shallow(
       <Meter value={20} ranges={ranges} />
     );
-    expect(meter.find('.bar').prop('style').backgroundColor).toBeUndefined();
+    expect(meter.find('.bar').prop('style').background).toBeUndefined();
   });
 
 });

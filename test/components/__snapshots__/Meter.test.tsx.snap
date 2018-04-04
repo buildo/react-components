@@ -2,7 +2,7 @@
 
 exports[`Meter renders correctly 1`] = `
 <div
-  className="react-flex-view meter fancy-class-name"
+  className="react-flex-view align-content-center meter fancy-class-name"
   id="12345"
   style={
     Object {
@@ -23,7 +23,7 @@ exports[`Meter renders correctly 1`] = `
         "MozBoxFlex": "1 1 auto",
         "WebkitBoxFlex": "1 1 auto",
         "WebkitFlex": "1 1 auto",
-        "backgroundColor": "grey",
+        "background": "grey",
         "flex": "1 1 auto",
         "msFlex": "1 1 auto",
       }
@@ -36,7 +36,7 @@ exports[`Meter renders correctly 1`] = `
           "MozBoxFlex": "0 0 25%",
           "WebkitBoxFlex": "0 0 25%",
           "WebkitFlex": "0 0 25%",
-          "backgroundColor": "green",
+          "background": "green",
           "flex": "0 0 25%",
           "msFlex": "0 0 25%",
         }
