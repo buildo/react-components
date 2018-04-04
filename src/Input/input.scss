@@ -16,6 +16,14 @@ $color-failure: $brc-alizarinCrimson !default;
 $border-color-success: $brc-seaGreen !default;
 $border-color-failure: $brc-alizarinCrimson !default;
 
+// confirmation-input extensions
+$confirmation-font-weight: $brc-semibold !default;
+$confirmation-color: $brc-azure !default;
+$confirmation-color-focus: $brc-azure !default;
+
+// password input extensions
+$show-color: $brc-azure !default;
+
 .input {
   input {
     border: $border-width solid $border-color;
@@ -84,6 +92,37 @@ $border-color-failure: $brc-alizarinCrimson !default;
 
     .icon {
       color: $color-failure;
+    }
+  }
+
+  // confirmation input extensions
+  &.confirmation-input {
+    .confirmation {
+      height: $height;
+      margin: 0 $padding-h;
+      color: $confirmation-color;
+      font-size: $font-size;
+      line-height: $font-size;
+      font-weight: $confirmation-font-weight;
+    }
+
+    &.focused {
+      .confirmation {
+        cursor: pointer;
+        color: $confirmation-color-focus;
+      }
+    }
+  }
+
+  // password input extensions
+  &.password-input {
+    .password-input-toggle {
+      height: $height;
+      margin: 0 $padding-h;
+      color: $show-color;
+      font-size: $font-size;
+      line-height: $font-size;
+      cursor: pointer;
     }
   }
 }
