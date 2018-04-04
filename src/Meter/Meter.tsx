@@ -158,13 +158,13 @@ export class Meter extends React.PureComponent<Meter.Props> {
     return {
       basisSize: `${computePercentage(value, min, max)}%`,
       fillingStyle: {
-        backgroundColor: range ? range.fillingColor : baseFillingColor
+        background: range && range.fillingColor || baseFillingColor
       },
       labelStyle: {
-        color: range ? range.labelColor : baseLabelColor
+        color: range && range.labelColor || baseLabelColor
       },
       barStyle: {
-        backgroundColor: range ? range.backgroundColor : baseBackgroundColor
+        background: range && range.backgroundColor || baseBackgroundColor
       }
     };
   }
@@ -185,7 +185,7 @@ export class Meter extends React.PureComponent<Meter.Props> {
     const formattedLabel = labelFormatter(value, min, max);
 
     return (
-      <FlexView {...{ id, className, style }} grow>
+      <FlexView {...{ id, className, style }} grow vAlignContent='center'>
         <FlexView
           className='bar'
           grow

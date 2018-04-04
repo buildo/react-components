@@ -11,6 +11,7 @@ const ranges = [
 
 const meterProps = {
   ranges,
+  baseBackgroundColor: '#f8f8f8',
   style: { marginBottom: 20 }
 };
 
@@ -40,7 +41,7 @@ const ranges = [
 const meterProps = {
   ranges,
   baseFillingColor: '#CCCCCC',
-  baseBackgroundColor: '#FAFAFA',
+  baseBackgroundColor: '#F8F8F8',
   style: { marginBottom: 20 }
 };
 
@@ -86,6 +87,7 @@ const meterProps = {
   min: 400,
   max: 700,
   ranges,
+  baseBackgroundColor: '#f8f8f8',
   style: { marginBottom: 20 }
 };
 
