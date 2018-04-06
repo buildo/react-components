@@ -5,8 +5,8 @@ A Meter is a simple UI component used to display a measurement (usually a percen
 Typically, there are two use cases for this component:
 - display a value, such as a battery charge indicator
 - display the progress of an action
-
-# display a value
+# Usage
+### Display a value
 
 In this use case, the value can go up and down based on the semantics of the real world object.
 
@@ -16,7 +16,7 @@ For example, the battery charge goes up while recharging, and down while using t
 
 If the meter is displaying the space occupied, the semantics are inverted: it will become red as it approaches 100% or the maximum space value in Gigabytes.
 
-# display the progress
+### Display the progress
 
 In this use case, the value starts from 0 and can only go up, typically to 100%.
 
