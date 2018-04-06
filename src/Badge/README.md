@@ -1,6 +1,8 @@
 A small UI that can be used standalone as a tag or label, or attached to other UI components as a notification or count
 
-# Usage as Tag
+# Usage
+
+## Usage as tag
 
 A Badge can be used as a tag, to describe and categorize items:
 
@@ -8,7 +10,7 @@ A Badge can be used as a tag, to describe and categorize items:
 
 Using a Badge is an hint for the user that there might be different categories other than the ones displayed at the current time.
 
-# Usage as a counter
+## Usage as a counter
 
 A Badge can be used as a counter, to show e.g. the total number of items a search has matched:
 
