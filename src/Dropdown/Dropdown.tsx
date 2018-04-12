@@ -19,8 +19,10 @@ const defaultOptionGroupRenderer = (title: string) => title;
 
 const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
   focusedOption,
+  focusOption,
   instancePrefix,
   onFocus,
+  onOptionRef,
   onSelect,
   groupByKey,
   optionClassName,
@@ -63,7 +65,6 @@ const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
       {optionGroup.map((option, i) => {
         const isSelected = valueArray && valueArray.indexOf(option) > -1;
         const isFocused = option === focusedOption;
-        const optionRef = isFocused ? 'focused' : null;
         const optionClass = cx(optionClassName, {
           'Select-option': true,
           'is-selected': isSelected,
@@ -73,6 +74,7 @@ const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
         return (
           <OptionComponent
             className={optionClass}
+            focusOption={focusOption}
             instancePrefix={instancePrefix}
             isDisabled={option.disabled}
             isFocused={isFocused}
@@ -82,7 +84,7 @@ const defaultMenuRenderer: Dropdown.MenuRendererHandler = ({
             onSelect={onSelect}
             option={option}
             optionIndex={i}
-            ref={optionRef}
+            ref={(ref: React.Component<Dropdown.Props> | null) => { onOptionRef(ref, isFocused); }}
           >
             {optionRenderer(option, i)}
           </OptionComponent>
@@ -213,6 +215,7 @@ export namespace Dropdown {
     // seem supported by react-select but missing in the @types file?
     instancePrefix?: string
     onFocus?: () => void
+    onOptionRef: (ref: React.Component<Dropdown.Props> | null, isFocused: boolean) => void
     onSelect?: () => void
     optionClassName?: string
     optionComponent: React.ComponentType<{ [k: string]: any }> // TODO
