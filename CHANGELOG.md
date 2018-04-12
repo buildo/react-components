@@ -2,6 +2,40 @@
 
 
 
+## [v0.36.1](https://github.com/buildo/react-components/tree/v0.36.1) (2018-04-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.36.0...v0.36.1)
+
+#### Fixes (bugs & defects):
+
+- Dropdown: Fix ref error when testing with Enzyme [#1230](https://github.com/buildo/react-components/issues/1230)
+
+## [v0.36.0](https://github.com/buildo/react-components/tree/v0.36.0) (2018-04-04)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.35.0...v0.36.0)
+
+#### New features:
+
+- improve Meter styleability [#1223](https://github.com/buildo/react-components/issues/1223)
+
+#### Breaking:
+
+- scss double imports cause duplication and possibly broken style depending on order of imports [#1220](https://github.com/buildo/react-components/issues/1220)
+
+## [v0.35.0](https://github.com/buildo/react-components/tree/v0.35.0) (2018-04-03)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.34.0...v0.35.0)
+
+#### New features:
+
+- Dropdown: multi + small breaks the layout [#1218](https://github.com/buildo/react-components/issues/1218)
+- Input border width and placeholder font weight should be overridable [#1216](https://github.com/buildo/react-components/issues/1216)
+
+#### Fixes (bugs & defects):
+
+- dropdown has weird white line [#1214](https://github.com/buildo/react-components/issues/1214)
+
+#### Breaking:
+
+- Add PasswordInput component [#1212](https://github.com/buildo/react-components/issues/1212)
+
 ## [v0.34.0](https://github.com/buildo/react-components/tree/v0.34.0) (2018-03-29)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.33.0...v0.34.0)
 
