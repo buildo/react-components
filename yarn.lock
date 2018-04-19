@@ -509,7 +509,7 @@ aws4@^1.2.1, aws4@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-babel-cli@^6.16.0, babel-cli@^6.24.1:
+babel-cli@^6.16.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.26.0.tgz#502ab54874d7db88ad00b887a06383ce03d002f1"
   dependencies:
@@ -7295,14 +7295,6 @@ react-select@1.0.1:
     classnames "^2.2.4"
     prop-types "^15.5.8"
     react-input-autosize "^2.1.0"
-
-react-skinnable@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-skinnable/-/react-skinnable-1.1.1.tgz#7c44c669c3350a27ff0d7851a4e25a10956317ca"
-  dependencies:
-    babel-cli "^6.24.1"
-    babel-preset-buildo "^0.1.1"
-    tcomb "^3.0.0"
 
 react-styleguidist@6.0.33:
   version "6.0.33"
