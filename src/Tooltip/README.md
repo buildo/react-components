@@ -23,12 +23,3 @@ Tooltips are *dark* by default, but they can also be *light*.
 Use a *light* tooltip when you want to show a message over a dark background:
 
 ![image](https://user-images.githubusercontent.com/4029499/39045834-64e3bed6-4494-11e8-8062-554111cce5e0.png)
-
-## Size
-Tooltip are *small* by default, but they can also be *big*.
-Use a *big* tooltip if ... :
-
-![image](https://user-images.githubusercontent.com/4029499/39045776-30608ce8-4494-11e8-83e4-faac7747a27e.png)
-
-
-
