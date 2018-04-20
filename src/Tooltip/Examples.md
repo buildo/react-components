@@ -12,7 +12,7 @@ const popover = {
 </Tooltip>
 ```
 
-#### Tooltip sizes",
+#### Size
 Tooltip comes in two different sizes
 
 ```js
@@ -34,7 +34,7 @@ const popover = {
 </FlexView>
 ```
 
-#### Tooltip positions",
+#### Positions
 You can also set the position ('top', 'bottom', 'left', 'right') and the anchor point ('start', 'center', 'end') of the tooltip:
 
 ```js
@@ -75,7 +75,7 @@ const commonPopoverProps = { content: 'Tooltip', isOpen: true };
 </FlexView>
 ```
 
-#### Tooltip events",
+#### Trigger events
 By default, the tooltip is triggered when the mouse moves over the wrapped component. Using the `isOpen` prop you can also decide to manually control when the tooltip should appear:
 
 ```js
