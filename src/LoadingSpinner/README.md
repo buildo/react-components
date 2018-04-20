@@ -8,10 +8,9 @@ The `LoadingSpinner` should be used whenever the content of a page or a section 
 
 To help the user understand which information is loading, the dimmed layer should cover only the loading section and the spinner should be positioned at its center.
 
-# Variants
+`LoadingSpinner` is also used in [`AsyncStatusIndicator`](/#asyncstatusindicator&tab=1).
 
-## Color
-The loading spinner and the message should have the same color of the text below.
+# Variants
 
 ## Message
 If the content is taking a long time to load, you should add a message to reassure the user there is no error and possibly to explain what is happening:
