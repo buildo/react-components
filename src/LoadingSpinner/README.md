@@ -1,14 +1,19 @@
-# LoadingSpinner
+An absolute dimmed layer with a loading spinner in the center.
 
-Absolute dimmed layer with loading spinner in the center
+![image](https://user-images.githubusercontent.com/4029499/39043762-8c24c91e-448e-11e8-8808-e31259f7f217.png)
 
-## Props
-|Name|Type|Default|Description|
-|----|----|-------|-----------|
-| **size** | <code>union(String &#124; Number)</code> | <code>"3em"</code> | *optional*. Spinner size |
-| **color** | <code>String</code> |  | *optional*. Spinner main color |
-| **message** | <code>Struct{content: String, color: ?String, size: ?String &#124; Number}</code> |  | *optional*. Spinner message |
-| **overlayColor** | <code>String</code> | <code>"rgba(255, 255, 255, .9)"</code> | *optional*. Dimmed-overlay color |
-| **id** | <code>String</code> |  | *optional*. Custom `id` for wrapper element |
-| **className** | <code>String</code> |  | *optional*. Additional `className` for wrapper element |
-| **style** | <code>Object</code> |  | *optional*. Inline-style overrides for wrapper element |
+# Usage
+
+The `LoadingSpinner` should be used whenever the content of a page or a section of a page takes more than half a second to load.
+
+To help the user understand which information is loading, the dimmed layer should cover only the loading section and the spinner should be positioned at its center.
+
+`LoadingSpinner` is also used in [`AsyncStatusIndicator`](/#asyncstatusindicator&tab=1).
+
+# Variants
+
+## Message
+If the content is taking a long time to load, you should add a message to reassure the user there is no error and possibly to explain what is happening:
+
+![image](https://user-images.githubusercontent.com/4029499/39043948-0c0f4ea6-448f-11e8-9256-735bb0733321.png)
+
