@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as cx from 'classnames';
 import { props, t } from '../utils';
 import { warn } from '../utils/log';
@@ -50,6 +49,8 @@ export const Props = {
 @props(Props)
 export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
 
+  private loadingSpinner: HTMLDivElement | null;
+
   static defaultProps: LoadingSpinnerDefaultProps = {
     size: '3em',
     overlayColor: 'rgba(255, 255, 255, .9)',
@@ -80,7 +81,8 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
 
   logWarnings = () => {
     warn(() => {
-      const { parentElement } = ReactDOM.findDOMNode(this.refs.loadingSpinner);
+      if (!this.loadingSpinner) return undefined;
+      const { parentElement } = this.loadingSpinner;
       const { position } = window.getComputedStyle(parentElement!);
       if (position !== 'relative' && position !== 'absolute') {
         return ['LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"', parentElement];
@@ -100,7 +102,7 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
     const className = cx('loading-spinner', _className);
 
     return (
-      <div ref='loadingSpinner' className={className} style={style} id={id}>
+      <div className={className} style={style} id={id} ref={ls => { this.loadingSpinner = ls; }}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
           <div className='spinner' style={spinnerStyle} />
           {this.getMessage()}

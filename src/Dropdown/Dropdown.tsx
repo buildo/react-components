@@ -306,7 +306,7 @@ export class Dropdown extends React.Component<Dropdown.Props> {
     }
   }
 
-  private select: Select | null
+  private select: Select | null;
   focus = () => { this.select && this.select.focus(); }
 
   optionGroupRenderer = (title?: string) => {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import omit = require('lodash/omit');
 import debounce = require('lodash/debounce');
 import { props, t } from '../utils';
@@ -59,6 +58,9 @@ export type State = {
 @props(Props, { strict: false })
 export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
+  private text: HTMLSpanElement | null;
+  private textWithoutEllipsis: HTMLSpanElement | null;
+
   static defaultProps: TextOverflowDefaultProps = {
     delayWhenLazy: 100,
     lazy: false
@@ -82,7 +84,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
   logWarnings = () => {
     warn(() => {
-      const node = ReactDOM.findDOMNode(this.refs.text);
+      const node = this.text;
       if (node) {
         const styleNode = node.parentElement!.parentElement!;
         const { width, flex } = styleNode.style;
@@ -105,8 +107,8 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
   verifyOverflow = ({ force, reset }: { force?: boolean, reset?: boolean } = {}) => {
     if ((force || (!this.props.lazy && this.state.isOverflowing === false)) && typeof window !== 'undefined') {
-      const text = ReactDOM.findDOMNode(this.refs.text);
-      const textWithoutEllipsis = ReactDOM.findDOMNode(this.refs.textWithoutEllipsis);
+      const text = this.text;
+      const textWithoutEllipsis = this.textWithoutEllipsis;
 
       if (text && textWithoutEllipsis) {
         const textWidth = this.getElementWidth(text);
@@ -171,11 +173,11 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
       }
     };
 
-    const text = <span ref='text' {...events} style={styleText}>{label}</span>;
+    const text = <span ref={t => { this.text = t; }} {...events} style={styleText}>{label}</span>;
     return (
       <div>
         {lazy ? text : <ResizeSensor onResize={this.onResize}>{text}</ResizeSensor>}
-        <span ref='textWithoutEllipsis' style={styleTextWithoutEllipsis}>{label}</span>
+        <span ref={t => { this.textWithoutEllipsis = t; }} style={styleTextWithoutEllipsis}>{label}</span>
       </div>
     );
   };

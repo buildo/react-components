@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import omit = require('lodash/omit');
 import { props, t, ReactChildren } from '../utils';
 import easing, { EasingType } from './easingFunctions';
@@ -49,6 +48,7 @@ export const Props = {
 @props(Props, { strict: false })
 export class ScrollView extends React.Component<ScrollView.Props> {
 
+  private scrollView: HTMLDivElement | null;
   private lastY: number = 0;
 
   static defaultProps: ScrollViewDefaultProps = {
@@ -59,8 +59,6 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     onScroll: () => {},
     style: {}
   };
-
-  getScrollView = () => ReactDOM.findDOMNode(this.refs.scrollView);
 
   getEventListeners = () => {
     return {
@@ -73,7 +71,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   };
 
   isEventInsideScrollView: (el: Node) => boolean = el => {
-    if (el === this.getScrollView()) {
+    if (el === this.scrollView) {
       return true;
     } else if (el.parentNode) {
       return this.isEventInsideScrollView(el.parentNode);
@@ -95,7 +93,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
 
-      // const { scrollTop, scrollHeight, offsetHeight } = this.getScrollView();
+      // const { scrollTop, scrollHeight, offsetHeight } = this.scrollView;
 
       let up: boolean = false;
       if (e instanceof TouchEvent) {
@@ -113,10 +111,11 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     }
   };
 
-  isAtTop = () => this.getScrollView().scrollTop === 0;
+  isAtTop = () => this.scrollView && this.scrollView.scrollTop === 0;
 
   isAtBottom = () => {
-    const { scrollTop, scrollHeight, clientHeight } = this.getScrollView();
+    if (!this.scrollView) return false;
+    const { scrollTop, scrollHeight, clientHeight } = this.scrollView;
     return scrollTop + clientHeight === scrollHeight;
   };
 
@@ -131,7 +130,8 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   };
 
   scrollTo = (_x?: number | null, _y?: number | null, scrollDuration?: number) => {
-    const { scrollTop, scrollLeft } = this.getScrollView();
+    if (!this.scrollView) return;
+    const { scrollTop, scrollLeft } = this.scrollView;
     const x = _x || scrollLeft;
     const y = _y || scrollTop;
 
@@ -139,23 +139,24 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   };
 
   _scrollTo = (x: number, y: number, scrollDuration: number, startTime: number, startX: number, startY: number) => {
+    if (!this.scrollView) return;
     const { easing: easingType } = this.props as ScrollViewDefaultedProps;
     if (scrollDuration > 0) {
-      const { scrollTop, scrollLeft } = this.getScrollView();
+      const { scrollTop, scrollLeft } = this.scrollView;
       const easingFunction = easing[easingType];
 
       if ((t.Number.is(x) && scrollLeft !== x) || (t.Number.is(y) && scrollTop !== y)) {
         const currentTime = Math.min(scrollDuration, (Date.now() - startTime));
         const distanceX = (x - startX);
         const distanceY = (y - startY);
-        this.getScrollView().scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
-        this.getScrollView().scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
+        this.scrollView.scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
+        this.scrollView.scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
 
         requestAnimationFrame(() => this._scrollTo(x, y, scrollDuration, startTime, startX, startY));
       }
     } else {
-      this.getScrollView().scrollLeft = x;
-      this.getScrollView().scrollTop = y;
+      this.scrollView.scrollLeft = x;
+      this.scrollView.scrollTop = y;
     }
   };
 
@@ -169,7 +170,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     const props = omit(this.props, Object.keys(Props));
     const { children } = this.props;
     return (
-      <div {...props} {...this.getEventListeners()} style={this.computeStyle()} ref='scrollView'>
+      <div {...props} {...this.getEventListeners()} style={this.computeStyle()} ref={sv => { this.scrollView = sv; }}>
         {t.Function.is(children) ? children(this.scrollTo) : children}
       </div>
     );

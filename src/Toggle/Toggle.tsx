@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { props, t } from '../utils';
 import * as cx from 'classnames';
 import { warn } from '../utils/log';
@@ -40,6 +39,8 @@ type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 @props(Props)
 export class Toggle extends React.PureComponent<Toggle.Props> {
 
+  private checkbox: HTMLInputElement | null;
+
   static defaultProps: ToggleDefaultProps = {
     value: false
   };
@@ -53,9 +54,9 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
   }
 
   updateCheckbox = (props: ToggleDefaultedProps) => {
-    const { value } = props;
-    const checkboxNode = ReactDOM.findDOMNode<HTMLInputElement>(this.refs.checkbox);
-    checkboxNode.checked = value;
+    if (this.checkbox) {
+      this.checkbox.checked = props.value;
+    }
   };
 
   getHalfSize(size: string | number) {
@@ -96,7 +97,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
 
     return (
       <div {...{ className, style }}>
-        <input className='toggle-input' type='checkbox' ref='checkbox' value={value.toString()} readOnly />
+        <input className='toggle-input' type='checkbox' ref={c => { this.checkbox = c; }} value={value.toString()} readOnly />
         <label className='toggle-button' {...buttonProps} />
       </div>
     );
