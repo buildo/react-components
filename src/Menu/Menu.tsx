@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { props, t, ReactChildren } from '../utils';
-import { Menu, optionType } from './Menu';
+import { ActionsMenu, optionType } from './ActionsMenu';
 import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
 import * as cx from 'classnames';
 
-export type DropdownMenuRequiredProps = {
+export type MenuRequiredProps = {
   /** menu button content */
   children?: JSX.Element | string,
   /** renderer for menu items */
-  menuRenderer?: (options: Menu.Option[]) => JSX.Element,
+  menuRenderer?: (options: ActionsMenu.Option[]) => JSX.Element,
   /** menu options */
-  options: Menu.Option[],
+  options: ActionsMenu.Option[],
   /** className for menu button icon (if children is passed, this is ignored) */
   iconClassName?: string,
   /** called when menu is open */
@@ -19,25 +19,25 @@ export type DropdownMenuRequiredProps = {
   /** called when menu is closed */
   onClose: () => void,
   /** the height of the menu button */
-  size?: DropdownMenu.Size,
+  size?: Menu.Size,
   /** menu button max-height */
   maxHeight?: number,
   className?: string
 }
 
-export type DropdownMenuDefaultProps = {
+export type MenuDefaultProps = {
   /** whether the menu is open or not */
   isOpen: boolean,
-  /** whether the menu should be closed when clicking outside the dropdown */
+  /** whether the menu should be closed when clicking outside */
   dismissOnClickOut: boolean
 }
 
-export namespace DropdownMenu {
+export namespace Menu {
   export type Size =  'small' | 'medium' | 'large';
 
-  export type Props = DropdownMenuRequiredProps & Partial<DropdownMenuDefaultProps>;
+  export type Props = MenuRequiredProps & Partial<MenuDefaultProps>;
 }
-type DropdownMenuDefaultedProps = DropdownMenuRequiredProps & DropdownMenuDefaultProps;
+type MenuDefaultedProps = MenuRequiredProps & MenuDefaultProps;
 
 export const Props = {
   children: t.maybe(ReactChildren),
@@ -54,18 +54,18 @@ export const Props = {
 };
 
 /**
- *  A toggleable dropdown menu
+ *  A menu with actions
  */
 @props(Props)
-export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
+export class Menu extends React.PureComponent<Menu.Props> {
 
-  static defaultProps: DropdownMenuDefaultProps = {
+  static defaultProps: MenuDefaultProps = {
     isOpen: false,
     dismissOnClickOut: true
   };
 
   toggleMenu = () => {
-    const { isOpen, onOpen, onClose } = this.props as DropdownMenuDefaultedProps;
+    const { isOpen, onOpen, onClose } = this.props as MenuDefaultedProps;
     if (isOpen) {
       onClose();
     } else {
@@ -77,7 +77,7 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
     this.toggleMenu();
   };
 
-  getHeightFromSize = (size?: DropdownMenu.Size) => {
+  getHeightFromSize = (size?: Menu.Size) => {
     switch (size) {
       case 'small': return 250;
       case 'medium': return 400;
@@ -98,22 +98,22 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
 
   templateIconButton = ({ iconClassName, isOpen }: { iconClassName?: string, isOpen: boolean }) => {
     return (
-      <FlexView vAlignContent='center' className={cx('dropdown-menu-icon-container', { isOpen })}>
-        <Icon icon={iconClassName} className='dropdown-menu-icon' />
+      <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
+        <Icon icon={iconClassName} className='menu-icon' />
       </FlexView>
     );
   };
 
-  templateMenu = ({ isOpen, options, height, onMenuClick }: {
+  templateActionsMenu = ({ isOpen, options, height, onMenuClick }: {
     isOpen: boolean,
-    options: Menu.Option[],
+    options: ActionsMenu.Option[],
     height: number | null,
     onMenuClick: () => void
   }) => {
     return isOpen ? (
       <FlexView onClick={onMenuClick}>
         {this.props.menuRenderer ?
-          this.props.menuRenderer(options) : <Menu options={options} style={{ maxHeight: height }} />
+          this.props.menuRenderer(options) : <ActionsMenu options={options} style={{ maxHeight: height }} />
         }
       </FlexView>
     ) : null;
@@ -125,7 +125,7 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
     dismissOnClickOut: boolean
   }) => {
     return (
-      dismissOnClickOut && isOpen ? <div className='dropdown-menu-overlay' onClick={toggleMenu} /> : null
+      dismissOnClickOut && isOpen ? <div className='menu-overlay' onClick={toggleMenu} /> : null
     );
   };
 
@@ -139,16 +139,16 @@ export class DropdownMenu extends React.PureComponent<DropdownMenu.Props> {
       className,
       size,
       isOpen
-    } = this.props as DropdownMenuDefaultedProps;
+    } = this.props as MenuDefaultedProps;
     const { toggleMenu, onMenuClick } = this;
 
     const height = maxHeight || this.getHeightFromSize(size);
 
     return (
-      <FlexView vAlignContent='center' className={cx('dropdown-menu', className)} onClick={toggleMenu}>
+      <FlexView vAlignContent='center' className={cx('menu', className)} onClick={toggleMenu}>
         {this.templateOverlay({ isOpen, toggleMenu, dismissOnClickOut })}
         {this.templateToggler({ children, iconClassName, isOpen })}
-        {this.templateMenu({ isOpen, options, height, onMenuClick })}
+        {this.templateActionsMenu({ isOpen, options, height, onMenuClick })}
       </FlexView>
     );
   }

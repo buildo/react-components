@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Menu } from '../../src/DropdownMenu';
+import { ActionsMenu } from '../../src/Menu';
 
 let consoleError: jest.SpyInstance<{}>;
 const consoleWarn = console.warn;
@@ -30,18 +30,18 @@ afterAll(() => {
   console.warn = consoleWarn;
 });
 
-const exampleProps: Menu.Props = {
+const exampleProps: ActionsMenu.Props = {
   options: [
     { title: 'Preferences', type: 'item' },
     { title: 'Preferences', type: 'item' }
   ]
 };
 
-describe('Menu', () => {
+describe('ActionsMenu', () => {
 
   it('renders correctly', () => {
     const component = mount(
-      <Menu {...exampleProps} />
+      <ActionsMenu {...exampleProps} />
     );
     expect(component.html()).toMatchSnapshot();
   });
@@ -50,14 +50,14 @@ describe('Menu', () => {
     const onClickEnabled = jest.fn();
     const onClickDisabled = jest.fn();
     const component = mount(
-      <Menu options={[
+      <ActionsMenu options={[
         { title: 'Preferences', type: 'item', onClick: onClickEnabled },
         { title: 'Preferences', type: 'item', disabled: true, onClick: onClickDisabled }
       ]}
       />
     );
-    component.find('.menu-item').at(0).simulate('click');
-    component.find('.menu-item').at(1).simulate('click');
+    component.find('.menu-action').at(0).simulate('click');
+    component.find('.menu-action').at(1).simulate('click');
     expect(onClickEnabled).toBeCalled();
     expect(onClickDisabled).not.toBeCalled();
   });

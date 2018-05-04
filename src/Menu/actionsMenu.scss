@@ -7,7 +7,7 @@ $item-title-color-hover: $brc-darkGrey !default;
 $item-background-hover: rgba($brc-azure, .15) !default;
 $item-metadata-color: $brc-coolGrey !default;
 
-.menu {
+.actions-menu {
   overflow: auto;
   position: absolute;
   top: 40px;
@@ -30,23 +30,23 @@ $item-metadata-color: $brc-coolGrey !default;
     text-transform: uppercase;
   }
 
-  .menu-item {
+  .menu-action {
     position: relative;
     padding: 14px;
     cursor: pointer;
 
-    .menu-item-title {
+    .menu-action-title {
       color: $item-title-color;
     }
 
-    .menu-item-metadata {
+    .menu-action-metadata {
       color: $item-metadata-color;
     }
 
     &:hover:not(.disabled) {
       background: $item-background-hover;
 
-      .menu-item-title {
+      .menu-action-title {
         color: $item-title-color-hover;
       }
     }
