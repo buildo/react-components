@@ -30,7 +30,9 @@ export type MenuDefaultProps = {
   /** whether the menu is open or not */
   isOpen: boolean,
   /** whether the menu should be closed when clicking outside */
-  dismissOnClickOutside: boolean
+  dismissOnClickOutside: boolean,
+  /** wheter the menu should be rendered on top or at the bottom of the trigger */
+  position: 'top' | 'bottom',
 }
 
 export namespace Menu {
@@ -49,7 +51,8 @@ export const Props = {
   onOpen: t.Function,
   onClose: t.Function,
   dismissOnClickOutside: t.maybe(t.Boolean),
-  size: t.maybe(t.enums.of(['small', 'medium', 'large']), ''),
+  size: t.maybe(t.enums.of(['small', 'medium', 'large'])),
+  position: t.maybe(t.enums.of(['top', 'bottom'])),
   maxHeight: t.maybe(t.Number),
   className: t.maybe(t.String)
 };
@@ -62,7 +65,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
 
   static defaultProps: MenuDefaultProps = {
     isOpen: false,
-    dismissOnClickOutside: true
+    dismissOnClickOutside: true,
+    position: 'bottom'
   };
 
   toggleMenu = () => {
@@ -97,7 +101,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
       isOpen,
       onClose,
       options,
-      menuRenderer
+      menuRenderer,
+      position
     } = this.props as MenuDefaultedProps;
     const { toggleMenu } = this;
 
@@ -108,9 +113,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
         popover={{
           isOpen,
           dismissOnClickOutside,
-          event: 'click',
+          position,
           anchor: 'end',
-          position: 'bottom',
           className: 'actions-menu-popover',
           content:  menuRenderer ?
             menuRenderer(options) :
