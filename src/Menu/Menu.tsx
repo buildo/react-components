@@ -69,15 +69,6 @@ export class Menu extends React.PureComponent<Menu.Props> {
     position: 'bottom'
   };
 
-  toggleMenu = () => {
-    const { isOpen, onOpen, onClose } = this.props as MenuDefaultedProps;
-    if (isOpen) {
-      onClose();
-    } else {
-      onOpen();
-    }
-  };
-
   getActionsMenuMaxHeight = (): number | undefined => {
     if (this.props.maxHeight) {
       return this.props.maxHeight;
@@ -98,13 +89,13 @@ export class Menu extends React.PureComponent<Menu.Props> {
       children,
       dismissOnClickOutside,
       className,
-      isOpen,
-      onClose,
       options,
       menuRenderer,
+      isOpen,
+      onClose,
+      onOpen,
       position
     } = this.props as MenuDefaultedProps;
-    const { toggleMenu } = this;
 
     const maxHeight = this.getActionsMenuMaxHeight();
 
@@ -114,6 +105,7 @@ export class Menu extends React.PureComponent<Menu.Props> {
           isOpen,
           dismissOnClickOutside,
           position,
+          onShow: onOpen,
           onHide: onClose,
           event: 'click',
           anchor: 'end',
@@ -123,7 +115,7 @@ export class Menu extends React.PureComponent<Menu.Props> {
             <ActionsMenu onClick={onClose} options={options} maxHeight={maxHeight} />
         }}
       >
-        <FlexView vAlignContent='center' className={cx('menu', className)} onClick={toggleMenu}>
+        <FlexView vAlignContent='center' className={cx('menu', className)}>
           {children || (
             <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
               <Icon icon={iconClassName} className='menu-icon' />
