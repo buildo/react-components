@@ -306,7 +306,7 @@ export class Dropdown extends React.Component<Dropdown.Props> {
     }
   }
 
-  private select: Select;
+  private select: Select | null;
   focus = () => { this.select && this.select.focus(); }
 
   optionGroupRenderer = (title?: string) => {
@@ -346,7 +346,7 @@ export class Dropdown extends React.Component<Dropdown.Props> {
       menuRenderer: this.menuRenderer as SelectNS.MenuRendererHandler
     };
 
-    return <Select {...selectProps} ref={select => { this.select = select!; }} />;
+    return <Select {...selectProps} ref={select => { this.select = select; }} />;
   }
 }
 

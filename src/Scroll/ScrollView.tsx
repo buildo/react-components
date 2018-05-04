@@ -48,7 +48,7 @@ export const Props = {
 @props(Props, { strict: false })
 export class ScrollView extends React.Component<ScrollView.Props> {
 
-  private scrollView: HTMLDivElement;
+  private scrollView: HTMLDivElement | null;
   private lastY: number = 0;
 
   static defaultProps: ScrollViewDefaultProps = {
@@ -111,9 +111,10 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     }
   };
 
-  isAtTop = () => this.scrollView.scrollTop === 0;
+  isAtTop = () => this.scrollView && this.scrollView.scrollTop === 0;
 
   isAtBottom = () => {
+    if (!this.scrollView) return false;
     const { scrollTop, scrollHeight, clientHeight } = this.scrollView;
     return scrollTop + clientHeight === scrollHeight;
   };
@@ -129,6 +130,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   };
 
   scrollTo = (_x?: number | null, _y?: number | null, scrollDuration?: number) => {
+    if (!this.scrollView) return;
     const { scrollTop, scrollLeft } = this.scrollView;
     const x = _x || scrollLeft;
     const y = _y || scrollTop;
@@ -137,6 +139,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   };
 
   _scrollTo = (x: number, y: number, scrollDuration: number, startTime: number, startX: number, startY: number) => {
+    if (!this.scrollView) return;
     const { easing: easingType } = this.props as ScrollViewDefaultedProps;
     if (scrollDuration > 0) {
       const { scrollTop, scrollLeft } = this.scrollView;
@@ -167,7 +170,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     const props = omit(this.props, Object.keys(Props));
     const { children } = this.props;
     return (
-      <div {...props} {...this.getEventListeners()} style={this.computeStyle()} ref={sv => { this.scrollView = sv!; }}>
+      <div {...props} {...this.getEventListeners()} style={this.computeStyle()} ref={sv => { this.scrollView = sv; }}>
         {t.Function.is(children) ? children(this.scrollTo) : children}
       </div>
     );

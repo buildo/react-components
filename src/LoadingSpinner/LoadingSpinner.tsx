@@ -49,7 +49,7 @@ export const Props = {
 @props(Props)
 export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
 
-  private loadingSpinner: HTMLDivElement;
+  private loadingSpinner: HTMLDivElement | null;
 
   static defaultProps: LoadingSpinnerDefaultProps = {
     size: '3em',
@@ -81,6 +81,7 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
 
   logWarnings = () => {
     warn(() => {
+      if (!this.loadingSpinner) return undefined;
       const { parentElement } = this.loadingSpinner;
       const { position } = window.getComputedStyle(parentElement!);
       if (position !== 'relative' && position !== 'absolute') {
@@ -101,7 +102,7 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
     const className = cx('loading-spinner', _className);
 
     return (
-      <div className={className} style={style} id={id} ref={ls => { this.loadingSpinner = ls!; }}>
+      <div className={className} style={style} id={id} ref={ls => { this.loadingSpinner = ls; }}>
         <div className='loading-spinner-overlay' style={overlayStyle}>
           <div className='spinner' style={spinnerStyle} />
           {this.getMessage()}

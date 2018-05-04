@@ -109,7 +109,7 @@ type PopoverStyle = React.CSSProperties & {
 @props(Props)
 export class Popover extends React.Component<Popover.Props, State> {
 
-  private children: HTMLDivElement;
+  private children: HTMLDivElement | null;
   private initialized: boolean;
   private containerNode: Element | null;
   private onMouseEventDebouncedWhenOpen: ((_: string) => void) & _.Cancelable | null;
@@ -176,13 +176,15 @@ export class Popover extends React.Component<Popover.Props, State> {
   };
 
   onClickOutside = (e: MouseEvent) => {
-    const childrenNode = this.children;
-    const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.children[1];
-    // It's safe to assume that the target is going to be a DOM Element
-    // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
-    const el = (e.target || e.srcElement) as Element;
-    if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
-      this.hidePopover();
+    if (this.children) {
+      const childrenNode = this.children;
+      const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.children[1];
+      // It's safe to assume that the target is going to be a DOM Element
+      // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
+      const el = (e.target || e.srcElement) as Element;
+      if (!this.isEventInsideTarget(el, childrenNode) && (!popoverNode || !this.isEventInsideTarget(el, popoverNode))) {
+        this.hidePopover();
+      }
     }
   };
 
@@ -237,8 +239,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     if (this.isAbsolute()) {
       popover = this.containerNode ? this.containerNode.children[0] : null;
     } else {
-      const childrenNode = this.children;
-      popover = childrenNode.children[1];
+      popover = this.children ? this.children.children[1] : null;
     }
     return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.children[0] : popover;
   };
@@ -262,13 +263,12 @@ export class Popover extends React.Component<Popover.Props, State> {
   };
 
   saveValuesFromNodeTree = () => {
-    const childrenNode = this.children;
     const popoverNode = this.getPopoverNode();
 
-    if (popoverNode) {
-      const { clientWidth: childWidth, clientHeight: childHeight } = childrenNode;
+    if (this.children && popoverNode) {
+      const { clientWidth: childWidth, clientHeight: childHeight } = this.children;
       const { clientHeight: popoverHeight, clientWidth: popoverWidth } = popoverNode;
-      const { top: childY, left: childX } = this.getOffsetRect(childrenNode);
+      const { top: childY, left: childX } = this.getOffsetRect(this.children);
       const { top: popoverY, left: popoverX } = this.getOffsetRect(popoverNode);
 
       this.setState({
@@ -357,13 +357,15 @@ export class Popover extends React.Component<Popover.Props, State> {
   };
 
   eventWrapper = <E extends React.SyntheticEvent<HTMLElement>>(cb: (e: E) => void) => (e: E) => {
-    const { event } = this.getPopoverProps();
-    const childrenNode = this.children.children[0];
-    // It's safe to assume that the target is going to be a DOM Element
-    // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
-    const el = e.target as Element;
-    if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
-      cb(e);
+    if (this.children) {
+      const { event } = this.getPopoverProps();
+      const childrenNode = this.children.children[0];
+      // It's safe to assume that the target is going to be a DOM Element
+      // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
+      const el = e.target as Element;
+      if (this.isAbsolute() || (event === 'hover') || this.isEventInsideTarget(el, childrenNode)) {
+        cb(e);
+      }
     }
   };
 
@@ -585,7 +587,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   render() {
     const { children, style, className, id, eventCallbacks, popover } = this.getLocals();
     return (
-      <div {...{ id, className, style }} {...eventCallbacks} ref={c => { this.children = c!; } }>
+      <div {...{ id, className, style }} {...eventCallbacks} ref={c => { this.children = c; } }>
         {children}
         {popover}
       </div>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { props, t, ReactElement } from '../utils';
 import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 
@@ -31,7 +30,7 @@ export const Props = {
 @props(Props)
 export class Overflow extends React.Component<Overflow.Props, State> {
 
-  private ref: HTMLDivElement
+  private ref: HTMLDivElement | null
 
   state = { isOverflowing: false }
 
@@ -52,7 +51,7 @@ export class Overflow extends React.Component<Overflow.Props, State> {
 
   verifyOverflow() {
     if (typeof window !== 'undefined') {
-      const node = ReactDOM.findDOMNode(this.ref);
+      const node = this.ref;
 
       if (node && node.children) {
         const childrenWidth = this.getElementWidth(node.children[0]);
@@ -74,7 +73,7 @@ export class Overflow extends React.Component<Overflow.Props, State> {
 
     return (
       <ResizeSensor debounce={10} onResize={this.onResize}>
-        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref!; }}>
+        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref; }}>
           {isOverflowing ? contentIfOverflowing : content}
         </div>
       </ResizeSensor>

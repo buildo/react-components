@@ -58,8 +58,8 @@ export type State = {
 @props(Props, { strict: false })
 export class TextOverflow extends React.Component<TextOverflow.Props, State> {
 
-  private text: HTMLSpanElement;
-  private textWithoutEllipsis: HTMLSpanElement;
+  private text: HTMLSpanElement | null;
+  private textWithoutEllipsis: HTMLSpanElement | null;
 
   static defaultProps: TextOverflowDefaultProps = {
     delayWhenLazy: 100,
@@ -173,11 +173,11 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
       }
     };
 
-    const text = <span ref={t => { this.text = t!; }} {...events} style={styleText}>{label}</span>;
+    const text = <span ref={t => { this.text = t; }} {...events} style={styleText}>{label}</span>;
     return (
       <div>
         {lazy ? text : <ResizeSensor onResize={this.onResize}>{text}</ResizeSensor>}
-        <span ref={t => { this.textWithoutEllipsis = t!; }} style={styleTextWithoutEllipsis}>{label}</span>
+        <span ref={t => { this.textWithoutEllipsis = t; }} style={styleTextWithoutEllipsis}>{label}</span>
       </div>
     );
   };
