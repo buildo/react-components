@@ -114,6 +114,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
           isOpen,
           dismissOnClickOutside,
           position,
+          onHide: onClose,
+          event: 'click',
           anchor: 'end',
           className: 'actions-menu-popover',
           content:  menuRenderer ?
@@ -122,9 +124,6 @@ export class Menu extends React.PureComponent<Menu.Props> {
         }}
       >
         <FlexView vAlignContent='center' className={cx('menu', className)} onClick={toggleMenu}>
-          {dismissOnClickOutside && isOpen && (
-            <div className='menu-overlay' onClick={onClose} />
-          )}
           {children || (
             <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
               <Icon icon={iconClassName} className='menu-icon' />
