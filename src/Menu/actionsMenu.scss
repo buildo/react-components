@@ -9,9 +9,6 @@ $item-metadata-color: $brc-coolGrey !default;
 
 .actions-menu {
   overflow: auto;
-  position: absolute;
-  top: 40px;
-  right: 0;
   z-index: 101;
   border: 1px solid $border-color;
   width: 250px;

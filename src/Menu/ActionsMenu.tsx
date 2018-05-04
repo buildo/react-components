@@ -117,7 +117,7 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
     const { onOptionClick } = this;
 
     return (
-      <div className='actions-menu' style={{ ...style, maxHeight: maxHeight }}>
+      <div className='actions-menu' style={{ ...style, maxHeight }}>
         {this.templateRenderedOptions({ options, onOptionClick })}
       </div>
     );

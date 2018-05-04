@@ -3,6 +3,7 @@ import { props, t, ReactChildren } from '../utils';
 import { ActionsMenu, optionType } from './ActionsMenu';
 import FlexView from 'react-flexview';
 import { Icon } from '../Icon/Icon';
+import { Popover } from '../Popover/Popover';
 import * as cx from 'classnames';
 
 export type MenuRequiredProps = {
@@ -29,7 +30,7 @@ export type MenuDefaultProps = {
   /** whether the menu is open or not */
   isOpen: boolean,
   /** whether the menu should be closed when clicking outside */
-  dismissOnClickOut: boolean
+  dismissOnClickOutside: boolean
 }
 
 export namespace Menu {
@@ -47,7 +48,7 @@ export const Props = {
   isOpen: t.maybe(t.Boolean),
   onOpen: t.Function,
   onClose: t.Function,
-  dismissOnClickOut: t.maybe(t.Boolean),
+  dismissOnClickOutside: t.maybe(t.Boolean),
   size: t.maybe(t.enums.of(['small', 'medium', 'large']), ''),
   maxHeight: t.maybe(t.Number),
   className: t.maybe(t.String)
@@ -61,7 +62,7 @@ export class Menu extends React.PureComponent<Menu.Props> {
 
   static defaultProps: MenuDefaultProps = {
     isOpen: false,
-    dismissOnClickOut: true
+    dismissOnClickOutside: true
   };
 
   toggleMenu = () => {
@@ -73,83 +74,60 @@ export class Menu extends React.PureComponent<Menu.Props> {
     }
   };
 
-  onMenuClick = () => {
-    this.toggleMenu();
-  };
-
-  getHeightFromSize = (size?: Menu.Size) => {
-    switch (size) {
-      case 'small': return 250;
-      case 'medium': return 400;
-      case 'large': return 600;
-      default: return null;
+  getActionsMenuMaxHeight = (): number | undefined => {
+    if (this.props.maxHeight) {
+      return this.props.maxHeight;
     }
-  };
 
-  templateToggler = ({ children, iconClassName, isOpen }: {
-    children?: JSX.Element | string,
-    iconClassName?: string,
-    isOpen: boolean
-  }) => {
-    return (
-      children || this.templateIconButton({ iconClassName, isOpen })
-    );
-  };
-
-  templateIconButton = ({ iconClassName, isOpen }: { iconClassName?: string, isOpen: boolean }) => {
-    return (
-      <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
-        <Icon icon={iconClassName} className='menu-icon' />
-      </FlexView>
-    );
-  };
-
-  templateActionsMenu = ({ isOpen, options, height, onMenuClick }: {
-    isOpen: boolean,
-    options: ActionsMenu.Option[],
-    height: number | null,
-    onMenuClick: () => void
-  }) => {
-    return isOpen ? (
-      <FlexView onClick={onMenuClick}>
-        {this.props.menuRenderer ?
-          this.props.menuRenderer(options) : <ActionsMenu options={options} style={{ maxHeight: height }} />
-        }
-      </FlexView>
-    ) : null;
-  };
-
-  templateOverlay = ({ isOpen, toggleMenu, dismissOnClickOut }: {
-    isOpen: boolean,
-    toggleMenu: () => void,
-    dismissOnClickOut: boolean
-  }) => {
-    return (
-      dismissOnClickOut && isOpen ? <div className='menu-overlay' onClick={toggleMenu} /> : null
-    );
+    if (this.props.size) {
+      switch (this.props.size) {
+        case 'small': return 250;
+        case 'medium': return 400;
+        case 'large': return 600;
+      }
+    }
   };
 
   render() {
     const {
       iconClassName,
       children,
-      options,
-      dismissOnClickOut,
-      maxHeight,
+      dismissOnClickOutside,
       className,
-      size,
-      isOpen
+      isOpen,
+      onClose,
+      options,
+      menuRenderer
     } = this.props as MenuDefaultedProps;
-    const { toggleMenu, onMenuClick } = this;
+    const { toggleMenu } = this;
 
-    const height = maxHeight || this.getHeightFromSize(size);
+    const maxHeight = this.getActionsMenuMaxHeight();
 
     return (
-      <FlexView vAlignContent='center' className={cx('menu', className)} onClick={toggleMenu}>
-        {this.templateOverlay({ isOpen, toggleMenu, dismissOnClickOut })}
-        {this.templateToggler({ children, iconClassName, isOpen })}
-        {this.templateActionsMenu({ isOpen, options, height, onMenuClick })}
-      </FlexView>
+      <Popover
+        popover={{
+          isOpen,
+          dismissOnClickOutside,
+          event: 'click',
+          anchor: 'end',
+          position: 'bottom',
+          className: 'actions-menu-popover',
+          content:  menuRenderer ?
+            menuRenderer(options) :
+            <ActionsMenu onClick={onClose} options={options} maxHeight={maxHeight} />
+        }}
+      >
+        <FlexView vAlignContent='center' className={cx('menu', className)} onClick={toggleMenu}>
+          {dismissOnClickOutside && isOpen && (
+            <div className='menu-overlay' onClick={onClose} />
+          )}
+          {children || (
+            <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
+              <Icon icon={iconClassName} className='menu-icon' />
+            </FlexView>
+          )}
+        </FlexView>
+      </Popover>
     );
   }
 
