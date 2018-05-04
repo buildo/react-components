@@ -110,6 +110,7 @@ export class Menu extends React.PureComponent<Menu.Props> {
           event: 'click',
           anchor: 'end',
           className: 'actions-menu-popover',
+          dismissOnScroll: false,
           content:  menuRenderer ?
             menuRenderer(options) :
             <ActionsMenu onClick={onClose} options={options} maxHeight={maxHeight} />
