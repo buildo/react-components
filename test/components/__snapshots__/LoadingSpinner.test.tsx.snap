@@ -1851,6 +1851,19 @@ ReactWrapper {
           "_reactInternalInstance": Object {},
           "context": Object {},
           "getMessage": [Function],
+          "loadingSpinner": <div
+            class="loading-spinner some-class"
+>
+            <div
+                        class="loading-spinner-overlay"
+                        style="background-color: rgba(255, 255, 255, 0.9);"
+            >
+                        <div
+                                    class="spinner"
+                                    style="font-size: 3em;"
+                        />
+            </div>
+</div>,
           "logWarnings": [Function],
           "props": Object {
             "className": "some-class",
@@ -1858,21 +1871,7 @@ ReactWrapper {
             "size": "3em",
             "style": Object {},
           },
-          "refs": Object {
-            "loadingSpinner": <div
-              class="loading-spinner some-class"
->
-              <div
-                            class="loading-spinner-overlay"
-                            style="background-color: rgba(255, 255, 255, 0.9);"
-              >
-                            <div
-                                          class="spinner"
-                                          style="font-size: 3em;"
-                            />
-              </div>
-</div>,
-          },
+          "refs": Object {},
           "state": null,
           "updater": Object {
             "enqueueForceUpdate": [Function],
@@ -3821,6 +3820,19 @@ ReactWrapper {
             "_reactInternalInstance": Object {},
             "context": Object {},
             "getMessage": [Function],
+            "loadingSpinner": <div
+              class="loading-spinner some-class"
+>
+              <div
+                            class="loading-spinner-overlay"
+                            style="background-color: rgba(255, 255, 255, 0.9);"
+              >
+                            <div
+                                          class="spinner"
+                                          style="font-size: 3em;"
+                            />
+              </div>
+</div>,
             "logWarnings": [Function],
             "props": Object {
               "className": "some-class",
@@ -3828,21 +3840,7 @@ ReactWrapper {
               "size": "3em",
               "style": Object {},
             },
-            "refs": Object {
-              "loadingSpinner": <div
-                class="loading-spinner some-class"
->
-                <div
-                                class="loading-spinner-overlay"
-                                style="background-color: rgba(255, 255, 255, 0.9);"
-                >
-                                <div
-                                                class="spinner"
-                                                style="font-size: 3em;"
-                                />
-                </div>
-</div>,
-            },
+            "refs": Object {},
             "state": null,
             "updater": Object {
               "enqueueForceUpdate": [Function],

@@ -109,6 +109,7 @@ type PopoverStyle = React.CSSProperties & {
 @props(Props)
 export class Popover extends React.Component<Popover.Props, State> {
 
+  private children: HTMLDivElement;
   private initialized: boolean;
   private containerNode: Element | null;
   private onMouseEventDebouncedWhenOpen: ((_: string) => void) & _.Cancelable | null;
@@ -175,7 +176,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   };
 
   onClickOutside = (e: MouseEvent) => {
-    const childrenNode = ReactDOM.findDOMNode(this.refs.children);
+    const childrenNode = this.children;
     const popoverNode = this.isAbsolute() ? this.containerNode : childrenNode.children[1];
     // It's safe to assume that the target is going to be a DOM Element
     // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
@@ -236,7 +237,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     if (this.isAbsolute()) {
       popover = this.containerNode ? this.containerNode.children[0] : null;
     } else {
-      const childrenNode = ReactDOM.findDOMNode(this.refs.children);
+      const childrenNode = this.children;
       popover = childrenNode.children[1];
     }
     return (popover && popover.id === NO_SIZE_WRAPPER) ? popover.children[0] : popover;
@@ -261,7 +262,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   };
 
   saveValuesFromNodeTree = () => {
-    const childrenNode = ReactDOM.findDOMNode(this.refs.children);
+    const childrenNode = this.children;
     const popoverNode = this.getPopoverNode();
 
     if (popoverNode) {
@@ -357,7 +358,7 @@ export class Popover extends React.Component<Popover.Props, State> {
 
   eventWrapper = <E extends React.SyntheticEvent<HTMLElement>>(cb: (e: E) => void) => (e: E) => {
     const { event } = this.getPopoverProps();
-    const childrenNode = ReactDOM.findDOMNode(this.refs.children).children[0];
+    const childrenNode = this.children.children[0];
     // It's safe to assume that the target is going to be a DOM Element
     // See also: https://stackoverflow.com/questions/28900077/why-is-event-target-not-element-in-typescript
     const el = e.target as Element;
@@ -584,7 +585,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   render() {
     const { children, style, className, id, eventCallbacks, popover } = this.getLocals();
     return (
-      <div {...{ id, className, style }} {...eventCallbacks} ref='children'>
+      <div {...{ id, className, style }} {...eventCallbacks} ref={c => { this.children = c!; } }>
         {children}
         {popover}
       </div>
