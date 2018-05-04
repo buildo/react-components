@@ -7,21 +7,21 @@ import { Popover } from '../Popover/Popover';
 import * as cx from 'classnames';
 
 export type MenuRequiredProps = {
-  /** menu button content */
+  /** custom content for the menu trigger */
   children?: JSX.Element | string,
-  /** renderer for menu items */
+  /** custom renderer for menu items. if none is passed, it renders ActionsMenu */
   menuRenderer?: (options: ActionsMenu.Option[]) => JSX.Element,
   /** menu options */
   options: ActionsMenu.Option[],
-  /** className for menu button icon (if children is passed, this is ignored) */
+  /** className for the buil-in icon rendered in the menu trigger (if children is passed, this is ignored) */
   iconClassName?: string,
-  /** called when menu is open */
+  /** called when menu is opened */
   onOpen: () => void,
   /** called when menu is closed */
   onClose: () => void,
-  /** the height of the menu button */
+  /** the a set of built-in max heights for the menu (if maxHeight is passed, this is ignored) */
   size?: Menu.Size,
-  /** menu button max-height */
+  /** custom max height for the menu */
   maxHeight?: number,
   className?: string
 }
