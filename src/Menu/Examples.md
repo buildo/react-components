@@ -31,7 +31,7 @@ const options = [
   }
 ];
 
-const dropdownMenuProps = {
+const menuProps = {
   onOpen: toggleOpen,
   onClose: toggleOpen,
   isOpen,
@@ -41,10 +41,10 @@ const dropdownMenuProps = {
 const icon = isOpen ? 'angleUpsvg' : 'angleDown';
 
 <FlexView hAlignContent='right' style={{ border: '1px solid #ced0da' }}>
-  <DropdownMenu {...dropdownMenuProps}>
+  <Menu {...menuProps}>
     <FlexView vAlignContent='center' className='user-menu'>
       <FlexView shrink={false} className='user-avatar'>
-        <img src='avatarDropdownMenu.png' />
+        <img src='avatarMenu.png' />
       </FlexView>
       <FlexView column grow>
         <FlexView className='user-name'>Jordan J.</FlexView>
@@ -54,6 +54,6 @@ const icon = isOpen ? 'angleUpsvg' : 'angleDown';
         <Icon icon={icon} style={{ cursor: 'pointer' }} />
       </FlexView>
     </FlexView>
-  </DropdownMenu>
+  </Menu>
 </FlexView>
 ```
