@@ -19,7 +19,7 @@ export type MenuRequiredProps = {
   onOpen: () => void,
   /** called when menu is closed */
   onClose: () => void,
-  /** the a set of built-in max heights for the menu (if maxHeight is passed, this is ignored) */
+  /** set of built-in max heights for the menu (if maxHeight is passed, this is ignored) */
   size?: Menu.Size,
   /** custom max height for the menu */
   maxHeight?: number,
