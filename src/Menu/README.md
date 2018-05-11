@@ -1,10 +1,13 @@
-UI component to show/hide a menu of actions
+UI component to show/hide a menu of actions or links.
+
+![menu-asctions](https://user-images.githubusercontent.com/10867086/39931233-16b24ff2-553d-11e8-8a80-7f69d5dbc1dc.jpg)
 
 # Usage
 
 In its simplest form, Menu renders a show/hide icon that can be customized, shows the list of options provided when the user clicks the icon, and hides the menu when the user selects an action or dismisses by clicking anywhere outside the menu.
 
-<img width="263" alt="screen shot 2018-04-20 at 13 09 10" src="https://user-images.githubusercontent.com/2643520/39047959-1cccd698-449c-11e8-811e-8a176f916651.png">
+
+![tooltip-icon](https://user-images.githubusercontent.com/10867086/39931260-2686248a-553d-11e8-90a0-26cac110b57e.jpg)
 
 ### Customizing the show/hide UI
 
@@ -12,9 +15,11 @@ The show/hide UI can be customized to show a different icon (e.g. a "settings" i
 
 In this example we are using Menu to show an "User menu":
 
-<img width="285" alt="screen shot 2018-04-20 at 12 56 36" src="https://user-images.githubusercontent.com/2643520/39047496-5a60aa68-449a-11e8-9ed0-4473347d8405.png">
+![menu-navbar](https://user-images.githubusercontent.com/10867086/39931323-581a2c58-553d-11e8-8b6b-0fa918c78888.jpg)
 
 ### Menu vs Dropdown
+
+![menu vs dropdown](https://user-images.githubusercontent.com/10867086/39931344-6736f4fa-553d-11e8-9926-de8c8443f403.jpg)
 
 The interaction presented by Menu is similar in some ways to the one the Dropdown component offers, but the two have fundamentally different use cases: a Dropdown is used, typically in a form, to present a list of options the user can select from. It also shows the currently selected option, if any. A Menu instead, presents a list of options which actions are more generic: they could be links to different views in the app, actions like "logout", etc. Also, a Menu doesn't have the concept of current selection.
 
@@ -24,4 +29,4 @@ The interaction presented by Menu is similar in some ways to the one the Dropdow
 
 Menu also comes in the top variant, positioned above the show/hide UI:
 
-<img width="282" alt="screen shot 2018-05-11 at 10 21 26" src="https://user-images.githubusercontent.com/2643520/39914414-49054c6c-5505-11e8-8c0a-ec3c0128d5f0.png">
+![dropup](https://user-images.githubusercontent.com/10867086/39931398-93007cb4-553d-11e8-92e3-478c20dbebb8.jpg)
