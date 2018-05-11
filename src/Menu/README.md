@@ -1,14 +1,14 @@
-UI component displaying a toggle UI to show/hide a menu of actions
+UI component to show/hide a menu of actions
 
 # Usage
 
-In its simplest form, Menu renders a toggle icon that can be customized, shows the list of options provided when the user clicks the toggle, and hides the menu when the user selects an action or dismisses by clicking anywhere outside the menu.
+In its simplest form, Menu renders a show/hide icon that can be customized, shows the list of options provided when the user clicks the icon, and hides the menu when the user selects an action or dismisses by clicking anywhere outside the menu.
 
 <img width="263" alt="screen shot 2018-04-20 at 13 09 10" src="https://user-images.githubusercontent.com/2643520/39047959-1cccd698-449c-11e8-811e-8a176f916651.png">
 
-### Customizing the toggle UI
+### Customizing the show/hide UI
 
-The toggle UI can be customized to show a different icon (e.g. a "settings" icon if this is a settings menu) and/or a completely different UI.
+The show/hide UI can be customized to show a different icon (e.g. a "settings" icon if this is a settings menu) and/or a completely different UI.
 
 In this example we are using Menu to show an "User menu":
 
@@ -22,6 +22,6 @@ The interaction presented by Menu is similar in some ways to the one the Dropdow
 
 ## Top (drop-up menu)
 
-Menu also comes in the top variant, positioned above the toggle element:
+Menu also comes in the top variant, positioned above the show/hide UI:
 
 <img width="282" alt="screen shot 2018-05-11 at 10 21 26" src="https://user-images.githubusercontent.com/2643520/39914414-49054c6c-5505-11e8-8c0a-ec3c0128d5f0.png">
