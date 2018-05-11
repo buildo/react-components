@@ -16,7 +16,7 @@ In this example we are using Menu to show an "User menu":
 
 ### Menu vs Dropdown
 
-The interaction presented by Menu is similar in some ways to the one the Dropdown component offers, but the two components have two fundamentally different use cases: a Dropdown is used, typically in a form, to present a list of options the user can select from. It also shows the currently selected option, if any. A Menu instead, presents a list of options which actions are more generic: they could be links to different views in the app, actions like "logout", etc. Also, a Menu doesn't have the concept of current selection.
+The interaction presented by Menu is similar in some ways to the one the Dropdown component offers, but the two have fundamentally different use cases: a Dropdown is used, typically in a form, to present a list of options the user can select from. It also shows the currently selected option, if any. A Menu instead, presents a list of options which actions are more generic: they could be links to different views in the app, actions like "logout", etc. Also, a Menu doesn't have the concept of current selection.
 
 # Variants
 
