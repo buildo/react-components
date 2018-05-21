@@ -5,8 +5,6 @@ exports[`Badge renders correctly 1`] = `
   className="react-flex-view align-content-center justify-content-center badge"
   style={
     Object {
-      "MozBoxFlex": "0 1 auto",
-      "WebkitBoxFlex": "0 1 auto",
       "WebkitFlex": "0 1 auto",
       "flex": "0 1 auto",
       "msFlex": "0 1 auto",

@@ -6,8 +6,6 @@ exports[`Meter renders correctly 1`] = `
   id="12345"
   style={
     Object {
-      "MozBoxFlex": "1 1 auto",
-      "WebkitBoxFlex": "1 1 auto",
       "WebkitFlex": "1 1 auto",
       "flex": "1 1 auto",
       "margin": 10,
@@ -20,8 +18,6 @@ exports[`Meter renders correctly 1`] = `
     className="react-flex-view bar"
     style={
       Object {
-        "MozBoxFlex": "1 1 auto",
-        "WebkitBoxFlex": "1 1 auto",
         "WebkitFlex": "1 1 auto",
         "background": "grey",
         "flex": "1 1 auto",
@@ -33,8 +29,6 @@ exports[`Meter renders correctly 1`] = `
       className="react-flex-view filling"
       style={
         Object {
-          "MozBoxFlex": "0 0 25%",
-          "WebkitBoxFlex": "0 0 25%",
           "WebkitFlex": "0 0 25%",
           "background": "green",
           "flex": "0 0 25%",
@@ -47,8 +41,6 @@ exports[`Meter renders correctly 1`] = `
     className="react-flex-view label"
     style={
       Object {
-        "MozBoxFlex": "0 0 auto",
-        "WebkitBoxFlex": "0 0 auto",
         "WebkitFlex": "0 0 auto",
         "color": "red",
         "flex": "0 0 auto",
