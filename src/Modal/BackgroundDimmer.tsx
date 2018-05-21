@@ -62,7 +62,7 @@ export const Props = {
 @props(Props)
 export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props> {
 
-  private mainContentWrapper: FlexView & HTMLDivElement;
+  private mainContentWrapper: FlexView | null;
 
   static defaultProps: BackgroundDimmerDefaultProps = {
     color: 'black',
@@ -80,7 +80,7 @@ export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props
   // TODO: should be removed in the future
   isEventOutsideChildren = (e: React.SyntheticEvent<HTMLDivElement> & { srcElement?: EventTarget }) => {
     const el = e.target || e.srcElement;
-    return el === ReactDOM.findDOMNode(this.mainContentWrapper);
+    return this.mainContentWrapper && el === ReactDOM.findDOMNode(this.mainContentWrapper);
   };
 
   onClick = (e: React.SyntheticEvent<HTMLDivElement>) => {
@@ -116,7 +116,7 @@ export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props
         opacity
       }
     };
-    const mainContentWrapperProps: FlexView.Props & { ref: (ref: FlexView & HTMLDivElement | null) => void } = {
+    const mainContentWrapperProps: FlexView.Props & { ref: (ref: FlexView | null) => void } = {
       onClick,
       onWheel: stopScrollPropagation,
       onTouchMove: stopScrollPropagation,
@@ -124,7 +124,7 @@ export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props
       className: 'main-content-wrapper',
       vAlignContent: 'center',
       hAlignContent: 'center',
-      ref: (ref: FlexView & HTMLDivElement | null) => { this.mainContentWrapper = ref!; }
+      ref: ref => { this.mainContentWrapper = ref; }
     };
     const centeredContentWrapperProps = {
       className: 'centered-content-wrapper',
