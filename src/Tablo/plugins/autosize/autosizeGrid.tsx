@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { findDOMNode } from 'react-dom';
 import * as cx from 'classnames';
 import FlexView from 'react-flexview';
 import { ResizeSensor } from '../../../ResizeSensor/ResizeSensor';
@@ -13,7 +14,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
 
   return class AutosizeGrid extends React.PureComponent<Tablo.Props<T, K>, AutosizeGridState> {
 
-    private gridWrapper: FlexView & HTMLDivElement | null;
+    private gridWrapper: FlexView | null;
     state: AutosizeGridState = {}
 
     static defaultProps = {
@@ -22,7 +23,8 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
 
     updateSize = () => {
       if (!this.gridWrapper) return;
-      const { clientHeight: height, clientWidth: width } = this.gridWrapper;
+      const divWrapper = findDOMNode(this.gridWrapper);
+      const { clientHeight: height, clientWidth: width } = divWrapper;
       this.setState({ width, height });
     }
 
@@ -44,7 +46,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
       };
 
       const content = (
-        <FlexView grow column width='100%' ref={(gw: FlexView & HTMLDivElement | null) => { this.gridWrapper = gw }}>
+        <FlexView grow column width='100%' ref={gw => { this.gridWrapper = gw }}>
           {tableProps.height > 0 && <Grid {...tableProps} />}
         </FlexView>
       );
