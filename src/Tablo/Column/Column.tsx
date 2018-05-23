@@ -11,7 +11,6 @@ import Footer from '../Footer';
 
 export type Intrinsic<T> = {
   data?: T[],
-  sortable?: boolean,
   sortDir?: 'asc' | 'desc',
   onHeaderClick: () => void
 }
@@ -25,6 +24,7 @@ export type Default = {
 export type Required<T, K extends string> = {
   key?: string | number
   name: K,
+  sortable?: boolean,
   isResizable?: boolean,
   flexGrow?: number,
   children?: Column.ColumnChildren<T, K>
@@ -53,7 +53,7 @@ const argsTypes = struct({
   flexGrow: maybe(t.Number),
   children: ReactChildren,
   allowCellsRecycling: maybe(t.Boolean),
-
+  sortable: maybe(t.Boolean),
   isResizable: maybe(t.Boolean)
 }, { strict: true });
 
