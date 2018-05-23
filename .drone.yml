@@ -28,9 +28,10 @@ pipeline:
     secrets: [ changelog_github_token ]
     commands:
       - git pull --ff-only origin master
+      - git config --global push.default simple
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
-      - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish
     when:
       branch: master
 
@@ -38,7 +39,7 @@ pipeline:
     image: node:8
     secrets: [ changelog_github_token ]
     commands:
-      - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish || true
+      - node_modules/smooth-release/smooth-release --gh-release --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-changelog --no-npm-version --no-npm-publish
     when:
       branch: master
 
