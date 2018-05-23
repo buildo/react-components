@@ -28,6 +28,7 @@ pipeline:
     secrets: [ changelog_github_token ]
     commands:
       - git pull --ff-only origin master
+      - git branch --set-upstream-to=origin master
       - git config --global push.default simple
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
