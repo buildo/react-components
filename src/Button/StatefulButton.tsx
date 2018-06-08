@@ -1,7 +1,6 @@
 import * as React from 'react';
 import pick = require('lodash/pick');
-import { ObjectOmit } from 'typelevel-ts';
-import { props, t } from '../utils';
+import { props, t, ObjectOmit } from '../utils';
 import { Button, ButtonPropTypes } from './Button';
 
 
