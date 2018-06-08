@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { TooltipTouch, Props } from '../Tooltip/TooltipTouch';
 import { Tooltip } from '../Tooltip/Tooltip';
-import { props } from '../utils';
-import { ObjectOverwrite } from 'typelevel-ts';
+import { props, ObjectOverwrite } from '../utils';
 
 export namespace TextOverflowTouch {
   export type Props = {

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../utils';
+import { props, t, ReactChildren, ObjectOverwrite } from '../utils';
 import omit = require('lodash/omit');
 import InputChildren from 'react-input-children';
-import { ObjectOverwrite } from 'typelevel-ts';
 import View from 'react-flexview';
 
 export type InputStatus = 'success' | 'failure';

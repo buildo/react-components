@@ -1,10 +1,9 @@
 import * as React from 'react';
 import omit = require('lodash/omit');
 import debounce = require('lodash/debounce');
-import { props, t } from '../utils';
+import { props, t, ObjectOverwrite } from '../utils';
 import { warn } from '../utils/log';
 import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
-import { ObjectOverwrite } from 'typelevel-ts';
 import { Popover } from '../Popover/Popover';
 
 export const Props = {
