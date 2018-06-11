@@ -8,6 +8,7 @@ $placeholder-font-weight: $font-weight !default;
 $color: $brc-darkGrey !default;
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
+$border-radius: 4px !default;
 $color-focus: $brc-darkGrey !default;
 $border-color-focus: $brc-waterBlue !default;
 $opacity-disabled: .6 !default;
@@ -27,7 +28,7 @@ $show-color: $brc-azure !default;
 .input {
   input {
     border: $border-width solid $border-color;
-    border-radius: 4px;
+    border-radius: $border-radius;
     height: $height;
     padding: 0 $padding-h;
     color: $color;
