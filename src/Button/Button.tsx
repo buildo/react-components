@@ -2,24 +2,24 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
+import { ReactChildren } from 'tcomb-react';
 import { TextOverflow } from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
-import { Icon } from '../Icon/Icon';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 
 export type ButtonRequiredProps = {
   /** callback */
   onClick: (e: React.SyntheticEvent<HTMLDivElement>) => void
   /** can be a String, or a dictionary { [buttonState]: String }, t.maybe(t.union([t.Str,  stringForButtonStates]) */
-  label?: string | Button.ButtonStateMap
+  label?: string | Button.ButtonStateMap<string>
   /** otherwise just pass a string as children */
   children?: string
   /** type of the button (default, primary, positive, negative, flat) */
   type?: Button.ButtonType
   /** shortcut for type "flat" */
   flat?: boolean
-  /** custom prefix for the Icon, if any */
-  iconPrefix?: string
+  /** can be a component referring to an Icon, or a dictionary { [buttonState]: JSX.Element } */
+  icon?: JSX.Element | Button.ButtonStateMap<JSX.Element>;
 }
 
 export type ButtonDefaultProps = {
@@ -35,8 +35,6 @@ export type ButtonDefaultProps = {
   primary: boolean;
   /** circular button, this is allowed only if it's an icon button */
   circular: boolean;
-  /** can be a String referring to an icon, or a dictionary { [buttonState]: String },t.maybe(t.union([t.Str, stringForButtonStates])) */
-  icon: string | Button.ButtonStateMap;
   /** an optional class name to pass to first inner element of the component */
   className: string;
   /** an optional style object to pass to first inner element of the component */
@@ -45,7 +43,7 @@ export type ButtonDefaultProps = {
 
 export namespace Button {
   export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflow.Props>;
-  export type ButtonStateMap = { [key in Button.ButtonState]?: string };
+  export type ButtonStateMap<T> = { [key in Button.ButtonState]?: T };
   export type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
   export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
   export type ButtonSize = 'tiny' | 'small' | 'medium';
@@ -79,9 +77,8 @@ const propsInvariants: Array<(props: Button.Props) => boolean> = [
 export const ButtonPropTypes = {
   buttonState: t.maybe(ButtonState),
   onClick: t.Function,
-  label: t.maybe(t.union([t.String, t.Object])),
-  icon: t.maybe(t.union([t.String, t.Object])),
-  iconPrefix: t.maybe(t.String),
+  label: t.maybe(t.union([t.String, t.dict(ButtonState, t.String)])),
+  icon: t.maybe(t.union([ReactChildren, t.dict(ButtonState, ReactChildren)])),
   children: t.maybe(t.String),
   type: t.maybe(ButtonType),
   primary: t.maybe(t.Boolean),
@@ -102,12 +99,23 @@ const defaultLabels = {
   processing: 'processing'
 };
 
-const defaultIcons = {
-  success: 'validate',
-  error: 'exclamation'
-};
+const defaultSuccessIcon = (
+  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 28 28'>
+    <title>check</title>
+    <path fill='#ffffff' d='M26.109 8.844q0 0.625-0.438 1.062l-13.438 13.438q-0.438 0.438-1.062 0.438t-1.062-0.438l-7.781-7.781q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.609 10.25-10.266q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.437 0.438 1.062z'></path>
+  </svg>
+);
+const defaultErrorIcon = (
+  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='10' height='16' viewBox='0 0 10 28'>
+    <title>exclamation</title>
+    <path fill='#ffffff' d='M8 19.5v3.5q0 0.406-0.297 0.703t-0.703 0.297h-4q-0.406 0-0.703-0.297t-0.297-0.703v-3.5q0-0.406 0.297-0.703t0.703-0.297h4q0.406 0 0.703 0.297t0.297 0.703zM8.469 3l-0.438 12q-0.016 0.406-0.32 0.703t-0.711 0.297h-4q-0.406 0-0.711-0.297t-0.32-0.703l-0.438-12q-0.016-0.406 0.273-0.703t0.695-0.297h5q0.406 0 0.695 0.297t0.273 0.703z'></path>
+  </svg>
+);
 
-const makeProp = (x: any) => (t.String.is(x) ? { ready: x, 'not-allowed': x } : x); // todo check if this works with children
+const defaultIcons = {
+  success: defaultSuccessIcon,
+  error: defaultErrorIcon
+};
 
 @props(Props)
 export class Button extends React.PureComponent<Button.Props> {
@@ -119,7 +127,6 @@ export class Button extends React.PureComponent<Button.Props> {
     fluid: false,
     primary: false,
     circular: false,
-    icon: '',
     className: '',
     style: {}
   };
@@ -130,9 +137,9 @@ export class Button extends React.PureComponent<Button.Props> {
     </FlexView>
   );
 
-  templateIcon = (icon: string, iconPrefix?: string) => (
+  templateIcon = (icon: JSX.Element) => (
     <FlexView className='button-icon' shrink={false}>
-      <Icon icon={icon} prefix={iconPrefix} />
+      {icon}
     </FlexView>
   );
 
@@ -152,7 +159,6 @@ export class Button extends React.PureComponent<Button.Props> {
       flat,
       fluid,
       icon: _icon,
-      iconPrefix,
       label: _label, children,
       onClick,
       primary,
@@ -162,14 +168,16 @@ export class Button extends React.PureComponent<Button.Props> {
       type
     } = this.props as ButtonDefaultedProps;
 
+    const l = _label || children;
+
     const labels = {
       ...defaultLabels,
-      ...makeProp(_label || children)
+      ...t.String.is(l) ? { ready: l, 'not-allowed': l } : l
     };
 
     const icons = {
       ...defaultIcons,
-      ...makeProp(_icon)
+      ...(_icon && React.isValidElement(_icon) ? { ready: _icon, 'not-allowed': _icon } : _icon)
     };
 
     const getButtonType = () => type || (primary && 'primary') || (flat && 'flat') || 'default';
@@ -203,7 +211,7 @@ export class Button extends React.PureComponent<Button.Props> {
           style={style}
         >
           {loading && this.templateLoading()}
-          {icon && this.templateIcon(icon, iconPrefix)}
+          {icon && this.templateIcon(icon)}
           {label && this.templateLabel(label, textOverflow)}
         </FlexView>
       </div>
