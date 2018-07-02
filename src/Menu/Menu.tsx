@@ -2,7 +2,6 @@ import * as React from 'react';
 import { props, t, ReactChildren } from '../utils';
 import { ActionsMenu, optionType } from './ActionsMenu';
 import FlexView from 'react-flexview';
-import { Icon } from '../Icon/Icon';
 import { Popover } from '../Popover/Popover';
 import * as cx from 'classnames';
 
@@ -13,8 +12,6 @@ export type MenuRequiredProps = {
   menuRenderer?: (options: ActionsMenu.Option[]) => JSX.Element,
   /** menu options */
   options: ActionsMenu.Option[],
-  /** className for the buil-in icon rendered in the menu trigger (if children is passed, this is ignored) */
-  iconClassName?: string,
   /** called when menu is opened */
   onOpen: () => void,
   /** called when menu is closed */
@@ -46,7 +43,6 @@ export const Props = {
   children: t.maybe(ReactChildren),
   menuRenderer: t.maybe(t.Function),
   options: t.list(optionType),
-  iconClassName: t.maybe(t.String), // if children is passed, this is ignored
   isOpen: t.maybe(t.Boolean),
   onOpen: t.Function,
   onClose: t.Function,
@@ -85,7 +81,6 @@ export class Menu extends React.PureComponent<Menu.Props> {
 
   render() {
     const {
-      iconClassName,
       children,
       dismissOnClickOutside,
       className,
@@ -117,11 +112,7 @@ export class Menu extends React.PureComponent<Menu.Props> {
         }}
       >
         <FlexView vAlignContent='center' className={cx('menu', className)}>
-          {children || (
-            <FlexView vAlignContent='center' className={cx('menu-icon-container', { isOpen })}>
-              <Icon icon={iconClassName} className='menu-icon' />
-            </FlexView>
-          )}
+          {children}
         </FlexView>
       </Popover>
     );

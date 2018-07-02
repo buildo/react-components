@@ -86,14 +86,14 @@ const ValueType = t.union([t.String, t.Date, MomentDate]);
 const valueToMomentDate: (value?: DatePicker.Value) => moment.Moment | undefined = value => !value ? undefined : moment(value);
 
 const angleLeftIcon = (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 32 32">
+  <svg width="10" height="10" viewBox="0 0 32 32">
     <title>angleLeft</title>
     <path fill="#ffffff" d="M20.747 0.773l-13.333 13.333c-0.479 0.482-0.775 1.146-0.775 1.88s0.296 1.398 0.776 1.88l13.333 13.333c0.492 0.572 1.217 0.932 2.025 0.932 1.473 0 2.667-1.194 2.667-2.667 0-0.809-0.36-1.533-0.929-2.023l-13.337-13.336v3.76l13.333-13.333c0.399-0.463 0.641-1.071 0.641-1.735 0-1.473-1.194-2.667-2.667-2.667-0.664 0-1.271 0.243-1.738 0.644l0.003-0.003z"></path>
   </svg>
 );
 
 const angleRightIcon = (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 32 32">
+  <svg width="10" height="10" viewBox="0 0 32 32">
     <title>angleRight</title>
     <path fill="#ffffff" d="M7.573 4.56l13.333 13.333v-3.76l-13.333 13.333c-0.399 0.463-0.641 1.071-0.641 1.735 0 1.473 1.194 2.667 2.667 2.667 0.664 0 1.271-0.243 1.738-0.644l13.33-13.33c0.479-0.482 0.775-1.146 0.775-1.88s-0.296-1.398-0.776-1.88l-13.333-13.333c-0.463-0.399-1.071-0.641-1.735-0.641-1.473 0-2.667 1.194-2.667 2.667 0 0.664 0.243 1.271 0.644 1.738l-0.003-0.003z"></path>
   </svg>
