@@ -23,15 +23,7 @@ exports[`MoreOrLess renders correctly when expanded 1`] = `
       }
     }
   >
-    <i
-      className="icon icon-angle-up expand-button-icon"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": undefined,
-        }
-      }
-    />
+    angle-up
   </div>
 </div>
 `;
@@ -59,15 +51,7 @@ exports[`MoreOrLess renders correctly when not expanded 1`] = `
       }
     }
   >
-    <i
-      className="icon icon-angle-down expand-button-icon"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": undefined,
-        }
-      }
-    />
+    angle-down
   </div>
 </div>
 `;
