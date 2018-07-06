@@ -20,8 +20,6 @@ import TransitionWrapper from './TransitionWrapper';
 export { TransitionWrapper };
 import Divider from './Divider';
 export { Divider };
-import Icon from './Icon';
-export { Icon };
 export { Panel, PanelHeader, TabbedPanel } from './Panel';
 export { Menu, ActionsMenu } from './Menu';
 import Tooltip from './Tooltip';
