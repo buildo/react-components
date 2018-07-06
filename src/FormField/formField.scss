@@ -1,0 +1,24 @@
+@import '../utils/theme/variables.scss';
+
+$label-color: $brc-coolGrey;
+
+.form-field {
+  .form-field-label {
+    color: $label-color;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  &.is-required {
+    .form-field-label {
+      ::before {
+        content: '*';
+        color: $brc-strawberry;
+      }
+    }
+  }
+
+  &.is-disabled {
+    opacity: .5;
+  }
+}
