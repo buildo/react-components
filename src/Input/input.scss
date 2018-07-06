@@ -80,8 +80,9 @@ $show-color: $brc-azure !default;
       color: $color-success;
     }
 
-    .icon {
-      color: $color-success;
+    svg {
+      fill: $color-success;
+      margin-right: 4px;
     }
   }
 
@@ -91,8 +92,9 @@ $show-color: $brc-azure !default;
       color: $color-failure;
     }
 
-    .icon {
-      color: $color-failure;
+    svg {
+      fill: $color-failure;
+      margin-right: 4px;
     }
   }
 

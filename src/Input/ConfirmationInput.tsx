@@ -4,7 +4,7 @@ import { props, t } from '../utils';
 import omit = require('lodash/omit');
 import { Input } from '../Input/Input';
 import FlexView from 'react-flexview';
-import { Icon } from '../Icon/Icon';
+import { ReactChild } from 'tcomb-react';
 
 export type ConfirmationInputRequiredProps = {
   /** input placeholder */
@@ -16,8 +16,8 @@ export type ConfirmationInputRequiredProps = {
   },
   /** icons for 'clear' and 'toConfirm' buttons */
   icon: {
-    clear?: string,
-    toConfirm?: string
+    clear?: JSX.Element,
+    toConfirm?: JSX.Element
   },
   /** an optional class name to pass to top level element of the component */
   className?: string,
@@ -43,7 +43,7 @@ export type ConfirmationInputDefaultProps = {
 export namespace ConfirmationInput {
   export type ConfirmProps = {
     text?: string,
-    icon?: string,
+    icon?: JSX.Element,
     onMouseDown: () => void,
     onMouseEnter: () => void,
     onMouseLeave: () => void
@@ -64,8 +64,8 @@ export const Props = {
     toConfirm: t.maybe(t.String)
   }),
   icon: t.struct({
-    clear: t.maybe(t.String),
-    toConfirm: t.maybe(t.String)
+    clear: t.maybe(ReactChild),
+    toConfirm: t.maybe(ReactChild)
   }),
   className: t.maybe(t.String),
   id: t.maybe(t.String),
@@ -199,7 +199,7 @@ export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Pro
       <Input {...inputProps}>
         {confirmProps && (
           <FlexView {...confirmProps.wrapper}>
-            {icon && <Icon icon={confirmProps.icon} />}
+            {confirmProps.icon}
             {confirmProps.text}
           </FlexView>
         )}

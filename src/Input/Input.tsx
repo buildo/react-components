@@ -4,7 +4,6 @@ import { props, t, ReactChildren } from '../utils';
 import omit = require('lodash/omit');
 import InputChildren from 'react-input-children';
 import { ObjectOverwrite } from 'typelevel-ts';
-import { Icon } from '../Icon/Icon';
 import View from 'react-flexview';
 
 export type InputStatus = 'success' | 'failure';
@@ -32,6 +31,19 @@ export namespace Input {
   export type Props = InputRequiredProps & Partial<InputDefaultProps>;
 }
 type InputDefaultedProps = InputRequiredProps & InputDefaultProps;
+
+const successIcon = (
+  <svg width="14" height="14" viewBox="0 0 24 28">
+    <title>success</title>
+    <path d="M20.062 11.469q0-0.438-0.281-0.719l-1.422-1.406q-0.297-0.297-0.703-0.297t-0.703 0.297l-6.375 6.359-3.531-3.531q-0.297-0.297-0.703-0.297t-0.703 0.297l-1.422 1.406q-0.281 0.281-0.281 0.719 0 0.422 0.281 0.703l5.656 5.656q0.297 0.297 0.703 0.297 0.422 0 0.719-0.297l8.484-8.484q0.281-0.281 0.281-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>
+  </svg>
+);
+const failureIcon = (
+  <svg width="14" height="14" viewBox="0 0 24 28">
+    <title>error</title>
+    <path d="M17.953 17.531q0-0.406-0.297-0.703l-2.828-2.828 2.828-2.828q0.297-0.297 0.297-0.703 0-0.422-0.297-0.719l-1.406-1.406q-0.297-0.297-0.719-0.297-0.406 0-0.703 0.297l-2.828 2.828-2.828-2.828q-0.297-0.297-0.703-0.297-0.422 0-0.719 0.297l-1.406 1.406q-0.297 0.297-0.297 0.719 0 0.406 0.297 0.703l2.828 2.828-2.828 2.828q-0.297 0.297-0.297 0.703 0 0.422 0.297 0.719l1.406 1.406q0.297 0.297 0.719 0.297 0.406 0 0.703-0.297l2.828-2.828 2.828 2.828q0.297 0.297 0.703 0.297 0.422 0 0.719-0.297l1.406-1.406q0.297-0.297 0.297-0.719zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>
+  </svg>
+);
 
 export const Props = {
   value: t.String,
@@ -69,8 +81,8 @@ export class Input extends React.PureComponent<Input.Props> {
     const isSuccess = status === 'success';
     const isFailure = status === 'failure';
     const children = this.props.children || (
-      isSuccess ? <View vAlignContent='center'><Icon icon='success' /></View> :
-      isFailure ? <View vAlignContent='center'><Icon icon='error' /></View> :
+      isSuccess ? <View vAlignContent='center'>{successIcon}</View> :
+      isFailure ? <View vAlignContent='center'>{failureIcon}</View> :
       undefined
     );
 

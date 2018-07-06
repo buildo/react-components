@@ -37,6 +37,10 @@ $content-title-color: $brc-darkGrey !default;
     width: 100%;
   }
 
+  .expand-icon {
+    margin-right: 14px;
+  }
+
   &.floating {
     margin: 10px;
     border: 1px solid $border-color;
@@ -59,18 +63,16 @@ $content-title-color: $brc-darkGrey !default;
       > .panel-header .panel-header-title-wrapper {
         cursor: pointer;
 
-        .expand-icon {
-          margin-right: 14px;
-        }
-
         &:hover .expand-icon {
           color: $expand-icon-color-hover;
+          fill: $expand-icon-color-hover;
         }
       }
     }
 
     > .panel-header .panel-header-title-wrapper .expand-icon {
       color: $expand-icon-color;
+      fill: $expand-icon-color;
       font-size: 20px;
     }
   }

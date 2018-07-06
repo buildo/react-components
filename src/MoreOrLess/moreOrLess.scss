@@ -14,15 +14,6 @@ $expand-button-icon-color-hover: $brc-coolGrey !default;
 
     &:hover {
       background-color: $expand-button-background-hover;
-
-      .expand-button-icon {
-        color: $expand-button-icon-color-hover;
-      }
-    }
-
-    .expand-button-icon {
-      color: $expand-button-icon-color;
-      font-size: 17px;
     }
   }
 }

@@ -11,12 +11,18 @@ function close() {
   setState({ isOpen: false })
 }
 
+const closeIcon = (
+  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
+    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  </svg>
+);
+
 const getModal = () => (
   <Modal
     transitionEnterTimeout={500}
     transitionLeaveTimeout={500}
     onDismiss={close}
-    iconClose={<Icon icon='close' />}
+    iconClose={closeIcon}
     title='Send Message'
     footer={
       <FlexView hAlignContent='right'>
@@ -85,12 +91,18 @@ function close() {
   setState({ isOpen: false })
 }
 
+const closeIcon = (
+  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
+    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  </svg>
+);
+
 const getModal = () => (
   <Modal
     transitionEnterTimeout={500}
     transitionLeaveTimeout={500}
     onDismiss={close}
-    iconClose={<Icon icon='close' />}
+    iconClose={closeIcon}
     title='Informative Modal'
   >
     This modal contains just info. So it is not possible to perform an action.
@@ -113,6 +125,11 @@ To solve this problem we export a handy `modalWithContext` that easily allows to
 
 ```js
 const FooType = React.PropTypes.string.isRequired;
+const closeIcon = (
+  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
+    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  </svg>
+);
 
 const ModalWithContext = modalWithContext({ foo: FooType });
 
@@ -152,7 +169,7 @@ class Component extends React.Component {
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}
         onDismiss={this.close}
-        iconClose={<Icon icon='close' />}
+        iconClose={closeIcon}
         title='Send Message'
         footer={
           <FlexView hAlignContent='right'>

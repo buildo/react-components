@@ -10,15 +10,9 @@ const onClick = () => new Promise((resolve, reject) => {
   setTimeout(resolveOrReject, 500);
 });
 
-const icons = {
-  success: 'check',
-  error: 'error'
-};
-
 <StatefulButton
   baseState='ready'
   label='Button label'
-  icon={icons}
   onClick={onClick}
   style={{ width: 150 }}
 />
@@ -33,11 +27,7 @@ function onClick() {
 
 const buttonProps = {
   onClick,
-  style: { margin: 10, width: 150 },
-  icon: {
-    success: 'check',
-    error: 'error'
-  }
+  style: { margin: 10, width: 150 }
 };
 
 <FlexView>
