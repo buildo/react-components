@@ -7236,17 +7236,14 @@ react-dom@16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-flexview@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-flexview/-/react-flexview-3.0.2.tgz#c7b96c7b165127a8e9b44a42716bca8c4a85aaf3"
+react-flexview@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-flexview/-/react-flexview-4.0.1.tgz#25df1e8ff0eb7f2ed7655086ab756faf66bd1f9e"
   dependencies:
-    classnames "^2.2.5"
     lodash.omit "^4.5.0"
     lodash.pick "^4.4.0"
     lodash.some "^4.6.0"
     prop-types "^15.5.6"
-    sass-flex-mixins "^0.1.0"
-    typelevel-ts "^0.2.2"
 
 react-group@^1.0.5:
   version "1.0.5"
@@ -7965,7 +7962,7 @@ sane@~1.6.0:
     walker "~1.0.5"
     watch "~0.10.0"
 
-sass-flex-mixins@0.1.0, sass-flex-mixins@^0.1.0:
+sass-flex-mixins@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/sass-flex-mixins/-/sass-flex-mixins-0.1.0.tgz#bd1b8cbd0b080692b57ca258f403a355d553008f"
 
@@ -9199,13 +9196,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typelevel-ts@^0.2.2:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/typelevel-ts/-/typelevel-ts-0.2.3.tgz#969a06f50542eb12ad0769d5edbd2dfec2a9edf1"
-
-typescript@2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
+typescript@2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 
 typescript@^2.8.1:
   version "2.9.1"
