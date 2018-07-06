@@ -2,7 +2,7 @@
 
 #### A typical usage
 ```js
-initialState = { name: '', gender: undefined, confirmed: false }
+initialState = { name: '', secret: '' }
 
 function onChange(field, value) {
   setState({ [field]: value })
@@ -25,6 +25,12 @@ function onChange(field, value) {
       { value: 'female', label: 'female' }
     ]}
     onChange={value => onChange('gender', value)}
+  />
+  <PasswordInputField
+    id='secret'
+    label='SECRET'
+    value={state.secret}
+    onChange={value => onChange('secret', value)}
   />
 </div>
 ```
