@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../utils';
+import { props, t, ReactChildren, ReactChild } from '../utils';
 import omit = require('lodash/omit');
 import { ModalPortal, Props as PortalProps } from './ModalPortal';
 import FlexView from 'react-flexview';
@@ -45,7 +45,7 @@ const LocalProps = {
   children: ReactChildren,
   title: t.maybe(t.String),
   footer: t.maybe(ReactChildren),
-  iconClose: t.maybe(ReactChildren),
+  iconClose: t.maybe(ReactChild),
   overlay: t.interface({
     color: t.maybe(t.String),
     alpha: t.maybe(t.Number)

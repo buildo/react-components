@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../utils';
+import { props, t, ReactChildren, ReactChild } from '../utils';
 import FlexView from 'react-flexview';
 
 export namespace MoreOrLess {
@@ -30,8 +30,8 @@ export const Props = {
   expanded: t.Boolean,
   onExpandedChange: t.Function,
   icons: t.struct({
-    expanded: ReactChildren,
-    collapsed: ReactChildren
+    expanded: ReactChild,
+    collapsed: ReactChild
   }),
   wrapperProps: t.maybe(t.Object),
   className: t.maybe(t.String),

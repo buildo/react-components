@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import every = require('lodash/every');
 import { props, t, stateClassUtil } from '../utils';
-import { ReactChildren } from 'tcomb-react';
+import { ReactChild } from 'tcomb-react';
 import { TextOverflow } from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
@@ -78,7 +78,7 @@ export const ButtonPropTypes = {
   buttonState: t.maybe(ButtonState),
   onClick: t.Function,
   label: t.maybe(t.union([t.String, t.dict(ButtonState, t.String)])),
-  icon: t.maybe(t.union([ReactChildren, t.dict(ButtonState, ReactChildren)])),
+  icon: t.maybe(t.union([ReactChild, t.dict(ButtonState, ReactChild)])),
   children: t.maybe(t.String),
   type: t.maybe(ButtonType),
   primary: t.maybe(t.Boolean),

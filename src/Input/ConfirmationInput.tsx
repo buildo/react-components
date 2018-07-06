@@ -4,7 +4,7 @@ import { props, t } from '../utils';
 import omit = require('lodash/omit');
 import { Input } from '../Input/Input';
 import FlexView from 'react-flexview';
-import { ReactChildren } from 'tcomb-react';
+import { ReactChild } from 'tcomb-react';
 
 export type ConfirmationInputRequiredProps = {
   /** input placeholder */
@@ -64,8 +64,8 @@ export const Props = {
     toConfirm: t.maybe(t.String)
   }),
   icon: t.struct({
-    clear: t.maybe(ReactChildren),
-    toConfirm: t.maybe(ReactChildren)
+    clear: t.maybe(ReactChild),
+    toConfirm: t.maybe(ReactChild)
   }),
   className: t.maybe(t.String),
   id: t.maybe(t.String),
