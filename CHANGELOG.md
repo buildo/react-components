@@ -2,6 +2,59 @@
 
 
 
+## [v0.38.0](https://github.com/buildo/react-components/tree/v0.38.0) (2018-07-06)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.37.3...v0.38.0)
+
+#### Breaking:
+
+- Deprecate Icon component in favor of SVG icons [#1253](https://github.com/buildo/react-components/issues/1253)
+
+#### Fixes (bugs & defects):
+
+- PasswordInput typings do not allow a "ref" prop [#1252](https://github.com/buildo/react-components/issues/1252)
+
+## [v0.37.3](https://github.com/buildo/react-components/tree/v0.37.3) (2018-06-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.37.2...v0.37.3)
+
+#### New features:
+
+- input border radius should be customizable [#1249](https://github.com/buildo/react-components/issues/1249)
+
+## [v0.37.2](https://github.com/buildo/react-components/tree/v0.37.2) (2018-05-23)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.37.1...v0.37.2)
+
+#### Fixes (bugs & defects):
+
+- Tablo Column does not accept sortable prop [#1211](https://github.com/buildo/react-components/issues/1211)
+
+## [v0.37.1](https://github.com/buildo/react-components/tree/v0.37.1) (2018-05-21)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.37.0...v0.37.1)
+
+#### Fixes (bugs & defects):
+
+- Tablo with autosize on renders nothing [#1245](https://github.com/buildo/react-components/issues/1245)
+
+## [v0.37.0](https://github.com/buildo/react-components/tree/v0.37.0) (2018-05-10)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.36.3...v0.37.0)
+
+#### Breaking:
+
+- One `Menu` to rule them all [#1239](https://github.com/buildo/react-components/issues/1239)
+
+## [v0.36.3](https://github.com/buildo/react-components/tree/v0.36.3) (2018-05-04)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.36.2...v0.36.3)
+
+#### New features:
+
+- Update all string refs [#1237](https://github.com/buildo/react-components/issues/1237)
+
+## [v0.36.2](https://github.com/buildo/react-components/tree/v0.36.2) (2018-04-19)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.36.1...v0.36.2)
+
+#### Fixes (bugs & defects):
+
+- remove (unused) react-skinnable dependency [#1232](https://github.com/buildo/react-components/issues/1232)
+
 ## [v0.36.1](https://github.com/buildo/react-components/tree/v0.36.1) (2018-04-12)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.36.0...v0.36.1)
 
