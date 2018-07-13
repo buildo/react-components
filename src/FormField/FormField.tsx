@@ -51,7 +51,7 @@ export class FormField extends React.PureComponent<FormField.Props> {
     };
 
     return (
-      <View {...viewProps} className={className}>
+      <View {...viewProps} grow className={className}>
         <View className='form-field-label' vAlignContent='center' key='label'>
           <label htmlFor={fieldId}>{label}</label>
         </View>

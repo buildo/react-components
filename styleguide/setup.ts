@@ -68,5 +68,6 @@ import '../src/Meter/examples.scss';
 import '../src/Popover/examples.scss';
 import '../src/Popover/examples.scss';
 import '../src/BrowserDetector/examples.scss';
+import '../src/FormField/examples.scss';
 
 (require as any).context('./assets', false, /\.(png|jpg|gif)$/);

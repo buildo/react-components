@@ -62,5 +62,5 @@ import { Input, PasswordInput, ConfirmationInput } from './Input';
 export { Input, PasswordInput, ConfirmationInput };
 import FormField from './FormField';
 export { FormField };
-import { InputField, DropdownField, PasswordInputField } from './FormField';
-export { InputField, DropdownField, PasswordInputField };
+import { InputField, DropdownField, PasswordInputField, TimePickerField, ToggleField } from './FormField';
+export { InputField, DropdownField, PasswordInputField, TimePickerField, ToggleField };
