@@ -39,12 +39,19 @@ function onChange(field, value) {
     ]}
     onChange={value => onChange('gender', value)}
   />
-  <FlexView width={60}>
+  <FlexView width={400}>
+    <DatePickerField
+      id='birthDate'
+      label='BIRTH DATE'
+      value={state.birthDate}
+      onChange={value => onChange('birthDate', value)}
+      viewProps={{ grow: false }}
+    />
     <TimePickerField
-      id='time'
-      label='TIME'
-      value={state.time}
-      onChange={value => onChange('time', value)}
+      id='birthTime'
+      label='BIRTH TIME'
+      value={state.birthTime}
+      onChange={value => onChange('birthTime', value)}
     />
   </FlexView>
   <PasswordInputField
