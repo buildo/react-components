@@ -60,3 +60,7 @@ import Image from './Image';
 export { Image };
 import { Input, PasswordInput, ConfirmationInput } from './Input';
 export { Input, PasswordInput, ConfirmationInput };
+import FormField from './FormField';
+export { FormField };
+import { InputField, DropdownField, PasswordInputField, TimePickerField, ToggleField, DatePickerField } from './FormField';
+export { InputField, DropdownField, PasswordInputField, TimePickerField, ToggleField, DatePickerField };
