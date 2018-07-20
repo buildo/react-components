@@ -14,6 +14,8 @@ export namespace DatePickerField {
     required?: boolean,
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
+    /** An optional custom renderer for DatePicker */
+    datePickerRenderer?: (props: DatePicker.Props<T>) => JSX.Element
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -26,16 +28,34 @@ export namespace DatePickerField {
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object)
+  viewProps: t.maybe(t.Object),
+  datePickerRenderer: t.maybe(t.Function)
 }
 
 @props(Props, { strict: false })
 export class DatePickerField<T extends DatePicker.Value> extends React.PureComponent<DatePickerField.Props<T>> {
+
   render() {
-    const { label, required, className: _className, viewProps, id, disabled, onChange: _onChange, ...datePickerProps } = this.props;
+    const {
+      label,
+      required,
+      className: _className,
+      viewProps,
+      id,
+      disabled,
+      onChange: _onChange,
+      datePickerRenderer,
+      ..._datePickerProps
+    } = this.props;
     const className = cx('dropdown-field', _className);
     const DatePickerT = DatePicker as new() => DatePicker<T>; // TODO: use generics in JSX with TS 2.9
     const onChange = _onChange as (value?: T) => void;        // forcing onChange to be of type accepted if returnFormat is 'never'
+    const datePickerProps = {
+      ..._datePickerProps,
+      onChange,
+      id,
+      disabled
+    }
 
     return (
       <FormField
@@ -46,7 +66,10 @@ export class DatePickerField<T extends DatePicker.Value> extends React.PureCompo
         viewProps={viewProps}
         disabled={disabled}
       >
-        <DatePickerT {...datePickerProps} onChange={onChange} id={id} disabled={disabled} />
+        {datePickerRenderer ?
+          datePickerRenderer(datePickerProps) :
+          <DatePickerT {...datePickerProps} />
+        }
       </FormField>
     );
   }

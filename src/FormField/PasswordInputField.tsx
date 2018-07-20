@@ -13,6 +13,8 @@ export namespace PasswordInputField {
     required?: boolean,
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
+    /** an optional custom renderer for PasswordInput */
+    passwordInputRenderer?: (props: PasswordInput.Props) => JSX.Element,
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -25,14 +27,20 @@ export namespace PasswordInputField {
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object)
+  viewProps: t.maybe(t.Object),
+  passwordInputRenderer: t.maybe(t.Function)
 }
 
 @props(Props, { strict: false })
 export class PasswordInputField extends React.PureComponent<PasswordInputField.Props> {
   render() {
-    const { label, required, className: _className, id, viewProps, disabled, ...inputProps } = this.props;
+    const { label, required, className: _className, id, viewProps, disabled, passwordInputRenderer, ..._inputProps } = this.props;
     const className = cx('password-input-field', _className);
+    const inputProps = {
+      ..._inputProps,
+      disabled,
+      id
+    };
 
     return (
       <FormField
@@ -43,7 +51,10 @@ export class PasswordInputField extends React.PureComponent<PasswordInputField.P
         viewProps={viewProps}
         disabled={disabled}
       >
-        <PasswordInput {...inputProps} disabled={disabled} id={id} />
+        {passwordInputRenderer ?
+          passwordInputRenderer(inputProps) :
+          <PasswordInput {...inputProps} />
+        }
       </FormField>
     );
   }

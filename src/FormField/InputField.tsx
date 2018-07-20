@@ -13,6 +13,8 @@ export namespace InputField {
     required?: boolean,
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
+    /** An optional custom renderer for Input */
+    inputRenderer?: (props: Input.Props) => JSX.Element,
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -25,14 +27,20 @@ export namespace InputField {
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object)
+  viewProps: t.maybe(t.Object),
+  inputRenderer: t.maybe(t.Function)
 }
 
 @props(Props, { strict: false })
 export class InputField extends React.PureComponent<InputField.Props> {
   render() {
-    const { label, required, className: _className, id, viewProps, disabled, ...inputProps } = this.props;
+    const { label, required, className: _className, id, viewProps, disabled, inputRenderer, ..._inputProps } = this.props;
     const className = cx('input-field', _className);
+    const inputProps = {
+      ..._inputProps,
+      disabled,
+      id
+    };
 
     return (
       <FormField
@@ -43,7 +51,10 @@ export class InputField extends React.PureComponent<InputField.Props> {
         viewProps={viewProps}
         disabled={disabled}
       >
-        <Input {...inputProps} disabled={disabled} id={id} />
+        {inputRenderer ?
+          inputRenderer(inputProps) :
+          <Input {...inputProps} />
+        }
       </FormField>
     );
   }

@@ -13,6 +13,8 @@ export namespace ToggleField {
     required?: boolean,
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
+    /** an optional custom renderer for Toggle */
+    toggleRenderer?: (props: Toggle.Props) => JSX.Element,
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -25,14 +27,19 @@ export namespace ToggleField {
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object)
+  viewProps: t.maybe(t.Object),
+  toggleRenderer: t.maybe(t.Function)
 }
 
 @props(Props, { strict: false })
 export class ToggleField extends React.PureComponent<ToggleField.Props> {
   render() {
-    const { label, required, className: _className, id, viewProps, disabled, ...toggleProps } = this.props;
+    const { label, required, className: _className, id, viewProps, disabled, toggleRenderer, ..._toggleProps } = this.props;
     const className = cx('time-picker-field', _className);
+    const toggleProps = {
+      ..._toggleProps,
+      disabled
+    };
 
     return (
       <FormField
@@ -43,7 +50,10 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
         disabled={disabled}
         id={id}
       >
-        <Toggle {...toggleProps} disabled={disabled} />
+        {toggleRenderer ?
+          toggleRenderer(toggleProps) :
+          <Toggle {...toggleProps} />
+        }
       </FormField>
     );
   }

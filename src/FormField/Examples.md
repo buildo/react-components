@@ -37,6 +37,7 @@ function onChange(field, value) {
       { value: 'male', label: 'Male' },
       { value: 'female', label: 'Female' }
     ]}
+    dropdownRenderer={(props) => <Dropdown {...props} searchable />}
     onChange={value => onChange('gender', value)}
   />
   <FlexView width={400}>

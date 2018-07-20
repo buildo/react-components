@@ -13,6 +13,8 @@ export namespace DropdownField {
     required?: boolean,
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
+    /** An optional custom renderer for Dropdown */
+    dropdownRenderer?: (props: Dropdown.Props) => JSX.Element
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -25,14 +27,29 @@ export namespace DropdownField {
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object)
+  viewProps: t.maybe(t.Object),
+  dropdownRenderer: t.maybe(t.Function)
 }
 
 @props(Props, { strict: false })
 export class DropdownField extends React.PureComponent<DropdownField.Props> {
   render() {
-    const { label, required, className: _className, id, viewProps, disabled, ...dropdownProps } = this.props;
+    const {
+      label,
+      required,
+      className: _className,
+      id,
+      viewProps,
+      disabled,
+      dropdownRenderer,
+      ..._dropdownProps
+    } = this.props;
     const className = cx('dropdown-field', _className);
+    const dropdownProps = {
+      ..._dropdownProps,
+      disabled,
+      id
+    };
 
     return (
       <FormField
@@ -43,7 +60,10 @@ export class DropdownField extends React.PureComponent<DropdownField.Props> {
         viewProps={viewProps}
         disabled={disabled}
       >
-        <Dropdown {...dropdownProps} disabled={disabled} id={id} />
+        {dropdownRenderer ?
+          dropdownRenderer(dropdownProps) :
+          <Dropdown {...dropdownProps} />
+        }
       </FormField>
     );
   }
