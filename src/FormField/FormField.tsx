@@ -3,8 +3,6 @@ import { props, t, ReactChild, ReactChildren } from '../utils';
 import * as cx from 'classnames';
 import View from 'react-flexview';
 
-import './formField.scss';
-
 export namespace FormField {
   export type Props = {
     /** the label for the field */
