@@ -47,11 +47,13 @@ export class FormField extends React.PureComponent<FormField.Props> {
     const className = cx('form-field', _className, { 'is-disabled': disabled, 'is-required': required });
     const viewProps = {
       column: true,
-      ..._viewProps
+      grow: true,
+      ..._viewProps,
+      className
     };
 
     return (
-      <View {...viewProps} grow className={className}>
+      <View {...viewProps}>
         <View className='form-field-label' vAlignContent='center' key='label'>
           <label htmlFor={fieldId}>{label}</label>
         </View>
