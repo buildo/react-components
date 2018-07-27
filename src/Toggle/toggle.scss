@@ -1,7 +1,7 @@
 @import '../utils/theme/variables.scss';
 $size: 3em !default;
 $background: $brc-cloudyGrey !default;
-$checked-background: $brc-gradientGreen !default;
+$checked-background: $brc-gradientAzure !default;
 
 .toggle {
   &.disabled {

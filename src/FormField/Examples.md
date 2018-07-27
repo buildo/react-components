@@ -9,51 +9,49 @@ function onChange(field, value) {
 }
 
 <FlexView column>
-  <FlexView grow>
-    <FlexView width={250} marginRight={10}>
-      <InputField
-        id='name'
-        label='NAME'
-        value={state.value}
-        onChange={value => onChange('name', value)}
-        required
-      />
-    </FlexView>
-    <FlexView width={250}>
-      <InputField
-        id='surname'
-        label='SURNAME'
-        value={state.value}
-        onChange={value => onChange('surname', value)}
-        required
-      />
-    </FlexView>
+  <FlexView width={450}>
+    <InputField
+      id='name'
+      label='LABEL'
+      placeholder='Placeholder'
+      value={state.value}
+      onChange={value => onChange('name', value)}
+      required
+    />
   </FlexView>
-  <DropdownField
-    id='gender'
-    label='GENDER'
-    value={state.gender}
-    options={[
-      { value: 'male', label: 'Male' },
-      { value: 'female', label: 'Female' }
-    ]}
-    dropdownRenderer={(props) => <Dropdown {...props} searchable />}
-    onChange={value => onChange('gender', value)}
-  />
-  <FlexView width={400}>
-    <DatePickerField
-      id='birthDate'
-      label='BIRTH DATE'
-      value={state.birthDate}
-      onChange={value => onChange('birthDate', value)}
-      viewProps={{ grow: false }}
+  <FlexView width={450}>
+    <DropdownField
+      id='gender'
+      label='LABEL'
+      value={state.gender}
+      options={[
+        { value: 'male', label: 'Male' },
+        { value: 'female', label: 'Female' }
+      ]}
+      dropdownRenderer={(props) => <Dropdown {...props} searchable />}
+      onChange={value => onChange('gender', value)}
+      placeholder='Select'
+      required
     />
-    <TimePickerField
-      id='birthTime'
-      label='BIRTH TIME'
-      value={state.birthTime}
-      onChange={value => onChange('birthTime', value)}
-    />
+  </FlexView>
+  <FlexView>
+    <FlexView width={215} marginRight={20}>
+      <DatePickerField
+        id='birthDate'
+        label='LABEL'
+        value={state.birthDate}
+        onChange={value => onChange('birthDate', value)}
+        viewProps={{ grow: false }}
+      />
+    </FlexView>
+    <FlexView width={215}>
+      <TimePickerField
+        id='birthTime'
+        label='LABEL'
+        value={state.birthTime}
+        onChange={value => onChange('birthTime', value)}
+      />
+    </FlexView>
   </FlexView>
   <PasswordInputField
     id='secret'
