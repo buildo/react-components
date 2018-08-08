@@ -45,9 +45,9 @@ export class PasswordInput extends React.PureComponent<PasswordInput.Props, Stat
   }
 
   render() {
-    const props = this.props as PasswordInputDefaultedProps;
+    const { hideText, showText, ...props } = this.props as PasswordInputDefaultedProps;
     const type = this.state.show ? 'text' : 'password';
-    const text = this.state.show ? props.hideText : props.showText;
+    const text = this.state.show ? hideText : showText;
     const toggleProps = {
       onClick: this.onToggleClick,
       className: 'password-input-toggle',
