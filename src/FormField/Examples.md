@@ -9,7 +9,7 @@ function onChange(field, value) {
 }
 
 <FlexView column>
-  <FlexView width={450}>
+  <FlexView width={450} marginBottom={40}>
     <InputField
       id='name'
       label='LABEL'
@@ -19,7 +19,24 @@ function onChange(field, value) {
       required
     />
   </FlexView>
-  <FlexView width={450}>
+  <FlexView marginBottom={40}>
+    <ToggleField
+      id='disabled'
+      label='Toggle text'
+      value={state.disabled}
+      onChange={value => onChange('disabled', value)}
+    />
+    <FlexView marginLeft={45}>
+      <ToggleField
+        id='disabled'
+        label='Toggle text'
+        value={state.toggle2}
+        onChange={value => onChange('toggle2', value)}
+        required
+      />
+    </FlexView>
+  </FlexView>
+  <FlexView width={450} marginBottom={40}>
     <DropdownField
       id='gender'
       label='LABEL'
@@ -34,7 +51,7 @@ function onChange(field, value) {
       required
     />
   </FlexView>
-  <FlexView>
+  <FlexView marginBottom={40}>
     <FlexView width={215} marginRight={20}>
       <DatePickerField
         id='birthDate'
@@ -53,7 +70,7 @@ function onChange(field, value) {
       />
     </FlexView>
   </FlexView>
-  <FlexView width={450}>
+  <FlexView width={450} marginBottom={40}>
     <PasswordInputField
       id='secret'
       label='LABEL'
@@ -61,22 +78,6 @@ function onChange(field, value) {
       onChange={value => onChange('secret', value)}
       required
     />
-  </FlexView>
-  <FlexView>
-    <ToggleField
-      id='disabled'
-      label='Toggle text'
-      value={state.disabled}
-      onChange={value => onChange('disabled', value)}
-    />
-    <FlexView marginLeft={45}>
-      <ToggleField
-        id='disabled'
-        label='Toggle text'
-        value={state.toggle2}
-        onChange={value => onChange('toggle2', value)}
-      />
-    </FlexView>
   </FlexView>
 </FlexView>
 ```
