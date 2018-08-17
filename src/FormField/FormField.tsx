@@ -16,7 +16,9 @@ export namespace FormField {
     /** the id of the input component, passed to <label> as 'htmlFor' */
     fieldId?: string,
     /** optional props to pass to the wrapping View */
-    viewProps?: View.Props
+    viewProps?: View.Props,
+    /** wheter the label should be put on the same line of the component */
+    horizontal?: boolean,
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
@@ -41,11 +43,11 @@ export const Props = {
 @props(Props)
 export class FormField extends React.PureComponent<FormField.Props> {
   render() {
-    const { label, required, disabled, children, className: _className, fieldId, viewProps: _viewProps } = this.props;
-    const className = cx('form-field', _className, { 'is-disabled': disabled, 'is-required': required });
+    const { label, required, disabled, children, className: _className, fieldId, viewProps: _viewProps, horizontal } = this.props;
+    const className = cx('form-field', _className, { 'is-disabled': disabled, 'is-required': required, 'is-horizontal': horizontal });
     const viewProps = {
       column: true,
-      grow: true,
+      grow: !horizontal,
       ..._viewProps,
       className
     };

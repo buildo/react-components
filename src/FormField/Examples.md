@@ -2,7 +2,7 @@
 
 #### A typical usage
 ```js
-initialState = { name: '', surname: '', secret: '', disabled: false }
+initialState = { name: '', surname: '', secret: '', disabled: false, toggle2: true }
 
 function onChange(field, value) {
   setState({ [field]: value })
@@ -53,18 +53,30 @@ function onChange(field, value) {
       />
     </FlexView>
   </FlexView>
-  <PasswordInputField
-    id='secret'
-    label='SECRET'
-    value={state.secret}
-    onChange={value => onChange('secret', value)}
-    required
-  />
-  <ToggleField
-    id='disabled'
-    label='DISABLED'
-    value={state.disabled}
-    onChange={value => onChange('disabled', value)}
-  />
+  <FlexView width={450}>
+    <PasswordInputField
+      id='secret'
+      label='LABEL'
+      value={state.secret}
+      onChange={value => onChange('secret', value)}
+      required
+    />
+  </FlexView>
+  <FlexView>
+    <ToggleField
+      id='disabled'
+      label='Toggle text'
+      value={state.disabled}
+      onChange={value => onChange('disabled', value)}
+    />
+    <FlexView marginLeft={45}>
+      <ToggleField
+        id='disabled'
+        label='Toggle text'
+        value={state.toggle2}
+        onChange={value => onChange('toggle2', value)}
+      />
+    </FlexView>
+  </FlexView>
 </FlexView>
 ```
