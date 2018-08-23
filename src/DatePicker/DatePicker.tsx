@@ -251,7 +251,8 @@ export class DatePicker<T extends DatePicker.Value = never> extends React.PureCo
       hideKeyboardShortcutsPanel: true,
       navPrev: angleLeftIcon,
       navNext: angleRightIcon,
-      customCloseIcon: angleRightIcon
+      customCloseIcon: angleRightIcon,
+      isOutsideRange: () => false
     };
 
     return (
