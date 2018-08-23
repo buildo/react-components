@@ -163,7 +163,7 @@ export class DatePicker<T extends DatePicker.Value = never> extends React.PureCo
     const maxDate = valueToMomentDate(this.props.maxDate);
 
     return (!!minDate && day < minDate) || (!!maxDate && day > maxDate);
-  }  
+  }
 
   initialVisibleMonth = () => valueToMomentDate(this.props.startDate)
 
@@ -257,7 +257,7 @@ export class DatePicker<T extends DatePicker.Value = never> extends React.PureCo
 
     return (
       <FlexView {...wrapperProps}>
-        <SingleDatePicker {...datePickerProps}/>
+        <SingleDatePicker {...datePickerProps} />
       </FlexView>
     );
   }
