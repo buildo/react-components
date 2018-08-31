@@ -15,7 +15,7 @@ $label-color: $brc-darkGreyBlue;
     .form-field-label {
       padding-left: 9px;
 
-      ::before {
+      > ::before {
         content: '*';
         color: $brc-strawberry;
         font-size: 17px;
