@@ -76,6 +76,12 @@
   dependencies:
     "@types/react" "^15"
 
+"@types/react-numeric-input@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@types/react-numeric-input/-/react-numeric-input-2.2.2.tgz#a8bce98b8ff4c9743fe4e3a79ccc6b1cb680895a"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-select@1.0.59":
   version "1.0.59"
   resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-1.0.59.tgz#791022e5b2c7cd5c86301949ea5e4cc94a55bc66"
@@ -7281,6 +7287,10 @@ react-moment-proptypes@^1.5.0:
   resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.5.0.tgz#4a448cd6479efc5dd509283f361f3753c3abe60e"
   dependencies:
     moment ">=1.6.0"
+
+react-numeric-input@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-numeric-input/-/react-numeric-input-2.2.3.tgz#4bf5918c3eafed851a80df1eb992d941002bb552"
 
 react-portal@^3.1.0:
   version "3.2.0"

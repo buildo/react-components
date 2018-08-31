@@ -1,5 +1,6 @@
 import { Input } from './Input';
 import { ConfirmationInput } from './ConfirmationInput';
 import { PasswordInput } from './PasswordInput';
-export { ConfirmationInput, PasswordInput, Input };
+import { NumberInput } from './NumberInput';
+export { ConfirmationInput, PasswordInput, NumberInput, Input };
 export default Input;

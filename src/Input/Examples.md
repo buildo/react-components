@@ -1,81 +1,83 @@
 ### Examples
 
+#### Number Input A
+
 ```js
-initialState = { value: '' };
+initialState = { value: undefined };
 
 const onChange = value => setState({ value });
 
-const value = state.value;
-
-<form className='ui form'>
+<div>
+  USER INPUT:
+  <NumberInput A value={state.value} onChange={onChange} />
+  <br />
+  SAVED IN FORM STATE (valid number):
   <Input
-    placeholder='Placeholder'
-    value={value}
-    onChange={onChange}
+    readOnly
+    disabled
+    value={typeof state.value === "number" ? String(state.value) : ""}
   />
-</form>
+</div>;
 ```
 
+#### Number Input B
 
 ```js
-initialState = { valueSuccess: 'success', valueFailure: 'failure' };
+initialState = { value: undefined };
 
-const onChangeSuccess = valueSuccess => setState({ valueSuccess });
-const onChangeFailure = valueFailure => setState({ valueFailure });
+const onChange = value => setState({ value });
 
-const wrapperProps = { style: { marginRight: '10px', width: '150px' } };
-
-<form className='ui form'>
-  <FlexView grow>
-    <Input
-      wrapper={wrapperProps}
-      placeholder='Always success'
-      status='success'
-      value={state.valueSuccess}
-      onChange={onChangeSuccess}
-    />
-    <Input
-      wrapper={wrapperProps}
-      placeholder='Always failure'
-      status='failure'
-      value={state.valueFailure}
-      onChange={onChangeFailure}
-    />
-  </FlexView>
-</form>
+<div>
+  USER INPUT:
+  <NumberInput B value={state.value} onChange={onChange} />
+  <br />
+  SAVED IN FORM STATE (valid number):
+  <Input
+    readOnly
+    disabled
+    value={typeof state.value === "number" ? String(state.value) : ""}
+  />
+</div>;
 ```
 
-#### Password Input
+#### Number Input C
+
+```js
+initialState = { value: undefined };
+
+const onChange = value => setState({ value });
+
+<div>
+  USER INPUT:
+  <NumberInput C value={state.value} onChange={onChange} />
+  <br />
+  SAVED IN FORM STATE (valid number):
+  <Input
+    readOnly
+    disabled
+    value={typeof state.value === "number" ? String(state.value) : ""}
+  />
+</div>;
+```
+
+<!-- #### Number Input D
 
 ```js
 initialState = { value: '' };
 
-const onChange = value => setState({ value });
+const onChange = ({ currentTarget: { value } }) => setState({ value });
 
-<PasswordInput
-  placeholder='super secret password'
-  value={state.value}
-  onChange={onChange}
-/>
-```
-
-#### Confirmation Input
-
-```js
-initialState = {};
-
-const onConfirm = value => console.log(`confirmed: ${value}`);
-const onClear = () => console.log('cleared!');
-const onChange = value => setState({ value });
-
-const initialValue = state.value;
-
-<form className='ui form'>
-  <ConfirmationInput
-    placeholder='Type Word'
-    {...{ initialValue, onChange, onConfirm, onClear }}
-    text={{ clear: 'clear', toConfirm: 'to confirm' }}
-    icon={{ clear: undefined, toConfirm: undefined }}
+<div>
+  USER INPUT:
+  <div>
+  <input type='number' value={state.value} onChange={onChange} />
+  </div>
+  <br />
+  SAVED IN FORM STATE (valid number):
+  <Input
+    readOnly
+    disabled
+    value={isNaN(parseFloat(state.value)) ? '' : String(parseFloat(state.value))}
   />
-</form>
-```
+</div>;
+``` -->

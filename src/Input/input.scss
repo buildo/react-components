@@ -128,4 +128,13 @@ $show-color: $brc-azure !default;
       cursor: pointer;
     }
   }
+
+  &.number-input {
+    &:not(.is-valid) {
+      > input {
+        color: red;
+        font-weight: bold;
+      }
+    }
+  }
 }
