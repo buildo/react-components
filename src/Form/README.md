@@ -1,7 +1,7 @@
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537456249294_Form+example.jpg)
 
 I forms sono uno strumento per raccogliere informazioni dagli utenti. 
-In qualsiasi contesto vengano utilizzati, ad esempio Sign up, Checkout registration, è importante una buona progettazione affinché l’utente interpreti correttamente le informazioni richieste.
+In qualsiasi contesto vengano utilizzati, ad esempio in un form di Sign up, Checkout registration, affinché l’utente interpreti correttamente le informazioni richieste, è fondamentale una corretta progettazione.
 
 La maggior parte delle persone ritiene noiso compilare i form. Impostare le domande come faresti in una normale conversazione tra persone e non come un interrogatorio per riempire il database, ti permetterà di rendere più piacevole l’esperienza dell’utente.
 
