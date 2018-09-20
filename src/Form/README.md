@@ -41,7 +41,42 @@ Il placeholder text, è un suggerimento, un esempio aggiuntivo delle informazion
 - Le persone che utilizzano il tasto Tab per passare da un campo all’altro del form, data la velocità di utilizzo, molto probabilmente non vedrebbero il placeholder
 - Gli utenti sono attirati dai campi vuoti, quindi fanno meno fatica a vedere i campi con già del testo di placeholder inserito; oppure potrebbero confondere il testo di placeholder con un valore predefinito e perdersi quel campo di inserimento.
 
+## Input Hints
+Per evitare l’uso del placeholder e guidare l’utente nella compilazione del campo è consigliabile in aggiunta alla label, l’utilizzo di un Input Hint, in modo che l’utente possa continuare a vederlo anche mentre sta compilando il campo.
+A seconda del design del form l’hint può essere posizioneto:
+
+- Sempre visibile sotto il Field
+- All’interno di un box posto vicino al Field
+- All’interno di un tooltip che a seconda delle esigenze appare quando vai in hover e in focus sul Field
+
 ## Actions
+
+
+# Best Practices for Web Form Design
+## Keep it short
+Per evitare che la compilazione di un form diventi lunga e noiosa, è consigliabile rimuovere quei campi che non sono necessari.
+Rimuovi quei campi che raccolgono informazioni che possono essere:
+-  derivate in qualche altro modo
+- chieste anche in una fase successiva
+- semplicemente omesse
+Se per forza di cose il form è molto lungo è consigliabile dividerlo in sezioni con titolo 
+
+## Considera il form come una conversazione/ Rispetta sempre la sequenza logica
+Come rispetti la sequenza logica di campi come Credit-card number,Expiration date, Security code cerca di fare la stessa cosa con tutti gli altri campi del form. 
+Fai domande seguendo una sequenza intuitiva, come quando conversi normalmente con un’altra persona.
+
+## Presenta i campi in una sola colonna
+Questo eviterà di spezzare il flusso dell’utente che sarà guidato dallo sviluppo verso il basso del form e non dovrà ogni volta orientarsi visivamente per capire dov’è posizionato il prossimo campo da compilare (eccezione solo per quei campi corti strettamente correlati come Città/Stato/Codice postale) 
+
+## Abbina i campi al tipo e dimensione dell’input
+Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dato richiesto. Ad esempio, il text field per l'indirizzo deve essere più lungo del text field per il codice di avviamento postale.
+
+## I requisiti di formattazione devono essere chiari
+Attraverso degli indizi rendi chiaro all’utente se il testo all’interno dell’input deve essere formattato in un determinato modo. Cerca per quanto ti è possibile di eliminare le regole di formattazione arbitrarie (es. parentesi per i prefissi telefonici).
+
+## Evita Reset e Clear Button
+Evita di utilizzare il pulsante clear nel form, molti utenti potrebbero inavvertitamente cliccarlo, ma se indispensabile, dagli un peso minore rispetto al bottone per confermare l’invio del form. 
+
 
 
 
