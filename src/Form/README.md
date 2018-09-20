@@ -16,13 +16,14 @@ Esempio ⛔
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537451982065_2366424557_d6cbd0b89d_o.png)
 
 
-# Elementio che compongono il form
+# Elementi che compongono il form
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1536567995890_form.png)
 
+## Input Fields
 Le informazioni possono essere inserite attraverso una varietà di campi differenti come ad esempio: Single-line text field,Text area, Checkbox, Radio Buttons, Dropdown, Date picker, Time picker, Password field, Slider, Confirmation input.
 
 ## Labels
-Le labels, indicano all’utente quale informazione inserire nel campo.
+Le labels, indicano all’utente quale informazione inserire nell' input field.
 
 Dove posizionare la label? top-, right-, or left? la giusta soluzione dipende dai goals e dai vincoli.
 La soluzione più performante per tempi di compilazione si è rivelata quella top-left.
@@ -30,7 +31,7 @@ La soluzione più performante per tempi di compilazione si è rivelata quella to
 L’utente deve sempre capire a colpo d’occhio a quale campo si riferisce una determinata label. Evita che un’ etichetta sia equidistante da più text field in modo da non creare possibili fraintendimenti. 
 
 ## Required field label
-Contrassegna i campi obbligatori con un’ icona, un’ asterisco posto prima della label, che permetta all’utente di distinguere a colpo d’occhio i campi obbligatori da compilare, da quelli non obbligatori.
+Contrassegna i campi obbligatori con un’ icona, preferibilmente un’ asterisco posto prima della label, che permetta all’utente di distinguere a colpo d’occhio i campi obbligatori da compilare, da quelli non obbligatori.
 
 ## Input Prompt (placeholder)
 Il placeholder text, è un suggerimento, un esempio aggiuntivo delle informazioni richieste per un determinato campo che generalmente scompare quando l'utente digita nel campo.
