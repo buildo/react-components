@@ -1,7 +1,7 @@
-I forms sono uno strumento per raccogliere informazioni dagli utenti. 
-In qualsiasi contesto vengano utilizzati, ad esempio in un form di Sign up, Checkout registration, affinché l’utente interpreti correttamente le informazioni richieste, è fondamentale una corretta progettazione.
+I forms sono uno strumento per raccogliere informazioni dagli utenti. In qualsiasi contesto vengano utilizzati, ad esempio in un form di Sign up, Checkout registration, affinché l’utente interpreti correttamente le informazioni richieste, è fondamentale una corretta progettazione.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537456249294_Form+example.jpg)
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537534587661_Form+example.jpg)
+
 
 La maggior parte delle persone ritiene noioso compilare i form. Impostare le domande come faresti in una normale conversazione tra persone e non come un interrogatorio per riempire il database, ti permetterà di rendere più piacevole l’esperienza dell’utente.
 
@@ -55,24 +55,25 @@ A seconda del design del form l’hint può essere posizioneto:
 ## Actions
 Le azioni permettono all'utente di completare il form o continuare se il form si sviluppa su più schermate.
 Solitamente ci sono due tipi di azioni:
-- Azioni primari come "Submit", "Save", "Continue", dato che permettono all'utejnte di raggiumgere il suo principale obbiettivo, devono avere una visibilità maggiore.
-- Azioni secondarie com "Cance", "Reset", "Go Back"
+- Azioni primari come "Submit", "Save", "Continue", dato che permettono all'utente di raggiungere il suo principale obbiettivo, devono avere maggiore importanza e visibilità.
+- Azioni secondarie come "Cancel", "Reset", "Go Back" sono in contrasto con l'obiettivo principale della maggior parte delle persone di completare il form, devono quindi avere un peso minore rispetto alle azioni primarie, minimizzando così il rischio di potenziali errori.
 
 # Best Practices for Web Form Design
 ## Keep it short
 Per evitare che la compilazione di un form diventi lunga e noiosa, è consigliabile rimuovere quei campi che non sono necessari.
-Rimuovi quei campi che raccolgono informazioni che possono essere:
--  derivate in qualche altro modo
-- chieste anche in una fase successiva
-- semplicemente omesse
-Se per forza di cose il form è molto lungo è consigliabile dividerlo in sezioni con titolo 
-
-## Considera il form come una conversazione/ Rispetta sempre la sequenza logica
-Come rispetti la sequenza logica di campi come Credit-card number,Expiration date, Security code cerca di fare la stessa cosa con tutti gli altri campi del form. 
-Fai domande seguendo una sequenza intuitiva, come quando conversi normalmente con un’altra persona.
+Rimuovi quei campi che raccolgono informazioni che possono essere derivate in qualche altro modo, chieste anche in una fase successiva o semplicemente omesse.
+Se per forza di cose il form è molto lungo è consigliabile dividerlo in **sezioni con titolo**
 
 ## Presenta i campi in una sola colonna
-Questo eviterà di spezzare il flusso dell’utente che sarà guidato dallo sviluppo verso il basso del form e non dovrà ogni volta orientarsi visivamente per capire dov’è posizionato il prossimo campo da compilare (eccezione solo per quei campi corti strettamente correlati come Città/Stato/Codice postale) 
+Questo eviterà di spezzare il flusso dell’utente che sarà guidato dallo sviluppo verso il basso del form e non dovrà ogni volta orientarsi visivamente per capire dov’è posizionato il prossimo campo da compilare. Eccezione fatta solo per quei campi corti strettamente correlati come Città/Stato/Codice postale.
+postale) 
+
+Essempio ✅ 
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537539315394_2367261684_0fb6a229af_m.jpg)
+
+Essempio ⛔
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537539281013_2367261472_a8a423c9d7_m.jpg)
+
 
 ## Abbina i campi al tipo e dimensione dell’input
 Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dato richiesto. Ad esempio, il text field per l'indirizzo deve essere più lungo del text field per il codice di avviamento postale.
@@ -80,8 +81,10 @@ Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dat
 ## I requisiti di formattazione devono essere chiari
 Attraverso degli indizi rendi chiaro all’utente se il testo all’interno dell’input deve essere formattato in un determinato modo. Cerca per quanto ti è possibile di eliminare le regole di formattazione arbitrarie (es. parentesi per i prefissi telefonici).
 
-## Evita Reset e Clear Button
-Evita di utilizzare il pulsante clear nel form, molti utenti potrebbero inavvertitamente cliccarlo, ma se indispensabile, dagli un peso minore rispetto al bottone per confermare l’invio del form. 
+## Considera il form come una conversazione/ Rispetta sempre la sequenza logica
+Come rispetti la sequenza logica di campi come Credit-card number,Expiration date, Security code cerca di fare la stessa cosa con tutti gli altri campi del form. 
+Fai domande seguendo una sequenza intuitiva, come quando conversi normalmente con un’altra persona.
+
 
 
 
