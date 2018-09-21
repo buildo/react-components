@@ -80,9 +80,9 @@ Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dat
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537540626447_field-size.jpg)
 
 
-## Considera il form come una conversazione/ Rispetta sempre la sequenza logica
-Come rispetti la sequenza logica di campi come Credit-card number,Expiration date, Security code cerca di fare la stessa cosa con tutti gli altri campi del form. 
-Fai domande seguendo una sequenza intuitiva, come quando conversi normalmente con un’altra persona.
+## Rispetta sempre la sequenza logica
+## Elimina elementi non strettamente correlati alla compilazione del form
+## Scegli in base alla tipologia di form
 
 
 
