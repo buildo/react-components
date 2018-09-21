@@ -3,7 +3,7 @@
 I forms sono uno strumento per raccogliere informazioni dagli utenti. 
 In qualsiasi contesto vengano utilizzati, ad esempio in un form di Sign up, Checkout registration, affinché l’utente interpreti correttamente le informazioni richieste, è fondamentale una corretta progettazione.
 
-La maggior parte delle persone ritiene noiso compilare i form. Impostare le domande come faresti in una normale conversazione tra persone e non come un interrogatorio per riempire il database, ti permetterà di rendere più piacevole l’esperienza dell’utente.
+La maggior parte delle persone ritiene noioso compilare i form. Impostare le domande come faresti in una normale conversazione tra persone e non come un interrogatorio per riempire il database, ti permetterà di rendere più piacevole l’esperienza dell’utente.
 
 
 Essempio ✅ 
@@ -35,20 +35,21 @@ Contrassegna i campi obbligatori con un’ icona, preferibilmente un’ asterisc
 
 ## Input Prompt (placeholder)
 Il placeholder text, è un suggerimento, un esempio aggiuntivo delle informazioni richieste per un determinato campo che generalmente scompare quando l'utente digita nel campo.
-È fortemente sconsigliato utilizzare il placeholder in sostituzione della label, per vari motivi:
+È fortemente sconsigliato utilizzare il placeholder in sostituzione della label, poiché dato che sparisce nello stato di focus, l’utente potrebbe non ricordarsi il contenuto del placeholder e compilare il campo in modo errato. 
+Inoltre, lee persone che utilizzano il tasto Tab per passare da un campo all’altro del form, data la velocità di utilizzo, molto probabilmente non lo vedrebbero neanche.
 
--  Il placeholder sparisce quando vai in focus sul text field e l’utente potrebbe non ricordarsi cosa doveva inserire in quel campo
-- Senza label l’utente potrebbe non ricordarsi il dato che ha inserito a cosa fa riferimento
-- Le persone che utilizzano il tasto Tab per passare da un campo all’altro del form, data la velocità di utilizzo, molto probabilmente non vedrebbero il placeholder
-- Gli utenti sono attirati dai campi vuoti, quindi fanno meno fatica a vedere i campi con già del testo di placeholder inserito; oppure potrebbero confondere il testo di placeholder con un valore predefinito e perdersi quel campo di inserimento.
+Si consiglia l’utilizzo del Placeholder nei dropdown, date picker, time picker per far capire che non è stato ancora selezionato un valore. Nel placeholder ripeti l’azione, solitamente “Select” + la “Label”
 
-## Input Hints
+## Input Hints (help text)
 Per evitare l’uso del placeholder e guidare l’utente nella compilazione del campo è consigliabile in aggiunta alla label, l’utilizzo di un Input Hint, in modo che l’utente possa continuare a vederlo anche mentre sta compilando il campo.
 A seconda del design del form l’hint può essere posizioneto:
 
+A seconda del design del form l’hint può essere posizioneto:
 - Sempre visibile sotto il Field
 - All’interno di un box posto vicino al Field
 - All’interno di un tooltip che a seconda delle esigenze appare quando vai in hover e in focus sul Field
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537526337876_Hinput+Hints.jpg)
 
 ## Actions
 
