@@ -32,6 +32,7 @@ L’utente deve sempre capire a colpo d’occhio a quale campo si riferisce una 
 
 ## Required field label
 Contrassegna i campi obbligatori con un’ icona, preferibilmente un’ asterisco posto prima della label, che permetta all’utente di distinguere a colpo d’occhio i campi obbligatori da compilare, da quelli non obbligatori.
+Se la maggior parte dei campi sono obbligatori, non contrassegnarli tutti, rendi chiaro all’utente quali sono quelli opzionali, mentre se la maggior parte dei campi sono opzionali, contrassegna quelli che sono obbligatori.
 
 ## Input Prompt (placeholder)
 Il placeholder text, è un suggerimento, un esempio aggiuntivo delle informazioni richieste per un determinato campo che generalmente scompare quando l'utente digita nel campo.
@@ -52,7 +53,10 @@ A seconda del design del form l’hint può essere posizioneto:
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537526337876_Hinput+Hints.jpg)
 
 ## Actions
-
+Le azioni permettono all'utente di completare il form o continuare se il form si sviluppa su più schermate.
+Solitamente ci sono due tipi di azioni:
+- Azioni primari come "Submit", "Save", "Continue", dato che permettono all'utejnte di raggiumgere il suo principale obbiettivo, devono avere una visibilità maggiore.
+- Azioni secondarie com "Cance", "Reset", "Go Back"
 
 # Best Practices for Web Form Design
 ## Keep it short
