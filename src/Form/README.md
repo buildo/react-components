@@ -74,12 +74,11 @@ Essempio ✅
 Essempio ⛔
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537539281013_2367261472_a8a423c9d7_m.jpg)
 
-
-## Abbina i campi al tipo e dimensione dell’input
+## Scegli la dimensione dell'input in base alla tipologia di dato da inserire
 Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dato richiesto. Ad esempio, il text field per l'indirizzo deve essere più lungo del text field per il codice di avviamento postale.
 
-## I requisiti di formattazione devono essere chiari
-Attraverso degli indizi rendi chiaro all’utente se il testo all’interno dell’input deve essere formattato in un determinato modo. Cerca per quanto ti è possibile di eliminare le regole di formattazione arbitrarie (es. parentesi per i prefissi telefonici).
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537540626447_field-size.jpg)
+
 
 ## Considera il form come una conversazione/ Rispetta sempre la sequenza logica
 Come rispetti la sequenza logica di campi come Credit-card number,Expiration date, Security code cerca di fare la stessa cosa con tutti gli altri campi del form. 
