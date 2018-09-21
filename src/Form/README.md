@@ -78,14 +78,3 @@ Essempio ⛔
 Assicurarti che la lunghezza del campo di input sia proporzionale al tipo di dato richiesto. Ad esempio, il text field per l'indirizzo deve essere più lungo del text field per il codice di avviamento postale.
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_BA524467D1216A75F962F9CEF857CF4AD456E89029C0804544D56FD25B805665_1537540626447_field-size.jpg)
-
-
-## Rispetta sempre la sequenza logica
-## Elimina elementi non strettamente correlati alla compilazione del form
-## Scegli in base alla tipologia di form
-
-
-
-
-
-
