@@ -44,6 +44,7 @@
     "moment": "2.18.1",
     "prop-types": "15.6.0",
     "react-addons-shallow-compare": "15.6.0",
+    "react-autosize-textarea": "5.0.0",
     "react-dates": "12.5.1",
     "react-dnd": "2.4.0",
     "react-dnd-html5-backend": "2.4.1",

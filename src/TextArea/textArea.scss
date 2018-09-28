@@ -1,0 +1,47 @@
+@import '../utils/theme/variables.scss';
+$height: 36px !default;
+$padding-h: 12px !default;
+$padding-v: 10px !default;
+$font-size: 14px !default;
+$font-weight: $brc-regular !default;
+$placeholder-color: $brc-coolGrey !default;
+$placeholder-font-weight: $brc-semibold !default;
+$color: $brc-darkGrey !default;
+$border-color: $brc-silver !default;
+$border-width: 1px !default;
+$border-radius: 2px !default;
+$color-focus: $brc-darkGrey !default;
+$border-color-focus: $brc-waterBlue !default;
+$opacity-disabled: .6 !default;
+
+textarea {
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  height: $height;
+  padding: $padding-v $padding-h;
+  color: $color;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $font-size;
+
+  /* placeholder */
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder {
+    color: $placeholder-color;
+    font-weight: $placeholder-font-weight;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  &:focus {
+    border: $border-width solid $border-color-focus;
+    outline: none;
+    box-shadow: 0;
+    color: $color-focus;
+  }
+}
