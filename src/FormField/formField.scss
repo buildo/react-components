@@ -1,24 +1,42 @@
 @import '../utils/theme/variables.scss';
 
-$label-color: $brc-coolGrey;
+$label-color: $brc-darkGreyBlue;
 
 .form-field {
   .form-field-label {
+    position: relative;
     color: $label-color;
     font-size: 12px;
     margin-bottom: 3px;
+    font-weight: $brc-semibold;
   }
 
   &.is-required {
     .form-field-label {
-      ::before {
+      padding-left: 9px;
+
+      > ::before {
         content: '*';
         color: $brc-strawberry;
+        font-size: 17px;
+        position: absolute;
+        left: 0;
+        font-weight: $brc-regular;
       }
     }
   }
 
   &.is-disabled {
     opacity: .5;
+  }
+
+  &.is-horizontal {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    .form-field-label {
+      margin-bottom: 0;
+      margin-left: 10px;
+    }
   }
 }

@@ -47,7 +47,7 @@ export class DatePickerField<T extends DatePicker.Value> extends React.PureCompo
       datePickerRenderer,
       ..._datePickerProps
     } = this.props;
-    const className = cx('dropdown-field', _className);
+    const className = cx('date-picker-field', _className);
     const DatePickerT = DatePicker as new() => DatePicker<T>; // TODO: use generics in JSX with TS 2.9
     const onChange = _onChange as (value?: T) => void;        // forcing onChange to be of type accepted if returnFormat is 'never'
     const datePickerProps = {
