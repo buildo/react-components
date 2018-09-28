@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import find = require('lodash/find');
 import Column, { ColumnIntrinsicProps } from '../../Column';
 import Header, { defaultHeader } from '../../Header';
 import SortableHeader from './SortableHeader';
 import { getArrayChildren } from '../../utils';
+import { find } from '../../../utils';
 
 const sortable = <T, K extends string = keyof T>(args: ColumnIntrinsicProps<T, K>) => {
 
@@ -17,7 +17,7 @@ const sortable = <T, K extends string = keyof T>(args: ColumnIntrinsicProps<T, K
     ...otherArgs
   } = (args);
 
-  const header = find(getArrayChildren(_children), { type: Header }) || defaultHeader(name);
+  const header = find(getArrayChildren(_children), child => child.type === Header) || defaultHeader(name);
   const otherChildren = getArrayChildren(_children)!.filter(ch => ch.type !== Header);
   const sortableHeader = sortable ? (
     <Header {...header.props} onClick={onHeaderClick}>

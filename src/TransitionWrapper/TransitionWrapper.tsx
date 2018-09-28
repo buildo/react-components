@@ -142,7 +142,7 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<Transi
     const props = {
       className: cx(className, transitionClassName),
       style: this.getStyle(),
-      ...omit(this.props, Object.keys(Props))
+      ...(omit(this.props, Object.keys(Props)) as {})
     };
 
     return React.createElement(

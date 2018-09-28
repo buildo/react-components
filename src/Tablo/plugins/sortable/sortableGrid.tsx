@@ -7,7 +7,9 @@ import ColumnGroup from '../../ColumnGroup';
 import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { getArrayChildren } from '../../utils';
 
-export const clean = <T, K extends string = keyof T>(columnProps: ColumnIntrinsicProps<T, K>): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined');
+export const clean = <T, K extends string = keyof T>(
+  columnProps: ColumnIntrinsicProps<T, K>
+): ColumnIntrinsicProps<T, K> => omitBy(columnProps, x => typeof x === 'undefined') as any;
 
 const getLocals = <T, K extends string>({
   className,

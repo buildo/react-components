@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { props, t } from '../../../utils';
+import { props, t, find } from '../../../utils';
 
 import * as cx from 'classnames';
-import find = require('lodash/find');
 import sortBy = require('lodash/sortBy');
 import findIndex = require('lodash/findIndex');
 import once = require('lodash/once');
@@ -74,7 +73,7 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
 
       const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
         const { name, fixed } = col.props;
-        const header = find(getArrayChildren(col.props.children), { type: Header }) || defaultHeader(col.props.name);
+        const header = find(getArrayChildren(col.props.children), child => child.type === Header) || defaultHeader(col.props.name);
         const otherChildren = (getArrayChildren(col.props.children) || []).filter(ch => ch.type !== Header);
         const oncedOnColumnsSwitch = once(onColumnsSwitch);
         const dndHeader = (
