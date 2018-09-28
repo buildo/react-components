@@ -17,9 +17,9 @@ $react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
 $react-dates-color-gray-lightest: lighten($react-dates-color-gray, 60%) !default;
 $react-dates-color-highlighted: #ffe8bc !default;
 
-$react-dates-color-border: $brc-silver !default;
-$react-dates-color-border-light: $brc-silver !default;
-$react-dates-color-border-medium: $brc-silver !default;
+$react-dates-color-border: $brc-paleGrey !default;
+$react-dates-color-border-light: $brc-paleGrey !default;
+$react-dates-color-border-medium: $brc-paleGrey !default;
 $react-dates-color-placeholder-text: $brc-coolGrey !default;
 $react-dates-color-text: $brc-darkGrey !default;
 $react-dates-color-text-focus: $brc-darkGrey !default;
@@ -40,7 +40,6 @@ $react-dates-z-index: 100 !default;
 
   .SingleDatePickerInput {
     height: 36px;
-    border-radius: 2px;
 
     .DateInput {
       padding: 0 8px;

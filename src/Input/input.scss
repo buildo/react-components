@@ -1,14 +1,14 @@
 @import '../utils/theme/variables.scss';
-$height: 36px !default;
+$height: 28px !default;
 $padding-h: 12px !default;
 $font-size: 14px !default;
 $font-weight: $brc-regular !default;
 $placeholder-color: $brc-coolGrey !default;
-$placeholder-font-weight: $brc-semibold !default;
+$placeholder-font-weight: $font-weight !default;
 $color: $brc-darkGrey !default;
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
-$border-radius: 2px !default;
+$border-radius: 4px !default;
 $color-focus: $brc-darkGrey !default;
 $border-color-focus: $brc-waterBlue !default;
 $opacity-disabled: .6 !default;

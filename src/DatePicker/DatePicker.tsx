@@ -231,8 +231,7 @@ export class DatePicker<T extends DatePicker.Value = never> extends React.PureCo
 
     const wrapperProps = {
       className: cx('date-picker', className, { 'two-months': displayTwoMonths, 'is-small': small }),
-      style,
-      grow: true
+      style
     };
 
     const datePickerProps = {
@@ -253,8 +252,7 @@ export class DatePicker<T extends DatePicker.Value = never> extends React.PureCo
       navPrev: angleLeftIcon,
       navNext: angleRightIcon,
       customCloseIcon: angleRightIcon,
-      isOutsideRange: () => false,
-      width: '100%'
+      isOutsideRange: () => false
     };
 
     return (

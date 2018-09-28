@@ -49,7 +49,6 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
         viewProps={viewProps}
         disabled={disabled}
         id={id}
-        horizontal={true}
       >
         {toggleRenderer ?
           toggleRenderer(toggleProps) :

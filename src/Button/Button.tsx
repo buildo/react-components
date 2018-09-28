@@ -123,7 +123,7 @@ export class Button extends React.PureComponent<Button.Props> {
   static defaultProps: ButtonDefaultProps = {
     textOverflow: TextOverflow,
     buttonState: 'ready',
-    size: 'small',
+    size: 'medium',
     fluid: false,
     primary: false,
     circular: false,
