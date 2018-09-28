@@ -4,8 +4,6 @@ import { findDOMNode } from 'react-dom';
 import { DropTarget, DragSource, DropTargetSpec, DropTargetCollector, DragSourceSpec, DragSourceCollector } from 'react-dnd';
 import { props, t, ReactChildren } from '../../../utils';
 import FlexView from 'react-flexview';
-import flowRight = require('lodash/flowRight');
-import identity = require('lodash/identity');
 
 export namespace DNDHeader {
   export type Props = {
@@ -20,9 +18,9 @@ export namespace DNDHeader {
 }
 
 export type DNDHeaderIntrinsicProps = DNDHeader.Props & {
-  connectDragSource: () => void,
-  connectDragPreview: () => void,
-  connectDropTarget: () => void,
+  connectDragSource: __ReactDnd.ConnectDragSource,
+  connectDragPreview: __ReactDnd.ConnectDragPreview,
+  connectDropTarget: __ReactDnd.ConnectDropTarget,
   isDragging: boolean,
   isOver: boolean,
   canDrop: boolean,
@@ -128,9 +126,8 @@ export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
 
   render() {
     const { connectDragSource, connectDropTarget, isDragAllowed, isDragging, canDrop, isOver, children } = this.props as DNDHeaderIntrinsicProps;
-    const dndWrapper = isDragAllowed ? flowRight(connectDropTarget, connectDragSource) : identity;
 
-    return dndWrapper(
+    const header = (
       <div className={cx('dndHeader', { isDragging, canDrop, isOver })}>
         <FlexView vAlignContent='center' width='100%' height='100%'>
           <FlexView grow height='100%' vAlignContent='center'>
@@ -139,5 +136,7 @@ export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
         </FlexView>
       </div>
     );
+
+    return isDragAllowed ? connectDropTarget(connectDragSource(header)) : header as any;
   }
 }
