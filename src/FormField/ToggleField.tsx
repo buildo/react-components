@@ -44,7 +44,7 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
       toggleRenderer,
       ..._toggleProps
     } = this.props;
-    const className = cx("time-picker-field", _className);
+    const className = cx("toggle-field", _className);
     const toggleProps = {
       ..._toggleProps,
       disabled
@@ -58,7 +58,7 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
         viewProps={viewProps}
         disabled={disabled}
         id={id}
-        horizontal={true}
+        horizontal
       >
         {toggleRenderer ? (
           toggleRenderer(toggleProps)

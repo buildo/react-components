@@ -32,7 +32,6 @@ $label-color: $brc-darkGreyBlue;
 
   &.is-horizontal {
     flex-direction: row-reverse;
-    justify-content: flex-end;
 
     .form-field-label {
       margin-bottom: 0;
