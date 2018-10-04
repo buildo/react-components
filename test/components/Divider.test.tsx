@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import Divider from '../../src/Divider';
 
@@ -28,5 +29,15 @@ describe('Divider', () => {
     );
     expect(component).toMatchSnapshot();
   });
+
+  it('handle className props', () => {
+    const testClassName = "testone";
+
+    const component = shallow(
+      <Divider className={testClassName} />
+    );
+
+    expect(component.hasClass(testClassName)).toBe(true);
+  })
 
 });
