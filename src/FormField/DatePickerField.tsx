@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { props, t, ReactChild } from '../utils';
+import { props, t, ReactChild, ObjectOmit } from '../utils';
 import * as cx from 'classnames';
 import View from 'react-flexview';
 import DatePicker from '../DatePicker';
 import { FormField } from './FormField';
-import { ObjectOmit } from 'typelevel-ts';
 
 export namespace DatePickerField {
   export type Props<T extends DatePicker.Value> = {
