@@ -27,8 +27,8 @@ export default <T, K extends string = keyof T>(
   class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T, K>> {
     private uniqueId: string;
 
-    constructor() {
-      super();
+    constructor(props: Tablo.Props<T, K>) {
+      super(props);
       this.uniqueId = uniqueId("tablo_");
     }
 

@@ -548,10 +548,12 @@ export class Popover extends React.Component<Popover.Props, State> {
 
               // not enough space
               if (
-                _popoverStyle.top < 0 ||
-                _popoverStyle.top + popover.height > window.innerHeight ||
-                _popoverStyle.left < 0 ||
-                _popoverStyle.left + popover.width > window.innerWidth
+                typeof _popoverStyle.top === "number" &&
+                typeof _popoverStyle.left === "number" &&
+                (_popoverStyle.top < 0 ||
+                  _popoverStyle.top + popover.height > window.innerHeight ||
+                  _popoverStyle.left < 0 ||
+                  _popoverStyle.left + popover.width > window.innerWidth)
               ) {
                 return null;
               }
