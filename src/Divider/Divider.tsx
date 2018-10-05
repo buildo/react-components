@@ -10,13 +10,12 @@ export type DividerDefaultProps = {
   /** an optional style object to pass to top level element of the component */
   style: React.CSSProperties,
   /** an optional class name to pass to first inner element of the component */
-  className?: Divider.className;
+  className?: string;
 };
 
 export namespace Divider {
   export type Orientation = 'horizontal' | 'vertical'
   export type Size = 'small' | 'medium' | 'large' | 'no-margin'
-  export type className = string;
   export type Props = Partial<DividerDefaultProps>;
 }
 type DividerDefaultedProps = DividerDefaultProps;
