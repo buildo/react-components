@@ -2,49 +2,73 @@
 
 exports[`Meter renders correctly 1`] = `
 <div
-  className="react-flex-view align-content-center meter fancy-class-name"
+  className="meter fancy-class-name"
   id="12345"
   style={
     Object {
-      "WebkitFlex": "1 1 auto",
+      "alignItems": "center",
+      "boxSizing": "border-box",
+      "display": "flex",
       "flex": "1 1 auto",
+      "flexDirection": "row",
+      "flexWrap": "nowrap",
+      "justifyContent": undefined,
       "margin": 10,
-      "msFlex": "1 1 auto",
+      "minHeight": 0,
+      "minWidth": 0,
       "position": "relative",
     }
   }
 >
   <div
-    className="react-flex-view bar"
+    className="bar"
     style={
       Object {
-        "WebkitFlex": "1 1 auto",
+        "alignItems": undefined,
         "background": "grey",
+        "boxSizing": "border-box",
+        "display": "flex",
         "flex": "1 1 auto",
-        "msFlex": "1 1 auto",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": undefined,
+        "minHeight": 0,
+        "minWidth": 0,
       }
     }
   >
     <div
-      className="react-flex-view filling"
+      className="filling"
       style={
         Object {
-          "WebkitFlex": "0 0 25%",
+          "alignItems": undefined,
           "background": "green",
+          "boxSizing": "border-box",
+          "display": "flex",
           "flex": "0 0 25%",
-          "msFlex": "0 0 25%",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": undefined,
+          "minHeight": 0,
+          "minWidth": 0,
         }
       }
     />
   </div>
   <div
-    className="react-flex-view label"
+    className="label"
     style={
       Object {
-        "WebkitFlex": "0 0 auto",
+        "alignItems": undefined,
+        "boxSizing": "border-box",
         "color": "red",
+        "display": "flex",
         "flex": "0 0 auto",
-        "msFlex": "0 0 auto",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": undefined,
+        "minHeight": 0,
+        "minWidth": 0,
       }
     }
   >
