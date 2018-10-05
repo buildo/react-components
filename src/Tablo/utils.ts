@@ -1,3 +1,6 @@
+import { ReactInstance } from "react";
+import * as ReactDOM from "react-dom";
+
 export const getArrayChildren: (
   maybeArrayChildren?:
     | React.ReactElement<any>
@@ -9,3 +12,7 @@ export const getArrayChildren: (
       ? maybeArrayChildren
       : [maybeArrayChildren]
     : undefined;
+
+export const findDOMNode = <E extends Element = Element>(
+  ref: ReactInstance
+): E => ReactDOM.findDOMNode(ref) as E;

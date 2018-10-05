@@ -1,9 +1,9 @@
 import * as React from "react";
-import { findDOMNode } from "react-dom";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
 import { ResizeSensor } from "../../../ResizeSensor/ResizeSensor";
 import { Tablo } from "../../Tablo";
+import { findDOMNode } from "../../utils";
 
 type AutosizeGridState = {
   width?: number;

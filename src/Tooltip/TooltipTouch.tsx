@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import {
   Tooltip,
@@ -9,6 +8,7 @@ import {
 } from "./Tooltip";
 import View from "react-flexview";
 import { props } from "../utils";
+import { findDOMNode } from "../Tablo/utils";
 
 export type State = {
   tooltipLeft: number;
@@ -133,9 +133,9 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
       <View
         vAlignContent="center"
         className={className}
-        ref={(r: any) => {
+        ref={r => {
           if (r) {
-            this.ref = ReactDOM.findDOMNode(r);
+            this.ref = findDOMNode<HTMLDivElement>(r);
           }
         }}
         onTouchStart={this.onTouchStart}

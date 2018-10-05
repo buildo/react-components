@@ -72,7 +72,7 @@ export class Toaster extends React.Component<Toaster.Props> {
   componentDidMount() {
     const node = this.props.attachTo
       ? this.toaster!
-      : ReactDOM.findDOMNode(this).parentElement!;
+      : (ReactDOM.findDOMNode(this) as Element).parentElement!;
     const { position } = window.getComputedStyle(node);
     if (position !== "relative" && position !== "absolute") {
       warn([
