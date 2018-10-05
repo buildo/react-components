@@ -47,15 +47,14 @@
     "react-dates": "12.5.1",
     "react-dnd": "2.4.0",
     "react-dnd-html5-backend": "2.4.1",
-    "react-flexview": "3.0.2",
+    "react-flexview": "4.0.1",
     "react-input-children": "4.0.1",
     "react-select": "1.0.1",
     "react-transition-group": "1.2.0",
     "sass-flex-mixins": "0.1.0",
     "tcomb": "3.2.22",
     "tcomb-react": "0.9.3",
-    "tlds": "1.194.0",
-    "typelevel-ts": "0.2.3"
+    "tlds": "1.194.0"
   },
   "devDependencies": {
     "@types/classnames": "2.2.3",
@@ -64,7 +63,7 @@
     "@types/fixed-data-table": "0.6.32",
     "@types/jest": "20.0.7",
     "@types/linkify-it": "2.0.1",
-    "@types/lodash": "4.14.74",
+    "@types/lodash": "4.14.116",
     "@types/node": "8.0.25",
     "@types/prop-types": "15.5.2",
     "@types/react": "^15.6.1",
@@ -91,12 +90,12 @@
     "react-styleguidist": "6.0.33",
     "react-test-renderer": "16.2.0",
     "sass-loader": "6.0.6",
-    "scriptoni": "^0.11.2",
+    "scriptoni": "^0.12.5",
     "smooth-release": "8.0.4",
     "style-loader": "0.17.0",
     "ts-jest": "20.0.10",
     "ts-loader": "2.3.4",
-    "typescript": "2.6.2",
+    "typescript": "2.8.1",
     "webpack": "3.5.5"
   },
   "peerDependencies": {

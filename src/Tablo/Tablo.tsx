@@ -149,10 +149,10 @@ class TabloComponent<T, K extends string> extends React.PureComponent<Tablo.Prop
 
     const rowsCount = data.length;
     const tableProps: TableProps = {
-      ...omit(_tableProps, 'columnsOrder', 'autosize'),
+      ...omit(_tableProps, ['columnsOrder', 'autosize']),
       rowsCount,
       rowClassNameGetter
-    };
+    } as TableProps;
 
     return (
       <FlexView column grow className={cx('tablo', className)}>

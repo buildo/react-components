@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { t, ReactChildren, stateClassUtil, props } from '../utils';
+import { t, ReactChildren, stateClassUtil, props, ObjectOverwrite } from '../utils';
 import { FormattedText } from '../FormattedText/FormattedText';
 import { Popover } from '../Popover/Popover';
-import { ObjectOverwrite } from 'typelevel-ts';
 
 export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */

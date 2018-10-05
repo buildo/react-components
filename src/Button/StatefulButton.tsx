@@ -1,7 +1,6 @@
 import * as React from 'react';
 import pick = require('lodash/pick');
-import { ObjectOmit } from 'typelevel-ts';
-import { props, t } from '../utils';
+import { props, t, ObjectOmit } from '../utils';
 import { Button, ButtonPropTypes } from './Button';
 
 
@@ -173,9 +172,12 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
   };
 
   render() {
-    const buttonProps = pick(this.props, Object.keys(ButtonPropTypes));
+    const buttonProps: Button.Props = {
+      ...pick(this.props, Object.keys(ButtonPropTypes) as [keyof Button.Props]),
+      onClick: this.onClick
+    };
 
-    return <Button {...buttonProps} onClick={this.onClick} buttonState={this.getButtonState()} />;
+    return <Button {...buttonProps} buttonState={this.getButtonState()} />;
   }
 
 }

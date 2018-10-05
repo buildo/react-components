@@ -85,10 +85,10 @@ export class Modal extends React.Component<Modal.Props> {
     const shouldRenderHeader = !!title || !!iconClose;
     const shouldRenderFooter = !!footer;
 
-    const modalPortalProps = {
-      ...omit<ModalPortal.Props, Partial<Modal.Props>>(props, Object.keys(LocalProps)),
-      className: cx('modal', className)
-    };
+    const modalPortalProps: ModalPortal.Props = {
+      ...omit(props, Object.keys(LocalProps)),
+      className: cx('modal', className),
+    } as ModalPortal.Props;
 
     return (
       <ModalPortal {...modalPortalProps}>

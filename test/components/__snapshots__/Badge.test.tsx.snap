@@ -2,12 +2,18 @@
 
 exports[`Badge renders correctly 1`] = `
 <div
-  className="react-flex-view align-content-center justify-content-center badge"
+  className="badge"
   style={
     Object {
-      "WebkitFlex": "0 1 auto",
+      "alignItems": "center",
+      "boxSizing": "border-box",
+      "display": "flex",
       "flex": "0 1 auto",
-      "msFlex": "0 1 auto",
+      "flexDirection": "row",
+      "flexWrap": "nowrap",
+      "justifyContent": "center",
+      "minHeight": 0,
+      "minWidth": 0,
     }
   }
 >

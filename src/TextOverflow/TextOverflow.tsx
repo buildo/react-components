@@ -1,10 +1,9 @@
 import * as React from 'react';
 import omit = require('lodash/omit');
 import debounce = require('lodash/debounce');
-import { props, t } from '../utils';
+import { props, t, ObjectOverwrite, ObjectOmit } from '../utils';
 import { warn } from '../utils/log';
 import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
-import { ObjectOverwrite } from 'typelevel-ts';
 import { Popover } from '../Popover/Popover';
 
 export const Props = {
@@ -191,7 +190,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     if (children) {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
-      const props: Popover.Props = {
+      const props: ObjectOmit<Popover.Props, 'children'> = {
         ...omit(other, ['delayWhenLazy']),
         popover: {
           ...popover,

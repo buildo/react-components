@@ -70,10 +70,10 @@ export const Column = <T, K extends string>(args: Column.Props<T, K>): React.Rea
     allowCellsRecycling = true
   } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T, K>;
 
-  const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey: string }) => {
+  const cell = ({ rowIndex, columnKey }: { rowIndex: number, columnKey?: string }) => {
     const elem: React.ReactElement<CellIntrinsicProps<T, K>> = find(getArrayChildren(children), child => child.type === Cell) || defaultCell;
     const rowData = data[rowIndex] || {};
-    const dataCell = rowData[columnKey];
+    const dataCell = rowData[columnKey || ''];
     return React.cloneElement<CellIntrinsicProps<T, K>, CellIntrinsic<T, K>>(elem, { data: dataCell, rowData, rowIndex, fixed });
   };
 

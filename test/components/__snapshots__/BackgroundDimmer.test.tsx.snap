@@ -19,17 +19,23 @@ exports[`BackgroundDimmer renders correctly 1`] = `
     }
   />
   <div
-    className="react-flex-view align-content-center justify-content-center main-content-wrapper"
+    className="main-content-wrapper"
     onClick={[Function]}
     onTouchMove={[Function]}
     onWheel={[Function]}
     style={
       Object {
-        "WebkitFlex": "0 1 auto",
+        "alignItems": "center",
         "bottom": 0,
+        "boxSizing": "border-box",
+        "display": "flex",
         "flex": "0 1 auto",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "center",
         "left": 0,
-        "msFlex": "0 1 auto",
+        "minHeight": 0,
+        "minWidth": 0,
         "position": "fixed",
         "right": 0,
         "top": 0,
@@ -38,16 +44,22 @@ exports[`BackgroundDimmer renders correctly 1`] = `
     }
   >
     <div
-      className="react-flex-view flex-column centered-content-wrapper"
+      className="centered-content-wrapper"
       onClick={[Function]}
       style={
         Object {
-          "WebkitFlex": "0 1 auto",
+          "alignItems": undefined,
+          "boxSizing": "border-box",
+          "display": "flex",
           "flex": "0 1 auto",
+          "flexDirection": "column",
+          "flexWrap": "nowrap",
           "height": "auto",
+          "justifyContent": undefined,
           "maxHeight": "90%",
           "maxWidth": "90%",
-          "msFlex": "0 1 auto",
+          "minHeight": 0,
+          "minWidth": 0,
           "width": "auto",
         }
       }

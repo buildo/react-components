@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Modal } from './Modal';
-import { ObjectOmit } from 'typelevel-ts';
+import { ObjectOmit } from '../utils';
 
 type ContextProps = {
   childContextTypes: React.ValidationMap<any>,

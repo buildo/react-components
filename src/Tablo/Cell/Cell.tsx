@@ -3,9 +3,8 @@ import * as cx from 'classnames';
 import { props, t, ReactChildren } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';
-import { If, StringContains, StringIntersection } from 'typelevel-ts';
 
-export type PickIfExists<T, K extends string> = If<StringContains<keyof T, K>, T[StringIntersection<keyof T, K>], undefined>;
+export type PickIfExists<T extends {}, K extends string> = K extends keyof T ? T[K] : never
 
 export type Intrinsic<T, K extends string> = {
   data: PickIfExists<T, K>,
