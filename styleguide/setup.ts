@@ -6,7 +6,6 @@ import * as faker from "faker";
 import { find, reject, partial, sortBy } from "lodash";
 
 import "buildo-normalize-css";
-import "react-flexview/src/flexView.scss";
 
 // monkey-patch React.PropTypes
 (React as any).PropTypes = PropTypes;

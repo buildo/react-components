@@ -43,14 +43,14 @@ export class TabbedPanel extends React.PureComponent<TabbedPanel.Props> {
     headers,
     activeIndex,
     onSetActiveTab,
-    basis = "100%"
+    basis
   }: TabbedPanel.Tabs) {
     return (
       <FlexView grow className="tabbed-panel-tabs">
         {headers.map((header, i) => (
           <FlexView
             shrink
-            basis={basis}
+            basis={basis || "100%"}
             key={i}
             className={cx("tabbed-panel-tab", { active: activeIndex === i })}
             hAlignContent="center"

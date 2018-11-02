@@ -272,7 +272,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     const box = target.getBoundingClientRect();
 
     const body = document.body;
-    const docElem = document.documentElement;
+    const docElem = document.documentElement!;
 
     const scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
     const scrollLeft =

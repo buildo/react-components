@@ -79,7 +79,7 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
     ).getBoundingClientRect();
     const {
       height: wHeight
-    } = document.documentElement.getBoundingClientRect();
+    } = document.documentElement!.getBoundingClientRect();
     if (wHeight - (scrollTop + height) < 20) {
       this.setState({
         // eslint-disable-line react/no-did-mount-set-state
