@@ -2,7 +2,7 @@
 
 #### A typical usage
 ```js
-initialState = { name: '', surname: '', secret: '', disabled: false, toggle2: true }
+initialState = { value: '', name: '', surname: '', secret: '', disabled: false, toggle2: true }
 
 function onChange(field, value) {
   setState({ [field]: value })

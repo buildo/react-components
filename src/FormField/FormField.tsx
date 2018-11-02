@@ -35,6 +35,7 @@ export const Props = {
   children: ReactChildren,
   fieldId: t.maybe(t.String),
   viewProps: t.maybe(t.Object),
+  horizontal: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
   id: t.maybe(t.String)
