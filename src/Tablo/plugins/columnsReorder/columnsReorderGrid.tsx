@@ -21,13 +21,13 @@ import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
-  class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T, K>> {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
+  class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T>> {
     private uniqueId: string;
 
-    constructor(props: Tablo.Props<T, K>) {
+    constructor(props: Tablo.Props<T>) {
       super(props);
       this.uniqueId = uniqueId("tablo_");
     }
@@ -38,7 +38,7 @@ export default <T, K extends string = keyof T>(
       columnsOrder = [],
       onColumnsReorder,
       ...gridProps
-    }: Tablo.Props<T, K>) {
+    }: Tablo.Props<T>) {
       const _children =
         getArrayChildren(children) || defaultColumns(gridProps.data);
 
@@ -53,9 +53,7 @@ export default <T, K extends string = keyof T>(
         };
       }
 
-      const doOrderColumns = (
-        child: React.ReactElement<Column.Props<T, K>>
-      ) => {
+      const doOrderColumns = (child: React.ReactElement<Column.Props<T>>) => {
         if (child.type === Header) {
           return -1;
         }
@@ -65,7 +63,11 @@ export default <T, K extends string = keyof T>(
 
       const orderedChildren = sortBy(_children, doOrderColumns);
 
-      const moveColumn = (list: K[] = [], source: K, target: K) => {
+      const moveColumn = (
+        list: (keyof T)[] = [],
+        source: keyof T,
+        target: keyof T
+      ) => {
         const source_index = list.indexOf(source);
         const target_index = list.indexOf(target);
         if (source_index <= target_index) {
@@ -85,7 +87,7 @@ export default <T, K extends string = keyof T>(
         }
       };
 
-      const onColumnsSwitch = (sourceName: K, targetName: K) => {
+      const onColumnsSwitch = (sourceName: keyof T, targetName: keyof T) => {
         if (
           onColumnsReorder &&
           sourceName &&
@@ -104,11 +106,13 @@ export default <T, K extends string = keyof T>(
 
       const isDragAllowed = ({
         props: { fixed }
-      }: React.ReactElement<Column.Props<T, K>>) => !fixed;
-      const isDropAllowed = (fixed: boolean) => (source: K, target: K) =>
-        !fixed && source !== target;
+      }: React.ReactElement<Column.Props<T>>) => !fixed;
+      const isDropAllowed = (fixed: boolean) => (
+        source: keyof T,
+        target: keyof T
+      ) => !fixed && source !== target;
 
-      const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
+      const overrideHeader: UpdateColumnsHandler<T> = ({ col, index }) => {
         const { name, fixed } = col.props;
         const header =
           find(
@@ -122,12 +126,12 @@ export default <T, K extends string = keyof T>(
         const dndHeader = (
           <Header {...header.props}>
             <DNDHeader
-              onDragHover={oncedOnColumnsSwitch}
+              onDragHover={oncedOnColumnsSwitch as any}
               key={index}
               index={index}
-              name={name}
+              name={name as any}
               isDragAllowed={isDragAllowed(col)}
-              isDropAllowed={isDropAllowed(!!fixed)}
+              isDropAllowed={isDropAllowed(!!fixed) as any}
               tabloUniqueId={this.uniqueId}
             >
               {header.props.children}
@@ -137,9 +141,9 @@ export default <T, K extends string = keyof T>(
         const children = [dndHeader, ...otherChildren].map((el, index) =>
           React.cloneElement(el, { key: index })
         );
-        const Col: React.SFC<Column.Props<T, K>> = Column;
+        const Col: React.SFC<Column.Props<T>> = Column;
         return (
-          <Col {...col.props} key={name}>
+          <Col {...col.props} key={name as any}>
             {children}
           </Col>
         );

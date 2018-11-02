@@ -5,18 +5,8 @@ import { getArrayChildren } from "../utils";
 
 import { Column as ColumnFDT } from "fixed-data-table-2";
 
-import {
-  Cell,
-  defaultCell,
-  CellIntrinsicProps,
-  Intrinsic as CellIntrinsic
-} from "../Cell/Cell";
-import {
-  Header,
-  defaultHeader,
-  HeaderIntrinsicProps,
-  Intrinsic as HeaderIntrinsic
-} from "../Header/Header";
+import { Cell, defaultCell } from "../Cell/Cell";
+import { Header, defaultHeader, HeaderIntrinsicProps } from "../Header/Header";
 import Footer from "../Footer";
 
 export type Intrinsic<T> = {
@@ -31,30 +21,26 @@ export type Default = {
   fixed: boolean;
 };
 
-export type Required<T, K extends string> = {
+export type Required<T> = {
   key?: string | number;
-  name: K;
+  name: keyof T;
   sortable?: boolean;
   isResizable?: boolean;
   flexGrow?: number;
-  children?: Column.ColumnChildren<T, K>;
+  children?: Column.ColumnChildren<T>;
 };
 
 export namespace Column {
-  export type ColumnChildren<T, K extends string> = (
+  export type ColumnChildren<T extends {}> = (
     | React.ReactElement<Header.Props>
     | React.ReactElement<Footer.Props>
-    | React.ReactElement<Cell.Props<T, K>>)[];
-  export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
+    | React.ReactElement<Cell.Props<T, keyof T>>)[];
+  export type Props<T extends {}> = Required<T> & Partial<Default>;
 }
-export type ColumnDefaultedIntrinsicProps<T, K extends string> = Required<
-  T,
-  K
-> &
+export type ColumnDefaultedIntrinsicProps<T> = Required<T> &
   Default &
   Intrinsic<T>;
-export type ColumnIntrinsicProps<T, K extends string> = Column.Props<T, K> &
-  Intrinsic<T>;
+export type ColumnIntrinsicProps<T extends {}> = Column.Props<T> & Intrinsic<T>;
 
 const { union, maybe, struct } = t;
 export const defaultWidth = 200;
@@ -75,9 +61,9 @@ const argsTypes = struct(
   { strict: true }
 );
 
-export const Column = <T, K extends string>(
-  args: Column.Props<T, K>
-): React.ReactElement<Column.Props<T, K>> => {
+export const Column = <T extends {}>(
+  args: Column.Props<T>
+): React.ReactElement<Column.Props<T>> => {
   const {
     key,
     width = defaultWidth,
@@ -88,7 +74,7 @@ export const Column = <T, K extends string>(
     isResizable,
     children = [],
     allowCellsRecycling = true
-  } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T, K>;
+  } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T>;
 
   const cell = ({
     rowIndex,
@@ -97,18 +83,20 @@ export const Column = <T, K extends string>(
     rowIndex: number;
     columnKey?: string;
   }) => {
-    const elem: React.ReactElement<CellIntrinsicProps<T, K>> =
+    const elem =
       find(getArrayChildren(children), child => child.type === Cell) ||
       defaultCell;
     const rowData = data[rowIndex] || {};
     const dataCell = rowData[columnKey || ""];
-    return React.cloneElement<CellIntrinsicProps<T, K>, CellIntrinsic<T, K>>(
-      elem,
-      { data: dataCell, rowData, rowIndex, fixed }
-    );
+    return React.cloneElement<any, any>(elem as any, {
+      data: dataCell,
+      rowData,
+      rowIndex,
+      fixed
+    });
   };
 
-  const header = React.cloneElement<HeaderIntrinsicProps<K>, HeaderIntrinsic>(
+  const header = React.cloneElement<HeaderIntrinsicProps>(
     find(getArrayChildren(children), child => child.type === Header) ||
       defaultHeader(name),
     { fixed }
@@ -121,7 +109,7 @@ export const Column = <T, K extends string>(
   return (
     <ColumnFDT
       key={key}
-      columnKey={name}
+      columnKey={name as string | number}
       header={header}
       cell={cell}
       footer={footer}
@@ -134,7 +122,10 @@ export const Column = <T, K extends string>(
   );
 };
 
-export const defaultColumns = <T, K extends keyof T>(data: T[]) =>
-  Object.keys(data[0] || {}).map((columnName: K) =>
-    Column<T, K>({ name: columnName })
-  );
+export const defaultColumns = <T extends {}>(data: T[]) => {
+  return data.length > 0
+    ? ((Object.keys(data[0]) as unknown) as (keyof T)[]).map(columnName =>
+        Column<T>({ name: columnName })
+      )
+    : [];
+};

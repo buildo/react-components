@@ -10,11 +10,11 @@ type AutosizeGridState = {
   height?: number;
 };
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
   return class AutosizeGrid extends React.PureComponent<
-    Tablo.Props<T, K>,
+    Tablo.Props<T>,
     AutosizeGridState
   > {
     private gridWrapper: FlexView | null;

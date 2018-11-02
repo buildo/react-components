@@ -8,9 +8,9 @@ import Header, { defaultHeader } from "../Header";
 import Column from "../Column";
 
 export namespace ColumnGroup {
-  export type Props<T, K extends string> = {
+  export type Props<T> = {
     key: string | number;
-    children: React.ReactElement<Column.Props<T, K>>[];
+    children: React.ReactElement<Column.Props<T>>[];
     fixed?: boolean;
     sortable?: boolean;
   };
@@ -26,20 +26,18 @@ const argsTypes = struct(
   { strict: true, name: "ColumnGroupProps" }
 );
 
-export function ColumnGroup<T, K extends string>(
-  args: ColumnGroup.Props<T, K>
-) {
-  const { key, fixed, children } = argsTypes(args) as ColumnGroup.Props<T, K>;
+export function ColumnGroup<T>(args: ColumnGroup.Props<T>) {
+  const { key, fixed, children } = argsTypes(args) as ColumnGroup.Props<T>;
 
   const header =
     find(children, child => child.type === Header) || defaultHeader("");
   const columns = children.filter(ch => ch.type === Column).map((col, key) => {
-    const colProps: Column.Props<T, K> = {
+    const colProps: Column.Props<T> = {
       key,
       ...col.props,
       fixed
     };
-    return Column<T, K>({ ...colProps });
+    return Column<T>({ ...colProps });
   });
 
   return (

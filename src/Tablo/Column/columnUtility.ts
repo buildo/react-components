@@ -8,21 +8,17 @@ import ColumnGroup from "../ColumnGroup";
 // how to extract columns from children, update them and return new grid children
 // useful in the `getLocals` of the several plugins
 
-export interface UpdateColumnsProps<T, K extends string> {
-  col: React.ReactElement<Column.Props<T, K>>;
+export interface UpdateColumnsProps<T> {
+  col: React.ReactElement<Column.Props<T>>;
   index: number;
-  colGroup?: React.ReactElement<ColumnGroup.Props<T, K>>;
+  colGroup?: React.ReactElement<ColumnGroup.Props<T>>;
 }
-export type UpdateColumnsHandler<T, K extends string> = (
-  c: UpdateColumnsProps<T, K>
-) => JSX.Element;
-type TabloChildren<T, K extends string> =
-  | React.ReactElement<Column.Props<T, K>>[]
-  | React.ReactElement<ColumnGroup.Props<T, K>>[];
+export type UpdateColumnsHandler<T> = (c: UpdateColumnsProps<T>) => JSX.Element;
+type TabloChildren<T> =
+  | React.ReactElement<Column.Props<T>>[]
+  | React.ReactElement<ColumnGroup.Props<T>>[];
 
-export const getColumnList = <T, K extends string>(
-  children: TabloChildren<T, K>
-) => {
+export const getColumnList = <T>(children: TabloChildren<T>) => {
   const chArray = Children.toArray(children) as React.ReactElement<any>[];
   const thereAreGroups =
     chArray.filter(ch => ch.type === ColumnGroup).length > 0;
@@ -32,22 +28,22 @@ export const getColumnList = <T, K extends string>(
 };
 
 export const updateColumns: _.CurriedFunction2<{}, {}, JSX.Element[]> = curry(
-  <T, K extends string>(
-    children: TabloChildren<T, K>,
-    update: UpdateColumnsHandler<T, K>
+  <T extends {}>(
+    children: TabloChildren<T>,
+    update: UpdateColumnsHandler<T>
   ): JSX.Element[] => {
     const updateIfColumn = (
-      colGroup?: React.ReactElement<ColumnGroup.Props<T, K>>
-    ) => (col: React.ReactElement<Column.Props<T, K>>, index: number) =>
+      colGroup?: React.ReactElement<ColumnGroup.Props<T>>
+    ) => (col: React.ReactElement<Column.Props<T>>, index: number) =>
       col.type === Column ? update({ col, index, colGroup }) : col;
     const chArray = Children.toArray(children) as React.ReactElement<
-      Column.Props<T, K> | ColumnGroup.Props<T, K>
+      Column.Props<T> | ColumnGroup.Props<T>
     >[];
     const thereAreGroups =
       chArray.filter(ch => ch.type === ColumnGroup).length > 0;
 
     const newChildren = thereAreGroups
-      ? (chArray as React.ReactElement<ColumnGroup.Props<T, K>>[]).map(
+      ? (chArray as React.ReactElement<ColumnGroup.Props<T>>[]).map(
           (group, key: string | number) =>
             React.cloneElement(group, {
               key,

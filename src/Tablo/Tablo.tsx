@@ -32,7 +32,7 @@ export type TabloDefaultProps = {
   autosize: boolean;
 };
 
-export type TabloRequiredProps<T, K extends string> = {
+export type TabloRequiredProps<T> = {
   /** data shown in the table */
   data: T[];
   className?: string;
@@ -41,17 +41,17 @@ export type TabloRequiredProps<T, K extends string> = {
   /** callback to be called when mouse leaves a row */
   onRowMouseLeave?: (rowIndex: number) => void;
   /** an array containing the ordered list of column names, in the same order they should be rendered */
-  columnsOrder?: K[];
+  columnsOrder?: (keyof T)[];
   /** callback to be called when the order of columns changes after dragging an header in a new position */
-  onColumnsReorder?: (columns: K[]) => void;
+  onColumnsReorder?: (columns: (keyof T)[]) => void;
   /** callback to be called when a column is resized */
-  onColumnResize?: (x: { width: number; key: K }) => void;
+  onColumnResize?: (x: { width: number; key: keyof T }) => void;
   /** table children (Column or ColumnGroup) */
   children?:
-    | Tablo.ColumnChild<T, K>
-    | Tablo.ColumnChild<T, K>[]
-    | Tablo.ColumnGroupChild<T, K>
-    | Tablo.ColumnGroupChild<T, K>[];
+    | Tablo.ColumnChild<T>
+    | Tablo.ColumnChild<T>[]
+    | Tablo.ColumnGroupChild<T>
+    | Tablo.ColumnGroupChild<T>[];
   /** value of horizontal scroll */
   scrollLeft?: number;
   /** value of vertical scroll */
@@ -71,11 +71,11 @@ export type TabloRequiredProps<T, K extends string> = {
   /** callback to be called when the hovered row changes */
   onHoverRowChange?: (rowIndex: number) => void;
   /** id of the column according which the data should be ordered */
-  sortBy?: K;
+  sortBy?: keyof T;
   /** sorting direction */
   sortDir?: Tablo.SortDir;
   /** callback to be called when sorting change */
-  onSortChange?: (x: Tablo.Sort<K>) => void;
+  onSortChange?: (x: Tablo.Sort<keyof T>) => void;
   /** enable touch scroll */
   touchScrollEnabled?: boolean;
   /** the desired width of the table. Unless autosize is false, this can be left undefined */
@@ -90,10 +90,9 @@ export type TabloIntrinsicProps = {
   onColumnResizeEndCallback?: () => void;
   isColumnResizing?: boolean;
 };
-export type TabloDefaultedIntrinsicProps<
-  T,
-  K extends string
-> = TabloRequiredProps<T, K> & TabloDefaultProps & TabloIntrinsicProps;
+export type TabloDefaultedIntrinsicProps<T> = TabloRequiredProps<T> &
+  TabloDefaultProps &
+  TabloIntrinsicProps;
 
 export namespace Tablo {
   export type SortDir = "asc" | "desc";
@@ -101,14 +100,10 @@ export namespace Tablo {
     sortBy?: K;
     sortDir?: SortDir;
   };
-  export type ColumnChild<T, K extends string> = React.ReactElement<
-    Column.Props<T, K>
-  >;
-  export type ColumnGroupChild<T, K extends string> = React.ReactElement<
-    ColumnGroup.Props<T, K>
-  >;
+  export type ColumnChild<T> = React.ReactElement<Column.Props<T>>;
+  export type ColumnGroupChild<T> = React.ReactElement<ColumnGroup.Props<T>>;
 
-  export type Props<T, K extends string> = TabloRequiredProps<T, K> &
+  export type Props<T extends {}> = TabloRequiredProps<T> &
     Partial<TabloDefaultProps>;
 }
 
@@ -140,9 +135,7 @@ const { maybe } = t;
   onColumnResizeEndCallback: maybe(t.Function),
   isColumnResizing: maybe(t.Boolean)
 })
-class TabloComponent<T, K extends string> extends React.PureComponent<
-  Tablo.Props<T, K>
-> {
+class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
   static defaultProps: TabloDefaultProps = {
     rowClassNameGetter: () => "",
     rowHeight: 30,
@@ -159,12 +152,14 @@ class TabloComponent<T, K extends string> extends React.PureComponent<
       rowClassNameGetter: rcnGetter,
       className,
       ..._tableProps
-    } = this.props as TabloDefaultedIntrinsicProps<T, K>;
+    } = this.props as TabloDefaultedIntrinsicProps<T>;
 
     const columnsOrGroups = updateColumns(
       children || defaultColumns(data),
-      ({ col }: { col: Tablo.ColumnChild<T, K> }) => {
-        return <Column {...{ key: col.props.name, ...col.props, data }} />;
+      ({ col }: { col: Tablo.ColumnChild<T> }) => {
+        return (
+          <Column {...{ key: col.props.name as any, ...col.props, data }} />
+        );
       }
     ).map((ch, key) => (ch.type as React.SFC<any>)({ key, ...ch.props }));
 
@@ -197,14 +192,15 @@ class TabloComponent<T, K extends string> extends React.PureComponent<
   }
 }
 
-const Component = autosize(
+const _Component = autosize(
   columnsResize(
-    columnsReorder(scrollable(selectable(sortable(TabloComponent))))
+    columnsReorder(scrollable(selectable(sortable(TabloComponent as any))))
   )
 );
 
-export function Tablo<T, K extends string = keyof T>(
-  props: Tablo.Props<T, K>
-): React.ReactElement<Tablo.Props<T, K>> {
+export function Tablo<T extends {}>(
+  props: Tablo.Props<T>
+): React.ReactElement<Tablo.Props<T>> {
+  const Component = _Component as React.ComponentClass<Tablo.Props<T>>;
   return <Component {...props} />;
 }

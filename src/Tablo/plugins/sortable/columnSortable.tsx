@@ -6,9 +6,7 @@ import SortableHeader from "./SortableHeader";
 import { getArrayChildren } from "../../utils";
 import { find } from "../../../utils";
 
-const sortable = <T, K extends string = keyof T>(
-  args: ColumnIntrinsicProps<T, K>
-) => {
+const sortable = <T extends {}>(args: ColumnIntrinsicProps<T>) => {
   const {
     sortable,
     sortDir,
@@ -35,11 +33,10 @@ const sortable = <T, K extends string = keyof T>(
     React.cloneElement(el, { key: index })
   );
 
-  const Col: React.SFC<Column.Props<T, K>> = Column;
   return (
-    <Col name={name} key={name} {...otherArgs}>
+    <Column<T> name={name} key={name as any} {...otherArgs}>
       {children}
-    </Col>
+    </Column>
   );
 };
 
