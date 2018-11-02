@@ -3,7 +3,7 @@ import * as cx from "classnames";
 import { props, t, ReactChildren } from "../utils";
 import FlexView from "react-flexview";
 import omit = require("lodash/omit");
-import { findDOMNode } from "../Tablo/utils";
+import { findDOMNode } from "../utils";
 
 export type BackgroundDimmerRequiredProps = {
   /** children nodes/elements */

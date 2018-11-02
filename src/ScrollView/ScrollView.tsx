@@ -3,7 +3,7 @@ import * as cx from "classnames";
 import { props, t, ReactChildren } from "../utils";
 import GeminiScrollbar = require("gemini-scrollbar");
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
-import { findDOMNode } from "../Tablo/utils";
+import { findDOMNode } from "../utils";
 
 export type ScrollViewDefaultProps<
   CP extends React.HTMLAttributes<any>,

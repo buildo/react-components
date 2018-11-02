@@ -10,7 +10,7 @@ import {
 } from "react-dnd";
 import { props, t, ReactChildren } from "../../../utils";
 import FlexView from "react-flexview";
-import { findDOMNode } from "../../utils";
+import { findDOMNode } from "../../../utils";
 
 export namespace DNDHeader {
   export type Props = {

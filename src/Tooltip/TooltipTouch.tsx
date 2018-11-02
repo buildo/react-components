@@ -8,7 +8,7 @@ import {
 } from "./Tooltip";
 import View from "react-flexview";
 import { props } from "../utils";
-import { findDOMNode } from "../Tablo/utils";
+import { findDOMNode } from "../utils";
 
 export type State = {
   tooltipLeft: number;

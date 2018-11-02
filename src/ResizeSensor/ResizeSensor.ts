@@ -2,7 +2,7 @@ import * as React from "react";
 import _debounce = require("lodash/debounce");
 import { props, t, ReactChildren } from "../utils";
 import _ResizeSensor = require("css-element-queries/src/ResizeSensor");
-import { findDOMNode } from "../Tablo/utils";
+import { findDOMNode } from "../utils";
 
 export const Props = {
   children: ReactChildren,

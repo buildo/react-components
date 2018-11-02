@@ -3,7 +3,7 @@ import * as cx from "classnames";
 import FlexView from "react-flexview";
 import { ResizeSensor } from "../../../ResizeSensor/ResizeSensor";
 import { Tablo } from "../../Tablo";
-import { findDOMNode } from "../../utils";
+import { findDOMNode } from "../../../utils";
 
 type AutosizeGridState = {
   width?: number;

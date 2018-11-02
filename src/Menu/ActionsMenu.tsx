@@ -4,7 +4,7 @@ import { props, t, ReactChildren } from "../utils";
 import partial = require("lodash/partial");
 import FlexView from "react-flexview";
 import { Divider } from "../Divider/Divider";
-import { findDOMNode } from "../Tablo/utils";
+import { findDOMNode } from "../utils";
 
 export type ActionsMenuRequiredProps = {
   options?: ActionsMenu.Option[];
