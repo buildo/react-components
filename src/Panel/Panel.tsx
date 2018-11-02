@@ -1,79 +1,96 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../utils';
-import { PanelHeader, HeaderSize } from './PanelHeader';
-import capitalize = require('lodash/capitalize');
-import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
-import FlexView from 'react-flexview';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactChildren } from "../utils";
+import { PanelHeader, HeaderSize } from "./PanelHeader";
+import capitalize = require("lodash/capitalize");
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import FlexView from "react-flexview";
 
 export type PanelDefaultProps = {
-  style: React.CSSProperties,
+  style: React.CSSProperties;
   /** whether it's loading or not */
-  loading: boolean,
+  loading: boolean;
   /** soft loading */
-  softLoading: boolean,
+  softLoading: boolean;
   /** soft loading delay */
-  softLoadingDelay: number, // TODO: should be non negative
+  softLoadingDelay: number; // TODO: should be non negative
   /** true if it should use dark theme */
-  dark: boolean
+  dark: boolean;
 };
 
 export type PanelRequiredProps = {
   /** panel content */
-  children: React.ReactNode,
+  children: React.ReactNode;
   /** The type of panel (docked or floating) */
-  type: Panel.PanelType,
+  type: Panel.PanelType;
   /** header props (collapse, content, title, menu) */
-  header?: Panel.Header,
+  header?: Panel.Header;
   /** top | left | right | bottom */
-  clearMargin?: Panel.ClearMargin,
-  className?: string,
-}
+  clearMargin?: Panel.ClearMargin;
+  className?: string;
+};
 
 export type PanelDefaultedProps = PanelRequiredProps & PanelDefaultProps;
 
 export namespace Panel {
-  export type PanelType = 'docked-top' | 'docked-left' | 'docked-bottom' | 'docked-bottom' | 'floating';
-  export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
+  export type PanelType =
+    | "docked-top"
+    | "docked-left"
+    | "docked-bottom"
+    | "docked-bottom"
+    | "floating";
+  export type ClearMargin = "top" | "left" | "bottom" | "right";
   export type Header = {
     collapse?: {
-      direction: 'up' | 'left' | 'down' | 'right',
-      onExpand: () => void,
-      onCollapse: () => void,
-      isCollapsed?: boolean
-    },
-    size?: PanelHeader.Props['size'],
-    content?: any, // TODO: t.ReactChildren
-    title?: any, // TODO(typo): wtf
-    hideTitleWhenExpanded?: boolean,
-    menu?: any // TODO: t.ReactChildren
-  }
+      direction: "up" | "left" | "down" | "right";
+      onExpand: () => void;
+      onCollapse: () => void;
+      isCollapsed?: boolean;
+    };
+    size?: PanelHeader.Props["size"];
+    content?: any; // TODO: t.ReactChildren
+    title?: any; // TODO(typo): wtf
+    hideTitleWhenExpanded?: boolean;
+    menu?: any; // TODO: t.ReactChildren
+  };
 
   export type Props = PanelRequiredProps & Partial<PanelDefaultProps>;
 }
 
 export const Props = {
-  type: t.enums.of(['docked-top', 'docked-left', 'docked-right', 'docked-bottom', 'floating']),
-  header: t.maybe(t.struct({
-    collapse: t.maybe(t.struct({
-      direction: t.enums.of(['up', 'left', 'right', 'down']),
-      onExpand: t.Function,
-      onCollapse: t.Function,
-      isCollapsed: t.maybe(t.Boolean)
-    })),
-    size: t.maybe(HeaderSize),
-    content: t.maybe(ReactChildren),
-    title: t.maybe(ReactChildren),
-    hideTitleWhenExpanded: t.maybe(t.Boolean),
-    menu: t.maybe(ReactChildren)
-  })),
+  type: t.enums.of([
+    "docked-top",
+    "docked-left",
+    "docked-right",
+    "docked-bottom",
+    "floating"
+  ]),
+  header: t.maybe(
+    t.struct({
+      collapse: t.maybe(
+        t.struct({
+          direction: t.enums.of(["up", "left", "right", "down"]),
+          onExpand: t.Function,
+          onCollapse: t.Function,
+          isCollapsed: t.maybe(t.Boolean)
+        })
+      ),
+      size: t.maybe(HeaderSize),
+      content: t.maybe(ReactChildren),
+      title: t.maybe(ReactChildren),
+      hideTitleWhenExpanded: t.maybe(t.Boolean),
+      menu: t.maybe(ReactChildren)
+    })
+  ),
   loading: t.maybe(t.Boolean),
   dark: t.maybe(t.Boolean),
   softLoading: t.maybe(t.Boolean),
-  softLoadingDelay: t.maybe(t.refinement(t.Number, v => v >= 0, 'NonNegativeNumber')),
+  softLoadingDelay: t.maybe(
+    t.refinement(t.Number, v => v >= 0, "NonNegativeNumber")
+  ),
   children: ReactChildren,
   className: t.maybe(t.String),
-  clearMargin: t.maybe(t.enums.of(['top', 'left', 'right', 'bottom'])),
+  clearMargin: t.maybe(t.enums.of(["top", "left", "right", "bottom"])),
   style: t.maybe(t.Object)
 };
 
@@ -101,7 +118,8 @@ export class Panel extends React.PureComponent<Panel.Props> {
       if (prevSoftLoading) {
         this.forceUpdate();
       }
-    } else if (!prevSoftLoading && softLoading && softLoadingDelay > 0) { // delay === 0 is handled without timer
+    } else if (!prevSoftLoading && softLoading && softLoadingDelay > 0) {
+      // delay === 0 is handled without timer
       this._softLoadingTimer = window.setTimeout(() => {
         this._softLoadingActive = true;
         this.forceUpdate();
@@ -150,89 +168,136 @@ export class Panel extends React.PureComponent<Panel.Props> {
     };
   };
 
-  templateSoftLoading = ({ softLoading, isExpanded }: {
-    softLoading: boolean,
-    isExpanded: boolean
+  templateSoftLoading = ({
+    softLoading,
+    isExpanded
+  }: {
+    softLoading: boolean;
+    isExpanded: boolean;
   }) => {
     return softLoading && isExpanded ? (
-      <div className='panel-soft-loader'>
-        <div className='loader gradient' />
-        <div className='loader' />
+      <div className="panel-soft-loader">
+        <div className="loader gradient" />
+        <div className="loader" />
       </div>
     ) : null;
   };
 
-  templateHeader = ({ header, isExpanded, toggleExpanded }: {
-    header?: Panel.Header,
-    isExpanded: boolean,
-    toggleExpanded: () => void
+  templateHeader = ({
+    header,
+    isExpanded,
+    toggleExpanded
+  }: {
+    header?: Panel.Header;
+    isExpanded: boolean;
+    toggleExpanded: () => void;
   }) => {
-    return (
-      header ?
-        <PanelHeader
-          title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
-          size={header.size}
-          content={header.content}
-          menu={header.menu}
-          collapse={header.collapse ? {
-            direction: header.collapse.direction,
-            isExpanded,
-            onToggleExpanded: toggleExpanded
-          } : undefined}
-        />
-    : null );
+    return header ? (
+      <PanelHeader
+        title={
+          header.hideTitleWhenExpanded && isExpanded ? undefined : header.title
+        }
+        size={header.size}
+        content={header.content}
+        menu={header.menu}
+        collapse={
+          header.collapse
+            ? {
+                direction: header.collapse.direction,
+                isExpanded,
+                onToggleExpanded: toggleExpanded
+              }
+            : undefined
+        }
+      />
+    ) : null;
   };
 
-  templateExpandedContent = ({ children, loading }: {
-    children: React.ReactNode,
-    loading: boolean
+  templateExpandedContent = ({
+    children,
+    loading
+  }: {
+    children: React.ReactNode;
+    loading: boolean;
   }) => {
     return (
-      <FlexView className='panel-content' column grow style={{ position: 'relative' }}>
+      <FlexView
+        className="panel-content"
+        column
+        grow
+        style={{ position: "relative" }}
+      >
         {children}
         {loading && <LoadingSpinner />}
       </FlexView>
     );
   };
 
-  templateCollapsedContent = ({ header, verticalDirection }: {
-    header?: Panel.Header,
-    verticalDirection?: boolean
+  templateCollapsedContent = ({
+    header,
+    verticalDirection
+  }: {
+    header?: Panel.Header;
+    verticalDirection?: boolean;
   }) => {
-    return (
-      (!verticalDirection && header && header.title) ?
-        <FlexView className='panel-content' column grow>
-          <FlexView grow className='panel-content-title'>
-            {header.title}
-          </FlexView>
+    return !verticalDirection && header && header.title ? (
+      <FlexView className="panel-content" column grow>
+        <FlexView grow className="panel-content-title">
+          {header.title}
         </FlexView>
-        : null
-    );
+      </FlexView>
+    ) : null;
   };
 
   render() {
-    const { header, children, loading, softLoading: _softLoading, softLoadingDelay, type, className: _className, dark } = this.props as PanelDefaultedProps;
+    const {
+      header,
+      children,
+      loading,
+      softLoading: _softLoading,
+      softLoadingDelay,
+      type,
+      className: _className,
+      dark
+    } = this.props as PanelDefaultedProps;
     const collapsable = !!header && !!header.collapse;
     const isExpanded = !collapsable || !header!.collapse!.isCollapsed;
-    const panelState = isExpanded ? 'expanded' : 'collapsed';
-    const directionClass = collapsable ? (`collapse-${header!.collapse!.direction}`) : '';
-    const verticalDirection = collapsable && (header!.collapse!.direction === 'up' || header!.collapse!.direction === 'down');
-    const themeType = dark ? 'is-dark' : 'is-light';
-    const className = cx('panel', type, { collapsable }, themeType, directionClass, panelState, _className);
+    const panelState = isExpanded ? "expanded" : "collapsed";
+    const directionClass = collapsable
+      ? `collapse-${header!.collapse!.direction}`
+      : "";
+    const verticalDirection =
+      collapsable &&
+      (header!.collapse!.direction === "up" ||
+        header!.collapse!.direction === "down");
+    const themeType = dark ? "is-dark" : "is-light";
+    const className = cx(
+      "panel",
+      type,
+      { collapsable },
+      themeType,
+      directionClass,
+      panelState,
+      _className
+    );
     const style = this.getStyle();
     const toggleExpanded = this.toggleExpanded;
     const softLoading = this.isSoftLoading(_softLoading, softLoadingDelay);
 
     return (
-      <FlexView className={className} grow style={style} column onClick={!isExpanded ? toggleExpanded : undefined}>
+      <FlexView
+        className={className}
+        grow
+        style={style}
+        column
+        onClick={!isExpanded ? toggleExpanded : undefined}
+      >
         {this.templateSoftLoading({ softLoading, isExpanded })}
         {this.templateHeader({ header, isExpanded, toggleExpanded })}
-        {isExpanded ?
-          this.templateExpandedContent({ children, loading }) :
-          this.templateCollapsedContent({ header, verticalDirection })
-        }
+        {isExpanded
+          ? this.templateExpandedContent({ children, loading })
+          : this.templateCollapsedContent({ header, verticalDirection })}
       </FlexView>
     );
   }
-
 }

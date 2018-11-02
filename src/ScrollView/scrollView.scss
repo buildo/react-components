@@ -1,13 +1,13 @@
-@import '~gemini-scrollbar/gemini-scrollbar.css';
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
+@import "~gemini-scrollbar/gemini-scrollbar.css";
+@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
+@import "../utils/theme/variables.scss";
 $scrollbar-size: 7px !default;
 $scrollbar-size-hover: $scrollbar-size * 1.25 !default;
 $scrollbar-color: $brc-coolGrey !default;
 $scrollbar-container-color: $brc-white !default;
 
 // this is the way to make gemini consider a width of 0 for scrollbars in IE
-body > div[style*='-ms-overflow-style: scrollbar'] {
+body > div[style*="-ms-overflow-style: scrollbar"] {
   -ms-overflow-style: none !important;
 }
 
@@ -78,7 +78,7 @@ body > div::-webkit-scrollbar {
 
       &:hover,
       &:active {
-        background: rgba($scrollbar-container-color, .8);
+        background: rgba($scrollbar-container-color, 0.8);
 
         .thumb {
           height: $scrollbar-size-hover;
@@ -93,7 +93,7 @@ body > div::-webkit-scrollbar {
 
     .thumb {
       border-radius: $scrollbar-size / 2;
-      background-color: rgba($scrollbar-color, .6);
+      background-color: rgba($scrollbar-color, 0.6);
 
       &:hover {
         background-color: $scrollbar-color;

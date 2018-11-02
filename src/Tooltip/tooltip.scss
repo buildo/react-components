@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $background-dark: $brc-darkGrey !default;
 $background-light: $brc-white !default;
 $border-radius: 5px !default;
@@ -44,7 +44,7 @@ $arrow-color: $brc-darkGrey !default;
 
   &::after,
   &::before {
-    content: ' ';
+    content: " ";
     position: absolute;
     border: solid transparent;
     border-width: $arrow-size;
@@ -58,7 +58,6 @@ $arrow-color: $brc-darkGrey !default;
   }
 
   &.position-bottom {
-
     // take into account arrow-size for positioning
     margin-top: ($arrow-size + 1);
 
@@ -89,7 +88,6 @@ $arrow-color: $brc-darkGrey !default;
   }
 
   &.position-top {
-
     // take into account arrow-size for positioning
     margin-top: -($arrow-size + 1);
 

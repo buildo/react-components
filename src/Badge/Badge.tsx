@@ -1,18 +1,18 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactNode } from '../utils';
-import FlexView from 'react-flexview';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactNode } from "../utils";
+import FlexView from "react-flexview";
 
 export namespace Badge {
   export type Props = {
     /** the descriptive content of the badge */
-    label: React.ReactNode,
+    label: React.ReactNode;
     /** tells if the badge is active (for styling purposes) */
-    active?: boolean,
+    active?: boolean;
     /** an optional class name to pass to top level element of the component */
-    className?: string,
+    className?: string;
     /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties
+    style?: React.CSSProperties;
   };
 }
 
@@ -25,14 +25,17 @@ export const Props = {
 
 @props(Props)
 export class Badge extends React.PureComponent<Badge.Props> {
-
   render() {
     const { label, active, className: _className, style } = this.props;
-    const className = cx('badge', { active }, _className);
+    const className = cx("badge", { active }, _className);
 
     return (
-      <FlexView vAlignContent='center' hAlignContent='center' {...{ className, style }}>
-        <span className='badge-label'>{label}</span>
+      <FlexView
+        vAlignContent="center"
+        hAlignContent="center"
+        {...{ className, style }}
+      >
+        <span className="badge-label">{label}</span>
       </FlexView>
     );
   }

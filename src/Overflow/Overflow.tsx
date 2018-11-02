@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { props, t, ReactElement } from '../utils';
-import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
+import * as React from "react";
+import { props, t, ReactElement } from "../utils";
+import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
 
 export namespace Overflow {
   export type Props = {
     /** react node initially rendered */
-    content: JSX.Element,
+    content: JSX.Element;
     /** react node rendered if `content` overflows its parent */
-    contentIfOverflowing: JSX.Element,
-    id?: string,
-    className?: string,
-    style?: React.CSSProperties
+    contentIfOverflowing: JSX.Element;
+    id?: string;
+    className?: string;
+    style?: React.CSSProperties;
   };
 }
 
 export type State = {
-  isOverflowing: boolean
+  isOverflowing: boolean;
 };
 
 export const Props = {
@@ -29,10 +29,9 @@ export const Props = {
 /** Util component to render a different react node if the original one overflows its parent. */
 @props(Props)
 export class Overflow extends React.Component<Overflow.Props, State> {
+  private ref: HTMLDivElement | null;
 
-  private ref: HTMLDivElement | null
-
-  state = { isOverflowing: false }
+  state = { isOverflowing: false };
 
   componentDidMount() {
     this.verifyOverflow();
@@ -43,21 +42,21 @@ export class Overflow extends React.Component<Overflow.Props, State> {
   }
 
   getElementWidth(element: Element): number {
-    if (element && typeof window !== 'undefined') {
-      return parseFloat(window.getComputedStyle(element).width || '');
+    if (element && typeof window !== "undefined") {
+      return parseFloat(window.getComputedStyle(element).width || "");
     }
     return 0;
   }
 
   verifyOverflow() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const node = this.ref;
 
       if (node && node.children) {
         const childrenWidth = this.getElementWidth(node.children[0]);
         const parentWidth = this.getElementWidth(node);
 
-        const isOverflowing = (childrenWidth > parentWidth);
+        const isOverflowing = childrenWidth > parentWidth;
         if (this.state.isOverflowing !== isOverflowing) {
           this.setState({ isOverflowing });
         }
@@ -65,7 +64,7 @@ export class Overflow extends React.Component<Overflow.Props, State> {
     }
   }
 
-  onResize = () => this.verifyOverflow()
+  onResize = () => this.verifyOverflow();
 
   render() {
     const { content, contentIfOverflowing, style, className, id } = this.props;
@@ -73,11 +72,16 @@ export class Overflow extends React.Component<Overflow.Props, State> {
 
     return (
       <ResizeSensor debounce={10} onResize={this.onResize}>
-        <div {...{ className, id }} style={{ ...style, width: '100%' }} ref={ref => { this.ref = ref; }}>
+        <div
+          {...{ className, id }}
+          style={{ ...style, width: "100%" }}
+          ref={ref => {
+            this.ref = ref;
+          }}
+        >
           {isOverflowing ? contentIfOverflowing : content}
         </div>
       </ResizeSensor>
     );
   }
-
 }

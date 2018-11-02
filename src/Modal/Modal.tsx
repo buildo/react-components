@@ -1,44 +1,50 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactChildren, ReactChild } from '../utils';
-import omit = require('lodash/omit');
-import { ModalPortal, Props as PortalProps } from './ModalPortal';
-import FlexView from 'react-flexview';
-import { BackgroundDimmer } from './BackgroundDimmer';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactChildren, ReactChild } from "../utils";
+import omit = require("lodash/omit");
+import { ModalPortal, Props as PortalProps } from "./ModalPortal";
+import FlexView from "react-flexview";
+import { BackgroundDimmer } from "./BackgroundDimmer";
 
 export type ModalDefaultProps = {
   /** whether the modal should be dismissed when clicking outside it */
-  dismissOnClickOutside: boolean,
+  dismissOnClickOutside: boolean;
   /** called when modal is dismissed */
-  onDismiss: (e: React.SyntheticEvent<HTMLDivElement>) => void,
+  onDismiss: (e: React.SyntheticEvent<HTMLDivElement>) => void;
   /** specify 'color' and 'alpha' for the overlay layer */
-  overlay: {
-    color: string,
-    alpha?: number
-  } | {
-    color?: string,
-    alpha: number
-  }
-}
+  overlay:
+    | {
+        color: string;
+        alpha?: number;
+      }
+    | {
+        color?: string;
+        alpha: number;
+      };
+};
 
 export type ModalRequiredProps = {
   /** modal content */
-  children: JSX.Element,
+  children: JSX.Element;
   /** modal title */
-  title?: string,
+  title?: string;
   /** modal footer */
-  footer?: JSX.Element,
+  footer?: JSX.Element;
   /** close icon */
-  iconClose?: JSX.Element,
-  className?: string,
-  style?: React.CSSProperties,
-  id?: string
+  iconClose?: JSX.Element;
+  className?: string;
+  style?: React.CSSProperties;
+  id?: string;
 };
 
-export type ModalDefaultedProps = ModalPortal.Props & ModalRequiredProps & ModalDefaultProps;
+export type ModalDefaultedProps = ModalPortal.Props &
+  ModalRequiredProps &
+  ModalDefaultProps;
 
 export namespace Modal {
-  export type Props = ModalPortal.Props & ModalRequiredProps & Partial<ModalDefaultProps>;
+  export type Props = ModalPortal.Props &
+    ModalRequiredProps &
+    Partial<ModalDefaultProps>;
 }
 
 const LocalProps = {
@@ -64,21 +70,26 @@ export const Props = {
 
 @props(Props)
 export class Modal extends React.Component<Modal.Props> {
-
   static defaultProps: ModalDefaultProps = {
     onDismiss: () => {},
     dismissOnClickOutside: true,
     overlay: {
-      color: 'black',
+      color: "black",
       alpha: 0.85
     }
   };
 
   render() {
     const {
-      className, style, id,
-      title, iconClose, footer, overlay,
-      dismissOnClickOutside, onDismiss,
+      className,
+      style,
+      id,
+      title,
+      iconClose,
+      footer,
+      overlay,
+      dismissOnClickOutside,
+      onDismiss,
       children,
       ...props
     } = this.props as ModalDefaultedProps;
@@ -87,7 +98,7 @@ export class Modal extends React.Component<Modal.Props> {
 
     const modalPortalProps: ModalPortal.Props = {
       ...omit(props, Object.keys(LocalProps)),
-      className: cx('modal', className),
+      className: cx("modal", className)
     } as ModalPortal.Props;
 
     return (
@@ -97,17 +108,21 @@ export class Modal extends React.Component<Modal.Props> {
           onClickOutside={dismissOnClickOutside ? onDismiss : undefined}
           maxWidth={950}
         >
-          <FlexView className='modal-content' column grow >
+          <FlexView className="modal-content" column grow>
             {shouldRenderHeader && (
-              <FlexView className='modal-header' shrink={false} vAlignContent='center'>
-                <FlexView className={cx('modal-title')} grow>
+              <FlexView
+                className="modal-header"
+                shrink={false}
+                vAlignContent="center"
+              >
+                <FlexView className={cx("modal-title")} grow>
                   {title}
                 </FlexView>
                 {iconClose && (
                   <FlexView
-                    className='modal-icon-close'
+                    className="modal-icon-close"
                     shrink={false}
-                    marginLeft='auto'
+                    marginLeft="auto"
                     onClick={onDismiss}
                   >
                     {iconClose}
@@ -115,11 +130,11 @@ export class Modal extends React.Component<Modal.Props> {
                 )}
               </FlexView>
             )}
-            <FlexView className='modal-body' column grow>
+            <FlexView className="modal-body" column grow>
               {children}
             </FlexView>
             {shouldRenderFooter && (
-              <FlexView className='modal-footer' column shrink={false}>
+              <FlexView className="modal-footer" column shrink={false}>
                 {footer}
               </FlexView>
             )}

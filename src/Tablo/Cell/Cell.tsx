@@ -1,37 +1,44 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../../utils';
-import FlexView from 'react-flexview';
-import { Cell as CellFDT } from 'fixed-data-table-2';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactChildren } from "../../utils";
+import FlexView from "react-flexview";
+import { Cell as CellFDT } from "fixed-data-table-2";
 
-export type PickIfExists<T extends {}, K extends string> = K extends keyof T ? T[K] : never
+export type PickIfExists<T extends {}, K extends string> = K extends keyof T
+  ? T[K]
+  : never;
 
 export type Intrinsic<T, K extends string> = {
-  data: PickIfExists<T, K>,
-  rowData: T,
-  rowIndex: number,
-  fixed: boolean
-}
+  data: PickIfExists<T, K>;
+  rowData: T;
+  rowIndex: number;
+  fixed: boolean;
+};
 
 export type Default = {
-  vAlignContent: 'top' | 'center' | 'bottom',
-  hAlignContent: 'left' | 'center' | 'right',
-  grow: boolean
-}
+  vAlignContent: "top" | "center" | "bottom";
+  hAlignContent: "left" | "center" | "right";
+  grow: boolean;
+};
 
 export type Required<T, K extends string> = {
-  children?: React.ReactNode | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element),
-  backgroundColor?: React.CSSProperties['backgroundColor'],
-  color?: React.CSSProperties['color'],
-  contentStyle?: React.CSSProperties,
-  style?: React.CSSProperties
+  children?:
+    | React.ReactNode
+    | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element);
+  backgroundColor?: React.CSSProperties["backgroundColor"];
+  color?: React.CSSProperties["color"];
+  contentStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
 };
 
 export namespace Cell {
   export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
 }
-export type CellIntrinsicProps<T, K extends string> = Cell.Props<T, K> & Intrinsic<T, K>;
-type CellDefaultedIntrinsicProps<T, K extends string> = Required<T, K> & Default & Intrinsic<T, K>;
+export type CellIntrinsicProps<T, K extends string> = Cell.Props<T, K> &
+  Intrinsic<T, K>;
+type CellDefaultedIntrinsicProps<T, K extends string> = Required<T, K> &
+  Default &
+  Intrinsic<T, K>;
 
 const { maybe, enums, union } = t;
 
@@ -43,15 +50,16 @@ const propsTypes = {
   children: union([t.Function, ReactChildren]),
   backgroundColor: maybe(t.String),
   color: maybe(t.String),
-  vAlignContent: maybe(enums.of(['top', 'center', 'bottom'])),
-  hAlignContent: maybe(enums.of(['left', 'center', 'right'])),
+  vAlignContent: maybe(enums.of(["top", "center", "bottom"])),
+  hAlignContent: maybe(enums.of(["left", "center", "right"])),
   contentStyle: maybe(t.Object),
   style: maybe(t.Object),
   grow: maybe(t.Boolean)
 };
 
-export function _Cell<T, K extends string>(props: Cell.Props<T, K>): React.ReactElement<Cell.Props<T, K>> {
-
+export function _Cell<T, K extends string>(
+  props: Cell.Props<T, K>
+): React.ReactElement<Cell.Props<T, K>> {
   const {
     data,
     fixed,
@@ -60,8 +68,8 @@ export function _Cell<T, K extends string>(props: Cell.Props<T, K>): React.React
     children,
     backgroundColor,
     color,
-    vAlignContent = 'center',
-    hAlignContent = 'left',
+    vAlignContent = "center",
+    hAlignContent = "left",
     grow = true,
     contentStyle,
     style
@@ -70,18 +78,24 @@ export function _Cell<T, K extends string>(props: Cell.Props<T, K>): React.React
   return (
     <CellFDT>
       <FlexView
-        className={cx('tablo-cell', { 'tablo-cell-fixed': fixed, 'tablo-cell-even-row': rowIndex % 2 === 0, 'tablo-cell-odd-row': rowIndex % 2 === 1 })}
+        className={cx("tablo-cell", {
+          "tablo-cell-fixed": fixed,
+          "tablo-cell-even-row": rowIndex % 2 === 0,
+          "tablo-cell-odd-row": rowIndex % 2 === 1
+        })}
         style={{ backgroundColor, color, ...style }}
         grow={grow}
       >
         <FlexView
           style={contentStyle}
-          className='content'
+          className="content"
           grow={grow}
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
-          {t.Function.is(children) ? children(data, rowData, rowIndex) : children}
+          {t.Function.is(children)
+            ? children(data, rowData, rowIndex)
+            : children}
         </FlexView>
       </FlexView>
     </CellFDT>

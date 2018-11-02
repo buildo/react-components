@@ -1,18 +1,22 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as cx from 'classnames';
-import { Tooltip, TooltipDefaultProps, TooltipRequiredProps, Props  } from './Tooltip';
-import View from 'react-flexview';
-import { props } from '../utils';
-
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import * as cx from "classnames";
+import {
+  Tooltip,
+  TooltipDefaultProps,
+  TooltipRequiredProps,
+  Props
+} from "./Tooltip";
+import View from "react-flexview";
+import { props } from "../utils";
 
 export type State = {
-  tooltipLeft: number,
-  tooltipTop: number,
-  tooltipBottom: number,
-  tooltipRight: number,
-  isOpen: boolean
-}
+  tooltipLeft: number;
+  tooltipTop: number;
+  tooltipBottom: number;
+  tooltipRight: number;
+  isOpen: boolean;
+};
 
 export namespace TooltipTouch {
   export type Props = Tooltip.Props;
@@ -22,11 +26,10 @@ type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 @props(Props)
 export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
-
   static defaultProps: TooltipDefaultProps = {
-    type: 'dark',
-    size: 'small'
-  }
+    type: "dark",
+    size: "small"
+  };
 
   state = {
     tooltipLeft: 0,
@@ -36,12 +39,12 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
     isOpen: false
   };
 
-  private ref: HTMLDivElement
+  private ref: HTMLDivElement;
 
-  timeout: number
+  timeout: number;
 
   componentWillUnmount() {
-    if (typeof this.timeout !== 'undefined') {
+    if (typeof this.timeout !== "undefined") {
       clearTimeout(this.timeout);
     }
   }
@@ -63,9 +66,9 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
         isOpen: true
       });
     }, 200);
-  }
+  };
 
-  onTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
+  onTouchMove: React.TouchEventHandler<HTMLDivElement> = e => {
     const {
       tooltipLeft,
       tooltipTop,
@@ -77,11 +80,18 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
     if (isOpen) {
       const { pageX: eventX, pageY: eventY } = e.touches[0];
 
-      if (!(eventX <= tooltipRight && eventX >= tooltipLeft && eventY <= tooltipBottom && eventY >= tooltipTop)) {
+      if (
+        !(
+          eventX <= tooltipRight &&
+          eventX >= tooltipLeft &&
+          eventY <= tooltipBottom &&
+          eventY >= tooltipTop
+        )
+      ) {
         this.closeTooltip();
       }
     }
-  }
+  };
 
   onTouchEnd = () => this.closeTooltip();
 
@@ -96,27 +106,38 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
       tooltipRight: 0,
       isOpen: false
     });
-  }
+  };
 
   render() {
-    const { popover, children, className, ..._tooltipProps } = this.props as TooltipTouchDefaultedProps;
+    const { popover, children, className, ..._tooltipProps } = this
+      .props as TooltipTouchDefaultedProps;
     const { isOpen } = this.state;
     const tooltipProps = {
       ..._tooltipProps,
-      popover: { ...popover, isOpen, className: cx(popover.className, 'tooltip-touch') },
+      popover: {
+        ...popover,
+        isOpen,
+        className: cx(popover.className, "tooltip-touch")
+      },
       children
     };
-    const spanStyle: React.CSSProperties | undefined = isOpen ? {
-      display: 'hidden',
-      position: 'fixed',
-      top: -1000
-    } : undefined;
+    const spanStyle: React.CSSProperties | undefined = isOpen
+      ? {
+          display: "hidden",
+          position: "fixed",
+          top: -1000
+        }
+      : undefined;
 
     return (
       <View
-        vAlignContent='center'
+        vAlignContent="center"
         className={className}
-        ref={(r: any) => { if (r) { this.ref = ReactDOM.findDOMNode(r); } }}
+        ref={(r: any) => {
+          if (r) {
+            this.ref = ReactDOM.findDOMNode(r);
+          }
+        }}
         onTouchStart={this.onTouchStart}
         onTouchEnd={this.onTouchEnd}
         onTouchMove={isOpen ? this.onTouchMove : undefined}

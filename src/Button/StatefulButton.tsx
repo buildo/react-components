@@ -1,8 +1,7 @@
-import * as React from 'react';
-import pick = require('lodash/pick');
-import { props, t, ObjectOmit } from '../utils';
-import { Button, ButtonPropTypes } from './Button';
-
+import * as React from "react";
+import pick = require("lodash/pick");
+import { props, t, ObjectOmit } from "../utils";
+import { Button, ButtonPropTypes } from "./Button";
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -40,44 +39,48 @@ import { Button, ButtonPropTypes } from './Button';
  *
  */
 
- /**
+/**
  * ready or not-allowed; use it if you want button to handle its internal state and onClick is a promise
  */
 
 export interface StatefulButtonRequiredProps extends Button.Props {
   /** callback */
-  onClick: (e: React.SyntheticEvent<HTMLDivElement>) => Promise<any>
+  onClick: (e: React.SyntheticEvent<HTMLDivElement>) => Promise<any>;
   /** ready, not-allowed, success, use it if you want button to be a functional component */
-  baseState?: StatefulButton.ButtonBaseState
-};
+  baseState?: StatefulButton.ButtonBaseState;
+}
 
 export interface StatefulButtonDefaultProps {
   /** keep success state  */
-  stableSuccess: boolean
+  stableSuccess: boolean;
   /** time in millisecons to wait before state reset  */
-  timerMillis: number
+  timerMillis: number;
 }
 
 export namespace StatefulButton {
-  export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
-  export type Props = ObjectOmit<Button.Props, 'onClick'> & StatefulButtonRequiredProps & Partial<StatefulButtonDefaultProps>;
+  export type ButtonBaseState = "ready" | "success" | "not-allowed";
+  export type Props = ObjectOmit<Button.Props, "onClick"> &
+    StatefulButtonRequiredProps &
+    Partial<StatefulButtonDefaultProps>;
 }
 
 export type State = {
-  internalState: 'error' | 'processing' | 'success' | null
+  internalState: "error" | "processing" | "success" | null;
 };
 
 @props({
   ...ButtonPropTypes,
-  baseState: t.maybe(t.enums.of(['ready', 'success', 'not-allowed'])),
+  baseState: t.maybe(t.enums.of(["ready", "success", "not-allowed"])),
   stableSuccess: t.maybe(t.Boolean),
   timerMillis: t.maybe(t.Number)
 })
-export class StatefulButton extends React.PureComponent<StatefulButton.Props, State> {
-
-  private timeoutId: number | null
-  private resetInternalStateAfterProcessing: boolean
-  private _isMounted: boolean
+export class StatefulButton extends React.PureComponent<
+  StatefulButton.Props,
+  State
+> {
+  private timeoutId: number | null;
+  private resetInternalStateAfterProcessing: boolean;
+  private _isMounted: boolean;
 
   static defaultProps: StatefulButtonDefaultProps = {
     stableSuccess: false,
@@ -108,10 +111,10 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
         internalState: null
       });
     }
-  }
+  };
 
   componentWillReceiveProps(props: StatefulButton.Props) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== "production") {
       t.assert(props.stableSuccess === this.props.stableSuccess);
     }
 
@@ -122,7 +125,7 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
       }
     }
     if (props.baseState !== this.props.baseState) {
-      if (this.state.internalState === 'processing') {
+      if (this.state.internalState === "processing") {
         this.resetInternalStateAfterProcessing = true;
       } else {
         this.doResetInternalState();
@@ -135,38 +138,53 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
       this.timeoutId = null;
       this.doResetInternalState();
     }, this.props.timerMillis);
-  }
+  };
 
   attachPromiseHandlers = (promise: Promise<void>) => {
-    promise.then(() => {
-      return this._isMounted && this.setState({
-        internalState: 'success'
-      }, () => {
-        if (!this.props.stableSuccess) {
-          this.doResetInternalStateAfterTimer();
-        } else if (this.resetInternalStateAfterProcessing) {
-          this.doResetInternalState();
+    promise
+      .then(() => {
+        return (
+          this._isMounted &&
+          this.setState(
+            {
+              internalState: "success"
+            },
+            () => {
+              if (!this.props.stableSuccess) {
+                this.doResetInternalStateAfterTimer();
+              } else if (this.resetInternalStateAfterProcessing) {
+                this.doResetInternalState();
+              }
+            }
+          )
+        );
+      })
+      .catch(() => {
+        if (this._isMounted) {
+          this.setState(
+            {
+              internalState: "error"
+            },
+            () => this.doResetInternalStateAfterTimer()
+          );
         }
       });
-    }).catch(() => {
-      if (this._isMounted) {
-        this.setState({
-          internalState: 'error'
-        }, () => this.doResetInternalStateAfterTimer() );
-      }
-    });
-  }
+  };
 
-  getButtonState = () => (this.props.buttonState || this.state.internalState || this.props.baseState);
+  getButtonState = () =>
+    this.props.buttonState || this.state.internalState || this.props.baseState;
 
   onClick = (e: React.SyntheticEvent<HTMLDivElement>) => {
-    if (this.getButtonState() === 'ready') {
+    if (this.getButtonState() === "ready") {
       this.resetInternalStateAfterProcessing = false;
       const promise = this.props.onClick(e);
       if (!this.props.buttonState) {
-        this.setState({
-          internalState: 'processing'
-        }, () => this.attachPromiseHandlers(promise) );
+        this.setState(
+          {
+            internalState: "processing"
+          },
+          () => this.attachPromiseHandlers(promise)
+        );
       }
     }
   };
@@ -179,5 +197,4 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
 
     return <Button {...buttonProps} buttonState={this.getButtonState()} />;
   }
-
 }

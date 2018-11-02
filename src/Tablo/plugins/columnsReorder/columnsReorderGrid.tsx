@@ -1,46 +1,61 @@
-import * as React from 'react';
-import { props, t, find } from '../../../utils';
+import * as React from "react";
+import { props, t, find } from "../../../utils";
 
-import * as cx from 'classnames';
-import sortBy = require('lodash/sortBy');
-import findIndex = require('lodash/findIndex');
-import once = require('lodash/once');
-import uniqueId = require('lodash/uniqueId');
+import * as cx from "classnames";
+import sortBy = require("lodash/sortBy");
+import findIndex = require("lodash/findIndex");
+import once = require("lodash/once");
+import uniqueId = require("lodash/uniqueId");
 
-import { Tablo } from '../../Tablo';
-import dragDropContextHTML5Backend from './htmlBackend';
-import Column, { defaultColumns, updateColumns, UpdateColumnsHandler } from '../../Column';
-import ColumnGroup from '../../ColumnGroup';
-import Header, { defaultHeader } from '../../Header';
-import DNDHeader from './DNDHeader';
+import { Tablo } from "../../Tablo";
+import dragDropContextHTML5Backend from "./htmlBackend";
+import Column, {
+  defaultColumns,
+  updateColumns,
+  UpdateColumnsHandler
+} from "../../Column";
+import ColumnGroup from "../../ColumnGroup";
+import Header, { defaultHeader } from "../../Header";
+import DNDHeader from "./DNDHeader";
 import { getArrayChildren } from "../../utils";
 
 const { maybe, list } = t;
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>>  => {
-
+export default <T, K extends string = keyof T>(
+  Grid: React.ComponentClass<Tablo.Props<T, K>>
+): React.ComponentClass<Tablo.Props<T, K>> => {
   class ColumnsReorderGrid extends React.PureComponent<Tablo.Props<T, K>> {
     private uniqueId: string;
 
     constructor() {
       super();
-      this.uniqueId = uniqueId('tablo_');
+      this.uniqueId = uniqueId("tablo_");
     }
 
-    getLocals({ className, children, columnsOrder = [], onColumnsReorder, ...gridProps }: Tablo.Props<T, K>) {
+    getLocals({
+      className,
+      children,
+      columnsOrder = [],
+      onColumnsReorder,
+      ...gridProps
+    }: Tablo.Props<T, K>) {
+      const _children =
+        getArrayChildren(children) || defaultColumns(gridProps.data);
 
-      const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
-
-      const thereAreGroups = _children.filter(c => c.type === ColumnGroup).length > 0;
+      const thereAreGroups =
+        _children.filter(c => c.type === ColumnGroup).length > 0;
       if (thereAreGroups || !onColumnsReorder) {
-        return {              // no reordering of columns if there are groups
+        return {
+          // no reordering of columns if there are groups
           className,
           children: _children,
           ...gridProps
         };
       }
 
-      const doOrderColumns = (child: React.ReactElement<Column.Props<T, K>>) => {
+      const doOrderColumns = (
+        child: React.ReactElement<Column.Props<T, K>>
+      ) => {
         if (child.type === Header) {
           return -1;
         }
@@ -54,27 +69,55 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
         const source_index = list.indexOf(source);
         const target_index = list.indexOf(target);
         if (source_index <= target_index) {
-          return [...list.slice(0, source_index), ...list.slice(source_index + 1, target_index + 1), source, ...list.slice(target_index + 1)];
+          return [
+            ...list.slice(0, source_index),
+            ...list.slice(source_index + 1, target_index + 1),
+            source,
+            ...list.slice(target_index + 1)
+          ];
         } else {
-          return [...list.slice(0, target_index), source, ...list.slice(target_index, source_index), ...list.slice(source_index + 1)];
+          return [
+            ...list.slice(0, target_index),
+            source,
+            ...list.slice(target_index, source_index),
+            ...list.slice(source_index + 1)
+          ];
         }
       };
 
       const onColumnsSwitch = (sourceName: K, targetName: K) => {
-        if (onColumnsReorder && sourceName && targetName && sourceName !== targetName) {
-          const newColumnsOrder = moveColumn(orderedChildren.map(c => c.props.name), sourceName, targetName);
+        if (
+          onColumnsReorder &&
+          sourceName &&
+          targetName &&
+          sourceName !== targetName
+        ) {
+          const newColumnsOrder = moveColumn(
+            orderedChildren.map(c => c.props.name),
+            sourceName,
+            targetName
+          );
           return onColumnsReorder(newColumnsOrder);
         }
         return undefined;
       };
 
-      const isDragAllowed = ({ props: { fixed } }: React.ReactElement<Column.Props<T, K>>) => !fixed;
-      const isDropAllowed = (fixed: boolean) => (source: K, target: K) => !fixed && source !== target;
+      const isDragAllowed = ({
+        props: { fixed }
+      }: React.ReactElement<Column.Props<T, K>>) => !fixed;
+      const isDropAllowed = (fixed: boolean) => (source: K, target: K) =>
+        !fixed && source !== target;
 
       const overrideHeader: UpdateColumnsHandler<T, K> = ({ col, index }) => {
         const { name, fixed } = col.props;
-        const header = find(getArrayChildren(col.props.children), child => child.type === Header) || defaultHeader(col.props.name);
-        const otherChildren = (getArrayChildren(col.props.children) || []).filter(ch => ch.type !== Header);
+        const header =
+          find(
+            getArrayChildren(col.props.children),
+            child => child.type === Header
+          ) || defaultHeader(col.props.name);
+        const otherChildren = (
+          getArrayChildren(col.props.children) || []
+        ).filter(ch => ch.type !== Header);
         const oncedOnColumnsSwitch = once(onColumnsSwitch);
         const dndHeader = (
           <Header {...header.props}>
@@ -91,7 +134,9 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
             </DNDHeader>
           </Header>
         );
-        const children = [dndHeader, ...otherChildren].map((el, index) => React.cloneElement(el, { key: index }));
+        const children = [dndHeader, ...otherChildren].map((el, index) =>
+          React.cloneElement(el, { key: index })
+        );
         const Col: React.SFC<Column.Props<T, K>> = Column;
         return (
           <Col {...col.props} key={name}>
@@ -103,26 +148,27 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
       const __children = updateColumns(orderedChildren, overrideHeader);
 
       return {
-        className: cx('columns-reorderable-tablo', className),
+        className: cx("columns-reorderable-tablo", className),
         children: __children,
         ...gridProps
       };
-
     }
 
     render() {
       return <Grid {...this.getLocals(this.props)} />;
     }
-
   }
 
-  props({
-    // transform, manipulate
-    className: maybe(t.String),
-    // add
-    columnsOrder: maybe(list(t.String)),
-    onColumnsReorder: maybe(t.Function)
-  }, { strict: false })(ColumnsReorderGrid);
+  props(
+    {
+      // transform, manipulate
+      className: maybe(t.String),
+      // add
+      columnsOrder: maybe(list(t.String)),
+      onColumnsReorder: maybe(t.Function)
+    },
+    { strict: false }
+  )(ColumnsReorderGrid);
 
   return dragDropContextHTML5Backend(ColumnsReorderGrid);
 };

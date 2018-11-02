@@ -1,8 +1,8 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import _debounce = require('lodash/debounce');
-import { props, t, ReactChildren } from '../utils';
-import _ResizeSensor = require('css-element-queries/src/ResizeSensor');
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import _debounce = require("lodash/debounce");
+import { props, t, ReactChildren } from "../utils";
+import _ResizeSensor = require("css-element-queries/src/ResizeSensor");
 
 export const Props = {
   children: ReactChildren,
@@ -13,48 +13,50 @@ export const Props = {
 export namespace ResizeSensor {
   export type Props = {
     /** content */
-    children: JSX.Element,
+    children: JSX.Element;
     /** called when a resize event is captured */
-    onResize: () => void,
+    onResize: () => void;
     /** callback delay (milliseconds) */
-    debounce?: number
+    debounce?: number;
   };
 }
 
 interface ResizeSensorElement extends Element {
-  resizedAttached?: {}
-};
+  resizedAttached?: {};
+}
 
 /**
  * A component that exposes an `onResize` callback called whenever his parent's size changes.
  */
 @props(Props)
 export class ResizeSensor extends React.Component<ResizeSensor.Props> {
-
-  private elementQueries: boolean
-  private resizeSensor: {} | null
+  private elementQueries: boolean;
+  private resizeSensor: {} | null;
 
   attachResizeSensor = () => {
     const { debounce } = this.props;
     const element = ReactDOM.findDOMNode<ResizeSensorElement>(this);
     if (!element.resizedAttached) {
-      this.resizeSensor = new _ResizeSensor(element, debounce ? _debounce(this.onResize, debounce) : this.onResize);
+      this.resizeSensor = new _ResizeSensor(
+        element,
+        debounce ? _debounce(this.onResize, debounce) : this.onResize
+      );
     }
-  }
+  };
 
   initElementQueries = () => {
     if (!this.elementQueries) {
-      require('css-element-queries/src/ElementQueries').listen();
+      require("css-element-queries/src/ElementQueries").listen();
       this.elementQueries = true;
     }
-  }
+  };
 
   updateSensorAndQueries = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       this.initElementQueries();
       this.attachResizeSensor();
     }
-  }
+  };
 
   componentDidMount() {
     this.updateSensorAndQueries();
@@ -68,7 +70,7 @@ export class ResizeSensor extends React.Component<ResizeSensor.Props> {
     this.resizeSensor = null;
   }
 
-  onResize = () => !!this.resizeSensor && this.props.onResize()
+  onResize = () => !!this.resizeSensor && this.props.onResize();
 
   render() {
     return this.props.children;

@@ -1,5 +1,5 @@
-@import '../../utils/theme/variables.scss';
-@import '../tabloVariables.scss';
+@import "../../utils/theme/variables.scss";
+@import "../tabloVariables.scss";
 
 // no fixed-data-table css classes in subcomponents
 
@@ -20,7 +20,8 @@
 
     &:last-child {
       .tablo-header {
-        border-right: $last-header-cell-border-width solid $last-header-cell-border-color;
+        border-right: $last-header-cell-border-width solid
+          $last-header-cell-border-color;
 
         &.tablo-header-fixed {
           border-right-width: 0;

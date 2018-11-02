@@ -1,2 +1,2 @@
-import { ColumnGroup } from './ColumnGroup';
+import { ColumnGroup } from "./ColumnGroup";
 export default ColumnGroup;

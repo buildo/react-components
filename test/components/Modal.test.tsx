@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { mount } from 'enzyme';
-import { modalWithContext } from '../../src/Modal';
+import * as React from "react";
+import * as PropTypes from "prop-types";
+import { mount } from "enzyme";
+import { modalWithContext } from "../../src/Modal";
 
 let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
-  consoleError = jest.spyOn(console, 'error');
+  consoleError = jest.spyOn(console, "error");
 });
 
 afterEach(() => {
@@ -14,8 +14,8 @@ afterEach(() => {
 });
 
 interface ContextType {
-  foo: string
-};
+  foo: string;
+}
 
 // `.isRequired` makes the test fail if context is not provided
 const FooType = PropTypes.string.isRequired;
@@ -27,10 +27,8 @@ class ComponentAccessingContext extends React.Component {
   }
 }
 
-describe('Modal', () => {
-
-  it('should correctly pass context down if used via modalWithContext', () => {
-
+describe("Modal", () => {
+  it("should correctly pass context down if used via modalWithContext", () => {
     const ModalPassingContext = modalWithContext({ foo: FooType });
     mount(
       <ModalPassingContext
@@ -39,8 +37,7 @@ describe('Modal', () => {
       >
         <ComponentAccessingContext />
       </ModalPassingContext>,
-      { context: { foo: 'bar' } }
+      { context: { foo: "bar" } }
     );
   });
-
 });

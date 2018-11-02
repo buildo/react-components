@@ -1,6 +1,6 @@
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '~react-select/dist/react-select.min.css';
-@import '../utils/theme/variables.scss';
+@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
+@import "~react-select/dist/react-select.min.css";
+@import "../utils/theme/variables.scss";
 $background: $brc-gradientGrey !default;
 $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;
@@ -26,11 +26,11 @@ $menu-background: $brc-white !default;
 $menu-border-color: $brc-silver !default;
 $option-group-color: $brc-darkGrey !default;
 $option-group-background: $brc-paleGrey !default;
-$option-color: rgba($brc-darkGrey, .5) !default;
+$option-color: rgba($brc-darkGrey, 0.5) !default;
 $option-color-hover: $brc-darkGrey !default;
 $option-color-selected: $option-color !default;
-$option-color-disabled: rgba($option-color, .2) !default;
-$option-background-hover: rgba($brc-azure, .15) !default;
+$option-color-disabled: rgba($option-color, 0.2) !default;
+$option-background-hover: rgba($brc-azure, 0.15) !default;
 $option-background-selected: $menu-background !default;
 $option-background-disabled: $menu-background !default;
 $multiple-value-color: $brc-azure !default;
@@ -40,9 +40,12 @@ $multiple-value-icon-color: $multiple-value-color !default;
 $multiple-value-icon-background-color: $multiple-value-background-color !default;
 $multiple-value-icon-border-color: $multiple-value-icon-color !default;
 $multiple-value-icon-color-hover: $brc-red !default;
-$multiple-value-icon-background-color-hover: darken($multiple-value-icon-background-color, 10%) !default;
+$multiple-value-icon-background-color-hover: darken(
+  $multiple-value-icon-background-color,
+  10%
+) !default;
 $multiple-value-icon-border-color-hover: $multiple-value-icon-border-color !default;
-$disabled-opacity: .6 !default;
+$disabled-opacity: 0.6 !default;
 $height: 36px !default;
 $height-small: 30px !default;
 $padding-left-small: 10px !default;
@@ -189,7 +192,7 @@ $padding-left: 10px !default;
     border-radius: 4px;
     min-width: 185px;
     background-color: $menu-background;
-    box-shadow: rgba(34, 36, 38, .12) 0 2px 4px 0;
+    box-shadow: rgba(34, 36, 38, 0.12) 0 2px 4px 0;
 
     .Select-option-group {
       padding: 0 9px;

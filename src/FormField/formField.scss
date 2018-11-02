@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 
 $label-color: $brc-darkGreyBlue;
 
@@ -16,7 +16,7 @@ $label-color: $brc-darkGreyBlue;
       padding-left: 9px;
 
       > ::before {
-        content: '*';
+        content: "*";
         color: $brc-strawberry;
         font-size: 17px;
         position: absolute;
@@ -27,7 +27,7 @@ $label-color: $brc-darkGreyBlue;
   }
 
   &.is-disabled {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &.is-horizontal {

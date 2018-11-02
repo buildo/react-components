@@ -1,6 +1,6 @@
-import * as React from 'react';
-import omit = require('lodash/omit');
-import { props, t, ReactChildren } from '../utils';
+import * as React from "react";
+import omit = require("lodash/omit");
+import { props, t, ReactChildren } from "../utils";
 
 export const Props = {
   children: ReactChildren,
@@ -13,22 +13,21 @@ export const Props = {
 };
 
 export type TimerToastProps = {
-  children: JSX.Element,
-  onTimeout: (uniqueKey?: string) => void,
-  duration: number,
-  uniqueKey?: string,
-  id?: string,
-  className?: string,
-  style?: React.CSSProperties
+  children: JSX.Element;
+  onTimeout: (uniqueKey?: string) => void;
+  duration: number;
+  uniqueKey?: string;
+  id?: string;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export type State = {
-  completed: boolean
+  completed: boolean;
 };
 
 @props(Props)
 export class TimerToast extends React.Component<TimerToastProps, State> {
-
   private timer: number | null;
 
   state = { completed: false };
@@ -63,7 +62,8 @@ export class TimerToast extends React.Component<TimerToastProps, State> {
   render() {
     const { children, ...props } = this.props;
     return (
-      <div {...omit(props, ['onTimeout', 'duration', 'uniqueKey'])}
+      <div
+        {...omit(props, ["onTimeout", "duration", "uniqueKey"])}
         onMouseEnter={this.clearTimer}
         onMouseLeave={this.resetTimer}
       >
@@ -71,5 +71,4 @@ export class TimerToast extends React.Component<TimerToastProps, State> {
       </div>
     );
   }
-
 }

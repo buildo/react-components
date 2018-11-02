@@ -1,2 +1,2 @@
-import scrollableGrid from './scrollableGrid';
+import scrollableGrid from "./scrollableGrid";
 export default scrollableGrid;

@@ -1,1 +1,1 @@
-declare module 'tcomb-react';
+declare module "tcomb-react";

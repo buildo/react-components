@@ -1,45 +1,44 @@
-import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import * as React from "react";
+import { shallow, mount } from "enzyme";
 
-import LoadingSpinner from '../../src/LoadingSpinner';
+import LoadingSpinner from "../../src/LoadingSpinner";
 
 let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
-  consoleError = jest.spyOn(console, 'error');
+  consoleError = jest.spyOn(console, "error");
 });
 
 afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-describe('LoadingSpinner', () => {
-
-  it('renders correctly', () => {
+describe("LoadingSpinner", () => {
+  it("renders correctly", () => {
     const component = mount(
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <LoadingSpinner />
       </div>
     );
     expect(component.html()).toMatchSnapshot();
   });
 
-  it('renders correctly with a message', () => {
+  it("renders correctly with a message", () => {
     const component = mount(
-      <div style={{ position: 'relative' }}>
-        <LoadingSpinner message={{ content: 'loading awesome content' }} />
+      <div style={{ position: "relative" }}>
+        <LoadingSpinner message={{ content: "loading awesome content" }} />
       </div>
     );
     expect(component.html()).toMatchSnapshot();
   });
 
-  it('renders with a warning when parent is not relative or absolute', () => {
+  it("renders with a warning when parent is not relative or absolute", () => {
     /* eslint-disable no-console */
     const warn = jest.fn();
     const originalWarn = console.warn;
     console.warn = warn;
     mount(
-      <div style={{ position: 'static' }}>
+      <div style={{ position: "static" }}>
         <LoadingSpinner />
       </div>
     );
@@ -50,56 +49,55 @@ describe('LoadingSpinner', () => {
     /* eslint-enable no-console */
   });
 
-  it('computes message content and style', () => {
+  it("computes message content and style", () => {
     const message = {
-      content: 'loading awesome content',
+      content: "loading awesome content",
       size: 14,
-      color: 'blue'
+      color: "blue"
     };
-    const size = '5em';
+    const size = "5em";
     const spinner = mount(
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <LoadingSpinner message={message} size={size} />
       </div>
     );
-    const messageNode = spinner.find('.message');
+    const messageNode = spinner.find(".message");
     expect(messageNode.text()).toBe(message.content);
-    expect(messageNode.prop('style').marginTop).toBe(size);
-    expect(messageNode.prop('style').fontSize).toBe(message.size);
-    expect(messageNode.prop('style').color).toBe(message.color);
+    expect(messageNode.prop("style").marginTop).toBe(size);
+    expect(messageNode.prop("style").fontSize).toBe(message.size);
+    expect(messageNode.prop("style").color).toBe(message.color);
   });
 
-  it('computes overlay style', () => {
-    const overlayColor = 'green';
+  it("computes overlay style", () => {
+    const overlayColor = "green";
     const spinner = mount(
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <LoadingSpinner overlayColor={overlayColor} />
       </div>
     );
-    const overlayNode = spinner.find('.loading-spinner-overlay');
-    expect(overlayNode.prop('style').backgroundColor).toBe(overlayColor);
+    const overlayNode = spinner.find(".loading-spinner-overlay");
+    expect(overlayNode.prop("style").backgroundColor).toBe(overlayColor);
   });
 
-  it('computes spinner style', () => {
-    const size = '5em';
-    const color = 'green';
+  it("computes spinner style", () => {
+    const size = "5em";
+    const color = "green";
     const spinner = mount(
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <LoadingSpinner size={size} color={color} />
       </div>
     );
-    const overlayNode = spinner.find('.spinner');
-    expect(overlayNode.prop('style').fontSize).toBe(size);
-    expect(overlayNode.prop('style').color).toBe(color);
+    const overlayNode = spinner.find(".spinner");
+    expect(overlayNode.prop("style").fontSize).toBe(size);
+    expect(overlayNode.prop("style").color).toBe(color);
   });
 
-  it('computes className', () => {
+  it("computes className", () => {
     const spinner = mount(
-      <div style={{ position: 'relative' }}>
-        <LoadingSpinner className='some-class' />
+      <div style={{ position: "relative" }}>
+        <LoadingSpinner className="some-class" />
       </div>
     );
     expect(spinner).toMatchSnapshot();
   });
-
 });

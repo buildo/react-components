@@ -1,2 +1,2 @@
-import { ResizeSensor } from './ResizeSensor';
+import { ResizeSensor } from "./ResizeSensor";
 export default ResizeSensor;

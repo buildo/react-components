@@ -1,26 +1,31 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import includes = require('lodash/includes');
-import { Tablo } from '../../Tablo';
-import { Table } from 'fixed-data-table-2';
+import * as React from "react";
+import * as cx from "classnames";
+import includes = require("lodash/includes");
+import { Tablo } from "../../Tablo";
+import { Table } from "fixed-data-table-2";
 
-export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.Props<T, K>>): React.ComponentClass<Tablo.Props<T, K>> => {
+export default <T, K extends string = keyof T>(
+  Grid: React.ComponentClass<Tablo.Props<T, K>>
+): React.ComponentClass<Tablo.Props<T, K>> => {
   return class SelectableGrid extends React.PureComponent<Tablo.Props<T, K>> {
     render() {
       const {
         selectedRows = [],
         onRowsSelect,
-        selectionType = 'none',
+        selectionType = "none",
         className,
-        rowClassNameGetter: rcnGetter = () => '',
+        rowClassNameGetter: rcnGetter = () => "",
         ...gridProps
       } = this.props;
 
-      const onRowClick = ({ ctrlKey, metaKey }: React.MouseEvent<Table>, index: number) => {
-        if (selectionType === 'none' || !onRowsSelect) {
+      const onRowClick = (
+        { ctrlKey, metaKey }: React.MouseEvent<Table>,
+        index: number
+      ) => {
+        if (selectionType === "none" || !onRowsSelect) {
           return;
         }
-        if (selectionType === 'multi' && (ctrlKey || metaKey)) {
+        if (selectionType === "multi" && (ctrlKey || metaKey)) {
           if (includes(selectedRows, index)) {
             onRowsSelect(selectedRows.filter(idx => idx !== index));
           } else {
@@ -31,14 +36,19 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
         }
       };
 
-      const rowClassNameGetter = (index: number) => cx(rcnGetter(index), {
-        selected: includes(selectedRows, index)
-      });
+      const rowClassNameGetter = (index: number) =>
+        cx(rcnGetter(index), {
+          selected: includes(selectedRows, index)
+        });
 
       const scrollToRow = !gridProps.scrollTop ? selectedRows[0] : undefined;
 
       const tabloProps = {
-        className: cx('selectable-tablo', { selectable: selectionType !== 'none' }, className),
+        className: cx(
+          "selectable-tablo",
+          { selectable: selectionType !== "none" },
+          className
+        ),
         scrollToRow,
         onRowClick,
         rowClassNameGetter,
@@ -47,5 +57,5 @@ export default <T, K extends string = keyof T>(Grid: React.ComponentClass<Tablo.
 
       return <Grid {...tabloProps} />;
     }
-  }
+  };
 };

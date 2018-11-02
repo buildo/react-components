@@ -1,2 +1,2 @@
-import sortableGrid from './sortableGrid';
+import sortableGrid from "./sortableGrid";
 export default sortableGrid;

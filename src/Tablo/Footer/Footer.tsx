@@ -1,10 +1,10 @@
-import * as React from 'react';
-import FlexView from 'react-flexview';
-import { props, t, ReactChildren } from '../../utils';
+import * as React from "react";
+import FlexView from "react-flexview";
+import { props, t, ReactChildren } from "../../utils";
 
 export namespace Footer {
   export type Props = {
-    children: React.ReactNode
+    children: React.ReactNode;
   };
 }
 
@@ -24,10 +24,10 @@ export class Footer extends React.PureComponent<Footer.Props> {
 
     return (
       <FlexView
-        className='tablo-footer'
-        height='100%'
-        width='100%'
-        vAlignContent='center'
+        className="tablo-footer"
+        height="100%"
+        width="100%"
+        vAlignContent="center"
         grow
       >
         {children}

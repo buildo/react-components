@@ -1,10 +1,10 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $background: $brc-white !default;
 $border-color: $brc-silver !default;
 $title-color: $brc-darkGrey !default;
-$item-title-color: rgba($brc-darkGrey, .5) !default;
+$item-title-color: rgba($brc-darkGrey, 0.5) !default;
 $item-title-color-hover: $brc-darkGrey !default;
-$item-background-hover: rgba($brc-azure, .15) !default;
+$item-background-hover: rgba($brc-azure, 0.15) !default;
 $item-metadata-color: $brc-coolGrey !default;
 
 .actions-menu {

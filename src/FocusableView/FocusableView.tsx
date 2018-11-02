@@ -1,35 +1,40 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import debounce = require('lodash/debounce');
-import { props, t, ReactChildren } from '../utils';
+import * as React from "react";
+import * as cx from "classnames";
+import debounce = require("lodash/debounce");
+import { props, t, ReactChildren } from "../utils";
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
-  children: ((focused: boolean) => React.ReactNode | React.ReactNode[]) | React.ReactNode | React.ReactNode[],
+  children:
+    | ((focused: boolean) => React.ReactNode | React.ReactNode[])
+    | React.ReactNode
+    | React.ReactNode[];
   /** Debounce onFocus/onBlur events of x millis */
-  debounce?: number,
-  className?: string,
-  style?: React.CSSProperties
-}
+  debounce?: number;
+  className?: string;
+  style?: React.CSSProperties;
+};
 
 export type FocusableViewDefaultProps = {
   /** When `true` the class "focused" is NOT added */
-  ignoreFocus: boolean,
+  ignoreFocus: boolean;
   /** Callback function called on "focus" event */
-  onFocus: () => void,
+  onFocus: () => void;
   /** Callback function called on "blur" event */
-  onBlur: () => void,
+  onBlur: () => void;
   /** "tabindex" attribute */
-  tabIndex: number,
+  tabIndex: number;
   /** Wrapper component for `children` */
-  component: keyof React.ReactHTML | React.ComponentClass<{}>
-}
+  component: keyof React.ReactHTML | React.ComponentClass<{}>;
+};
 
 export namespace FocusableView {
-  export type Props = Partial<FocusableViewDefaultProps> & FocusableViewRequiredProps
+  export type Props = Partial<FocusableViewDefaultProps> &
+    FocusableViewRequiredProps;
 }
 
-type FocusableViewDefaultedProps = FocusableViewRequiredProps & FocusableViewDefaultProps;
+type FocusableViewDefaultedProps = FocusableViewRequiredProps &
+  FocusableViewDefaultProps;
 
 export const Props = {
   children: t.union([ReactChildren, t.Function]),
@@ -48,10 +53,9 @@ export const Props = {
  */
 @props(Props, { strict: false })
 export class FocusableView extends React.Component<FocusableView.Props> {
-
   static defaultProps: FocusableViewDefaultProps = {
     ignoreFocus: false,
-    component: 'div',
+    component: "div",
     tabIndex: 0,
     onFocus: () => {},
     onBlur: () => {}
@@ -81,33 +85,46 @@ export class FocusableView extends React.Component<FocusableView.Props> {
   };
 
   _onFocusBlurEvent = (type: string) => {
-    const { _mounted, state: { focused } } = this;
+    const {
+      _mounted,
+      state: { focused }
+    } = this;
 
     if (!_mounted) {
       return;
     }
 
-    if (type === 'blur' && focused) {
+    if (type === "blur" && focused) {
       this._onBlur();
-    } else if (type === 'focus' && !focused) {
+    } else if (type === "focus" && !focused) {
       this._onFocus();
     }
-  }
+  };
 
-  onFocusBlurEventDebounced: ((type: string) => void) & _.Cancelable = debounce(this._onFocusBlurEvent, this.defaultedProps().debounce)
+  onFocusBlurEventDebounced: ((type: string) => void) & _.Cancelable = debounce(
+    this._onFocusBlurEvent,
+    this.defaultedProps().debounce
+  );
 
-  onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) => (
-    !t.Nil.is(this.defaultedProps().debounce) ? this.onFocusBlurEventDebounced(type) : this._onFocusBlurEvent(type)
-  )
+  onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) =>
+    !t.Nil.is(this.defaultedProps().debounce)
+      ? this.onFocusBlurEventDebounced(type)
+      : this._onFocusBlurEvent(type);
 
   render() {
-
     const {
       onFocusBlurEvent,
-      state: { focused },
+      state: { focused }
     } = this;
 
-    const { className, ignoreFocus, children, component, debounce, ...props } = this.defaultedProps();
+    const {
+      className,
+      ignoreFocus,
+      children,
+      component,
+      debounce,
+      ...props
+    } = this.defaultedProps();
 
     const locals = {
       ...props,
@@ -122,5 +139,4 @@ export class FocusableView extends React.Component<FocusableView.Props> {
       t.Function.is(children) ? children(focused) : children
     );
   }
-
 }

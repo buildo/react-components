@@ -1,6 +1,5 @@
-import { Menu } from './Menu';
-import { ActionsMenu } from './ActionsMenu';
+import { Menu } from "./Menu";
+import { ActionsMenu } from "./ActionsMenu";
 
 export default Menu;
-export { Menu, ActionsMenu }
-
+export { Menu, ActionsMenu };

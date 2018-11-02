@@ -1,2 +1,2 @@
-import autosizeGrid from './autosizeGrid';
+import autosizeGrid from "./autosizeGrid";
 export default autosizeGrid;

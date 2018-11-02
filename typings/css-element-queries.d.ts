@@ -1,6 +1,6 @@
-declare module 'css-element-queries/src/ResizeSensor' {
+declare module "css-element-queries/src/ResizeSensor" {
   class ResizeSensor {
-    constructor(element: (Element | Element[]), callback: Function);
+    constructor(element: Element | Element[], callback: Function);
   }
-  export = ResizeSensor
+  export = ResizeSensor;
 }

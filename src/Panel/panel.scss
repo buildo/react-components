@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $border-color: $brc-silver !default;
 $soft-loader-color: $brc-coolGrey !default;
 $header-background: $brc-gradientGrey !default;
@@ -6,7 +6,7 @@ $header-background-dark: $brc-darkGrey !default;
 $header-color: $brc-darkGrey !default;
 $header-color-dark: $brc-white !default;
 $expand-icon-color: $brc-coolGrey !default;
-$expand-icon-color-hover: rgba($brc-coolGrey, .7) !default;
+$expand-icon-color-hover: rgba($brc-coolGrey, 0.7) !default;
 $content-background: $brc-white !default;
 $content-color: $brc-darkGrey !default;
 $content-title-color: $brc-darkGrey !default;
@@ -148,10 +148,10 @@ $content-title-color: $brc-darkGrey !default;
       position: relative;
       height: 1px;
       width: 100%;
-      background: rgba($soft-loader-color, .3);
+      background: rgba($soft-loader-color, 0.3);
 
       &::after {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         right: 100%;

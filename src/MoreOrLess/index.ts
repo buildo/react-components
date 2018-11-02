@@ -1,2 +1,2 @@
-import { MoreOrLess } from './MoreOrLess';
+import { MoreOrLess } from "./MoreOrLess";
 export default MoreOrLess;

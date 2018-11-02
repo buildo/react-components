@@ -1,27 +1,27 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactChildren, ReactChild } from '../utils';
-import FlexView from 'react-flexview';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactChildren, ReactChild } from "../utils";
+import FlexView from "react-flexview";
 
 export namespace MoreOrLess {
   export type Props = {
     /** panel content */
-    children: any, // TODO: t.ReactChildren
+    children: any; // TODO: t.ReactChildren
     /** whether the panel should be expanded or not */
-    expanded: boolean,
+    expanded: boolean;
     /** called on toggle */
-    onExpandedChange: (expanded: boolean) => void,
+    onExpandedChange: (expanded: boolean) => void;
     /** icons for expanded and collapsed panel */
     icons: {
-      expanded: JSX.Element,
-      collapsed: JSX.Element
-    },
+      expanded: JSX.Element;
+      collapsed: JSX.Element;
+    };
     /** props for wrapper FlexView */
-    wrapperProps?: object,
+    wrapperProps?: object;
     /** an optional class name to pass to the component */
-    className?: string,
+    className?: string;
     /** an optional style object to pass to the component */
-    style?: React.CSSProperties
+    style?: React.CSSProperties;
   };
 }
 
@@ -43,17 +43,19 @@ export const Props = {
  */
 @props(Props)
 export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
-
   toggleExpanded = () => {
     this.props.onExpandedChange(!this.props.expanded);
   };
 
-  templateExpandButton = (icon: JSX.Element, toggleExpanded: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>) => {
+  templateExpandButton = (
+    icon: JSX.Element,
+    toggleExpanded: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>
+  ) => {
     return (
       <FlexView
-        hAlignContent='center'
-        vAlignContent='center'
-        className='expand-button'
+        hAlignContent="center"
+        vAlignContent="center"
+        className="expand-button"
         onClick={toggleExpanded}
         shrink={false}
       >
@@ -68,13 +70,16 @@ export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
       toggleExpanded
     } = this;
 
-    const panelState = expanded ? 'more' : 'less';
+    const panelState = expanded ? "more" : "less";
     const icon = expanded ? icons.expanded : icons.collapsed;
 
     return (
-      <FlexView column shrink={false} {...wrapperProps}
+      <FlexView
+        column
+        shrink={false}
+        {...wrapperProps}
         style={style}
-        className={cx('more-or-less', panelState, className)}
+        className={cx("more-or-less", panelState, className)}
       >
         {children}
         {this.templateExpandButton(icon, toggleExpanded)}

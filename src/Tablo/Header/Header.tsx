@@ -1,23 +1,25 @@
-import * as React from 'react';
-import * as cx from 'classnames';
-import { props, t, ReactChildren } from '../../utils';
-import FlexView from 'react-flexview';
+import * as React from "react";
+import * as cx from "classnames";
+import { props, t, ReactChildren } from "../../utils";
+import FlexView from "react-flexview";
 
 export type FDTIntrinsic<K extends string> = {
-  columnKey: K,
-}
+  columnKey: K;
+};
 
 export type Intrinsic = {
-  fixed: boolean,
-  onClick?: () => void
-}
+  fixed: boolean;
+  onClick?: () => void;
+};
 
 export namespace Header {
   export type Props = {
-    children: React.ReactNode,
+    children: React.ReactNode;
   };
 }
-export type HeaderIntrinsicProps<K extends string> = Header.Props & Intrinsic & FDTIntrinsic<K>;
+export type HeaderIntrinsicProps<K extends string> = Header.Props &
+  Intrinsic &
+  FDTIntrinsic<K>;
 
 const { maybe } = t;
 
@@ -32,20 +34,23 @@ const propsTypes = {
 };
 
 @props(propsTypes)
-export class Header<K extends string> extends React.PureComponent<Header.Props> {
+export class Header<K extends string> extends React.PureComponent<
+  Header.Props
+> {
   render() {
-    const { fixed, onClick: onClick, children } = this.props as HeaderIntrinsicProps<K>;
+    const { fixed, onClick: onClick, children } = this
+      .props as HeaderIntrinsicProps<K>;
 
     return (
       <FlexView
-        className={cx('tablo-header', { 'tablo-header-fixed': fixed })}
-        height='100%'
-        width='100%'
-        vAlignContent='center'
+        className={cx("tablo-header", { "tablo-header-fixed": fixed })}
+        height="100%"
+        width="100%"
+        vAlignContent="center"
         onClick={onClick}
         grow
       >
-        <FlexView vAlignContent='center' grow height='100%'>
+        <FlexView vAlignContent="center" grow height="100%">
           {children}
         </FlexView>
       </FlexView>

@@ -1,7 +1,7 @@
-@import '~fixed-data-table-2/dist/fixed-data-table-base.min.css';
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
-@import './tabloVariables.scss';
+@import "~fixed-data-table-2/dist/fixed-data-table-base.min.css";
+@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
+@import "../utils/theme/variables.scss";
+@import "./tabloVariables.scss";
 
 .tablo {
   /*
@@ -25,13 +25,11 @@
   .public_fixedDataTable_main,
   .public_fixedDataTable_header,
   .public_fixedDataTableCell_main {
-
     // reset all the borders
     border: none;
   }
 
   .public_fixedDataTable_main {
-
     // border-right on .tablo selector doesn't work, so put all borders here
     border-top: $table-border-top-width solid $table-border-top-color;
     border-right: $table-border-right-width solid $table-border-right-color;
@@ -52,7 +50,8 @@
   .public_fixedDataTableRow_fixedColumnsDivider {
     width: 0;
     border-width: 0; // to reset
-    border-right: $fixed-columns-separator-width solid $fixed-columns-separator-color;
+    border-right: $fixed-columns-separator-width solid
+      $fixed-columns-separator-color;
   }
 
   // bg color for odd/even rows (applied to cells for reliability)
@@ -129,7 +128,6 @@
 }
 
 .tablo {
-
   // for cells with TextOverflow
   .public_fixedDataTableCell_main {
     @include display_flex();
@@ -149,12 +147,12 @@
   font-size: 15px;
 }
 
-@import './Header/header.scss';
-@import './Footer/footer.scss';
-@import './Cell/cell.scss';
+@import "./Header/header.scss";
+@import "./Footer/footer.scss";
+@import "./Cell/cell.scss";
 
 // plugins
-@import './plugins/columnsReorder/columnsReorderGrid.scss';
-@import './plugins/selectable/selectableGrid.scss';
-@import './plugins/sortable/arrow.scss';
-@import './plugins/sortable/sortableGrid.scss';
+@import "./plugins/columnsReorder/columnsReorderGrid.scss";
+@import "./plugins/selectable/selectableGrid.scss";
+@import "./plugins/sortable/arrow.scss";
+@import "./plugins/sortable/sortableGrid.scss";

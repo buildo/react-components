@@ -1,11 +1,11 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $size: 3em !default;
 $background: $brc-cloudyGrey !default;
 $checked-background: $brc-gradientAzure !default;
 
 .toggle {
   &.disabled {
-    opacity: .3;
+    opacity: 0.3;
 
     .toggle-button {
       cursor: not-allowed;
@@ -42,7 +42,7 @@ $checked-background: $brc-gradientAzure !default;
 
     &::after,
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: relative;
       height: 100%;
@@ -73,14 +73,14 @@ $checked-background: $brc-gradientAzure !default;
     padding: 2px;
     border-radius: $size / 2;
     background: $background;
-    -webkit-transition: background .4s ease;
-    transition: background .4s ease;
+    -webkit-transition: background 0.4s ease;
+    transition: background 0.4s ease;
 
     &::after {
       border-radius: 50%;
       background: $brc-white;
-      -webkit-transition: -webkit-transform .2s linear;
-      transition: transform .2s linear;
+      -webkit-transition: -webkit-transform 0.2s linear;
+      transition: transform 0.2s linear;
     }
   }
 

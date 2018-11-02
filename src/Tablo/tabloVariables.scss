@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
@@ -44,17 +44,17 @@ $last-row-border-width: 0 !default;
 $odd-row-background: $brc-white !default;
 $even-row-background: $brc-white !default;
 
-$scrollbar-color: rgba($brc-coolGrey, .6) !default;
+$scrollbar-color: rgba($brc-coolGrey, 0.6) !default;
 $scrollbar-color-hover: $brc-coolGrey !default;
-$scrollbar-background-hover: rgba($brc-white, .8) !default;
+$scrollbar-background-hover: rgba($brc-white, 0.8) !default;
 $scrollbar-size: 6px !default;
 
-$sortable-grid-arrows-opacity: .4 !default;
+$sortable-grid-arrows-opacity: 0.4 !default;
 $sortable-grid-arrows-opacity-hover: 1 !default;
 $sortable-grid-sorted-arrows-opacity: 1 !default;
-$sortable-grid-sorted-arrows-opacity-hover: .4 !default;
+$sortable-grid-sorted-arrows-opacity-hover: 0.4 !default;
 
-$columns-reorder-header-opacity-is-dragging: .6 !default;
+$columns-reorder-header-opacity-is-dragging: 0.6 !default;
 
 $fixed-columns-separator-color: $header-cell-border-color !default;
 $fixed-columns-separator-width: $header-cell-border-width * 2 !default;

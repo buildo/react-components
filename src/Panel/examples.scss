@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 
 .panel {
   &.collapsed.collapse-left {
@@ -36,7 +36,7 @@
           color: $brc-azure;
 
           &::before {
-            content: 'by\00a0';
+            content: "by\00a0";
             color: $brc-darkGrey;
           }
         }

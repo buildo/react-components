@@ -1,7 +1,7 @@
-import * as React from 'react';
-import some = require('lodash/some');
-import { props, t, ReactChildren } from '../utils';
-import * as bowser from 'bowser';
+import * as React from "react";
+import some = require("lodash/some");
+import { props, t, ReactChildren } from "../utils";
+import * as bowser from "bowser";
 
 const browsers: bowser.IBowserVersions = {
   chrome: true,
@@ -30,22 +30,24 @@ const browsers: bowser.IBowserVersions = {
 export const Props = {
   children: ReactChildren,
   placeholder: t.Function,
-  supportedBrowsers: t.maybe(t.list(t.enums.of(Object.keys(browsers), 'Browser'))),
+  supportedBrowsers: t.maybe(
+    t.list(t.enums.of(Object.keys(browsers), "Browser"))
+  ),
   userAgent: t.maybe(t.String)
 };
 
 export namespace BrowserDetector {
   export type Browser = keyof bowser.IBowserVersions;
-  export type DetectedBrowser = bowser.IBowserGrade
+  export type DetectedBrowser = bowser.IBowserGrade;
   export type Props = {
     /** children node rendered when using a supported browser */
-    children: JSX.Element,
+    children: JSX.Element;
     /** called when using a non-supported browser. Expected to return a valid ReactNode */
-    placeholder: (detectedBrowser: DetectedBrowser) => JSX.Element
+    placeholder: (detectedBrowser: DetectedBrowser) => JSX.Element;
     /** whitelist of supported browsers. If `undefined` they're all supported */
-    supportedBrowsers?: Browser[],
+    supportedBrowsers?: Browser[];
     /** custom user-agent */
-    userAgent?: string
+    userAgent?: string;
   };
 }
 
@@ -54,25 +56,36 @@ export namespace BrowserDetector {
  * based on a given whitelist of supported browsers.
  */
 @props(Props)
-export class BrowserDetector extends React.PureComponent<BrowserDetector.Props> {
-
+export class BrowserDetector extends React.PureComponent<
+  BrowserDetector.Props
+> {
   detectBrowser(userAgent: string): BrowserDetector.DetectedBrowser {
     return bowser._detect(userAgent);
   }
 
-  shouldRenderPlaceholder(supportedBrowsers: BrowserDetector.Browser[], detectedBrowser: BrowserDetector.DetectedBrowser): boolean {
-    return supportedBrowsers && !some(supportedBrowsers, b => detectedBrowser[b])
+  shouldRenderPlaceholder(
+    supportedBrowsers: BrowserDetector.Browser[],
+    detectedBrowser: BrowserDetector.DetectedBrowser
+  ): boolean {
+    return (
+      supportedBrowsers && !some(supportedBrowsers, b => detectedBrowser[b])
+    );
   }
 
   render() {
     const {
       props: { children, userAgent, supportedBrowsers = [], placeholder },
-      shouldRenderPlaceholder, detectBrowser
+      shouldRenderPlaceholder,
+      detectBrowser
     } = this;
-    const detectedBrowser = detectBrowser(userAgent || window.navigator.userAgent);
-    const shouldRenderChildren = !shouldRenderPlaceholder(supportedBrowsers, detectedBrowser);
+    const detectedBrowser = detectBrowser(
+      userAgent || window.navigator.userAgent
+    );
+    const shouldRenderChildren = !shouldRenderPlaceholder(
+      supportedBrowsers,
+      detectedBrowser
+    );
 
     return shouldRenderChildren ? children : placeholder(detectedBrowser);
   }
-
 }

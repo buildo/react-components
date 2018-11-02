@@ -1,5 +1,5 @@
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
+@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
+@import "../utils/theme/variables.scss";
 
 .dropdown-list {
   .dropdown {
@@ -22,15 +22,15 @@
     @include flex_align-items(center);
 
     &::before {
-      content: '\e910';
-      font-family: 'icomoon';
+      content: "\e910";
+      font-family: "icomoon";
     }
   }
 
   &.is-open {
     .Select-arrow {
       &::before {
-        content: '\e90f';
+        content: "\e90f";
       }
     }
   }

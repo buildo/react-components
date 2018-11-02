@@ -1,20 +1,23 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 
 $react-dates-width-input: 150px !default;
 $react-dates-color-primary: $brc-azure !default;
 
-$react-dates-color-primary-shade-1: $brc-azure30 !default;  // used as border of selected range
-$react-dates-color-primary-shade-2: $brc-azure10 !default;  // used as background of selected range
-$react-dates-color-primary-shade-3: $brc-azure !default;    // used as border on hover range
-$react-dates-color-primary-shade-4: $brc-azure30 !default;  // used as background of hover range
+$react-dates-color-primary-shade-1: $brc-azure30 !default; // used as border of selected range
+$react-dates-color-primary-shade-2: $brc-azure10 !default; // used as background of selected range
+$react-dates-color-primary-shade-3: $brc-azure !default; // used as border on hover range
+$react-dates-color-primary-shade-4: $brc-azure30 !default; // used as background of hover range
 
-$react-dates-color-secondary: $brc-darkGrey !default;       // font-color on hover range
+$react-dates-color-secondary: $brc-darkGrey !default; // font-color on hover range
 $react-dates-color-white: $brc-white !default;
 $react-dates-color-gray: $brc-darkGrey !default;
 $react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
 $react-dates-color-gray-light: $brc-coolGrey;
 $react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
-$react-dates-color-gray-lightest: lighten($react-dates-color-gray, 60%) !default;
+$react-dates-color-gray-lightest: lighten(
+  $react-dates-color-gray,
+  60%
+) !default;
 $react-dates-color-highlighted: #ffe8bc !default;
 
 $react-dates-color-border: $brc-silver !default;
@@ -27,8 +30,8 @@ $react-dates-color-focus: transparent !default;
 
 $react-dates-z-index: 100 !default;
 
-@import '~react-dates/css/variables.scss';
-@import '~react-dates/css/styles.scss';
+@import "~react-dates/css/variables.scss";
+@import "~react-dates/css/styles.scss";
 
 .date-picker {
   .CalendarMonth__caption {

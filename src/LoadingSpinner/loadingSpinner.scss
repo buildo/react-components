@@ -1,8 +1,8 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $size: 1em;
 $period: 1s;
 $easing: linear;
-$thickness: .1em;
+$thickness: 0.1em;
 
 .loading-spinner {
   .loading-spinner-overlay {
@@ -36,7 +36,7 @@ $thickness: .1em;
       box-sizing: border-box;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -44,7 +44,7 @@ $thickness: .1em;
         margin-top: -$size / 2;
         margin-left: -$size / 2;
         border-bottom-color: transparent;
-        opacity: .2;
+        opacity: 0.2;
       }
     }
 

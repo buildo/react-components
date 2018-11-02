@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import * as React from "react";
+import * as renderer from "react-test-renderer";
 
-import BrowserDetector from '../../src/BrowserDetector';
+import BrowserDetector from "../../src/BrowserDetector";
 
 let consoleError: jest.SpyInstance<{}>;
 
 beforeAll(() => {
-  consoleError = jest.spyOn(console, 'error');
+  consoleError = jest.spyOn(console, "error");
 });
 
 afterEach(() => {
@@ -14,18 +14,17 @@ afterEach(() => {
 });
 
 function forceUserAgent(ua) {
-  navigator['__defineGetter__']('userAgent', () => ua);
+  navigator["__defineGetter__"]("userAgent", () => ua);
 }
 
-const placeholder = (ua) => <div>{`${ua.name} is not supported`}</div>;
+const placeholder = ua => <div>{`${ua.name} is not supported`}</div>;
 
-describe('BrowserDetector', () => {
-
-  it('displays the content if browser is allowed', () => {
-    forceUserAgent('chrome');
+describe("BrowserDetector", () => {
+  it("displays the content if browser is allowed", () => {
+    forceUserAgent("chrome");
     const content = <div>My awesome content</div>;
     const component = renderer.create(
-      <BrowserDetector supportedBrowsers={['chrome']} placeholder={placeholder}>
+      <BrowserDetector supportedBrowsers={["chrome"]} placeholder={placeholder}>
         {content}
       </BrowserDetector>
     );
@@ -33,11 +32,11 @@ describe('BrowserDetector', () => {
     expect(component.toJSON()).toEqual(renderedContent.toJSON());
   });
 
-  it('displays the placeholder if browser is not allowed', () => {
-    forceUserAgent('safari');
+  it("displays the placeholder if browser is not allowed", () => {
+    forceUserAgent("safari");
     const content = <div>My awesome content</div>;
     const component = renderer.create(
-      <BrowserDetector supportedBrowsers={['chrome']} placeholder={placeholder}>
+      <BrowserDetector supportedBrowsers={["chrome"]} placeholder={placeholder}>
         {content}
       </BrowserDetector>
     );
@@ -46,5 +45,4 @@ describe('BrowserDetector', () => {
     );
     expect(component.toJSON()).toEqual(renderedPlaceholder.toJSON());
   });
-
 });

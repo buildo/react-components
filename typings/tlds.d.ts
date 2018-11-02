@@ -1,1 +1,1 @@
-declare module 'tlds';
+declare module "tlds";

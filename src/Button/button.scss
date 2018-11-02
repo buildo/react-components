@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@import "../utils/theme/variables.scss";
 $horizontal-padding: 16px !default;
 $font-size: 14px !default;
 $height: 36px !default;
@@ -13,7 +13,7 @@ $default-background: $brc-gradientGrey !default;
 $default-border-color: $brc-silver !default;
 $default-border-width: 1px !default;
 $default-color: $brc-darkGrey !default;
-$default-background-hover: $brc-gradientDarkGrey, !default;
+$default-background-hover: $brc-gradientDarkGrey !default;
 $default-color-hover: $brc-darkGrey !default;
 $default-border-color-hover: $brc-silver !default;
 $primary-background: $brc-gradientAzure !default;
@@ -60,7 +60,7 @@ $tiny-height: 32px !default;
 $tiny-horizontal-padding: 6px !default;
 $tiny-font-size: 14px !default;
 $tiny-border-radius: $border-radius !default;
-$disabled-button-opacity: .6 !default;
+$disabled-button-opacity: 0.6 !default;
 $disabled-button-cursor: not-allowed !default;
 $disabled-default-background: $default-background !default;
 $disabled-primary-background: $primary-background !default;
@@ -76,7 +76,6 @@ $disabled-positive-color: $positive-color !default;
 $disabled-negative-color: $negative-color !default;
 
 .button .button-inner {
-
   // commons
   position: relative;
 

@@ -1,2 +1,2 @@
-import { FormattedText } from './FormattedText';
+import { FormattedText } from "./FormattedText";
 export default FormattedText;
