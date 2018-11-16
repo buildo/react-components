@@ -32,6 +32,8 @@ const tabloData = Array.apply(null, Array(1000)).map(getRandomRow);
 (global as any).reject = reject;
 (global as any).sortBy = sortBy;
 
+import '../src/utils/theme/typography.scss';
+
 // components sass
 import "../src/Button/button.scss";
 import "../src/Divider/divider.scss";

@@ -39,3 +39,10 @@ $brc-lightningYellow: #fabd15;
 $brc-regular: 400;
 $brc-semibold: 600;
 $brc-bold: 700;
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+  &:-moz-placeholder           {@content}
+}

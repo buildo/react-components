@@ -35,12 +35,9 @@ $show-color: $brc-azure !default;
     font-weight: $font-weight;
     font-size: $font-size;
     line-height: $font-size;
+    font-family: inherit;
 
-    /* placeholder */
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &:-moz-placeholder {
+    @include placeholder {
       color: $placeholder-color;
       font-weight: $placeholder-font-weight;
     }
