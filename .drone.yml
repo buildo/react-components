@@ -13,15 +13,15 @@ pipeline:
     environment:
       - NPM_CONFIG_LOGLEVEL=warn
     commands:
-      - npm i
+      - yarn
 
   test:
     group: parallel
     image: node:8
     commands:
-      - npm run prettier-check
-      - npm run typecheck
-      - npm test
+      - yarn prettier-check
+      - yarn typecheck
+      - yarn test
 
   generate-changelog:
     image: node:8
