@@ -19,7 +19,7 @@ pipeline:
     group: parallel
     image: node:8
     commands:
-      - npm run lint-style
+      - npm run prettier-check
       - npm run typecheck
       - npm test
 
