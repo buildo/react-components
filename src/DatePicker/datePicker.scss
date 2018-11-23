@@ -69,7 +69,7 @@ $input-background-open: $brc-gradientDarkGrey !default;
       }
 
       .DateInput__display-text--has-input {
-        font-weight: normal;
+        font-weight: $brc-semibold;
         color: $brc-darkGreyBlue;
       }
 

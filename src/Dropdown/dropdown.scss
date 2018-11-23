@@ -14,9 +14,9 @@ $text-color-open: $brc-coolGrey !default;
 $text-color-has-value: $brc-darkGrey !default;
 $text-color-hover: $text-color-has-value !default;
 $text-color-writing: $brc-coolGrey !default;
-$placeholder-color: #999 !default;
-$placeholder-color-hover: #666 !default;
-$placeholder-color-open: #666 !default;
+$placeholder-color: $brc-coolGrey !default;
+$placeholder-color-hover: $brc-coolGrey !default;
+$placeholder-color-open: $brc-coolGrey !default;
 $arrow-color: $text-color !default;
 $arrow-color-hover: $text-color !default;
 $arrow-color-open: $text-color-open !default;
@@ -110,7 +110,7 @@ $padding-left: 10px !default;
   background: $background;
   color: $text-color;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: $brc-semibold;
 
   &:hover {
     border-color: $border-color-hover;
