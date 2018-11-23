@@ -25,7 +25,7 @@ const getLocals = <T extends {}>({
   children,
   ...gridProps
 }: Tablo.Props<T>): TabloDefaultedIntrinsicProps<T> | Tablo.Props<T> => {
-  const nextSort = (newSortBy: keyof T): Tablo.Sort<keyof T> => {
+  const nextSort = (newSortBy: string): Tablo.Sort<string> => {
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {
@@ -43,7 +43,7 @@ const getLocals = <T extends {}>({
     };
   };
 
-  const onHeaderClick = (columnKey: keyof T) => () => {
+  const onHeaderClick = (columnKey: string) => () => {
     if (!onSortChange) {
       return;
     }

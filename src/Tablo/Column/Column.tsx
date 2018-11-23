@@ -23,7 +23,7 @@ export type Default = {
 
 export type Required<T> = {
   key?: string | number;
-  name: keyof T;
+  name: string;
   sortable?: boolean;
   isResizable?: boolean;
   flexGrow?: number;
@@ -109,7 +109,7 @@ export const Column = <T extends {}>(
   return (
     <ColumnFDT
       key={key}
-      columnKey={name as string | number}
+      columnKey={name}
       header={header}
       cell={cell}
       footer={footer}
@@ -124,7 +124,7 @@ export const Column = <T extends {}>(
 
 export const defaultColumns = <T extends {}>(data: T[]) => {
   return data.length > 0
-    ? ((Object.keys(data[0]) as unknown) as (keyof T)[]).map(columnName =>
+    ? ((Object.keys(data[0]) as unknown) as string[]).map(columnName =>
         Column<T>({ name: columnName })
       )
     : [];

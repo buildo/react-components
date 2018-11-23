@@ -64,9 +64,9 @@ export default <T extends {}>(
       const orderedChildren = sortBy(_children, doOrderColumns);
 
       const moveColumn = (
-        list: (keyof T)[] = [],
-        source: keyof T,
-        target: keyof T
+        list: (string)[] = [],
+        source: string,
+        target: string
       ) => {
         const source_index = list.indexOf(source);
         const target_index = list.indexOf(target);
@@ -87,7 +87,7 @@ export default <T extends {}>(
         }
       };
 
-      const onColumnsSwitch = (sourceName: keyof T, targetName: keyof T) => {
+      const onColumnsSwitch = (sourceName: string, targetName: string) => {
         if (
           onColumnsReorder &&
           sourceName &&
@@ -108,8 +108,8 @@ export default <T extends {}>(
         props: { fixed }
       }: React.ReactElement<Column.Props<T>>) => !fixed;
       const isDropAllowed = (fixed: boolean) => (
-        source: keyof T,
-        target: keyof T
+        source: string,
+        target: string
       ) => !fixed && source !== target;
 
       const overrideHeader: UpdateColumnsHandler<T> = ({ col, index }) => {

@@ -20,7 +20,7 @@ const getLocals = <T extends {}>({
 
   const { className, children, ...gridProps } = props;
 
-  const onColumnResizeEndCallback = (width: number, key: keyof T) => {
+  const onColumnResizeEndCallback = (width: number, key: string) => {
     onColumnResize({ width, key });
   };
 

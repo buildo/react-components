@@ -41,11 +41,11 @@ export type TabloRequiredProps<T> = {
   /** callback to be called when mouse leaves a row */
   onRowMouseLeave?: (rowIndex: number) => void;
   /** an array containing the ordered list of column names, in the same order they should be rendered */
-  columnsOrder?: (keyof T)[];
+  columnsOrder?: string[];
   /** callback to be called when the order of columns changes after dragging an header in a new position */
-  onColumnsReorder?: (columns: (keyof T)[]) => void;
+  onColumnsReorder?: (columns: string[]) => void;
   /** callback to be called when a column is resized */
-  onColumnResize?: (x: { width: number; key: keyof T }) => void;
+  onColumnResize?: (x: { width: number; key: string }) => void;
   /** table children (Column or ColumnGroup) */
   children?:
     | Tablo.ColumnChild<T>
@@ -71,11 +71,11 @@ export type TabloRequiredProps<T> = {
   /** callback to be called when the hovered row changes */
   onHoverRowChange?: (rowIndex: number) => void;
   /** id of the column according which the data should be ordered */
-  sortBy?: keyof T;
+  sortBy?: string;
   /** sorting direction */
   sortDir?: Tablo.SortDir;
   /** callback to be called when sorting change */
-  onSortChange?: (x: Tablo.Sort<keyof T>) => void;
+  onSortChange?: (x: Tablo.Sort<string>) => void;
   /** enable touch scroll */
   touchScrollEnabled?: boolean;
   /** the desired width of the table. Unless autosize is false, this can be left undefined */
