@@ -5,7 +5,7 @@ import { PasswordInputField } from "./PasswordInputField";
 import { TimePickerField } from "./TimePickerField";
 import { ToggleField } from "./ToggleField";
 import { DatePickerField } from "./DatePickerField";
-import { TextareaField } from './TextareaField';
+import { TextareaField } from "./TextareaField";
 export default FormField;
 export { InputField };
 export { DropdownField };

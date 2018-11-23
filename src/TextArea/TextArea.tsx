@@ -1,23 +1,26 @@
-import * as React from 'react';
-import { props, t, ObjectOverwrite } from '../utils';
-import TextareaAutosize from 'react-autosize-textarea';
+import * as React from "react";
+import { props, t, ObjectOverwrite } from "../utils";
+import TextareaAutosize from "react-autosize-textarea";
 
-export type TextareaRequiredProps = ObjectOverwrite<TextareaAutosize.Props, {
-  /** value */
-  value: string,
-  /** onChange */
-  onChange: (value: string) => void,
-  /** don't use this. Use `innerRef` instead */
-  ref?: never
-}>;
+export type TextareaRequiredProps = ObjectOverwrite<
+  TextareaAutosize.Props,
+  {
+    /** value */
+    value: string;
+    /** onChange */
+    onChange: (value: string) => void;
+    /** don't use this. Use `innerRef` instead */
+    ref?: never;
+  }
+>;
 
 export type TextareaDefaultProps = {
   /** true if disabled */
-  disabled: boolean
+  disabled: boolean;
 };
 
 export namespace Textarea {
-export type Props = TextareaRequiredProps & Partial<TextareaDefaultProps>;
+  export type Props = TextareaRequiredProps & Partial<TextareaDefaultProps>;
 }
 
 export const Props = {
@@ -32,12 +35,13 @@ export const Props = {
 
 @props(Props, { strict: false })
 export class Textarea extends React.PureComponent<Textarea.Props> {
-
   static defaultProps: TextareaDefaultProps = {
     disabled: false
   };
 
-  _onChange: React.ChangeEventHandler<HTMLTextAreaElement> = ({ target: { value } }) => this.props.onChange(value);
+  _onChange: React.ChangeEventHandler<HTMLTextAreaElement> = ({
+    target: { value }
+  }) => this.props.onChange(value);
 
   render() {
     const textareaProps = {
@@ -47,5 +51,4 @@ export class Textarea extends React.PureComponent<Textarea.Props> {
 
     return <TextareaAutosize {...textareaProps} />;
   }
-
 }

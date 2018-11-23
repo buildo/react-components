@@ -60,9 +60,9 @@ import Image from "./Image";
 export { Image };
 import { Input, PasswordInput, ConfirmationInput } from "./Input";
 export { Input, PasswordInput, ConfirmationInput };
-import Textarea from './Textarea';
+import Textarea from "./Textarea";
 export { Textarea };
-import FormField from './FormField';
+import FormField from "./FormField";
 export { FormField };
 import {
   InputField,
@@ -72,7 +72,7 @@ import {
   ToggleField,
   DatePickerField,
   TextareaField
-} from './FormField';
+} from "./FormField";
 export {
   InputField,
   DropdownField,

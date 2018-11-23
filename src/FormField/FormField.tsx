@@ -64,7 +64,9 @@ export class FormField extends React.PureComponent<FormField.Props> {
       column: !horizontal,
       ..._viewProps,
       className,
-      style: horizontal ? { flexDirection: 'row-reverse' } as React.CSSProperties : undefined
+      style: horizontal
+        ? ({ flexDirection: "row-reverse" } as React.CSSProperties)
+        : undefined
     };
 
     return (
