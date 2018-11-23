@@ -1,5 +1,4 @@
 @import '../utils/theme/variables.scss';
-$height: 36px !default;
 $padding-h: 12px !default;
 $padding-v: 10px !default;
 $font-size: 14px !default;
@@ -17,7 +16,6 @@ $opacity-disabled: .6 !default;
 textarea {
   border: $border-width solid $border-color;
   border-radius: $border-radius;
-  height: $height;
   padding: $padding-v $padding-h;
   color: $color;
   font-weight: $font-weight;

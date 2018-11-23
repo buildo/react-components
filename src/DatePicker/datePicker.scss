@@ -64,6 +64,15 @@ $input-background-open: $brc-gradientDarkGrey !default;
       line-height: 28px;
       background: transparent;
 
+      .DateInput__display-text {
+        font-weight: $brc-semibold;
+      }
+
+      .DateInput__display-text--has-input {
+        font-weight: normal;
+        color: $brc-darkGreyBlue;
+      }
+
       &.DateInput--with-caret {
         &::before,
         &::after {

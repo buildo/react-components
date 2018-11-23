@@ -1,2 +1,2 @@
-import { TextArea } from './TextArea';
-export default TextArea;
+import { Textarea } from './Textarea';
+export default Textarea;

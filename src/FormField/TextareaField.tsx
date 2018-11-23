@@ -2,7 +2,7 @@ import * as React from 'react';
 import { props, t, ReactChild } from '../utils';
 import * as cx from 'classnames';
 import View from 'react-flexview';
-import TextArea from '../TextArea';
+import Textarea from '../Textarea';
 import { FormField } from './FormField';
 
 export namespace TextareaField {
@@ -14,14 +14,14 @@ export namespace TextareaField {
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props,
     /** An optional custom renderer for Textarea */
-    textareaRenderer?: (props: TextArea.Props) => JSX.Element,
+    textareaRenderer?: (props: Textarea.Props) => JSX.Element,
     /** an optional class name to pass to top level element of the component */
     className?: string,
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties,
     /** an optional id passed to the input component */
     id?: string
-  } & TextArea.Props;
+  } & Textarea.Props;
 }
 
 export const Props = {
@@ -53,7 +53,7 @@ export class TextareaField extends React.PureComponent<TextareaField.Props> {
       >
         {textareaRenderer ?
           textareaRenderer(textareaProps) :
-          <TextArea {...textareaProps} />
+          <Textarea {...textareaProps} />
         }
       </FormField>
     );

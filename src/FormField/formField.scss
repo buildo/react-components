@@ -18,7 +18,7 @@ $label-color: $brc-darkGreyBlue;
       > ::before {
         content: "*";
         color: $brc-strawberry;
-        font-size: 17px;
+        font-size: 18px;
         position: absolute;
         left: 0;
         font-weight: $brc-regular;
@@ -34,6 +34,7 @@ $label-color: $brc-darkGreyBlue;
     flex-direction: row-reverse;
 
     .form-field-label {
+      font-size: 14px;
       margin-bottom: 0;
       margin-left: 10px;
     }

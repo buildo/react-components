@@ -60,8 +60,8 @@ import Image from "./Image";
 export { Image };
 import { Input, PasswordInput, ConfirmationInput } from "./Input";
 export { Input, PasswordInput, ConfirmationInput };
-import TextArea from './TextArea';
-export { TextArea };
+import Textarea from './Textarea';
+export { Textarea };
 import FormField from './FormField';
 export { FormField };
 import {

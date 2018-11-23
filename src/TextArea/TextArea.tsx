@@ -2,7 +2,7 @@ import * as React from 'react';
 import { props, t, ObjectOverwrite } from '../utils';
 import TextareaAutosize from 'react-autosize-textarea';
 
-export type TextAreaRequiredProps = ObjectOverwrite<TextareaAutosize.Props, {
+export type TextareaRequiredProps = ObjectOverwrite<TextareaAutosize.Props, {
   /** value */
   value: string,
   /** onChange */
@@ -11,13 +11,13 @@ export type TextAreaRequiredProps = ObjectOverwrite<TextareaAutosize.Props, {
   ref?: never
 }>;
 
-export type TextAreaDefaultProps = {
+export type TextareaDefaultProps = {
   /** true if disabled */
   disabled: boolean
 };
 
-export namespace TextArea {
-  export type Props = TextAreaRequiredProps & Partial<TextAreaDefaultProps>;
+export namespace Textarea {
+export type Props = TextareaRequiredProps & Partial<TextareaDefaultProps>;
 }
 
 export const Props = {
@@ -31,9 +31,9 @@ export const Props = {
 };
 
 @props(Props, { strict: false })
-export class TextArea extends React.PureComponent<TextArea.Props> {
+export class Textarea extends React.PureComponent<Textarea.Props> {
 
-  static defaultProps: TextAreaDefaultProps = {
+  static defaultProps: TextareaDefaultProps = {
     disabled: false
   };
 

@@ -13,7 +13,7 @@ function onChange(field, value) {
     <InputField
       id='input'
       label='LABEL'
-      placeholder='Placeholder'
+      placeholder='Type here...'
       value={state.input}
       onChange={value => onChange('input', value)}
       required
@@ -23,10 +23,11 @@ function onChange(field, value) {
     <TextareaField
       id='textarea'
       label='LABEL'
-      placeholder='Placeholder'
+      placeholder='Type here...'
       value={state.textarea}
       onChange={value => onChange('textarea', value)}
       required
+      rows={5}
     />
   </FlexView>
   <FlexView marginBottom={40}>
