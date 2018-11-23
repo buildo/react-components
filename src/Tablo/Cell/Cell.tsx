@@ -4,15 +4,14 @@ import { props, t, ReactChildren } from "../../utils";
 import FlexView from "react-flexview";
 import { Cell as CellFDT } from "fixed-data-table-2";
 
-export type PickIfExists<T extends {}, K extends string> = K extends keyof T
-  ? T[K]
-  : never;
-
-export type Intrinsic<T, K extends string> = {
-  data: PickIfExists<T, K>;
+export type Intrinsic<T, K> = {
+  data: K extends keyof T ? T[K] : never;
   rowData: T;
   rowIndex: number;
   fixed: boolean;
+  setState: any;
+  forceUpdate: any;
+  render: any;
 };
 
 export type Default = {
@@ -21,10 +20,12 @@ export type Default = {
   grow: boolean;
 };
 
-export type Required<T, K extends string> = {
-  children?:
-    | React.ReactNode
-    | ((data: PickIfExists<T, K>, rowData: T, rowIndex: number) => JSX.Element);
+export type Required<T, K> = {
+  render: (
+    data: K extends keyof T ? T[K] : never,
+    rowData: T,
+    rowIndex: number
+  ) => React.ReactNode;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   color?: React.CSSProperties["color"];
   contentStyle?: React.CSSProperties;
@@ -32,11 +33,18 @@ export type Required<T, K extends string> = {
 };
 
 export namespace Cell {
-  export type Props<T, K extends string> = Required<T, K> & Partial<Default>;
+  export type Props<T, K extends keyof T | never> = Required<T, K> &
+    Partial<Default>;
 }
-export type CellIntrinsicProps<T, K extends string> = Cell.Props<T, K> &
+export type CellIntrinsicProps<T, K extends keyof T | never> = Cell.Props<
+  T,
+  K
+> &
   Intrinsic<T, K>;
-type CellDefaultedIntrinsicProps<T, K extends string> = Required<T, K> &
+type CellDefaultedIntrinsicProps<T, K extends keyof T | never> = Required<
+  T,
+  K
+> &
   Default &
   Intrinsic<T, K>;
 
@@ -47,7 +55,7 @@ const propsTypes = {
   fixed: maybe(t.Boolean),
   rowData: t.Any,
   rowIndex: maybe(t.Integer),
-  children: union([t.Function, ReactChildren]),
+  render: union([t.Function, ReactChildren]),
   backgroundColor: maybe(t.String),
   color: maybe(t.String),
   vAlignContent: maybe(enums.of(["top", "center", "bottom"])),
@@ -57,7 +65,7 @@ const propsTypes = {
   grow: maybe(t.Boolean)
 };
 
-export function _Cell<T, K extends string>(
+export function _Cell<T extends {}, K extends keyof T | never = never>(
   props: Cell.Props<T, K>
 ): React.ReactElement<Cell.Props<T, K>> {
   const {
@@ -65,7 +73,7 @@ export function _Cell<T, K extends string>(
     fixed,
     rowData,
     rowIndex,
-    children,
+    render,
     backgroundColor,
     color,
     vAlignContent = "center",
@@ -93,9 +101,7 @@ export function _Cell<T, K extends string>(
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
-          {t.Function.is(children)
-            ? children(data, rowData, rowIndex)
-            : children}
+          {t.Function.is(render) ? render(data, rowData, rowIndex) : render}
         </FlexView>
       </FlexView>
     </CellFDT>
@@ -106,4 +112,4 @@ props(propsTypes)(_Cell);
 
 export const Cell = _Cell;
 
-export const defaultCell = <Cell>{dataCell => dataCell}</Cell>;
+export const defaultCell = <Cell<any, any> render={dataCell => dataCell} />;

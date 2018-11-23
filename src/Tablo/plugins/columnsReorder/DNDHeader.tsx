@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { findDOMNode } from "react-dom";
 import {
   DropTarget,
   DragSource,
@@ -11,6 +10,7 @@ import {
 } from "react-dnd";
 import { props, t, ReactChildren } from "../../../utils";
 import FlexView from "react-flexview";
+import { findDOMNode } from "../../../utils";
 
 export namespace DNDHeader {
   export type Props = {

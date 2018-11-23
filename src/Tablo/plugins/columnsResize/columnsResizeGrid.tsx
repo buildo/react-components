@@ -5,16 +5,14 @@ import { Tablo, TabloDefaultedIntrinsicProps } from "../../Tablo";
 import { UpdateColumnsProps } from "../../Column/columnUtility";
 import { getArrayChildren } from "../../utils";
 
-const addSizeProps = <T, K extends string>(
-  { col }: UpdateColumnsProps<T, K> //eslint-disable-line
+const addSizeProps = <T extends {}>(
+  { col }: UpdateColumnsProps<T> //eslint-disable-line
 ) => <Column isResizable {...col.props} />;
 
-const getLocals = <T, K extends string>({
+const getLocals = <T extends {}>({
   onColumnResize,
   ...props
-}: Tablo.Props<T, K>):
-  | TabloDefaultedIntrinsicProps<T, K>
-  | Tablo.Props<T, K> => {
+}: Tablo.Props<T>): TabloDefaultedIntrinsicProps<T> | Tablo.Props<T> => {
   // if `onColumnResize` is missing bypass this plugin
   if (!onColumnResize) {
     return props;
@@ -22,7 +20,7 @@ const getLocals = <T, K extends string>({
 
   const { className, children, ...gridProps } = props;
 
-  const onColumnResizeEndCallback = (width: number, key: K) => {
+  const onColumnResizeEndCallback = (width: number, key: string) => {
     onColumnResize({ width, key });
   };
 
@@ -37,13 +35,13 @@ const getLocals = <T, K extends string>({
     isColumnResizing: false,
     children: __children,
     ...gridProps
-  } as Tablo.Props<T, K>; // TODO: remove cast -> error on `onColumnsResizeEndCallback`
+  } as Tablo.Props<T>; // TODO: remove cast -> error on `onColumnsResizeEndCallback`
 };
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
-  return class ColumnResizeGrid extends React.PureComponent<Tablo.Props<T, K>> {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
+  return class ColumnResizeGrid extends React.PureComponent<Tablo.Props<T>> {
     render() {
       return <Grid {...getLocals(this.props)} />;
     }

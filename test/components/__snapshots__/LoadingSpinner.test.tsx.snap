@@ -2,7 +2,6 @@
 
 exports[`LoadingSpinner computes className 1`] = `
 ReactWrapper {
-  "length": 1,
   Symbol(enzyme.__unrendered__): <div
     style={
         Object {
@@ -21,6 +20,7 @@ ReactWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -61,35 +61,44 @@ ReactWrapper {
       Object {
         "instance": LoadingSpinner {
           "_reactInternalFiber": FiberNode {
-            "_debugID": 55,
+            "_debugID": 101,
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": null,
+            "actualDuration": 0,
+            "actualStartTime": -1,
             "alternate": null,
             "child": FiberNode {
-              "_debugID": 56,
+              "_debugID": 102,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": [Circular],
               "_debugSource": null,
+              "actualDuration": 0,
+              "actualStartTime": -1,
               "alternate": null,
               "child": FiberNode {
-                "_debugID": 57,
+                "_debugID": 103,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 58,
+                  "_debugID": 104,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": null,
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -100,24 +109,34 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="spinner"
                     style="font-size: 3em;"
 />,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 0,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -139,10 +158,29 @@ ReactWrapper {
                   },
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
                 "ref": null,
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner-overlay"
@@ -153,15 +191,17 @@ ReactWrapper {
                                     style="font-size: 3em;"
                   />
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
+              "childExpirationTime": 0,
               "effectTag": 128,
               "expirationTime": 0,
+              "firstContextDependency": null,
               "firstEffect": null,
               "index": 0,
-              "internalContextTag": 0,
               "key": null,
               "lastEffect": null,
               "memoizedProps": Object {
@@ -188,10 +228,34 @@ ReactWrapper {
                 "style": Object {},
               },
               "memoizedState": null,
+              "mode": 0,
               "nextEffect": null,
-              "pendingProps": null,
+              "pendingProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
               "ref": [Function],
               "return": [Circular],
+              "selfBaseDuration": 0,
               "sibling": null,
               "stateNode": <div
                 class="loading-spinner some-class"
@@ -206,36 +270,46 @@ ReactWrapper {
                                 />
                 </div>
 </div>,
-              "tag": 5,
+              "tag": 7,
+              "treeBaseDuration": 0,
               "type": "div",
               "updateQueue": null,
             },
+            "childExpirationTime": 0,
             "effectTag": 5,
             "expirationTime": 0,
+            "firstContextDependency": null,
             "firstEffect": FiberNode {
-              "_debugID": 56,
+              "_debugID": 102,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": [Circular],
               "_debugSource": null,
+              "actualDuration": 0,
+              "actualStartTime": -1,
               "alternate": null,
               "child": FiberNode {
-                "_debugID": 57,
+                "_debugID": 103,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 58,
+                  "_debugID": 104,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": null,
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -246,24 +320,34 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="spinner"
                     style="font-size: 3em;"
 />,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 0,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -285,10 +369,29 @@ ReactWrapper {
                   },
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
                 "ref": null,
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner-overlay"
@@ -299,15 +402,17 @@ ReactWrapper {
                                     style="font-size: 3em;"
                   />
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
+              "childExpirationTime": 0,
               "effectTag": 128,
               "expirationTime": 0,
+              "firstContextDependency": null,
               "firstEffect": null,
               "index": 0,
-              "internalContextTag": 0,
               "key": null,
               "lastEffect": null,
               "memoizedProps": Object {
@@ -334,10 +439,34 @@ ReactWrapper {
                 "style": Object {},
               },
               "memoizedState": null,
+              "mode": 0,
               "nextEffect": null,
-              "pendingProps": null,
+              "pendingProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
               "ref": [Function],
               "return": [Circular],
+              "selfBaseDuration": 0,
               "sibling": null,
               "stateNode": <div
                 class="loading-spinner some-class"
@@ -352,37 +481,44 @@ ReactWrapper {
                                 />
                 </div>
 </div>,
-              "tag": 5,
+              "tag": 7,
+              "treeBaseDuration": 0,
               "type": "div",
               "updateQueue": null,
             },
             "index": 0,
-            "internalContextTag": 0,
             "key": null,
             "lastEffect": FiberNode {
-              "_debugID": 56,
+              "_debugID": 102,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": [Circular],
               "_debugSource": null,
+              "actualDuration": 0,
+              "actualStartTime": -1,
               "alternate": null,
               "child": FiberNode {
-                "_debugID": 57,
+                "_debugID": 103,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 58,
+                  "_debugID": 104,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": null,
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -393,24 +529,34 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "className": "spinner",
+                    "style": Object {
+                      "color": undefined,
+                      "fontSize": "3em",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="spinner"
                     style="font-size: 3em;"
 />,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 0,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -432,10 +578,29 @@ ReactWrapper {
                   },
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": Array [
+                    <div
+                      className="spinner"
+                      style={
+                                            Object {
+                                                                  "color": undefined,
+                                                                  "fontSize": "3em",
+                                                                }
+                      }
+/>,
+                    undefined,
+                  ],
+                  "className": "loading-spinner-overlay",
+                  "style": Object {
+                    "backgroundColor": "rgba(255, 255, 255, .9)",
+                  },
+                },
                 "ref": null,
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner-overlay"
@@ -446,15 +611,17 @@ ReactWrapper {
                                     style="font-size: 3em;"
                   />
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
+              "childExpirationTime": 0,
               "effectTag": 128,
               "expirationTime": 0,
+              "firstContextDependency": null,
               "firstEffect": null,
               "index": 0,
-              "internalContextTag": 0,
               "key": null,
               "lastEffect": null,
               "memoizedProps": Object {
@@ -481,10 +648,34 @@ ReactWrapper {
                 "style": Object {},
               },
               "memoizedState": null,
+              "mode": 0,
               "nextEffect": null,
-              "pendingProps": null,
+              "pendingProps": Object {
+                "children": <div
+                  className="loading-spinner-overlay"
+                  style={
+                                    Object {
+                                                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                    }
+                  }
+>
+                  <div
+                                    className="spinner"
+                                    style={
+                                                      Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                                    }
+                  />
+</div>,
+                "className": "loading-spinner some-class",
+                "id": undefined,
+                "style": Object {},
+              },
               "ref": [Function],
               "return": [Circular],
+              "selfBaseDuration": 0,
               "sibling": null,
               "stateNode": <div
                 class="loading-spinner some-class"
@@ -499,7 +690,8 @@ ReactWrapper {
                                 />
                 </div>
 </div>,
-              "tag": 5,
+              "tag": 7,
+              "treeBaseDuration": 0,
               "type": "div",
               "updateQueue": null,
             },
@@ -510,45 +702,62 @@ ReactWrapper {
               "style": Object {},
             },
             "memoizedState": null,
+            "mode": 0,
             "nextEffect": null,
-            "pendingProps": null,
+            "pendingProps": Object {
+              "className": "some-class",
+              "overlayColor": "rgba(255, 255, 255, .9)",
+              "size": "3em",
+              "style": Object {},
+            },
             "ref": null,
             "return": FiberNode {
-              "_debugID": 54,
+              "_debugID": 100,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": FiberNode {
-                "_debugID": 53,
+                "_debugID": 99,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": null,
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": [Circular],
+                "childExpirationTime": 0,
                 "effectTag": 1,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": FiberNode {
-                  "_debugID": 56,
+                  "_debugID": 102,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 57,
+                    "_debugID": 103,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 58,
+                      "_debugID": 104,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": null,
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -559,24 +768,34 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="spinner"
                         style="font-size: 3em;"
 />,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -598,10 +817,29 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner-overlay"
@@ -612,15 +850,17 @@ ReactWrapper {
                                             style="font-size: 3em;"
                       />
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 128,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -647,10 +887,34 @@ ReactWrapper {
                     "style": Object {},
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
                   "ref": [Function],
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner some-class"
@@ -665,12 +929,12 @@ ReactWrapper {
                                         />
                     </div>
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": [Circular],
                 "memoizedProps": Object {
@@ -703,34 +967,56 @@ ReactWrapper {
                     },
                   },
                 },
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "Component": "div",
+                  "context": null,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
                 "ref": null,
                 "return": FiberNode {
-                  "_debugID": 51,
+                  "_debugID": 97,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": null,
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": FiberNode {
-                    "_debugID": 51,
+                    "_debugID": 97,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": null,
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": [Circular],
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 1,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": null,
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
                     "pendingProps": null,
                     "ref": null,
                     "return": null,
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": Object {
                       "containerInfo": <div>
@@ -754,28 +1040,40 @@ ReactWrapper {
 </div>,
                       "context": Object {},
                       "current": [Circular],
+                      "didError": false,
+                      "earliestPendingTime": 0,
+                      "earliestSuspendedTime": 0,
+                      "expirationTime": 0,
                       "finishedWork": null,
+                      "firstBatch": null,
                       "hydrate": false,
-                      "isReadyForCommit": false,
+                      "interactionThreadID": 18,
+                      "latestPendingTime": 0,
+                      "latestPingedTime": 0,
+                      "latestSuspendedTime": 0,
+                      "memoizedInteractions": Set {},
+                      "nextExpirationTimeToWorkOn": 0,
                       "nextScheduledRoot": null,
                       "pendingChildren": null,
+                      "pendingCommitExpirationTime": 0,
                       "pendingContext": null,
-                      "remainingExpirationTime": 0,
+                      "pendingInteractionMap": Map {},
+                      "timeoutHandle": -1,
                     },
-                    "tag": 3,
+                    "tag": 5,
+                    "treeBaseDuration": 0,
                     "type": null,
                     "updateQueue": Object {
                       "baseState": null,
-                      "callbackList": null,
-                      "expirationTime": 1,
-                      "first": Object {
+                      "firstCapturedEffect": null,
+                      "firstCapturedUpdate": null,
+                      "firstEffect": null,
+                      "firstUpdate": Object {
                         "callback": null,
                         "expirationTime": 1,
-                        "isForced": false,
-                        "isReplace": false,
                         "next": null,
-                        "nextCallback": null,
-                        "partialState": Object {
+                        "nextEffect": null,
+                        "payload": Object {
                           "element": <WrapperComponent
                             Component="div"
                             context={null}
@@ -794,18 +1092,17 @@ ReactWrapper {
                             }
 />,
                         },
+                        "tag": 0,
                       },
-                      "hasForceUpdate": false,
-                      "isInitialized": false,
-                      "isProcessing": false,
-                      "last": Object {
+                      "lastCapturedEffect": null,
+                      "lastCapturedUpdate": null,
+                      "lastEffect": null,
+                      "lastUpdate": Object {
                         "callback": null,
                         "expirationTime": 1,
-                        "isForced": false,
-                        "isReplace": false,
                         "next": null,
-                        "nextCallback": null,
-                        "partialState": Object {
+                        "nextEffect": null,
+                        "payload": Object {
                           "element": <WrapperComponent
                             Component="div"
                             context={null}
@@ -824,36 +1121,46 @@ ReactWrapper {
                             }
 />,
                         },
+                        "tag": 0,
                       },
                     },
                   },
                   "child": [Circular],
-                  "effectTag": 0,
+                  "childExpirationTime": 0,
+                  "effectTag": 32,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": FiberNode {
-                    "_debugID": 56,
+                    "_debugID": 102,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 57,
+                      "_debugID": 103,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 58,
+                        "_debugID": 104,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": null,
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -864,24 +1171,34 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="spinner"
                           style="font-size: 3em;"
 />,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -903,10 +1220,29 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner-overlay"
@@ -917,15 +1253,17 @@ ReactWrapper {
                                                 style="font-size: 3em;"
                         />
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 128,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -952,10 +1290,34 @@ ReactWrapper {
                       "style": Object {},
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
                     "ref": [Function],
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner some-class"
@@ -970,12 +1332,12 @@ ReactWrapper {
                                             />
                       </div>
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": [Circular],
                   "memoizedProps": null,
@@ -998,10 +1360,12 @@ ReactWrapper {
                       }
 />,
                   },
+                  "mode": 0,
                   "nextEffect": null,
                   "pendingProps": null,
                   "ref": null,
                   "return": null,
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": Object {
                     "containerInfo": <div>
@@ -1025,18 +1389,60 @@ ReactWrapper {
 </div>,
                     "context": Object {},
                     "current": [Circular],
+                    "didError": false,
+                    "earliestPendingTime": 0,
+                    "earliestSuspendedTime": 0,
+                    "expirationTime": 0,
                     "finishedWork": null,
+                    "firstBatch": null,
                     "hydrate": false,
-                    "isReadyForCommit": false,
+                    "interactionThreadID": 18,
+                    "latestPendingTime": 0,
+                    "latestPingedTime": 0,
+                    "latestSuspendedTime": 0,
+                    "memoizedInteractions": Set {},
+                    "nextExpirationTimeToWorkOn": 0,
                     "nextScheduledRoot": null,
                     "pendingChildren": null,
+                    "pendingCommitExpirationTime": 0,
                     "pendingContext": null,
-                    "remainingExpirationTime": 0,
+                    "pendingInteractionMap": Map {},
+                    "timeoutHandle": -1,
                   },
-                  "tag": 3,
+                  "tag": 5,
+                  "treeBaseDuration": 0,
                   "type": null,
-                  "updateQueue": null,
+                  "updateQueue": Object {
+                    "baseState": Object {
+                      "element": <WrapperComponent
+                        Component="div"
+                        context={null}
+                        props={
+                                                Object {
+                                                                        "children": <LoadingSpinner
+                                                                          className="some-class"
+                                                                          overlayColor="rgba(255, 255, 255, .9)"
+                                                                          size="3em"
+                                                                          style={Object {}}
+                                                />,
+                                                                        "style": Object {
+                                                                          "position": "relative",
+                                                                        },
+                                                                      }
+                        }
+/>,
+                    },
+                    "firstCapturedEffect": null,
+                    "firstCapturedUpdate": null,
+                    "firstEffect": null,
+                    "firstUpdate": null,
+                    "lastCapturedEffect": null,
+                    "lastCapturedUpdate": null,
+                    "lastEffect": null,
+                    "lastUpdate": null,
+                  },
                 },
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": WrapperComponent {
                   "_reactInternalFiber": [Circular],
@@ -1081,38 +1487,50 @@ ReactWrapper {
                   },
                 },
                 "tag": 2,
+                "treeBaseDuration": 0,
                 "type": [Function],
                 "updateQueue": null,
               },
               "_debugSource": null,
+              "actualDuration": 0,
+              "actualStartTime": -1,
               "alternate": null,
               "child": [Circular],
+              "childExpirationTime": 0,
               "effectTag": 0,
               "expirationTime": 0,
+              "firstContextDependency": null,
               "firstEffect": FiberNode {
-                "_debugID": 56,
+                "_debugID": 102,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 57,
+                  "_debugID": 103,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 58,
+                    "_debugID": 104,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -1123,24 +1541,34 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="spinner"
                       style="font-size: 3em;"
 />,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -1162,10 +1590,29 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner-overlay"
@@ -1176,15 +1623,17 @@ ReactWrapper {
                                         style="font-size: 3em;"
                     />
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 128,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -1211,10 +1660,34 @@ ReactWrapper {
                   "style": Object {},
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
                 "ref": [Function],
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner some-class"
@@ -1229,12 +1702,12 @@ ReactWrapper {
                                     />
                   </div>
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
               "index": 0,
-              "internalContextTag": 0,
               "key": null,
               "lastEffect": [Circular],
               "memoizedProps": Object {
@@ -1249,42 +1722,64 @@ ReactWrapper {
                 },
               },
               "memoizedState": null,
+              "mode": 0,
               "nextEffect": null,
-              "pendingProps": null,
+              "pendingProps": Object {
+                "children": <LoadingSpinner
+                  className="some-class"
+                  overlayColor="rgba(255, 255, 255, .9)"
+                  size="3em"
+                  style={Object {}}
+/>,
+                "style": Object {
+                  "position": "relative",
+                },
+              },
               "ref": null,
               "return": FiberNode {
-                "_debugID": 53,
+                "_debugID": 99,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": null,
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": [Circular],
+                "childExpirationTime": 0,
                 "effectTag": 1,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": FiberNode {
-                  "_debugID": 56,
+                  "_debugID": 102,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 57,
+                    "_debugID": 103,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 58,
+                      "_debugID": 104,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": null,
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -1295,24 +1790,34 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="spinner"
                         style="font-size: 3em;"
 />,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -1334,10 +1839,29 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner-overlay"
@@ -1348,15 +1872,17 @@ ReactWrapper {
                                             style="font-size: 3em;"
                       />
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 128,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -1383,10 +1909,34 @@ ReactWrapper {
                     "style": Object {},
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
                   "ref": [Function],
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner some-class"
@@ -1401,12 +1951,12 @@ ReactWrapper {
                                         />
                     </div>
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": [Circular],
                 "memoizedProps": Object {
@@ -1439,34 +1989,56 @@ ReactWrapper {
                     },
                   },
                 },
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "Component": "div",
+                  "context": null,
+                  "props": Object {
+                    "children": <LoadingSpinner
+                      className="some-class"
+                      overlayColor="rgba(255, 255, 255, .9)"
+                      size="3em"
+                      style={Object {}}
+/>,
+                    "style": Object {
+                      "position": "relative",
+                    },
+                  },
+                },
                 "ref": null,
                 "return": FiberNode {
-                  "_debugID": 51,
+                  "_debugID": 97,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": null,
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": FiberNode {
-                    "_debugID": 51,
+                    "_debugID": 97,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": null,
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": [Circular],
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 1,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": null,
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
                     "pendingProps": null,
                     "ref": null,
                     "return": null,
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": Object {
                       "containerInfo": <div>
@@ -1490,28 +2062,40 @@ ReactWrapper {
 </div>,
                       "context": Object {},
                       "current": [Circular],
+                      "didError": false,
+                      "earliestPendingTime": 0,
+                      "earliestSuspendedTime": 0,
+                      "expirationTime": 0,
                       "finishedWork": null,
+                      "firstBatch": null,
                       "hydrate": false,
-                      "isReadyForCommit": false,
+                      "interactionThreadID": 18,
+                      "latestPendingTime": 0,
+                      "latestPingedTime": 0,
+                      "latestSuspendedTime": 0,
+                      "memoizedInteractions": Set {},
+                      "nextExpirationTimeToWorkOn": 0,
                       "nextScheduledRoot": null,
                       "pendingChildren": null,
+                      "pendingCommitExpirationTime": 0,
                       "pendingContext": null,
-                      "remainingExpirationTime": 0,
+                      "pendingInteractionMap": Map {},
+                      "timeoutHandle": -1,
                     },
-                    "tag": 3,
+                    "tag": 5,
+                    "treeBaseDuration": 0,
                     "type": null,
                     "updateQueue": Object {
                       "baseState": null,
-                      "callbackList": null,
-                      "expirationTime": 1,
-                      "first": Object {
+                      "firstCapturedEffect": null,
+                      "firstCapturedUpdate": null,
+                      "firstEffect": null,
+                      "firstUpdate": Object {
                         "callback": null,
                         "expirationTime": 1,
-                        "isForced": false,
-                        "isReplace": false,
                         "next": null,
-                        "nextCallback": null,
-                        "partialState": Object {
+                        "nextEffect": null,
+                        "payload": Object {
                           "element": <WrapperComponent
                             Component="div"
                             context={null}
@@ -1530,18 +2114,17 @@ ReactWrapper {
                             }
 />,
                         },
+                        "tag": 0,
                       },
-                      "hasForceUpdate": false,
-                      "isInitialized": false,
-                      "isProcessing": false,
-                      "last": Object {
+                      "lastCapturedEffect": null,
+                      "lastCapturedUpdate": null,
+                      "lastEffect": null,
+                      "lastUpdate": Object {
                         "callback": null,
                         "expirationTime": 1,
-                        "isForced": false,
-                        "isReplace": false,
                         "next": null,
-                        "nextCallback": null,
-                        "partialState": Object {
+                        "nextEffect": null,
+                        "payload": Object {
                           "element": <WrapperComponent
                             Component="div"
                             context={null}
@@ -1560,36 +2143,46 @@ ReactWrapper {
                             }
 />,
                         },
+                        "tag": 0,
                       },
                     },
                   },
                   "child": [Circular],
-                  "effectTag": 0,
+                  "childExpirationTime": 0,
+                  "effectTag": 32,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": FiberNode {
-                    "_debugID": 56,
+                    "_debugID": 102,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 57,
+                      "_debugID": 103,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 58,
+                        "_debugID": 104,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": null,
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -1600,24 +2193,34 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="spinner"
                           style="font-size: 3em;"
 />,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -1639,10 +2242,29 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner-overlay"
@@ -1653,15 +2275,17 @@ ReactWrapper {
                                                 style="font-size: 3em;"
                         />
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 128,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -1688,10 +2312,34 @@ ReactWrapper {
                       "style": Object {},
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
                     "ref": [Function],
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner some-class"
@@ -1706,12 +2354,12 @@ ReactWrapper {
                                             />
                       </div>
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": [Circular],
                   "memoizedProps": null,
@@ -1734,10 +2382,12 @@ ReactWrapper {
                       }
 />,
                   },
+                  "mode": 0,
                   "nextEffect": null,
                   "pendingProps": null,
                   "ref": null,
                   "return": null,
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": Object {
                     "containerInfo": <div>
@@ -1761,18 +2411,60 @@ ReactWrapper {
 </div>,
                     "context": Object {},
                     "current": [Circular],
+                    "didError": false,
+                    "earliestPendingTime": 0,
+                    "earliestSuspendedTime": 0,
+                    "expirationTime": 0,
                     "finishedWork": null,
+                    "firstBatch": null,
                     "hydrate": false,
-                    "isReadyForCommit": false,
+                    "interactionThreadID": 18,
+                    "latestPendingTime": 0,
+                    "latestPingedTime": 0,
+                    "latestSuspendedTime": 0,
+                    "memoizedInteractions": Set {},
+                    "nextExpirationTimeToWorkOn": 0,
                     "nextScheduledRoot": null,
                     "pendingChildren": null,
+                    "pendingCommitExpirationTime": 0,
                     "pendingContext": null,
-                    "remainingExpirationTime": 0,
+                    "pendingInteractionMap": Map {},
+                    "timeoutHandle": -1,
                   },
-                  "tag": 3,
+                  "tag": 5,
+                  "treeBaseDuration": 0,
                   "type": null,
-                  "updateQueue": null,
+                  "updateQueue": Object {
+                    "baseState": Object {
+                      "element": <WrapperComponent
+                        Component="div"
+                        context={null}
+                        props={
+                                                Object {
+                                                                        "children": <LoadingSpinner
+                                                                          className="some-class"
+                                                                          overlayColor="rgba(255, 255, 255, .9)"
+                                                                          size="3em"
+                                                                          style={Object {}}
+                                                />,
+                                                                        "style": Object {
+                                                                          "position": "relative",
+                                                                        },
+                                                                      }
+                        }
+/>,
+                    },
+                    "firstCapturedEffect": null,
+                    "firstCapturedUpdate": null,
+                    "firstEffect": null,
+                    "firstUpdate": null,
+                    "lastCapturedEffect": null,
+                    "lastCapturedUpdate": null,
+                    "lastEffect": null,
+                    "lastUpdate": null,
+                  },
                 },
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": WrapperComponent {
                   "_reactInternalFiber": [Circular],
@@ -1817,9 +2509,11 @@ ReactWrapper {
                   },
                 },
                 "tag": 2,
+                "treeBaseDuration": 0,
                 "type": [Function],
                 "updateQueue": null,
               },
+              "selfBaseDuration": 0,
               "sibling": null,
               "stateNode": <div
                 style="position: relative;"
@@ -1838,13 +2532,16 @@ ReactWrapper {
                                 </div>
                 </div>
 </div>,
-              "tag": 5,
+              "tag": 7,
+              "treeBaseDuration": 0,
               "type": "div",
               "updateQueue": null,
             },
+            "selfBaseDuration": 0,
             "sibling": null,
             "stateNode": [Circular],
             "tag": 2,
+            "treeBaseDuration": 0,
             "type": [Function],
             "updateQueue": null,
           },
@@ -2030,35 +2727,44 @@ ReactWrapper {
         Object {
           "instance": LoadingSpinner {
             "_reactInternalFiber": FiberNode {
-              "_debugID": 55,
+              "_debugID": 101,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": null,
               "_debugSource": null,
+              "actualDuration": 0,
+              "actualStartTime": -1,
               "alternate": null,
               "child": FiberNode {
-                "_debugID": 56,
+                "_debugID": 102,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 57,
+                  "_debugID": 103,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 58,
+                    "_debugID": 104,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -2069,24 +2775,34 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="spinner"
                       style="font-size: 3em;"
 />,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -2108,10 +2824,29 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner-overlay"
@@ -2122,15 +2857,17 @@ ReactWrapper {
                                         style="font-size: 3em;"
                     />
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 128,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -2157,10 +2894,34 @@ ReactWrapper {
                   "style": Object {},
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
                 "ref": [Function],
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner some-class"
@@ -2175,36 +2936,46 @@ ReactWrapper {
                                     />
                   </div>
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
+              "childExpirationTime": 0,
               "effectTag": 5,
               "expirationTime": 0,
+              "firstContextDependency": null,
               "firstEffect": FiberNode {
-                "_debugID": 56,
+                "_debugID": 102,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 57,
+                  "_debugID": 103,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 58,
+                    "_debugID": 104,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -2215,24 +2986,34 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="spinner"
                       style="font-size: 3em;"
 />,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -2254,10 +3035,29 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner-overlay"
@@ -2268,15 +3068,17 @@ ReactWrapper {
                                         style="font-size: 3em;"
                     />
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 128,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -2303,10 +3105,34 @@ ReactWrapper {
                   "style": Object {},
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
                 "ref": [Function],
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner some-class"
@@ -2321,37 +3147,44 @@ ReactWrapper {
                                     />
                   </div>
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
               "index": 0,
-              "internalContextTag": 0,
               "key": null,
               "lastEffect": FiberNode {
-                "_debugID": 56,
+                "_debugID": 102,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": [Circular],
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": FiberNode {
-                  "_debugID": 57,
+                  "_debugID": 103,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 58,
+                    "_debugID": 104,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": null,
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -2362,24 +3195,34 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "className": "spinner",
+                      "style": Object {
+                        "color": undefined,
+                        "fontSize": "3em",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="spinner"
                       style="font-size: 3em;"
 />,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 0,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -2401,10 +3244,29 @@ ReactWrapper {
                     },
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <div
+                        className="spinner"
+                        style={
+                                                Object {
+                                                                        "color": undefined,
+                                                                        "fontSize": "3em",
+                                                                      }
+                        }
+/>,
+                      undefined,
+                    ],
+                    "className": "loading-spinner-overlay",
+                    "style": Object {
+                      "backgroundColor": "rgba(255, 255, 255, .9)",
+                    },
+                  },
                   "ref": null,
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner-overlay"
@@ -2415,15 +3277,17 @@ ReactWrapper {
                                         style="font-size: 3em;"
                     />
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
+                "childExpirationTime": 0,
                 "effectTag": 128,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": null,
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": null,
                 "memoizedProps": Object {
@@ -2450,10 +3314,34 @@ ReactWrapper {
                   "style": Object {},
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": <div
+                    className="loading-spinner-overlay"
+                    style={
+                                        Object {
+                                                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                          }
+                    }
+>
+                    <div
+                                        className="spinner"
+                                        style={
+                                                            Object {
+                                                                                "color": undefined,
+                                                                                "fontSize": "3em",
+                                                                              }
+                                        }
+                    />
+</div>,
+                  "className": "loading-spinner some-class",
+                  "id": undefined,
+                  "style": Object {},
+                },
                 "ref": [Function],
                 "return": [Circular],
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   class="loading-spinner some-class"
@@ -2468,7 +3356,8 @@ ReactWrapper {
                                     />
                   </div>
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
@@ -2479,45 +3368,62 @@ ReactWrapper {
                 "style": Object {},
               },
               "memoizedState": null,
+              "mode": 0,
               "nextEffect": null,
-              "pendingProps": null,
+              "pendingProps": Object {
+                "className": "some-class",
+                "overlayColor": "rgba(255, 255, 255, .9)",
+                "size": "3em",
+                "style": Object {},
+              },
               "ref": null,
               "return": FiberNode {
-                "_debugID": 54,
+                "_debugID": 100,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": FiberNode {
-                  "_debugID": 53,
+                  "_debugID": 99,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": null,
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": [Circular],
+                  "childExpirationTime": 0,
                   "effectTag": 1,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": FiberNode {
-                    "_debugID": 56,
+                    "_debugID": 102,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 57,
+                      "_debugID": 103,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 58,
+                        "_debugID": 104,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": null,
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -2528,24 +3434,34 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="spinner"
                           style="font-size: 3em;"
 />,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -2567,10 +3483,29 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner-overlay"
@@ -2581,15 +3516,17 @@ ReactWrapper {
                                                 style="font-size: 3em;"
                         />
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 128,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -2616,10 +3553,34 @@ ReactWrapper {
                       "style": Object {},
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
                     "ref": [Function],
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner some-class"
@@ -2634,12 +3595,12 @@ ReactWrapper {
                                             />
                       </div>
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": [Circular],
                   "memoizedProps": Object {
@@ -2672,34 +3633,56 @@ ReactWrapper {
                       },
                     },
                   },
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
                   "ref": null,
                   "return": FiberNode {
-                    "_debugID": 51,
+                    "_debugID": 97,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": null,
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": FiberNode {
-                      "_debugID": 51,
+                      "_debugID": 97,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": null,
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": [Circular],
                       "child": null,
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 1,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": null,
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
                       "pendingProps": null,
                       "ref": null,
                       "return": null,
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": Object {
                         "containerInfo": <div>
@@ -2723,28 +3706,40 @@ ReactWrapper {
 </div>,
                         "context": Object {},
                         "current": [Circular],
+                        "didError": false,
+                        "earliestPendingTime": 0,
+                        "earliestSuspendedTime": 0,
+                        "expirationTime": 0,
                         "finishedWork": null,
+                        "firstBatch": null,
                         "hydrate": false,
-                        "isReadyForCommit": false,
+                        "interactionThreadID": 18,
+                        "latestPendingTime": 0,
+                        "latestPingedTime": 0,
+                        "latestSuspendedTime": 0,
+                        "memoizedInteractions": Set {},
+                        "nextExpirationTimeToWorkOn": 0,
                         "nextScheduledRoot": null,
                         "pendingChildren": null,
+                        "pendingCommitExpirationTime": 0,
                         "pendingContext": null,
-                        "remainingExpirationTime": 0,
+                        "pendingInteractionMap": Map {},
+                        "timeoutHandle": -1,
                       },
-                      "tag": 3,
+                      "tag": 5,
+                      "treeBaseDuration": 0,
                       "type": null,
                       "updateQueue": Object {
                         "baseState": null,
-                        "callbackList": null,
-                        "expirationTime": 1,
-                        "first": Object {
+                        "firstCapturedEffect": null,
+                        "firstCapturedUpdate": null,
+                        "firstEffect": null,
+                        "firstUpdate": Object {
                           "callback": null,
                           "expirationTime": 1,
-                          "isForced": false,
-                          "isReplace": false,
                           "next": null,
-                          "nextCallback": null,
-                          "partialState": Object {
+                          "nextEffect": null,
+                          "payload": Object {
                             "element": <WrapperComponent
                               Component="div"
                               context={null}
@@ -2763,18 +3758,17 @@ ReactWrapper {
                               }
 />,
                           },
+                          "tag": 0,
                         },
-                        "hasForceUpdate": false,
-                        "isInitialized": false,
-                        "isProcessing": false,
-                        "last": Object {
+                        "lastCapturedEffect": null,
+                        "lastCapturedUpdate": null,
+                        "lastEffect": null,
+                        "lastUpdate": Object {
                           "callback": null,
                           "expirationTime": 1,
-                          "isForced": false,
-                          "isReplace": false,
                           "next": null,
-                          "nextCallback": null,
-                          "partialState": Object {
+                          "nextEffect": null,
+                          "payload": Object {
                             "element": <WrapperComponent
                               Component="div"
                               context={null}
@@ -2793,36 +3787,46 @@ ReactWrapper {
                               }
 />,
                           },
+                          "tag": 0,
                         },
                       },
                     },
                     "child": [Circular],
-                    "effectTag": 0,
+                    "childExpirationTime": 0,
+                    "effectTag": 32,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": FiberNode {
-                      "_debugID": 56,
+                      "_debugID": 102,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 57,
+                        "_debugID": 103,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": FiberNode {
-                          "_debugID": 58,
+                          "_debugID": 104,
                           "_debugIsCurrentlyTiming": false,
                           "_debugOwner": [Circular],
                           "_debugSource": null,
+                          "actualDuration": 0,
+                          "actualStartTime": -1,
                           "alternate": null,
                           "child": null,
+                          "childExpirationTime": 0,
                           "effectTag": 0,
                           "expirationTime": 0,
+                          "firstContextDependency": null,
                           "firstEffect": null,
                           "index": 0,
-                          "internalContextTag": 0,
                           "key": null,
                           "lastEffect": null,
                           "memoizedProps": Object {
@@ -2833,24 +3837,34 @@ ReactWrapper {
                             },
                           },
                           "memoizedState": null,
+                          "mode": 0,
                           "nextEffect": null,
-                          "pendingProps": null,
+                          "pendingProps": Object {
+                            "className": "spinner",
+                            "style": Object {
+                              "color": undefined,
+                              "fontSize": "3em",
+                            },
+                          },
                           "ref": null,
                           "return": [Circular],
+                          "selfBaseDuration": 0,
                           "sibling": null,
                           "stateNode": <div
                             class="spinner"
                             style="font-size: 3em;"
 />,
-                          "tag": 5,
+                          "tag": 7,
+                          "treeBaseDuration": 0,
                           "type": "div",
                           "updateQueue": null,
                         },
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -2872,10 +3886,29 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "children": Array [
+                            <div
+                              className="spinner"
+                              style={
+                                                            Object {
+                                                                                          "color": undefined,
+                                                                                          "fontSize": "3em",
+                                                                                        }
+                              }
+/>,
+                            undefined,
+                          ],
+                          "className": "loading-spinner-overlay",
+                          "style": Object {
+                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="loading-spinner-overlay"
@@ -2886,15 +3919,17 @@ ReactWrapper {
                                                     style="font-size: 3em;"
                           />
 </div>,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 128,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -2921,10 +3956,34 @@ ReactWrapper {
                         "style": Object {},
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": <div
+                          className="loading-spinner-overlay"
+                          style={
+                                                    Object {
+                                                                              "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                            }
+                          }
+>
+                          <div
+                                                    className="spinner"
+                                                    style={
+                                                                              Object {
+                                                                                                        "color": undefined,
+                                                                                                        "fontSize": "3em",
+                                                                                                      }
+                                                    }
+                          />
+</div>,
+                        "className": "loading-spinner some-class",
+                        "id": undefined,
+                        "style": Object {},
+                      },
                       "ref": [Function],
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner some-class"
@@ -2939,12 +3998,12 @@ ReactWrapper {
                                                 />
                         </div>
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": [Circular],
                     "memoizedProps": null,
@@ -2967,10 +4026,12 @@ ReactWrapper {
                         }
 />,
                     },
+                    "mode": 0,
                     "nextEffect": null,
                     "pendingProps": null,
                     "ref": null,
                     "return": null,
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": Object {
                       "containerInfo": <div>
@@ -2994,18 +4055,60 @@ ReactWrapper {
 </div>,
                       "context": Object {},
                       "current": [Circular],
+                      "didError": false,
+                      "earliestPendingTime": 0,
+                      "earliestSuspendedTime": 0,
+                      "expirationTime": 0,
                       "finishedWork": null,
+                      "firstBatch": null,
                       "hydrate": false,
-                      "isReadyForCommit": false,
+                      "interactionThreadID": 18,
+                      "latestPendingTime": 0,
+                      "latestPingedTime": 0,
+                      "latestSuspendedTime": 0,
+                      "memoizedInteractions": Set {},
+                      "nextExpirationTimeToWorkOn": 0,
                       "nextScheduledRoot": null,
                       "pendingChildren": null,
+                      "pendingCommitExpirationTime": 0,
                       "pendingContext": null,
-                      "remainingExpirationTime": 0,
+                      "pendingInteractionMap": Map {},
+                      "timeoutHandle": -1,
                     },
-                    "tag": 3,
+                    "tag": 5,
+                    "treeBaseDuration": 0,
                     "type": null,
-                    "updateQueue": null,
+                    "updateQueue": Object {
+                      "baseState": Object {
+                        "element": <WrapperComponent
+                          Component="div"
+                          context={null}
+                          props={
+                                                    Object {
+                                                                              "children": <LoadingSpinner
+                                                                                className="some-class"
+                                                                                overlayColor="rgba(255, 255, 255, .9)"
+                                                                                size="3em"
+                                                                                style={Object {}}
+                                                    />,
+                                                                              "style": Object {
+                                                                                "position": "relative",
+                                                                              },
+                                                                            }
+                          }
+/>,
+                      },
+                      "firstCapturedEffect": null,
+                      "firstCapturedUpdate": null,
+                      "firstEffect": null,
+                      "firstUpdate": null,
+                      "lastCapturedEffect": null,
+                      "lastCapturedUpdate": null,
+                      "lastEffect": null,
+                      "lastUpdate": null,
+                    },
                   },
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": WrapperComponent {
                     "_reactInternalFiber": [Circular],
@@ -3050,38 +4153,50 @@ ReactWrapper {
                     },
                   },
                   "tag": 2,
+                  "treeBaseDuration": 0,
                   "type": [Function],
                   "updateQueue": null,
                 },
                 "_debugSource": null,
+                "actualDuration": 0,
+                "actualStartTime": -1,
                 "alternate": null,
                 "child": [Circular],
+                "childExpirationTime": 0,
                 "effectTag": 0,
                 "expirationTime": 0,
+                "firstContextDependency": null,
                 "firstEffect": FiberNode {
-                  "_debugID": 56,
+                  "_debugID": 102,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": FiberNode {
-                    "_debugID": 57,
+                    "_debugID": 103,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 58,
+                      "_debugID": 104,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": null,
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -3092,24 +4207,34 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "className": "spinner",
+                        "style": Object {
+                          "color": undefined,
+                          "fontSize": "3em",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="spinner"
                         style="font-size: 3em;"
 />,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 0,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -3131,10 +4256,29 @@ ReactWrapper {
                       },
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": Array [
+                        <div
+                          className="spinner"
+                          style={
+                                                    Object {
+                                                                              "color": undefined,
+                                                                              "fontSize": "3em",
+                                                                            }
+                          }
+/>,
+                        undefined,
+                      ],
+                      "className": "loading-spinner-overlay",
+                      "style": Object {
+                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                      },
+                    },
                     "ref": null,
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner-overlay"
@@ -3145,15 +4289,17 @@ ReactWrapper {
                                             style="font-size: 3em;"
                       />
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
+                  "childExpirationTime": 0,
                   "effectTag": 128,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": null,
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": null,
                   "memoizedProps": Object {
@@ -3180,10 +4326,34 @@ ReactWrapper {
                     "style": Object {},
                   },
                   "memoizedState": null,
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "children": <div
+                      className="loading-spinner-overlay"
+                      style={
+                                            Object {
+                                                                  "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                }
+                      }
+>
+                      <div
+                                            className="spinner"
+                                            style={
+                                                                  Object {
+                                                                                        "color": undefined,
+                                                                                        "fontSize": "3em",
+                                                                                      }
+                                            }
+                      />
+</div>,
+                    "className": "loading-spinner some-class",
+                    "id": undefined,
+                    "style": Object {},
+                  },
                   "ref": [Function],
                   "return": [Circular],
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": <div
                     class="loading-spinner some-class"
@@ -3198,12 +4368,12 @@ ReactWrapper {
                                         />
                     </div>
 </div>,
-                  "tag": 5,
+                  "tag": 7,
+                  "treeBaseDuration": 0,
                   "type": "div",
                   "updateQueue": null,
                 },
                 "index": 0,
-                "internalContextTag": 0,
                 "key": null,
                 "lastEffect": [Circular],
                 "memoizedProps": Object {
@@ -3218,42 +4388,64 @@ ReactWrapper {
                   },
                 },
                 "memoizedState": null,
+                "mode": 0,
                 "nextEffect": null,
-                "pendingProps": null,
+                "pendingProps": Object {
+                  "children": <LoadingSpinner
+                    className="some-class"
+                    overlayColor="rgba(255, 255, 255, .9)"
+                    size="3em"
+                    style={Object {}}
+/>,
+                  "style": Object {
+                    "position": "relative",
+                  },
+                },
                 "ref": null,
                 "return": FiberNode {
-                  "_debugID": 53,
+                  "_debugID": 99,
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": null,
                   "_debugSource": null,
+                  "actualDuration": 0,
+                  "actualStartTime": -1,
                   "alternate": null,
                   "child": [Circular],
+                  "childExpirationTime": 0,
                   "effectTag": 1,
                   "expirationTime": 0,
+                  "firstContextDependency": null,
                   "firstEffect": FiberNode {
-                    "_debugID": 56,
+                    "_debugID": 102,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": null,
                     "child": FiberNode {
-                      "_debugID": 57,
+                      "_debugID": 103,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 58,
+                        "_debugID": 104,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": null,
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -3264,24 +4456,34 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "className": "spinner",
+                          "style": Object {
+                            "color": undefined,
+                            "fontSize": "3em",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="spinner"
                           style="font-size: 3em;"
 />,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -3303,10 +4505,29 @@ ReactWrapper {
                         },
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": Array [
+                          <div
+                            className="spinner"
+                            style={
+                                                        Object {
+                                                                                    "color": undefined,
+                                                                                    "fontSize": "3em",
+                                                                                  }
+                            }
+/>,
+                          undefined,
+                        ],
+                        "className": "loading-spinner-overlay",
+                        "style": Object {
+                          "backgroundColor": "rgba(255, 255, 255, .9)",
+                        },
+                      },
                       "ref": null,
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner-overlay"
@@ -3317,15 +4538,17 @@ ReactWrapper {
                                                 style="font-size: 3em;"
                         />
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
+                    "childExpirationTime": 0,
                     "effectTag": 128,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": null,
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": null,
                     "memoizedProps": Object {
@@ -3352,10 +4575,34 @@ ReactWrapper {
                       "style": Object {},
                     },
                     "memoizedState": null,
+                    "mode": 0,
                     "nextEffect": null,
-                    "pendingProps": null,
+                    "pendingProps": Object {
+                      "children": <div
+                        className="loading-spinner-overlay"
+                        style={
+                                                Object {
+                                                                        "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                      }
+                        }
+>
+                        <div
+                                                className="spinner"
+                                                style={
+                                                                        Object {
+                                                                                                "color": undefined,
+                                                                                                "fontSize": "3em",
+                                                                                              }
+                                                }
+                        />
+</div>,
+                      "className": "loading-spinner some-class",
+                      "id": undefined,
+                      "style": Object {},
+                    },
                     "ref": [Function],
                     "return": [Circular],
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": <div
                       class="loading-spinner some-class"
@@ -3370,12 +4617,12 @@ ReactWrapper {
                                             />
                       </div>
 </div>,
-                    "tag": 5,
+                    "tag": 7,
+                    "treeBaseDuration": 0,
                     "type": "div",
                     "updateQueue": null,
                   },
                   "index": 0,
-                  "internalContextTag": 0,
                   "key": null,
                   "lastEffect": [Circular],
                   "memoizedProps": Object {
@@ -3408,34 +4655,56 @@ ReactWrapper {
                       },
                     },
                   },
+                  "mode": 0,
                   "nextEffect": null,
-                  "pendingProps": null,
+                  "pendingProps": Object {
+                    "Component": "div",
+                    "context": null,
+                    "props": Object {
+                      "children": <LoadingSpinner
+                        className="some-class"
+                        overlayColor="rgba(255, 255, 255, .9)"
+                        size="3em"
+                        style={Object {}}
+/>,
+                      "style": Object {
+                        "position": "relative",
+                      },
+                    },
+                  },
                   "ref": null,
                   "return": FiberNode {
-                    "_debugID": 51,
+                    "_debugID": 97,
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": null,
                     "_debugSource": null,
+                    "actualDuration": 0,
+                    "actualStartTime": -1,
                     "alternate": FiberNode {
-                      "_debugID": 51,
+                      "_debugID": 97,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": null,
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": [Circular],
                       "child": null,
+                      "childExpirationTime": 0,
                       "effectTag": 0,
                       "expirationTime": 1,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": null,
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
                       "pendingProps": null,
                       "ref": null,
                       "return": null,
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": Object {
                         "containerInfo": <div>
@@ -3459,28 +4728,40 @@ ReactWrapper {
 </div>,
                         "context": Object {},
                         "current": [Circular],
+                        "didError": false,
+                        "earliestPendingTime": 0,
+                        "earliestSuspendedTime": 0,
+                        "expirationTime": 0,
                         "finishedWork": null,
+                        "firstBatch": null,
                         "hydrate": false,
-                        "isReadyForCommit": false,
+                        "interactionThreadID": 18,
+                        "latestPendingTime": 0,
+                        "latestPingedTime": 0,
+                        "latestSuspendedTime": 0,
+                        "memoizedInteractions": Set {},
+                        "nextExpirationTimeToWorkOn": 0,
                         "nextScheduledRoot": null,
                         "pendingChildren": null,
+                        "pendingCommitExpirationTime": 0,
                         "pendingContext": null,
-                        "remainingExpirationTime": 0,
+                        "pendingInteractionMap": Map {},
+                        "timeoutHandle": -1,
                       },
-                      "tag": 3,
+                      "tag": 5,
+                      "treeBaseDuration": 0,
                       "type": null,
                       "updateQueue": Object {
                         "baseState": null,
-                        "callbackList": null,
-                        "expirationTime": 1,
-                        "first": Object {
+                        "firstCapturedEffect": null,
+                        "firstCapturedUpdate": null,
+                        "firstEffect": null,
+                        "firstUpdate": Object {
                           "callback": null,
                           "expirationTime": 1,
-                          "isForced": false,
-                          "isReplace": false,
                           "next": null,
-                          "nextCallback": null,
-                          "partialState": Object {
+                          "nextEffect": null,
+                          "payload": Object {
                             "element": <WrapperComponent
                               Component="div"
                               context={null}
@@ -3499,18 +4780,17 @@ ReactWrapper {
                               }
 />,
                           },
+                          "tag": 0,
                         },
-                        "hasForceUpdate": false,
-                        "isInitialized": false,
-                        "isProcessing": false,
-                        "last": Object {
+                        "lastCapturedEffect": null,
+                        "lastCapturedUpdate": null,
+                        "lastEffect": null,
+                        "lastUpdate": Object {
                           "callback": null,
                           "expirationTime": 1,
-                          "isForced": false,
-                          "isReplace": false,
                           "next": null,
-                          "nextCallback": null,
-                          "partialState": Object {
+                          "nextEffect": null,
+                          "payload": Object {
                             "element": <WrapperComponent
                               Component="div"
                               context={null}
@@ -3529,36 +4809,46 @@ ReactWrapper {
                               }
 />,
                           },
+                          "tag": 0,
                         },
                       },
                     },
                     "child": [Circular],
-                    "effectTag": 0,
+                    "childExpirationTime": 0,
+                    "effectTag": 32,
                     "expirationTime": 0,
+                    "firstContextDependency": null,
                     "firstEffect": FiberNode {
-                      "_debugID": 56,
+                      "_debugID": 102,
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": null,
+                      "actualDuration": 0,
+                      "actualStartTime": -1,
                       "alternate": null,
                       "child": FiberNode {
-                        "_debugID": 57,
+                        "_debugID": 103,
                         "_debugIsCurrentlyTiming": false,
                         "_debugOwner": [Circular],
                         "_debugSource": null,
+                        "actualDuration": 0,
+                        "actualStartTime": -1,
                         "alternate": null,
                         "child": FiberNode {
-                          "_debugID": 58,
+                          "_debugID": 104,
                           "_debugIsCurrentlyTiming": false,
                           "_debugOwner": [Circular],
                           "_debugSource": null,
+                          "actualDuration": 0,
+                          "actualStartTime": -1,
                           "alternate": null,
                           "child": null,
+                          "childExpirationTime": 0,
                           "effectTag": 0,
                           "expirationTime": 0,
+                          "firstContextDependency": null,
                           "firstEffect": null,
                           "index": 0,
-                          "internalContextTag": 0,
                           "key": null,
                           "lastEffect": null,
                           "memoizedProps": Object {
@@ -3569,24 +4859,34 @@ ReactWrapper {
                             },
                           },
                           "memoizedState": null,
+                          "mode": 0,
                           "nextEffect": null,
-                          "pendingProps": null,
+                          "pendingProps": Object {
+                            "className": "spinner",
+                            "style": Object {
+                              "color": undefined,
+                              "fontSize": "3em",
+                            },
+                          },
                           "ref": null,
                           "return": [Circular],
+                          "selfBaseDuration": 0,
                           "sibling": null,
                           "stateNode": <div
                             class="spinner"
                             style="font-size: 3em;"
 />,
-                          "tag": 5,
+                          "tag": 7,
+                          "treeBaseDuration": 0,
                           "type": "div",
                           "updateQueue": null,
                         },
+                        "childExpirationTime": 0,
                         "effectTag": 0,
                         "expirationTime": 0,
+                        "firstContextDependency": null,
                         "firstEffect": null,
                         "index": 0,
-                        "internalContextTag": 0,
                         "key": null,
                         "lastEffect": null,
                         "memoizedProps": Object {
@@ -3608,10 +4908,29 @@ ReactWrapper {
                           },
                         },
                         "memoizedState": null,
+                        "mode": 0,
                         "nextEffect": null,
-                        "pendingProps": null,
+                        "pendingProps": Object {
+                          "children": Array [
+                            <div
+                              className="spinner"
+                              style={
+                                                            Object {
+                                                                                          "color": undefined,
+                                                                                          "fontSize": "3em",
+                                                                                        }
+                              }
+/>,
+                            undefined,
+                          ],
+                          "className": "loading-spinner-overlay",
+                          "style": Object {
+                            "backgroundColor": "rgba(255, 255, 255, .9)",
+                          },
+                        },
                         "ref": null,
                         "return": [Circular],
+                        "selfBaseDuration": 0,
                         "sibling": null,
                         "stateNode": <div
                           class="loading-spinner-overlay"
@@ -3622,15 +4941,17 @@ ReactWrapper {
                                                     style="font-size: 3em;"
                           />
 </div>,
-                        "tag": 5,
+                        "tag": 7,
+                        "treeBaseDuration": 0,
                         "type": "div",
                         "updateQueue": null,
                       },
+                      "childExpirationTime": 0,
                       "effectTag": 128,
                       "expirationTime": 0,
+                      "firstContextDependency": null,
                       "firstEffect": null,
                       "index": 0,
-                      "internalContextTag": 0,
                       "key": null,
                       "lastEffect": null,
                       "memoizedProps": Object {
@@ -3657,10 +4978,34 @@ ReactWrapper {
                         "style": Object {},
                       },
                       "memoizedState": null,
+                      "mode": 0,
                       "nextEffect": null,
-                      "pendingProps": null,
+                      "pendingProps": Object {
+                        "children": <div
+                          className="loading-spinner-overlay"
+                          style={
+                                                    Object {
+                                                                              "backgroundColor": "rgba(255, 255, 255, .9)",
+                                                                            }
+                          }
+>
+                          <div
+                                                    className="spinner"
+                                                    style={
+                                                                              Object {
+                                                                                                        "color": undefined,
+                                                                                                        "fontSize": "3em",
+                                                                                                      }
+                                                    }
+                          />
+</div>,
+                        "className": "loading-spinner some-class",
+                        "id": undefined,
+                        "style": Object {},
+                      },
                       "ref": [Function],
                       "return": [Circular],
+                      "selfBaseDuration": 0,
                       "sibling": null,
                       "stateNode": <div
                         class="loading-spinner some-class"
@@ -3675,12 +5020,12 @@ ReactWrapper {
                                                 />
                         </div>
 </div>,
-                      "tag": 5,
+                      "tag": 7,
+                      "treeBaseDuration": 0,
                       "type": "div",
                       "updateQueue": null,
                     },
                     "index": 0,
-                    "internalContextTag": 0,
                     "key": null,
                     "lastEffect": [Circular],
                     "memoizedProps": null,
@@ -3703,10 +5048,12 @@ ReactWrapper {
                         }
 />,
                     },
+                    "mode": 0,
                     "nextEffect": null,
                     "pendingProps": null,
                     "ref": null,
                     "return": null,
+                    "selfBaseDuration": 0,
                     "sibling": null,
                     "stateNode": Object {
                       "containerInfo": <div>
@@ -3730,18 +5077,60 @@ ReactWrapper {
 </div>,
                       "context": Object {},
                       "current": [Circular],
+                      "didError": false,
+                      "earliestPendingTime": 0,
+                      "earliestSuspendedTime": 0,
+                      "expirationTime": 0,
                       "finishedWork": null,
+                      "firstBatch": null,
                       "hydrate": false,
-                      "isReadyForCommit": false,
+                      "interactionThreadID": 18,
+                      "latestPendingTime": 0,
+                      "latestPingedTime": 0,
+                      "latestSuspendedTime": 0,
+                      "memoizedInteractions": Set {},
+                      "nextExpirationTimeToWorkOn": 0,
                       "nextScheduledRoot": null,
                       "pendingChildren": null,
+                      "pendingCommitExpirationTime": 0,
                       "pendingContext": null,
-                      "remainingExpirationTime": 0,
+                      "pendingInteractionMap": Map {},
+                      "timeoutHandle": -1,
                     },
-                    "tag": 3,
+                    "tag": 5,
+                    "treeBaseDuration": 0,
                     "type": null,
-                    "updateQueue": null,
+                    "updateQueue": Object {
+                      "baseState": Object {
+                        "element": <WrapperComponent
+                          Component="div"
+                          context={null}
+                          props={
+                                                    Object {
+                                                                              "children": <LoadingSpinner
+                                                                                className="some-class"
+                                                                                overlayColor="rgba(255, 255, 255, .9)"
+                                                                                size="3em"
+                                                                                style={Object {}}
+                                                    />,
+                                                                              "style": Object {
+                                                                                "position": "relative",
+                                                                              },
+                                                                            }
+                          }
+/>,
+                      },
+                      "firstCapturedEffect": null,
+                      "firstCapturedUpdate": null,
+                      "firstEffect": null,
+                      "firstUpdate": null,
+                      "lastCapturedEffect": null,
+                      "lastCapturedUpdate": null,
+                      "lastEffect": null,
+                      "lastUpdate": null,
+                    },
                   },
+                  "selfBaseDuration": 0,
                   "sibling": null,
                   "stateNode": WrapperComponent {
                     "_reactInternalFiber": [Circular],
@@ -3786,9 +5175,11 @@ ReactWrapper {
                     },
                   },
                   "tag": 2,
+                  "treeBaseDuration": 0,
                   "type": [Function],
                   "updateQueue": null,
                 },
+                "selfBaseDuration": 0,
                 "sibling": null,
                 "stateNode": <div
                   style="position: relative;"
@@ -3807,13 +5198,16 @@ ReactWrapper {
                                     </div>
                   </div>
 </div>,
-                "tag": 5,
+                "tag": 7,
+                "treeBaseDuration": 0,
                 "type": "div",
                 "updateQueue": null,
               },
+              "selfBaseDuration": 0,
               "sibling": null,
               "stateNode": [Circular],
               "tag": 2,
+              "treeBaseDuration": 0,
               "type": [Function],
               "updateQueue": null,
             },
@@ -3967,6 +5361,16 @@ ReactWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },

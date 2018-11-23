@@ -7,14 +7,12 @@
     "test": "node ./depsShouldBePinned.js && jest",
     "test-dev": "npm test -- --watch",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && tsc",
-    "lint-style": "scriptoni lint-style \"src/**/*.scss\" \"showroom/**/*.scss\"",
-    "lint-style-fix": "scriptoni stylefmt --recursive src/**/*.scss showroom/**/*.scss",
-    "preversion": "npm run lint-style && npm run test",
+    "preversion": "npm run prettier-check && npm run test",
     "prepublish": "npm run build",
     "start": "styleguidist server",
-    "typecheck": "tsc --noEmit",
-    "prettier-fix": "prettier \"{**/*,*}.{ts,tsx,scss}\" --write",
-    "prettier-check": "prettier --list-different \"{**/*,*}.{ts,tsx,scss}\"",
+    "typecheck": "tsc --noEmit --pretty",
+    "prettier-fix": "prettier \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\" --write",
+    "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\"",
     "release-version": "smooth-release --validations --npm-version --npm-publish"
   },
   "repository": {
@@ -60,7 +58,7 @@
   },
   "devDependencies": {
     "@types/classnames": "2.2.3",
-    "@types/enzyme": "2.8.6",
+    "@types/enzyme": "^3.1.14",
     "@types/faker": "4.1.2",
     "@types/fixed-data-table": "0.6.32",
     "@types/jest": "20.0.7",
@@ -68,18 +66,18 @@
     "@types/lodash": "4.14.116",
     "@types/node": "8.0.25",
     "@types/prop-types": "15.5.2",
-    "@types/react": "^15.6.1",
+    "@types/react": "^16.4.14",
     "@types/react-dates": "12.1.2",
     "@types/react-dnd": "2.0.33",
     "@types/react-dnd-html5-backend": "2.1.8",
-    "@types/react-dom": "^15.5.4",
+    "@types/react-dom": "^16.0.8",
     "@types/react-select": "1.0.59",
     "@types/react-transition-group": "1.1.2",
     "babel-loader": "^7.1.4",
     "buildo-normalize-css": "3.0.2",
     "css-loader": "0.28.7",
-    "enzyme": "3.2.0",
-    "enzyme-adapter-react-16": "1.1.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "faker": "3.1.0",
     "file-loader": "1.1.5",
     "jest": "20.0.4",
@@ -87,9 +85,9 @@
     "node-sass": "4.7.2",
     "prettier": "^1.14.3",
     "progress-bar-webpack-plugin": "^1.11.0",
-    "react": "16.2.0",
+    "react": "16.5.0",
     "react-docgen-typescript": "1.1.0",
-    "react-dom": "16.2.0",
+    "react-dom": "16.5.0",
     "react-styleguidist": "6.0.33",
     "react-test-renderer": "16.2.0",
     "sass-loader": "6.0.6",
@@ -98,12 +96,12 @@
     "style-loader": "0.17.0",
     "ts-jest": "20.0.10",
     "ts-loader": "2.3.4",
-    "typescript": "2.8.1",
+    "typescript": "^3.1.6",
     "webpack": "3.5.5"
   },
   "peerDependencies": {
-    "react": ">=0.14.9 <15 || >=15.3.x",
-    "react-dom": ">=0.14.9 <15 || >=15.3.x"
+    "react": "16.x",
+    "react-dom": "16.x"
   },
   "greenkeeper": {
     "ignore": [
@@ -113,8 +111,8 @@
     ]
   },
   "resolutions": {
-    "@types/react": "15.6.14",
-    "@types/react-dom": "15.5.7",
+    "@types/react": "16.4.14",
+    "@types/react-dom": "16.0.8",
     "@types/react-dnd": "2.0.33"
   },
   "jest": {

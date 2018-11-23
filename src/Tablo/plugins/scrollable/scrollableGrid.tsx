@@ -6,18 +6,18 @@ type ScrollableGridState = {
   scrollTop?: number;
 };
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
   return class ScrollableGrid extends React.PureComponent<
-    Tablo.Props<T, K>,
+    Tablo.Props<T>,
     ScrollableGridState
   > {
     state = {
       scrollTop: this.props.scrollTop
     };
 
-    componentWillReceiveProps(nextProps: Tablo.Props<T, K>) {
+    componentWillReceiveProps(nextProps: Tablo.Props<T>) {
       const scrollTopDidntChanged =
         nextProps.scrollTop === this.props.scrollTop;
       const rowsSelectionChanged =

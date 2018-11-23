@@ -12,22 +12,20 @@ import ColumnGroup from "../../ColumnGroup";
 import { Tablo, TabloDefaultedIntrinsicProps } from "../../Tablo";
 import { getArrayChildren } from "../../utils";
 
-export const clean = <T, K extends string = keyof T>(
-  columnProps: ColumnIntrinsicProps<T, K>
-): ColumnIntrinsicProps<T, K> =>
+export const clean = <T extends {}>(
+  columnProps: ColumnIntrinsicProps<T>
+): ColumnIntrinsicProps<T> =>
   omitBy(columnProps, x => typeof x === "undefined") as any;
 
-const getLocals = <T, K extends string>({
+const getLocals = <T extends {}>({
   className,
   sortBy,
   sortDir,
   onSortChange,
   children,
   ...gridProps
-}: Tablo.Props<T, K>):
-  | TabloDefaultedIntrinsicProps<T, K>
-  | Tablo.Props<T, K> => {
-  const nextSort = (newSortBy: K): Tablo.Sort<K> => {
+}: Tablo.Props<T>): TabloDefaultedIntrinsicProps<T> | Tablo.Props<T> => {
+  const nextSort = (newSortBy: string): Tablo.Sort<string> => {
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {
@@ -45,7 +43,7 @@ const getLocals = <T, K extends string>({
     };
   };
 
-  const onHeaderClick = (columnKey: K) => () => {
+  const onHeaderClick = (columnKey: string) => () => {
     if (!onSortChange) {
       return;
     }
@@ -56,12 +54,11 @@ const getLocals = <T, K extends string>({
   const _children =
     getArrayChildren(children) || defaultColumns(gridProps.data);
 
-  const addSortableProps: UpdateColumnsHandler<T, K> = ({ col, colGroup }) => {
-    //eslint-disable-line
+  const addSortableProps: UpdateColumnsHandler<T> = ({ col, colGroup }) => {
     const colGroupSortable = colGroup ? colGroup.props.sortable : undefined;
     return cSortable(
       clean({
-        key: col.props.name, // TODO(frag) think about how to handle this stuff
+        key: col.props.name as any,
         sortable:
           typeof colGroupSortable !== "undefined"
             ? colGroupSortable
@@ -85,10 +82,10 @@ const getLocals = <T, K extends string>({
   };
 };
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
-  return class SortableGrid extends React.PureComponent<Tablo.Props<T, K>> {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
+  return class SortableGrid extends React.PureComponent<Tablo.Props<T>> {
     render() {
       return <Grid {...getLocals(this.props)} />;
     }

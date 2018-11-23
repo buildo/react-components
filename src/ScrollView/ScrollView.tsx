@@ -1,9 +1,9 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import { props, t, ReactChildren } from "../utils";
 import GeminiScrollbar = require("gemini-scrollbar");
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
+import { findDOMNode } from "../utils";
 
 export type ScrollViewDefaultProps<
   CP extends React.HTMLAttributes<any>,
@@ -89,7 +89,7 @@ export class ScrollView<
     this.scrollbar = new GeminiScrollbar({
       autoshow,
       forceGemini,
-      element: ReactDOM.findDOMNode(this),
+      element: findDOMNode(this),
       createElements: false
     }).create();
     this.saveScrollbarsState();

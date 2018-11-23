@@ -1,9 +1,9 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import { props, t, ReactChildren } from "../utils";
 import FlexView from "react-flexview";
 import omit = require("lodash/omit");
+import { findDOMNode } from "../utils";
 
 export type BackgroundDimmerRequiredProps = {
   /** children nodes/elements */
@@ -86,8 +86,7 @@ export class BackgroundDimmer extends React.PureComponent<
   ) => {
     const el = e.target || e.srcElement;
     return (
-      this.mainContentWrapper &&
-      el === ReactDOM.findDOMNode(this.mainContentWrapper)
+      this.mainContentWrapper && el === findDOMNode(this.mainContentWrapper)
     );
   };
 

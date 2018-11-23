@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import { props, t, ReactChildren } from "../utils";
 import partial = require("lodash/partial");
 import FlexView from "react-flexview";
 import { Divider } from "../Divider/Divider";
+import { findDOMNode } from "../utils";
 
 export type ActionsMenuRequiredProps = {
   options?: ActionsMenu.Option[];
@@ -74,12 +74,12 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
   }
 
   componentDidMount() {
-    const { top: scrollTop, height } = ReactDOM.findDOMNode(
+    const { top: scrollTop, height } = findDOMNode(
       this
     ).getBoundingClientRect();
     const {
       height: wHeight
-    } = document.documentElement.getBoundingClientRect();
+    } = document.documentElement!.getBoundingClientRect();
     if (wHeight - (scrollTop + height) < 20) {
       this.setState({
         // eslint-disable-line react/no-did-mount-set-state

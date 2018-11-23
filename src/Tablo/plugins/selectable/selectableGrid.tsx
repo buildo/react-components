@@ -4,10 +4,10 @@ import includes = require("lodash/includes");
 import { Tablo } from "../../Tablo";
 import { Table } from "fixed-data-table-2";
 
-export default <T, K extends string = keyof T>(
-  Grid: React.ComponentClass<Tablo.Props<T, K>>
-): React.ComponentClass<Tablo.Props<T, K>> => {
-  return class SelectableGrid extends React.PureComponent<Tablo.Props<T, K>> {
+export default <T extends {}>(
+  Grid: React.ComponentClass<Tablo.Props<T>>
+): React.ComponentClass<Tablo.Props<T>> => {
+  return class SelectableGrid extends React.PureComponent<Tablo.Props<T>> {
     render() {
       const {
         selectedRows = [],

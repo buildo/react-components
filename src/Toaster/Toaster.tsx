@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import { props, t, ReactChildren } from "../utils";
+import { props, t, ReactChildren, findDOMNode } from "../utils";
 import { warn } from "../utils/log";
 import { TransitionWrapper } from "../TransitionWrapper/TransitionWrapper";
 
@@ -72,7 +72,7 @@ export class Toaster extends React.Component<Toaster.Props> {
   componentDidMount() {
     const node = this.props.attachTo
       ? this.toaster!
-      : ReactDOM.findDOMNode(this).parentElement!;
+      : findDOMNode(this).parentElement!;
     const { position } = window.getComputedStyle(node);
     if (position !== "relative" && position !== "absolute") {
       warn([

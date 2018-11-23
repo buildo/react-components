@@ -3,8 +3,8 @@ import * as cx from "classnames";
 import { props, t, ReactChildren } from "../../utils";
 import FlexView from "react-flexview";
 
-export type FDTIntrinsic<K extends string> = {
-  columnKey: K;
+export type FDTIntrinsic = {
+  columnKey: string;
 };
 
 export type Intrinsic = {
@@ -14,12 +14,10 @@ export type Intrinsic = {
 
 export namespace Header {
   export type Props = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
   };
 }
-export type HeaderIntrinsicProps<K extends string> = Header.Props &
-  Intrinsic &
-  FDTIntrinsic<K>;
+export type HeaderIntrinsicProps = Header.Props & Intrinsic & FDTIntrinsic;
 
 const { maybe } = t;
 
@@ -34,12 +32,10 @@ const propsTypes = {
 };
 
 @props(propsTypes)
-export class Header<K extends string> extends React.PureComponent<
-  Header.Props
-> {
+export class Header extends React.PureComponent<Header.Props> {
   render() {
     const { fixed, onClick: onClick, children } = this
-      .props as HeaderIntrinsicProps<K>;
+      .props as HeaderIntrinsicProps;
 
     return (
       <FlexView
@@ -58,6 +54,6 @@ export class Header<K extends string> extends React.PureComponent<
   }
 }
 
-export function defaultHeader<K>(columnKey: K) {
+export function defaultHeader(columnKey: string | number | symbol) {
   return <Header>{columnKey}</Header>;
 }

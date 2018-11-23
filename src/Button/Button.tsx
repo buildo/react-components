@@ -38,7 +38,7 @@ export type ButtonDefaultProps = {
   /** an optional class name to pass to first inner element of the component */
   className: string;
   /** an optional style object to pass to first inner element of the component */
-  style: object;
+  style: React.CSSProperties;
 };
 
 export namespace Button {
@@ -236,7 +236,7 @@ export class Button extends React.PureComponent<Button.Props> {
 
     const wrapperStyle = {
       display: fluid ? "block" : "inline-block",
-      width: fluid ? "100%" : null
+      width: fluid ? "100%" : undefined
     };
 
     const isIconButton = (): boolean => !!_icon && !_label;

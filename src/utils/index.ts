@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import {
   props,
@@ -50,3 +51,7 @@ export function find<T>(
 ): T | undefined {
   return _find(list, fn);
 }
+
+export const findDOMNode = <E extends Element = Element>(
+  ref: React.ReactInstance
+): E => ReactDOM.findDOMNode(ref) as E;
