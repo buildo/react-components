@@ -8,9 +8,9 @@ $react-dates-color-primary-shade-2: $brc-azure10 !default; // used as background
 $react-dates-color-primary-shade-3: $brc-azure !default; // used as border on hover range
 $react-dates-color-primary-shade-4: $brc-azure30 !default; // used as background of hover range
 
-$react-dates-color-secondary: $brc-darkGrey !default; // font-color on hover range
+$react-dates-color-secondary: $brc-darkGreyBlue !default; // font-color on hover range
 $react-dates-color-white: $brc-white !default;
-$react-dates-color-gray: $brc-darkGrey !default;
+$react-dates-color-gray: $brc-darkGreyBlue !default;
 $react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
 $react-dates-color-gray-light: $brc-coolGrey;
 $react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
@@ -24,8 +24,8 @@ $react-dates-color-border: $brc-silver !default;
 $react-dates-color-border-light: $brc-silver !default;
 $react-dates-color-border-medium: $brc-silver !default;
 $react-dates-color-placeholder-text: $brc-coolGrey !default;
-$react-dates-color-text: $brc-darkGrey !default;
-$react-dates-color-text-focus: $brc-darkGrey !default;
+$react-dates-color-text: $brc-darkGreyBlue !default;
+$react-dates-color-text-focus: $brc-darkGreyBlue !default;
 $react-dates-color-focus: transparent !default;
 
 $react-dates-z-index: 100 !default;
@@ -158,7 +158,7 @@ $input-background-open: $brc-gradientDarkGrey !default;
     }
 
     .CalendarDay--selected-span {
-      color: $brc-darkGrey;
+      color: $brc-darkGreyBlue;
     }
   }
 

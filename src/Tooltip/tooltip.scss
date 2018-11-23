@@ -1,13 +1,13 @@
 @import "../utils/theme/variables.scss";
-$background-dark: $brc-darkGrey !default;
+$background-dark: $brc-darkGreyBlue !default;
 $background-light: $brc-white !default;
 $border-radius: 5px !default;
 $border-color-dark: transparent !default;
 $border-color-light: $brc-silver !default;
 $text-color-dark: $brc-white !default;
-$text-color-light: $brc-darkGrey !default;
+$text-color-light: $brc-darkGreyBlue !default;
 $arrow-size: 5px !default;
-$arrow-color: $brc-darkGrey !default;
+$arrow-color: $brc-darkGreyBlue !default;
 
 .tooltip {
   z-index: 10000;
