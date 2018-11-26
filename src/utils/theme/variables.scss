@@ -11,7 +11,6 @@ $brc-sunYellow: #fecf39;
 $brc-strawberry: #fb242c;
 $brc-palePurple: #8a83d1;
 $brc-lipstick: #d1236d;
-$brc-darkGrey: #354052;
 $brc-battleshipGrey: #727a86;
 $brc-coolGrey: #9098a7;
 $brc-cloudyGrey: #b5c0ce;
@@ -39,3 +38,18 @@ $brc-lightningYellow: #fabd15;
 $brc-regular: 400;
 $brc-semibold: 600;
 $brc-bold: 700;
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+}

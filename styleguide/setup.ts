@@ -32,6 +32,8 @@ const tabloData = Array.apply(null, Array(1000)).map(getRandomRow);
 (global as any).reject = reject;
 (global as any).sortBy = sortBy;
 
+import "../src/utils/theme/typography.scss";
+
 // components sass
 import "../src/Button/button.scss";
 import "../src/Divider/divider.scss";
@@ -55,6 +57,7 @@ import "../src/DatePicker/datePicker.scss";
 import "../src/DateField/dateField.scss";
 import "../src/Input/input.scss";
 import "../src/FormField/formField.scss";
+import "../src/Textarea/textarea.scss";
 
 // examples sass and resources
 import "../src/Modal/examples.scss";

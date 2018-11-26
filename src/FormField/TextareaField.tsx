@@ -2,10 +2,10 @@ import * as React from "react";
 import { props, t, ReactChild } from "../utils";
 import * as cx from "classnames";
 import View from "react-flexview";
-import Toggle from "../Toggle";
+import Textarea from "../Textarea";
 import { FormField } from "./FormField";
 
-export namespace ToggleField {
+export namespace TextareaField {
   export type Props = {
     /** the label for the field */
     label: JSX.Element | string;
@@ -13,26 +13,26 @@ export namespace ToggleField {
     required?: boolean;
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props;
-    /** an optional custom renderer for Toggle */
-    toggleRenderer?: (props: Toggle.Props) => JSX.Element;
+    /** An optional custom renderer for Textarea */
+    textareaRenderer?: (props: Textarea.Props) => JSX.Element;
     /** an optional class name to pass to top level element of the component */
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
     /** an optional id passed to the input component */
     id?: string;
-  } & Toggle.Props;
+  } & Textarea.Props;
 }
 
 export const Props = {
   label: ReactChild,
   required: t.maybe(t.Boolean),
   viewProps: t.maybe(t.Object),
-  toggleRenderer: t.maybe(t.Function)
+  textareaRenderer: t.maybe(t.Function)
 };
 
 @props(Props, { strict: false })
-export class ToggleField extends React.PureComponent<ToggleField.Props> {
+export class TextareaField extends React.PureComponent<TextareaField.Props> {
   render() {
     const {
       label,
@@ -41,13 +41,14 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
       id,
       viewProps,
       disabled,
-      toggleRenderer,
-      ..._toggleProps
+      textareaRenderer,
+      ..._textareaProps
     } = this.props;
-    const className = cx("toggle-field", _className);
-    const toggleProps = {
-      ..._toggleProps,
-      disabled
+    const className = cx("textarea-field", _className);
+    const textareaProps = {
+      ..._textareaProps,
+      disabled,
+      id
     };
 
     return (
@@ -55,15 +56,14 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
         label={label}
         required={required}
         className={className}
+        fieldId={id}
         viewProps={viewProps}
         disabled={disabled}
-        id={id}
-        horizontal
       >
-        {toggleRenderer ? (
-          toggleRenderer(toggleProps)
+        {textareaRenderer ? (
+          textareaRenderer(textareaProps)
         ) : (
-          <Toggle {...toggleProps} />
+          <Textarea {...textareaProps} />
         )}
       </FormField>
     );

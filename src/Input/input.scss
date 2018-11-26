@@ -2,14 +2,14 @@
 $height: 36px !default;
 $padding-h: 12px !default;
 $font-size: 14px !default;
-$font-weight: $brc-regular !default;
+$font-weight: $brc-semibold !default;
 $placeholder-color: $brc-coolGrey !default;
 $placeholder-font-weight: $brc-semibold !default;
-$color: $brc-darkGrey !default;
+$color: $brc-darkGreyBlue !default;
 $border-color: $brc-silver !default;
 $border-width: 1px !default;
 $border-radius: 2px !default;
-$color-focus: $brc-darkGrey !default;
+$color-focus: $brc-darkGreyBlue !default;
 $border-color-focus: $brc-waterBlue !default;
 $opacity-disabled: 0.6 !default;
 $color-success: $brc-seaGreen !default;
@@ -35,12 +35,9 @@ $show-color: $brc-azure !default;
     font-weight: $font-weight;
     font-size: $font-size;
     line-height: $font-size;
+    font-family: inherit;
 
-    /* placeholder */
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &:-moz-placeholder {
+    @include placeholder {
       color: $placeholder-color;
       font-weight: $placeholder-font-weight;
     }

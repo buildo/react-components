@@ -8,9 +8,9 @@ $react-dates-color-primary-shade-2: $brc-azure10 !default; // used as background
 $react-dates-color-primary-shade-3: $brc-azure !default; // used as border on hover range
 $react-dates-color-primary-shade-4: $brc-azure30 !default; // used as background of hover range
 
-$react-dates-color-secondary: $brc-darkGrey !default; // font-color on hover range
+$react-dates-color-secondary: $brc-darkGreyBlue !default; // font-color on hover range
 $react-dates-color-white: $brc-white !default;
-$react-dates-color-gray: $brc-darkGrey !default;
+$react-dates-color-gray: $brc-darkGreyBlue !default;
 $react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
 $react-dates-color-gray-light: $brc-coolGrey;
 $react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
@@ -24,8 +24,8 @@ $react-dates-color-border: $brc-silver !default;
 $react-dates-color-border-light: $brc-silver !default;
 $react-dates-color-border-medium: $brc-silver !default;
 $react-dates-color-placeholder-text: $brc-coolGrey !default;
-$react-dates-color-text: $brc-darkGrey !default;
-$react-dates-color-text-focus: $brc-darkGrey !default;
+$react-dates-color-text: $brc-darkGreyBlue !default;
+$react-dates-color-text-focus: $brc-darkGreyBlue !default;
 $react-dates-color-focus: transparent !default;
 
 $react-dates-z-index: 100 !default;
@@ -33,23 +33,45 @@ $react-dates-z-index: 100 !default;
 @import "~react-dates/css/variables.scss";
 @import "~react-dates/css/styles.scss";
 
+$input-background: $brc-gradientGrey !default;
+$input-background-hover: $brc-gradientDarkGrey !default;
+$input-background-open: $brc-gradientDarkGrey !default;
+
 .date-picker {
+  font-size: 14px;
+
   .CalendarMonth__caption {
     background-image: linear-gradient(to top, #1789de, #2da1f8);
     color: $brc-white;
     margin-top: 0;
     padding-top: 22px;
+    font-size: 16px;
   }
 
   .SingleDatePickerInput {
     height: 36px;
     border-radius: 2px;
+    background: $input-background;
+
+    &:hover {
+      background: $input-background-hover;
+    }
 
     .DateInput {
       padding: 0 8px;
       font-size: 14px;
       height: 100%;
-      line-height: 26px;
+      line-height: 28px;
+      background: transparent;
+
+      .DateInput__display-text {
+        font-weight: $brc-semibold;
+      }
+
+      .DateInput__display-text--has-input {
+        font-weight: $brc-semibold;
+        color: $brc-darkGreyBlue;
+      }
 
       &.DateInput--with-caret {
         &::before,
@@ -60,6 +82,12 @@ $react-dates-z-index: 100 !default;
         &::after {
           border-bottom-color: #2da1f8;
         }
+
+        background: transparent;
+
+        input {
+          background: transparent;
+        }
       }
     }
 
@@ -69,6 +97,16 @@ $react-dates-z-index: 100 !default;
       svg {
         height: 8px;
         vertical-align: baseline;
+      }
+    }
+
+    .SingleDatePickerInput__calendar-icon {
+      padding: 0 2px;
+      margin: 0;
+      margin-right: 9px;
+
+      svg {
+        height: 16px;
       }
     }
   }
@@ -82,7 +120,7 @@ $react-dates-z-index: 100 !default;
       height: 25px;
 
       .DateInput {
-        line-height: 15px;
+        line-height: 16px;
         font-size: 10px;
 
         &.DateInput--with-caret {
@@ -90,6 +128,14 @@ $react-dates-z-index: 100 !default;
           &::after {
             top: 30px;
           }
+        }
+      }
+
+      .SingleDatePickerInput__calendar-icon {
+        margin-right: 5px;
+
+        svg {
+          height: 11px;
         }
       }
     }
@@ -112,7 +158,7 @@ $react-dates-z-index: 100 !default;
     }
 
     .CalendarDay--selected-span {
-      color: $brc-darkGrey;
+      color: $brc-darkGreyBlue;
     }
   }
 

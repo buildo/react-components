@@ -11,12 +11,12 @@ $border-color-focus: $brc-waterBlue !default;
 $border-radius: 2px !default;
 $text-color: $brc-coolGrey !default;
 $text-color-open: $brc-coolGrey !default;
-$text-color-has-value: $brc-darkGrey !default;
+$text-color-has-value: $brc-darkGreyBlue !default;
 $text-color-hover: $text-color-has-value !default;
 $text-color-writing: $brc-coolGrey !default;
-$placeholder-color: #999 !default;
-$placeholder-color-hover: #666 !default;
-$placeholder-color-open: #666 !default;
+$placeholder-color: $brc-coolGrey !default;
+$placeholder-color-hover: $brc-coolGrey !default;
+$placeholder-color-open: $brc-coolGrey !default;
 $arrow-color: $text-color !default;
 $arrow-color-hover: $text-color !default;
 $arrow-color-open: $text-color-open !default;
@@ -24,10 +24,10 @@ $x-color: $text-color !default;
 $x-color-hover: $brc-red !default;
 $menu-background: $brc-white !default;
 $menu-border-color: $brc-silver !default;
-$option-group-color: $brc-darkGrey !default;
+$option-group-color: $brc-darkGreyBlue !default;
 $option-group-background: $brc-paleGrey !default;
-$option-color: rgba($brc-darkGrey, 0.5) !default;
-$option-color-hover: $brc-darkGrey !default;
+$option-color: rgba($brc-darkGreyBlue, 0.5) !default;
+$option-color-hover: $brc-darkGreyBlue !default;
 $option-color-selected: $option-color !default;
 $option-color-disabled: rgba($option-color, 0.2) !default;
 $option-background-hover: rgba($brc-azure, 0.15) !default;
@@ -110,7 +110,7 @@ $padding-left: 10px !default;
   background: $background;
   color: $text-color;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: $brc-semibold;
 
   &:hover {
     border-color: $border-color-hover;
@@ -180,6 +180,7 @@ $padding-left: 10px !default;
   }
 
   .Select-placeholder {
+    font-weight: $brc-semibold;
     color: $placeholder-color;
   }
 

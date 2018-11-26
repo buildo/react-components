@@ -2,7 +2,7 @@
 
 #### A typical usage
 ```js
-initialState = { value: '', name: '', surname: '', secret: '', disabled: false, toggle2: true }
+initialState = { input: '', textarea: '', password: '', toggle: false }
 
 function onChange(field, value) {
   setState({ [field]: value })
@@ -11,42 +11,47 @@ function onChange(field, value) {
 <FlexView column>
   <FlexView width={450} marginBottom={40}>
     <InputField
-      id='name'
+      id='input'
       label='LABEL'
-      placeholder='Placeholder'
-      value={state.value}
-      onChange={value => onChange('name', value)}
+      placeholder='Type here...'
+      value={state.input}
+      onChange={value => onChange('input', value)}
       required
     />
   </FlexView>
-  <FlexView marginBottom={40}>
-    <ToggleField
-      id='disabled'
-      label='Toggle text'
-      value={state.disabled}
-      onChange={value => onChange('disabled', value)}
+  <FlexView width={450} marginBottom={40}>
+    <TextareaField
+      id='textarea'
+      label='LABEL'
+      placeholder='Type here...'
+      value={state.textarea}
+      onChange={value => onChange('textarea', value)}
+      required
+      rows={5}
     />
-    <FlexView marginLeft={45}>
+  </FlexView>
+  <FlexView marginBottom={40}>
+    <FlexView>
       <ToggleField
-        id='disabled'
+        id='toggle'
         label='Toggle text'
-        value={state.toggle2}
-        onChange={value => onChange('toggle2', value)}
+        value={state.toggle}
+        onChange={value => onChange('toggle', value)}
         required
       />
     </FlexView>
   </FlexView>
   <FlexView width={450} marginBottom={40}>
     <DropdownField
-      id='gender'
+      id='dropdown'
       label='LABEL'
-      value={state.gender}
+      value={state.dropdown}
       options={[
         { value: 'male', label: 'Male' },
         { value: 'female', label: 'Female' }
       ]}
       dropdownRenderer={(props) => <Dropdown {...props} searchable />}
-      onChange={value => onChange('gender', value)}
+      onChange={value => onChange('dropdown', value)}
       placeholder='Select'
       required
     />
@@ -54,28 +59,28 @@ function onChange(field, value) {
   <FlexView marginBottom={40}>
     <FlexView width={215} marginRight={20}>
       <DatePickerField
-        id='birthDate'
+        id='datePicker'
         label='LABEL'
-        value={state.birthDate}
-        onChange={value => onChange('birthDate', value)}
+        value={state.datePicker}
+        onChange={value => onChange('datePicker', value)}
         viewProps={{ grow: false }}
       />
     </FlexView>
     <FlexView width={215}>
       <TimePickerField
-        id='birthTime'
+        id='timePicker'
         label='LABEL'
-        value={state.birthTime}
-        onChange={value => onChange('birthTime', value)}
+        value={state.timePicker}
+        onChange={value => onChange('timePicker', value)}
       />
     </FlexView>
   </FlexView>
   <FlexView width={450} marginBottom={40}>
     <PasswordInputField
-      id='secret'
+      id='password'
       label='LABEL'
-      value={state.secret}
-      onChange={value => onChange('secret', value)}
+      value={state.password}
+      onChange={value => onChange('password', value)}
       required
     />
   </FlexView>

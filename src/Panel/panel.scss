@@ -2,14 +2,14 @@
 $border-color: $brc-silver !default;
 $soft-loader-color: $brc-coolGrey !default;
 $header-background: $brc-gradientGrey !default;
-$header-background-dark: $brc-darkGrey !default;
-$header-color: $brc-darkGrey !default;
+$header-background-dark: $brc-darkGreyBlue !default;
+$header-color: $brc-darkGreyBlue !default;
 $header-color-dark: $brc-white !default;
 $expand-icon-color: $brc-coolGrey !default;
 $expand-icon-color-hover: rgba($brc-coolGrey, 0.7) !default;
 $content-background: $brc-white !default;
-$content-color: $brc-darkGrey !default;
-$content-title-color: $brc-darkGrey !default;
+$content-color: $brc-darkGreyBlue !default;
+$content-title-color: $brc-darkGreyBlue !default;
 
 @keyframes loading {
   0% {

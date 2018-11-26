@@ -60,10 +60,13 @@ export class FormField extends React.PureComponent<FormField.Props> {
       "is-horizontal": horizontal
     });
     const viewProps = {
-      column: true,
       grow: !horizontal,
+      column: !horizontal,
       ..._viewProps,
-      className
+      className,
+      style: horizontal
+        ? ({ flexDirection: "row-reverse" } as React.CSSProperties)
+        : undefined
     };
 
     return (
