@@ -1,0 +1,69 @@
+@import "../utils/theme/variables.scss";
+
+$font-size: 14px !default;
+$font-weight: $brc-semibold !default;
+
+$border-color: $brc-silver !default;
+$border-color-checked: $brc-waterBlue !default;
+$border-color-focused: $border-color-checked !default;
+
+$border-width: 1px !default;
+$border-radius: 2px !default;
+
+$color: $brc-darkGreyBlue !default;
+$color-checked: $brc-darkGreyBlue !default;
+
+$opacity-disabled: 0.6 !default;
+
+.checkbox {
+  > .checkbox-ui {
+    cursor: pointer;
+    border: $border-width solid $border-color;
+    border-radius: $border-radius;
+    width: 16px;
+    height: 16px;
+    background: $brc-white;
+
+    // &:hover {
+    // background: #f35429;
+    // }
+
+    &:focus {
+      border-color: $border-color-focused;
+    }
+
+    > svg {
+      fill: $border-color-checked;
+      height: 9px;
+    }
+  }
+
+  > .text {
+    cursor: pointer;
+    padding-left: 4px;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    color: $color;
+  }
+
+  &.is-checked {
+    > .checkbox-ui {
+      border-color: $border-color-checked;
+    }
+
+    > .text {
+      color: $color-checked;
+    }
+  }
+
+  &.is-disabled {
+    > .checkbox-ui {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+
+    > .text {
+      cursor: auto;
+    }
+  }
+}

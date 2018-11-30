@@ -58,6 +58,7 @@ import "../src/DateField/dateField.scss";
 import "../src/Input/input.scss";
 import "../src/FormField/formField.scss";
 import "../src/Textarea/textarea.scss";
+import "../src/Checkbox/checkbox.scss";
 
 // examples sass and resources
 import "../src/Modal/examples.scss";

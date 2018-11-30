@@ -62,6 +62,8 @@ import { Input, PasswordInput, ConfirmationInput } from "./Input";
 export { Input, PasswordInput, ConfirmationInput };
 import Textarea from "./Textarea";
 export { Textarea };
+import Checkbox from "./Checkbox";
+export { Checkbox };
 import FormField from "./FormField";
 export { FormField };
 import {
