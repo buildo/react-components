@@ -73,7 +73,8 @@ import {
   TimePickerField,
   ToggleField,
   DatePickerField,
-  TextareaField
+  TextareaField,
+  CheckboxField
 } from "./FormField";
 export {
   InputField,
@@ -82,5 +83,6 @@ export {
   TimePickerField,
   ToggleField,
   DatePickerField,
-  TextareaField
+  TextareaField,
+  CheckboxField
 };
