@@ -1,0 +1,12 @@
+@import "../utils/theme/variables.scss";
+
+.checkbox {
+  display: hidden;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 1px solid  $brc-silver;
+  }
+}
