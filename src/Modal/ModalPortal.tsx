@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import { props, t, ReactChildren } from "../utils";
-import TransitionWrapper from "../TransitionWrapper";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
+import { props, t, ReactChildren } from '../utils';
+import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode: Element | null = null;
 
@@ -27,13 +27,28 @@ export const Props = {
   transitionLeaveTimeout: t.Number,
   className: t.maybe(t.String),
   childContextTypes: t.maybe(t.Object),
-  getChildContext: t.maybe(t.Function)
+  getChildContext: t.maybe(t.Function),
 };
 
 type ContextWrapperProps = {
   modal: () => JSX.Element;
   getChildContext?: () => object;
 };
+
+function createContextWrapper(
+  childContextTypes: {} | undefined,
+  getChildContext: (() => object) | undefined,
+) {
+  const x = class ContextWrapper extends React.Component<ContextWrapperProps> {
+    // eslint-disable-line react/no-multi-comp
+    static childContextTypes = childContextTypes || {};
+    getChildContext = getChildContext || (() => ({}));
+    render() {
+      return this.props.modal();
+    }
+  };
+  return x;
+}
 
 @props(Props)
 export class ModalPortal extends React.Component<ModalPortal.Props> {
@@ -43,18 +58,10 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
     return null;
   }
 
-  _ContextWrapper = (() => {
-    const childContextTypes = this.props.childContextTypes || {};
-    const getChildContext = this.props.getChildContext || (() => ({}));
-    return class ContextWrapper extends React.Component<ContextWrapperProps> {
-      // eslint-disable-line react/no-multi-comp
-      static childContextTypes = childContextTypes;
-      getChildContext = getChildContext;
-      render() {
-        return this.props.modal();
-      }
-    };
-  })();
+  _ContextWrapper = createContextWrapper(
+    this.props.childContextTypes,
+    this.props.getChildContext,
+  );
 
   componentDidMount() {
     this.isOpen = true;
@@ -82,7 +89,7 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
 
   _render() {
     if (!containerNode) {
-      containerNode = document.createElement("div");
+      containerNode = document.createElement('div');
       document.body.appendChild(containerNode);
     }
 
@@ -96,7 +103,7 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
       className,
       children,
       transitionEnterTimeout,
-      transitionLeaveTimeout
+      transitionLeaveTimeout,
     } = this.props;
 
     return () => (

@@ -84,6 +84,31 @@ export namespace Popover {
     context?: object;
   };
 
+  export type PopoverComputedSettings = {
+    content: React.ReactNode;
+    attachToBody?: boolean;
+    auto?: boolean;
+    position: Position;
+    anchor: Anchor;
+    event: Event;
+    onShow: () => void;
+    onHide: () => void;
+    onToggle: () => void;
+    dismissOnScroll: boolean;
+    dismissOnClickOutside: boolean;
+    className: string;
+    style?: React.CSSProperties;
+    id?: string;
+    maxWidth?: number | string;
+    distance: number;
+    offsetX: number;
+    offsetY: number;
+    isOpen?: boolean;
+    delay?: Delay;
+    contextTypes?: React.ValidationMap<any>;
+    context?: object;
+  };
+
   export type PopoverElement = {
     width: number;
     height: number;
@@ -237,7 +262,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   // UTILS
 
   // extend with default values
-  getPopoverProps = (_props?: Popover.Props) => {
+  getPopoverProps = (_props?: Popover.Props): Popover.PopoverComputedSettings => {
     const props = _props || this.props;
     return {
       position: "top" as Popover.Position,
