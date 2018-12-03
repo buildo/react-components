@@ -24,10 +24,6 @@ $opacity-disabled: 0.6 !default;
     height: 16px;
     background: $brc-white;
 
-    // &:hover {
-    // background: #f35429;
-    // }
-
     &:focus {
       border-color: $border-color-focused;
     }
