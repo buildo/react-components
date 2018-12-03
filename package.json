@@ -92,7 +92,7 @@
     "react-styleguidist": "6.0.33",
     "react-test-renderer": "16.2.0",
     "sass-loader": "6.0.6",
-    "scriptoni": "^0.12.5",
+    "scriptoni": "^0.17.0",
     "smooth-release": "8.0.4",
     "style-loader": "0.17.0",
     "ts-jest": "20.0.10",
@@ -110,11 +110,6 @@
       "webpack",
       "sass-loader"
     ]
-  },
-  "resolutions": {
-    "@types/react": "16.4.14",
-    "@types/react-dom": "16.0.8",
-    "@types/react-dnd": "2.0.33"
   },
   "jest": {
     "setupFiles": [
