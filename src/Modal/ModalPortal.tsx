@@ -43,7 +43,7 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
     return null;
   }
 
-  _ContextWrapper = (() => {
+  _ContextWrapper: React.ComponentType<ContextWrapperProps> = (() => {
     const childContextTypes = this.props.childContextTypes || {};
     const getChildContext = this.props.getChildContext || (() => ({}));
     return class ContextWrapper extends React.Component<ContextWrapperProps> {
