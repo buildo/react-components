@@ -84,13 +84,23 @@ export namespace Popover {
     context?: object;
   };
 
-  type GetPopoverNonDefaultedProps = 'id' | 'maxWidth' | 'delay' | 'attachToBody' | 'auto' | 'style' | 'contextTypes' | 'context' | 'isOpen';
+  type GetPopoverNonDefaultedProps =
+    | "id"
+    | "maxWidth"
+    | "delay"
+    | "attachToBody"
+    | "auto"
+    | "style"
+    | "contextTypes"
+    | "context"
+    | "isOpen";
   export type GetPopoverPropsReturn = Required<
-    Pick<Popover.PopoverSettings, Exclude<
-      keyof Popover.PopoverSettings,
-      GetPopoverNonDefaultedProps
-    >>
-  > & Pick<Popover.PopoverSettings, GetPopoverNonDefaultedProps>
+    Pick<
+      Popover.PopoverSettings,
+      Exclude<keyof Popover.PopoverSettings, GetPopoverNonDefaultedProps>
+    >
+  > &
+    Pick<Popover.PopoverSettings, GetPopoverNonDefaultedProps>;
 
   export type PopoverElement = {
     width: number;
