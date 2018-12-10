@@ -106,6 +106,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
         up = clientY > this.lastY;
         this.lastY = clientY;
       } else if (e instanceof WheelEvent) {
+        // @ts-ignore: not sure why `wheelDelta` is not there
         up = e.wheelDelta > 0;
       }
       const down = !up;

@@ -84,6 +84,24 @@ export namespace Popover {
     context?: object;
   };
 
+  type GetPopoverNonDefaultedProps =
+    | "id"
+    | "maxWidth"
+    | "delay"
+    | "attachToBody"
+    | "auto"
+    | "style"
+    | "contextTypes"
+    | "context"
+    | "isOpen";
+  export type GetPopoverPropsReturn = Required<
+    Pick<
+      Popover.PopoverSettings,
+      Exclude<keyof Popover.PopoverSettings, GetPopoverNonDefaultedProps>
+    >
+  > &
+    Pick<Popover.PopoverSettings, GetPopoverNonDefaultedProps>;
+
   export type PopoverElement = {
     width: number;
     height: number;
@@ -237,7 +255,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   // UTILS
 
   // extend with default values
-  getPopoverProps = (_props?: Popover.Props) => {
+  getPopoverProps = (_props?: Popover.Props): Popover.GetPopoverPropsReturn => {
     const props = _props || this.props;
     return {
       position: "top" as Popover.Position,
