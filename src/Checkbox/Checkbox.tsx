@@ -73,8 +73,18 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
           onClick={this.onToggleCheckbox}
         >
           {value && (
-            <svg viewBox="0 0 28 28">
-              <path d="M26.109 8.844q0 0.625-0.438 1.062l-13.438 13.438q-0.438 0.438-1.062 0.438t-1.062-0.438l-7.781-7.781q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.609 10.25-10.266q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.437 0.438 1.062z" />
+            <svg viewBox="0 0 19 14">
+              <defs>
+                <path
+                  id="brc-check-icon"
+                  d="M20.889 7.961l-10.53 10.53a1.733 1.733 0 0 1-2.453 0l-4.399-4.397A1.736 1.736 0 0 1 5.96 11.64l3.172 3.172 9.304-9.303a1.733 1.733 0 0 1 2.453 0 1.733 1.733 0 0 1 0 2.452"
+                />
+              </defs>
+              <use
+                fillRule="evenodd"
+                transform="translate(-3 -5)"
+                xlinkHref="#brc-check-icon"
+              />
             </svg>
           )}
         </FlexView>
