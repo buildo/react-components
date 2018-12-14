@@ -32,6 +32,7 @@ pipeline:
       - git config --global push.default simple
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
+      - git remote origin set-url "https://${CHANGELOG_GITHUB_TOKEN}@github.com/$DRONE_REPO"
       - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish
     when:
       branch: master
