@@ -6,11 +6,16 @@ import { TimePickerField } from "./TimePickerField";
 import { ToggleField } from "./ToggleField";
 import { DatePickerField } from "./DatePickerField";
 import { TextareaField } from "./TextareaField";
+import { CheckboxField } from "./CheckboxField";
+
 export default FormField;
-export { InputField };
-export { DropdownField };
-export { PasswordInputField };
-export { TimePickerField };
-export { ToggleField };
-export { DatePickerField };
-export { TextareaField };
+export {
+  InputField,
+  DropdownField,
+  PasswordInputField,
+  TimePickerField,
+  ToggleField,
+  DatePickerField,
+  TextareaField,
+  CheckboxField
+};
