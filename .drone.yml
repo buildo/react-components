@@ -32,8 +32,6 @@ pipeline:
       - git config --global push.default simple
       - git config --global user.name "nemobot";
       - git config --global user.email "our-bots@buildo.io";
-      - git remote set-url origin https://$CHANGELOG_GITHUB_TOKEN@github.com/buildo/react-components
-      - echo https://$CHANGELOG_GITHUB_TOKEN@github.com/buildo/react-components
       - node_modules/smooth-release/smooth-release --changelog --token=$CHANGELOG_GITHUB_TOKEN --no-validations --no-gh-release --no-npm-version --no-npm-publish
     when:
       branch: master
