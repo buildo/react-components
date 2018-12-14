@@ -103,8 +103,10 @@ const propsInvariants: Array<(props: Button.Props) => boolean> = [
 export const ButtonPropTypes = {
   buttonState: t.maybe(ButtonState),
   onClick: t.Function,
-  label: t.maybe(t.union([t.String, t.dict(ButtonState, t.String)])),
-  icon: t.maybe(t.union([ReactChild, t.dict(ButtonState, ReactChild)])),
+  label: t.maybe(t.union([t.String, t.dict(ButtonState, t.maybe(t.String))])),
+  icon: t.maybe(
+    t.union([ReactChild, t.dict(ButtonState, t.maybe(ReactChild))])
+  ),
   children: t.maybe(t.String),
   type: t.maybe(ButtonType),
   primary: t.maybe(t.Boolean),
