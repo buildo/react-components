@@ -7,6 +7,8 @@ $border-color: $brc-silver !default;
 $border-color-checked: $brc-waterBlue !default;
 $border-color-focused: $border-color-checked !default;
 
+$background-checked: $brc-waterBlue !default;
+
 $border-width: 1px !default;
 $border-radius: 2px !default;
 
@@ -29,7 +31,7 @@ $opacity-disabled: 0.6 !default;
     }
 
     > svg {
-      fill: $border-color-checked;
+      fill: $brc-white;
       height: 9px;
     }
   }
@@ -45,6 +47,7 @@ $opacity-disabled: 0.6 !default;
   &.is-checked {
     > .checkbox-ui {
       border-color: $border-color-checked;
+      background: $background-checked;
     }
 
     > .text {
