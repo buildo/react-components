@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = { value: "first" };
+initialState = {};
 
 const onChange = value => setState({ value });
 

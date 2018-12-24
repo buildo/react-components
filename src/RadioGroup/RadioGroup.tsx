@@ -12,7 +12,7 @@ export type RadioGroupRequiredProps = {
   /** name for the group */
   name: string;
   /** value */
-  value: string;
+  value?: string;
   /** onChange */
   onChange: (value: string) => void;
   /** text displayed on the right of the checkbox */
@@ -32,7 +32,7 @@ export namespace RadioGroup {
 }
 
 export const Props = {
-  value: t.String,
+  value: t.maybe(t.String),
   onChange: t.Function,
   options: t.list(t.interface({ label: t.String, value: t.String })),
   disabled: t.maybe(t.Boolean),
