@@ -61,6 +61,7 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
         shrink={false}
         id={id}
         style={style}
+        role="radiogroup"
         className={cx(
           "radio-group",
           {
@@ -79,7 +80,6 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
           >
             <input
               type="radio"
-              role="radio"
               name={name}
               value={option.value}
               onChange={this.onChange(option)}

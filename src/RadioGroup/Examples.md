@@ -22,5 +22,6 @@ const options = [
 
 <form className="ui form">
   <RadioGroup value={state.value} onChange={onChange} options={options} />
+  <div style={{ marginTop: 20 }}>Selected: {state.value}</div>
 </form>;
 ```
