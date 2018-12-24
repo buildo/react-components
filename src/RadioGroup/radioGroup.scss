@@ -15,7 +15,6 @@ $opacity-disabled: 0.6 !default;
   .radio-group-option {
     cursor: pointer;
     height: 16px;
-    margin-right: 16px;
 
     svg {
       width: 16px;
@@ -68,5 +67,13 @@ $opacity-disabled: 0.6 !default;
     .radio-group-label {
       cursor: auto;
     }
+  }
+
+  &:not(.is-horizontal) .radio-group-option:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &.is-horizontal .radio-group-option {
+    margin-right: 16px;
   }
 }

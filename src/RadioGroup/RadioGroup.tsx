@@ -23,6 +23,8 @@ export type RadioGroupRequiredProps = {
 export type RadioGroupDefaultProps = {
   /** true if disabled */
   disabled: boolean;
+  /** true if should layout options horizontally */
+  horizontal: boolean;
 };
 
 export namespace RadioGroup {
@@ -34,6 +36,7 @@ export const Props = {
   onChange: t.Function,
   options: t.list(t.interface({ label: t.String, value: t.String })),
   disabled: t.maybe(t.Boolean),
+  horizontal: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   id: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -42,7 +45,8 @@ export const Props = {
 @props(Props)
 export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
   static defaultProps: RadioGroupDefaultProps = {
-    disabled: false
+    disabled: false,
+    horizontal: false
   };
 
   onChange = (option: RadioOption): React.EventHandler<any> => {
@@ -55,17 +59,27 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
   };
 
   render() {
-    const { id, className, style, disabled, options, value } = this.props;
+    const {
+      id,
+      className,
+      style,
+      disabled,
+      options,
+      value,
+      horizontal
+    } = this.props;
     return (
       <FlexView
         shrink={false}
         id={id}
         style={style}
+        column={horizontal}
         role="radiogroup"
         className={cx(
           "radio-group",
           {
-            "is-disabled": disabled
+            "is-disabled": disabled,
+            "is-horizontal": horizontal
           },
           className
         )}
