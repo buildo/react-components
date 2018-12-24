@@ -7,6 +7,7 @@ import { ToggleField } from "./ToggleField";
 import { DatePickerField } from "./DatePickerField";
 import { TextareaField } from "./TextareaField";
 import { CheckboxField } from "./CheckboxField";
+import { RadioGroupField } from "./RadioGroupField";
 
 export default FormField;
 export {
@@ -17,5 +18,6 @@ export {
   ToggleField,
   DatePickerField,
   TextareaField,
-  CheckboxField
+  CheckboxField,
+  RadioGroupField
 };

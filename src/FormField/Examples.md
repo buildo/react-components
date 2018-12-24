@@ -8,7 +8,8 @@ initialState = {
   textarea: "",
   password: "",
   toggle: false,
-  checkbox: false
+  checkbox: false,
+  radioGroup: undefined
 };
 
 function onChange(field, value) {
@@ -55,6 +56,31 @@ function onChange(field, value) {
         label="Toggle text"
         value={state.toggle}
         onChange={value => onChange("toggle", value)}
+        required
+      />
+    </FlexView>
+  </FlexView>
+  <FlexView marginBottom={40}>
+    <FlexView>
+      <RadioGroupField
+        id="radio-group"
+        label="LABEL"
+        options={[
+          {
+            label: "First",
+            value: "first"
+          },
+          {
+            label: "Second",
+            value: "second"
+          },
+          {
+            label: "Other",
+            value: "other"
+          }
+        ]}
+        value={state.radioGroup}
+        onChange={value => onChange("radioGroup", value)}
         required
       />
     </FlexView>
