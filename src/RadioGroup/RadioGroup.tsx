@@ -9,8 +9,6 @@ export type RadioOption = {
 };
 
 export type RadioGroupRequiredProps = {
-  /** name for the group */
-  name: string;
   /** value */
   value?: string;
   /** onChange */
@@ -50,12 +48,14 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
   onChange = (option: RadioOption): React.EventHandler<any> => {
     return e => {
       e.stopPropagation();
-      this.props.onChange(option.value);
+      if (!this.props.disabled) {
+        this.props.onChange(option.value);
+      }
     };
   };
 
   render() {
-    const { id, className, style, disabled, options, name, value } = this.props;
+    const { id, className, style, disabled, options, value } = this.props;
     return (
       <FlexView
         shrink={false}
@@ -78,13 +78,23 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
               "is-checked": option.value === value
             })}
           >
-            <input
-              type="radio"
-              name={name}
-              value={option.value}
-              onChange={this.onChange(option)}
-              checked={option.value === value}
-            />
+            <svg viewBox="0 0 16 16" onClick={this.onChange(option)}>
+              <g>
+                <circle
+                  className="radio-group-circle-outer"
+                  cx="8"
+                  cy="8"
+                  r="8"
+                />
+                <circle className="radio-group-circle" cx="8" cy="8" r="7" />
+                <circle
+                  className="radio-group-circle-inner"
+                  cx="8"
+                  cy="8"
+                  r="5"
+                />
+              </g>
+            </svg>
             <FlexView
               className="radio-group-label"
               onClick={this.onChange(option)}

@@ -6,6 +6,9 @@ $font-weight: $brc-semibold !default;
 $color: $brc-darkGreyBlue !default;
 $color-checked: $brc-darkGreyBlue !default;
 
+$input-color: $brc-silver !default;
+$input-color-checked: $brc-azure !default;
+
 $opacity-disabled: 0.6 !default;
 
 .radio-group {
@@ -14,21 +17,44 @@ $opacity-disabled: 0.6 !default;
     height: 16px;
     margin-right: 16px;
 
+    svg {
+      width: 16px;
+      height: 16px;
+
+      .radio-group-circle-outer {
+        fill: $input-color;
+      }
+
+      .radio-group-circle {
+        fill: white;
+      }
+
+      .radio-group-circle-inner {
+        visibility: hidden;
+      }
+    }
+
     .radio-group-label {
-      cursor: pointer;
       padding-left: 4px;
       font-size: $font-size;
       font-weight: $font-weight;
       color: $color;
     }
 
-    input {
-      cursor: pointer;
-    }
-
     &.is-checked {
       .radio-group-label {
         color: $color-checked;
+      }
+
+      svg {
+        .radio-group-circle-outer {
+          fill: $input-color-checked;
+        }
+
+        .radio-group-circle-inner {
+          visibility: visible;
+          fill: $input-color-checked;
+        }
       }
     }
   }
@@ -37,10 +63,6 @@ $opacity-disabled: 0.6 !default;
     .radio-group-option {
       cursor: not-allowed;
       opacity: $opacity-disabled;
-    }
-
-    input {
-      cursor: not-allowed;
     }
 
     .radio-group-label {
