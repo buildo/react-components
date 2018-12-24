@@ -1,0 +1,50 @@
+@import "../utils/theme/variables.scss";
+
+$font-size: 14px !default;
+$font-weight: $brc-semibold !default;
+
+$color: $brc-darkGreyBlue !default;
+$color-checked: $brc-darkGreyBlue !default;
+
+$opacity-disabled: 0.6 !default;
+
+.radio-group {
+  .radio-group-option {
+    cursor: pointer;
+    height: 16px;
+    margin-right: 16px;
+
+    .radio-group-label {
+      cursor: pointer;
+      padding-left: 4px;
+      font-size: $font-size;
+      font-weight: $font-weight;
+      color: $color;
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    &.is-checked {
+      .radio-group-label {
+        color: $color-checked;
+      }
+    }
+  }
+
+  &.is-disabled {
+    .radio-group-option {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+
+    input {
+      cursor: not-allowed;
+    }
+
+    .radio-group-label {
+      cursor: auto;
+    }
+  }
+}
