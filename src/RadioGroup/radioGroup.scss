@@ -70,7 +70,7 @@ $opacity-disabled: 0.6 !default;
   }
 
   &:not(.is-horizontal) .radio-group-option:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   &.is-horizontal .radio-group-option:not(:last-child) {
