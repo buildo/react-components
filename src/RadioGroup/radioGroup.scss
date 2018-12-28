@@ -1,0 +1,79 @@
+@import "../utils/theme/variables.scss";
+
+$font-size: 14px !default;
+$font-weight: $brc-semibold !default;
+
+$color: $brc-darkGreyBlue !default;
+$color-checked: $brc-darkGreyBlue !default;
+
+$input-color: $brc-silver !default;
+$input-color-checked: $brc-azure !default;
+
+$opacity-disabled: 0.6 !default;
+
+.radio-group {
+  .radio-group-option {
+    cursor: pointer;
+    height: 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+
+      .radio-group-circle-outer {
+        fill: $input-color;
+      }
+
+      .radio-group-circle {
+        fill: white;
+      }
+
+      .radio-group-circle-inner {
+        visibility: hidden;
+      }
+    }
+
+    .radio-group-label {
+      padding-left: 4px;
+      font-size: $font-size;
+      font-weight: $font-weight;
+      color: $color;
+    }
+
+    &.is-checked {
+      .radio-group-label {
+        color: $color-checked;
+      }
+
+      svg {
+        .radio-group-circle-outer {
+          fill: $input-color-checked;
+        }
+
+        .radio-group-circle-inner {
+          visibility: visible;
+          fill: $input-color-checked;
+        }
+      }
+    }
+  }
+
+  &.is-disabled {
+    .radio-group-option {
+      cursor: not-allowed;
+      opacity: $opacity-disabled;
+    }
+
+    .radio-group-label {
+      cursor: auto;
+    }
+  }
+
+  &:not(.is-horizontal) .radio-group-option:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &.is-horizontal .radio-group-option:not(:last-child) {
+    margin-right: 16px;
+  }
+}

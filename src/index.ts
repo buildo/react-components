@@ -64,6 +64,8 @@ import Textarea from "./Textarea";
 export { Textarea };
 import Checkbox from "./Checkbox";
 export { Checkbox };
+import RadioGroup from "./RadioGroup";
+export { RadioGroup };
 import FormField from "./FormField";
 export { FormField };
 import {
@@ -74,7 +76,8 @@ import {
   ToggleField,
   DatePickerField,
   TextareaField,
-  CheckboxField
+  CheckboxField,
+  RadioGroupField
 } from "./FormField";
 export {
   InputField,
@@ -84,5 +87,6 @@ export {
   ToggleField,
   DatePickerField,
   TextareaField,
-  CheckboxField
+  CheckboxField,
+  RadioGroupField
 };
