@@ -9,7 +9,7 @@ initialState = {
   password: "",
   toggle: false,
   checkbox: false,
-  radioGroup: undefined
+  radioGroup: "first"
 };
 
 function onChange(field, value) {
@@ -81,7 +81,6 @@ function onChange(field, value) {
         ]}
         value={state.radioGroup}
         onChange={value => onChange("radioGroup", value)}
-        required
       />
     </FlexView>
   </FlexView>
