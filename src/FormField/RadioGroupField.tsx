@@ -64,7 +64,10 @@ export class RadioGroupField extends React.PureComponent<
         {radioGroupRenderer ? (
           radioGroupRenderer(radioGroupProps)
         ) : (
-          <RadioGroup {...radioGroupProps} />
+          <RadioGroup
+            {...radioGroupProps}
+            style={{ marginTop: "16px", ...radioGroupProps.style }}
+          />
         )}
       </FormField>
     );
