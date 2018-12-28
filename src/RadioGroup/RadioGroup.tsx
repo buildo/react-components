@@ -73,7 +73,7 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
         shrink={false}
         id={id}
         style={style}
-        column={horizontal}
+        column={!horizontal}
         role="radiogroup"
         className={cx(
           "radio-group",
