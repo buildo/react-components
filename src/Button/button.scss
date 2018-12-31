@@ -152,16 +152,28 @@ $disabled-negative-color: $negative-color !default;
     background: $positive-background;
     color: $positive-color;
 
+    .default-success-icon {
+      fill: $positive-color;
+    }
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $positive-background-hover;
       border: $positive-border-width solid $positive-border-color-hover;
       color: $positive-color-hover;
+
+      .default-success-icon {
+        fill: $positive-color-hover;
+      }
     }
 
     &.is-not-allowed {
       border: $positive-border-width solid $disabled-positive-border-color;
       background: $disabled-positive-background;
       color: $disabled-positive-color;
+
+      .default-success-icon {
+        fill: $disabled-positive-color;
+      }
     }
   }
 
@@ -171,16 +183,28 @@ $disabled-negative-color: $negative-color !default;
     background: $negative-background;
     color: $negative-color;
 
+    .default-error-icon {
+      fill: $negative-color;
+    }
+
     &:hover:not(.is-not-allowed):not(.is-processing) {
       background: $negative-background-hover;
       border: $negative-border-width solid $negative-border-color-hover;
       color: $negative-color-hover;
+
+      .default-error-icon {
+        fill: $negative-color-hover;
+      }
     }
 
     &.is-not-allowed {
       border: $negative-border-width solid $disabled-negative-border-color;
       background: $disabled-negative-background;
       color: $disabled-negative-color;
+
+      .default-error-icon {
+        fill: $disabled-negative-color;
+      }
     }
   }
 
