@@ -34,6 +34,8 @@ export const Props = {
   value: t.Boolean,
   onChange: t.Function,
   text: t.maybe(t.String),
+  onFocus: t.maybe(t.Function),
+  onBlur: t.maybe(t.Function),
   disabled: t.maybe(t.Boolean),
   readOnly: t.maybe(t.Boolean),
   className: t.maybe(t.String),
