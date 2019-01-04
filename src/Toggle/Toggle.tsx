@@ -12,14 +12,13 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type ToggleDefaultProps = {
-  /** the current value (`true` if checked) */
-  value: boolean;
-};
+export type ToggleDefaultProps = {};
 
 export type ToggleRequiredProps = {
+  /** the current value (`true` if checked) */
+  value: boolean;
   /** callback called when user clicks on the Toggle */
-  onChange?: (value: boolean) => void;
+  onChange: (value: boolean) => void;
   /** disable the onClick callback and renders with reduced opacity */
   disabled?: boolean;
   /** The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2` */
@@ -39,10 +38,6 @@ type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 @props(Props)
 export class Toggle extends React.PureComponent<Toggle.Props> {
   private checkbox: HTMLInputElement | null;
-
-  static defaultProps: ToggleDefaultProps = {
-    value: false
-  };
 
   componentDidMount() {
     this.updateCheckbox(this.props as ToggleDefaultedProps);
