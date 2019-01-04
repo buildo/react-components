@@ -59,6 +59,7 @@ export class CheckboxField extends React.PureComponent<CheckboxField.Props> {
         disabled={disabled}
         id={id}
         horizontal
+        onLabelClick={() => checkboxProps.onChange(!checkboxProps.value)}
       >
         {checkboxRenderer ? (
           checkboxRenderer(checkboxProps)

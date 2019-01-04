@@ -4,7 +4,7 @@ exports[`Toggle renders correctly when off 1`] = `
 "<Toggle value={false}>
   <div className=\\"toggle\\" style={[undefined]}>
     <input className=\\"toggle-input\\" type=\\"checkbox\\" value=\\"false\\" readOnly={true} />
-    <label className=\\"toggle-button\\" onClick={[Function]} style={[undefined]} />
+    <label tabIndex={0} className=\\"toggle-button\\" onClick={[Function]} onMouseDown={[Function: onMouseDown]} onKeyDown={[Function]} style={[undefined]} />
   </div>
 </Toggle>"
 `;
@@ -13,7 +13,7 @@ exports[`Toggle renders correctly when on 1`] = `
 "<Toggle value={true}>
   <div className=\\"toggle\\" style={[undefined]}>
     <input className=\\"toggle-input\\" type=\\"checkbox\\" value=\\"true\\" readOnly={true} />
-    <label className=\\"toggle-button\\" onClick={[Function]} style={[undefined]} />
+    <label tabIndex={0} className=\\"toggle-button\\" onClick={[Function]} onMouseDown={[Function: onMouseDown]} onKeyDown={[Function]} style={[undefined]} />
   </div>
 </Toggle>"
 `;

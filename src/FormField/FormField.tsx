@@ -19,6 +19,8 @@ export namespace FormField {
     viewProps?: View.Props;
     /** wheter the label should be put on the same line of the component */
     horizontal?: boolean;
+    /** optional callback when the field label is clicked */
+    onLabelClick?: () => void;
     /** an optional class name to pass to top level element of the component */
     className?: string;
     /** an optional style object to pass to top level element of the component */
@@ -36,6 +38,7 @@ export const Props = {
   fieldId: t.maybe(t.String),
   viewProps: t.maybe(t.Object),
   horizontal: t.maybe(t.Boolean),
+  onLabelClick: t.maybe(t.Function),
   className: t.maybe(t.String),
   style: t.maybe(t.Object),
   id: t.maybe(t.String)
@@ -52,7 +55,8 @@ export class FormField extends React.PureComponent<FormField.Props> {
       className: _className,
       fieldId,
       viewProps: _viewProps,
-      horizontal
+      horizontal,
+      onLabelClick
     } = this.props;
     const className = cx("form-field", _className, {
       "is-disabled": disabled,
@@ -68,11 +72,16 @@ export class FormField extends React.PureComponent<FormField.Props> {
         ? ({ flexDirection: "row-reverse" } as React.CSSProperties)
         : undefined
     };
+    const labelStyle: React.CSSProperties = onLabelClick
+      ? { cursor: "pointer", userSelect: "none" }
+      : {};
 
     return (
       <View {...viewProps}>
         <View className="form-field-label" vAlignContent="center" key="label">
-          <label htmlFor={fieldId}>{label}</label>
+          <label htmlFor={fieldId} onClick={onLabelClick} style={labelStyle}>
+            {label}
+          </label>
         </View>
         {children}
       </View>

@@ -12,18 +12,21 @@ export const Props = {
   style: t.maybe(t.Object)
 };
 
-export type ToggleDefaultProps = {
-  /** the current value (`true` if checked) */
-  value: boolean;
-};
+export type ToggleDefaultProps = {};
 
 export type ToggleRequiredProps = {
+  /** the current value (`true` if checked) */
+  value: boolean;
   /** callback called when user clicks on the Toggle */
-  onChange?: (value: boolean) => void;
+  onChange: (value: boolean) => void;
   /** disable the onClick callback and renders with reduced opacity */
   disabled?: boolean;
   /** The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2` */
   size?: number | string;
+  /** called when the input is focused */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  /** called when the input is blurred */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -39,10 +42,6 @@ type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 @props(Props)
 export class Toggle extends React.PureComponent<Toggle.Props> {
   private checkbox: HTMLInputElement | null;
-
-  static defaultProps: ToggleDefaultProps = {
-    value: false
-  };
 
   componentDidMount() {
     this.updateCheckbox(this.props as ToggleDefaultedProps);
@@ -80,6 +79,14 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
     onChange && onChange(!value);
   };
 
+  toggleOnSpace = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === 32) {
+      this.onButtonClick();
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  };
+
   render() {
     const { onButtonClick } = this;
 
@@ -88,6 +95,9 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
 
     const buttonProps = {
       onClick: disabled ? undefined : onButtonClick,
+      onMouseDown: (e: React.MouseEvent<HTMLLabelElement>) =>
+        e.preventDefault(), // prevents "focus" when clicking
+      onKeyDown: this.toggleOnSpace,
       style: size
         ? {
             width: size,
@@ -109,7 +119,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
           value={value.toString()}
           readOnly
         />
-        <label className="toggle-button" {...buttonProps} />
+        <label tabIndex={0} className="toggle-button" {...buttonProps} />
       </div>
     );
   }

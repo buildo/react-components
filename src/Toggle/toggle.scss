@@ -2,6 +2,7 @@
 $size: 3em !default;
 $background: $brc-cloudyGrey !default;
 $checked-background: $brc-gradientAzure !default;
+$border-color-focused: $brc-waterBlue !default;
 
 .toggle {
   &.disabled {
@@ -39,6 +40,11 @@ $checked-background: $brc-gradientAzure !default;
     outline: 0;
     cursor: pointer;
     user-select: none;
+
+    &:focus {
+      border: 1px solid $border-color-focused;
+      padding: 1px;
+    }
 
     &::after,
     &::before {
@@ -87,6 +93,10 @@ $checked-background: $brc-gradientAzure !default;
   &:checked {
     + .toggle-button {
       background: $checked-background;
+
+      &:focus {
+        box-shadow: 0 0 2px 1px $border-color-focused;
+      }
     }
   }
 }

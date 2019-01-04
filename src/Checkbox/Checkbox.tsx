@@ -10,6 +10,10 @@ export type CheckboxRequiredProps = {
   onChange: (value: boolean) => void;
   /** text displayed on the right of the checkbox */
   text?: string;
+  /** called when the input is focused */
+  onFocus?: React.FocusEventHandler<HTMLElement>;
+  /** called when the input is blurred */
+  onBlur?: React.FocusEventHandler<HTMLElement>;
   className?: string;
   id?: string;
   style?: React.CSSProperties;
@@ -46,8 +50,25 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
 
   onToggleCheckbox = () => this.props.onChange(!this.props.value);
 
+  toggleOnSpace = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === 32) {
+      this.onToggleCheckbox();
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  };
+
   render() {
-    const { disabled, value, id, className, text, style } = this.props;
+    const {
+      disabled,
+      value,
+      id,
+      className,
+      text,
+      style,
+      onFocus,
+      onBlur
+    } = this.props;
 
     return (
       <FlexView
@@ -68,9 +89,13 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
           shrink={false}
           vAlignContent="center"
           hAlignContent="center"
-          tabIndex={1}
           className="checkbox-ui"
+          onMouseDown={e => e.preventDefault()} // prevents "focus" when clicking
           onClick={this.onToggleCheckbox}
+          onKeyDown={this.toggleOnSpace}
+          tabIndex={0}
+          onFocus={onFocus}
+          onBlur={onBlur}
         >
           {value && (
             <svg viewBox="0 0 19 14">
