@@ -79,6 +79,14 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
     onChange && onChange(!value);
   };
 
+  toggleOnSpace = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === 32) {
+      this.onButtonClick();
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  };
+
   render() {
     const { onButtonClick } = this;
 
@@ -89,6 +97,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
       onClick: disabled ? undefined : onButtonClick,
       onMouseDown: (e: React.MouseEvent<HTMLLabelElement>) =>
         e.preventDefault(), // prevents "focus" when clicking
+      onKeyDown: this.toggleOnSpace,
       style: size
         ? {
             width: size,

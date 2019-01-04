@@ -50,6 +50,14 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
 
   onToggleCheckbox = () => this.props.onChange(!this.props.value);
 
+  toggleOnSpace = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === 32) {
+      this.onToggleCheckbox();
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  };
+
   render() {
     const {
       disabled,
@@ -84,6 +92,7 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
           className="checkbox-ui"
           onMouseDown={e => e.preventDefault()} // prevents "focus" when clicking
           onClick={this.onToggleCheckbox}
+          onKeyDown={this.toggleOnSpace}
           tabIndex={0}
           onFocus={onFocus}
           onBlur={onBlur}
