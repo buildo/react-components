@@ -20,6 +20,7 @@ $opacity-disabled: 0.6 !default;
 .checkbox {
   > .checkbox-ui {
     cursor: pointer;
+    outline: none;
     border: $border-width solid $border-color;
     border-radius: $border-radius;
     width: 16px;
@@ -49,6 +50,11 @@ $opacity-disabled: 0.6 !default;
     > .checkbox-ui {
       border-color: $border-color-checked;
       background: $background-checked;
+
+      &:focus {
+        border-color: $border-color-focused;
+        box-shadow: 0 0 2px 1px $border-color-focused;
+      }
     }
 
     > .text {
