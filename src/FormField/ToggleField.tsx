@@ -59,6 +59,7 @@ export class ToggleField extends React.PureComponent<ToggleField.Props> {
         disabled={disabled}
         id={id}
         horizontal
+        onLabelClick={() => toggleProps.onChange(!toggleProps.value)}
       >
         {toggleRenderer ? (
           toggleRenderer(toggleProps)
