@@ -87,6 +87,8 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
 
     const buttonProps = {
       onClick: disabled ? undefined : onButtonClick,
+      onMouseDown: (e: React.MouseEvent<HTMLLabelElement>) =>
+        e.preventDefault(), // prevents "focus" when clicking
       style: size
         ? {
             width: size,

@@ -82,6 +82,7 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
           vAlignContent="center"
           hAlignContent="center"
           className="checkbox-ui"
+          onMouseDown={e => e.preventDefault()} // prevents "focus" when clicking
           onClick={this.onToggleCheckbox}
           tabIndex={0}
           onFocus={onFocus}
