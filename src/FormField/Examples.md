@@ -24,7 +24,6 @@ function onChange(field, value) {
       placeholder="Type here..."
       value={state.input}
       onChange={value => onChange("input", value)}
-      required
     />
   </FlexView>
   <FlexView width={450} marginBottom={40}>
@@ -34,7 +33,6 @@ function onChange(field, value) {
       placeholder="Type here..."
       value={state.textarea}
       onChange={value => onChange("textarea", value)}
-      required
       rows={5}
     />
   </FlexView>
@@ -45,7 +43,6 @@ function onChange(field, value) {
         label="Checkbox text"
         value={state.checkbox}
         onChange={value => onChange("checkbox", value)}
-        required
       />
     </FlexView>
   </FlexView>
@@ -56,7 +53,6 @@ function onChange(field, value) {
         label="Toggle text"
         value={state.toggle}
         onChange={value => onChange("toggle", value)}
-        required
       />
     </FlexView>
   </FlexView>
@@ -96,7 +92,6 @@ function onChange(field, value) {
       dropdownRenderer={props => <Dropdown {...props} searchable />}
       onChange={value => onChange("dropdown", value)}
       placeholder="Select"
-      required
     />
   </FlexView>
   <FlexView marginBottom={40}>
@@ -124,6 +119,42 @@ function onChange(field, value) {
       label="LABEL"
       value={state.password}
       onChange={value => onChange("password", value)}
+    />
+  </FlexView>
+</FlexView>;
+```
+
+#### Required fields
+
+```js
+initialState = {
+  input: "",
+  textarea: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<FlexView column>
+  <FlexView width={450} marginBottom={40}>
+    <InputField
+      id="input-required"
+      label="LABEL"
+      placeholder="Type here..."
+      value={state.input}
+      onChange={value => onChange("input", value)}
+      required
+    />
+  </FlexView>
+  <FlexView width={450} marginBottom={40}>
+    <TextareaField
+      id="textarea-required"
+      label="LABEL"
+      placeholder="Type here..."
+      value={state.textarea}
+      onChange={value => onChange("textarea", value)}
+      rows={5}
       required
     />
   </FlexView>
