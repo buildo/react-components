@@ -8,6 +8,8 @@ export const Props = {
   onChange: t.maybe(t.Function),
   disabled: t.maybe(t.Boolean),
   size: t.maybe(t.union([t.String, t.Number])),
+  onFocus: t.maybe(t.Function),
+  onBlur: t.maybe(t.Function),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
 };
