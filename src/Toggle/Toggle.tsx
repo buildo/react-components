@@ -23,6 +23,10 @@ export type ToggleRequiredProps = {
   disabled?: boolean;
   /** The size for the Toggle in whatever unit (px, em, rem ...). It will be used to compute `width`, `height` and `border-radius` as follows: `width: size`, `height: size / 2`, `border-radius: size / 2` */
   size?: number | string;
+  /** called when the input is focused */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  /** called when the input is blurred */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -104,7 +108,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
           value={value.toString()}
           readOnly
         />
-        <label className="toggle-button" {...buttonProps} />
+        <label tabIndex={0} className="toggle-button" {...buttonProps} />
       </div>
     );
   }
