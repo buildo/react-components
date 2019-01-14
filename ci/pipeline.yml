@@ -25,7 +25,7 @@ jobs:
     resource: master
     trigger: true
   - task: test
-    file: rect-components/ci/test_config.yml
+    file: react-components/ci/test_config.yml
 
 - name: pr-test
   plan:
@@ -39,7 +39,7 @@ jobs:
       status: pending
       context: concourse
   - task: test
-    file: rect-components/ci/test_config.yml
+    file: react-components/ci/test_config.yml
     on_success:
       put: pr
       params:
