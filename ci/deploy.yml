@@ -54,6 +54,8 @@ jobs:
     trigger: true
   - task: deploy
     file: react-components/ci/deploy_showroom.yml
+    params:
+    - PRIVATE_KEY: ((private-key))
 
 
 
