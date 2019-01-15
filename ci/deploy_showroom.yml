@@ -7,7 +7,7 @@ image_resource:
 inputs:
   - name: showroom
   - name: react-components
-output:
+outputs:
   - name: showroom-build
 run:
   path: react-components/ci/deploy.sh
