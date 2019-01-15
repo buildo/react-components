@@ -6,14 +6,9 @@ image_resource:
     tag: 8
 inputs:
   - name: showroom
+  - name: react-components
+
+# this should be eventually a .sh file in the "showroom" repo
 run:
-  path: sh
-  args:
-    - -c
-    - |
-      set -e
-      cd showroom
-      yarn install --no-progress
-      yarn build
-      echo "now you should put what you just built somewhere.."
+  path: react-components/ci/deploy.sh
 
