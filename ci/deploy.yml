@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     uri: git@github.com:buildo/react-components
-    branch: 1298-continuous_deploy_after_updates
+    branch: master
     private_key: ((private-key))
 
 - name: react-autosize-textarea/master
@@ -56,7 +56,7 @@ jobs:
     file: react-components/ci/deploy_showroom.yml
   - put: showroom/master
     params:
-      repository: showroom-output
+      repository: showroom-build
 
 
 
