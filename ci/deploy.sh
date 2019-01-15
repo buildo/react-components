@@ -2,18 +2,22 @@
 
 set -e
 
-mkdir ~/.ssh
-
-echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
-
-chmod 400 ~/.ssh/id_rsa
-
 cd showroom
 
 yarn install --no-progress
 
+yarn update-components
+
 yarn build
 
-yarn deploy
+git config user.email "our-bots@buildo.io"
 
-echo "now you should put what you just built somewhere.."
+git config user.name "nemobot"
+
+git add docs yarn.lock
+
+git commit -m 'update gh-pages'
+
+cd ..
+
+cp -a showroom/* showroom-build

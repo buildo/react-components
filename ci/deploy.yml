@@ -52,10 +52,11 @@ jobs:
   - get: showroom
     resource: showroom/master
     trigger: true
-  - task: deploy
+  - task: build gh pages
     file: react-components/ci/deploy_showroom.yml
+  - put: showroom
     params:
-    - PRIVATE_KEY: ((private-key))
+      repository: showroom-output
 
 
 
