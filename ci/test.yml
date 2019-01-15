@@ -25,28 +25,7 @@ jobs:
     resource: master
     trigger: true
   - task: test
-    config: &test_config
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: node
-          tag: 8
-      inputs:
-        - name: react-components
-      caches:
-        - path: react-components/node_modules
-      run:
-        path: sh
-        args:
-          - -c
-          - |
-            set -e
-            cd react-components
-            yarn install --no-progress
-            yarn typecheck
-            yarn prettier-check
-            yarn test
+    file: react-components/ci/test_config.yml
 
 - name: pr-test
   plan:
@@ -60,8 +39,7 @@ jobs:
       status: pending
       context: concourse
   - task: test
-    config:
-      <<: *test_config
+    file: react-components/ci/test_config.yml
     on_success:
       put: pr
       params:
