@@ -12,6 +12,27 @@ resources:
     branch: master
     private_key: ((private-key))
 
+- name: react-autosize-textarea/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-autosize-textarea
+    branch: master
+    private_key: ((private-key))
+
+- name: react-cookie-banner/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-cookie-banner
+    branch: master
+    private_key: ((private-key))
+
+- name: react-flexview/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-flexview
+    branch: master
+    private_key: ((private-key))
+
 - name: pr
   type: pull-request
   source:
