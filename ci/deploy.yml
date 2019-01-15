@@ -33,6 +33,11 @@ resources:
     uri: git@github.com:buildo/showroom
     branch: master
     private_key: ((private-key))
+    git_config:
+      - name: user.email
+        value: our-bots@buildo.io
+      - name: user.name
+        value: nemobot
 
 jobs:
 - name: deploy-showroom
