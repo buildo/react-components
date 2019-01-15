@@ -9,4 +9,4 @@ inputs:
 caches:
   - path: react-components/node_modules
 run:
-  path: react-components/ci/test.sh
+  path: react-components/ci/tasks/test.sh

@@ -33,11 +33,6 @@ resources:
     uri: git@github.com:buildo/showroom
     branch: master
     private_key: ((private-key))
-    git_config:
-      - name: user.email
-        value: our-bots@buildo.io
-      - name: user.name
-        value: nemobot
 
 jobs:
 - name: deploy-showroom
@@ -57,8 +52,8 @@ jobs:
   - get: showroom
     resource: showroom/master
     trigger: true
-  - task: build gh pages
-    file: react-components/ci/deploy_showroom.yml
+  - task: build showroom
+    file: react-components/ci/tasks/build_showroom.yml
   - put: showroom/master
     params:
       repository: showroom-build

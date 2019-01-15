@@ -10,5 +10,5 @@ inputs:
 outputs:
   - name: showroom-build
 run:
-  path: react-components/ci/deploy.sh
+  path: react-components/ci/tasks/build_showroom.sh
 
