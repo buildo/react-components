@@ -7,4 +7,13 @@ image_resource:
 inputs:
   - name: showroom
 run:
-  path: react-components/ci/deploy.sh
+  path: sh
+  args:
+    - -c
+    - |
+      set -e
+      cd showroom
+      yarn install --no-progress
+      yarn build
+      echo "now you should put what you just built somewhere.."
+
