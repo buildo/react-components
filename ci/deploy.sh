@@ -20,4 +20,4 @@ git commit -m 'update gh-pages'
 
 cd ..
 
-cp -a showroom/* showroom-build
+cp -a showroom/. showroom-build
