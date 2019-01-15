@@ -1,0 +1,67 @@
+#######################
+# resources
+#######################
+
+resources:
+- name: react-components/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-components
+    branch: master
+    private_key: ((private-key))
+
+- name: react-autosize-textarea/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-autosize-textarea
+    branch: master
+    private_key: ((private-key))
+
+- name: react-cookie-banner/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-cookie-banner
+    branch: master
+    private_key: ((private-key))
+
+- name: react-flexview/master
+  type: git
+  source:
+    uri: git@github.com:buildo/react-flexview
+    branch: master
+    private_key: ((private-key))
+
+- name: showroom/master
+  type: git
+  source:
+    uri: git@github.com:buildo/showroom
+    branch: master
+    private_key: ((private-key))
+
+#######################
+# jobs
+#######################
+
+jobs:
+- name: deploy-showroom
+  plan:
+  - get: react-components
+    resource: react-components/master
+    trigger: true
+  - get: react-autosize-textarea
+    resource: react-autosize-textarea/master
+    trigger: true
+  - get: react-cookie-banner
+    resource: react-cookie-banner/master
+    trigger: true
+  - get: react-flexview
+    resource: react-flexview/master
+    trigger: true
+  - get: showroom
+    resource: showroom/master
+    trigger: true
+  - task: deploy
+    file: react-components/ci/deploy_showroom.yml
+
+
+
