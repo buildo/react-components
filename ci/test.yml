@@ -5,7 +5,7 @@ resource_types:
     repository: teliaoss/github-pr-resource
 
 resources:
-- name: master
+- name: react-components/master
   type: git
   source:
     uri: git@github.com:buildo/react-components
@@ -22,7 +22,7 @@ jobs:
 - name: test
   plan:
   - get: react-components
-    resource: master
+    resource: react-components/master
     trigger: true
   - task: test
     file: react-components/ci/test_config.yml
