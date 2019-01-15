@@ -1,16 +1,8 @@
-#######################
-# resource types
-#######################
-
 resource_types:
 - name: pull-request
   type: docker-image
   source:
     repository: teliaoss/github-pr-resource
-
-#######################
-# resources
-#######################
 
 resources:
 - name: react-components/master
@@ -25,10 +17,6 @@ resources:
   source:
     repository: buildo/react-components
     access_token: ((github-token))
-
-#######################
-# jobs
-#######################
 
 jobs:
 - name: test
