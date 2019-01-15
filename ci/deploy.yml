@@ -7,7 +7,7 @@ resources:
   type: git
   source:
     uri: git@github.com:buildo/react-components
-    branch: 1298-continuous_deploy_after_updates #change to "master" before pushing!!
+    branch: master
     private_key: ((private-key))
 
 - name: react-autosize-textarea/master
