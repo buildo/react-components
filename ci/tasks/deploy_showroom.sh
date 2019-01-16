@@ -16,6 +16,8 @@ yarn update-components
 
 yarn build
 
+echo "why is this not echoed?"
+
 git status
 
 git config user.email our-bots@buildo.io
