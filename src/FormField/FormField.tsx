@@ -63,14 +63,16 @@ export class FormField extends React.PureComponent<FormField.Props> {
       "is-required": required,
       "is-horizontal": horizontal
     });
+    const viewStyle: React.CSSProperties = {
+      flexDirection: horizontal ? "row-reverse" : undefined,
+      ...(_viewProps || {}).style
+    };
     const viewProps = {
       grow: !horizontal,
       column: !horizontal,
       ..._viewProps,
       className,
-      style: horizontal
-        ? ({ flexDirection: "row-reverse" } as React.CSSProperties)
-        : undefined
+      style: viewStyle
     };
     const labelStyle: React.CSSProperties = onLabelClick
       ? { cursor: "pointer", userSelect: "none" }
