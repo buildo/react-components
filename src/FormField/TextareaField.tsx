@@ -1,12 +1,12 @@
 import * as React from "react";
-import { props, t, ReactChild } from "../utils";
+import { props, t, ReactChild, ObjectOmit } from "../utils";
 import * as cx from "classnames";
 import View from "react-flexview";
 import Textarea from "../Textarea";
 import { FormField } from "./FormField";
 
 export namespace TextareaField {
-  export type Props = {
+  type FieldProps = {
     /** the label for the field */
     label: JSX.Element | string;
     /** whether the field is required */
@@ -21,7 +21,9 @@ export namespace TextareaField {
     style?: React.CSSProperties;
     /** an optional id passed to the input component */
     id?: string;
-  } & Textarea.Props;
+  };
+
+  export type Props = FieldProps & ObjectOmit<Textarea.Props, keyof FieldProps>;
 }
 
 export const Props = {
