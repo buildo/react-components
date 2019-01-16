@@ -2,12 +2,6 @@
 
 set -e
 
-mkdir ~/.ssh
-
-echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
-
-chmod 400 ~/.ssh/id_rsa
-
 cd showroom
 
 yarn install --no-progress
@@ -28,6 +22,6 @@ git add docs yarn.lock
 
 git commit -m 'update gh-pages [skip ci]'
 
-# we can't use the concourse resource to 'put' due to: https://github.com/concourse/git-resource/issues/196
-git push
+cd ..
 
+cp -a showroom/. showroom-build
