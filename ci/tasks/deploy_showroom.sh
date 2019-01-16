@@ -16,6 +16,8 @@ yarn update-components
 
 yarn build
 
+git status
+
 git config user.email our-bots@buildo.io
 
 git config user.name nemobot
