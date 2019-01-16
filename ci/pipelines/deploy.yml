@@ -33,8 +33,6 @@ resources:
     uri: git@github.com:buildo/showroom
     branch: master
     private_key: ((private-key))
-    ignore_paths:
-    - docs # this is a workaround to avoid infinite trigger loops: https://github.com/concourse/git-resource/issues/196
 
 jobs:
 - name: deploy-showroom
@@ -55,10 +53,7 @@ jobs:
     resource: showroom/master
     trigger: true
   - task: build showroom
-    file: react-components/ci/tasks/build_showroom.yml
-  - put: showroom/master
+    file: react-components/ci/tasks/deploy_showroom.yml
     params:
-      repository: showroom-build
-
-
+      PRIVATE_KEY: ((private-key))
 
