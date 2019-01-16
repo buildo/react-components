@@ -1,12 +1,12 @@
 import * as React from "react";
-import { props, t, ReactChild } from "../utils";
+import { props, t, ReactChild, ObjectOmit } from "../utils";
 import * as cx from "classnames";
 import View from "react-flexview";
 import { PasswordInput } from "../Input";
 import { FormField } from "./FormField";
 
 export namespace PasswordInputField {
-  export type Props = {
+  type FieldProps = {
     /** the label for the field */
     label: JSX.Element | string;
     /** whether the field is required */
@@ -21,7 +21,9 @@ export namespace PasswordInputField {
     style?: React.CSSProperties;
     /** an optional id passed to the input component */
     id?: string;
-  } & PasswordInput.Props;
+  };
+  export type Props = FieldProps &
+    ObjectOmit<PasswordInput.Props, keyof FieldProps>;
 }
 
 export const Props = {
