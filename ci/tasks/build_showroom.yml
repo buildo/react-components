@@ -1,0 +1,14 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+    tag: 8
+inputs:
+  - name: showroom
+  - name: react-components
+outputs:
+  - name: showroom-build
+run:
+  path: react-components/ci/tasks/build_showroom.sh
+
