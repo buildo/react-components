@@ -1,0 +1,37 @@
+@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
+@import "../utils/theme/variables.scss";
+
+.dropdown-list {
+  .dropdown {
+    margin-right: 20px;
+    min-width: 200px;
+  }
+}
+
+.dropdown {
+  .Select-arrow {
+    margin-top: 1px;
+    border: 0;
+    height: auto;
+    width: auto;
+    color: $brc-coolGrey;
+    font-size: 8px !important;
+
+    @include display_flex();
+    @include flex_flex-direction(row);
+    @include flex_align-items(center);
+
+    &::before {
+      content: "\e910";
+      font-family: "icomoon";
+    }
+  }
+
+  &.is-open {
+    .Select-arrow {
+      &::before {
+        content: "\e90f";
+      }
+    }
+  }
+}
