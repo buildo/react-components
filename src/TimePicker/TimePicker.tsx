@@ -82,7 +82,7 @@ const formatTime = ({ hours, minutes, timeFormat }: TimePicker.TimeAndFormat) =>
     ? formatTime12({ hours, minutes })
     : formatTime24({ hours, minutes });
 
-const toOption = (time: TimePicker.TimeAndFormat): TimeDropdownOption => ({
+const toOption = (time: TimePicker.TimeAndFormat) => ({
   time,
   value: formatTime24(time),
   label: formatTime(time)
@@ -191,7 +191,7 @@ type MakeOptionsInput = {
 const makeOptions = (
   { minTime, maxTime, timeFormat, userValue }: MakeOptionsInput,
   inputValue: string
-): TimeDropdownOption[] => {
+) => {
   const time = parseInTimeFormat(inputValue, timeFormat);
   const selectedValue =
     userValue && userValue !== inputError
@@ -257,11 +257,6 @@ export namespace TimePicker {
   export type Props = RequiredProps & Partial<DefaultProps>;
 }
 type TimePickerDefaultedProps = RequiredProps & DefaultProps;
-type TimeDropdownOption = {
-  time: TimePicker.TimeAndFormat;
-  value: string;
-  label: string;
-};
 
 @props(Props)
 export class TimePicker extends React.Component<
@@ -279,10 +274,10 @@ export class TimePicker extends React.Component<
 
   state = { inputValue: "" };
 
-  _onChange = (value?: TimeDropdownOption) => {
+  _onChange = (value?: string) => {
     if (value) {
       // interface with component user is always in H24
-      const time = parseInTimeFormat(value.value, H24);
+      const time = parseInTimeFormat(value, H24);
       this.props.onChange(time);
     } else {
       this.props.onChange();
@@ -303,8 +298,8 @@ export class TimePicker extends React.Component<
       searchable,
       placeholder,
       menuPosition,
-      disabled
-      // timeFormatter: _timeFormatter
+      disabled,
+      timeFormatter: _timeFormatter
     } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
@@ -316,25 +311,24 @@ export class TimePicker extends React.Component<
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
 
-    // const timeFormatter = _timeFormatter
-    //   ? (o: any) => _timeFormatter(o.time)
-    //   : undefined;
+    const timeFormatter = _timeFormatter
+      ? (o: any) => _timeFormatter(o.time)
+      : undefined; // TODO(typo)
 
     return (
       <Dropdown
         {...{ id, className, style }}
-        isSearchable={searchable}
-        value={options.find(o => o.value === value)}
+        searchable={searchable}
+        value={value}
         onChange={onChange}
         options={options}
-        // can't we just format the options directly?
-        // valueRenderer={timeFormatter}
-        // optionRenderer={timeFormatter}
+        valueRenderer={timeFormatter}
+        optionRenderer={timeFormatter}
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
         menuPosition={menuPosition}
-        isDisabled={disabled}
+        disabled={disabled}
       />
     );
   }

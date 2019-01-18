@@ -6,7 +6,7 @@ import Dropdown from "../Dropdown";
 import { FormField } from "./FormField";
 
 export namespace DropdownField {
-  export type Props<OptionType> = {
+  export type Props = {
     /** the label for the field */
     label: JSX.Element | string;
     /** whether the field is required */
@@ -14,14 +14,14 @@ export namespace DropdownField {
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props;
     /** An optional custom renderer for Dropdown */
-    dropdownRenderer?: (props: Dropdown.Props<OptionType>) => JSX.Element;
+    dropdownRenderer?: (props: Dropdown.Props) => JSX.Element;
     /** an optional class name to pass to top level element of the component */
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
     /** an optional id passed to the input component */
     id?: string;
-  } & Dropdown.Props<OptionType>;
+  } & Dropdown.Props;
 }
 
 export const Props = {
@@ -32,9 +32,7 @@ export const Props = {
 };
 
 @props(Props, { strict: false })
-export class DropdownField<OptionType> extends React.PureComponent<
-  DropdownField.Props<OptionType>
-> {
+export class DropdownField extends React.PureComponent<DropdownField.Props> {
   render() {
     const {
       label,
@@ -42,14 +40,14 @@ export class DropdownField<OptionType> extends React.PureComponent<
       className: _className,
       id,
       viewProps,
-      isDisabled,
+      disabled,
       dropdownRenderer,
       ..._dropdownProps
     } = this.props;
     const className = cx("dropdown-field", _className);
     const dropdownProps = {
       ..._dropdownProps,
-      isDisabled,
+      disabled,
       id
     };
 
@@ -60,7 +58,7 @@ export class DropdownField<OptionType> extends React.PureComponent<
         className={className}
         fieldId={id}
         viewProps={viewProps}
-        disabled={isDisabled}
+        disabled={disabled}
       >
         {dropdownRenderer ? (
           dropdownRenderer(dropdownProps)
