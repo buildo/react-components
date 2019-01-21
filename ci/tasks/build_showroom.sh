@@ -16,7 +16,7 @@ git config user.name nemobot
 
 git add docs yarn.lock
 
-git commit -m 'update gh-pages [skip ci]'
+git commit --allow-empty -m 'update gh-pages [skip ci]'
 
 cd ..
 
