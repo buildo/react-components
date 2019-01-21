@@ -6,6 +6,8 @@ mkdir ~/.ssh
 
 echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
 
+echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 chmod 400 ~/.ssh/id_rsa
 
 cd showroom
