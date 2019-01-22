@@ -28,6 +28,7 @@ export const Props = {
   isMulti: t.maybe(t.Boolean),
   flat: t.maybe(t.Boolean),
   blurInputOnSelect: t.maybe(t.Boolean),
+  backspaceRemovesValue: t.maybe(t.Boolean),
   menuPosition: t.maybe(t.enums.of(["top", "bottom"])),
   placeholder: t.maybe(t.union([t.String, ReactElement])),
   noOptionsMessage: t.maybe(t.String),
@@ -58,11 +59,12 @@ export class Dropdown<OptionType> extends React.Component<
   };
 
   getCustomClassNames() {
-    const { size, flat, isClearable, menuPosition } = this.props;
+    const { size, flat, isClearable, menuPosition, isMulti } = this.props;
     return cx({
       "is-medium": size === "medium",
       "is-small": size === "small",
       "is-flat": flat,
+      "is-multi": isMulti,
       "is-clearable": isClearable,
       "menu-position-top": menuPosition === "top"
     });
@@ -106,7 +108,12 @@ export class Dropdown<OptionType> extends React.Component<
             <components.Menu {...props} className="Select-menu-outer" />
           ),
           Control: props => (
-            <components.Control {...props} className="Select-control" />
+            <components.Control
+              {...props}
+              className={cx("Select-control", {
+                "is-focused": props.isFocused
+              })}
+            />
           ),
           Group: props => <div {...props} className="Select-option-group" />,
           Input: props => <div {...props} className="Select-input" />,
@@ -136,6 +143,30 @@ export class Dropdown<OptionType> extends React.Component<
                     : "Select-arrow-down"
                 }
               />
+            </span>
+          ),
+          SingleValue: props => (
+            <components.SingleValue {...props} className="Single-value" />
+          ),
+          MultiValue: props => (
+            <components.MultiValue {...props} className="Multi-value" />
+          ),
+          MultiValueLabel: props => (
+            <div {...props} className="Multi-value-label" />
+          ),
+          MultiValueRemove: props => (
+            <components.MultiValueRemove
+              innerProps={{
+                ...props.innerProps,
+                className: "Multi-value-remove"
+              }}
+            >
+              ×
+            </components.MultiValueRemove>
+          ),
+          ClearIndicator: props => (
+            <span onClick={props.clearValue} className="Clear-indicator">
+              ×
             </span>
           )
         }}

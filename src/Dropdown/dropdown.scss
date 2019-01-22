@@ -73,15 +73,15 @@ $padding-left: 10px !default;
   @include height($height);
 
   .Select-control,
-  .Select-multi-value-wrapper,
-  .Select-value,
+  .Multi-value,
+  .Single-value,
   .Select-placeholder,
   .Select-input,
   .Select-control > input,
   .Select-placeholder,
   .Select-option,
   .Select-arrow-zone,
-  .Select-clear-zone {
+  .Clear-indicator {
     @include normalize();
     @include height($height - 2);
   }
@@ -90,23 +90,21 @@ $padding-left: 10px !default;
     @include height($height-small);
 
     .Select-control,
-    .Select-multi-value-wrapper,
-    .Select-value,
+    .Multi-value,
+    .Single-value,
     .Select-placeholder,
     .Select-input,
     .Select-control > input,
     .Select-placeholder,
     .Select-option,
     .Select-arrow-zone,
-    .Select-clear-zone {
+    .Clear-indicator {
       @include height($height-small - 2);
     }
   }
 }
 
 .buildo-dropdown {
-  border: solid 1px $border-color;
-  border-radius: $border-radius;
   min-width: 150px;
   background: $background;
   color: $text-color;
@@ -117,30 +115,26 @@ $padding-left: 10px !default;
     border-color: $border-color-hover;
   }
 
-  &:not(.is-disabled).is-focused {
-    border-color: $border-color-focus;
+  &:not(.is-disabled) {
+    .Select-control.is-focused {
+      border-color: $border-color-focus;
+    }
   }
 
-  &.is-small {
+  &.is-multi {
+    height: auto;
     .Select-control {
-      padding-left: $padding-left-small;
+      height: auto;
     }
   }
 
   .Select-control {
-    padding-left: $padding-left;
-    border: none;
+    border: solid 1px $border-color;
+    border-radius: $border-radius;
     background: transparent;
     cursor: pointer;
     box-shadow: none !important;
     flex-grow: 1;
-
-    .Select-multi-value-wrapper,
-    .Select-value-label {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-    }
 
     .Select-multi-value-wrapper {
       @include flex_flex-wrap(wrap);
@@ -153,7 +147,7 @@ $padding-left: 10px !default;
     }
 
     .Select-arrow-zone,
-    .Select-clear-zone {
+    .Clear-indicator {
       @include flex_flex(0 0 auto);
       @include flex_justify-content(center);
     }
@@ -163,14 +157,19 @@ $padding-left: 10px !default;
       width: 30px;
     }
 
-    .Select-clear-zone {
+    .Clear-indicator {
       width: 15px;
     }
 
     .Select-arrow,
-    .Select-clear {
+    .Clear-indicator {
       cursor: pointer;
       font-size: 20px;
+    }
+
+    .Single-value,
+    .Multi-value {
+      font-size: 0.9em;
     }
 
     .Select-arrow {
@@ -237,105 +236,62 @@ $padding-left: 10px !default;
     }
   }
 
-  // &.Select--multi {
-  //   height: auto;
+  .Multi-value {
+    margin-right: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid $multiple-value-border-color;
+    flex-direction: row-reverse;
 
-  //   .Select-control {
-  //     height: auto;
+    @include height($height - 14px);
 
-  //     .Select-multi-value-wrapper {
-  //       min-height: $height;
-  //       height: auto;
-  //     }
-  //   }
+    .Multi-value-label {
+      @include height($height - 14px);
 
-  //   &.is-small {
-  //     .Select-multi-value-wrapper {
-  //       min-height: $height-small;
-  //     }
-  //   }
+      background: $multiple-value-background-color;
+      color: $multiple-value-color;
+      padding: 0 5px;
+    }
 
-  //   &.has-value {
-  //     .Select-control {
-  //       .Select-multi-value-wrapper {
-  //         padding: 2px 0;
-  //         min-height: auto;
+    .Multi-value-remove {
+      padding: 0 4px;
+      border-color: $multiple-value-icon-border-color;
+      background: $multiple-value-icon-background-color;
+      color: $multiple-value-icon-color;
+      border-right: 1px solid;
+      display: inline-block;
+      vertical-align: middle;
 
-  //         .Select-input,
-  //         .Select-placeholder {
-  //           position: relative;
+      &:hover {
+        border-color: $multiple-value-icon-border-color-hover;
+        background: $multiple-value-icon-background-color-hover;
+        color: $multiple-value-icon-color-hover;
+      }
+    }
+  }
 
-  //           @include height($height - 12px);
+  &.is-small {
+    min-height: auto;
 
-  //           > input {
-  //             @include height($height - 12px);
-  //           }
-  //         }
+    .Select-input,
+    .Select-placeholder,
+    .Select-control > input {
+      @include height($height-small - 12px);
+    }
 
-  //         .Select-value {
-  //           margin-right: 5px;
+    .Multi-value {
+      @include height($height-small - 14px);
 
-  //           /*
-  //             vertical margin is needed to add some space between values when they wrap.
-  //             5px is not random: 10px is the gap to match .Select-input in height and avoid visual defects
-  //           */
-  //           margin-top: 2px;
-  //           margin-bottom: 2px;
-  //           border: 1px solid $multiple-value-border-color;
-
-  //           @include height($height - 14px);
-
-  //           .Select-value-label {
-  //             @include height($height - 14px);
-
-  //             background: $multiple-value-background-color;
-  //             color: $multiple-value-color;
-  //             padding-top: 0;
-  //             padding-bottom: 0;
-  //           }
-
-  //           .Select-value-icon {
-  //             padding: 0 4px;
-  //             border-color: $multiple-value-icon-border-color;
-  //             background: $multiple-value-icon-background-color;
-  //             color: $multiple-value-icon-color;
-
-  //             &:hover {
-  //               border-color: $multiple-value-icon-border-color-hover;
-  //               background: $multiple-value-icon-background-color-hover;
-  //               color: $multiple-value-icon-color-hover;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-
-  //     &.is-small {
-  //       .Select-control .Select-multi-value-wrapper {
-  //         min-height: auto;
-
-  //         .Select-input,
-  //         .Select-placeholder,
-  //         .Select-control > input {
-  //           @include height($height-small - 12px);
-  //         }
-
-  //         .Select-value {
-  //           @include height($height-small - 14px);
-
-  //           .Select-value-label {
-  //             @include height($height-small - 14px);
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+      .Multi-value-label {
+        @include height($height-small - 14px);
+      }
+    }
+  }
 
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Single-value {
       color: $text-color-hover;
     }
 
@@ -352,7 +308,7 @@ $padding-left: 10px !default;
     border-color: $border-color-open;
     background: $background-open;
 
-    &:not(.Select--multi) .Select-control .Select-value .Select-value-label {
+    &:not(.Select--multi) .Select-control .Single-value {
       color: $text-color-open;
     }
 
@@ -367,7 +323,7 @@ $padding-left: 10px !default;
   }
 
   &.has-value .Select-control {
-    .Select-value .Select-value-label {
+    .Single-value {
       color: $text-color-has-value;
     }
 
@@ -376,19 +332,12 @@ $padding-left: 10px !default;
     }
   }
 
-  &.is-clearable.has-value {
-    .Select-clear-zone {
-      .Select-clear {
-        bottom: 0;
-        padding: 0;
-        color: $x-color;
-      }
-
-      &:hover {
-        .Select-clear {
-          color: $x-color-hover;
-        }
-      }
+  .Clear-indicator {
+    bottom: 0;
+    padding: 0;
+    color: $x-color;
+    &:hover {
+      color: $x-color-hover;
     }
   }
 
