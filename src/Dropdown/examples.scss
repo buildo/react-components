@@ -2,14 +2,15 @@
 @import "../utils/theme/variables.scss";
 
 .dropdown-list {
-  .dropdown {
+  .buildo-dropdown {
     margin-right: 20px;
     min-width: 200px;
   }
 }
 
-.dropdown {
-  .Select-arrow {
+.buildo-dropdown {
+  .Select-arrow-down,
+  .Select-arrow-up {
     margin-top: 1px;
     border: 0;
     height: auto;
@@ -22,16 +23,19 @@
     @include flex_align-items(center);
 
     &::before {
-      content: "\e910";
       font-family: "icomoon";
     }
   }
 
-  &.is-open {
-    .Select-arrow {
-      &::before {
-        content: "\e90f";
-      }
+  .Select-arrow-up {
+    &::before {
+      content: "\e910";
+    }
+  }
+
+  .Select-arrow-down {
+    &::before {
+      content: "\e90f";
     }
   }
 }

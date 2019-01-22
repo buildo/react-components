@@ -1,6 +1,6 @@
 import * as React from "react";
 import { props, t, ReactElement } from "../utils";
-import Select from "react-select";
+import Select, { components } from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 
@@ -101,7 +101,45 @@ export class Dropdown<OptionType> extends React.Component<
         backspaceRemovesValue={
           t.Nil.is(backspaceRemovesValue) ? isClearable : backspaceRemovesValue
         }
-        className={cx("dropdown", className, this.getCustomClassNames())}
+        components={{
+          Menu: props => (
+            <components.Menu {...props} className="Select-menu-outer" />
+          ),
+          Control: props => (
+            <components.Control {...props} className="Select-control" />
+          ),
+          Group: props => <div {...props} className="Select-option-group" />,
+          Input: props => <div {...props} className="Select-input" />,
+          Placeholder: props => (
+            <div {...props} className="Select-placeholder" />
+          ),
+          IndicatorSeparator: () => null,
+          Option: props => (
+            <components.Option
+              {...props}
+              className={cx(
+                "Select-option",
+                cx({
+                  "is-disabled": props.isDisabled,
+                  "is-focused": props.isFocused,
+                  "is-selected": props.isSelected
+                })
+              )}
+            />
+          ),
+          DropdownIndicator: props => (
+            <span className="Select-arrow-zone" {...props}>
+              <span
+                className={
+                  props.selectProps.menuIsOpen
+                    ? "Select-arrow-up"
+                    : "Select-arrow-down"
+                }
+              />
+            </span>
+          )
+        }}
+        className={cx("buildo-dropdown", className, this.getCustomClassNames())}
         onKeyDown={onKeyDown}
         ref={select => {
           this.select = select;
