@@ -67,12 +67,11 @@ $padding-left: 10px !default;
 }
 
 .buildo-dropdown {
-  box-sizing: border-box;
-
-  @include normalize();
-  @include height($height);
-
-  .Select-control,
+  .Select-control {
+    box-sizing: border-box;
+    @include normalize();
+    @include height($height);
+  }
   .Multi-value,
   .Single-value,
   .Select-placeholder,
@@ -87,9 +86,9 @@ $padding-left: 10px !default;
   }
 
   &.is-small {
-    @include height($height-small);
-
-    .Select-control,
+    .Select-control {
+      @include height($height-small);
+    }
     .Multi-value,
     .Single-value,
     .Select-placeholder,
@@ -110,6 +109,7 @@ $padding-left: 10px !default;
   color: $text-color;
   font-size: 15px;
   font-weight: $brc-semibold;
+  height: 100%;
 
   &:hover {
     border-color: $border-color-hover;
@@ -195,7 +195,6 @@ $padding-left: 10px !default;
     box-shadow: rgba(34, 36, 38, 0.12) 0 2px 4px 0;
 
     .Select-option-group {
-      padding: 0 9px;
       font-size: 15px;
       font-weight: $brc-semibold;
       color: $option-group-color;
@@ -271,11 +270,8 @@ $padding-left: 10px !default;
   }
 
   &.is-small {
-    min-height: auto;
-
     .Select-input,
-    .Select-placeholder,
-    .Select-control > input {
+    .Select-placeholder {
       @include height($height-small - 12px);
     }
 
@@ -291,7 +287,7 @@ $padding-left: 10px !default;
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    &:not(.Select--multi) .Select-control .Single-value {
+    .Single-value {
       color: $text-color-hover;
     }
 
@@ -304,21 +300,22 @@ $padding-left: 10px !default;
     }
   }
 
-  &:not(.is-disabled).is-open {
-    border-color: $border-color-open;
-    background: $background-open;
+  &:not(.is-disabled) {
+    .Select-control.is-open {
+      border-color: $border-color-open;
+      background: $background-open;
 
-    &:not(.Select--multi) .Select-control .Single-value {
-      color: $text-color-open;
-    }
+      .Single-value {
+        color: $text-color-open;
+      }
 
-    &:hover .Select-placeholder,
-    .Select-placeholder {
-      color: $placeholder-color-open;
-    }
+      .Select-placeholder {
+        color: $placeholder-color-open;
+      }
 
-    .Select-arrow {
-      border-color: $arrow-color-open transparent transparent;
+      .Select-arrow {
+        border-color: $arrow-color-open transparent transparent;
+      }
     }
   }
 

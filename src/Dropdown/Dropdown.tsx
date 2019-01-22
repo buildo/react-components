@@ -111,12 +111,17 @@ export class Dropdown<OptionType> extends React.Component<
             <components.Control
               {...props}
               className={cx("Select-control", {
-                "is-focused": props.isFocused
+                "is-focused": props.isFocused,
+                "is-open": props.selectProps.menuIsOpen
               })}
             />
           ),
-          Group: props => <div {...props} className="Select-option-group" />,
-          Input: props => <div {...props} className="Select-input" />,
+          Group: props => (
+            <components.Group {...props} className="Select-option-group" />
+          ),
+          Input: props => (
+            <components.Input {...props} className="Select-input" />
+          ),
           Placeholder: props => (
             <div {...props} className="Select-placeholder" />
           ),
