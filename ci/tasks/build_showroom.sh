@@ -2,12 +2,6 @@
 
 set -e
 
-mkdir ~/.ssh
-
-echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
-
-chmod 400 ~/.ssh/id_rsa
-
 cd showroom
 
 yarn install --no-progress
@@ -24,4 +18,6 @@ git add docs yarn.lock
 
 git commit --allow-empty -m 'update gh-pages [skip ci]'
 
-git push origin HEAD:master --force
+cd ..
+
+cp -a showroom/. showroom-build

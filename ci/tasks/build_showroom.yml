@@ -7,7 +7,8 @@ image_resource:
 inputs:
   - name: showroom
   - name: react-components
-params:
-  PRIVATE_KEY:
+outputs:
+  - name: showroom-build
 run:
   path: react-components/ci/tasks/build_showroom.sh
+
