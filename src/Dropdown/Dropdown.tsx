@@ -4,10 +4,6 @@ import Select, { components } from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 
-function isEmptyArray(x: any): x is any[] {
-  return t.Array.is(x) && x.length === 0;
-}
-
 export namespace Dropdown {
   export type MenuPosition = "top" | "bottom";
 
@@ -70,14 +66,6 @@ export class Dropdown<OptionType> extends React.Component<
     });
   }
 
-  onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.keyCode === 38 || e.keyCode === 40) {
-      if (isEmptyArray(this.props.options)) {
-        e.preventDefault();
-      }
-    }
-  };
-
   private select: Select<OptionType> | null;
 
   focus = () => {
@@ -86,7 +74,6 @@ export class Dropdown<OptionType> extends React.Component<
 
   render() {
     const {
-      onKeyDown,
       props: {
         className,
         backspaceRemovesValue,
@@ -176,7 +163,6 @@ export class Dropdown<OptionType> extends React.Component<
           )
         }}
         className={cx("buildo-dropdown", className, this.getCustomClassNames())}
-        onKeyDown={onKeyDown}
         ref={select => {
           this.select = select;
         }}
