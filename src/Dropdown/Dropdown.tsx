@@ -51,7 +51,8 @@ export class Dropdown<OptionType> extends React.Component<
     isMulti: false,
     flat: false,
     blurInputOnSelect: true,
-    menuPosition: "bottom"
+    menuPosition: "bottom",
+    components: {}
   };
 
   getCustomClassNames() {
@@ -79,6 +80,7 @@ export class Dropdown<OptionType> extends React.Component<
         backspaceRemovesValue,
         isClearable,
         menuPosition,
+        components: customComponents,
         ...props
       }
     } = this;
@@ -109,7 +111,9 @@ export class Dropdown<OptionType> extends React.Component<
           Input: props => (
             <components.Input {...props} className="Select-input" />
           ),
-          Placeholder: props => <div className="Select-placeholder" />,
+          Placeholder: ({ children }) => (
+            <div className="Select-placeholder">{children}</div>
+          ),
           IndicatorSeparator: () => null,
           Option: props => (
             <components.Option
@@ -141,7 +145,9 @@ export class Dropdown<OptionType> extends React.Component<
           MultiValue: props => (
             <components.MultiValue {...props} className="Multi-value" />
           ),
-          MultiValueLabel: () => <div className="Multi-value-label" />,
+          MultiValueLabel: ({ children }) => (
+            <div className="Multi-value-label">{children}</div>
+          ),
           MultiValueRemove: props => (
             <components.MultiValueRemove
               innerProps={{
@@ -156,7 +162,8 @@ export class Dropdown<OptionType> extends React.Component<
             <span onClick={props.clearValue} className="Clear-indicator">
               ×
             </span>
-          )
+          ),
+          ...customComponents
         }}
         className={cx("buildo-dropdown", className, this.getCustomClassNames())}
         ref={select => {
