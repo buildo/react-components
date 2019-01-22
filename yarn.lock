@@ -141,7 +141,7 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-select@2.3.0":
+"@types/react-select@2.0.11":
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-2.0.11.tgz#9b2b1fdb12b67a5a617c5f572e15617636cc65af"
   dependencies:

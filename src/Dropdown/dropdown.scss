@@ -68,6 +68,7 @@ $padding-left: 10px !default;
 
 .buildo-dropdown {
   .Select-control {
+    min-height: 0;
     box-sizing: border-box;
     @include normalize();
     @include height($height);
