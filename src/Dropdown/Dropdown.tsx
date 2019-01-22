@@ -109,9 +109,7 @@ export class Dropdown<OptionType> extends React.Component<
           Input: props => (
             <components.Input {...props} className="Select-input" />
           ),
-          Placeholder: props => (
-            <div {...props} className="Select-placeholder" />
-          ),
+          Placeholder: props => <div className="Select-placeholder" />,
           IndicatorSeparator: () => null,
           Option: props => (
             <components.Option
@@ -127,7 +125,7 @@ export class Dropdown<OptionType> extends React.Component<
             />
           ),
           DropdownIndicator: props => (
-            <span className="Select-arrow-zone" {...props}>
+            <span className="Select-arrow-zone">
               <span
                 className={
                   props.selectProps.menuIsOpen
@@ -143,9 +141,7 @@ export class Dropdown<OptionType> extends React.Component<
           MultiValue: props => (
             <components.MultiValue {...props} className="Multi-value" />
           ),
-          MultiValueLabel: props => (
-            <div {...props} className="Multi-value-label" />
-          ),
+          MultiValueLabel: () => <div className="Multi-value-label" />,
           MultiValueRemove: props => (
             <components.MultiValueRemove
               innerProps={{

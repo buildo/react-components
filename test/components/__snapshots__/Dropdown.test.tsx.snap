@@ -2,71 +2,46 @@
 
 exports[`Dropdown renders correctly 1`] = `
 <div
-  className="Select dropdown fancy-class-name is-medium Select--single has-value"
-  style={undefined}
+  className="css-10nd86i buildo-dropdown fancy-class-name is-medium"
+  id="12345"
+  onKeyDown={[Function]}
 >
   <div
-    className="Select-control"
-    onKeyDown={[Function]}
+    className="css-vj8t7z Select-control"
     onMouseDown={[Function]}
     onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    style={
-      Object {
-        "margin": 10,
-        "position": "relative",
-      }
-    }
   >
-    <span
-      className="Select-multi-value-wrapper"
-      id="react-select-2--value"
+    <div
+      className="css-1hwfws3"
     >
       <div
-        className="Select-value"
-        style={undefined}
-        title={undefined}
+        className="css-xp4uvy Single-value"
       >
-        <span
-          aria-selected="true"
-          className="Select-value-label"
-          id="react-select-2--value-item"
-          role="option"
-        >
-          Test
-        </span>
+        Test
       </div>
-      <div
-        aria-activedescendant="react-select-2--value"
-        aria-disabled="false"
-        aria-expanded={false}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-owns=""
-        className="Select-input"
+      <input
+        className="css-14uuagi"
+        disabled={false}
+        id="react-select-2-input"
         onBlur={[Function]}
+        onChange={[Function]}
         onFocus={[Function]}
-        role="combobox"
-        style={
-          Object {
-            "border": 0,
-            "display": "inline-block",
-            "width": 1,
-          }
-        }
-        tabIndex={0}
+        readOnly={true}
+        tabIndex="0"
+        value=""
       />
-    </span>
-    <span
-      className="Select-arrow-zone"
-      onMouseDown={[Function]}
+    </div>
+    <div
+      className="css-1wy0on6"
     >
       <span
-        className="Select-arrow"
-        onMouseDown={[Function]}
-      />
-    </span>
+        className="Select-arrow-zone"
+      >
+        <span
+          className="Select-arrow-down"
+        />
+      </span>
+    </div>
   </div>
 </div>
 `;
