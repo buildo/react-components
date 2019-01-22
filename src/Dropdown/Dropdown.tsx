@@ -35,7 +35,8 @@ export const Props = {
   isLoading: t.maybe(t.Boolean),
   id: t.maybe(t.String),
   className: t.maybe(t.String),
-  style: t.maybe(t.Object)
+  style: t.maybe(t.Object),
+  components: t.maybe(t.Object)
 };
 
 @props(Props, { strict: true })
