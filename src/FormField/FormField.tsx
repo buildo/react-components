@@ -63,29 +63,28 @@ export class FormField extends React.PureComponent<FormField.Props> {
       "is-required": required,
       "is-horizontal": horizontal
     });
-    const viewStyle: React.CSSProperties = {
-      flexDirection: horizontal ? "row-reverse" : undefined,
-      ...(_viewProps || {}).style
-    };
+
     const viewProps = {
       grow: !horizontal,
       column: !horizontal,
       ..._viewProps,
-      className,
-      style: viewStyle
+      className
     };
     const labelStyle: React.CSSProperties = onLabelClick
       ? { cursor: "pointer", userSelect: "none" }
       : {};
 
+    const labelComponent = (
+      <View className="form-field-label" vAlignContent="center" key="label">
+        <label htmlFor={fieldId} onClick={onLabelClick} style={labelStyle}>
+          {label}
+        </label>
+      </View>
+    );
+
     return (
       <View {...viewProps}>
-        <View className="form-field-label" vAlignContent="center" key="label">
-          <label htmlFor={fieldId} onClick={onLabelClick} style={labelStyle}>
-            {label}
-          </label>
-        </View>
-        {children}
+        {horizontal ? [children, labelComponent] : [labelComponent, children]}
       </View>
     );
   }
