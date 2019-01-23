@@ -54,7 +54,7 @@ export class FormField extends React.PureComponent<FormField.Props> {
       children,
       className: _className,
       fieldId,
-      viewProps: _viewProps,
+      viewProps: _viewProps = {},
       horizontal,
       onLabelClick
     } = this.props;
@@ -63,10 +63,14 @@ export class FormField extends React.PureComponent<FormField.Props> {
       "is-required": required,
       "is-horizontal": horizontal
     });
+    const flexDirectionStyle: React.CSSProperties = horizontal
+      ? { flexDirection: "row-reverse" }
+      : {};
     const viewStyle: React.CSSProperties = {
-      flexDirection: horizontal ? "row-reverse" : undefined,
-      ...(_viewProps || {}).style
+      ...flexDirectionStyle,
+      ..._viewProps.style
     };
+
     const viewProps = {
       grow: !horizontal,
       column: !horizontal,
