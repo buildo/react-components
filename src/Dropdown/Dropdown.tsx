@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, ReactElement } from "../utils";
+import { props, t, ReactElement, ObjectOmit } from "../utils";
 import Select, { components } from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
@@ -7,9 +7,9 @@ import * as cx from "classnames";
 export namespace Dropdown {
   export type MenuPosition = "top" | "bottom";
 
-  export type Props<OptionType> = Pick<
+  export type Props<OptionType> = ObjectOmit<
     SelectNS.Props<OptionType>,
-    Exclude<keyof SelectNS.Props, "menuPosition">
+    "menuPosition"
   > & { menuPosition: MenuPosition; size: "medium" | "small"; flat: boolean };
 }
 
@@ -90,9 +90,7 @@ export class Dropdown<OptionType> extends React.Component<
       <Select
         {...props}
         isClearable={isClearable}
-        backspaceRemovesValue={
-          t.Nil.is(backspaceRemovesValue) ? isClearable : backspaceRemovesValue
-        }
+        backspaceRemovesValue={backspaceRemovesValue}
         components={{
           Menu: props => (
             <components.Menu {...props} className="Select-menu-outer" />

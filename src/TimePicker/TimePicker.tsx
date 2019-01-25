@@ -7,6 +7,8 @@ import flatten = require("lodash/flatten");
 import compact = require("lodash/compact");
 import uniqBy = require("lodash/uniqBy");
 import sortBy = require("lodash/sortBy");
+import { components } from "react-select";
+import * as SelectNS from "react-select/lib/Select";
 
 export const H24 = "24h";
 export const H12 = "12h";
@@ -40,6 +42,21 @@ const isValidHoursInTimeFormat = (
   hours: number | null,
   timeFormat: TimePicker.TimeFormat
 ): hours is number => (timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours));
+
+const getComponents = (
+  timeFormatter?: TimePicker.TimeFormatter
+): SelectNS.Props<TimeDropdownOption>["components"] => {
+  return timeFormatter
+    ? {
+        Option: props => (
+          <components.Option {...props}>
+            {timeFormatter(props.data.time) || null}
+          </components.Option>
+        ),
+        SingleValue: props => timeFormatter(props.data.time) || null
+      }
+    : {};
+};
 
 const Props = t.refinement(
   t.struct({
@@ -303,8 +320,8 @@ export class TimePicker extends React.Component<
       searchable,
       placeholder,
       menuPosition,
-      disabled
-      // timeFormatter: _timeFormatter
+      disabled,
+      timeFormatter
     } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
@@ -315,10 +332,8 @@ export class TimePicker extends React.Component<
     const className = cx("time-picker", _className);
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
-
-    // const timeFormatter = _timeFormatter
-    //   ? (o: any) => _timeFormatter(o.time)
-    //   : undefined;
+    const components = getComponents(timeFormatter);
+    console.log(components);
 
     return (
       <Dropdown
@@ -327,9 +342,7 @@ export class TimePicker extends React.Component<
         value={options.find(o => o.value === value)}
         onChange={onChange}
         options={options}
-        // can't we just format the options directly?
-        // valueRenderer={timeFormatter}
-        // optionRenderer={timeFormatter}
+        components={components}
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
