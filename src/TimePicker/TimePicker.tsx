@@ -333,7 +333,6 @@ export class TimePicker extends React.Component<
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
     const components = getComponents(timeFormatter);
-    console.log(components);
 
     return (
       <Dropdown

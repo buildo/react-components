@@ -35,7 +35,7 @@ describe("Dropdown", () => {
 
   it("computes className", () => {
     const component = shallow(<Dropdown {...exampleProps} />);
-    expect(component.hasClass("buildo-dropdown")).toBe(true);
+    expect(component.hasClass("dropdown")).toBe(true);
     expect(component.hasClass("fancy-class-name")).toBe(true);
   });
 

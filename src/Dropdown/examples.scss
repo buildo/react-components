@@ -2,13 +2,13 @@
 @import "../utils/theme/variables.scss";
 
 .dropdown-list {
-  .buildo-dropdown {
+  .dropdown {
     margin-right: 20px;
     min-width: 200px;
   }
 }
 
-.buildo-dropdown {
+.dropdown {
   .Select-arrow-down,
   .Select-arrow-up {
     margin-top: 1px;
@@ -29,13 +29,13 @@
 
   .Select-arrow-up {
     &::before {
-      content: "\e910";
+      content: "\e90f";
     }
   }
 
   .Select-arrow-down {
     &::before {
-      content: "\e90f";
+      content: "\e910";
     }
   }
 }

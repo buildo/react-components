@@ -2,7 +2,7 @@
 
 exports[`Dropdown renders correctly 1`] = `
 <div
-  className="css-10nd86i buildo-dropdown fancy-class-name is-medium"
+  className="css-10nd86i dropdown fancy-class-name is-medium"
   id="12345"
   onKeyDown={[Function]}
 >

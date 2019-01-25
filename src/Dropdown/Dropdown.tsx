@@ -164,7 +164,7 @@ export class Dropdown<OptionType> extends React.Component<
           ),
           ...customComponents
         }}
-        className={cx("buildo-dropdown", className, this.getCustomClassNames())}
+        className={cx("dropdown", className, this.getCustomClassNames())}
         ref={select => {
           this.select = select;
         }}
