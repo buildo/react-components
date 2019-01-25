@@ -13,8 +13,6 @@ export namespace FormField {
     disabled?: boolean;
     /** the input component to wrap */
     children: JSX.Element;
-    /** the id of the input component, passed to <label> as 'htmlFor' */
-    fieldId?: string;
     /** optional props to pass to the wrapping View */
     viewProps?: View.Props;
     /** wheter the label should be put on the same line of the component */
@@ -35,7 +33,6 @@ export const Props = {
   required: t.maybe(t.Boolean),
   disabled: t.maybe(t.Boolean),
   children: ReactChildren,
-  fieldId: t.maybe(t.String),
   viewProps: t.maybe(t.Object),
   horizontal: t.maybe(t.Boolean),
   onLabelClick: t.maybe(t.Function),
@@ -53,7 +50,6 @@ export class FormField extends React.PureComponent<FormField.Props> {
       disabled,
       children,
       className: _className,
-      fieldId,
       viewProps: _viewProps,
       horizontal,
       onLabelClick
@@ -76,9 +72,9 @@ export class FormField extends React.PureComponent<FormField.Props> {
 
     const labelComponent = (
       <View className="form-field-label" vAlignContent="center" key="label">
-        <label htmlFor={fieldId} onClick={onLabelClick} style={labelStyle}>
+        <View className="label" onClick={onLabelClick} style={labelStyle}>
           {label}
-        </label>
+        </View>
       </View>
     );
 
