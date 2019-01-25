@@ -31,8 +31,6 @@ $label-color: $brc-darkGreyBlue;
   }
 
   &.is-horizontal {
-    flex-direction: row-reverse;
-
     .form-field-label {
       font-size: 14px;
       margin-bottom: 0;
