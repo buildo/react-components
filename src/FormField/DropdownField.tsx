@@ -19,8 +19,6 @@ export namespace DropdownField {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-    /** an optional id passed to the input component */
-    id?: string;
   } & Dropdown.Props;
 }
 
@@ -38,7 +36,6 @@ export class DropdownField extends React.PureComponent<DropdownField.Props> {
       label,
       required,
       className: _className,
-      id,
       viewProps,
       disabled,
       dropdownRenderer,
@@ -47,8 +44,7 @@ export class DropdownField extends React.PureComponent<DropdownField.Props> {
     const className = cx("dropdown-field", _className);
     const dropdownProps = {
       ..._dropdownProps,
-      disabled,
-      id
+      disabled
     };
 
     return (
@@ -56,7 +52,6 @@ export class DropdownField extends React.PureComponent<DropdownField.Props> {
         label={label}
         required={required}
         className={className}
-        fieldId={id}
         viewProps={viewProps}
         disabled={disabled}
       >

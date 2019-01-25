@@ -19,8 +19,6 @@ export namespace DatePickerField {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-    /** an optional id passed to the input component */
-    id?: string;
   } & ObjectOmit<
     DatePicker.Props<T>,
     "returnFormat"
@@ -65,7 +63,6 @@ export class DatePickerField<
         label={label}
         required={required}
         className={className}
-        fieldId={id}
         viewProps={viewProps}
         disabled={disabled}
       >

@@ -19,8 +19,6 @@ export namespace TimePickerField {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-    /** an optional id passed to the input component */
-    id?: string;
   } & TimePicker.Props;
 }
 
@@ -40,7 +38,6 @@ export class TimePickerField extends React.PureComponent<
       label,
       required,
       className: _className,
-      id,
       viewProps,
       disabled,
       timePickerRenderer,
@@ -49,8 +46,7 @@ export class TimePickerField extends React.PureComponent<
     const className = cx("time-picker-field", _className);
     const timePickerProps = {
       ..._timePickerProps,
-      disabled,
-      id
+      disabled
     };
 
     return (
@@ -58,7 +54,6 @@ export class TimePickerField extends React.PureComponent<
         label={label}
         required={required}
         className={className}
-        fieldId={id}
         viewProps={viewProps}
         disabled={disabled}
       >

@@ -1,6 +1,8 @@
 @import "../utils/theme/variables.scss";
 
-$label-color: $brc-darkGreyBlue;
+$label-color: $brc-darkGreyBlue !default;
+$required-badge-color: $brc-strawberry !default;
+$required-badge-position: left !default;
 
 .form-field {
   .form-field-label {
@@ -13,15 +15,24 @@ $label-color: $brc-darkGreyBlue;
 
   &.is-required {
     .form-field-label {
-      padding-left: 9px;
+      @if ($required-badge-position == left) {
+        > ::before {
+          content: "*";
+          color: $required-badge-color;
+          font-size: 18px;
+          font-weight: $brc-regular;
+          margin-right: 2px;
+        }
+      }
 
-      > ::before {
-        content: "*";
-        color: $brc-strawberry;
-        font-size: 18px;
-        position: absolute;
-        left: 0;
-        font-weight: $brc-regular;
+      @if ($required-badge-position == right) {
+        > ::after {
+          content: "*";
+          color: $required-badge-color;
+          font-size: 18px;
+          font-weight: $brc-regular;
+          margin-left: 2px;
+        }
       }
     }
   }
