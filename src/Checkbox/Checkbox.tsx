@@ -50,7 +50,11 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
     readOnly: false
   };
 
-  onToggleCheckbox = () => this.props.onChange(!this.props.value);
+  onToggleCheckbox = () => {
+    if (!this.props.disabled) {
+      this.props.onChange(!this.props.value);
+    }
+  };
 
   toggleOnSpace = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.keyCode === 32) {
