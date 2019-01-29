@@ -39,6 +39,52 @@ export const Props = {
   components: t.maybe(t.Object)
 };
 
+const defaultComponents: Dropdown.Props<any>["components"] = {
+  Placeholder: ({ children }) => (
+    <div className="react-select__placeholder">{children}</div>
+  ),
+  IndicatorSeparator: () => null,
+  Option: props => (
+    <components.Option
+      {...props}
+      className={cx({
+        "is-disabled": props.isDisabled,
+        "is-focused": props.isFocused,
+        "is-selected": props.isSelected
+      })}
+    />
+  ),
+  DropdownIndicator: props => (
+    <span className="react-select__select-arrow-zone">
+      <span
+        className={
+          props.selectProps.menuIsOpen
+            ? "react-select__select-arrow-up"
+            : "react-select__select-arrow-down"
+        }
+      />
+    </span>
+  ),
+  MultiValueLabel: ({ children }) => (
+    <div className="react-select__multi-value-label">{children}</div>
+  ),
+  MultiValueRemove: props => (
+    <components.MultiValueRemove
+      innerProps={{
+        ...props.innerProps,
+        className: "react-select__multi-value-remove"
+      }}
+    >
+      ×
+    </components.MultiValueRemove>
+  ),
+  ClearIndicator: props => (
+    <span onClick={props.clearValue} className="react-select__clear-indicator">
+      ×
+    </span>
+  )
+};
+
 @props(Props, { strict: true })
 export class Dropdown<OptionType> extends React.Component<
   Dropdown.Props<OptionType>
@@ -99,77 +145,9 @@ export class Dropdown<OptionType> extends React.Component<
         {...props}
         isClearable={isClearable}
         backspaceRemovesValue={backspaceRemovesValue}
+        classNamePrefix="react-select"
         components={{
-          Menu: props => (
-            <components.Menu {...props} className="Select-menu-outer" />
-          ),
-          Control: props => (
-            <components.Control
-              {...props}
-              className={cx("Select-control", {
-                "is-focused": props.isFocused,
-                "is-open": props.selectProps.menuIsOpen
-              })}
-            />
-          ),
-          Group: props => (
-            <components.Group {...props} className="Select-option-group" />
-          ),
-          Input: props => (
-            <components.Input {...props} className="Select-input" />
-          ),
-          Placeholder: ({ children }) => (
-            <div className="Select-placeholder">{children}</div>
-          ),
-          IndicatorSeparator: () => null,
-          Option: props => (
-            <components.Option
-              {...props}
-              className={cx(
-                "Select-option",
-                cx({
-                  "is-disabled": props.isDisabled,
-                  "is-focused": props.isFocused,
-                  "is-selected": props.isSelected
-                })
-              )}
-            />
-          ),
-          DropdownIndicator: props => (
-            <span className="Select-arrow-zone">
-              <span
-                className={
-                  props.selectProps.menuIsOpen
-                    ? "Select-arrow-up"
-                    : "Select-arrow-down"
-                }
-              />
-            </span>
-          ),
-          SingleValue: props => (
-            <components.SingleValue {...props} className="Single-value" />
-          ),
-          MultiValue: props => (
-            <components.MultiValue {...props} className="Multi-value" />
-          ),
-          MultiValueLabel: ({ children }) => (
-            <div className="Multi-value-label">{children}</div>
-          ),
-          MultiValueRemove: props => (
-            <components.MultiValueRemove
-              innerProps={{
-                ...props.innerProps,
-                className: "Multi-value-remove"
-              }}
-            >
-              ×
-            </components.MultiValueRemove>
-          ),
-          ClearIndicator: props => (
-            <span onClick={props.clearValue} className="Clear-indicator">
-              ×
-            </span>
-          ),
+          ...defaultComponents,
           ...customComponents
         }}
         className={cx("dropdown", className, this.getCustomClassNames())}

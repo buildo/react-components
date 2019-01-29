@@ -67,38 +67,35 @@ $padding-left: 10px !default;
 }
 
 .dropdown {
-  .Select-control {
+  .react-select__control {
     min-height: 0;
     box-sizing: border-box;
     @include normalize();
     @include height($height);
   }
-  .Multi-value,
-  .Single-value,
-  .Select-placeholder,
-  .Select-input,
-  .Select-control > input,
-  .Select-placeholder,
-  .Select-option,
-  .Select-arrow-zone,
-  .Clear-indicator {
+  .react-select__multi-value,
+  .react-select__single-value,
+  .react-select__input,
+  .react-select__control > input,
+  .react-select__option,
+  .react-select__select-arrow-zone,
+  .react-select__clear-indicator {
     @include normalize();
     @include height($height - 2);
   }
 
   &.is-small {
-    .Select-control {
+    .react-select__control {
       @include height($height-small);
     }
-    .Multi-value,
-    .Single-value,
-    .Select-placeholder,
-    .Select-input,
-    .Select-control > input,
-    .Select-placeholder,
-    .Select-option,
-    .Select-arrow-zone,
-    .Clear-indicator {
+    .react-select__multi-value,
+    .react-select__single-value,
+    .react-select__input,
+    .react-select__control > input,
+    .react-select__placeholder,
+    .react-select__option,
+    .react-select__select-arrow-zone,
+    .react-select__clear-indicator {
       @include height($height-small - 2);
     }
   }
@@ -117,19 +114,19 @@ $padding-left: 10px !default;
   }
 
   &:not(.is-disabled) {
-    .Select-control.is-focused {
+    .react-select__control--is-focused {
       border-color: $border-color-focus;
     }
   }
 
   &.is-multi {
     height: auto;
-    .Select-control {
+    .react-select__control {
       height: auto;
     }
   }
 
-  .Select-control {
+  .react-select__control {
     border: solid 1px $border-color;
     border-radius: $border-radius;
     background: transparent;
@@ -142,49 +139,48 @@ $padding-left: 10px !default;
       @include flex_align-items(center);
     }
 
-    .Select-input,
-    .Select-placeholder {
+    .react-select__input,
+    .react-select__placeholder {
       background: transparent;
     }
 
-    .Select-arrow-zone,
-    .Clear-indicator {
+    .react-select__select-arrow-zone,
+    .react-select__clear-indicator {
       @include flex_flex(0 0 auto);
       @include flex_justify-content(center);
     }
 
-    .Select-arrow-zone {
+    .react-select__select-arrow-zone {
       height: 100%;
       width: 30px;
     }
 
-    .Clear-indicator {
+    .react-select__clear-indicator {
       width: 15px;
     }
 
-    .Select-arrow,
-    .Clear-indicator {
+    .react-select__clear-indicator {
       cursor: pointer;
       font-size: 20px;
     }
 
-    .Single-value,
-    .Multi-value {
+    .react-select__single-value,
+    .react-select__multi-value {
       font-size: 0.9em;
     }
 
-    .Select-arrow {
+    .react-select__select-arrow-zone {
       border-color: $arrow-color transparent transparent;
       border-width: 5px 5px 0;
     }
   }
 
-  .Select-placeholder {
+  .react-select__placeholder {
     font-weight: $brc-semibold;
     color: $placeholder-color;
   }
 
-  .Select-menu-outer {
+  .react-select__menu {
     position: absolute;
     left: 0;
     z-index: 1000;
@@ -195,14 +191,14 @@ $padding-left: 10px !default;
     background-color: $menu-background;
     box-shadow: rgba(34, 36, 38, 0.12) 0 2px 4px 0;
 
-    .Select-option-group {
+    .react-select__group {
       font-size: 15px;
       font-weight: $brc-semibold;
       color: $option-group-color;
       background: $option-group-background;
     }
 
-    .Select-option {
+    .react-select__option {
       padding: 0 10px;
       cursor: pointer;
       font-size: 15px;
@@ -229,14 +225,14 @@ $padding-left: 10px !default;
   }
 
   &.menu-position-top {
-    .Select-menu-outer {
+    .react-select__menu {
       top: auto;
       bottom: 100%;
       margin-bottom: 10px;
     }
   }
 
-  .Multi-value {
+  .react-select__multi-value {
     margin-right: 5px;
     margin-top: 2px;
     margin-bottom: 2px;
@@ -245,7 +241,7 @@ $padding-left: 10px !default;
 
     @include height($height - 14px);
 
-    .Multi-value-label {
+    .react-select__multi-value-label {
       @include height($height - 14px);
 
       background: $multiple-value-background-color;
@@ -253,7 +249,7 @@ $padding-left: 10px !default;
       padding: 0 5px;
     }
 
-    .Multi-value-remove {
+    .react-select__multi-value-remove {
       padding: 0 4px;
       border-color: $multiple-value-icon-border-color;
       background: $multiple-value-icon-background-color;
@@ -271,15 +267,15 @@ $padding-left: 10px !default;
   }
 
   &.is-small {
-    .Select-input,
-    .Select-placeholder {
+    .react-select__input,
+    .react-select__placeholder {
       @include height($height-small - 12px);
     }
 
-    .Multi-value {
+    .react-select__multi-value {
       @include height($height-small - 14px);
 
-      .Multi-value-label {
+      .react-select__multi-value-label {
         @include height($height-small - 14px);
       }
     }
@@ -288,49 +284,49 @@ $padding-left: 10px !default;
   &:not(.is-disabled):hover {
     background: $background-hover;
 
-    .Single-value {
+    .react-select__single-value {
       color: $text-color-hover;
     }
 
-    .Select-placeholder {
+    .react-select__placeholder {
       color: $placeholder-color-hover;
     }
 
-    .Select-arrow {
+    .react-select__select-arrow-zone {
       border-color: $arrow-color-hover transparent transparent;
     }
   }
 
   &:not(.is-disabled) {
-    .Select-control.is-open {
+    .react-select__control--menu-is-open {
       border-color: $border-color-open;
       background: $background-open;
 
-      .Single-value {
+      .react-select__single-value {
         color: $text-color-open;
       }
 
-      .Select-placeholder {
+      .react-select__placeholder {
         color: $placeholder-color-open;
       }
 
-      .Select-arrow {
+      .react-select__select-arrow-zone {
         border-color: $arrow-color-open transparent transparent;
       }
     }
   }
 
-  &.has-value .Select-control {
-    .Single-value {
+  &.has-value .react-select__control {
+    .react-select__single-value {
       color: $text-color-has-value;
     }
 
-    .Select-placeholder {
+    .react-select__placeholder {
       color: $text-color-has-value;
     }
   }
 
-  .Clear-indicator {
+  .react-select__clear-indicator {
     bottom: 0;
     padding: 0;
     color: $x-color;
@@ -340,12 +336,12 @@ $padding-left: 10px !default;
   }
 
   &.is-searchable {
-    .Select-control {
+    .react-select__control {
       cursor: text;
     }
 
     &.is-open {
-      .Select-input {
+      .react-select__input {
         color: $text-color-writing;
       }
     }
@@ -355,9 +351,8 @@ $padding-left: 10px !default;
     cursor: not-allowed;
     opacity: $disabled-opacity;
 
-    .Select-arrow-zone,
-    .Select-arrow,
-    .Select-control {
+    .react-select__select-arrow-zone,
+    .react-select__control {
       cursor: inherit;
     }
   }
