@@ -9,6 +9,7 @@ import uniqBy = require("lodash/uniqBy");
 import sortBy = require("lodash/sortBy");
 import { components } from "react-select";
 import * as SelectNS from "react-select/lib/Select";
+import find = require("lodash/find");
 
 export const H24 = "24h";
 export const H12 = "12h";
@@ -50,10 +51,10 @@ const getComponents = (
     ? {
         Option: props => (
           <components.Option {...props}>
-            {timeFormatter(props.data.time) || null}
+            {timeFormatter(props.data.time)}
           </components.Option>
         ),
-        SingleValue: props => timeFormatter(props.data.time) || null
+        SingleValue: props => timeFormatter(props.data.time)
       }
     : {};
 };
@@ -338,7 +339,7 @@ export class TimePicker extends React.Component<
       <Dropdown
         {...{ id, className, style }}
         isSearchable={searchable}
-        value={options.find(o => o.value === value)}
+        value={find(options, o => o.value === value)}
         onChange={onChange}
         options={options}
         components={components}

@@ -119,7 +119,7 @@ const options = [
   isSearchable
   isClearable
   backspaceRemovesValue
-  placeholder="Select some fruit (try to type 'Banana';)"
+  placeholder="Select some fruit (try to type 'Banana')"
   options={options}
 />;
 ```

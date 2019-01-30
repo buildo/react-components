@@ -130,21 +130,12 @@ export class Dropdown<OptionType> extends React.Component<
 
   render() {
     const {
-      props: {
-        className,
-        backspaceRemovesValue,
-        isClearable,
-        menuPosition,
-        components: customComponents,
-        ...props
-      }
+      props: { className, menuPosition, components: customComponents, ...props }
     } = this;
 
     return (
       <Select
         {...props}
-        isClearable={isClearable}
-        backspaceRemovesValue={backspaceRemovesValue}
         classNamePrefix="react-select"
         components={{
           ...defaultComponents,
