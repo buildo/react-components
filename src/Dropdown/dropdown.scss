@@ -224,14 +224,6 @@ $padding-left: 10px !default;
     }
   }
 
-  &.menu-position-top {
-    .react-select__menu {
-      top: auto;
-      bottom: 100%;
-      margin-bottom: 10px;
-    }
-  }
-
   .react-select__multi-value {
     margin-right: 5px;
     margin-top: 2px;

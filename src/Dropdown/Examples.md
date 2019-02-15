@@ -86,7 +86,7 @@ const options = [
   onChange={onChange}
   placeholder="Select some fruit"
   options={options}
-  menuPosition="top"
+  menuPlacement="top"
 />;
 ```
 

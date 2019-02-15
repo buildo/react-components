@@ -5,12 +5,7 @@ import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 
 export namespace Dropdown {
-  export type MenuPosition = "top" | "bottom";
-
-  export type Props<OptionType> = ObjectOmit<
-    SelectNS.Props<OptionType>,
-    "menuPosition"
-  > & { menuPosition: MenuPosition; size: "medium" | "small"; flat: boolean };
+  export type Props<OptionType> = SelectNS.Props<OptionType> & { size: "medium" | "small", flat: boolean };
 }
 
 export const Props = {
@@ -98,7 +93,7 @@ export class Dropdown<OptionType> extends React.Component<
     isMulti: false,
     flat: false,
     blurInputOnSelect: true,
-    menuPosition: "bottom",
+    menuPlacement: "bottom",
     components: {}
   };
 
@@ -107,7 +102,6 @@ export class Dropdown<OptionType> extends React.Component<
       size,
       flat,
       isClearable,
-      menuPosition,
       isMulti,
       isDisabled
     } = this.props;
@@ -117,8 +111,7 @@ export class Dropdown<OptionType> extends React.Component<
       "is-flat": flat,
       "is-multi": isMulti,
       "is-clearable": isClearable,
-      "is-disabled": isDisabled,
-      "menu-position-top": menuPosition === "top"
+      "is-disabled": isDisabled
     });
   }
 
@@ -130,7 +123,7 @@ export class Dropdown<OptionType> extends React.Component<
 
   render() {
     const {
-      props: { className, menuPosition, components: customComponents, ...props }
+      props: { className, components: customComponents, ...props }
     } = this;
 
     return (

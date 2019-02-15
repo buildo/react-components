@@ -255,7 +255,7 @@ export interface DefaultProps {
   /** enable the search feature */
   searchable: boolean;
   /** whether the menu should open on top or bottom */
-  menuPosition: Dropdown.MenuPosition;
+  menuPosition: Dropdown.Props<any>["menuPlacement"];
 }
 
 export namespace TimePicker {
@@ -346,7 +346,7 @@ export class TimePicker extends React.Component<
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
-        menuPosition={menuPosition}
+        menuPlacement={menuPosition}
         isDisabled={disabled}
       />
     );
