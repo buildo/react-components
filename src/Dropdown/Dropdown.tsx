@@ -9,7 +9,7 @@ export namespace Dropdown {
 
 const defaultComponents: Dropdown.Props<any>["components"] = {
   Placeholder: ({ children }) => (
-    <div className="react-select__placeholder">{children}</div>
+    <div className="dropdown__placeholder">{children}</div>
   ),
   IndicatorSeparator: () => null,
   Option: props => (
@@ -23,31 +23,31 @@ const defaultComponents: Dropdown.Props<any>["components"] = {
     />
   ),
   DropdownIndicator: props => (
-    <span className="react-select__select-arrow-zone">
+    <span className="dropdown__select-arrow-zone">
       <span
         className={
           props.selectProps.menuIsOpen
-            ? "react-select__select-arrow-up"
-            : "react-select__select-arrow-down"
+            ? "dropdown__select-arrow-up"
+            : "dropdown__select-arrow-down"
         }
       />
     </span>
   ),
   MultiValueLabel: ({ children }) => (
-    <div className="react-select__multi-value-label">{children}</div>
+    <div className="dropdown__multi-value-label">{children}</div>
   ),
   MultiValueRemove: props => (
     <components.MultiValueRemove
       innerProps={{
         ...props.innerProps,
-        className: "react-select__multi-value-remove"
+        className: "dropdown__multi-value-remove"
       }}
     >
       ×
     </components.MultiValueRemove>
   ),
   ClearIndicator: props => (
-    <span onClick={props.clearValue} className="react-select__clear-indicator">
+    <span onClick={props.clearValue} className="dropdown__clear-indicator">
       ×
     </span>
   )

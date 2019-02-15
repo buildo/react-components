@@ -9,8 +9,8 @@
 }
 
 .dropdown {
-  .react-select__select-arrow-down,
-  .react-select__select-arrow-up {
+  .dropdown__select-arrow-down,
+  .dropdown__select-arrow-up {
     margin-top: 1px;
     border: 0;
     height: auto;
@@ -27,13 +27,13 @@
     }
   }
 
-  .react-select__select-arrow-up {
+  .dropdown__select-arrow-up {
     &::before {
       content: "\e90f";
     }
   }
 
-  .react-select__select-arrow-down {
+  .dropdown__select-arrow-down {
     &::before {
       content: "\e910";
     }
