@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t, ReactElement, ObjectOmit } from "../utils";
 import Select, { components } from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
@@ -7,32 +6,6 @@ import * as cx from "classnames";
 export namespace Dropdown {
   export type Props<OptionType> = SelectNS.Props<OptionType> & { size: "medium" | "small", flat: boolean };
 }
-
-export const Props = {
-  value: t.maybe(t.union([t.Object, t.list(t.Object)])),
-  onChange: t.maybe(t.Function),
-  options: t.list(t.Object),
-  size: t.maybe(t.enums.of(["medium", "small"])),
-  isDisabled: t.maybe(t.Boolean),
-  isSearchable: t.maybe(t.Boolean),
-  isClearable: t.maybe(t.Boolean),
-  isMulti: t.maybe(t.Boolean),
-  flat: t.maybe(t.Boolean),
-  blurInputOnSelect: t.maybe(t.Boolean),
-  backspaceRemovesValue: t.maybe(t.Boolean),
-  menuPosition: t.maybe(t.enums.of(["top", "bottom"])),
-  placeholder: t.maybe(t.union([t.String, ReactElement])),
-  noOptionsMessage: t.maybe(t.String),
-  delimiter: t.maybe(t.String),
-  onInputChange: t.maybe(t.Function),
-  onFocus: t.maybe(t.Function),
-  onBlur: t.maybe(t.Function),
-  isLoading: t.maybe(t.Boolean),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object),
-  components: t.maybe(t.Object)
-};
 
 const defaultComponents: Dropdown.Props<any>["components"] = {
   Placeholder: ({ children }) => (
@@ -80,7 +53,6 @@ const defaultComponents: Dropdown.Props<any>["components"] = {
   )
 };
 
-@props(Props, { strict: true })
 export class Dropdown<OptionType> extends React.Component<
   Dropdown.Props<OptionType>
 > {
@@ -129,7 +101,7 @@ export class Dropdown<OptionType> extends React.Component<
     return (
       <Select
         {...props}
-        classNamePrefix="react-select"
+        classNamePrefix="dropdown"
         components={{
           ...defaultComponents,
           ...customComponents
