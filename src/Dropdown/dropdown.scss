@@ -67,111 +67,106 @@ $padding-left: 10px !default;
 }
 
 .dropdown {
-  .dropdown__control {
-    min-height: 0;
-    box-sizing: border-box;
-    @include normalize();
-    @include height($height);
-  }
-  .dropdown__multi-value,
-  .dropdown__single-value,
+  box-sizing: border-box;
+
+  @include normalize();
+  @include height($height);
+
+  .dropdown__control,
+  .dropdown__value-container,
+  .dropdown__placeholder,
   .dropdown__input,
-  .dropdown__control > input,
+  .dropdown__input > input,
   .dropdown__option,
-  .dropdown__select-arrow-zone,
-  .dropdown__clear-indicator {
+  .dropdown__dropdown-indicator {
     @include normalize();
     @include height($height - 2);
   }
 
   &.is-small {
-    .dropdown__control {
-      @include height($height-small);
-    }
-    .dropdown__multi-value,
-    .dropdown__single-value,
-    .dropdown__input,
-    .dropdown__control > input,
+    @include height($height-small);
+
+    .dropdown__control,
+    .dropdown__value-container,
     .dropdown__placeholder,
+    .dropdown__input,
+    .dropdown__input > input,
     .dropdown__option,
-    .dropdown__select-arrow-zone,
-    .dropdown__clear-indicator {
+    .dropdown__dropdown-indicator {
       @include height($height-small - 2);
     }
   }
 }
 
 .dropdown {
-  min-width: 150px;
+  border: solid 1px $border-color;
+  border-radius: $border-radius;
   background: $background;
   color: $text-color;
   font-size: 15px;
   font-weight: $brc-semibold;
-  height: 100%;
 
   &:hover {
     border-color: $border-color-hover;
   }
 
-  &:not(.is-disabled) {
-    .dropdown__control--is-focused {
-      border-color: $border-color-focus;
-    }
+  &:not(.dropdown--is-disabled).dropdown--is-focused {
+    border-color: $border-color-focus;
   }
 
-  &.is-multi {
-    height: auto;
+  &.is-small {
     .dropdown__control {
-      height: auto;
+      padding-left: $padding-left-small;
     }
   }
 
   .dropdown__control {
-    border: solid 1px $border-color;
-    border-radius: $border-radius;
+    padding-left: $padding-left;
+    border: none;
     background: transparent;
     cursor: pointer;
     box-shadow: none !important;
-    flex-grow: 1;
+    min-width: 150px;
+    width: 100%;
 
-    .Select-multi-value-wrapper {
+    .dropdown__value-container,
+    .dropdown__multi-value__label {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown__value-container {
       @include flex_flex-wrap(wrap);
       @include flex_align-items(center);
     }
 
-    .dropdown__input,
-    .dropdown__placeholder {
+    .dropdown__input {
+      position: absolute;
+      top: 0;
+      left: 0;
       background: transparent;
     }
 
-    .dropdown__select-arrow-zone,
+    .dropdown__dropdown-indicator,
     .dropdown__clear-indicator {
       @include flex_flex(0 0 auto);
       @include flex_justify-content(center);
     }
 
-    .dropdown__select-arrow-zone {
+    .dropdown__dropdown-indicator {
       height: 100%;
       width: 30px;
     }
 
+    .dropdown__dropdown-indicator,
     .dropdown__clear-indicator {
-      width: 15px;
-    }
-
-    .dropdown__clear-indicator {
+      margin: 0;
+      padding: 0;
       cursor: pointer;
-      font-size: 20px;
-    }
-
-    .dropdown__single-value,
-    .dropdown__multi-value {
-      font-size: 0.9em;
-    }
-
-    .dropdown__select-arrow-zone {
-      border-color: $arrow-color transparent transparent;
-      border-width: 5px 5px 0;
+      svg {
+        fill: $arrow-color;
+      }
     }
   }
 
@@ -191,92 +186,142 @@ $padding-left: 10px !default;
     background-color: $menu-background;
     box-shadow: rgba(34, 36, 38, 0.12) 0 2px 4px 0;
 
-    .dropdown__group {
-      font-size: 15px;
-      font-weight: $brc-semibold;
-      color: $option-group-color;
-      background: $option-group-background;
-    }
+    .dropdown__menu-list {
+      padding: 0;
 
-    .dropdown__option {
-      padding: 0 10px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 400;
-      color: $option-color;
-      background: $menu-background;
+      .dropdown__group {
+        padding: 0;
 
-      &.is-selected {
-        background: $option-background-selected;
-        color: $option-color-selected;
+        .dropdown__group-heading {
+          margin: 0;
+          padding: 0 9px;
+          font-size: 15px;
+          font-weight: $brc-semibold;
+          color: $option-group-color;
+          background: $option-group-background;
+        }
       }
 
-      &.is-disabled {
-        color: $option-color-disabled;
-        background: $option-background-disabled;
-      }
+      .dropdown__option {
+        padding: 0 10px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+        color: $option-color;
+        background: $menu-background;
 
-      &:not(.is-disabled):hover,
-      &.is-focused {
-        background: $option-background-hover;
-        color: $option-color-hover;
-      }
-    }
-  }
+        &.dropdown__option--is-selected {
+          background: $option-background-selected;
+          color: $option-color-selected;
+        }
 
-  .dropdown__multi-value {
-    margin-right: 5px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border: 1px solid $multiple-value-border-color;
-    flex-direction: row-reverse;
+        &.dropdown__option--is-disabled {
+          color: $option-color-disabled;
+          background: $option-background-disabled;
+        }
 
-    @include height($height - 14px);
-
-    .dropdown__multi-value-label {
-      @include height($height - 14px);
-
-      background: $multiple-value-background-color;
-      color: $multiple-value-color;
-      padding: 0 5px;
-    }
-
-    .dropdown__multi-value-remove {
-      padding: 0 4px;
-      border-color: $multiple-value-icon-border-color;
-      background: $multiple-value-icon-background-color;
-      color: $multiple-value-icon-color;
-      border-right: 1px solid;
-      display: inline-block;
-      vertical-align: middle;
-
-      &:hover {
-        border-color: $multiple-value-icon-border-color-hover;
-        background: $multiple-value-icon-background-color-hover;
-        color: $multiple-value-icon-color-hover;
+        &:not(.dropdown__option--is-disabled):hover,
+        &.dropdown__option--is-focused {
+          background: $option-background-hover;
+          color: $option-color-hover;
+        }
       }
     }
   }
 
-  &.is-small {
-    .dropdown__input,
-    .dropdown__placeholder {
-      @include height($height-small - 12px);
+  &.is-multi {
+    height: auto;
+
+    .dropdown__control {
+      height: auto;
+
+      .dropdown__value-container {
+        min-height: $height;
+        height: auto;
+      }
     }
 
-    .dropdown__multi-value {
-      @include height($height-small - 14px);
+    &.is-small {
+      .dropdown__value-container {
+        min-height: $height-small;
+      }
+    }
 
-      .dropdown__multi-value-label {
-        @include height($height-small - 14px);
+    .dropdown__value-container--has-value {
+      padding: 2px 0;
+      min-height: auto;
+
+      .dropdown__input {
+        position: relative;
+
+        @include height($height - 12px);
+
+        > input {
+          @include height($height - 12px);
+        }
+      }
+
+      .dropdown__multi-value {
+        margin-right: 5px;
+
+        /*
+              vertical margin is needed to add some space between values when they wrap.
+              5px is not random: 10px is the gap to match .Select-input in height and avoid visual defects
+            */
+        margin-top: 2px;
+        margin-bottom: 2px;
+        border: 1px solid $multiple-value-border-color;
+
+        @include height($height - 12px);
+
+        .dropdown__multi-value__label {
+          @include height($height - 14px);
+
+          background: $multiple-value-background-color;
+          color: $multiple-value-color;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        .dropdown__multi-value__remove {
+          padding: 0 4px;
+          border-color: $multiple-value-icon-border-color;
+          background: $multiple-value-icon-background-color;
+          color: $multiple-value-icon-color;
+
+          &:hover {
+            border-color: $multiple-value-icon-border-color-hover;
+            background: $multiple-value-icon-background-color-hover;
+            color: $multiple-value-icon-color-hover;
+          }
+        }
+      }
+
+      &.is-small {
+        .dropdown__control .dropdown__value-container {
+          min-height: auto;
+
+          .dropdown__input,
+          .dropdown__input > input {
+            @include height($height-small - 12px);
+          }
+
+          .dropdown__multi-value {
+            @include height($height-small - 14px);
+
+            .dropdown__multi-value__label {
+              @include height($height-small - 14px);
+            }
+          }
+        }
       }
     }
   }
 
-  &:not(.is-disabled):hover {
+  &:not(.dropdown--is-disabled):hover {
     background: $background-hover;
 
-    .dropdown__single-value {
+    &:not(.is-multi) .dropdown__control .dropdown__single-value {
       color: $text-color-hover;
     }
 
@@ -284,66 +329,70 @@ $padding-left: 10px !default;
       color: $placeholder-color-hover;
     }
 
-    .dropdown__select-arrow-zone {
-      border-color: $arrow-color-hover transparent transparent;
+    .dropdown__dropdown-indicator svg {
+      fill: $arrow-color-hover;
     }
   }
 
-  &:not(.is-disabled) {
-    .dropdown__control--menu-is-open {
-      border-color: $border-color-open;
-      background: $background-open;
+  &:not(.dropdown--is-disabled).dropdown--is-open {
+    border-color: $border-color-open;
+    background: $background-open;
 
-      .dropdown__single-value {
-        color: $text-color-open;
-      }
+    &:not(.is-multi) .dropdown__control .dropdown__single-value {
+      color: $text-color-open;
+    }
 
-      .dropdown__placeholder {
-        color: $placeholder-color-open;
-      }
+    &:hover .dropdown__placeholder,
+    .dropdown__placeholder {
+      color: $placeholder-color-open;
+    }
 
-      .dropdown__select-arrow-zone {
-        border-color: $arrow-color-open transparent transparent;
-      }
+    .dropdown__dropdown-indicator svg {
+      fill: $arrow-color-open;
     }
   }
 
-  &.has-value .dropdown__control {
+  &.dropdown__value-container--has-value {
     .dropdown__single-value {
       color: $text-color-has-value;
     }
+  }
 
-    .dropdown__placeholder {
-      color: $text-color-has-value;
+  &.is-clearable {
+    .dropdown__value-container--has-value {
+      .dropdown__clear-indicator {
+        svg {
+          bottom: 0;
+          padding: 0;
+          fill: $x-color;
+        }
+
+        &:hover {
+          .dropdown__clear-indicator svg {
+            fill: $x-color-hover;
+          }
+        }
+      }
     }
   }
 
-  .dropdown__clear-indicator {
-    bottom: 0;
-    padding: 0;
-    color: $x-color;
-    &:hover {
-      color: $x-color-hover;
-    }
-  }
-
-  &.is-searchable {
+  &.dropdown--is-searchable {
     .dropdown__control {
       cursor: text;
     }
 
-    &.is-open {
+    .dropdown__control--menu-is-open {
       .dropdown__input {
         color: $text-color-writing;
       }
     }
   }
 
-  &.is-disabled {
+  &.dropdown--is-disabled {
     cursor: not-allowed;
     opacity: $disabled-opacity;
 
-    .dropdown__select-arrow-zone,
+    .dropdown__dropdown-indicator,
     .dropdown__control {
       cursor: inherit;
     }
@@ -351,8 +400,8 @@ $padding-left: 10px !default;
 
   &.is-flat {
     &:not(:hover),
-    &.is-disabled {
-      &:not(.is-open) {
+    &.dropdown--is-disabled {
+      :not(.dropdown__control--menu-is-open) {
         background: transparent;
       }
     }
