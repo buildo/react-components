@@ -99,19 +99,14 @@ $padding-left: 10px !default;
 }
 
 .dropdown {
-  border: solid 1px $border-color;
-  border-radius: $border-radius;
-  background: $background;
-  color: $text-color;
-  font-size: 15px;
-  font-weight: $brc-semibold;
-
   &:hover {
     border-color: $border-color-hover;
   }
 
-  &:not(.dropdown--is-disabled).dropdown--is-focused {
-    border-color: $border-color-focus;
+  &:not(.dropdown--is-disabled) {
+    .dropdown__control--is-focused {
+      border-color: $border-color-focus;
+    }
   }
 
   &.is-small {
@@ -120,14 +115,20 @@ $padding-left: 10px !default;
     }
   }
 
+  color: $text-color;
+
   .dropdown__control {
     padding-left: $padding-left;
-    border: none;
-    background: transparent;
     cursor: pointer;
     box-shadow: none !important;
     min-width: 150px;
+    min-height: unset;
     width: 100%;
+    border: solid 1px $border-color;
+    border-radius: $border-radius;
+    background: $background;
+    font-size: 15px;
+    font-weight: $brc-semibold;
 
     .dropdown__value-container,
     .dropdown__multi-value__label {
@@ -157,6 +158,9 @@ $padding-left: 10px !default;
     .dropdown__dropdown-indicator {
       height: 100%;
       width: 30px;
+      svg {
+        fill: $arrow-color;
+      }
     }
 
     .dropdown__dropdown-indicator,
@@ -164,9 +168,6 @@ $padding-left: 10px !default;
       margin: 0;
       padding: 0;
       cursor: pointer;
-      svg {
-        fill: $arrow-color;
-      }
     }
   }
 
@@ -318,70 +319,68 @@ $padding-left: 10px !default;
     }
   }
 
-  &:not(.dropdown--is-disabled):hover {
-    background: $background-hover;
+  &:not(.dropdown--is-disabled) {
+    .dropdown__control {
+      &:hover {
+        background: $background-hover;
 
-    &:not(.is-multi) .dropdown__control .dropdown__single-value {
-      color: $text-color-hover;
-    }
-
-    .dropdown__placeholder {
-      color: $placeholder-color-hover;
-    }
-
-    .dropdown__dropdown-indicator svg {
-      fill: $arrow-color-hover;
-    }
-  }
-
-  &:not(.dropdown--is-disabled).dropdown--is-open {
-    border-color: $border-color-open;
-    background: $background-open;
-
-    &:not(.is-multi) .dropdown__control .dropdown__single-value {
-      color: $text-color-open;
-    }
-
-    &:hover .dropdown__placeholder,
-    .dropdown__placeholder {
-      color: $placeholder-color-open;
-    }
-
-    .dropdown__dropdown-indicator svg {
-      fill: $arrow-color-open;
-    }
-  }
-
-  &.dropdown__value-container--has-value {
-    .dropdown__single-value {
-      color: $text-color-has-value;
-    }
-  }
-
-  &.is-clearable {
-    .dropdown__value-container--has-value {
-      .dropdown__clear-indicator {
-        svg {
-          bottom: 0;
-          padding: 0;
-          fill: $x-color;
+        .dropdown__single-value {
+          color: $text-color-hover;
         }
 
-        &:hover {
-          .dropdown__clear-indicator svg {
-            fill: $x-color-hover;
-          }
+        .dropdown__placeholder {
+          color: $placeholder-color-hover;
+        }
+
+        .dropdown__dropdown-indicator svg {
+          fill: $arrow-color-hover;
+        }
+      }
+
+      &.dropdown__control--menu-is-open {
+        border-color: $border-color-open;
+        background: $background-open;
+
+        .dropdown__single-value {
+          color: $text-color-open;
+        }
+
+        .dropdown__placeholder:hover,
+        .dropdown__placeholder {
+          color: $placeholder-color-open;
+        }
+
+        .dropdown__dropdown-indicator svg {
+          fill: $arrow-color-open;
         }
       }
     }
   }
 
-  &.dropdown--is-searchable {
-    .dropdown__control {
-      cursor: text;
+  .dropdown__value-container--has-value {
+    .dropdown__single-value {
+      color: $text-color-has-value;
+    }
+  }
+
+  .dropdown__clear-indicator {
+    svg {
+      bottom: 0;
+      padding: 0;
+      fill: $x-color;
     }
 
-    .dropdown__control--menu-is-open {
+    &:hover {
+      svg {
+        fill: $x-color-hover;
+      }
+    }
+  }
+
+  &.is-searchable {
+    .dropdown__control {
+      cursor: text;
+
       .dropdown__input {
         color: $text-color-writing;
       }

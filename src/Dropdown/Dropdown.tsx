@@ -32,12 +32,13 @@ export class Dropdown<OptionType> extends React.Component<
   };
 
   getCustomClassNames() {
-    const { size, flat, isMulti } = this.props;
+    const { size, flat, isMulti, isSearchable } = this.props;
     return cx({
       "is-medium": size === "medium",
       "is-small": size === "small",
       "is-flat": flat,
-      "is-multi": isMulti
+      "is-multi": isMulti,
+      "is-searchable": isSearchable
     });
   }
 
