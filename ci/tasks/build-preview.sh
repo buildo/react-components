@@ -13,8 +13,7 @@ cd react-components
 
 yarn install --no-progress
 
-yarn build-styleguidist
+NODE_ENV=production yarn build-styleguidist
 
-mv styleguide/index.html styleguide/$BRANCH.html
-
-cp -a styleguide/* ../preview
+cp -a styleguide/build/* ../preview/build/*
+cp -a styleguide/index.html ../preview/$BRANCH.html
