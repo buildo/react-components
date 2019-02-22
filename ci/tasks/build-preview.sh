@@ -7,7 +7,7 @@ cd react-components
 
 yarn install --no-progress
 
-yarn build-styleguidist
+yarn build-styleguidist 
 
 mv styleguide/index.html styleguide/$BRANCH.html
 
