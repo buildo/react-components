@@ -14,6 +14,7 @@ const options = [
 ];
 
 <Dropdown
+  type="single"
   value={state.value}
   onChange={onChange}
   placeholder="Select some fruit"
@@ -49,12 +50,14 @@ const options2 = [
 
 <FlexView vAlignContent="center" className="dropdown-list">
   <Dropdown
+    type="single"
     value={state.value}
     onChange={onChange("value")}
     placeholder="Select some fruit"
     options={options}
   />
   <Dropdown
+    type="single"
     value={value2}
     onChange={onChange("value2")}
     placeholder="Select some vegetables"
@@ -82,6 +85,7 @@ const options = [
 ];
 
 <Dropdown
+  type="single"
   value={state.value}
   onChange={onChange}
   placeholder="Select some fruit"
@@ -113,11 +117,11 @@ const options = [
 ];
 
 <Dropdown
+  type="single-clearable"
   className="custom"
   value={state.value}
   onChange={onChange}
   isSearchable
-  isClearable
   backspaceRemovesValue
   placeholder="Select some fruit (try to type 'Banana')"
   options={options}
@@ -142,11 +146,10 @@ const options = [
 ];
 
 <Dropdown
+  type="multi-clearable"
   className="custom"
   value={state.value}
   onChange={onChange}
-  isMulti
-  isClearable
   placeholder="Select some fruit(s)"
   options={options}
 />;
@@ -186,6 +189,7 @@ const options = [
 ];
 
 <Dropdown
+  type="single"
   className="custom"
   value={state.value}
   onChange={onChange}

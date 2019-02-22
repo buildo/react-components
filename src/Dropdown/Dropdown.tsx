@@ -5,12 +5,12 @@ import * as cx from "classnames";
 import { ObjectOmit } from "src/utils";
 
 export namespace Dropdown {
-  export type Props<OptionType extends {}> = ObjectOmit<
+  export type Props<OptionType> = ObjectOmit<
     SelectNS.Props<OptionType>,
     "isMulti" | "isClearable" | "onChange" | "value"
   > & {
-    size: "medium" | "small";
-    flat: boolean;
+    size?: "medium" | "small";
+    flat?: boolean;
     innerRef?: (ref: Select<OptionType> | null) => void;
   } & (
       | {
@@ -49,12 +49,12 @@ export class Dropdown<OptionType> extends React.Component<
   };
 
   getCustomClassNames() {
-    const { size, flat, type, isSearchable } = this.props;
+    const { size, flat, isSearchable } = this.props;
     return cx({
       "is-medium": size === "medium",
       "is-small": size === "small",
       "is-flat": flat,
-      "is-multi": type === "multi",
+      "is-multi": this.isMulti(),
       "is-searchable": isSearchable
     });
   }
