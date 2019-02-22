@@ -10,6 +10,7 @@
     "preversion": "npm run prettier-check && npm run test",
     "prepublish": "npm run build",
     "start": "styleguidist server",
+    "build-styleguidist": "styleguidist build",
     "typecheck": "tsc --noEmit --pretty",
     "prettier-fix": "prettier \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\" --write",
     "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\"",

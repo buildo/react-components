@@ -1,0 +1,19 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: node
+    tag: "8"
+
+inputs:
+  - name: react-components
+
+outputs:
+  - name: preview
+
+caches:
+  - path: react-components/node_modules
+
+run:
+  path: react-components/ci/tasks/build-preview.sh
