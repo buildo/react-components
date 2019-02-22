@@ -42,8 +42,8 @@ jobs:
     - task: test
       file: react-components/ci/tasks/test.yml
     - task: build-preview
-        file: react-components/ci/tasks/build-preview.yml
-        attempts: 2
+      file: react-components/ci/tasks/build-preview.yml
+      attempts: 2
     - task: upload-preview
       file: react-components/ci/tasks/upload-preview.yml
       params:
