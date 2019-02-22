@@ -15,5 +15,6 @@ yarn install --no-progress
 
 NODE_ENV=production yarn build-styleguidist
 
+mkdir ../preview/build
 cp -a styleguide/build/* ../preview/build/*
 cp -a styleguide/index.html ../preview/$BRANCH.html
