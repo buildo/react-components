@@ -297,7 +297,7 @@ export class TimePicker extends React.Component<
 
   state = { inputValue: "" };
 
-  _onChange = (value?: TimeDropdownOption) => {
+  _onChange = (value: TimeDropdownOption) => {
     if (value) {
       // interface with component user is always in H24
       const time = parseInTimeFormat(value.value, H24);
