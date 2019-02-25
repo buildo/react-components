@@ -38,8 +38,17 @@ jobs:
       path: react-components
       status: pending
       context: concourse
-  - task: test
-    file: react-components/ci/tasks/test.yml
+  - do:
+    - task: test
+      file: react-components/ci/tasks/test.yml
+    - task: build-preview
+      file: react-components/ci/tasks/build-preview.yml
+      attempts: 2
+    - task: upload-preview
+      file: react-components/ci/tasks/upload-preview.yml
+      params:
+        AWS_ACCESS_KEY_ID: ((preview-access-key))
+        AWS_SECRET_ACCESS_KEY: ((preview-secret-key))
     on_success:
       put: pr
       params:
