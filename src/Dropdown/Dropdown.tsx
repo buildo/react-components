@@ -2,7 +2,7 @@ import * as React from "react";
 import Select from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
-import { ObjectOmit } from "src/utils";
+import { ObjectOmit } from "../utils";
 
 export namespace Dropdown {
   export type Props<OptionType> = ObjectOmit<
