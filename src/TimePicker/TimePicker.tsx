@@ -7,6 +7,9 @@ import flatten = require("lodash/flatten");
 import compact = require("lodash/compact");
 import uniqBy = require("lodash/uniqBy");
 import sortBy = require("lodash/sortBy");
+import { components } from "react-select";
+import * as SelectNS from "react-select/lib/Select";
+import find = require("lodash/find");
 
 export const H24 = "24h";
 export const H12 = "12h";
@@ -40,6 +43,21 @@ const isValidHoursInTimeFormat = (
   hours: number | null,
   timeFormat: TimePicker.TimeFormat
 ): hours is number => (timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours));
+
+const getComponents = (
+  timeFormatter?: TimePicker.TimeFormatter
+): SelectNS.Props<TimeDropdownOption>["components"] => {
+  return timeFormatter
+    ? {
+        Option: props => (
+          <components.Option {...props}>
+            {timeFormatter(props.data.time)}
+          </components.Option>
+        ),
+        SingleValue: props => timeFormatter(props.data.time)
+      }
+    : {};
+};
 
 const Props = t.refinement(
   t.struct({
@@ -82,7 +100,7 @@ const formatTime = ({ hours, minutes, timeFormat }: TimePicker.TimeAndFormat) =>
     ? formatTime12({ hours, minutes })
     : formatTime24({ hours, minutes });
 
-const toOption = (time: TimePicker.TimeAndFormat) => ({
+const toOption = (time: TimePicker.TimeAndFormat): TimeDropdownOption => ({
   time,
   value: formatTime24(time),
   label: formatTime(time)
@@ -191,7 +209,7 @@ type MakeOptionsInput = {
 const makeOptions = (
   { minTime, maxTime, timeFormat, userValue }: MakeOptionsInput,
   inputValue: string
-) => {
+): TimeDropdownOption[] => {
   const time = parseInTimeFormat(inputValue, timeFormat);
   const selectedValue =
     userValue && userValue !== inputError
@@ -237,7 +255,7 @@ export interface DefaultProps {
   /** enable the search feature */
   searchable: boolean;
   /** whether the menu should open on top or bottom */
-  menuPosition: Dropdown.MenuPosition;
+  menuPosition: Dropdown.Props<any>["menuPlacement"];
 }
 
 export namespace TimePicker {
@@ -257,6 +275,11 @@ export namespace TimePicker {
   export type Props = RequiredProps & Partial<DefaultProps>;
 }
 type TimePickerDefaultedProps = RequiredProps & DefaultProps;
+type TimeDropdownOption = {
+  time: TimePicker.TimeAndFormat;
+  value: string;
+  label: string;
+};
 
 @props(Props)
 export class TimePicker extends React.Component<
@@ -274,14 +297,10 @@ export class TimePicker extends React.Component<
 
   state = { inputValue: "" };
 
-  _onChange = (value?: string) => {
-    if (value) {
-      // interface with component user is always in H24
-      const time = parseInTimeFormat(value, H24);
-      this.props.onChange(time);
-    } else {
-      this.props.onChange();
-    }
+  _onChange = (value: TimeDropdownOption) => {
+    // interface with component user is always in H24
+    const time = parseInTimeFormat(value.value, H24);
+    this.props.onChange(time);
   };
 
   updateInputValue = (inputValue: string) => this.setState({ inputValue });
@@ -299,7 +318,7 @@ export class TimePicker extends React.Component<
       placeholder,
       menuPosition,
       disabled,
-      timeFormatter: _timeFormatter
+      timeFormatter
     } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
@@ -310,25 +329,21 @@ export class TimePicker extends React.Component<
     const className = cx("time-picker", _className);
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
-
-    const timeFormatter = _timeFormatter
-      ? (o: any) => _timeFormatter(o.time)
-      : undefined; // TODO(typo)
+    const components = getComponents(timeFormatter);
 
     return (
       <Dropdown
         {...{ id, className, style }}
-        searchable={searchable}
-        value={value}
+        isSearchable={searchable}
+        value={find(options, o => o.value === value)}
         onChange={onChange}
         options={options}
-        valueRenderer={timeFormatter}
-        optionRenderer={timeFormatter}
+        components={components}
         placeholder={placeholder}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
-        menuPosition={menuPosition}
-        disabled={disabled}
+        menuPlacement={menuPosition}
+        isDisabled={disabled}
       />
     );
   }

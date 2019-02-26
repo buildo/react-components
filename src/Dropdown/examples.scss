@@ -9,7 +9,8 @@
 }
 
 .dropdown {
-  .Select-arrow {
+  .dropdown__select-arrow-down,
+  .dropdown__select-arrow-up {
     margin-top: 1px;
     border: 0;
     height: auto;
@@ -22,16 +23,19 @@
     @include flex_align-items(center);
 
     &::before {
-      content: "\e910";
       font-family: "icomoon";
     }
   }
 
-  &.is-open {
-    .Select-arrow {
-      &::before {
-        content: "\e90f";
-      }
+  .dropdown__select-arrow-up {
+    &::before {
+      content: "\e90f";
+    }
+  }
+
+  .dropdown__select-arrow-down {
+    &::before {
+      content: "\e910";
     }
   }
 }

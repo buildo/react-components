@@ -89,7 +89,7 @@ function onChange(field, value) {
         { value: "male", label: "Male" },
         { value: "female", label: "Female" }
       ]}
-      dropdownRenderer={props => <Dropdown {...props} searchable />}
+      dropdownRenderer={props => <Dropdown {...props} isSearchable />}
       onChange={value => onChange("dropdown", value)}
       placeholder="Select"
     />

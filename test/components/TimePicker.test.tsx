@@ -54,7 +54,7 @@ describe("TimePicker", () => {
         <TimePicker value={{ hours: 15, minutes: 33 }} onChange={() => {}} />
       );
       const value = component.prop("value");
-      expect(value).toBe("15:33");
+      expect(value.label).toBe("15:33");
     });
 
     it("passes an undefined value when value prop is undefined", () => {
