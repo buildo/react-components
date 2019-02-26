@@ -59,7 +59,7 @@ export class DropdownField<OptionType> extends React.PureComponent<
         {dropdownRenderer ? (
           dropdownRenderer(_dropdownProps)
         ) : (
-          <Dropdown {..._dropdownProps} isDisabled id={id} />
+          <Dropdown {..._dropdownProps} isDisabled={isDisabled} id={id} />
         )}
       </FormField>
     );
