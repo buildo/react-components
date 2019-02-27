@@ -174,7 +174,7 @@ export class Popover extends React.Component<Popover.Props, State> {
   }
 
   componentDidUpdate() {
-    if (this.containerNode) {
+    if (this.containerNode && this.state.popover) {
       const popover = this.getVisiblePopover();
       const { context } = this.getPopoverProps();
       const { ContextWrapper } = this;
