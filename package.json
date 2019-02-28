@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit --pretty",
     "prettier-fix": "prettier \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\" --write",
     "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\"",
-    "release-version": "smooth-release --validations --npm-version --npm-publish"
+    "release-version": "smooth-release --validations --npm-version --npm-publish",
+    "postinstall": "rm -rf node_modules/**/node_modules/@types/react"
   },
   "repository": {
     "type": "git",
@@ -113,8 +114,8 @@
     ]
   },
   "resolutions": {
-    "@types/react": "16.4.14",
-    "@types/react-dom": "16.0.8",
+    "@types/react": "16.8.5",
+    "@types/react-dom": "16.8.2",
     "@types/react-dnd": "2.0.33"
   },
   "jest": {
