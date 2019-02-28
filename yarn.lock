@@ -8740,10 +8740,10 @@ slash@^1.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
   integrity sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
 
-smooth-release@8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/smooth-release/-/smooth-release-8.0.4.tgz#631ae8a149bc61cbd08de5179133c8e6b0e5f0ea"
-  integrity sha1-YxrooUm8YcvQjeUXkTPI5rDl8Oo=
+smooth-release@8.0.9:
+  version "8.0.9"
+  resolved "https://registry.yarnpkg.com/smooth-release/-/smooth-release-8.0.9.tgz#5d93b677fd8092f026e971d963410dd5049251d7"
+  integrity sha512-LQ9Kc47ict4tUZeBKUZveBsxFLNLB6puAAsO9RW59RYV9KjyO/P5m5mFHcoHSjgBqdKSirNgCduH4NlF4VSeqQ==
   dependencies:
     babel-runtime "^6.18.0"
     better-console "^0.2.4"
@@ -8757,6 +8757,7 @@ smooth-release@8.0.4:
     octokat "^0.4.18"
     semver "^5.3.0"
     staggerjs "^1.1.0"
+    tar "^4.1.1"
     tcomb "^3.2.15"
     update-notifier "^2.1.0"
 
@@ -9260,7 +9261,7 @@ tar@^2.0.0:
     fstream "^1.0.2"
     inherits "2"
 
-tar@^4:
+tar@^4, tar@^4.1.1:
   version "4.4.8"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.8.tgz#b19eec3fde2a96e64666df9fdb40c5ca1bc3747d"
   integrity sha512-LzHF64s5chPQQS0IYBn9IN5h3i98c12bo4NCO7e0sGM2llXQ3p2FGC5sdENN4cTW48O915Sh+x+EXx7XW96xYQ==
