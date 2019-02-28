@@ -31,14 +31,16 @@ export function ColumnGroup<T>(args: ColumnGroup.Props<T>) {
 
   const header =
     find(children, child => child.type === Header) || defaultHeader("");
-  const columns = children.filter(ch => ch.type === Column).map((col, key) => {
-    const colProps: Column.Props<T> = {
-      key,
-      ...col.props,
-      fixed
-    };
-    return Column<T>({ ...colProps });
-  });
+  const columns = children
+    .filter(ch => ch.type === Column)
+    .map((col, key) => {
+      const colProps: Column.Props<T> = {
+        key,
+        ...col.props,
+        fixed
+      };
+      return Column<T>({ ...colProps });
+    });
 
   return (
     <ColumnGroupFDT key={key} header={header} fixed={fixed}>
