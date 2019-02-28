@@ -90,7 +90,7 @@
     "prettier": "^1.14.3",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react": "16.5.0",
-    "react-docgen-typescript": "1.1.0",
+    "react-docgen-typescript": "1.12.3",
     "react-dom": "16.5.0",
     "react-styleguidist": "6.0.33",
     "react-test-renderer": "16.2.0",
