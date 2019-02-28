@@ -19,7 +19,9 @@ type TabloChildren<T> =
   | React.ReactElement<ColumnGroup.Props<T>>[];
 
 export const getColumnList = <T>(children: TabloChildren<T>) => {
-  const chArray = Children.toArray(children) as React.ReactElement<any>[];
+  const chArray = Children.toArray(children as any) as React.ReactElement<
+    any
+  >[];
   const thereAreGroups =
     chArray.filter(ch => ch.type === ColumnGroup).length > 0;
   return thereAreGroups
@@ -36,7 +38,7 @@ export const updateColumns: _.CurriedFunction2<{}, {}, JSX.Element[]> = curry(
       colGroup?: React.ReactElement<ColumnGroup.Props<T>>
     ) => (col: React.ReactElement<Column.Props<T>>, index: number) =>
       col.type === Column ? update({ col, index, colGroup }) : col;
-    const chArray = Children.toArray(children) as React.ReactElement<
+    const chArray = Children.toArray(children as any) as React.ReactElement<
       Column.Props<T> | ColumnGroup.Props<T>
     >[];
     const thereAreGroups =

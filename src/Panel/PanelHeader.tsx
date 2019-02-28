@@ -123,8 +123,8 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
       size === HeaderSize("tiny")
         ? 40
         : size === HeaderSize("medium")
-          ? 56
-          : 48;
+        ? 56
+        : 48;
     const className = cx("panel-header", stateClassUtil([size]));
 
     return (
