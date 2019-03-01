@@ -105,6 +105,9 @@ export class Dropdown<OptionType> extends React.Component<
 
     return (
       <Component
+        styles={{
+          input: () => ({ margin: 0, padding: 0 })
+        }}
         {...props}
         classNamePrefix="dropdown"
         components={{
