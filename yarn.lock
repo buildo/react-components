@@ -6769,7 +6769,7 @@ react-portal@^3.1.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-select@^2.4.0:
+react-select@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-2.4.1.tgz#99dd9c8b7700b5ebd38007dd707b1abdbad2e70f"
   dependencies:
