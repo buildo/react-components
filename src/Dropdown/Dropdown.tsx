@@ -1,8 +1,10 @@
 import * as React from "react";
 import Select from "react-select";
+import Creatable from "react-select/lib/Creatable";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 import { ObjectOmit } from "../utils";
+import { CreatableProps } from "react-select/lib/Creatable";
 
 export namespace Dropdown {
   export type Props<OptionType> = ObjectOmit<
@@ -27,6 +29,14 @@ export namespace Dropdown {
           type: "single-clearable";
           value: OptionType | null;
           onChange: (value: OptionType | null) => void;
+        }) &
+    (
+      | ({
+          allowCreate: true;
+          isSearchable?: never;
+        } & CreatableProps<OptionType>)
+      | {
+          allowCreate?: never;
         });
 }
 
@@ -36,12 +46,8 @@ export class Dropdown<OptionType> extends React.Component<
   static defaultProps: Partial<Dropdown.Props<{}>> = {
     delimiter: ",",
     size: "medium",
-    isDisabled: false,
     isSearchable: false,
-    flat: false,
-    blurInputOnSelect: true,
-    menuPlacement: "bottom",
-    components: {}
+    menuPlacement: "bottom"
   };
 
   defaultComponents: Dropdown.Props<OptionType>["components"] = {
@@ -88,12 +94,17 @@ export class Dropdown<OptionType> extends React.Component<
         components: customComponents,
         innerRef,
         type,
+        allowCreate,
         ...props
       }
     } = this;
 
+    const Component: React.ComponentType<
+      SelectNS.Props<OptionType> | CreatableProps<OptionType>
+    > = allowCreate ? Creatable : Select;
+
     return (
-      <Select
+      <Component
         {...props}
         classNamePrefix="dropdown"
         components={{
@@ -104,6 +115,7 @@ export class Dropdown<OptionType> extends React.Component<
         ref={innerRef}
         isMulti={this.isMulti()}
         isClearable={this.isClearable()}
+        isSearchable={allowCreate || props.isSearchable}
       />
     );
   }
