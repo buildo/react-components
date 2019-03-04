@@ -1,7 +1,7 @@
 import * as React from "react";
-import { props, t, ReactChild, ReactChildren } from "../utils";
 import * as cx from "classnames";
 import View from "react-flexview";
+import Popover from "../Popover";
 
 export namespace FormField {
   export type Props = {
@@ -25,23 +25,20 @@ export namespace FormField {
     style?: React.CSSProperties;
     /** an optional id to pass to top level element of the component */
     id?: string;
+    /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+    hint?:
+      | {
+          content: JSX.Element | string;
+          type: "box" | "label";
+        }
+      | {
+          content: JSX.Element | string;
+          type: "popover";
+          popover?: Popover.Props["popover"];
+        };
   };
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  disabled: t.maybe(t.Boolean),
-  children: ReactChildren,
-  viewProps: t.maybe(t.Object),
-  horizontal: t.maybe(t.Boolean),
-  onLabelClick: t.maybe(t.Function),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object),
-  id: t.maybe(t.String)
-};
-
-@props(Props)
 export class FormField extends React.PureComponent<FormField.Props> {
   render() {
     const {
@@ -59,13 +56,6 @@ export class FormField extends React.PureComponent<FormField.Props> {
       "is-required": required,
       "is-horizontal": horizontal
     });
-
-    const viewProps = {
-      grow: !horizontal,
-      column: !horizontal,
-      ..._viewProps,
-      className
-    };
     const labelStyle: React.CSSProperties = onLabelClick
       ? { cursor: "pointer", userSelect: "none" }
       : {};
@@ -78,9 +68,45 @@ export class FormField extends React.PureComponent<FormField.Props> {
       </View>
     );
 
+    const hintComponent = !!this.props.hint && (
+      <View
+        className={cx("form-field-hint", {
+          ["form-field-hint-box"]: this.props.hint.type === "box",
+          ["form-field-hint-tooltip"]: this.props.hint.type === "popover",
+          ["form-field-hint-label"]: this.props.hint.type === "label"
+        })}
+      >
+        {this.props.hint.content}
+      </View>
+    );
+
+    const fieldComponent =
+      this.props.hint && this.props.hint.type === "popover" ? (
+        <Popover
+          popover={{
+            ...this.props.hint.popover,
+            content: hintComponent
+          }}
+        >
+          {children}
+        </Popover>
+      ) : (
+        children
+      );
+
     return (
-      <View {...viewProps}>
-        {horizontal ? [children, labelComponent] : [labelComponent, children]}
+      <View
+        column={!this.props.hint || this.props.hint.type === "label"}
+        grow={!horizontal}
+        {..._viewProps}
+        className={className}
+      >
+        <View column={!horizontal}>
+          {horizontal
+            ? [fieldComponent, labelComponent]
+            : [labelComponent, fieldComponent]}
+        </View>
+        {this.props.hint && this.props.hint.type !== "popover" && hintComponent}
       </View>
     );
   }

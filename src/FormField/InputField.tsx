@@ -1,18 +1,18 @@
 import * as React from "react";
 import { props, t, ReactChild, ObjectOmit } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import Input from "../Input";
 import { FormField } from "./FormField";
 
 export namespace InputField {
   type FieldProps = {
     /** the label for the field */
-    label: JSX.Element | string;
+    label: FormField.Props["label"];
     /** whether the field is required */
-    required?: boolean;
+    required?: FormField.Props["required"];
     /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
+    viewProps?: FormField.Props["viewProps"];
+    hint?: FormField.Props["hint"];
     /** An optional custom renderer for Input */
     inputRenderer?: (props: Input.Props) => JSX.Element;
     /** an optional class name to pass to top level element of the component */
@@ -39,6 +39,7 @@ export class InputField extends React.PureComponent<InputField.Props> {
       required,
       className: _className,
       viewProps,
+      hint,
       disabled,
       inputRenderer,
       ..._inputProps
@@ -56,6 +57,7 @@ export class InputField extends React.PureComponent<InputField.Props> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
+        hint={hint}
       >
         {inputRenderer ? inputRenderer(inputProps) : <Input {...inputProps} />}
       </FormField>

@@ -1,6 +1,9 @@
 @import "../utils/theme/variables.scss";
 
 $label-color: $brc-darkGreyBlue !default;
+$hint-label-color: $brc-coolGrey !default;
+$hint-tooltip-color: $brc-white !default;
+$hint-tooltip-background-color: $brc-darkGreyBlue !default;
 $required-badge-color: $brc-strawberry !default;
 $required-badge-position: left !default;
 
@@ -11,6 +14,17 @@ $required-badge-position: left !default;
     font-size: 12px;
     margin-bottom: 3px;
     font-weight: $brc-semibold;
+  }
+
+  .form-field-hint {
+    &.form-field-hint-label {
+      color: $hint-label-color;
+    }
+    &.form-field-hint-tooltip {
+      color: $hint-tooltip-color;
+      background-color: $hint-tooltip-background-color;
+    }
+    font-size: 13px;
   }
 
   &.is-required {
