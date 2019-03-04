@@ -100,7 +100,9 @@ $padding-left: 10px !default;
 
 .dropdown {
   &:hover {
-    border-color: $border-color-hover;
+    .dropdown__control {
+      border-color: $border-color-hover;
+    }
   }
 
   &:not(.dropdown--is-disabled) {
