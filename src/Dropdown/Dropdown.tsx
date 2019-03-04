@@ -1,18 +1,27 @@
 import * as React from "react";
 import Select from "react-select";
+import Creatable from "react-select/lib/Creatable";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 import { ObjectOmit } from "../utils";
+import { CreatableProps, Props } from "react-select/lib/Creatable";
 
 export namespace Dropdown {
+  export type DefaultProps = {
+    delimiter: NonNullable<SelectNS.Props["delimiter"]>;
+    size: "medium" | "small";
+    isSearchable: NonNullable<SelectNS.Props["isSearchable"]>;
+    menuPlacement: NonNullable<SelectNS.Props["menuPlacement"]>;
+  };
+
   export type Props<OptionType> = ObjectOmit<
     SelectNS.Props<OptionType>,
     "isMulti" | "isClearable" | "onChange" | "value"
-  > & {
-    size?: "medium" | "small";
-    flat?: boolean;
-    innerRef?: (ref: Select<OptionType> | null) => void;
-  } & (
+  > &
+    DefaultProps & {
+      flat?: boolean;
+      innerRef?: (ref: Select<OptionType> | null) => void;
+    } & (
       | {
           type: "multi" | "multi-clearable";
           value: OptionType[];
@@ -27,21 +36,25 @@ export namespace Dropdown {
           type: "single-clearable";
           value: OptionType | null;
           onChange: (value: OptionType | null) => void;
+        }) &
+    (
+      | ({
+          allowCreate: true;
+          isSearchable?: never;
+        } & CreatableProps<OptionType>)
+      | {
+          allowCreate?: never;
         });
 }
 
 export class Dropdown<OptionType> extends React.Component<
   Dropdown.Props<OptionType>
 > {
-  static defaultProps: Partial<Dropdown.Props<{}>> = {
+  static defaultProps: Dropdown.DefaultProps = {
     delimiter: ",",
     size: "medium",
-    isDisabled: false,
     isSearchable: false,
-    flat: false,
-    blurInputOnSelect: true,
-    menuPlacement: "bottom",
-    components: {}
+    menuPlacement: "bottom"
   };
 
   defaultComponents: Dropdown.Props<OptionType>["components"] = {
@@ -88,12 +101,20 @@ export class Dropdown<OptionType> extends React.Component<
         components: customComponents,
         innerRef,
         type,
+        allowCreate,
         ...props
       }
     } = this;
 
+    const Component: React.ComponentType<Props<OptionType>> = allowCreate
+      ? Creatable
+      : Select;
+
     return (
-      <Select
+      <Component
+        styles={{
+          input: () => ({ margin: 0, padding: 0 })
+        }}
         {...props}
         classNamePrefix="dropdown"
         components={{
@@ -104,6 +125,7 @@ export class Dropdown<OptionType> extends React.Component<
         ref={innerRef}
         isMulti={this.isMulti()}
         isClearable={this.isClearable()}
+        isSearchable={allowCreate || props.isSearchable}
       />
     );
   }
