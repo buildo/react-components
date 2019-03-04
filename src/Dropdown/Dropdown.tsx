@@ -8,20 +8,20 @@ import { CreatableProps, Props } from "react-select/lib/Creatable";
 
 export namespace Dropdown {
   export type DefaultProps = {
-    delimiter: SelectNS.Props["delimiter"];
+    delimiter: NonNullable<SelectNS.Props["delimiter"]>;
     size: "medium" | "small";
-    isSearchable: SelectNS.Props["isSearchable"];
-    menuPlacement: SelectNS.Props["menuPlacement"];
+    isSearchable: NonNullable<SelectNS.Props["isSearchable"]>;
+    menuPlacement: NonNullable<SelectNS.Props["menuPlacement"]>;
   };
 
   export type Props<OptionType> = ObjectOmit<
     SelectNS.Props<OptionType>,
     "isMulti" | "isClearable" | "onChange" | "value"
-  > & {
-    size?: "medium" | "small";
-    flat?: boolean;
-    innerRef?: (ref: Select<OptionType> | null) => void;
-  } & (
+  > &
+    DefaultProps & {
+      flat?: boolean;
+      innerRef?: (ref: Select<OptionType> | null) => void;
+    } & (
       | {
           type: "multi" | "multi-clearable";
           value: OptionType[];
