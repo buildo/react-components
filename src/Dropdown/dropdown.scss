@@ -52,7 +52,6 @@ $padding-left: 10px !default;
 
 // NORMALIZE
 @mixin normalize {
-  box-sizing: content-box;
   margin: 0;
   padding: 0;
 
