@@ -4,9 +4,16 @@ import Creatable from "react-select/lib/Creatable";
 import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 import { ObjectOmit } from "../utils";
-import { CreatableProps } from "react-select/lib/Creatable";
+import { CreatableProps, Props } from "react-select/lib/Creatable";
 
 export namespace Dropdown {
+  export type DefaultProps = {
+    delimiter: SelectNS.Props["delimiter"];
+    size: "medium" | "small";
+    isSearchable: SelectNS.Props["isSearchable"];
+    menuPlacement: SelectNS.Props["menuPlacement"];
+  };
+
   export type Props<OptionType> = ObjectOmit<
     SelectNS.Props<OptionType>,
     "isMulti" | "isClearable" | "onChange" | "value"
@@ -43,7 +50,7 @@ export namespace Dropdown {
 export class Dropdown<OptionType> extends React.Component<
   Dropdown.Props<OptionType>
 > {
-  static defaultProps: Partial<Dropdown.Props<{}>> = {
+  static defaultProps: Dropdown.DefaultProps = {
     delimiter: ",",
     size: "medium",
     isSearchable: false,
@@ -99,9 +106,9 @@ export class Dropdown<OptionType> extends React.Component<
       }
     } = this;
 
-    const Component: React.ComponentType<
-      SelectNS.Props<OptionType> | CreatableProps<OptionType>
-    > = allowCreate ? Creatable : Select;
+    const Component: React.ComponentType<Props<OptionType>> = allowCreate
+      ? Creatable
+      : Select;
 
     return (
       <Component
