@@ -333,9 +333,10 @@ export class TimePicker extends React.Component<
 
     return (
       <Dropdown
+        type="single"
         {...{ id, className, style }}
         isSearchable={searchable}
-        value={find(options, o => o.value === value)}
+        value={find(options, o => o.value === value)!}
         onChange={onChange}
         options={options}
         components={components}
