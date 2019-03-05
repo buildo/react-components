@@ -282,6 +282,7 @@ $padding-left: 10px !default;
           border-color: $multiple-value-icon-border-color;
           background: $multiple-value-icon-background-color;
           color: $multiple-value-icon-color;
+          cursor: pointer;
 
           &:hover {
             border-color: $multiple-value-icon-border-color-hover;
