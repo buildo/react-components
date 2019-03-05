@@ -6,58 +6,57 @@ import * as cx from "classnames";
 import { ObjectOmit } from "../utils";
 import { CreatableProps, Props } from "react-select/lib/Creatable";
 
-export namespace Dropdown {
-  export type DefaultProps = {
-    delimiter: NonNullable<SelectNS.Props["delimiter"]>;
-    size: "medium" | "small";
-    isSearchable: NonNullable<SelectNS.Props["isSearchable"]>;
-    menuPlacement: NonNullable<SelectNS.Props["menuPlacement"]>;
-  };
+type DefaultProps = {
+  delimiter: NonNullable<SelectNS.Props["delimiter"]>;
+  size: "medium" | "small";
+  isSearchable: NonNullable<SelectNS.Props["isSearchable"]>;
+  menuPlacement: NonNullable<SelectNS.Props["menuPlacement"]>;
+};
 
-  export type Props<OptionType> = ObjectOmit<
-    SelectNS.Props<OptionType>,
-    "isMulti" | "isClearable" | "onChange" | "value"
-  > &
-    DefaultProps & {
-      flat?: boolean;
-      innerRef?: (ref: Select<OptionType> | null) => void;
-    } & (
-      | {
-          type: "multi" | "multi-clearable";
-          value: OptionType[];
-          onChange: (value: OptionType[]) => void;
-        }
-      | {
-          type: "single";
-          value: OptionType | null;
-          onChange: (value: OptionType) => void;
-        }
-      | {
-          type: "single-clearable";
-          value: OptionType | null;
-          onChange: (value: OptionType | null) => void;
-        }) &
-    (
-      | ({
-          allowCreate: true;
-          isSearchable?: never;
-        } & CreatableProps<OptionType>)
-      | {
-          allowCreate?: never;
-        });
-}
+type NonDefaultProps<OptionType> = ObjectOmit<
+  SelectNS.Props<OptionType>,
+  "isMulti" | "isClearable" | "onChange" | "value"
+> & {
+  flat?: boolean;
+  innerRef?: (ref: Select<OptionType> | null) => void;
+} & (
+    | {
+        type: "multi" | "multi-clearable";
+        value: OptionType[];
+        onChange: (value: OptionType[]) => void;
+      }
+    | {
+        type: "single";
+        value: OptionType | null;
+        onChange: (value: OptionType) => void;
+      }
+    | {
+        type: "single-clearable";
+        value: OptionType | null;
+        onChange: (value: OptionType | null) => void;
+      }) &
+  (
+    | ({
+        allowCreate: true;
+        isSearchable?: never;
+      } & CreatableProps<OptionType>)
+    | {
+        allowCreate?: never;
+      });
+
+type InternalProps<OptionType> = DefaultProps & NonDefaultProps<OptionType>;
 
 export class Dropdown<OptionType> extends React.Component<
-  Dropdown.Props<OptionType>
+  InternalProps<OptionType>
 > {
-  static defaultProps: Dropdown.DefaultProps = {
+  static defaultProps: DefaultProps = {
     delimiter: ",",
     size: "medium",
     isSearchable: false,
     menuPlacement: "bottom"
   };
 
-  defaultComponents: Dropdown.Props<OptionType>["components"] = {
+  defaultComponents: InternalProps<OptionType>["components"] = {
     IndicatorSeparator: () => null
   };
 
@@ -129,4 +128,9 @@ export class Dropdown<OptionType> extends React.Component<
       />
     );
   }
+}
+
+export namespace Dropdown {
+  export type Props<OptionType> = NonDefaultProps<OptionType> &
+    Partial<DefaultProps>;
 }
