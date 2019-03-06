@@ -69,6 +69,7 @@ const Props = t.refinement(
     timeFormat: t.maybe(TimeFormat),
     timeFormatter: t.maybe(t.Function),
     searchable: t.Boolean,
+    size: t.enums.of(["medium", "small"]),
     id: t.maybe(t.String),
     className: t.maybe(t.String),
     style: t.maybe(t.Object),
@@ -254,6 +255,8 @@ export interface DefaultProps {
   maxTime: TimePicker.Time;
   /** enable the search feature */
   searchable: boolean;
+  /** dropdown size */
+  size: "medium" | "small";
   /** whether the menu should open on top or bottom */
   menuPosition: Dropdown.Props<any>["menuPlacement"];
 }
@@ -292,6 +295,7 @@ export class TimePicker extends React.Component<
     minTime: { hours: 0, minutes: 0 },
     maxTime: { hours: 23, minutes: 59 },
     searchable: true,
+    size: "medium",
     menuPosition: "bottom"
   };
 
@@ -315,6 +319,7 @@ export class TimePicker extends React.Component<
       timeFormat,
       value: userValue,
       searchable,
+      size,
       placeholder,
       menuPosition,
       disabled,
@@ -341,6 +346,7 @@ export class TimePicker extends React.Component<
         options={options}
         components={components}
         placeholder={placeholder}
+        size={size}
         onInputChange={updateInputValue}
         onBlur={() => this.forceUpdate()}
         menuPlacement={menuPosition}
