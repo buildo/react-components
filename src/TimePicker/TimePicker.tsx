@@ -49,13 +49,13 @@ const getComponents = (
 ): SelectNS.Props<TimeDropdownOption>["components"] => {
   return timeFormatter
     ? {
-      Option: props => (
-        <components.Option {...props}>
-          {timeFormatter(props.data.time)}
-        </components.Option>
-      ),
-      SingleValue: props => timeFormatter(props.data.time)
-    }
+        Option: props => (
+          <components.Option {...props}>
+            {timeFormatter(props.data.time)}
+          </components.Option>
+        ),
+        SingleValue: props => timeFormatter(props.data.time)
+      }
     : {};
 };
 
@@ -173,9 +173,9 @@ const createTimeList = (
   } else {
     return timeFormat !== H24
       ? [
-        { hours, minutes, timeFormat },
-        { hours: normalizeHoursToH24(hours), minutes, timeFormat }
-      ]
+          { hours, minutes, timeFormat },
+          { hours: normalizeHoursToH24(hours), minutes, timeFormat }
+        ]
       : [{ hours, minutes, timeFormat }];
   }
 };
@@ -218,8 +218,8 @@ const makeOptions = (
   const timeList = ((time === inputError
     ? []
     : createTimeList(time as TimePicker.Time, timeFormat)) as (
-      | TimePicker.Time
-      | TimePicker.TimeAndFormat)[]) // TODO(typo)
+    | TimePicker.Time
+    | TimePicker.TimeAndFormat)[]) // TODO(typo)
     .concat(compact([selectedValue]));
   const filteredTimeList = timeList.filter(
     filterTime({
@@ -283,8 +283,8 @@ type TimeDropdownOption = {
 
 @props(Props)
 export class TimePicker extends React.Component<
-TimePicker.Props,
-{ inputValue: string }
+  TimePicker.Props,
+  { inputValue: string }
 > {
   static defaultProps = {
     placeholder: `--${separator}--`,
@@ -359,5 +359,5 @@ export {
   makeOptions,
   TimeFormat,
   Time,
-  Props,
+  Props
 };
