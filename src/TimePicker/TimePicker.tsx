@@ -352,12 +352,12 @@ TimePicker.Props,
 
 // must be exported after TimePicker class in order to be compatible with react-styleguide (see #1153)
 export {
-  TimeFormat,
-  Time,
-  Props,
   toOption,
   parseInTimeFormat,
   createTimeList,
   filterTime,
-  makeOptions
+  makeOptions,
+  TimeFormat,
+  Time,
+  Props,
 };
