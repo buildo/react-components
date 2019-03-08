@@ -130,7 +130,7 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
         onMouseOver={this.stateChange("mouseover", true)}
         onMouseOut={this.stateChange("mouseover", false)}
       >
-        <View column={!horizontal}>
+        <View grow column={!horizontal}>
           {horizontal
             ? [fieldComponent, labelComponent]
             : [labelComponent, fieldComponent]}

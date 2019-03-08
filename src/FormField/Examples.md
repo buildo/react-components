@@ -207,6 +207,7 @@ function onChange(field, value) {
 }
 
 <InputField
+  viewProps={{ width: 300 }}
   label="ADDRESS"
   placeholder="Type here..."
   hint={{
