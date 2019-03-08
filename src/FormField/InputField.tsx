@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, ReactChild, ObjectOmit } from "../utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
 import Input from "../Input";
 import { FormField } from "./FormField";
@@ -31,14 +31,6 @@ export namespace InputField {
   export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  inputRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class InputField extends React.PureComponent<InternalProps> {
   static defaultProps: DefaultProps = {
     inputRenderer: (props: Input.Props) => <Input {...props} />

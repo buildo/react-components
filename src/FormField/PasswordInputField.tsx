@@ -1,7 +1,6 @@
 import * as React from "react";
-import { props, t, ReactChild, ObjectOmit } from "../utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import { PasswordInput } from "../Input";
 import { FormField } from "./FormField";
 
@@ -12,12 +11,13 @@ type DefaultProps = {
 
 type FieldProps = {
   /** the label for the field */
-  label: JSX.Element | string;
+  label: FormField.Props["label"];
   /** whether the field is required */
-  required?: boolean;
+  required?: FormField.Props["required"];
   /** optional props to pass to the wrapping View */
-  viewProps?: View.Props;
-
+  viewProps?: FormField.Props["viewProps"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -33,14 +33,6 @@ export namespace PasswordInputField {
   export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  passwordInputRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class PasswordInputField extends React.PureComponent<InternalProps> {
   static defaultProps: DefaultProps = {
     passwordInputRenderer: props => <PasswordInput {...props} />
@@ -53,6 +45,7 @@ export class PasswordInputField extends React.PureComponent<InternalProps> {
       className: _className,
       viewProps,
       disabled,
+      hint,
       passwordInputRenderer,
       ..._inputProps
     } = this.props;
@@ -69,6 +62,7 @@ export class PasswordInputField extends React.PureComponent<InternalProps> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
+        hint={hint}
         render={(onFocus, onBlur) =>
           passwordInputRenderer({ ...inputProps, onFocus, onBlur })
         }

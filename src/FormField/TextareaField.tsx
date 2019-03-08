@@ -1,7 +1,6 @@
 import * as React from "react";
-import { props, t, ReactChild, ObjectOmit } from "../utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import Textarea from "../Textarea";
 import { FormField } from "./FormField";
 
@@ -12,11 +11,13 @@ type DefaultProps = {
 
 type FieldProps = {
   /** the label for the field */
-  label: JSX.Element | string;
+  label: FormField.Props["label"];
   /** whether the field is required */
-  required?: boolean;
+  required?: FormField.Props["required"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
   /** optional props to pass to the wrapping View */
-  viewProps?: View.Props;
+  viewProps?: FormField.Props["viewProps"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -31,14 +32,6 @@ export namespace TextareaField {
   export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  textareaRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class TextareaField extends React.PureComponent<InternalProps> {
   static defaultProps: DefaultProps = {
     textareaRenderer: props => <Textarea {...props} />
@@ -51,6 +44,7 @@ export class TextareaField extends React.PureComponent<InternalProps> {
       className: _className,
       viewProps,
       disabled,
+      hint,
       textareaRenderer,
       ..._textareaProps
     } = this.props;
@@ -66,6 +60,7 @@ export class TextareaField extends React.PureComponent<InternalProps> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
+        hint={hint}
         render={(onFocus, onBlur) =>
           textareaRenderer({ ...textareaProps, onFocus, onBlur })
         }

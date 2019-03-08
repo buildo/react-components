@@ -1,7 +1,5 @@
 import * as React from "react";
-import { props, t, ReactChild } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import Dropdown from "../Dropdown";
 import { FormField } from "./FormField";
 
@@ -12,12 +10,13 @@ type DefaultProps<OptionType> = {
 
 type NonDefaultProps<OptionType> = {
   /** the label for the field */
-  label: JSX.Element | string;
+  label: FormField.Props["label"];
   /** whether the field is required */
-  required?: boolean;
+  required?: FormField.Props["required"];
   /** optional props to pass to the wrapping View */
-  viewProps?: View.Props;
-
+  viewProps?: FormField.Props["viewProps"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -34,14 +33,6 @@ export namespace DropdownField {
     Partial<DefaultProps<OptionType>>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  dropdownRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class DropdownField<OptionType> extends React.PureComponent<
   InternalProps<OptionType>
 > {
@@ -56,6 +47,7 @@ export class DropdownField<OptionType> extends React.PureComponent<
       className: _className,
       viewProps,
       isDisabled,
+      hint,
       dropdownRenderer,
       id,
       ..._dropdownProps
@@ -75,6 +67,7 @@ export class DropdownField<OptionType> extends React.PureComponent<
         className={className}
         viewProps={viewProps}
         disabled={isDisabled}
+        hint={hint}
         render={(onFocus, onBlur) =>
           dropdownRenderer({ ...dropdownProps, onFocus, onBlur })
         }

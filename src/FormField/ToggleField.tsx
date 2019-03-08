@@ -1,7 +1,5 @@
 import * as React from "react";
-import { props, t, ReactChild } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import Toggle from "../Toggle";
 import { FormField } from "./FormField";
 
@@ -12,11 +10,13 @@ type DefaultProps = {
 
 type NonDefaultProps = {
   /** the label for the field */
-  label: JSX.Element | string;
+  label: FormField.Props["label"];
   /** whether the field is required */
-  required?: boolean;
+  required?: FormField.Props["required"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
   /** optional props to pass to the wrapping View */
-  viewProps?: View.Props;
+  viewProps?: FormField.Props["viewProps"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -31,14 +31,6 @@ export namespace ToggleField {
   export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  toggleRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class ToggleField extends React.PureComponent<InternalProps> {
   static defaultProps: DefaultProps = {
     toggleRenderer: props => <Toggle {...props} />
@@ -52,6 +44,7 @@ export class ToggleField extends React.PureComponent<InternalProps> {
       id,
       viewProps,
       disabled,
+      hint,
       toggleRenderer,
       ..._toggleProps
     } = this.props;
@@ -69,6 +62,7 @@ export class ToggleField extends React.PureComponent<InternalProps> {
         viewProps={viewProps}
         disabled={disabled}
         id={id}
+        hint={hint}
         horizontal
         onLabelClick={() => toggleProps.onChange(!toggleProps.value)}
         render={(onFocus, onBlur) =>

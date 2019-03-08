@@ -1,7 +1,6 @@
 import * as React from "react";
-import { props, t, ReactChild, ObjectOmit } from "../utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import DatePicker from "../DatePicker";
 import { FormField } from "./FormField";
 
@@ -12,11 +11,13 @@ type DefaultProps<T extends DatePicker.Value> = {
 
 type NonDefaultProps<T extends DatePicker.Value> = {
   /** the label for the field */
-  label: JSX.Element | string;
+  label: FormField.Props["label"];
   /** whether the field is required */
-  required?: boolean;
+  required?: FormField.Props["required"];
   /** optional props to pass to the wrapping View */
-  viewProps?: View.Props;
+  viewProps?: FormField.Props["viewProps"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -34,14 +35,6 @@ export namespace DatePickerField {
     Partial<DefaultProps<T>>;
 }
 
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  datePickerRenderer: t.maybe(t.Function)
-};
-
-@props(Props, { strict: false })
 export class DatePickerField<
   T extends DatePicker.Value
 > extends React.PureComponent<InternalProps<T>> {
@@ -57,6 +50,7 @@ export class DatePickerField<
       viewProps,
       id,
       disabled,
+      hint,
       onChange: _onChange,
       datePickerRenderer,
       ..._datePickerProps
@@ -77,6 +71,7 @@ export class DatePickerField<
         className={className}
         viewProps={viewProps}
         disabled={disabled}
+        hint={hint}
         render={(onFocus, onBlur) =>
           datePickerRenderer({
             ...datePickerProps,
