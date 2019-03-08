@@ -218,3 +218,27 @@ function onChange(field, value) {
   onChange={value => onChange("input", value)}
 />;
 ```
+
+**always visible in a box** on the right
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  viewProps={{ width: 500 }}
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "box",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
+```

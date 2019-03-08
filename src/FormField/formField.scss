@@ -4,7 +4,9 @@ $label-color: $brc-darkGreyBlue !default;
 $hint-label-color: $brc-coolGrey !default;
 $hint-tooltip-color: $brc-white !default;
 $hint-tooltip-background-color: $brc-darkGreyBlue !default;
-$hint-box-background-color: $brc-darkGreyBlue !default;
+$hint-box-color: $brc-black !default;
+$hint-box-background-color: $brc-paleGrey !default;
+$hint-box-border-color: $brc-coolGrey !default;
 $required-badge-color: $brc-strawberry !default;
 $required-badge-position: left !default;
 
@@ -44,7 +46,11 @@ $required-badge-position: left !default;
       }
     }
     &.form-field-hint-box {
+      margin-left: 10px;
+      color: $hint-box-color;
       background-color: $hint-box-background-color;
+      border: 1px solid $hint-box-border-color;
+      padding: 10px;
     }
     font-size: 13px;
   }

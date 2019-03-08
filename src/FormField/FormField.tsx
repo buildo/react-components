@@ -62,6 +62,69 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
     this.setState(s => ({ ...s, [k]: value }));
   };
 
+  renderFieldWithHint = (
+    render: FormField.Props["render"],
+    hint: FormField.Props["hint"]
+  ) => {
+    const Field = render(
+      this.stateChange("focused", true),
+      this.stateChange("focused", false)
+    );
+
+    if (hint) {
+      switch (hint.type) {
+        case "label":
+          return (
+            <View grow column>
+              {Field}
+              <View className={cx("form-field-hint", "form-field-hint-label")}>
+                {hint.content}
+              </View>
+            </View>
+          );
+        case "box":
+          return (
+            <View grow>
+              <View column grow>
+                {Field}
+              </View>
+              <View
+                shrink={false}
+                className={cx("form-field-hint", "form-field-hint-box")}
+              >
+                {hint.content}
+              </View>
+            </View>
+          );
+        case "tooltip":
+          return (
+            <Popover
+              key="popover"
+              className={cx("form-field-hint", "form-field-hint-tooltip")}
+              popover={{
+                position: "right",
+                anchor: "start",
+                isOpen: this.state.focused || this.state.mouseover,
+                ...hint.popover,
+                content: (
+                  <View style={{ pointerEvents: "none" }}>
+                    <View shrink={false}>{leftArrow}</View>
+                    <View grow className="form-field-hint-content">
+                      {hint.content}
+                    </View>
+                  </View>
+                )
+              }}
+            >
+              {Field}
+            </Popover>
+          );
+      }
+    } else {
+      return Field;
+    }
+  };
+
   render() {
     const {
       label,
@@ -71,7 +134,8 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
       viewProps: _viewProps,
       horizontal,
       onLabelClick,
-      render
+      render,
+      hint
     } = this.props;
     const className = cx("form-field", _className, {
       "is-disabled": disabled,
@@ -90,40 +154,10 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
       </View>
     );
 
-    const fieldComponent =
-      this.props.hint && this.props.hint.type === "tooltip" ? (
-        <Popover
-          className={cx("form-field-hint", "form-field-hint-tooltip")}
-          popover={{
-            position: "right",
-            anchor: "start",
-            isOpen: this.state.focused || this.state.mouseover,
-            ...this.props.hint.popover,
-            content: (
-              <View style={{ pointerEvents: "none" }}>
-                <View shrink={false}>{leftArrow}</View>
-                <View grow className="form-field-hint-content">
-                  {this.props.hint.content}
-                </View>
-              </View>
-            )
-          }}
-        >
-          {render(
-            this.stateChange("focused", true),
-            this.stateChange("focused", false)
-          )}
-        </Popover>
-      ) : (
-        render(
-          this.stateChange("focused", true),
-          this.stateChange("focused", false)
-        )
-      );
+    const fieldComponent = this.renderFieldWithHint(render, hint);
 
     return (
       <View
-        column={!this.props.hint || this.props.hint.type === "label"}
         grow={!horizontal}
         {..._viewProps}
         className={className}
@@ -135,16 +169,6 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
             ? [fieldComponent, labelComponent]
             : [labelComponent, fieldComponent]}
         </View>
-        {this.props.hint && this.props.hint.type !== "tooltip" && (
-          <View
-            className={cx("form-field-hint", {
-              ["form-field-hint-box"]: this.props.hint.type === "box",
-              ["form-field-hint-label"]: this.props.hint.type === "label"
-            })}
-          >
-            {this.props.hint.content}
-          </View>
-        )}
       </View>
     );
   }
