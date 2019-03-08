@@ -5,23 +5,32 @@ import View from "react-flexview";
 import { PasswordInput } from "../Input";
 import { FormField } from "./FormField";
 
+type DefaultProps = {
+  /** an optional custom renderer for PasswordInput */
+  passwordInputRenderer: (props: PasswordInput.Props) => JSX.Element;
+};
+
+type FieldProps = {
+  /** the label for the field */
+  label: JSX.Element | string;
+  /** whether the field is required */
+  required?: boolean;
+  /** optional props to pass to the wrapping View */
+  viewProps?: View.Props;
+
+  /** an optional class name to pass to top level element of the component */
+  className?: string;
+  /** an optional style object to pass to top level element of the component */
+  style?: React.CSSProperties;
+};
+
+type NonDefaultProps = FieldProps &
+  ObjectOmit<PasswordInput.Props, keyof FieldProps>;
+
+type InternalProps = NonDefaultProps & DefaultProps;
+
 export namespace PasswordInputField {
-  type FieldProps = {
-    /** the label for the field */
-    label: JSX.Element | string;
-    /** whether the field is required */
-    required?: boolean;
-    /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
-    /** an optional custom renderer for PasswordInput */
-    passwordInputRenderer?: (props: PasswordInput.Props) => JSX.Element;
-    /** an optional class name to pass to top level element of the component */
-    className?: string;
-    /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties;
-  };
-  export type Props = FieldProps &
-    ObjectOmit<PasswordInput.Props, keyof FieldProps>;
+  export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
 export const Props = {
@@ -32,9 +41,11 @@ export const Props = {
 };
 
 @props(Props, { strict: false })
-export class PasswordInputField extends React.PureComponent<
-  PasswordInputField.Props
-> {
+export class PasswordInputField extends React.PureComponent<InternalProps> {
+  static defaultProps: DefaultProps = {
+    passwordInputRenderer: props => <PasswordInput {...props} />
+  };
+
   render() {
     const {
       label,
@@ -58,13 +69,10 @@ export class PasswordInputField extends React.PureComponent<
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-      >
-        {passwordInputRenderer ? (
-          passwordInputRenderer(inputProps)
-        ) : (
-          <PasswordInput {...inputProps} />
-        )}
-      </FormField>
+        render={(onFocus, onBlur) =>
+          passwordInputRenderer({ ...inputProps, onFocus, onBlur })
+        }
+      />
     );
   }
 }

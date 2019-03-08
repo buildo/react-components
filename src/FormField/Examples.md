@@ -22,6 +22,10 @@ function onChange(field, value) {
       id="input"
       label="LABEL"
       placeholder="Type here..."
+      hint={{
+        type: "label",
+        content: "Input Hints"
+      }}
       value={state.input}
       onChange={value => onChange("input", value)}
     />
@@ -159,4 +163,57 @@ function onChange(field, value) {
     />
   </FlexView>
 </FlexView>;
+```
+
+#### Input hints
+
+An input hint is a label whose purpose is to give hints to the user about the value that is expected by a field.
+For example, when you want to guide the user through the insertion of a field that could be formatted in different ways, having an example always visible could be crucial.
+
+Based on the form design, the hint could have different styles:
+
+**always visible under a field**
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "label",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
+```
+
+**inside a tooltip** that appears on hover or on focus
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "tooltip",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
 ```

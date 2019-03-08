@@ -5,23 +5,30 @@ import View from "react-flexview";
 import Textarea from "../Textarea";
 import { FormField } from "./FormField";
 
-export namespace TextareaField {
-  type FieldProps = {
-    /** the label for the field */
-    label: JSX.Element | string;
-    /** whether the field is required */
-    required?: boolean;
-    /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
-    /** An optional custom renderer for Textarea */
-    textareaRenderer?: (props: Textarea.Props) => JSX.Element;
-    /** an optional class name to pass to top level element of the component */
-    className?: string;
-    /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties;
-  };
+type DefaultProps = {
+  /** An optional custom renderer for Textarea */
+  textareaRenderer: (props: Textarea.Props) => JSX.Element;
+};
 
-  export type Props = FieldProps & ObjectOmit<Textarea.Props, keyof FieldProps>;
+type FieldProps = {
+  /** the label for the field */
+  label: JSX.Element | string;
+  /** whether the field is required */
+  required?: boolean;
+  /** optional props to pass to the wrapping View */
+  viewProps?: View.Props;
+  /** an optional class name to pass to top level element of the component */
+  className?: string;
+  /** an optional style object to pass to top level element of the component */
+  style?: React.CSSProperties;
+};
+
+type NonDefaultProps = FieldProps &
+  ObjectOmit<Textarea.Props, keyof FieldProps>;
+type InternalProps = NonDefaultProps & DefaultProps;
+
+export namespace TextareaField {
+  export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
 export const Props = {
@@ -32,7 +39,11 @@ export const Props = {
 };
 
 @props(Props, { strict: false })
-export class TextareaField extends React.PureComponent<TextareaField.Props> {
+export class TextareaField extends React.PureComponent<InternalProps> {
+  static defaultProps: DefaultProps = {
+    textareaRenderer: props => <Textarea {...props} />
+  };
+
   render() {
     const {
       label,
@@ -44,11 +55,10 @@ export class TextareaField extends React.PureComponent<TextareaField.Props> {
       ..._textareaProps
     } = this.props;
     const className = cx("textarea-field", _className);
-    const textareaProps = {
+    const textareaProps: Textarea.Props = {
       ..._textareaProps,
       disabled
     };
-
     return (
       <FormField
         label={label}
@@ -56,13 +66,10 @@ export class TextareaField extends React.PureComponent<TextareaField.Props> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-      >
-        {textareaRenderer ? (
-          textareaRenderer(textareaProps)
-        ) : (
-          <Textarea {...textareaProps} />
-        )}
-      </FormField>
+        render={(onFocus, onBlur) =>
+          textareaRenderer({ ...textareaProps, onFocus, onBlur })
+        }
+      />
     );
   }
 }

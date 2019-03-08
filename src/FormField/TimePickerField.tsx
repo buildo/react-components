@@ -5,21 +5,29 @@ import View from "react-flexview";
 import TimePicker from "../TimePicker";
 import { FormField } from "./FormField";
 
+type DefaultProps = {
+  /** an optional custom renderer for TimePicker */
+  timePickerRenderer: (props: TimePicker.Props) => JSX.Element;
+};
+
+type NonDefaultProps = {
+  /** the label for the field */
+  label: JSX.Element | string;
+  /** whether the field is required */
+  required?: boolean;
+  /** optional props to pass to the wrapping View */
+  viewProps?: View.Props;
+
+  /** an optional class name to pass to top level element of the component */
+  className?: string;
+  /** an optional style object to pass to top level element of the component */
+  style?: React.CSSProperties;
+} & TimePicker.Props;
+
+type InternalProps = NonDefaultProps & DefaultProps;
+
 export namespace TimePickerField {
-  export type Props = {
-    /** the label for the field */
-    label: JSX.Element | string;
-    /** whether the field is required */
-    required?: boolean;
-    /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
-    /** an optional custom renderer for TimePicker */
-    timePickerRenderer?: (props: TimePicker.Props) => JSX.Element;
-    /** an optional class name to pass to top level element of the component */
-    className?: string;
-    /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties;
-  } & TimePicker.Props;
+  export type Props = NonDefaultProps & Partial<DefaultProps>;
 }
 
 export const Props = {
@@ -30,9 +38,11 @@ export const Props = {
 };
 
 @props(Props, { strict: false })
-export class TimePickerField extends React.PureComponent<
-  TimePickerField.Props
-> {
+export class TimePickerField extends React.PureComponent<InternalProps> {
+  static defaultProps: DefaultProps = {
+    timePickerRenderer: props => <TimePicker {...props} />
+  };
+
   render() {
     const {
       label,
@@ -56,13 +66,8 @@ export class TimePickerField extends React.PureComponent<
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-      >
-        {timePickerRenderer ? (
-          timePickerRenderer(timePickerProps)
-        ) : (
-          <TimePicker {...timePickerProps} />
-        )}
-      </FormField>
+        render={() => timePickerRenderer({ ...timePickerProps })}
+      />
     );
   }
 }
