@@ -22,7 +22,7 @@ $footer-background: $brc-paleGrey !default;
     .modal-header {
       padding: 0 15px;
       border-bottom: 1px solid $border-color;
-      min-height: 52px;
+      min-height: 52px !important;
 
       .modal-title {
         color: $title-color;
