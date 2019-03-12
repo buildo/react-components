@@ -238,14 +238,14 @@ $padding-left: 10px !default;
       height: auto;
 
       .dropdown__value-container {
-        min-height: $height;
+        min-height: $height - 2;
         height: auto;
       }
     }
 
     &.is-small {
       .dropdown__value-container {
-        min-height: $height-small;
+        min-height: $height-small - 2;
       }
     }
 
