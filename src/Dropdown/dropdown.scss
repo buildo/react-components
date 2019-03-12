@@ -79,7 +79,7 @@ $padding-left: 10px !default;
   .dropdown__option,
   .dropdown__dropdown-indicator {
     @include normalize();
-    @include height($height - 2);
+    @include height($height);
   }
 
   &.is-small {
@@ -92,7 +92,7 @@ $padding-left: 10px !default;
     .dropdown__input > input,
     .dropdown__option,
     .dropdown__dropdown-indicator {
-      @include height($height-small - 2);
+      @include height($height-small);
     }
   }
 }
@@ -238,14 +238,14 @@ $padding-left: 10px !default;
       height: auto;
 
       .dropdown__value-container {
-        min-height: $height;
+        min-height: $height - 2;
         height: auto;
       }
     }
 
     &.is-small {
       .dropdown__value-container {
-        min-height: $height-small;
+        min-height: $height-small - 2;
       }
     }
 
