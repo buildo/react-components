@@ -1,6 +1,6 @@
 {
   "name": "buildo-react-components",
-  "version": "0.42.6",
+  "version": "0.42.7",
   "description": "Collection of general React components used in buildo projects.",
   "main": "lib",
   "scripts": {
