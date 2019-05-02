@@ -5,7 +5,7 @@ import View from "react-flexview";
 
 export namespace Form {
   export type Props = View.Props & {
-    onSubmit: () => Promise<void>;
+    onSubmit: () => Promise<unknown>;
     submitLabel: string;
     submitProcessingLabel?: string;
     renderSubmit?: (buttonProps: StatefulButton.Props) => JSX.Element;
