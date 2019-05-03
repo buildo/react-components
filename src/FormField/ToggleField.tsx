@@ -13,8 +13,6 @@ type NonDefaultProps = {
   label: FormField.Props["label"];
   /** whether the field is required */
   required?: FormField.Props["required"];
-  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
-  hint?: FormField.Props["hint"];
   /** optional props to pass to the wrapping View */
   viewProps?: FormField.Props["viewProps"];
   /** an optional class name to pass to top level element of the component */
@@ -44,7 +42,6 @@ export class ToggleField extends React.PureComponent<InternalProps> {
       id,
       viewProps,
       disabled,
-      hint,
       toggleRenderer,
       ..._toggleProps
     } = this.props;
@@ -62,7 +59,6 @@ export class ToggleField extends React.PureComponent<InternalProps> {
         viewProps={viewProps}
         disabled={disabled}
         id={id}
-        hint={hint}
         horizontal
         onLabelClick={() => toggleProps.onChange(!toggleProps.value)}
         render={(onFocus, onBlur) =>

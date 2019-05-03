@@ -24,7 +24,7 @@ function onChange(field, value) {
       placeholder="Type here..."
       hint={{
         type: "label",
-        content: "Input Hints"
+        content: "Input Hint"
       }}
       value={state.input}
       onChange={value => onChange("input", value)}
@@ -35,6 +35,10 @@ function onChange(field, value) {
       id="textarea"
       label="LABEL"
       placeholder="Type here..."
+      hint={{
+        type: "label",
+        content: "Textarea hint"
+      }}
       value={state.textarea}
       onChange={value => onChange("textarea", value)}
       rows={5}
@@ -96,6 +100,10 @@ function onChange(field, value) {
       dropdownRenderer={props => <Dropdown {...props} isSearchable />}
       onChange={value => onChange("dropdown", value)}
       placeholder="Select"
+      hint={{
+        type: "label",
+        content: "Dropdown hint"
+      }}
     />
   </FlexView>
   <FlexView marginBottom={40}>
@@ -106,6 +114,10 @@ function onChange(field, value) {
         value={state.datePicker}
         onChange={value => onChange("datePicker", value)}
         viewProps={{ grow: false }}
+        hint={{
+          type: "label",
+          content: "DatePicker hint"
+        }}
       />
     </FlexView>
     <FlexView width={215}>
@@ -114,6 +126,10 @@ function onChange(field, value) {
         label="LABEL"
         value={state.timePicker}
         onChange={value => onChange("timePicker", value)}
+        hint={{
+          type: "label",
+          content: "TimePicker hint"
+        }}
       />
     </FlexView>
   </FlexView>
@@ -123,6 +139,10 @@ function onChange(field, value) {
       label="LABEL"
       value={state.password}
       onChange={value => onChange("password", value)}
+      hint={{
+        type: "label",
+        content: "PasswordInput hint"
+      }}
     />
   </FlexView>
 </FlexView>;

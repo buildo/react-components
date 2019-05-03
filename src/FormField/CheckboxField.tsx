@@ -15,8 +15,6 @@ type NonDefaultProps = {
   required?: FormField.Props["required"];
   /** optional props to pass to the wrapping View */
   viewProps?: FormField.Props["viewProps"];
-  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
-  hint?: FormField.Props["hint"];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -44,7 +42,6 @@ export class CheckboxField extends React.PureComponent<InternalProps> {
       id,
       viewProps,
       disabled,
-      hint,
       checkboxRenderer,
       ..._checkboxProps
     } = this.props;
@@ -61,7 +58,6 @@ export class CheckboxField extends React.PureComponent<InternalProps> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-        hint={hint}
         id={id}
         horizontal
         onLabelClick={() => checkboxProps.onChange(!checkboxProps.value)}
