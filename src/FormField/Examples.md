@@ -167,8 +167,8 @@ function onChange(field, value) {
 
 #### Input hints
 
-An input hint is a label whose purpose is to give hints to the user about the value that is expected by a field.
-For example, when you want to guide the user through the insertion of a field that could be formatted in different ways, having an example always visible could be crucial.
+An input hint is a label whose purpose is to give hints to the user about the expected value or format of an input field.
+When you want to guide the user through the insertion of a value that could be formatted in different ways, having an example always visible could be crucial.
 
 Based on the form design, the hint could have different styles:
 

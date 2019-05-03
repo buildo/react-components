@@ -41,7 +41,7 @@ export namespace FormField {
 
 const leftArrow = (
   <svg
-    className="field-hint-left-arrow"
+    className="form-field-hint-left-arrow"
     width="5.75"
     height="12"
     viewBox="0 0 5.75 12"
