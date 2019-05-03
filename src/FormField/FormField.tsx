@@ -2,6 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
 import Popover from "../Popover";
+import { ObjectOmit } from "src/utils";
 
 export namespace FormField {
   export type Props = {
@@ -28,13 +29,13 @@ export namespace FormField {
     /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
     hint?:
       | {
-          content: JSX.Element | string;
+          content: NonNullable<React.ReactElement>;
           type: "box" | "label";
         }
       | {
-          content: JSX.Element | string;
+          content: NonNullable<React.ReactElement>;
           type: "tooltip";
-          popover?: Popover.Props["popover"];
+          popover?: ObjectOmit<Popover.Props["popover"], "content">;
         };
   };
 }
