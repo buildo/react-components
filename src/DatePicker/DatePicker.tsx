@@ -165,10 +165,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
         () => onChange && onChange(undefined)
       );
     } else {
-      this.setState(
-        { value },
-        () => onChange && onChange(value.toDate() || undefined)
-      );
+      this.setState({ value }, () => onChange && onChange(value.toDate()));
     }
   };
 
