@@ -85,9 +85,7 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
         case "box":
           return (
             <View grow>
-              <View column grow>
-                {Field}
-              </View>
+              {Field}
               <View
                 shrink={false}
                 className={cx("form-field-hint", "form-field-hint-box")}

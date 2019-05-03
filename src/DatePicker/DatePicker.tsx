@@ -285,8 +285,7 @@ export class DatePicker<
         "two-months": displayTwoMonths,
         "is-small": small
       }),
-      style,
-      grow: true
+      style
     };
 
     const datePickerProps = {
