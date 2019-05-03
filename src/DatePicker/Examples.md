@@ -15,7 +15,7 @@ function onChange(value) {
     onChange={onChange}
     displayFormat='MMMM Do YYYY'
     locale='en'
-    minDate={new Date('2017-07-04')}
+    minDate={'2017-07-04'}
   />
 </FlexView>
 ```
