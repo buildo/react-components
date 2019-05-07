@@ -11,28 +11,33 @@ initialState = {
 const onChange = key => value => setState({ [key]: value });
 
 <Form.Form
-  column
-  submitLabel="submit"
-  renderSubmit={props => (
-    <StatefulButton
-      {...props}
-      style={{ ...props.style, width: "300px", marginLeft: "auto" }}
-    />
+  render={ref => (
+    <FlexView column grow>
+      <InputField
+        label="First name"
+        value={state.firstName}
+        onChange={onChange("firstName")}
+      />
+      <InputField
+        label="Last name"
+        value={state.lastName}
+        onChange={onChange("lastName")}
+      />
+      <FlexView marginLeft="auto">
+        <Button style={{ width: "100px" }} label="Cancel" onClick={() => {}} />
+        <StatefulButton
+          primary
+          baseState="ready"
+          label="Submit"
+          ref={ref}
+          style={{ width: "100px", marginLeft: "10px" }}
+          onClick={() => {
+            alert("submitted!");
+            return Promise.resolve();
+          }}
+        />
+      </FlexView>
+    </FlexView>
   )}
-  onSubmit={() => {
-    alert("submitted!");
-    return Promise.resolve();
-  }}
->
-  <InputField
-    label="First name"
-    value={state.firstName}
-    onChange={onChange("firstName")}
-  />
-  <InputField
-    label="Last name"
-    value={state.lastName}
-    onChange={onChange("lastName")}
-  />
-</Form.Form>;
+/>;
 ```
