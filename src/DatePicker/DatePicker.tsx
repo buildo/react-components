@@ -20,13 +20,13 @@ export namespace DatePicker {
     /** MomentJS format used to display current date */
     displayFormat?: string;
     /** minimum date selectable by the user */
-    minDate?: Date | string;
+    minDate?: Date;
     /** maximum date selectable by the user */
-    maxDate?: Date | string;
+    maxDate?: Date;
     /** if set, the datepicker will highlight days in the range starting from this date and ending to the hovered or selected date */
-    fromDate?: Date | string;
+    fromDate?: Date;
     /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
-    toDate?: Date | string;
+    toDate?: Date;
     /** set to true to display two month */
     displayTwoMonths?: boolean;
     /** whether the input box should be small or not */
@@ -34,7 +34,7 @@ export namespace DatePicker {
     /** the icon to show in the input field */
     icon?: JSX.Element;
     /** specify an initial "visible" date with no need to select a defaultValue */
-    startDate?: Date | string;
+    startDate?: Date;
     /** locale used for translations */
     locale?: string;
     /** whether the datepicker should be disabled or not */
@@ -71,9 +71,8 @@ export type State = {
  *
  */
 
-const valueToMomentDate: (
-  value?: Date | string
-) => moment.Moment | undefined = value => (!value ? undefined : moment(value));
+const valueToMomentDate: (value?: Date) => moment.Moment | undefined = value =>
+  !value ? undefined : moment(value);
 
 const angleLeftIcon = (
   <svg width="10" height="10" viewBox="0 0 32 32">
@@ -117,14 +116,14 @@ export const Props = {
   onChange: t.maybe(t.Function),
   onHide: t.maybe(t.Function),
   displayFormat: t.maybe(t.String),
-  minDate: t.maybe(t.union([t.Date, t.String])),
-  maxDate: t.maybe(t.union([t.Date, t.String])),
-  fromDate: t.maybe(t.union([t.Date, t.String])),
-  toDate: t.maybe(t.union([t.Date, t.String])),
+  minDate: t.maybe(t.Date),
+  maxDate: t.maybe(t.Date),
+  fromDate: t.maybe(t.Date),
+  toDate: t.maybe(t.Date),
   displayTwoMonths: t.maybe(t.Boolean),
   small: t.maybe(t.Boolean),
   icon: t.maybe(ReactChild),
-  startDate: t.maybe(t.union([t.Date, t.String])),
+  startDate: t.maybe(t.Date),
   locale: t.maybe(t.String),
   onFocusChange: t.maybe(t.Function),
   disabled: t.maybe(t.Boolean),
