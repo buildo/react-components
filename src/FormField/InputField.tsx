@@ -1,44 +1,48 @@
 import * as React from "react";
-import { props, t, ReactChild, ObjectOmit } from "../utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import Input from "../Input";
 import { FormField } from "./FormField";
 
-export namespace InputField {
-  type FieldProps = {
-    /** the label for the field */
-    label: JSX.Element | string;
-    /** whether the field is required */
-    required?: boolean;
-    /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
-    /** An optional custom renderer for Input */
-    inputRenderer?: (props: Input.Props) => JSX.Element;
-    /** an optional class name to pass to top level element of the component */
-    className?: string;
-    /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties;
-  };
-
-  export type Props = FieldProps & ObjectOmit<Input.Props, keyof FieldProps>;
-}
-
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  inputRenderer: t.maybe(t.Function)
+type DefaultProps = {
+  /** An optional custom renderer for Input */
+  inputRenderer: (props: Input.Props) => JSX.Element;
 };
 
-@props(Props, { strict: false })
-export class InputField extends React.PureComponent<InputField.Props> {
+type FieldProps = {
+  /** the label for the field */
+  label: FormField.Props["label"];
+  /** whether the field is required */
+  required?: FormField.Props["required"];
+  /** optional props to pass to the wrapping View */
+  viewProps?: FormField.Props["viewProps"];
+  hint?: FormField.Props["hint"];
+  /** an optional class name to pass to top level element of the component */
+  className?: string;
+  /** an optional style object to pass to top level element of the component */
+  style?: React.CSSProperties;
+};
+
+type NonDefaultProps = FieldProps & ObjectOmit<Input.Props, keyof FieldProps>;
+
+type InternalProps = DefaultProps & NonDefaultProps;
+
+export namespace InputField {
+  export type Props = NonDefaultProps & Partial<DefaultProps>;
+}
+
+export class InputField extends React.PureComponent<InternalProps> {
+  static defaultProps: DefaultProps = {
+    inputRenderer: (props: Input.Props) => <Input {...props} />
+  };
+
   render() {
     const {
       label,
       required,
       className: _className,
       viewProps,
+      hint,
       disabled,
       inputRenderer,
       ..._inputProps
@@ -56,9 +60,11 @@ export class InputField extends React.PureComponent<InputField.Props> {
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-      >
-        {inputRenderer ? inputRenderer(inputProps) : <Input {...inputProps} />}
-      </FormField>
+        hint={hint}
+        render={(onFocus, onBlur) =>
+          inputRenderer({ ...inputProps, onFocus, onBlur })
+        }
+      />
     );
   }
 }

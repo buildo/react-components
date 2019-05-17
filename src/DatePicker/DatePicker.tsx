@@ -54,6 +54,8 @@ export namespace DatePicker {
     locale?: string;
     /** whether the datepicker should be disabled or not */
     disabled?: boolean;
+    /** called when the focus changes */
+    onFocusChange?: (focus: boolean) => void;
     /** an optional class name to pass to top level element of the component */
     className?: string;
     /** an optional style object to pass to top level element of the component */
@@ -144,6 +146,7 @@ export const Props = {
   icon: t.maybe(ReactChild),
   startDate: t.maybe(ValueType),
   locale: t.maybe(t.String),
+  onFocusChange: t.maybe(t.Function),
   disabled: t.maybe(t.Boolean),
   className: t.maybe(t.String),
   style: t.maybe(t.Object)
@@ -203,6 +206,7 @@ export class DatePicker<
 
   onFocusChange = ({ focused }: { focused: boolean | null }) => {
     this.setState({ focused: focused || false });
+    this.props.onFocusChange && this.props.onFocusChange(focused || false);
   };
 
   onDayMouseEnter = (day: moment.Moment) => () => {
@@ -281,8 +285,7 @@ export class DatePicker<
         "two-months": displayTwoMonths,
         "is-small": small
       }),
-      style,
-      grow: true
+      style
     };
 
     const datePickerProps = {

@@ -22,6 +22,10 @@ function onChange(field, value) {
       id="input"
       label="LABEL"
       placeholder="Type here..."
+      hint={{
+        type: "label",
+        content: "Input Hint"
+      }}
       value={state.input}
       onChange={value => onChange("input", value)}
     />
@@ -31,6 +35,10 @@ function onChange(field, value) {
       id="textarea"
       label="LABEL"
       placeholder="Type here..."
+      hint={{
+        type: "label",
+        content: "Textarea hint"
+      }}
       value={state.textarea}
       onChange={value => onChange("textarea", value)}
       rows={5}
@@ -92,6 +100,10 @@ function onChange(field, value) {
       dropdownRenderer={props => <Dropdown {...props} isSearchable />}
       onChange={value => onChange("dropdown", value)}
       placeholder="Select"
+      hint={{
+        type: "label",
+        content: "Dropdown hint"
+      }}
     />
   </FlexView>
   <FlexView marginBottom={40}>
@@ -102,6 +114,10 @@ function onChange(field, value) {
         value={state.datePicker}
         onChange={value => onChange("datePicker", value)}
         viewProps={{ grow: false }}
+        hint={{
+          type: "label",
+          content: "DatePicker hint"
+        }}
       />
     </FlexView>
     <FlexView width={215}>
@@ -110,6 +126,10 @@ function onChange(field, value) {
         label="LABEL"
         value={state.timePicker}
         onChange={value => onChange("timePicker", value)}
+        hint={{
+          type: "label",
+          content: "TimePicker hint"
+        }}
       />
     </FlexView>
   </FlexView>
@@ -119,6 +139,10 @@ function onChange(field, value) {
       label="LABEL"
       value={state.password}
       onChange={value => onChange("password", value)}
+      hint={{
+        type: "label",
+        content: "PasswordInput hint"
+      }}
     />
   </FlexView>
 </FlexView>;
@@ -159,4 +183,82 @@ function onChange(field, value) {
     />
   </FlexView>
 </FlexView>;
+```
+
+#### Input hints
+
+An input hint is a label whose purpose is to give hints to the user about the expected value or format of an input field.
+When you want to guide the user through the insertion of a value that could be formatted in different ways, having an example always visible could be crucial.
+
+Based on the form design, the hint could have different styles:
+
+**always visible under a field**
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "label",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
+```
+
+**inside a tooltip** that appears on hover or on focus
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  viewProps={{ width: 300 }}
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "tooltip",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
+```
+
+**always visible in a box** on the right
+
+```js
+initialState = {
+  input: ""
+};
+
+function onChange(field, value) {
+  setState({ [field]: value });
+}
+
+<InputField
+  viewProps={{ width: 500 }}
+  label="ADDRESS"
+  placeholder="Type here..."
+  hint={{
+    type: "box",
+    content: "e.g. 8156 Old Arlington Road"
+  }}
+  value={state.input}
+  onChange={value => onChange("input", value)}
+/>;
 ```

@@ -22,6 +22,7 @@ textarea {
   font-size: $font-size;
   line-height: $font-size;
   font-family: inherit;
+  width: 100%;
 
   /* placeholder */
   @include placeholder {

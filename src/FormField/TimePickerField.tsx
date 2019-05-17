@@ -1,38 +1,39 @@
 import * as React from "react";
-import { props, t, ReactChild } from "../utils";
 import * as cx from "classnames";
-import View from "react-flexview";
 import TimePicker from "../TimePicker";
 import { FormField } from "./FormField";
 
-export namespace TimePickerField {
-  export type Props = {
-    /** the label for the field */
-    label: JSX.Element | string;
-    /** whether the field is required */
-    required?: boolean;
-    /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
-    /** an optional custom renderer for TimePicker */
-    timePickerRenderer?: (props: TimePicker.Props) => JSX.Element;
-    /** an optional class name to pass to top level element of the component */
-    className?: string;
-    /** an optional style object to pass to top level element of the component */
-    style?: React.CSSProperties;
-  } & TimePicker.Props;
-}
-
-export const Props = {
-  label: ReactChild,
-  required: t.maybe(t.Boolean),
-  viewProps: t.maybe(t.Object),
-  timePickerRenderer: t.maybe(t.Function)
+type DefaultProps = {
+  /** an optional custom renderer for TimePicker */
+  timePickerRenderer: (props: TimePicker.Props) => JSX.Element;
 };
 
-@props(Props, { strict: false })
-export class TimePickerField extends React.PureComponent<
-  TimePickerField.Props
-> {
+type NonDefaultProps = {
+  /** the label for the field */
+  label: FormField.Props["label"];
+  /** whether the field is required */
+  required?: FormField.Props["required"];
+  /** optional props to pass to the wrapping View */
+  viewProps?: FormField.Props["viewProps"];
+  /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
+  hint?: FormField.Props["hint"];
+  /** an optional class name to pass to top level element of the component */
+  className?: string;
+  /** an optional style object to pass to top level element of the component */
+  style?: React.CSSProperties;
+} & TimePicker.Props;
+
+type InternalProps = NonDefaultProps & DefaultProps;
+
+export namespace TimePickerField {
+  export type Props = NonDefaultProps & Partial<DefaultProps>;
+}
+
+export class TimePickerField extends React.PureComponent<InternalProps> {
+  static defaultProps: DefaultProps = {
+    timePickerRenderer: props => <TimePicker {...props} />
+  };
+
   render() {
     const {
       label,
@@ -40,6 +41,7 @@ export class TimePickerField extends React.PureComponent<
       className: _className,
       viewProps,
       disabled,
+      hint,
       timePickerRenderer,
       ..._timePickerProps
     } = this.props;
@@ -56,13 +58,9 @@ export class TimePickerField extends React.PureComponent<
         className={className}
         viewProps={viewProps}
         disabled={disabled}
-      >
-        {timePickerRenderer ? (
-          timePickerRenderer(timePickerProps)
-        ) : (
-          <TimePicker {...timePickerProps} />
-        )}
-      </FormField>
+        hint={hint}
+        render={() => timePickerRenderer({ ...timePickerProps })}
+      />
     );
   }
 }
