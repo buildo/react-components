@@ -17,8 +17,6 @@ type NonDefaultProps = {
   viewProps?: FormField.Props["viewProps"];
   /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
   hint?: FormField.Props["hint"];
-  /** An optional custom renderer for DatePicker */
-  datePickerRenderer?: (props: DatePicker.Props) => JSX.Element;
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
