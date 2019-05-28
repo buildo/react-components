@@ -259,6 +259,8 @@ export interface DefaultProps {
   size: "medium" | "small";
   /** whether the menu should open on top or bottom */
   menuPosition: Dropdown.Props<any>["menuPlacement"];
+  /** object of custom compoents for react select */
+  components: Dropdown.Props<MakeOptionsInput>["components"]
 }
 
 export namespace TimePicker {
