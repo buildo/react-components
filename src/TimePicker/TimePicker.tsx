@@ -8,7 +8,6 @@ import compact = require("lodash/compact");
 import uniqBy = require("lodash/uniqBy");
 import sortBy = require("lodash/sortBy");
 import { components } from "react-select";
-import * as SelectNS from "react-select/lib/Select";
 import find = require("lodash/find");
 
 export const H24 = "24h";
@@ -46,7 +45,7 @@ const isValidHoursInTimeFormat = (
 
 const getComponents = (
   timeFormatter?: TimePicker.TimeFormatter
-): SelectNS.Props<TimeDropdownOption>["components"] => {
+): NonNullable<TimePicker.Props["components"]> => {
   return timeFormatter
     ? {
         Option: props => (
@@ -259,6 +258,8 @@ export interface DefaultProps {
   size: "medium" | "small";
   /** whether the menu should open on top or bottom */
   menuPosition: Dropdown.Props<any>["menuPlacement"];
+  /** object of custom compoents for react select */
+  components: Dropdown.Props<TimeDropdownOption>["components"];
 }
 
 export namespace TimePicker {
@@ -323,7 +324,8 @@ export class TimePicker extends React.Component<
       placeholder,
       menuPosition,
       disabled,
-      timeFormatter
+      timeFormatter,
+      components: userComponents
     } = this.props as TimePickerDefaultedProps;
 
     const value = userValue ? formatTime24(userValue) : undefined;
@@ -334,7 +336,7 @@ export class TimePicker extends React.Component<
     const className = cx("time-picker", _className);
     const onChange = this._onChange;
     const updateInputValue = this.updateInputValue;
-    const components = getComponents(timeFormatter);
+    const computedComponents = getComponents(timeFormatter);
 
     return (
       <Dropdown
@@ -344,7 +346,7 @@ export class TimePicker extends React.Component<
         value={find(options, o => o.value === value)!}
         onChange={onChange}
         options={options}
-        components={components}
+        components={{ ...computedComponents, ...userComponents }}
         placeholder={placeholder}
         size={size}
         onInputChange={updateInputValue}
