@@ -2,7 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
 import Popover from "../Popover";
-import { ObjectOmit } from "src/utils";
+import { ObjectOmit } from "../utils";
 
 export namespace FormField {
   export type Props = {
