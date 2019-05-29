@@ -259,7 +259,7 @@ export interface DefaultProps {
   /** whether the menu should open on top or bottom */
   menuPosition: Dropdown.Props<any>["menuPlacement"];
   /** object of custom compoents for react select */
-  components: Dropdown.Props<TimeDropdownOption>["components"]
+  components: Dropdown.Props<TimeDropdownOption>["components"];
 }
 
 export namespace TimePicker {
@@ -346,7 +346,7 @@ export class TimePicker extends React.Component<
         value={find(options, o => o.value === value)!}
         onChange={onChange}
         options={options}
-        components={{ ...computedComponents, ...userComponents}}
+        components={{ ...computedComponents, ...userComponents }}
         placeholder={placeholder}
         size={size}
         onInputChange={updateInputValue}
