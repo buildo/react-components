@@ -1,42 +1,106 @@
 import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
-import Button, { StatefulButton } from "../Button";
-import { findDOMNode } from "../utils";
+import Button from "../Button";
 
 export namespace Form {
-  export type Props = View.Props & {
-    render: (ref: React.RefObject<any>) => NonNullable<React.ReactNode>;
+  export type Props = {
+    /** submit button label */
+    submitLabel: string;
+    /** callback function called on submit event */
+    onSubmit: () => Promise<void>;
+    /** optional props to pass to the wrapping View */
+    viewProps?: View.Props;
+    /** an optional class name to pass to first inner element of the component */
+    className?: string;
+    /** an optional label to replace the submit button label when in status 'processing' */
+    submitProcessingLabel?: string;
+    /** an optional callback to display a custom submit section */
+    renderSubmit?: (buttonProps: Button.Props) => JSX.Element;
+    /** optional props to pass to the submit button and override the existing ones */
+    submitButtonProps?: Button.Props;
+    /** prop to disable submit on enter*/
+    disableSubmitOnEnter?: boolean;
   };
 }
 
-export class Form extends React.PureComponent<Form.Props> {
-  buttonRef = React.createRef<Button | StatefulButton>();
+type State = {
+  status: "ready" | "loading";
+};
+
+export class Form extends React.PureComponent<Form.Props, State> {
+  state: State = { status: "ready" };
+
+  mounted = true;
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  setStatus = (status: State["status"]) => {
+    this.setState({ status });
+  };
+
+  onSubmit = () => {
+    this.setStatus("loading");
+    this.props.onSubmit().then(result => {
+      if (this.mounted) {
+        this.setStatus("ready");
+      }
+      return result;
+    });
+  };
 
   onFormSubmit: React.ReactEventHandler<HTMLFormElement> = e => {
-    if (this.buttonRef.current) {
-      const buttonDiv = findDOMNode(this.buttonRef.current);
-      const clickable = buttonDiv.querySelector(".button-inner");
-      if (clickable) {
-        (clickable as HTMLDivElement).click();
-      }
+    if (!this.props.disableSubmitOnEnter) {
+      this.onSubmit();
     }
     e.stopPropagation();
     e.preventDefault();
   };
 
-  render() {
-    const { className, style, render, ...props } = this.props;
+  renderSubmit = (props: Button.Props): JSX.Element =>
+    this.props.renderSubmit ? (
+      this.props.renderSubmit(props)
+    ) : (
+      <Button {...props} />
+    );
 
+  render() {
+    const {
+      submitLabel,
+      submitProcessingLabel,
+      className,
+      children,
+      submitButtonProps,
+      viewProps: _viewProps
+    } = this.props;
+
+    const submitButtonState: Button.ButtonState =
+      this.state.status === "loading" ? "processing" : "ready";
+
+    const defaultSubmitButtonProps: Button.Props = {
+      primary: true,
+      onClick: this.onSubmit,
+      label: {
+        ready: submitLabel,
+        processing: submitProcessingLabel || submitLabel
+      },
+      buttonState: submitButtonState,
+      ...submitButtonProps
+    };
+
+    const viewProps = { column: true, _viewProps };
     return (
-      <form
-        className={cx("form", className)}
-        onSubmit={this.onFormSubmit}
-        style={{ width: "100%", ...style }}
-      >
-        <View {...props}>{render(this.buttonRef)}</View>
-        <input type="submit" style={{ display: "none" }} />
-      </form>
+      <View {...viewProps} className={cx("form", className)}>
+        <form onSubmit={this.onFormSubmit} style={{ width: "100%" }}>
+          <View {...viewProps}>
+            {children}
+            {this.renderSubmit(defaultSubmitButtonProps)}
+          </View>
+          <input type="submit" style={{ display: "none" }} />
+        </form>
+      </View>
     );
   }
 }

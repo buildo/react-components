@@ -1,8 +1,14 @@
+Wrapper for form that adds a submit button with management of the processing state, submit on enter, and error management features.
+
 ### Examples
 
-Simple wrapper for form that adds "submit on Enter" behavior
+#### Submit on enter behavior
+
+Submit by pressing the button, or the Enter key; it can also be disabled through the corresponding prop.
 
 ```js
+const none = require("fp-ts/lib/Option").none;
+
 initialState = {
   firstName: "",
   lastName: ""
@@ -11,33 +17,69 @@ initialState = {
 const onChange = key => value => setState({ [key]: value });
 
 <Form.Form
-  render={ref => (
-    <FlexView column grow>
-      <InputField
-        label="First name"
-        value={state.firstName}
-        onChange={onChange("firstName")}
+  submitLabel="Confirm or press enter..."
+  onSubmit={() => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        alert("submitted!");
+        resolve();
+      }, 1000)
+    );
+  }}
+  error={none}
+>
+  <InputField
+    label="First name"
+    value={state.firstName}
+    onChange={onChange("firstName")}
+  />
+  <InputField
+    label="Last name"
+    value={state.lastName}
+    onChange={onChange("lastName")}
+  />
+</Form.Form>;
+```
+
+#### Custom submit actions
+
+```js
+const none = require("fp-ts/lib/Option").none;
+
+initialState = {
+  firstName: "",
+  lastName: ""
+};
+
+const onChange = key => value => setState({ [key]: value });
+
+<Form.Form
+  submitLabel="Confirm or press enter..."
+  onSubmit={() => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        alert("submitted!");
+        resolve();
+      }, 1000)
+    );
+  }}
+  error={none}
+  renderSubmit={(submitButtonProps) =>
+    <FlexView width="100%" hAlignContent="right" className="submit-section">
+      <Button
+        negative
+        buttonState="ready"
+        label='cancel'
+        onClick={() => {alert("Canceling!")}}
+        style = {{ marginRight: 15}}
       />
-      <InputField
-        label="Last name"
-        value={state.lastName}
-        onChange={onChange("lastName")}
-      />
-      <FlexView marginLeft="auto">
-        <Button style={{ width: "100px" }} label="Cancel" onClick={() => {}} />
-        <StatefulButton
-          primary
-          baseState="ready"
-          label="Submit"
-          ref={ref}
-          style={{ width: "100px", marginLeft: "10px" }}
-          onClick={() => {
-            alert("submitted!");
-            return Promise.resolve();
-          }}
-        />
-      </FlexView>
-    </FlexView>
-  )}
-/>;
+      <Button {...submitButtonProps} />
+    </FlexView>}
+>
+  <InputField
+    label="Name"
+    value={state.lastName}
+    onChange={onChange("name")}
+  />
+</Form.Form>;
 ```
