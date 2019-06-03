@@ -1,0 +1,38 @@
+@import "../utils/theme/variables.scss";
+
+$color: $brc-strawberry !default;
+$icon-background: rgba($color, 0.15) !default;
+$title-font-weight: $brc-semibold !default;
+$content-font-weight: $brc-regular !default;
+
+.error-message {
+  border: 1px solid $color;
+
+  .error-message-icon {
+    background-color: $icon-background;
+    width: 45px;
+    fill: $color;
+  }
+
+  .error-message-content {
+    padding: 19px 11px;
+    color: $color;
+    font-weight: $content-font-weight;
+
+    a {
+      color: $color;
+    }
+  }
+
+  .error-message-title {
+    padding: 10px 11px 4px 11px;
+    color: $color;
+    font-weight: $title-font-weight;
+  }
+
+  &.has-title {
+    .error-message-content {
+      padding: 0 11px 10px 11px;
+    }
+  }
+}
