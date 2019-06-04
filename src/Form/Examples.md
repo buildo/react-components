@@ -7,8 +7,6 @@ Wrapper for form that adds a submit button with management of the processing sta
 Submit by pressing the button, or the Enter key; it can also be disabled through the corresponding prop.
 
 ```js
-const none = require("fp-ts/lib/Option").none;
-
 initialState = {
   firstName: "",
   lastName: ""
@@ -26,7 +24,6 @@ const onChange = key => value => setState({ [key]: value });
       }, 1000)
     );
   }}
-  error={none}
 >
   <InputField
     label="First name"
@@ -44,8 +41,6 @@ const onChange = key => value => setState({ [key]: value });
 #### Custom submit actions
 
 ```js
-const none = require("fp-ts/lib/Option").none;
-
 initialState = {
   firstName: "",
   lastName: ""
@@ -63,23 +58,21 @@ const onChange = key => value => setState({ [key]: value });
       }, 1000)
     );
   }}
-  error={none}
-  renderSubmit={(submitButtonProps) =>
+  renderSubmit={submitButtonProps => (
     <FlexView width="100%" hAlignContent="right" className="submit-section">
       <Button
         negative
         buttonState="ready"
-        label='cancel'
-        onClick={() => {alert("Canceling!")}}
-        style = {{ marginRight: 15}}
+        label="cancel"
+        onClick={() => {
+          alert("Canceling!");
+        }}
+        style={{ marginRight: 15 }}
       />
       <Button {...submitButtonProps} />
-    </FlexView>}
+    </FlexView>
+  )}
 >
-  <InputField
-    label="Name"
-    value={state.lastName}
-    onChange={onChange("name")}
-  />
+  <InputField label="Name" value={state.lastName} onChange={onChange("name")} />
 </Form.Form>;
 ```

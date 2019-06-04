@@ -2,8 +2,10 @@
 
 $color: $brc-strawberry !default;
 $icon-background: rgba($color, 0.15) !default;
+$icon-size: 16px !default;
 $title-font-weight: $brc-semibold !default;
 $content-font-weight: $brc-regular !default;
+$font-size: 14px !default;
 
 .error-message {
   border: 1px solid $color;
@@ -11,23 +13,26 @@ $content-font-weight: $brc-regular !default;
   .error-message-icon {
     background-color: $icon-background;
     width: 45px;
-    fill: $color;
+
+    svg {
+      fill: $color;
+      height: $icon-size;
+      width: $icon-size;
+    }
   }
 
   .error-message-content {
     padding: 19px 11px;
     color: $color;
     font-weight: $content-font-weight;
-
-    a {
-      color: $color;
-    }
+    font-size: $font-size;
   }
 
   .error-message-title {
     padding: 10px 11px 4px 11px;
     color: $color;
     font-weight: $title-font-weight;
+    font-size: $font-size;
   }
 
   &.has-title {

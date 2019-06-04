@@ -1,0 +1,35 @@
+@import "../utils/theme/variables.scss";
+
+$color: $brc-black !default;
+$title-font-weight: $brc-semibold !default;
+$content-font-weight: $brc-regular !default;
+$title-font-size: 24px !default;
+$content-font-size: 14px !default;
+$icon-size: 45px !default;
+$icon-color: $brc-strawberry !default;
+
+.error-modal {
+
+
+  .error-modal-icon {
+    svg {
+      fill: $icon-color;
+      height: $icon-size;
+      width: $icon-size
+    }
+  }
+
+  .error-modal-title {
+    color: $color;
+    font-size: $title-font-size;
+    font-weight: $title-font-weight;
+    margin: 6px 0;
+  }
+
+  .error-modal-content {
+    color: $color;
+    margin: 12px 0;
+    font-size: $content-font-size;
+    font-weight: $content-font-weight;
+  }
+}

@@ -1,29 +1,20 @@
 import * as React from "react";
 import View from "react-flexview";
 import * as cx from "classnames";
+import ErrorIcon from "./ErrorIcon";
 
 import "./errorMessage.scss";
 
 export namespace ErrorMessage {
   export type Props = {
     /** error message */
-    message: string;
-    /** optional title to be shown above the error */
-    title?: string;
+    message: string | JSX.Element;
+    /** optional title to be shown above the error message */
+    title?: string | JSX.Element;
     /** icon to replace the default one */
     icon?: JSX.Element;
   };
 }
-
-const defaultIcon = (
-  <svg width="16" height="16" viewBox="0 0 16 16">
-    <path
-      fillRule="evenodd"
-      transform="matrix(1 0 0 -1 -4 20)"
-      d="M11.2 16h1.6v-4.8h-1.6V16zM12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14.4c-3.52 0-6.4-2.88-6.4-6.4 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.52-2.88 6.4-6.4 6.4zm-.8-8.8h1.6V8h-1.6v1.6z"
-    />
-  </svg>
-);
 
 export class ErrorMessage extends React.Component<ErrorMessage.Props> {
   render() {
@@ -39,15 +30,13 @@ export class ErrorMessage extends React.Component<ErrorMessage.Props> {
           shrink={false}
           className="error-message-icon"
         >
-          {!!icon ? icon : defaultIcon}
+          {!!icon ? icon : <ErrorIcon />}
         </View>
         <View column vAlignContent="center" hAlignContent="left">
-          {title && <View className="error-message-title">{title}</View>}
-          <View
-            shrink={false}
-            className="error-message-content"
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
+          {!!title && <View className="error-message-title">{title}</View>}
+          <View shrink={false} className="error-message-content">
+            {message}
+          </View>
         </View>
       </View>
     );
