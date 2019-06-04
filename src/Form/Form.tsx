@@ -2,6 +2,8 @@ import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
 import Button from "../Button";
+import ErrorMessage from "../ErrorMessage";
+import { Option } from "fp-ts/lib/Option";
 
 export namespace Form {
   export type Props = {
@@ -10,7 +12,7 @@ export namespace Form {
     /** callback function called on submit event */
     onSubmit: () => Promise<void>;
     /** optional props to pass to the wrapping View */
-    viewProps?: View.Props;
+    viewProps?: Partial<View.Props>;
     /** an optional class name to pass to first inner element of the component */
     className?: string;
     /** an optional label to replace the submit button label when in status 'processing' */
@@ -21,6 +23,8 @@ export namespace Form {
     submitButtonProps?: Button.Props;
     /** prop to disable submit on enter*/
     disableSubmitOnEnter?: boolean;
+
+    error: Option<ErrorMessage.Props>;
   };
 }
 
@@ -28,7 +32,7 @@ type State = {
   status: "ready" | "loading";
 };
 
-export class Form extends React.PureComponent<Form.Props, State> {
+export class Form extends React.Component<Form.Props, State> {
   state: State = { status: "ready" };
 
   mounted = true;
@@ -73,6 +77,7 @@ export class Form extends React.PureComponent<Form.Props, State> {
       className,
       children,
       submitButtonProps,
+      error,
       viewProps: _viewProps
     } = this.props;
 
@@ -96,6 +101,9 @@ export class Form extends React.PureComponent<Form.Props, State> {
         <form onSubmit={this.onFormSubmit} style={{ width: "100%" }}>
           <View {...viewProps}>
             {children}
+            {error.fold(null, props => (
+              <ErrorMessage {...props} />
+            ))}
             {this.renderSubmit(defaultSubmitButtonProps)}
           </View>
           <input type="submit" style={{ display: "none" }} />

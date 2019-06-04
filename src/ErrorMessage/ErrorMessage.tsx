@@ -10,19 +10,19 @@ export namespace ErrorMessage {
     /** error message */
     message: string | JSX.Element;
     /** optional title to be shown above the error message */
-    title?: string | JSX.Element;
+    messageTitle?: string | JSX.Element;
     /** icon to replace the default one */
-    icon?: JSX.Element;
+    errorIcon?: JSX.Element;
   };
 }
 
-export class ErrorMessage extends React.Component<ErrorMessage.Props> {
+export class ErrorMessage extends React.PureComponent<ErrorMessage.Props> {
   render() {
-    const { message, title, icon } = this.props;
+    const { message, messageTitle, errorIcon } = this.props;
     return (
       <View
         width="100%"
-        className={cx("error-message", title ? "has-title" : undefined)}
+        className={cx("error-message", messageTitle ? "has-title" : undefined)}
       >
         <View
           vAlignContent="center"
@@ -30,10 +30,12 @@ export class ErrorMessage extends React.Component<ErrorMessage.Props> {
           shrink={false}
           className="error-message-icon"
         >
-          {!!icon ? icon : <ErrorIcon />}
+          {!!errorIcon ? errorIcon : <ErrorIcon />}
         </View>
         <View column vAlignContent="center" hAlignContent="left">
-          {!!title && <View className="error-message-title">{title}</View>}
+          {!!messageTitle && (
+            <View className="error-message-title">{messageTitle}</View>
+          )}
           <View shrink={false} className="error-message-content">
             {message}
           </View>

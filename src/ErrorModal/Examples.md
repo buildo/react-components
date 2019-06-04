@@ -26,9 +26,9 @@ const closeIcon = (
 );
 
 const getModal = () => (
-  <ErrorModal
+  <ErrorModal.ErrorModal
     onDismiss={close}
-    title="Something went wrong!"
+    messageTitle="Something went wrong!"
     message="Close this modal and ignore, this is just a demo ;)"
     iconClose={closeIcon}
   />

@@ -5,23 +5,25 @@ import ErrorIcon from "../ErrorMessage/ErrorIcon";
 
 import "./errorModal.scss";
 
-type Props = {
-  /** error message */
-  message: string | JSX.Element;
-  /** optional title to be shown above the error message */
-  title?: string | JSX.Element;
-  /** icon to replace the default one */
-  icon?: JSX.Element;
-} & Modal.Props;
+export namespace ErrorModal {
+  export type Props = {
+    /** error message */
+    message: string | JSX.Element;
+    /** optional title to be shown above the error message */
+    messageTitle?: string | JSX.Element;
+    /** icon to replace the default one */
+    errorIcon?: JSX.Element;
+  } & Partial<Exclude<Modal.Props, "children">>;
+}
 
-class ErrorModal extends React.Component<Props> {
+export class ErrorModal extends React.Component<ErrorModal.Props> {
   render() {
-    const { title, message, icon, ...modalProps } = this.props;
+    const { messageTitle, message, errorIcon, ...modalProps } = this.props;
     return (
       <Modal
+        className="error-modal"
         transitionEnterTimeout={0}
         transitionLeaveTimeout={0}
-        className="error-modal"
         {...modalProps}
       >
         <View column hAlignContent="center">
@@ -31,14 +33,14 @@ class ErrorModal extends React.Component<Props> {
             shrink={false}
             className="error-modal-icon"
           >
-            {!!icon ? icon : <ErrorIcon />}
+            {!!errorIcon ? errorIcon : <ErrorIcon />}
           </View>
-          {!!title && <View className="error-modal-title">{title}</View>}
+          {!!messageTitle && (
+            <View className="error-modal-title">{messageTitle}</View>
+          )}
           <View className="error-modal-content">{message}</View>
         </View>
       </Modal>
     );
   }
 }
-
-export default ErrorModal;

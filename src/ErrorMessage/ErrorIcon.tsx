@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default class ErrorIcon extends React.Component<{}> {
+export default class ErrorIcon extends React.PureComponent<{}> {
   render() {
     return (
       <svg viewBox="0 0 16 16">
