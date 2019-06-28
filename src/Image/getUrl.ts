@@ -30,7 +30,7 @@ function getUrl(
 
   const origin = !isAbsolute ? window.location.origin : "";
   const width = _width ? `w_${isRetinaDisplay ? _width * 2 : _width}/` : "";
-  const height = _height ? `w_${isRetinaDisplay ? _height * 2 : _height}/` : "";
+  const height = _height ? `h_${isRetinaDisplay ? _height * 2 : _height}/` : "";
   const quality = _quality ? `q_${_quality}/` : "";
   const format = _format ? `f_${_format}/` : "";
 
