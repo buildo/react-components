@@ -26,8 +26,8 @@ function getUrl(
     format: _format
   }: CloudinaryParams = {}
 ): string {
-  const isAbsolute = src.indexOf("http") >= 0;  
-  const isBase64 = src.slice(0, 5) === 'data:';
+  const isAbsolute = src.indexOf("http") >= 0;
+  const isBase64 = src.slice(0, 5) === "data:";
 
   if (isBase64) {
     return src;
