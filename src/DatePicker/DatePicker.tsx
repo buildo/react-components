@@ -159,7 +159,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
   };
 
   initialVisibleMonth = () =>
-    valueToMomentDate(this.props.startDate) || moment();
+    valueToMomentDate(this.props.startDate) || this.state.value || moment();
 
   onFocusChange = ({ focused }: { focused: boolean | null }) => {
     this.setState({ focused: focused || false });
