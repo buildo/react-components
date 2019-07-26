@@ -1,8 +1,12 @@
+import "react-dates/initialize";
+
 import * as React from "react";
 import * as cx from "classnames";
-import { SingleDatePicker } from "react-dates";
+import {
+  SingleDatePicker as _SingleDatePicker,
+  SingleDatePickerShape
+} from "react-dates";
 import FlexView from "react-flexview";
-import { props, t, ReactChild } from "../utils";
 import * as moment from "moment";
 
 export namespace DatePicker {
@@ -27,8 +31,8 @@ export namespace DatePicker {
     fromDate?: Date;
     /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
     toDate?: Date;
-    /** set to true to display two month */
-    displayTwoMonths?: boolean;
+    /** whether the datepicker should be rendered above or below the input field */
+    position?: "up" | "down";
     /** whether the input box should be small or not */
     small?: boolean;
     /** the icon to show in the input field */
@@ -37,6 +41,8 @@ export namespace DatePicker {
     startDate?: Date;
     /** locale used for translations */
     locale?: string;
+    /** pass true if you want the datepicker to close automatically after the user selects a value */
+    autoClose?: boolean;
     /** whether the datepicker should be disabled or not */
     disabled?: boolean;
     /** called when the focus changes */
@@ -53,23 +59,6 @@ export type State = {
   hoveredDay?: moment.Moment;
   focused: boolean;
 };
-
-/*
- * TODO: missing rc-datepicker props
- *
- * @param onShow - called when datepicker is opened
- * @param startMode - the start view of the datepicker
- * @param fixedMode - whether the user can use multiple views or not
- * @param showOnInputClick - whether the datepicker should open when user click on the input
- * @param closeOnClickOutside - whether the datepicker should close when user clicks outside of it
- * @param showInputButton - whether the input-button should be rendered
- * @param autoClose - pass true if you want the datepicker to close automatically after the user selects a value
- * @param floating - whether the datepicker should float over the page content (absolute position)
- * @param position - whether the datepicker should be rendered above or below the input field
- * @param iconClassName - classname used for the icon
- * @param iconClearClassName - classname used for the clear icon
- *
- */
 
 const valueToMomentDate: (value?: Date) => moment.Moment | undefined = value =>
   !value ? undefined : moment(value);
@@ -109,37 +98,31 @@ const calendarIcon = (
   </svg>
 );
 
-export const Props = {
-  id: t.maybe(t.String),
-  value: t.maybe(t.Date),
-  defaultValue: t.maybe(t.Date),
-  onChange: t.maybe(t.Function),
-  onHide: t.maybe(t.Function),
-  displayFormat: t.maybe(t.String),
-  minDate: t.maybe(t.Date),
-  maxDate: t.maybe(t.Date),
-  fromDate: t.maybe(t.Date),
-  toDate: t.maybe(t.Date),
-  displayTwoMonths: t.maybe(t.Boolean),
-  small: t.maybe(t.Boolean),
-  icon: t.maybe(ReactChild),
-  startDate: t.maybe(t.Date),
-  locale: t.maybe(t.String),
-  onFocusChange: t.maybe(t.Function),
-  disabled: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
+const clearIcon = (
+  <svg
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    height="12"
+    viewBox="0 0 22 28"
+  >
+    <path
+      fill="#9098a7"
+      d="M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z"
+    />
+  </svg>
+);
 
 /**
  * A decent and pretty date picker to be used with React
  */
-@props(Props)
 export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
+  dayRenderer: (day: moment.Moment) => JSX.Element;
+
   componentWillMount() {
     if (this.props.locale) {
       moment.locale(this.props.locale);
     }
+    this.dayRenderer = this.dayRendererFactory();
   }
 
   componentWillReceiveProps(newProps: DatePicker.Props) {
@@ -175,7 +158,8 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
     return (!!minDate && day < minDate) || (!!maxDate && day > maxDate);
   };
 
-  initialVisibleMonth = () => valueToMomentDate(this.props.startDate);
+  initialVisibleMonth = () =>
+    valueToMomentDate(this.props.startDate) || moment();
 
   onFocusChange = ({ focused }: { focused: boolean | null }) => {
     this.setState({ focused: focused || false });
@@ -184,12 +168,16 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
 
   onDayMouseEnter = (day: moment.Moment) => () => {
     if (!this.isDayBlocked(day)) {
-      this.setState({ hoveredDay: day });
+      this.setState({ hoveredDay: day }, () => {
+        this.dayRenderer = this.dayRendererFactory();
+      });
     }
   };
 
   onDayMouseLeave = () => {
-    this.setState({ hoveredDay: undefined });
+    this.setState({ hoveredDay: undefined }, () => {
+      this.dayRenderer = this.dayRendererFactory();
+    });
   };
 
   isInRange = (day: moment.Moment, referenceDay?: moment.Moment) => {
@@ -211,27 +199,37 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
 
   getDayClass = (day: moment.Moment) =>
     cx({
-      "CalendarDay--hovered-span": this.isInRange(day, this.state.hoveredDay),
-      "CalendarDay--selected-span": this.isInRange(day, this.state.value)
+      CalendarDay__hovered_span: this.isInRange(day, this.state.hoveredDay),
+      CalendarDay__selected_span: this.isInRange(day, this.state.value)
     });
 
-  dayRenderer = () => (day: moment.Moment) => {
-    const className = this.getDayClass(day);
+  dayRendererFactory() {
+    return (day: moment.Moment) => {
+      const className = this.getDayClass(day);
 
-    return (
-      <FlexView
-        grow
-        onMouseEnter={this.onDayMouseEnter(day)}
-        onMouseLeave={this.onDayMouseLeave}
-        vAlignContent="center"
-        hAlignContent="center"
-        height="100%"
-        className={className}
-      >
-        {day.format("D")}
-      </FlexView>
-    );
-  };
+      return (
+        <FlexView
+          grow
+          onMouseEnter={
+            this.props.fromDate || this.props.toDate
+              ? this.onDayMouseEnter(day)
+              : undefined
+          }
+          onMouseLeave={
+            this.props.fromDate || this.props.toDate
+              ? this.onDayMouseLeave
+              : undefined
+          }
+          vAlignContent="center"
+          hAlignContent="center"
+          height="100%"
+          className={className}
+        >
+          {day.format("D")}
+        </FlexView>
+      );
+    };
+  }
 
   onClose = () => {
     this.setState(
@@ -248,46 +246,64 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
       className,
       style,
       displayFormat,
-      displayTwoMonths,
       small,
-      icon
+      icon,
+      position,
+      autoClose = true
     } = this.props;
 
-    const wrapperProps = {
-      className: cx("date-picker", className, {
-        "two-months": displayTwoMonths,
-        "is-small": small
-      }),
-      style
-    };
-
-    const datePickerProps = {
-      id: id || "",
-      date: this.state.value || null,
-      onDateChange: this._onChange,
-      focused: this.state.focused,
-      onFocusChange: this.onFocusChange,
-      displayFormat,
-      numberOfMonths: displayTwoMonths ? 2 : 1,
-      isDayBlocked: this.isDayBlocked,
-      renderDay: this.dayRenderer(),
-      onClose: this.onClose,
-      showClearDate: true,
-      enableOutsideDays: true,
-      daySize: 30,
-      hideKeyboardShortcutsPanel: true,
-      navPrev: angleLeftIcon,
-      navNext: angleRightIcon,
-      customInputIcon: icon || calendarIcon,
-      inputIconPosition: "after",
-      customCloseIcon: angleRightIcon,
-      isOutsideRange: () => false,
-      width: "100%"
-    };
+    const SingleDatePicker: React.ComponentClass<
+      SingleDatePickerShape & {
+        horizontalMonthPadding?: number;
+      }
+    > = _SingleDatePicker;
 
     return (
-      <FlexView {...wrapperProps}>
-        <SingleDatePicker {...datePickerProps} />
+      <FlexView
+        className={cx("date-picker", className, {
+          "is-small": small
+        })}
+        style={style}
+      >
+        <SingleDatePicker
+          id={id || ""}
+          date={this.state.value || null}
+          onDateChange={this._onChange}
+          focused={this.state.focused}
+          onFocusChange={this.onFocusChange}
+          displayFormat={displayFormat}
+          numberOfMonths={1}
+          isDayBlocked={this.isDayBlocked}
+          renderDayContents={this.dayRenderer}
+          onClose={this.onClose}
+          showClearDate
+          enableOutsideDays
+          daySize={30}
+          hideKeyboardShortcutsPanel
+          navPrev={
+            <FlexView className="DayPickerNavigation_prev">
+              {angleLeftIcon}
+            </FlexView>
+          }
+          navNext={
+            <FlexView className="DayPickerNavigation_next">
+              {angleRightIcon}
+            </FlexView>
+          }
+          customInputIcon={
+            <FlexView vAlignContent="center">{icon || calendarIcon}</FlexView>
+          }
+          inputIconPosition="after"
+          customCloseIcon={
+            <FlexView vAlignContent="center">{clearIcon}</FlexView>
+          }
+          isOutsideRange={() => false}
+          openDirection={position}
+          initialVisibleMonth={this.initialVisibleMonth}
+          keepOpenOnDateSelect={!autoClose}
+          horizontalMonthPadding={0}
+          verticalHeight={600}
+        />
       </FlexView>
     );
   }
