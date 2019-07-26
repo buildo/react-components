@@ -261,7 +261,8 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
     return (
       <FlexView
         className={cx("date-picker", className, {
-          "is-small": small
+          "is-small": small,
+          "has-focus": this.state.focused
         })}
         style={style}
       >

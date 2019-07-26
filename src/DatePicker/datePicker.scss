@@ -10,6 +10,8 @@ $z-index: 100 !default;
 $input-background: $brc-gradientGrey !default;
 $input-background-hover: $brc-gradientDarkGrey !default;
 $input-background-open: $brc-gradientDarkGrey !default;
+$input-border-color: $brc-silver !default;
+$input-border-color-focused: $brc-azure !default;
 
 $default-day-border: $brc-silver !default;
 $default-day-background: $brc-paleGrey !default;
@@ -33,10 +35,17 @@ $outside-day-background: $brc-white !default;
 .date-picker {
   font-size: 14px;
 
+  &.has-focus {
+    .SingleDatePickerInput {
+      border: 1px solid $input-border-color-focused;
+    }
+  }
+
   .SingleDatePickerInput {
     height: 36px;
     border-radius: 2px;
     background: $input-background;
+    border: 1px solid $input-border-color;
 
     &:hover {
       background: $input-background-hover;
@@ -48,8 +57,8 @@ $outside-day-background: $brc-white !default;
 
     .SingleDatePickerInput_clearDate {
       margin-right: 30px;
+
       svg {
-        height: 16px;
         * {
           fill: $brc-coolGrey;
         }
@@ -60,7 +69,6 @@ $outside-day-background: $brc-white !default;
       height: 100%;
 
       svg {
-        height: 16px;
         * {
           fill: $brc-coolGrey;
         }
@@ -68,14 +76,9 @@ $outside-day-background: $brc-white !default;
     }
 
     .DateInput {
-      padding: 0 8px;
-      font-size: 14px;
-      height: 100%;
-      line-height: 28px;
       background: transparent;
-      vertical-align: unset;
       width: $width-input;
-      vertical-align: top;
+      height: 100%;
 
       .DateInput_input {
         font-weight: $brc-semibold;
@@ -83,13 +86,11 @@ $outside-day-background: $brc-white !default;
         color: $brc-darkGreyBlue;
         background: transparent;
         height: 100%;
-        line-height: 100%;
         border: 0;
       }
 
       .DateInput_fangShape {
         fill: $month-header-background;
-        $month-header-color: $brc-white !default;
       }
     }
   }
@@ -98,12 +99,19 @@ $outside-day-background: $brc-white !default;
     .SingleDatePickerInput {
       height: 25px;
 
-      .DateInput {
-        line-height: 16px;
-        font-size: 10px;
+      .DateInput_input {
+        font-size: 12px;
       }
 
       .SingleDatePickerInput_calendarIcon {
+        padding: 0px;
+        svg {
+          height: 11px;
+        }
+      }
+
+      .SingleDatePickerInput_clearDate {
+        padding: 0px;
         svg {
           height: 11px;
         }
@@ -116,16 +124,16 @@ $outside-day-background: $brc-white !default;
 
     .DayPicker {
       .DayPicker_weekHeaders {
-        vertical-align: bottom;
         margin-left: 0;
 
         .DayPicker_weekHeader {
-          top: 30px;
+          top: 35px;
 
           .DayPicker_weekHeader_ul {
             color: $month-header-color;
-            font-size: 16px;
+            font-size: 12px;
 
+            // HACK to hide the 9px padding around the month grid
             .DayPicker_weekHeader_li {
               width: 32px !important;
 
@@ -138,18 +146,6 @@ $outside-day-background: $brc-white !default;
         }
       }
 
-      .DayPickerNavigation_prev {
-        left: 10px;
-        background: transparent;
-        border: 0;
-      }
-
-      .DayPickerNavigation_next {
-        right: 10px;
-        background: transparent;
-        border: 0;
-      }
-
       .DayPickerNavigation_prev,
       .DayPickerNavigation_next {
         position: absolute;
@@ -159,19 +155,28 @@ $outside-day-background: $brc-white !default;
           fill: $month-header-color;
         }
       }
+      .DayPickerNavigation_prev {
+        left: 10px;
+      }
+      .DayPickerNavigation_next {
+        right: 10px;
+      }
 
+      // HACK to hide the bottom padding
       .DayPicker_transitionContainer {
         height: 200px !important;
       }
 
       .CalendarDay {
+        // HACK to hide the 9px padding around the month grid
         width: 32px !important;
-        border: 1px solid $default-day-border;
-
         &:first-child,
         &:last-child {
           width: 34px !important;
         }
+
+        border: 1px solid $default-day-border;
+        font-weight: $brc-semibold;
 
         &.CalendarDay__default_2 {
           color: $default-day-color;
@@ -192,6 +197,7 @@ $outside-day-background: $brc-white !default;
           background-color: $blocked-day-background;
           color: $blocked-day-color;
           opacity: 0.6;
+          font-weight: $brc-regular;
         }
 
         &.CalendarDay__selected {
@@ -222,16 +228,16 @@ $outside-day-background: $brc-white !default;
         left: 0;
 
         .CalendarMonth {
-          background: white;
-
           .CalendarMonth_caption {
+            // HACK to hide the 9px padding around the month grid
             margin-left: -9px;
             margin-right: -9px;
+
             background-color: $month-header-background;
             color: $month-header-color;
             padding-top: 10px;
             padding-bottom: 26px;
-            font-size: 16px;
+            font-size: 15px;
           }
         }
       }
