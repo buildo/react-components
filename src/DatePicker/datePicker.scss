@@ -1,224 +1,256 @@
 @import "../utils/theme/variables.scss";
+@import "node_modules/react-dates/lib/css/_datepicker";
 
-$react-dates-width-input: 150px !default;
-$react-dates-color-primary: $brc-azure !default;
+$date-picker-width-input: 150px !default;
+$date-picker-month-header-background: $brc-azure !default;
+$date-picker-month-header-color: $brc-white !default;
 
-$react-dates-color-primary-shade-1: $brc-azure30 !default; // used as border of selected range
-$react-dates-color-primary-shade-2: $brc-azure10 !default; // used as background of selected range
-$react-dates-color-primary-shade-3: $brc-azure !default; // used as border on hover range
-$react-dates-color-primary-shade-4: $brc-azure30 !default; // used as background of hover range
+$date-picker-z-index: 100 !default;
 
-$react-dates-color-secondary: $brc-darkGreyBlue !default; // font-color on hover range
-$react-dates-color-white: $brc-white !default;
-$react-dates-color-gray: $brc-darkGreyBlue !default;
-$react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
-$react-dates-color-gray-light: $brc-coolGrey;
-$react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
-$react-dates-color-gray-lightest: lighten(
-  $react-dates-color-gray,
-  60%
-) !default;
-$react-dates-color-highlighted: #ffe8bc !default;
+$date-picker-input-background: $brc-gradientGrey !default;
+$date-picker-input-background-hover: $brc-gradientDarkGrey !default;
+$date-picker-input-background-open: $brc-gradientDarkGrey !default;
+$date-picker-input-border-color: $brc-silver !default;
+$date-picker-input-border-color-focused: $brc-azure !default;
+$date-picker-input-placeholder-color: $brc-coolGrey !default;
 
-$react-dates-color-border: $brc-silver !default;
-$react-dates-color-border-light: $brc-silver !default;
-$react-dates-color-border-medium: $brc-silver !default;
-$react-dates-color-placeholder-text: $brc-coolGrey !default;
-$react-dates-color-text: $brc-darkGreyBlue !default;
-$react-dates-color-text-focus: $brc-darkGreyBlue !default;
-$react-dates-color-focus: transparent !default;
-
-$react-dates-z-index: 100 !default;
-
-@import "~react-dates/css/variables.scss";
-@import "~react-dates/css/styles.scss";
-
-$input-background: $brc-gradientGrey !default;
-$input-background-hover: $brc-gradientDarkGrey !default;
-$input-background-open: $brc-gradientDarkGrey !default;
+$date-picker-default-day-border: $brc-silver !default;
+$date-picker-default-day-background: $brc-paleGrey !default;
+$date-picker-default-day-background-hover: $brc-cloudyGrey !default;
+$date-picker-default-day-color: $brc-darkGreyBlue !default;
+$date-picker-default-day-color-hover: $brc-darkGreyBlue !default;
+$date-picker-blocked-day-background: $brc-white !default;
+$date-picker-blocked-day-color: $brc-coolGrey !default;
+$date-picker-blocked-day-border: $date-picker-default-day-border !default;
+$date-picker-selected-day-background: $brc-azure !default;
+$date-picker-selected-day-color: $brc-darkGreyBlue !default;
+$date-picker-selected-day-border: $date-picker-default-day-border !default;
+$date-picker-selected-day-background-hover: $brc-azure !default;
+$date-picker-selected-day-color-hover: $brc-darkGreyBlue !default;
+$date-picker-selected-day-border-hover: $brc-azure !default;
+$date-picker-hovered-interval-day-background: $brc-azure10 !default;
+$date-picker-hovered-interval-day-border: $brc-azure !default;
+$date-picker-hovered-interval-day-color: $brc-darkGreyBlue !default;
+$date-picker-selected-interval-day-background: $brc-azure30 !default;
+$date-picker-selected-interval-day-border: $brc-azure10 !default;
+$date-picker-selected-interval-day-color: $brc-darkGreyBlue !default;
+$date-picker-outside-day-background: $brc-white !default;
 
 .date-picker {
   font-size: 14px;
 
-  .CalendarMonth__caption {
-    background-image: linear-gradient(to top, #1789de, #2da1f8);
-    color: $brc-white;
-    margin-top: 0;
-    padding-top: 22px;
-    font-size: 16px;
+  &.has-focus {
+    .SingleDatePickerInput {
+      border: 1px solid $date-picker-input-border-color-focused;
+    }
   }
 
   .SingleDatePickerInput {
     height: 36px;
     border-radius: 2px;
-    background: $input-background;
+    background: $date-picker-input-background;
+    border: 1px solid $date-picker-input-border-color;
 
     &:hover {
-      background: $input-background-hover;
+      background: $date-picker-input-background-hover;
+    }
+
+    &.SingleDatePickerInput__showClearDate {
+      padding-right: 0;
+    }
+
+    .SingleDatePickerInput_clearDate {
+      margin-right: 30px;
+
+      svg {
+        * {
+          fill: $brc-coolGrey;
+        }
+      }
+    }
+
+    .SingleDatePickerInput_calendarIcon {
+      height: 100%;
+
+      svg {
+        * {
+          fill: $brc-coolGrey;
+        }
+      }
     }
 
     .DateInput {
-      padding: 0 8px;
-      font-size: 14px;
-      height: 100%;
-      line-height: 28px;
       background: transparent;
+      width: $date-picker-width-input;
+      height: 100%;
 
-      .DateInput__display-text {
+      .DateInput_input {
         font-weight: $brc-semibold;
-      }
-
-      .DateInput__display-text--has-input {
-        font-weight: $brc-semibold;
+        font-size: 14px;
         color: $brc-darkGreyBlue;
-      }
-
-      &.DateInput--with-caret {
-        &::before,
-        &::after {
-          top: 40px;
-        }
-
-        &::after {
-          border-bottom-color: #2da1f8;
-        }
-
         background: transparent;
+        height: 100%;
+        border: 0;
 
-        input {
-          background: transparent;
+        @include placeholder {
+          color: $date-picker-input-placeholder-color;
         }
       }
-    }
 
-    .SingleDatePickerInput__clear-date {
-      padding: 0 2px;
-
-      svg {
-        height: 8px;
-        vertical-align: baseline;
+      .DateInput_fangShape {
+        fill: $date-picker-month-header-background;
       }
     }
-
-    .SingleDatePickerInput__calendar-icon {
-      padding: 0 2px;
-      margin: 0;
-      margin-right: 9px;
-
-      svg {
-        height: 16px;
-      }
-    }
-  }
-
-  .SingleDatePicker__picker {
-    top: 50px;
   }
 
   &.is-small {
     .SingleDatePickerInput {
       height: 25px;
 
-      .DateInput {
-        line-height: 16px;
-        font-size: 10px;
+      .DateInput_input {
+        font-size: 12px;
+      }
 
-        &.DateInput--with-caret {
-          &::before,
-          &::after {
-            top: 30px;
-          }
+      .SingleDatePickerInput_calendarIcon {
+        padding: 0px;
+        svg {
+          height: 11px;
         }
       }
 
-      .SingleDatePickerInput__calendar-icon {
-        margin-right: 5px;
-
+      .SingleDatePickerInput_clearDate {
+        padding: 0px;
         svg {
           height: 11px;
         }
       }
     }
-
-    .SingleDatePicker__picker {
-      top: 40px;
-    }
   }
 
-  .CalendarDay {
-    &.CalendarDay--valid {
-      &:not(.CalendarDay--outside):not(.CalendarDay--selected) {
-        background-color: $brc-paleGrey;
+  .SingleDatePicker_picker {
+    z-index: $date-picker-z-index;
+
+    .DayPicker {
+      .DayPicker_weekHeaders {
+        margin-left: 0;
+
+        .DayPicker_weekHeader {
+          top: 35px;
+
+          .DayPicker_weekHeader_ul {
+            color: $date-picker-month-header-color;
+            font-size: 12px;
+
+            // HACK to hide the 9px padding around the month grid
+            .DayPicker_weekHeader_li {
+              width: 32px !important;
+
+              &:first-child,
+              &:last-child {
+                width: 34px !important;
+              }
+            }
+          }
+        }
+      }
+
+      .DayPickerNavigation_prev,
+      .DayPickerNavigation_next {
+        position: absolute;
+        top: 15px;
+
+        * {
+          fill: $date-picker-month-header-color;
+        }
+      }
+      .DayPickerNavigation_prev {
+        left: 10px;
+      }
+      .DayPickerNavigation_next {
+        right: 10px;
+      }
+
+      // HACK to hide the bottom padding
+      .DayPicker_transitionContainer {
+        height: 200px !important;
+      }
+
+      .CalendarDay {
+        // HACK to hide the 9px padding around the month grid
+        width: 32px !important;
+        &:first-child,
+        &:last-child {
+          width: 34px !important;
+        }
+
+        border: 1px solid $date-picker-default-day-border;
+        font-weight: $brc-semibold;
+
+        &.CalendarDay__default_2 {
+          color: $date-picker-default-day-color;
+          background-color: $date-picker-default-day-background;
+
+          &:hover {
+            color: $date-picker-default-day-color-hover;
+            background-color: $date-picker-default-day-background-hover;
+            border-color: $brc-cloudyGrey;
+          }
+        }
+
+        &.CalendarDay__outside {
+          background-color: $date-picker-outside-day-background;
+        }
+
+        &.CalendarDay__blocked_calendar {
+          background-color: $date-picker-blocked-day-background;
+          color: $date-picker-blocked-day-color;
+          border-color: $date-picker-blocked-day-border;
+          opacity: 0.6;
+          font-weight: $brc-regular;
+        }
+
+        &.CalendarDay__selected {
+          background-color: $date-picker-selected-day-background;
+          color: $date-picker-selected-day-color;
+          border-color: $date-picker-selected-day-border;
+
+          &:hover {
+            background-color: $date-picker-selected-day-background-hover;
+            color: $date-picker-selected-day-color-hover;
+            border-color: $date-picker-selected-day-border-hover;
+          }
+        }
+
+        .CalendarDay__hovered_span {
+          background-color: $date-picker-hovered-interval-day-background;
+          border: 1px solid $date-picker-hovered-interval-day-border;
+          color: $date-picker-hovered-interval-day-color;
+        }
+
+        .CalendarDay__selected_span {
+          background-color: $date-picker-selected-interval-day-background;
+          border: 1px solid $date-picker-selected-interval-day-border;
+          color: $date-picker-selected-interval-day-color;
+        }
+      }
+
+      .CalendarMonthGrid {
+        left: 0;
+
+        .CalendarMonth {
+          .CalendarMonth_caption {
+            // HACK to hide the 9px padding around the month grid
+            margin-left: -9px;
+            margin-right: -9px;
+
+            background-color: $date-picker-month-header-background;
+            color: $date-picker-month-header-color;
+            padding-top: 10px;
+            padding-bottom: 26px;
+            font-size: 15px;
+          }
+        }
       }
     }
-
-    &.CalendarDay--blocked-calendar {
-      background-color: $brc-white;
-      color: $brc-coolGrey;
-    }
-
-    .CalendarDay--selected-span {
-      color: $brc-darkGreyBlue;
-    }
-  }
-
-  .CalendarMonthGrid {
-    left: 0;
-  }
-
-  .CalendarMonth,
-  .DayPicker__week-header {
-    padding: 0;
-  }
-
-  .DayPicker--horizontal {
-    .DayPicker__week-headers {
-      position: absolute;
-      top: 55px;
-      z-index: 200;
-      width: 100%;
-      margin-left: 0;
-
-      .DayPicker__week-header {
-        position: relative;
-        display: inline-block;
-        top: 0;
-        left: 0 !important;
-        margin-bottom: 2px;
-        color: $brc-white;
-        font-size: 16px;
-      }
-    }
-
-    .DayPickerNavigation__prev {
-      left: 5px;
-      background: transparent;
-      border: 0;
-    }
-
-    .DayPickerNavigation__next {
-      right: 5px;
-      background: transparent;
-      border: 0;
-    }
-
-    .DayPickerNavigation__prev,
-    .DayPickerNavigation__next {
-      .icon::before {
-        color: $brc-white;
-      }
-    }
-  }
-
-  .DayPicker,
-  .transition-container {
-    width: 212px !important;
-  }
-}
-
-.two-months {
-  .DayPicker,
-  .transition-container {
-    width: 424px !important;
   }
 }
