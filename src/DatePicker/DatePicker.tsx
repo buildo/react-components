@@ -203,6 +203,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
       CalendarDay__selected_span: this.isInRange(day, this.state.value)
     });
 
+  // See: https://github.com/airbnb/react-dates/issues/1102
   dayRendererFactory() {
     return (day: moment.Moment) => {
       const className = this.getDayClass(day);
