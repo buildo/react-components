@@ -2,6 +2,151 @@
 
 
 
+## [v0.45.0](https://github.com/buildo/react-components/tree/v0.45.0) (2019-08-23)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.44.1...v0.45.0)
+
+#### Breaking:
+
+- DatePicker // update react-dates and expose more css variables [#1365](https://github.com/buildo/react-components/issues/1365)
+
+#### New features:
+
+- fix-wrong-import [#1354](https://github.com/buildo/react-components/issues/1354)
+
+## [v0.44.1](https://github.com/buildo/react-components/tree/v0.44.1) (2019-05-29)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.44.0...v0.44.1)
+
+## [v0.44.0](https://github.com/buildo/react-components/tree/v0.44.0) (2019-05-29)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.43.0...v0.44.0)
+
+#### New features:
+
+- expose components prop in TimePicker [#1352](https://github.com/buildo/react-components/issues/1352)
+- FormField Hint [#1321](https://github.com/buildo/react-components/issues/1321)
+
+#### Breaking:
+
+- Remove returnFormat prop from DatePicker [#1347](https://github.com/buildo/react-components/issues/1347)
+
+## [v0.43.0](https://github.com/buildo/react-components/tree/v0.43.0) (2019-05-07)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.8...v0.43.0)
+
+#### Breaking:
+
+- Form defects and refinements [#1349](https://github.com/buildo/react-components/issues/1349)
+
+## [v0.42.8](https://github.com/buildo/react-components/tree/v0.42.8) (2019-05-02)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.7...v0.42.8)
+
+#### New features:
+
+- Form with "submit on enter" behavior [#1344](https://github.com/buildo/react-components/issues/1344)
+
+## [v0.42.7](https://github.com/buildo/react-components/tree/v0.42.7) (2019-03-18)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.6...v0.42.7)
+
+#### Fixes (bugs & defects):
+
+- Modal header height is broken after upgrade of flexview [#1337](https://github.com/buildo/react-components/issues/1337)
+
+## [v0.42.6](https://github.com/buildo/react-components/tree/v0.42.6) (2019-03-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.5...v0.42.6)
+
+#### New features:
+
+- Dropdown is 2px higher when multi [#1335](https://github.com/buildo/react-components/issues/1335)
+
+#### Fixes (bugs & defects):
+
+- Dropdown heights are inconsistent with CSS parameter [#1334](https://github.com/buildo/react-components/issues/1334)
+
+## [v0.42.5](https://github.com/buildo/react-components/tree/v0.42.5) (2019-03-07)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.4...v0.42.5)
+
+#### New features:
+
+- expose size prop to Dropdown [#1331](https://github.com/buildo/react-components/issues/1331)
+- bring back Timepicker in showroom [#1329](https://github.com/buildo/react-components/issues/1329)
+
+## [v0.42.4](https://github.com/buildo/react-components/tree/v0.42.4) (2019-03-05)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.3...v0.42.4)
+
+#### Fixes (bugs & defects):
+
+- Dropdown doesn't type-check with some valid prop combinations [#1327](https://github.com/buildo/react-components/issues/1327)
+
+## [v0.42.3](https://github.com/buildo/react-components/tree/v0.42.3) (2019-03-05)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.2...v0.42.3)
+
+#### New features:
+
+- Dropdown menu shows an undesired horizontal scrollbar [#1324](https://github.com/buildo/react-components/issues/1324)
+- Dropdown: when multi & searchable, remove single option button (x) should have cursor: pointer [#1322](https://github.com/buildo/react-components/issues/1322)
+
+#### Fixes (bugs & defects):
+
+- Dropdown: border-color-hover variable has no effect [#1323](https://github.com/buildo/react-components/issues/1323)
+- Dropdown shows a vertical white line when not `searchable` [#1159](https://github.com/buildo/react-components/issues/1159)
+- Dropdown: allowCreate doesn't work anymore [#963](https://github.com/buildo/react-components/issues/963)
+- Dropdown: options list doesn't scroll when moving using arrows [#743](https://github.com/buildo/react-components/issues/743)
+
+## [v0.42.2](https://github.com/buildo/react-components/tree/v0.42.2) (2019-02-28)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.1...v0.42.2)
+
+#### New features:
+
+- Fix security vulnerabilities [#1314](https://github.com/buildo/react-components/issues/1314)
+
+#### Fixes (bugs & defects):
+
+- stateless+attachToBody props make Popover crash on open [#1313](https://github.com/buildo/react-components/issues/1313)
+
+## [v0.42.1](https://github.com/buildo/react-components/tree/v0.42.1) (2019-02-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.42.0...v0.42.1)
+
+#### Fixes (bugs & defects):
+
+- Fix Dropdown errors [#1315](https://github.com/buildo/react-components/issues/1315)
+
+## [v0.42.0](https://github.com/buildo/react-components/tree/v0.42.0) (2019-02-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.41.4...v0.42.0)
+
+#### New features:
+
+- onClick is not prevented when the checkbox is disabled. [#1310](https://github.com/buildo/react-components/issues/1310)
+
+#### Breaking:
+
+- Upgrade react-select to 2.x [#1285](https://github.com/buildo/react-components/issues/1285)
+
+## [v0.41.4](https://github.com/buildo/react-components/tree/v0.41.4) (2019-01-25)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.41.3...v0.41.4)
+
+#### Fixes (bugs & defects):
+
+- [FormField] Fix existing sass variables and add more customizable styling [#1308](https://github.com/buildo/react-components/issues/1308)
+- Horizontal FormField should not set flex-direction: row-reverse [#1306](https://github.com/buildo/react-components/issues/1306)
+
+## [v0.41.3](https://github.com/buildo/react-components/tree/v0.41.3) (2019-01-23)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.41.2...v0.41.3)
+
+#### Fixes (bugs & defects):
+
+- FormField style is broken (always rendered as horizontal) [#1304](https://github.com/buildo/react-components/issues/1304)
+
+## [v0.41.2](https://github.com/buildo/react-components/tree/v0.41.2) (2019-01-23)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.41.1...v0.41.2)
+
+#### Fixes (bugs & defects):
+
+- Can't override the style of FormField's view [#1300](https://github.com/buildo/react-components/issues/1300)
+- Can't pass a React Element as label for InputField [#1294](https://github.com/buildo/react-components/issues/1294)
+
+#### New features:
+
+- Continuous deploy after updates on component repos [#1298](https://github.com/buildo/react-components/issues/1298)
+- Switch CI from Drone to concourse [#1295](https://github.com/buildo/react-components/issues/1295)
+
 ## [v0.41.1](https://github.com/buildo/react-components/tree/v0.41.1) (2019-01-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.0...v0.41.1)
 
@@ -64,7 +209,7 @@
 #### Breaking:
 
 - There should be consistency between fields in a form [#1260](https://github.com/buildo/react-components/issues/1260)
-- Drop support for React 15 [#1167](https://github.com/buildo/react-components/issues/1167)
+- Drop support for React 15 (and refactor Tablo) [#1167](https://github.com/buildo/react-components/issues/1167)
 
 ## [v0.38.3](https://github.com/buildo/react-components/tree/v0.38.3) (2018-08-23)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.38.2...v0.38.3)
