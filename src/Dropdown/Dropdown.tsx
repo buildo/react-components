@@ -5,6 +5,8 @@ import * as SelectNS from "react-select/lib/Select";
 import * as cx from "classnames";
 import { ObjectOmit } from "../utils";
 import { CreatableProps, Props } from "react-select/lib/Creatable";
+import { GroupType } from "react-select/lib/types";
+import View from "react-flexview";
 
 type DefaultProps = {
   delimiter: NonNullable<SelectNS.Props["delimiter"]>;
@@ -13,27 +15,37 @@ type DefaultProps = {
   menuPlacement: NonNullable<SelectNS.Props["menuPlacement"]>;
 };
 
+type SelectAllProps =
+  | {
+      showSelectAll: true;
+      selectAllLabel: string; //TODO: this can became a string | JSX.Element for further customization
+    }
+  | {
+      showSelectAll?: false;
+    };
+
 type NonDefaultProps<OptionType> = ObjectOmit<
   SelectNS.Props<OptionType>,
   "isMulti" | "isClearable" | "onChange" | "value"
 > & {
   flat?: boolean;
   innerRef?: (ref: Select<OptionType> | null) => void;
-} & (
+} & SelectAllProps &
+  (
     | {
         type: "multi" | "multi-clearable";
         value: OptionType[];
-        onChange: (value: OptionType[]) => void;
+        onChange: (value: OptionType[] | "all") => void;
       }
     | {
         type: "single";
         value: OptionType | null;
-        onChange: (value: OptionType) => void;
+        onChange: (value: OptionType | "all") => void;
       }
     | {
         type: "single-clearable";
         value: OptionType | null;
-        onChange: (value: OptionType | null) => void;
+        onChange: (value: OptionType | "all" | null) => void;
       }) &
   (
     | ({
@@ -93,6 +105,10 @@ export class Dropdown<OptionType> extends React.Component<
     }
   };
 
+  concatUnion<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
+    return (a as Array<A | B>).concat(b);
+  }
+
   render() {
     const {
       props: {
@@ -105,9 +121,29 @@ export class Dropdown<OptionType> extends React.Component<
       }
     } = this;
 
-    const Component: React.ComponentType<Props<OptionType>> = allowCreate
-      ? Creatable
-      : Select;
+    const Component: React.ComponentType<
+      Props<OptionType | "all">
+    > = allowCreate ? Creatable : Select;
+
+    const allOptionArray: Array<"all"> = ["all"];
+
+    const injectSelectAllOptions = (
+      options:
+        | GroupType<OptionType | "all">[]
+        | (OptionType | "all")[]
+        | undefined
+    ) => {
+      if (options === undefined || options.length === 0) return undefined;
+      else if (options["options"] !== undefined)
+        return this.concatUnion(
+          [{ options: allOptionArray }],
+          options as GroupType<OptionType | "all">[]
+        );
+      else
+        return this.concatUnion(allOptionArray, options as (
+          | OptionType
+          | "all")[]);
+    };
 
     return (
       <Component
@@ -125,6 +161,25 @@ export class Dropdown<OptionType> extends React.Component<
         isMulti={this.isMulti()}
         isClearable={this.isClearable()}
         isSearchable={allowCreate || props.isSearchable}
+        options={
+          this.props.showSelectAll
+            ? injectSelectAllOptions(this.props.options)
+            : this.props.options
+        }
+        formatOptionLabel={(option, labelMeta) => {
+          if (option === "all")
+            return (
+              this.props.showSelectAll && (
+                <View>{this.props.selectAllLabel}</View>
+              )
+            );
+          else if (!this.props.formatOptionLabel) return option["label"];
+          else
+            this.props.formatOptionLabel(
+              option,
+              labelMeta as SelectNS.FormatOptionLabelMeta<OptionType>
+            );
+        }}
       />
     );
   }
