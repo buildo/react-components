@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, stateClassUtil, ReactChildren } from "../utils";
+import { props, t, stateClassUtil, ReactChildren, Children } from "../utils";
 import FlexView from "react-flexview";
 import * as cx from "classnames";
 
@@ -9,9 +9,9 @@ export type PanelHeaderDefaultProps = {
 
 export type PanelHeaderRequiredProps = {
   collapse?: PanelHeader.Collapse;
-  content?: React.ReactNode;
-  title?: React.ReactNode;
-  menu?: React.ReactNode;
+  content?: Children;
+  title?: Children;
+  menu?: Children;
 };
 
 export type PanelHeaderDefaultedProps = PanelHeaderRequiredProps &
@@ -154,7 +154,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
     collapse
   }: {
     renderTitle: boolean;
-    title: React.ReactNode;
+    title: Children;
     collapse?: PanelHeader.Collapse;
   }) => {
     return (
@@ -181,7 +181,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
     content
   }: {
     renderContent: boolean;
-    content: React.ReactNode;
+    content: Children;
   }) => {
     return renderContent ? (
       <FlexView

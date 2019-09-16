@@ -1,10 +1,10 @@
 import * as React from "react";
 import FlexView from "react-flexview";
-import { props, t, ReactChildren } from "../../utils";
+import { props, t, ReactChildren, Children } from "../../utils";
 
 export namespace Footer {
   export type Props = {
-    children: React.ReactNode;
+    children: Children;
   };
 }
 

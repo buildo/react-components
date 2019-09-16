@@ -55,3 +55,10 @@ export function find<T>(
 export const findDOMNode = <E extends Element = Element>(
   ref: React.ReactInstance
 ): E => ReactDOM.findDOMNode(ref) as E;
+
+type ReactText = string | number;
+type _ReactChild = React.ReactElement<unknown> | ReactText;
+
+interface ChildrenArray extends Array<Children> {}
+type ReactFragment = ChildrenArray;
+export type Children = _ReactChild | ReactFragment | boolean | null | undefined;

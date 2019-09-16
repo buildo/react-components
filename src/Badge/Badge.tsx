@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactNode } from "../utils";
+import { props, t, ReactNode, Children } from "../utils";
 import FlexView from "react-flexview";
 
 export namespace Badge {
   export type Props = {
     /** the descriptive content of the badge */
-    label: React.ReactNode;
+    label: Children;
     /** tells if the badge is active (for styling purposes) */
     active?: boolean;
     /** an optional class name to pass to top level element of the component */

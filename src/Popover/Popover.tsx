@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import debounce = require("lodash/debounce");
 import uniq = require("lodash/uniq");
-import { props, t, ReactChildren, getContextWrapper } from "../utils";
+import { props, t, ReactChildren, getContextWrapper, Children } from "../utils";
 
 const NO_SIZE_WRAPPER = "no-size-wrapper";
 
@@ -60,7 +60,7 @@ export namespace Popover {
   export type Delay = number | { whenClosed?: number; whenOpen?: number };
 
   export type PopoverSettings = {
-    content: React.ReactNode;
+    content: NonNullable<Children>;
     attachToBody?: boolean;
     auto?: boolean;
     position?: Position;
@@ -111,7 +111,7 @@ export namespace Popover {
 
   export type Props = {
     /** the trigger node. It's always visible */
-    children: React.ReactNode;
+    children: Children;
     /** popover settings. The popover is **not** always visible */
     popover: PopoverSettings;
     className?: string;
@@ -689,7 +689,7 @@ export class Popover extends React.Component<Popover.Props, State> {
     };
   };
 
-  getLocals() {
+  private getLocals() {
     const isRelative = !this.isAbsolute();
     const isOpen = this.isOpen();
     const popover =

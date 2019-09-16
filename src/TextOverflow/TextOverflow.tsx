@@ -33,7 +33,7 @@ export type TextOverflowRequiredProps = {
   /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
   children?: (self: JSX.Element, isOpen?: boolean) => any;
   /** this is the full string */
-  label?: string | number;
+  label: string | number;
   /** additional props for Popover component used to display the entire text */
   popover?: ObjectOverwrite<
     Popover.Props["popover"],

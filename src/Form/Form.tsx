@@ -2,11 +2,11 @@ import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
 import Button, { StatefulButton } from "../Button";
-import { findDOMNode } from "../utils";
+import { findDOMNode, Children } from "../utils";
 
 export namespace Form {
   export type Props = View.Props & {
-    render: (ref: React.RefObject<any>) => NonNullable<React.ReactNode>;
+    render: (ref: React.RefObject<any>) => NonNullable<Children>;
   };
 }
 

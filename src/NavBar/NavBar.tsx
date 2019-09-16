@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
+import { props, t, ReactChildren, Children } from "../utils";
 import FlexView from "react-flexview";
 
 export namespace NavBar {
@@ -10,9 +10,9 @@ export namespace NavBar {
     /** Right content. It doesn't shrink nor grow */
     /** Max Width. For css `max-width` */
     content: {
-      left?: React.ReactNode;
-      center?: React.ReactNode;
-      right?: React.ReactNode;
+      left?: Children;
+      center?: Children;
+      right?: Children;
       maxWidth?: string | number;
     };
     /** to set `position: fixed` */

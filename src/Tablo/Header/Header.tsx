@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../../utils";
+import { props, t, ReactChildren, Children } from "../../utils";
 import FlexView from "react-flexview";
 
 export type FDTIntrinsic = {
@@ -14,7 +14,7 @@ export type Intrinsic = {
 
 export namespace Header {
   export type Props = {
-    children?: React.ReactNode;
+    children?: Children;
   };
 }
 export type HeaderIntrinsicProps = Header.Props & Intrinsic & FDTIntrinsic;
@@ -54,6 +54,6 @@ export class Header extends React.PureComponent<Header.Props> {
   }
 }
 
-export function defaultHeader(columnKey: string | number | symbol) {
+export function defaultHeader(columnKey: string) {
   return <Header>{columnKey}</Header>;
 }

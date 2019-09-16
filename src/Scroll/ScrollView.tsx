@@ -1,6 +1,6 @@
 import * as React from "react";
 import omit = require("lodash/omit");
-import { props, t, ReactChildren } from "../utils";
+import { props, t, ReactChildren, Children } from "../utils";
 import easing, { EasingType } from "./easingFunctions";
 
 export type ScrollViewDefaultProps = {
@@ -17,9 +17,15 @@ export type ScrollViewDefaultProps = {
   style: React.CSSProperties;
 };
 
+export type ScrollTo = (
+  _x?: number | null,
+  _y?: number | null,
+  scrollDuration?: number
+) => void;
+
 export type ScrollViewRequiredProps = {
   /** components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }` */
-  children: React.ReactNode;
+  children: Children | ((scrollTo: ScrollTo) => Children);
 };
 
 export type ScrollViewDefaultedProps = ScrollViewRequiredProps &
@@ -139,11 +145,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     };
   };
 
-  scrollTo = (
-    _x?: number | null,
-    _y?: number | null,
-    scrollDuration?: number
-  ) => {
+  scrollTo: ScrollTo = (_x, _y, scrollDuration) => {
     if (!this.scrollView) return;
     const { scrollTop, scrollLeft } = this.scrollView;
     const x = _x || scrollLeft;
