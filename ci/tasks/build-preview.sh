@@ -7,7 +7,7 @@ set -x
 apt-get update
 apt-get install -y jq
 
-BRANCH=$(cat react-components/.git/resource/metadata.json | jq -r '.[] | select(.name == "head_name").value')
+BRANCH=$(cat react-components/.git/resource/metadata.json | jq -r '.[] | select(.name == "head_name").value' | tr / _)
 
 cd react-components
 
