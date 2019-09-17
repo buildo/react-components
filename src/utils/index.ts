@@ -59,6 +59,6 @@ export const findDOMNode = <E extends Element = Element>(
 type ReactText = string | number;
 type _ReactChild = React.ReactElement<unknown> | ReactText;
 
-interface ChildrenArray extends Array<Children> {}
-type ReactFragment = ChildrenArray;
+export interface ChildrenArray extends Array<Children> {}
+export type ReactFragment = ChildrenArray;
 export type Children = _ReactChild | ReactFragment | boolean | null | undefined;
