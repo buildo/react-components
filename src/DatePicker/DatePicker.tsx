@@ -8,29 +8,30 @@ import {
 } from "react-dates";
 import FlexView from "react-flexview";
 import * as moment from "moment";
+import { LocalDate } from "local-date";
 
 export namespace DatePicker {
   export type Props = {
     /** an optional id to pass to top level element of the component */
     id?: string;
     /** current date */
-    value?: Date;
+    value?: LocalDate;
     /** default date */
-    defaultValue?: Date;
+    defaultValue?: LocalDate;
     /** called when value changes */
-    onChange?: (date?: Date) => void;
+    onChange?: (date?: LocalDate) => void;
     /** called when datepicker is closed */
     onHide?: () => void;
     /** MomentJS format used to display current date */
     displayFormat?: string;
     /** minimum date selectable by the user */
-    minDate?: Date;
+    minDate?: LocalDate;
     /** maximum date selectable by the user */
-    maxDate?: Date;
+    maxDate?: LocalDate;
     /** if set, the datepicker will highlight days in the range starting from this date and ending to the hovered or selected date */
-    fromDate?: Date;
+    fromDate?: LocalDate;
     /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
-    toDate?: Date;
+    toDate?: LocalDate;
     /** whether the datepicker should be rendered above or below the input field */
     position?: "up" | "down";
     /** whether the input box should be small or not */
@@ -38,7 +39,7 @@ export namespace DatePicker {
     /** the icon to show in the input field */
     icon?: JSX.Element;
     /** specify an initial "visible" date with no need to select a defaultValue */
-    startDate?: Date;
+    startDate?: LocalDate;
     /** locale used for translations */
     locale?: string;
     /** pass true if you want the datepicker to close automatically after the user selects a value */
@@ -60,8 +61,9 @@ export type State = {
   focused: boolean;
 };
 
-const valueToMomentDate: (value?: Date) => moment.Moment | undefined = value =>
-  !value ? undefined : moment(value);
+const valueToMomentDate: (
+  value?: LocalDate
+) => moment.Moment | undefined = value => (!value ? undefined : moment(value));
 
 const angleLeftIcon = (
   <svg width="10" height="10" viewBox="0 0 32 32">
@@ -147,7 +149,10 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
         () => onChange && onChange(undefined)
       );
     } else {
-      this.setState({ value }, () => onChange && onChange(value.toDate()));
+      this.setState(
+        { value },
+        () => onChange && onChange(new LocalDate(value.format("YYYY-MM-DD")))
+      );
     }
   };
 

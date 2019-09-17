@@ -5809,6 +5809,13 @@ loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^1.0.1"
 
+local-date@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/local-date/-/local-date-2.0.5.tgz#3883a9aaf58c7432c45b4e322dbc11f685862d50"
+  integrity sha512-UBpJX2UYUUt2drmdG92CeE2DWLdbBbZyjNenrqSxZiULzsSoEK6TZ7MJ00myObYrWk9aN04jmv6BjIb4FRyr7A==
+  dependencies:
+    core-js "^2.4.1"
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
