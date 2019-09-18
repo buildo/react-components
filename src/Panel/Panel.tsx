@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
+import { props, t, ReactChildren, Children } from "../utils";
 import { PanelHeader, HeaderSize } from "./PanelHeader";
 import capitalize = require("lodash/capitalize");
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
@@ -20,7 +20,7 @@ export type PanelDefaultProps = {
 
 export type PanelRequiredProps = {
   /** panel content */
-  children: React.ReactNode;
+  children: Children;
   /** The type of panel (docked or floating) */
   type: Panel.PanelType;
   /** header props (collapse, content, title, menu) */
@@ -217,7 +217,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
     children,
     loading
   }: {
-    children: React.ReactNode;
+    children: Children;
     loading: boolean;
   }) => {
     return (

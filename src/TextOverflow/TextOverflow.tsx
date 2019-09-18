@@ -1,7 +1,7 @@
 import * as React from "react";
 import omit = require("lodash/omit");
 import debounce = require("lodash/debounce");
-import { props, t, ObjectOverwrite, ObjectOmit } from "../utils";
+import { props, t, ObjectOverwrite, Children } from "../utils";
 import { warn } from "../utils/log";
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
 import { Popover } from "../Popover/Popover";
@@ -29,11 +29,21 @@ export type TextOverflowDefaultProps = {
   lazy: boolean;
 };
 
-export type TextOverflowRequiredProps = {
-  /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
-  children?: (self: JSX.Element, isOpen?: boolean) => any;
-  /** this is the full string */
-  label?: string | number;
+type RenderLabelProps =
+  | {
+      /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
+      children: (self: Children, isOpen?: boolean) => Children;
+      /** this is the full string */
+      label?: never;
+    }
+  | {
+      /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
+      children?: never;
+      /** this is the full string */
+      label: NonNullable<Children>;
+    };
+
+export type TextOverflowRequiredProps = RenderLabelProps & {
   /** additional props for Popover component used to display the entire text */
   popover?: ObjectOverwrite<
     Popover.Props["popover"],
@@ -239,20 +249,28 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     const {
       state: { isHovering }
     } = this;
-    const { children, label, style, lazy, popover, ...other } = this
-      .props as TextOverflowDefaultedProps;
+    const {
+      children,
+      label,
+      style,
+      lazy,
+      popover: popoverProps,
+      ...other
+    } = this.props as TextOverflowDefaultedProps;
 
     if (children) {
       return children(this.getContent(), lazy ? isHovering : undefined);
     } else {
-      const props: ObjectOmit<Popover.Props, "children"> = {
+      const content = label as NonNullable<Children>;
+      const popover: Popover.PopoverSettings = {
+        ...popoverProps,
+        content,
+        event: "hover",
+        isOpen: lazy ? isHovering : undefined
+      };
+      const props = {
         ...omit(other, ["delayWhenLazy"]),
-        popover: {
-          ...popover,
-          content: label,
-          event: "hover",
-          isOpen: lazy ? isHovering : undefined
-        },
+        popover,
         style: {
           width: "100%",
           ...style

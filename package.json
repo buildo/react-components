@@ -50,7 +50,7 @@
     "react-dates": "12.5.1",
     "react-dnd": "2.4.0",
     "react-dnd-html5-backend": "2.4.1",
-    "react-flexview": "4.0.1",
+    "react-flexview": "4.0.4",
     "react-input-children": "4.0.1",
     "react-select": "2.4.1",
     "react-transition-group": "1.2.0",
@@ -67,8 +67,8 @@
     "@types/jest": "20.0.7",
     "@types/linkify-it": "2.0.1",
     "@types/lodash": "4.14.116",
-    "@types/node": "8.0.25",
-    "@types/prop-types": "15.5.2",
+    "@types/node": "12.7.5",
+    "@types/prop-types": "15.7.2",
     "@types/react": "^16.4.14",
     "@types/react-dates": "12.1.2",
     "@types/react-dnd": "2.0.33",
@@ -99,7 +99,7 @@
     "style-loader": "0.17.0",
     "ts-jest": "20.0.10",
     "ts-loader": "2.3.4",
-    "typescript": "^3.2",
+    "typescript": "^3.6.3",
     "webpack": "3.5.5"
   },
   "peerDependencies": {

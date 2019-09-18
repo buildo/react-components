@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import { props, t, ReactChildren, findDOMNode } from "../utils";
+import { props, t, ReactChildren, findDOMNode, Children } from "../utils";
 import { warn } from "../utils/log";
 import { TransitionWrapper } from "../TransitionWrapper/TransitionWrapper";
 
@@ -33,7 +33,7 @@ export type ToasterDefaultProps = {
 
 export type ToasterRequiredProps = {
   /** list of toasts (any node with a unique key) */
-  children: React.ReactNode[];
+  children: Children[];
   /** id of the element you want to render the `Toaster` in */
   attachTo?: string;
   /** object with style for each transition event (used by `TransitionWrapper`) */
