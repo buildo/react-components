@@ -8,7 +8,7 @@ import {
   DragSourceSpec,
   DragSourceCollector
 } from "react-dnd";
-import { props, t, ReactChildren } from "../../../utils";
+import { props, t, ReactChildren, Children } from "../../../utils";
 import FlexView from "react-flexview";
 import { findDOMNode } from "../../../utils";
 
@@ -20,7 +20,7 @@ export namespace DNDHeader {
     isDragAllowed: boolean;
     isDropAllowed: (source: string, target: string) => boolean;
     tabloUniqueId: string;
-    children: React.ReactNode;
+    children: Children;
   };
 }
 

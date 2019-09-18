@@ -1,14 +1,11 @@
 import * as React from "react";
 import * as cx from "classnames";
 import debounce = require("lodash/debounce");
-import { props, t, ReactChildren } from "../utils";
+import { props, t, ReactChildren, Children } from "../utils";
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
-  children:
-    | ((focused: boolean) => React.ReactNode | React.ReactNode[])
-    | React.ReactNode
-    | React.ReactNode[];
+  children: ((focused: boolean) => Children) | Children;
   /** Debounce onFocus/onBlur events of x millis */
   debounce?: number;
   className?: string;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, ObjectOverwrite } from "../utils";
+import { props, t, ReactChildren, ObjectOverwrite, Children } from "../utils";
 import omit = require("lodash/omit");
 import InputChildren from "react-input-children";
 import View from "react-flexview";
@@ -16,7 +16,7 @@ export type InputRequiredProps = ObjectOverwrite<
     /** onChange */
     onChange: (value: string) => void;
     /** input children */
-    children?: React.ReactNode;
+    children?: Children;
     /** optional input status */
     status?: InputStatus;
     /** don't use this. Use `innerRef` instead */

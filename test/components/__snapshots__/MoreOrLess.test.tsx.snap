@@ -11,9 +11,15 @@ exports[`MoreOrLess renders correctly when expanded 1`] = `
       "flex": "0 0 auto",
       "flexDirection": "column",
       "flexWrap": "nowrap",
+      "height": undefined,
       "justifyContent": undefined,
+      "marginBottom": undefined,
+      "marginLeft": undefined,
+      "marginRight": undefined,
+      "marginTop": undefined,
       "minHeight": 0,
       "minWidth": 0,
+      "width": undefined,
     }
   }
 >
@@ -29,9 +35,15 @@ exports[`MoreOrLess renders correctly when expanded 1`] = `
         "flex": "0 0 auto",
         "flexDirection": "row",
         "flexWrap": "nowrap",
+        "height": undefined,
         "justifyContent": "center",
+        "marginBottom": undefined,
+        "marginLeft": undefined,
+        "marginRight": undefined,
+        "marginTop": undefined,
         "minHeight": 0,
         "minWidth": 0,
+        "width": undefined,
       }
     }
   >
@@ -51,9 +63,15 @@ exports[`MoreOrLess renders correctly when not expanded 1`] = `
       "flex": "0 0 auto",
       "flexDirection": "column",
       "flexWrap": "nowrap",
+      "height": undefined,
       "justifyContent": undefined,
+      "marginBottom": undefined,
+      "marginLeft": undefined,
+      "marginRight": undefined,
+      "marginTop": undefined,
       "minHeight": 0,
       "minWidth": 0,
+      "width": undefined,
     }
   }
 >
@@ -69,9 +87,15 @@ exports[`MoreOrLess renders correctly when not expanded 1`] = `
         "flex": "0 0 auto",
         "flexDirection": "row",
         "flexWrap": "nowrap",
+        "height": undefined,
         "justifyContent": "center",
+        "marginBottom": undefined,
+        "marginLeft": undefined,
+        "marginRight": undefined,
+        "marginTop": undefined,
         "minHeight": 0,
         "minWidth": 0,
+        "width": undefined,
       }
     }
   >

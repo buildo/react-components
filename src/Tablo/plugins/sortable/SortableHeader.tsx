@@ -2,10 +2,11 @@ import * as React from "react";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
 import Arrow from "./Arrow";
+import { Children } from "src/utils";
 
 export type Props = {
   sortDir?: "asc" | "desc";
-  children: React.ReactNode;
+  children: Children;
 };
 
 export default class SortableHeader extends React.PureComponent<Props> {

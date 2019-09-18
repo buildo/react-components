@@ -5,14 +5,15 @@ import {
   ReactChildren,
   stateClassUtil,
   props,
-  ObjectOverwrite
+  ObjectOverwrite,
+  Children
 } from "../utils";
 import { FormattedText } from "../FormattedText/FormattedText";
 import { Popover } from "../Popover/Popover";
 
 export type TooltipRequiredProps = {
   /** the element over which the tooltip is shown */
-  children: React.ReactNode;
+  children: Children;
   /** popover props */
   popover: ObjectOverwrite<
     Popover.Props["popover"],

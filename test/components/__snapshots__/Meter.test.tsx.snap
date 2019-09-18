@@ -12,11 +12,17 @@ exports[`Meter renders correctly 1`] = `
       "flex": "1 1 auto",
       "flexDirection": "row",
       "flexWrap": "nowrap",
+      "height": undefined,
       "justifyContent": undefined,
       "margin": 10,
+      "marginBottom": undefined,
+      "marginLeft": undefined,
+      "marginRight": undefined,
+      "marginTop": undefined,
       "minHeight": 0,
       "minWidth": 0,
       "position": "relative",
+      "width": undefined,
     }
   }
 >
@@ -31,9 +37,15 @@ exports[`Meter renders correctly 1`] = `
         "flex": "1 1 auto",
         "flexDirection": "row",
         "flexWrap": "nowrap",
+        "height": undefined,
         "justifyContent": undefined,
+        "marginBottom": undefined,
+        "marginLeft": undefined,
+        "marginRight": undefined,
+        "marginTop": undefined,
         "minHeight": 0,
         "minWidth": 0,
+        "width": undefined,
       }
     }
   >
@@ -48,9 +60,15 @@ exports[`Meter renders correctly 1`] = `
           "flex": "0 0 25%",
           "flexDirection": "row",
           "flexWrap": "nowrap",
+          "height": undefined,
           "justifyContent": undefined,
+          "marginBottom": undefined,
+          "marginLeft": undefined,
+          "marginRight": undefined,
+          "marginTop": undefined,
           "minHeight": 0,
           "minWidth": 0,
+          "width": undefined,
         }
       }
     />
@@ -66,9 +84,15 @@ exports[`Meter renders correctly 1`] = `
         "flex": "0 0 auto",
         "flexDirection": "row",
         "flexWrap": "nowrap",
+        "height": undefined,
         "justifyContent": undefined,
+        "marginBottom": undefined,
+        "marginLeft": undefined,
+        "marginRight": undefined,
+        "marginTop": undefined,
         "minHeight": 0,
         "minWidth": 0,
+        "width": undefined,
       }
     }
   >

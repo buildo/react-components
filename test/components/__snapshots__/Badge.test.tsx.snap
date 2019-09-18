@@ -11,9 +11,15 @@ exports[`Badge renders correctly 1`] = `
       "flex": "0 1 auto",
       "flexDirection": "row",
       "flexWrap": "nowrap",
+      "height": undefined,
       "justifyContent": "center",
+      "marginBottom": undefined,
+      "marginLeft": undefined,
+      "marginRight": undefined,
+      "marginTop": undefined,
       "minHeight": 0,
       "minWidth": 0,
+      "width": undefined,
     }
   }
 >

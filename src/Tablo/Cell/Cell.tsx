@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../../utils";
+import { props, t, ReactChildren, Children } from "../../utils";
 import FlexView from "react-flexview";
 import { Cell as CellFDT } from "fixed-data-table-2";
 
@@ -25,7 +25,7 @@ export type Required<T, K> = {
     data: K extends keyof T ? T[K] : never,
     rowData: T,
     rowIndex: number
-  ) => React.ReactNode;
+  ) => Children;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   color?: React.CSSProperties["color"];
   contentStyle?: React.CSSProperties;
