@@ -42,6 +42,7 @@
     "gemini-scrollbar": "1.5.2",
     "linkify-it": "2.0.3",
     "lodash": "4.17.13",
+    "local-date": "2.0.6",
     "mobile-detect": "1.3.6",
     "moment": "2.18.1",
     "prop-types": "15.6.0",
