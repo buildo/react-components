@@ -29,21 +29,11 @@ export type TextOverflowDefaultProps = {
   lazy: boolean;
 };
 
-type RenderLabelProps =
-  | {
-      /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
-      children: (self: Children, isOpen?: boolean) => Children;
-      /** this is the full string */
-      label?: never;
-    }
-  | {
-      /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
-      children?: never;
-      /** this is the full string */
-      label: NonNullable<Children>;
-    };
-
-export type TextOverflowRequiredProps = RenderLabelProps & {
+export type TextOverflowRequiredProps = {
+  /** this is the full string */
+  label: string | number;
+  /** in case you want to use a custom component (like a `Tooltip`) to render the full content which is passed as the first argument */
+  children?: (self: Children, isOpen?: boolean) => Children;
   /** additional props for Popover component used to display the entire text */
   popover?: ObjectOverwrite<
     Popover.Props["popover"],
