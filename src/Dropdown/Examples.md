@@ -151,6 +151,35 @@ const options = [
 />;
 ```
 
+#### Multiselect with "select all" option
+
+Using a `MultiDropdownWithSelectAll` component, it's possible to automatically add an "all" option that will select all the available options at once.
+
+```js
+intialState = {};
+const onChange = (value, isAll) => {
+  if (isAll) {
+    console.log("ALL selected!");
+  }
+  setState({ value });
+};
+const options = [
+  { value: "apple", label: "Apple" },
+  { value: "avocado", label: "Avocado" },
+  { value: "orange", label: "Orange" },
+  { value: "lemon", label: "Lemon" },
+  { value: "mandarin", label: "Mandarin" }
+];
+<MultiDropdownWithSelectAll
+  className="custom"
+  value={state.value}
+  onChange={onChange}
+  placeholder="Select some fruit(s)"
+  options={options}
+  selectAll={{ label: "All" }}
+/>;
+```
+
 #### Groups
 
 Dropdown could also allow the grouping
