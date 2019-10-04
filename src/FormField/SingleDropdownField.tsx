@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import Dropdown from "../Dropdown";
+import { SingleDropdown as Dropdown } from "../Dropdown";
 import { FormField } from "./FormField";
 
 type DefaultProps<OptionType> = {
@@ -28,15 +28,15 @@ type NonDefaultProps<OptionType> = {
 type InternalProps<OptionType> = NonDefaultProps<OptionType> &
   DefaultProps<OptionType>;
 
-export namespace DropdownField {
+export namespace SingleDropdownField {
   export type Props<OptionType> = NonDefaultProps<OptionType> &
     Partial<DefaultProps<OptionType>>;
 }
 
-export class DropdownField<OptionType> extends React.PureComponent<
+export class SingleDropdownField<OptionType> extends React.PureComponent<
   InternalProps<OptionType>
 > {
-  static defaultProps: DefaultProps<any> = {
+  static defaultProps: DefaultProps<unknown> = {
     dropdownRenderer: props => <Dropdown {...props} />
   };
 

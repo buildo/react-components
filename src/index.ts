@@ -1,5 +1,5 @@
-import Dropdown from "./Dropdown";
-export { Dropdown };
+import { SingleDropdown, MultiDropdown } from "./Dropdown";
+export { SingleDropdown, MultiDropdown };
 import LoadingSpinner from "./LoadingSpinner";
 export { LoadingSpinner };
 import MobileDetector from "./MobileDetector";
@@ -70,7 +70,8 @@ import FormField from "./FormField";
 export { FormField };
 import {
   InputField,
-  DropdownField,
+  SingleDropdownField,
+  MultiDropdownField,
   PasswordInputField,
   TimePickerField,
   ToggleField,
@@ -81,7 +82,8 @@ import {
 } from "./FormField";
 export {
   InputField,
-  DropdownField,
+  SingleDropdownField,
+  MultiDropdownField,
   PasswordInputField,
   TimePickerField,
   ToggleField,

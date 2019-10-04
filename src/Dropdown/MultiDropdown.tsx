@@ -12,21 +12,17 @@ import {
   DefaultProps
 } from "./commons";
 
-export type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
-  value: OptionType | null;
-} & (
-    | {
-        isClearable: true;
-        onChange: (value: OptionType) => void;
-      }
-    | { isClearable?: false; onChange: (value: OptionType | null) => void });
+type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
+  value: OptionType[];
+  onChange: (value: OptionType[]) => void;
+};
 
-export namespace Dropdown {
+export namespace MultiDropdown {
   export type Props<OptionType> = NonDefaultProps<OptionType> &
     Partial<DefaultProps>;
 }
 
-export class Dropdown<OptionType> extends React.PureComponent<
+export class MultiDropdown<OptionType> extends React.PureComponent<
   NonDefaultProps<OptionType> & DefaultProps
 > {
   static defaultProps = defaultProps;
@@ -59,10 +55,12 @@ export class Dropdown<OptionType> extends React.PureComponent<
         }}
         className={cx(
           getCommonClassnames(size, flat || false, props.isSearchable),
+          "is-multi",
           className
         )}
         ref={innerRef}
         isSearchable={allowCreate || props.isSearchable}
+        isMulti
       />
     );
   }

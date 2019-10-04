@@ -1,2 +1,3 @@
-import { Dropdown } from "./Dropdown";
-export default Dropdown;
+import { Dropdown as SingleDropdown } from "./Dropdown";
+import { MultiDropdown } from "./MultiDropdown";
+export { SingleDropdown, MultiDropdown };
