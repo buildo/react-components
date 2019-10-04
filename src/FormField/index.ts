@@ -1,6 +1,7 @@
 import { FormField } from "./FormField";
 import { InputField } from "./InputField";
-import { DropdownField } from "./DropdownField";
+import { SingleDropdownField } from "./SingleDropdownField";
+import { MultiDropdownField } from "./MultiDropdownField";
 import { PasswordInputField } from "./PasswordInputField";
 import { TimePickerField } from "./TimePickerField";
 import { ToggleField } from "./ToggleField";
@@ -12,7 +13,8 @@ import { RadioGroupField } from "./RadioGroupField";
 export default FormField;
 export {
   InputField,
-  DropdownField,
+  SingleDropdownField,
+  MultiDropdownField,
   PasswordInputField,
   TimePickerField,
   ToggleField,

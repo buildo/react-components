@@ -15,7 +15,7 @@ Its purpose is to give access to all these components through a single npm depen
 Each component is stored inside its own folder (useful for small bundles).
 You can import each package directly from the main lib:
 
-`import { Panel, Dropdown, Popover } from 'buildo-react-components';`
+`import { Panel, SingleDropdown, Popover } from 'buildo-react-components';`
 
 Or from the package folder:
 

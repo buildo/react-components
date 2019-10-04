@@ -2,7 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 
-import Dropdown from "../../src/Dropdown";
+import { SingleDropdown as Dropdown } from "../../src/Dropdown";
 
 let consoleError: jest.SpyInstance<{}>;
 
