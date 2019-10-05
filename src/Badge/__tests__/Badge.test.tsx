@@ -2,7 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 
-import Badge from "../../src/Badge";
+import Badge from "..";
 
 let consoleError: jest.SpyInstance<{}>;
 
