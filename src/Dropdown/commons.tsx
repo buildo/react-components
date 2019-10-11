@@ -13,7 +13,7 @@ export type DefaultProps = {
 
 export type CommonProps<OptionType> = ObjectOmit<
   SelectNS.Props<OptionType>,
-  "isMulti" | "onChange" | "value"
+  "isMulti" | "onChange" | "value" | "disabled"
 > & {
   flat?: boolean;
   innerRef?: (ref: Select<OptionType> | null) => void;
