@@ -12,23 +12,21 @@ import {
   DefaultProps
 } from "./commons";
 import { GroupType } from "react-select/lib/types";
-import { ObjectOmit } from "src/utils";
 
 type SelectAllOptionType = { value: "_ALL"; label: string };
 
-type NonDefaultProps<OptionType> = ObjectOmit<
-  CommonProps<OptionType | SelectAllOptionType>,
-  "innerRef"
+type NonDefaultProps<OptionType> = CommonProps<
+  OptionType | SelectAllOptionType
 > & {
-  selectAll: { label: string };
+  selectAllLabel: string;
   value: OptionType[] | SelectAllOptionType;
-  onChange: (value: OptionType[] | SelectAllOptionType, isAll: boolean) => void;
+  onChange: (value: OptionType[] | SelectAllOptionType) => void;
 };
 
-export function isAll<OptionType>(
-  value: OptionType[] | SelectAllOptionType
+function isAll<OptionType>(
+  value?: OptionType | SelectAllOptionType
 ): value is SelectAllOptionType {
-  return value["value"] === "_ALL";
+  return value !== undefined && value["value"] === "_ALL";
 }
 
 export namespace MultiDropdownWithSelectAll {
@@ -36,8 +34,10 @@ export namespace MultiDropdownWithSelectAll {
     Partial<DefaultProps>;
 }
 
-function concatUnion<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
-  return (a as Array<A | B>).concat(b);
+function isGroupedOptionsArray<OptionType>(
+  options: Array<GroupType<OptionType>> | Array<OptionType>
+): options is Array<GroupType<OptionType>> {
+  return options.length > 0 && options[0]["options"] !== undefined;
 }
 
 export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
@@ -47,20 +47,19 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
 
   selectAllOption: SelectAllOptionType = {
     value: "_ALL",
-    label: this.props.selectAll.label
+    label: this.props.selectAllLabel
   };
 
   injectSelectAllOptions = (
     options: MultiDropdownWithSelectAll.Props<OptionType>["options"]
-  ) => {
+  ):
+    | Array<OptionType | SelectAllOptionType>
+    | Array<GroupType<OptionType | SelectAllOptionType>> => {
     if (options === undefined || options.length === 0) return [];
-    else if (options[0]["options"] !== undefined) {
-      return concatUnion(
-        [{ options: [this.selectAllOption] }],
-        options as Array<GroupType<OptionType>>
-      );
+    else if (isGroupedOptionsArray(options)) {
+      return [{ options: [this.selectAllOption] }, ...options];
     } else {
-      return concatUnion([this.selectAllOption], options as Array<OptionType>);
+      return [this.selectAllOption, ...options];
     }
   };
 
@@ -74,6 +73,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
         flat,
         options: _options,
         onChange: _onChange,
+        innerRef,
         ...props
       }
     } = this;
@@ -94,15 +94,14 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
             const currentValue = props.getValue();
             return (
               <components.ValueContainer {...props}>
-                {Array.isArray(currentValue) &&
-                currentValue[0] === this.selectAllOption ? (
+                {Array.isArray(currentValue) && isAll(currentValue[0]) ? (
                   <components.SingleValue
                     {...props}
                     data={this.selectAllOption}
                     innerProps={{}}
                     isDisabled={false}
                   >
-                    {this.props.selectAll.label}
+                    {this.props.selectAllLabel}
                   </components.SingleValue>
                 ) : (
                   children
@@ -117,6 +116,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
           "is-multi",
           className
         )}
+        ref={innerRef}
         isSearchable={allowCreate || props.isSearchable}
         isMulti
         onChange={value => {
@@ -127,14 +127,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
             valueArray.length > 0 &&
             valueArray[valueArray.length - 1] == this.selectAllOption
           ) {
-            _onChange(this.selectAllOption, true);
+            _onChange(this.selectAllOption);
           } else {
-            _onChange(
-              valueArray.filter(
-                a => a !== this.selectAllOption
-              ) as OptionType[],
-              false
-            );
+            _onChange(valueArray.filter(a => !isAll(a)) as OptionType[]);
           }
         }}
       />
