@@ -11,14 +11,18 @@ import {
   DefaultProps
 } from "./commons";
 
-export type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
-  value: OptionType | null;
-} & (
+export type NonDefaultProps<OptionType> = CommonProps<OptionType> &
+  (
     | {
         isClearable: true;
-        onChange: (value: OptionType) => void;
+        value: OptionType | null;
+        onChange: (value: OptionType | null) => void;
       }
-    | { isClearable?: false; onChange: (value: OptionType | null) => void });
+    | {
+        isClearable?: false;
+        value: OptionType;
+        onChange: (value: OptionType) => void;
+      });
 
 export namespace Dropdown {
   export type Props<OptionType> = NonDefaultProps<OptionType> &

@@ -14,6 +14,7 @@ import {
 type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
   value: OptionType[];
   onChange: (value: OptionType[]) => void;
+  isClearable?: never;
 };
 
 export namespace MultiDropdown {
