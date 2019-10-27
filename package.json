@@ -7,15 +7,16 @@
     "test": "node ./depsShouldBePinned.js && jest",
     "test-dev": "npm test -- --watch",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && tsc",
-    "preversion": "npm run prettier-check && npm run test",
+    "preversion": "npm run prettier-check && npm run test && npm run dtslint",
     "prepublish": "npm run build",
     "start": "styleguidist server",
     "build-styleguidist": "styleguidist build",
     "typecheck": "tsc --noEmit --pretty",
-    "prettier-fix": "prettier \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\" --write",
-    "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,*}.{js,ts,tsx,scss}\"",
+    "prettier-fix": "prettier \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" --write",
+    "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\"",
     "release-version": "smooth-release --validations --npm-version --npm-publish",
-    "postinstall": "rm -rf node_modules/**/node_modules/@types/react"
+    "postinstall": "rm -rf node_modules/**/node_modules/@types/react",
+    "dtslint": "dtslint dtslint"
   },
   "repository": {
     "type": "git",
