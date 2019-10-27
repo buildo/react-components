@@ -30,8 +30,8 @@ interface ResizeSensorElement extends Element {
  */
 @props(Props)
 export class ResizeSensor extends React.Component<ResizeSensor.Props> {
-  private elementQueries: boolean;
-  private resizeSensor: {} | null;
+  private elementQueries: boolean = false;
+  private resizeSensor: {} | null = null;
 
   attachResizeSensor = () => {
     const { debounce } = this.props;

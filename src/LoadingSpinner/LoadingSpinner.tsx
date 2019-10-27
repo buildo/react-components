@@ -52,7 +52,7 @@ export const Props = {
  */
 @props(Props)
 export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
-  private loadingSpinner: HTMLDivElement | null;
+  private loadingSpinner: HTMLDivElement | null = null;
 
   static defaultProps: LoadingSpinnerDefaultProps = {
     size: "3em",

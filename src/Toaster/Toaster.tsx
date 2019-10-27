@@ -57,7 +57,7 @@ type ToasterDefaultedProps = ToasterRequiredProps & ToasterDefaultProps;
  */
 @props(Props)
 export class Toaster extends React.Component<Toaster.Props> {
-  private toaster: HTMLElement | null;
+  private toaster: HTMLElement | null = null;
 
   static defaultProps: ToasterDefaultProps = {
     transitionGroup: {},

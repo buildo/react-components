@@ -56,7 +56,7 @@ export const Props = {
  */
 @props(Props, { strict: false })
 export class ScrollView extends React.Component<ScrollView.Props> {
-  private scrollView: HTMLDivElement | null;
+  private scrollView: HTMLDivElement | null = null;
   private lastY: number = 0;
 
   static defaultProps: ScrollViewDefaultProps = {
@@ -112,8 +112,8 @@ export class ScrollView extends React.Component<ScrollView.Props> {
         up = clientY > this.lastY;
         this.lastY = clientY;
       } else if (e instanceof WheelEvent) {
-        // @ts-ignore: not sure why `wheelDelta` is not there
-        up = e.wheelDelta > 0;
+        // not sure why `wheelDelta` is not there
+        up = (e as any).wheelDelta > 0;
       }
       const down = !up;
 

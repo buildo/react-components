@@ -119,9 +119,8 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
             </Popover>
           );
       }
-    } else {
-      return Field;
     }
+    return Field;
   };
 
   render() {

@@ -201,6 +201,6 @@ const _Component = autosize(
 export function Tablo<T extends {}>(
   props: Tablo.Props<T>
 ): React.ReactElement<Tablo.Props<T>> {
-  const Component = _Component as React.ComponentClass<Tablo.Props<T>>;
+  const Component = (_Component as any) as React.ComponentClass<Tablo.Props<T>>;
   return <Component {...props} />;
 }

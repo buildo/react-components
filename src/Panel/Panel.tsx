@@ -160,7 +160,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
     const style = {};
     if (this.props.clearMargin) {
       const marginToClear = `margin${capitalize(this.props.clearMargin)}`;
-      style[marginToClear] = 0;
+      (style as any)[marginToClear] = 0;
     }
     return {
       ...this.props.style,

@@ -55,7 +55,7 @@ export const updateColumns: _.CurriedFunction2<{}, {}, JSX.Element[]> = curry(
               )
             })
         )
-      : chArray.map(updateIfColumn());
-    return newChildren;
+      : chArray.map(updateIfColumn() as any);
+    return newChildren as any;
   }
 );

@@ -65,7 +65,7 @@ export const Props = {
 export class BackgroundDimmer extends React.PureComponent<
   BackgroundDimmer.Props
 > {
-  private mainContentWrapper: FlexView | null;
+  private mainContentWrapper: FlexView | null = null;
 
   static defaultProps: BackgroundDimmerDefaultProps = {
     color: "black",

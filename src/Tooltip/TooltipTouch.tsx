@@ -39,9 +39,9 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
     isOpen: false
   };
 
-  private ref: HTMLDivElement;
+  private ref!: HTMLDivElement;
 
-  timeout: number;
+  timeout!: number;
 
   componentWillUnmount() {
     if (typeof this.timeout !== "undefined") {

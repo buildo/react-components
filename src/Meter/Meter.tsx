@@ -54,7 +54,7 @@ const Props = t.refinement(
     className: t.maybe(t.String),
     style: t.maybe(t.Object)
   }),
-  ({ min, max }) => min < max,
+  ({ min, max }: any) => min < max,
   "Props"
 );
 

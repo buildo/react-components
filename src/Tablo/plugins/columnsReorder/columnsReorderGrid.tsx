@@ -95,7 +95,7 @@ export default <T extends {}>(
           sourceName !== targetName
         ) {
           const newColumnsOrder = moveColumn(
-            orderedChildren.map(c => c.props.name),
+            orderedChildren.map(c => (c as any).props.name),
             sourceName,
             targetName
           );

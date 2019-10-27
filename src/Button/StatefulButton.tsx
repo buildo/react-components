@@ -80,7 +80,7 @@ export class StatefulButton extends React.PureComponent<
 > {
   private timeoutId: number | null;
   private resetInternalStateAfterProcessing: boolean;
-  private _isMounted: boolean;
+  private _isMounted: boolean = false;
 
   static defaultProps: StatefulButtonDefaultProps = {
     stableSuccess: false,

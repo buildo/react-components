@@ -2,7 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
 import Arrow from "./Arrow";
-import { Children } from "src/utils";
+import { Children } from "../../../utils";
 
 export type Props = {
   sortDir?: "asc" | "desc";

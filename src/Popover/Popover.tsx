@@ -131,16 +131,16 @@ type PopoverStyle = React.CSSProperties & {
  */
 @props(Props)
 export class Popover extends React.Component<Popover.Props, State> {
-  private children: HTMLDivElement | null;
-  private initialized: boolean;
-  private containerNode: Element | null;
+  private children: HTMLDivElement | null = null;
+  private initialized: boolean = false;
+  private containerNode: Element | null = null;
   private onMouseEventDebouncedWhenOpen:
     | ((_: string) => void) & _.Cancelable
-    | null;
+    | null = null;
   private onMouseEventDebouncedWhenClosed:
     | ((_: string) => void) & _.Cancelable
-    | null;
-  private ContextWrapper: React.ComponentType<{
+    | null = null;
+  private ContextWrapper!: React.ComponentType<{
     context?: { [_: string]: any };
     children: any;
   }>;
@@ -560,31 +560,34 @@ export class Popover extends React.Component<Popover.Props, State> {
             ])
           );
 
-          return anchors.reduce((workingPopoverStyle, a) => {
-            if (workingPopoverStyle === null) {
-              const _popoverStyle = this.computePopoverStyle(p, a);
+          return anchors.reduce(
+            (workingPopoverStyle, a) => {
+              if (workingPopoverStyle === null) {
+                const _popoverStyle = this.computePopoverStyle(p, a);
 
-              // not enough space
-              if (
-                typeof _popoverStyle.top === "number" &&
-                typeof _popoverStyle.left === "number" &&
-                (_popoverStyle.top < 0 ||
-                  _popoverStyle.top + popover.height > window.innerHeight ||
-                  _popoverStyle.left < 0 ||
-                  _popoverStyle.left + popover.width > window.innerWidth)
-              ) {
-                return null;
+                // not enough space
+                if (
+                  typeof _popoverStyle.top === "number" &&
+                  typeof _popoverStyle.left === "number" &&
+                  (_popoverStyle.top < 0 ||
+                    _popoverStyle.top + popover.height > window.innerHeight ||
+                    _popoverStyle.left < 0 ||
+                    _popoverStyle.left + popover.width > window.innerWidth)
+                ) {
+                  return null;
+                }
+
+                return {
+                  ..._popoverStyle,
+                  _computedPosition: p,
+                  _computedAnchor: a
+                };
               }
 
-              return {
-                ..._popoverStyle,
-                _computedPosition: p,
-                _computedAnchor: a
-              };
-            }
-
-            return workingPopoverStyle;
-          }, null);
+              return workingPopoverStyle;
+            },
+            null as any
+          );
         }
         return acc;
       }, null);

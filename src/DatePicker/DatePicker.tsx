@@ -118,7 +118,7 @@ const clearIcon = (
  * A decent and pretty date picker to be used with React
  */
 export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
-  dayRenderer: (day: moment.Moment) => JSX.Element;
+  dayRenderer!: (day: moment.Moment) => JSX.Element;
 
   componentWillMount() {
     if (this.props.locale) {

@@ -109,7 +109,7 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
       CP
     >;
     const animationStart = transitionStyles[anim];
-    const animationEnd = transitionStyles[`${anim}Active`];
+    const animationEnd = (transitionStyles as any)[`${anim}Active`];
 
     const initState = { animationStart, transitionClassName: anim };
     const activeState = {

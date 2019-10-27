@@ -1,27 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES3",
+    "target": "ES5",
     "module": "commonjs",
+    "strict": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": false,
-    "allowJs": false,
     "experimentalDecorators": true,
     "outDir": "./lib",
     "baseUrl": ".",
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": false,
     "alwaysStrict": true,
     "jsx": "react",
-    "lib": [
-      "dom", "es6"
-    ]
+    "lib": ["dom", "es6"]
   },
-  "include": [
-    "src/**/*",
-    "typings"
-  ]
+  "include": ["src/**/*", "typings"]
 }

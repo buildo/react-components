@@ -1,7 +1,6 @@
 import * as React from "react";
 import Select from "react-select";
 import Creatable from "react-select/lib/Creatable";
-import { Props } from "react-select/lib/Creatable";
 import * as cx from "classnames";
 import {
   CommonProps,
@@ -44,9 +43,7 @@ export class Dropdown<OptionType> extends React.PureComponent<
       }
     } = this;
 
-    const Component: React.ComponentType<Props<OptionType>> = allowCreate
-      ? Creatable
-      : Select;
+    const Component: any = allowCreate ? Creatable : Select;
 
     return (
       <Component

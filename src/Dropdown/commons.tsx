@@ -1,7 +1,7 @@
 import Select from "react-select";
 import * as SelectNS from "react-select/lib/Select";
 import { CreatableProps } from "react-select/lib/Creatable";
-import { ObjectOmit } from "src/utils";
+import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
 
 export type DefaultProps = {
