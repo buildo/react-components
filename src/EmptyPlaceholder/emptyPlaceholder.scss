@@ -1,3 +1,5 @@
+@import "../utils/theme/variables.scss";
+
 $primary-text-font-size: 24px !default;
 $secondary-text-font-size: 14px !default;
 
@@ -8,7 +10,7 @@ $secondary-text-font-size: 14px !default;
 
   .primary-text {
     font-size: $primary-text-font-size;
-    font-weight: $bold;
+    font-weight: $brc-bold;
     margin: 5px 0;
   }
 
