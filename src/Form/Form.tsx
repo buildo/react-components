@@ -7,6 +7,7 @@ import { findDOMNode, Children } from "../utils";
 export namespace Form {
   export type Props = View.Props & {
     render: (ref: React.RefObject<any>) => NonNullable<Children>;
+    noSubmitOnEnter: boolean;
   };
 }
 
@@ -14,7 +15,7 @@ export class Form extends React.PureComponent<Form.Props> {
   buttonRef = React.createRef<Button | StatefulButton>();
 
   onFormSubmit: React.ReactEventHandler<HTMLFormElement> = e => {
-    if (this.buttonRef.current) {
+    if (!this.props.noSubmitOnEnter && this.buttonRef.current) {
       const buttonDiv = findDOMNode(this.buttonRef.current);
       const clickable = buttonDiv.querySelector(".button-inner");
       if (clickable) {
