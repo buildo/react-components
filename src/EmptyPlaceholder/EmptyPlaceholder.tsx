@@ -5,7 +5,7 @@ import View from "react-flexview";
 import "./emptyPlaceholder.scss";
 
 export namespace EmptyPlaceholder {
-  export type Props = View.Props & {
+  export type Props = {
     viewProps?: View.Props;
     className?: string;
     icon: JSX.Element;
