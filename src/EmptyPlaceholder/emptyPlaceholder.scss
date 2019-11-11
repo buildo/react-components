@@ -2,13 +2,13 @@ $primary-text-font-size: 24px !default;
 $secondary-text-font-size: 14px !default;
 
 .empty-placeholder {
-
   .icon {
     margin-bottom: 10px;
   }
 
   .primary-text {
     font-size: $primary-text-font-size;
+    font-weight: $bold;
     margin: 5px 0;
   }
 
