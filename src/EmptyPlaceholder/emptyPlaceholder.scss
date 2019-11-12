@@ -4,8 +4,10 @@ $primary-text-font-size: 24px !default;
 $secondary-text-font-size: 14px !default;
 
 .empty-placeholder {
+  padding: 10px 0;
+
   .icon {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .primary-text {
@@ -19,6 +21,6 @@ $secondary-text-font-size: 14px !default;
   }
 
   .action {
-    margin-top: 25px;
+    margin-top: 20px;
   }
 }
