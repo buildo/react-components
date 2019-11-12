@@ -1,0 +1,26 @@
+@import "../utils/theme/variables.scss";
+
+$primary-text-font-size: 24px !default;
+$secondary-text-font-size: 14px !default;
+
+.empty-placeholder {
+  padding: 10px 0;
+
+  .icon {
+    margin-bottom: 15px;
+  }
+
+  .primary-text {
+    font-size: $primary-text-font-size;
+    font-weight: $brc-bold;
+  }
+
+  .secondary-text {
+    font-size: $secondary-text-font-size;
+    margin-top: 10px;
+  }
+
+  .action {
+    margin-top: 20px;
+  }
+}
