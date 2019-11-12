@@ -19,7 +19,12 @@ const icon = (
   primaryText="The list is empty"
   secondaryText="Start by creating your first entry"
   action={
-    <Button style={{ width: "100px" }} label="Add entry" onClick={() => {}} />
+    <Button
+      primary
+      style={{ width: "100px" }}
+      label="Add entry"
+      onClick={() => {}}
+    />
   }
 />;
 ```

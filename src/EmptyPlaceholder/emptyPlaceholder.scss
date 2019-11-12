@@ -5,21 +5,20 @@ $secondary-text-font-size: 14px !default;
 
 .empty-placeholder {
   .icon {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .primary-text {
     font-size: $primary-text-font-size;
     font-weight: $brc-bold;
-    margin: 5px 0;
   }
 
   .secondary-text {
     font-size: $secondary-text-font-size;
-    margin: 5px 0;
+    margin-top: 10px;
   }
 
   .action {
-    margin-top: 10px;
+    margin-top: 25px;
   }
 }
