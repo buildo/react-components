@@ -7,7 +7,7 @@ import { findDOMNode, Children } from "../utils";
 export namespace Form {
   export type Props = View.Props & {
     render: (ref: React.RefObject<any>) => NonNullable<Children>;
-    noSubmitOnEnter: boolean;
+    noSubmitOnEnter?: boolean;
   };
 }
 
