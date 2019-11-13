@@ -2,8 +2,6 @@ import * as React from "react";
 import * as cx from "classnames";
 import View from "react-flexview";
 
-import "./emptyPlaceholder.scss";
-
 export namespace EmptyPlaceholder {
   export type Props = {
     viewProps?: View.Props;
