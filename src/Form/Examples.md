@@ -10,7 +10,7 @@ initialState = {
 
 const onChange = key => value => setState({ [key]: value });
 
-<Form.Form
+<Form
   render={ref => (
     <FlexView column grow>
       <InputField
