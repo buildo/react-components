@@ -14,7 +14,7 @@ const icon = (
   </svg>
 );
 
-<EmptyPlaceholder.EmptyPlaceholder
+<EmptyPlaceholder
   icon={icon}
   primaryText="The list is empty"
   secondaryText="Start by creating your first entry"

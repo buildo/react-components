@@ -60,6 +60,7 @@ import "../src/FormField/formField.scss";
 import "../src/Textarea/textarea.scss";
 import "../src/Checkbox/checkbox.scss";
 import "../src/RadioGroup/radioGroup.scss";
+import "../src/EmptyPlaceholder/emptyPlaceholder.scss";
 
 // examples sass and resources
 import "../src/Modal/examples.scss";
