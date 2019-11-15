@@ -69,7 +69,7 @@ const options2 = [
 When needed (e.g. when there isn't enough space under the dropdown to render the menu), it's possible to force the menu to open on top
 
 ```js
-intialState = {};
+initialState = {};
 
 const onChange = value => setState({ value });
 
@@ -95,7 +95,7 @@ const options = [
 - When the `isSearchable` prop is used, it's possible to search the desired value by writing into the dropdown.\n\* Use `isClearable` if it should be possible to reset the selected value clicking on the `delete` icon that will appear once a value is selected and `backspaceRemovesValue` if you want to be able to remove the last value selected with the backspace button.
 
 ```js
-intialState = {};
+initialState = {};
 
 const onChange = value => setState({ value });
 
@@ -129,7 +129,7 @@ const options = [
 Dropdown could also allow the selection of multiple values
 
 ```js
-intialState = {};
+initialState = {};
 
 const onChange = value => setState({ value });
 
@@ -148,6 +148,35 @@ const options = [
   placeholder="Select some fruit(s)"
   options={options}
   isClearable
+/>;
+```
+
+#### Multiselect with "select all" option
+
+Using a `MultiDropdownWithSelectAll` component, it's possible to automatically add an "all" option that will select all the available options at once.
+
+```js
+initialState = {};
+const onChange = newVal => {
+  if (newVal.type === "AllSelected") {
+    console.log("ALL selected!");
+  }
+  setState({ value: newVal });
+};
+const options = [
+  { value: "apple", label: "Apple" },
+  { value: "avocado", label: "Avocado" },
+  { value: "orange", label: "Orange" },
+  { value: "lemon", label: "Lemon" },
+  { value: "mandarin", label: "Mandarin" }
+];
+<MultiDropdownWithSelectAll
+  className="custom"
+  value={state.value}
+  onChange={onChange}
+  placeholder="Select some fruit(s)"
+  options={options}
+  selectAllLabel="All"
 />;
 ```
 

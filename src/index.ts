@@ -1,5 +1,9 @@
-import { SingleDropdown, MultiDropdown } from "./Dropdown";
-export { SingleDropdown, MultiDropdown };
+import {
+  SingleDropdown,
+  MultiDropdown,
+  MultiDropdownWithSelectAll
+} from "./Dropdown";
+export { SingleDropdown, MultiDropdown, MultiDropdownWithSelectAll };
 import LoadingSpinner from "./LoadingSpinner";
 export { LoadingSpinner };
 import MobileDetector from "./MobileDetector";

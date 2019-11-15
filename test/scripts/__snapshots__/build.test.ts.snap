@@ -48,6 +48,8 @@ Array [
   "Dropdown/Dropdown.js",
   "Dropdown/MultiDropdown.d.ts",
   "Dropdown/MultiDropdown.js",
+  "Dropdown/MultiDropdownWithSelectAll.d.ts",
+  "Dropdown/MultiDropdownWithSelectAll.js",
   "Dropdown/commons.d.ts",
   "Dropdown/commons.js",
   "Dropdown/dropdown.css",
