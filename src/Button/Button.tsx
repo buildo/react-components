@@ -123,7 +123,7 @@ export const Props = t.refinement(
   "ButtonProps"
 );
 
-const defaultLabels = {
+const defaultLabels: Button.ButtonStateMap<string> = {
   success: "success",
   error: "error",
   processing: "processing"
@@ -152,7 +152,7 @@ const defaultErrorIcon = (
   </svg>
 );
 
-const defaultIcons = {
+const defaultIcons: Button.ButtonStateMap<JSX.Element> = {
   success: defaultSuccessIcon,
   error: defaultErrorIcon
 };

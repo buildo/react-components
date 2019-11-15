@@ -17,7 +17,7 @@ export default <T extends {}>(
     Tablo.Props<T>,
     AutosizeGridState
   > {
-    private gridWrapper: FlexView | null;
+    private gridWrapper: FlexView | null = null;
     state: AutosizeGridState = {};
 
     static defaultProps = {

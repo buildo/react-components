@@ -89,7 +89,7 @@ function onChange(field, value) {
     </FlexView>
   </FlexView>
   <FlexView width={450} marginBottom={40}>
-    <DropdownField
+    <SingleDropdownField
       id="dropdown"
       label="LABEL"
       value={state.dropdown}
@@ -97,7 +97,7 @@ function onChange(field, value) {
         { value: "male", label: "Male" },
         { value: "female", label: "Female" }
       ]}
-      dropdownRenderer={props => <Dropdown {...props} isSearchable />}
+      dropdownRenderer={props => <SingleDropdown {...props} isSearchable />}
       onChange={value => onChange("dropdown", value)}
       placeholder="Select"
       hint={{

@@ -117,8 +117,8 @@ const collectSource: DragSourceCollector = (connect, monitor) => {
 const columnType = ({ tabloUniqueId }: DNDHeader.Props) =>
   `${tabloUniqueId}_column`;
 
-@DragSource(columnType, columnSource, collectSource)
-@DropTarget(columnType, columnTarget, collectTarget)
+@(DragSource(columnType, columnSource, collectSource) as any)
+@(DropTarget(columnType, columnTarget, collectTarget) as any)
 @props({
   connectDragSource: t.Function,
   connectDragPreview: t.Function,

@@ -63,8 +63,8 @@ export type State = {
  */
 @props(Props, { strict: false })
 export class TextOverflow extends React.Component<TextOverflow.Props, State> {
-  private text: HTMLSpanElement | null;
-  private textWithoutEllipsis: HTMLSpanElement | null;
+  private text: HTMLSpanElement | null = null;
+  private textWithoutEllipsis: HTMLSpanElement | null = null;
 
   static defaultProps: TextOverflowDefaultProps = {
     delayWhenLazy: 100,

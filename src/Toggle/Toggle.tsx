@@ -43,7 +43,7 @@ type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
  */
 @props(Props)
 export class Toggle extends React.PureComponent<Toggle.Props> {
-  private checkbox: HTMLInputElement | null;
+  private checkbox: HTMLInputElement | null = null;
 
   componentDidMount() {
     this.updateCheckbox(this.props as ToggleDefaultedProps);

@@ -28,7 +28,7 @@ export type State = {
 
 @props(Props)
 export class TimerToast extends React.Component<TimerToastProps, State> {
-  private timer: number | null;
+  private timer: number | null = null;
 
   state = { completed: false };
 

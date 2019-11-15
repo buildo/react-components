@@ -79,6 +79,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
           return 600;
       }
     }
+
+    return undefined;
   };
 
   render() {

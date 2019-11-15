@@ -1,7 +1,7 @@
 import * as React from "react";
 import { props, t } from "../utils";
 import * as cx from "classnames";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { SingleDropdown } from "../Dropdown";
 import range = require("lodash/range");
 import flatten = require("lodash/flatten");
 import compact = require("lodash/compact");
@@ -75,7 +75,7 @@ const Props = t.refinement(
     menuPosition: t.enums.of(["bottom", "top"]),
     disabled: t.maybe(t.Boolean)
   }),
-  ({ value, minTime, maxTime }) =>
+  ({ value, minTime, maxTime }: any) =>
     lteTime(minTime, maxTime) &&
     (!value || (lteTime(value, maxTime) && lteTime(minTime, value))),
   "Props"
@@ -161,7 +161,7 @@ const parseInTimeFormat = (
 const createTimeList = (
   { hours, minutes }: TimePicker.Time,
   timeFormat: TimePicker.TimeFormat
-) => {
+): Array<TimePicker.TimeAndFormat> => {
   if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
     const hoursList = range(0, 24);
     const minutesList = range(0, 60, interval);
@@ -215,12 +215,10 @@ const makeOptions = (
     userValue && userValue !== inputError
       ? { ...userValue, timeFormat }
       : userValue;
-  const timeList = ((time === inputError
+  const timeList = (time === inputError
     ? []
-    : createTimeList(time as TimePicker.Time, timeFormat)) as (
-    | TimePicker.Time
-    | TimePicker.TimeAndFormat)[]) // TODO(typo)
-    .concat(compact([selectedValue]));
+    : createTimeList(time as TimePicker.Time, timeFormat)
+  ).concat(compact([selectedValue]) as any);
   const filteredTimeList = timeList.filter(
     filterTime({
       originalInput: (time as any).originalInput || "",
@@ -257,9 +255,9 @@ export interface DefaultProps {
   /** dropdown size */
   size: "medium" | "small";
   /** whether the menu should open on top or bottom */
-  menuPosition: Dropdown.Props<any>["menuPlacement"];
+  menuPosition: SingleDropdown.Props<TimeDropdownOption>["menuPlacement"];
   /** object of custom compoents for react select */
-  components: Dropdown.Props<TimeDropdownOption>["components"];
+  components: SingleDropdown.Props<TimeDropdownOption>["components"];
 }
 
 export namespace TimePicker {
@@ -339,8 +337,7 @@ export class TimePicker extends React.Component<
     const computedComponents = getComponents(timeFormatter);
 
     return (
-      <Dropdown
-        type="single"
+      <SingleDropdown
         {...{ id, className, style }}
         isSearchable={searchable}
         value={find(options, o => o.value === value)!}

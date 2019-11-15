@@ -68,7 +68,8 @@ export class BrowserDetector extends React.PureComponent<
     detectedBrowser: BrowserDetector.DetectedBrowser
   ): boolean {
     return (
-      supportedBrowsers && !some(supportedBrowsers, b => detectedBrowser[b])
+      supportedBrowsers &&
+      !some(supportedBrowsers, b => (detectedBrowser as any)[b])
     );
   }
 

@@ -29,7 +29,7 @@ export const Props = {
 /** Util component to render a different react node if the original one overflows its parent. */
 @props(Props)
 export class Overflow extends React.Component<Overflow.Props, State> {
-  private ref: HTMLDivElement | null;
+  private ref: HTMLDivElement | null = null;
 
   state = { isOverflowing: false };
 

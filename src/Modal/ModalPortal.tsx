@@ -37,7 +37,7 @@ type ContextWrapperProps = {
 
 @props(Props)
 export class ModalPortal extends React.Component<ModalPortal.Props> {
-  private isOpen: boolean;
+  private isOpen: boolean = false;
 
   render() {
     return null;

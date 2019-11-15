@@ -87,7 +87,7 @@ export const Column = <T extends {}>(
       find(getArrayChildren(children), child => child.type === Cell) ||
       defaultCell;
     const rowData = data[rowIndex] || {};
-    const dataCell = rowData[columnKey || ""];
+    const dataCell = (rowData as any)[columnKey || ""];
     return React.cloneElement<any, any>(elem as any, {
       data: dataCell,
       rowData,
@@ -111,7 +111,7 @@ export const Column = <T extends {}>(
       key={key}
       columnKey={name}
       header={header}
-      cell={cell}
+      cell={cell as any}
       footer={footer}
       width={width}
       flexGrow={flexGrow}

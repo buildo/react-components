@@ -37,7 +37,7 @@ const label = "Resize the browser to trigger TextOverflow";
 </TextOverflow>;
 ```
 
-TextOverflow can be used in any place. Below we're using it in a `Dropdown` label:
+TextOverflow can be used in any place. Below we're using it in a `SingleDropdown` label:
 
 ```js
 intialState = { value: undefined };
@@ -89,6 +89,6 @@ const dropdownProps = {
 };
 
 <FlexView style={{ maxWidth: 50 }}>
-  <Dropdown {...dropdownProps} />
+  <SingleDropdown {...dropdownProps} />
 </FlexView>;
 ```

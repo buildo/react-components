@@ -34,17 +34,23 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
   linkify(string: string): React.ReactNode {
     const matches = linkify.match(string);
     if (matches) {
-      return matches.reduce((acc, match, i) => {
-        const nextMatch = matches[i + 1];
+      return matches.reduce(
+        (acc, match, i) => {
+          const nextMatch = matches[i + 1];
 
-        return [
-          ...(acc || [string.slice(0, match.index)]),
-          <a href={match.url} target="_blank">
-            {match.raw}
-          </a>,
-          string.slice(match.lastIndex, nextMatch ? nextMatch.index : undefined)
-        ];
-      }, null);
+          return [
+            ...(acc || [string.slice(0, match.index)]),
+            <a href={match.url} target="_blank">
+              {match.raw}
+            </a>,
+            string.slice(
+              match.lastIndex,
+              nextMatch ? nextMatch.index : undefined
+            )
+          ];
+        },
+        null as any
+      );
     } else {
       return string;
     }

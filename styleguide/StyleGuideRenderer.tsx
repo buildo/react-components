@@ -16,10 +16,10 @@ export default class StyleGuideRenderer extends React.Component {
     // TODO: find a better way to make examples work without an "export default" in the component file
     Object.keys(brc).forEach(k => {
       if (k !== "__es6Module") {
-        global[k] = brc[k];
+        (global as any)[k] = (brc as any)[k];
       }
     });
-    global["getBackgroundUrl"] = getBackgroundUrl;
+    (global as any)["getBackgroundUrl"] = getBackgroundUrl;
   }
 
   render() {
