@@ -1,5 +1,7 @@
 import * as React from "react";
 import Select, { components } from "react-select";
+import { getOptionValue } from "react-select/lib/builtins";
+
 import Creatable from "react-select/lib/Creatable";
 import { Props } from "react-select/lib/Creatable";
 import * as cx from "classnames";
@@ -26,7 +28,7 @@ type NonDefaultProps<OptionType> = CommonProps<
 function isAll<OptionType>(
   value?: OptionType | SelectAllOptionType
 ): value is SelectAllOptionType {
-  return value !== undefined && value["value"] === "_ALL";
+  return value !== undefined && getOptionValue(value) === "_ALL";
 }
 
 export namespace MultiDropdownWithSelectAll {
@@ -37,7 +39,7 @@ export namespace MultiDropdownWithSelectAll {
 function isGroupedOptionsArray<OptionType>(
   options: Array<GroupType<OptionType>> | Array<OptionType>
 ): options is Array<GroupType<OptionType>> {
-  return options.length > 0 && options[0]["options"] !== undefined;
+  return options.length > 0 && (options[0] as any).hasOwnProperty("options");
 }
 
 export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
