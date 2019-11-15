@@ -18,12 +18,14 @@ export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: "AllSelected" };
 }
 
-export function someSelected<OptionType>(values: OptionType[]) {
-  return { type: "SomeSelecetd", values };
+export function someSelected<OptionType>(
+  values: OptionType[]
+): SelectAllValue<OptionType> {
+  return { type: "SomeSelected", values };
 }
 
 type SelectAllOptionType = { value: "_ALL"; label: string };
-type SelectAllValue<OptionType> =
+export type SelectAllValue<OptionType> =
   | {
       type: "AllSelected";
     }
@@ -38,6 +40,7 @@ type NonDefaultProps<OptionType> = CommonProps<
   selectAllLabel: string;
   value: SelectAllValue<OptionType>;
   onChange: (value: SelectAllValue<OptionType>) => void;
+  options: CommonProps<OptionType>["options"];
 };
 
 export namespace MultiDropdownWithSelectAll {
@@ -46,7 +49,7 @@ export namespace MultiDropdownWithSelectAll {
 }
 
 function isGroupedOptionsArray<OptionType>(
-  options: Array<GroupType<OptionType>> | Array<OptionType>
+  options: MultiDropdownWithSelectAll.Props<OptionType>["options"]
 ): options is Array<GroupType<OptionType>> {
   return options.length > 0 && (options[0] as any).hasOwnProperty("options");
 }
@@ -66,7 +69,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
   ):
     | Array<OptionType | SelectAllOptionType>
     | Array<GroupType<OptionType | SelectAllOptionType>> => {
-    if (options === undefined || options.length === 0) return [];
+    if (options.length === 0) return [];
     else if (isGroupedOptionsArray(options)) {
       return [{ options: [this.selectAllOption] }, ...options];
     } else {
