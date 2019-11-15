@@ -1,6 +1,5 @@
 import * as React from "react";
 import Select, { components } from "react-select";
-import { getOptionValue } from "react-select/lib/builtins";
 
 import Creatable from "react-select/lib/Creatable";
 import { Props } from "react-select/lib/Creatable";
@@ -13,23 +12,33 @@ import {
   getCommonClassnames,
   DefaultProps
 } from "./commons";
-import { GroupType } from "react-select/lib/types";
+import { GroupType, ValueType } from "react-select/lib/types";
+
+export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
+  return { type: "AllSelected" };
+}
+
+export function someSelected<OptionType>(values: OptionType[]) {
+  return { type: "SomeSelecetd", values };
+}
 
 type SelectAllOptionType = { value: "_ALL"; label: string };
+type SelectAllValue<OptionType> =
+  | {
+      type: "AllSelected";
+    }
+  | {
+      type: "SomeSelected";
+      values: OptionType[];
+    };
 
 type NonDefaultProps<OptionType> = CommonProps<
   OptionType | SelectAllOptionType
 > & {
   selectAllLabel: string;
-  value: OptionType[] | SelectAllOptionType;
-  onChange: (value: OptionType[] | SelectAllOptionType) => void;
+  value: SelectAllValue<OptionType>;
+  onChange: (value: SelectAllValue<OptionType>) => void;
 };
-
-function isAll<OptionType>(
-  value?: OptionType | SelectAllOptionType
-): value is SelectAllOptionType {
-  return value !== undefined && getOptionValue(value) === "_ALL";
-}
 
 export namespace MultiDropdownWithSelectAll {
   export type Props<OptionType> = NonDefaultProps<OptionType> &
@@ -65,6 +74,25 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     }
   };
 
+  onChange = (value: ValueType<SelectAllOptionType | OptionType>) => {
+    const valueArray: (OptionType | SelectAllOptionType)[] =
+      value && Array.isArray(value) ? value : [];
+
+    if (
+      valueArray.length > 0 &&
+      valueArray[valueArray.length - 1] == this.selectAllOption
+    ) {
+      this.props.onChange({ type: "AllSelected" });
+    } else {
+      this.props.onChange({
+        type: "SomeSelected",
+        values: valueArray.filter(
+          a => a !== this.selectAllOption
+        ) as OptionType[]
+      });
+    }
+  };
+
   render() {
     const {
       props: {
@@ -74,8 +102,8 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
         size,
         flat,
         options: _options,
-        onChange: _onChange,
         innerRef,
+        value: selectAllValue,
         ...props
       }
     } = this;
@@ -84,19 +112,31 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
       Props<OptionType | SelectAllOptionType>
     > = allowCreate ? Creatable : Select;
 
+    const dropdownValue = selectAllValue
+      ? selectAllValue.type === "AllSelected"
+        ? this.selectAllOption
+        : selectAllValue.values
+      : [];
+
     return (
       <Component
+        classNamePrefix="dropdown"
+        className={cx(
+          getCommonClassnames(size, flat || false, props.isSearchable),
+          "is-multi",
+          className
+        )}
         styles={defaultStyle}
         {...props}
-        classNamePrefix="dropdown"
+        value={dropdownValue}
+        onChange={this.onChange}
         options={this.injectSelectAllOptions(_options)}
         components={{
           ...defaultComponents<OptionType | SelectAllOptionType>(),
           ValueContainer: ({ children, ...props }) => {
-            const currentValue = props.getValue();
             return (
               <components.ValueContainer {...props}>
-                {Array.isArray(currentValue) && isAll(currentValue[0]) ? (
+                {selectAllValue && selectAllValue.type === "AllSelected" ? (
                   <components.SingleValue
                     {...props}
                     data={this.selectAllOption}
@@ -113,27 +153,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
           },
           ...customComponents
         }}
-        className={cx(
-          getCommonClassnames(size, flat || false, props.isSearchable),
-          "is-multi",
-          className
-        )}
         ref={innerRef}
         isSearchable={allowCreate || props.isSearchable}
         isMulti
-        onChange={value => {
-          const valueArray: (OptionType | SelectAllOptionType)[] =
-            value && Array.isArray(value) ? value : [];
-
-          if (
-            valueArray.length > 0 &&
-            valueArray[valueArray.length - 1] == this.selectAllOption
-          ) {
-            _onChange(this.selectAllOption);
-          } else {
-            _onChange(valueArray.filter(a => !isAll(a)) as OptionType[]);
-          }
-        }}
       />
     );
   }

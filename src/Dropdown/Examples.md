@@ -157,11 +157,11 @@ Using a `MultiDropdownWithSelectAll` component, it's possible to automatically a
 
 ```js
 initialState = {};
-const onChange = value => {
-  if (value.value === "_ALL") {
+const onChange = newVal => {
+  if (newVal.type === "AllSelected") {
     console.log("ALL selected!");
   }
-  setState({ value });
+  setState({ value: newVal });
 };
 const options = [
   { value: "apple", label: "Apple" },
