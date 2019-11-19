@@ -27,15 +27,20 @@ export class Form extends React.PureComponent<Form.Props> {
   };
 
   render() {
-    const { className, style, render, ...props } = this.props;
-
+    const {
+      className,
+      style,
+      render,
+      noSubmitOnEnter,
+      ...viewProps
+    } = this.props;
     return (
       <form
         className={cx("form", className)}
         onSubmit={this.onFormSubmit}
         style={{ width: "100%", ...style }}
       >
-        <View {...props}>{render(this.buttonRef)}</View>
+        <View {...viewProps}>{render(this.buttonRef)}</View>
         <input type="submit" style={{ display: "none" }} />
       </form>
     );
