@@ -72,12 +72,16 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
     const paragraphs = children.split(/\n/g);
     return flattenDeep(
       paragraphs.map((paragraph, i) => {
+        const br = <br key={`br-${i}`} />;
+        const p = (
+          <React.Fragment key={`paragraph-${i}`}>{paragraph}</React.Fragment>
+        );
         if (paragraph.length === 0) {
-          return <br />;
+          return br;
         } else if (i < paragraphs.length - 1) {
-          return [paragraph, <br />];
+          return [p, br];
         } else {
-          return paragraph;
+          return p;
         }
       })
     );
