@@ -67,16 +67,19 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
     render: FormField.Props["render"],
     hint: FormField.Props["hint"]
   ) => {
-    const Field = render(
-      this.stateChange("focused", true),
-      this.stateChange("focused", false)
+    const Field = (
+      <React.Fragment key="no-hint">
+        {render(
+          this.stateChange("focused", true),
+          this.stateChange("focused", false)
+        )}
+      </React.Fragment>
     );
-
     if (hint) {
       switch (hint.type) {
         case "label":
           return (
-            <View grow column>
+            <View grow column key="label-hint">
               {Field}
               <View className={cx("form-field-hint", "form-field-hint-label")}>
                 {hint.content}
@@ -85,7 +88,7 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
           );
         case "box":
           return (
-            <View grow>
+            <View grow key="box-hint">
               {Field}
               <View
                 shrink={false}
@@ -98,7 +101,7 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
         case "tooltip":
           return (
             <Popover
-              key="popover"
+              key="popover-hint"
               className={cx("form-field-hint", "form-field-hint-tooltip")}
               popover={{
                 position: "right",
