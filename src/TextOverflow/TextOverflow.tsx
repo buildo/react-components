@@ -235,7 +235,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     );
   };
 
-  templateOverflow = () => {
+  templateOverflow = (): JSX.Element => {
     const {
       state: { isHovering }
     } = this;
@@ -249,7 +249,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     } = this.props as TextOverflowDefaultedProps;
 
     if (children) {
-      return children(this.getContent(), lazy ? isHovering : undefined);
+      return <>{children(this.getContent(), lazy ? isHovering : undefined)}</>;
     } else {
       const content = label as NonNullable<Children>;
       const popover: Popover.PopoverSettings = {
@@ -271,7 +271,7 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     }
   };
 
-  templeteStandard = () => {
+  templeteStandard = (): JSX.Element => {
     const { style, ...other } = this.props;
     const props = {
       ...omit(other, ["children", "label", "lazy", "delayWhenLazy", "popover"]),
