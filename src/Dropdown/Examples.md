@@ -180,6 +180,61 @@ const options = [
 />;
 ```
 
+#### Async options
+
+It is also possible to load the dropdown options asynchronously as the user types in the search input box:
+
+```js
+initialState = {
+  options: [],
+  value: null,
+  loading: false
+};
+
+var timeout = null;
+
+const generateOptions = searchString =>
+  searchString
+    ? Array.from({ length: 5 }, (_, k) => ({
+        value: searchString + k,
+        label: searchString + k
+      }))
+    : [];
+
+const onInputChange = inputString => {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  if (inputString) {
+    setState({ loading: true });
+    timeout = setTimeout(() => {
+      setState({ options: generateOptions(inputString), loading: false });
+    }, 2000);
+  } else {
+    setState({ options: [] });
+  }
+};
+
+const onChange = newVal => {
+  if (newVal.type === "AllSelected") {
+    console.log("ALL selected!");
+  }
+  setState({ value: newVal });
+};
+
+<MultiDropdownWithSelectAll
+  className="custom"
+  value={state.value}
+  isSearchable
+  onChange={onChange}
+  onInputChange={onInputChange}
+  placeholder="Select some fruit(s)"
+  options={state.options}
+  selectAllLabel="All"
+  isLoading={state.loading}
+/>;
+```
+
 #### Groups
 
 Dropdown could also allow the grouping
