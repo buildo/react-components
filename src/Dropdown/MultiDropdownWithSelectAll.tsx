@@ -13,6 +13,7 @@ import {
   DefaultProps
 } from "./commons";
 import { GroupType, ValueType } from "react-select/lib/types";
+import { ValueContainerProps } from "react-select/lib/components/containers";
 
 export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: "AllSelected" };
@@ -64,13 +65,42 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     label: this.props.selectAllLabel
   };
 
+  // if this component is defined inside the render method, the search input will lose focus
+  // every time the component is re-rendered (e.g. every time we set new async options)
+  valueContainer = (
+    valueContainerProps: ValueContainerProps<OptionType | SelectAllOptionType>
+  ) => {
+    if (this.props.value && this.props.value.type === "AllSelected") {
+      const { children, ...otherProps } = valueContainerProps;
+      const childrenWithoutValues = React.Children.toArray(children).filter(
+        c => !!c && (c as any).type.name !== "MultiValue"
+      );
+      return (
+        <components.ValueContainer {...otherProps}>
+          {!valueContainerProps.selectProps.inputValue && ( // hide the 'All' value if the user is searching for something
+            <components.SingleValue
+              {...otherProps}
+              data={this.selectAllOption}
+              innerProps={{}}
+              isDisabled={false}
+            >
+              {this.selectAllOption.label}
+            </components.SingleValue>
+          )}
+          {childrenWithoutValues}
+        </components.ValueContainer>
+      );
+    } else {
+      return <components.ValueContainer {...valueContainerProps} />;
+    }
+  };
+
   injectSelectAllOptions = (
     options: MultiDropdownWithSelectAll.Props<OptionType>["options"]
   ):
     | Array<OptionType | SelectAllOptionType>
     | Array<GroupType<OptionType | SelectAllOptionType>> => {
-    if (options.length === 0) return [];
-    else if (isGroupedOptionsArray(options)) {
+    if (isGroupedOptionsArray(options)) {
       return [{ options: [this.selectAllOption] }, ...options];
     } else {
       return [this.selectAllOption, ...options];
@@ -136,24 +166,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
         options={this.injectSelectAllOptions(_options)}
         components={{
           ...defaultComponents<OptionType | SelectAllOptionType>(),
-          ValueContainer: ({ children, ...props }) => {
-            return (
-              <components.ValueContainer {...props}>
-                {selectAllValue && selectAllValue.type === "AllSelected" ? (
-                  <components.SingleValue
-                    {...props}
-                    data={this.selectAllOption}
-                    innerProps={{}}
-                    isDisabled={false}
-                  >
-                    {this.props.selectAllLabel}
-                  </components.SingleValue>
-                ) : (
-                  children
-                )}
-              </components.ValueContainer>
-            );
-          },
+          ValueContainer: this.valueContainer,
           ...customComponents
         }}
         ref={innerRef}
