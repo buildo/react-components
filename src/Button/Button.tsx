@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as cx from "classnames";
 import every = require("lodash/every");
-import { props, t, stateClassUtil } from "../utils";
-import { ReactChild } from "tcomb-react";
+import { stateClassUtil } from "../utils";
 import { TextOverflow } from "../TextOverflow/TextOverflow";
 import FlexView from "react-flexview";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { warn } from "../utils/log";
 
 export type ButtonRequiredProps = {
   /** callback */
@@ -65,28 +65,8 @@ export namespace Button {
 
 type ButtonDefaultedProps = ButtonRequiredProps & ButtonDefaultProps;
 
-// types
-export const buttonStates: Button.ButtonState[] = [
-  "ready",
-  "not-allowed",
-  "processing",
-  "error",
-  "success"
-];
-const ButtonState = t.enums.of(buttonStates, "ButtonState");
-export const buttonTypes: Button.ButtonType[] = [
-  "default",
-  "primary",
-  "positive",
-  "negative",
-  "flat"
-];
-const ButtonType = t.enums.of(buttonTypes, "ButtonType");
-export const buttonSizes: Button.ButtonSize[] = ["tiny", "small", "medium"];
-const ButtonSize = t.enums.of(buttonSizes, "ButtonSize");
-
 // util
-const notBoth = (a: any, b: any): boolean => !(a && b);
+const notBoth = (a: unknown, b: unknown): boolean => !(a && b);
 const satisfyAll = (...conditions: Array<(props: Button.Props) => boolean>) => (
   props: ButtonRequiredProps
 ) => every(conditions, c => c(props));
@@ -99,29 +79,6 @@ const propsInvariants: Array<(props: Button.Props) => boolean> = [
   ({ circular, icon, label }) => !circular || !!(icon && !label), // circularOnlyIfIconAndNotLabel
   ({ type, primary, flat }) => notBoth(type, flat || primary) // notBothTypeAndItsShortucts
 ];
-
-export const ButtonPropTypes = {
-  buttonState: t.maybe(ButtonState),
-  onClick: t.Function,
-  label: t.maybe(t.union([t.String, t.dict(ButtonState, t.String)])),
-  icon: t.maybe(t.union([ReactChild, t.dict(ButtonState, ReactChild)])),
-  children: t.maybe(t.String),
-  type: t.maybe(ButtonType),
-  primary: t.maybe(t.Boolean),
-  flat: t.maybe(t.Boolean),
-  size: t.maybe(ButtonSize),
-  fluid: t.maybe(t.Boolean),
-  circular: t.maybe(t.Boolean),
-  textOverflow: t.maybe(t.Function),
-  style: t.maybe(t.Object),
-  className: t.maybe(t.String)
-};
-
-export const Props = t.refinement(
-  t.struct(ButtonPropTypes),
-  satisfyAll(...propsInvariants),
-  "ButtonProps"
-);
 
 const defaultLabels: Button.ButtonStateMap<string> = {
   success: "success",
@@ -157,7 +114,6 @@ const defaultIcons: Button.ButtonStateMap<JSX.Element> = {
   error: defaultErrorIcon
 };
 
-@props(Props)
 export class Button extends React.PureComponent<Button.Props> {
   static defaultProps: ButtonDefaultProps = {
     textOverflow: TextOverflow,
@@ -169,6 +125,14 @@ export class Button extends React.PureComponent<Button.Props> {
     className: "",
     style: {}
   };
+
+  componentDidMount() {
+    if (process.env.NODE_ENV !== "production") {
+      if (!satisfyAll(...propsInvariants)(this.props)) {
+        warn("Button: some prop invariant is not satisfied");
+      }
+    }
+  }
 
   templateLoading = () => (
     <FlexView
@@ -225,7 +189,7 @@ export class Button extends React.PureComponent<Button.Props> {
 
     const labels = {
       ...defaultLabels,
-      ...(t.String.is(l) ? { ready: l, "not-allowed": l } : l)
+      ...(typeof l === "string" ? { ready: l, "not-allowed": l } : l)
     };
 
     const icons = {
