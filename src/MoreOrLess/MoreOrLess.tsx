@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, ReactChild } from "../utils";
 import FlexView from "react-flexview";
+import { Children } from "../utils";
 
 export namespace MoreOrLess {
   export type Props = {
     /** panel content */
-    children: any; // TODO: t.ReactChildren
+    children: Children;
     /** whether the panel should be expanded or not */
     expanded: boolean;
     /** called on toggle */
@@ -25,23 +25,9 @@ export namespace MoreOrLess {
   };
 }
 
-export const Props = {
-  children: ReactChildren,
-  expanded: t.Boolean,
-  onExpandedChange: t.Function,
-  icons: t.struct({
-    expanded: ReactChild,
-    collapsed: ReactChild
-  }),
-  wrapperProps: t.maybe(t.Object),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /**
  * A panel used to alternately display short or long version of the content
  */
-@props(Props)
 export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
   toggleExpanded = () => {
     this.props.onExpandedChange(!this.props.expanded);

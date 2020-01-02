@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t, ReactElement } from "../utils";
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
 
 export namespace Overflow {
@@ -18,16 +17,7 @@ export type State = {
   isOverflowing: boolean;
 };
 
-export const Props = {
-  content: ReactElement,
-  contentIfOverflowing: ReactElement,
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /** Util component to render a different react node if the original one overflows its parent. */
-@props(Props)
 export class Overflow extends React.Component<Overflow.Props, State> {
   private ref: HTMLDivElement | null = null;
 

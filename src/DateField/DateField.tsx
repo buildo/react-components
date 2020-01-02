@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import every = require("lodash/every");
 import * as cx from "classnames";
 import View from "react-flexview";
@@ -37,20 +36,6 @@ export type State = {
   isValid: boolean;
 };
 
-export const Props = {
-  value: t.maybe(t.Date),
-  onChange: t.Function,
-  onValidChange: t.maybe(t.Function),
-  placeholders: t.maybe(
-    t.struct({
-      day: t.maybe(t.String),
-      month: t.maybe(t.String),
-      year: t.maybe(t.String)
-    })
-  ),
-  inputTypeNumber: t.maybe(t.Boolean)
-};
-
 function parseDate(date: Date) {
   return {
     day: String(date.getDate()),
@@ -70,7 +55,6 @@ const initialState: State = {
 /**
  *  A simple component used to visually divide UI elements
  */
-@props(Props)
 export class DateField extends React.PureComponent<DateField.Props, State> {
   state = this.props.value
     ? {

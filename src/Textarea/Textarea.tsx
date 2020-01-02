@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, ObjectOverwrite } from "../utils";
+import { ObjectOverwrite } from "../utils";
 import TextareaAutosize from "react-autosize-textarea";
 
 export type TextareaRequiredProps = ObjectOverwrite<
@@ -23,17 +23,6 @@ export namespace Textarea {
   export type Props = TextareaRequiredProps & Partial<TextareaDefaultProps>;
 }
 
-export const Props = {
-  value: t.String,
-  onChange: t.Function,
-  placeholder: t.maybe(t.String),
-  disabled: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props, { strict: false })
 export class Textarea extends React.PureComponent<Textarea.Props> {
   static defaultProps: TextareaDefaultProps = {
     disabled: false

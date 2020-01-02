@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import flattenDeep = require("lodash/flattenDeep");
 import * as _linkify from "linkify-it";
 import { LinkifyIt } from "linkify-it";
@@ -21,15 +20,6 @@ export namespace FormattedText {
   };
 }
 
-export const Props = {
-  children: t.String,
-  linkify: t.maybe(t.Boolean),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class FormattedText extends React.PureComponent<FormattedText.Props> {
   linkify(string: string): React.ReactNode {
     const matches = linkify.match(string);
@@ -59,7 +49,7 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
   replaceLinksWithA(children: React.ReactNode[]): React.ReactNode[] {
     return flattenDeep(
       children.map(child => {
-        if (t.String.is(child)) {
+        if (typeof child === "string") {
           return this.linkify(child);
         } else {
           return child;

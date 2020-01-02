@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
-import { props, t } from "../utils";
 
 export type RadioOption = {
   label: string;
@@ -31,18 +30,6 @@ export namespace RadioGroup {
   export type Props = RadioGroupRequiredProps & Partial<RadioGroupDefaultProps>;
 }
 
-export const Props = {
-  value: t.maybe(t.String),
-  onChange: t.Function,
-  options: t.list(t.interface({ label: t.String, value: t.String })),
-  disabled: t.maybe(t.Boolean),
-  horizontal: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
   static defaultProps: RadioGroupDefaultProps = {
     disabled: false,

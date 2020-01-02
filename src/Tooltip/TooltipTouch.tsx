@@ -1,13 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
-import {
-  Tooltip,
-  TooltipDefaultProps,
-  TooltipRequiredProps,
-  Props
-} from "./Tooltip";
+import { Tooltip, TooltipDefaultProps, TooltipRequiredProps } from "./Tooltip";
 import View from "react-flexview";
-import { props } from "../utils";
 import { findDOMNode } from "../utils";
 
 export type State = {
@@ -24,7 +18,6 @@ export namespace TooltipTouch {
 
 type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
-@props(Props)
 export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
   static defaultProps: TooltipDefaultProps = {
     type: "dark",
@@ -148,5 +141,3 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
     );
   }
 }
-
-export { Props };

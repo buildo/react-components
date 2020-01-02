@@ -1,8 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, ReactChild } from "../utils";
 import omit = require("lodash/omit");
-import { ModalPortal, Props as PortalProps } from "./ModalPortal";
+import { ModalPortal } from "./ModalPortal";
 import FlexView from "react-flexview";
 import { BackgroundDimmer } from "./BackgroundDimmer";
 

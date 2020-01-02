@@ -1,13 +1,12 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
 import FlexView from "react-flexview";
 import omit = require("lodash/omit");
-import { findDOMNode } from "../utils";
+import { findDOMNode, Children } from "../utils";
 
 export type BackgroundDimmerRequiredProps = {
   /** children nodes/elements */
-  children: any; // TODO: t.ReactChildren
+  children: Children;
   /** called when user clicks outside children */
   onClickOutside?: (e: React.SyntheticEvent<HTMLDivElement>) => void;
   /** component's class */
@@ -45,23 +44,6 @@ export namespace BackgroundDimmer {
     Partial<BackgroundDimmerDefaultProps>;
 }
 
-export const Props = {
-  children: ReactChildren,
-  color: t.maybe(t.String),
-  alpha: t.maybe(t.Number),
-  zIndex: t.maybe(t.Number),
-  stopScrollPropagation: t.maybe(t.Boolean),
-  onClickOutside: t.maybe(t.Function),
-  width: t.maybe<string | number>(t.union([t.String, t.Number])),
-  maxWidth: t.maybe<string | number>(t.union([t.String, t.Number])),
-  height: t.maybe<string | number>(t.union([t.String, t.Number])),
-  maxHeight: t.maybe<string | number>(t.union([t.String, t.Number])),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class BackgroundDimmer extends React.PureComponent<
   BackgroundDimmer.Props
 > {

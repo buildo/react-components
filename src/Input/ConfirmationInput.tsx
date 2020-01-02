@@ -1,10 +1,8 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t } from "../utils";
 import omit = require("lodash/omit");
 import { Input } from "../Input/Input";
 import FlexView from "react-flexview";
-import { ReactChild } from "tcomb-react";
 
 export type ConfirmationInputRequiredProps = {
   /** input placeholder */
@@ -56,33 +54,12 @@ export namespace ConfirmationInput {
 type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps &
   ConfirmationInputDefaultProps;
 
-export const Props = {
-  initialValue: t.maybe(t.String),
-  onChange: t.maybe(t.Function),
-  onConfirm: t.maybe(t.Function),
-  onClear: t.maybe(t.Function),
-  placeholder: t.maybe(t.String),
-  disabled: t.maybe(t.Boolean),
-  text: t.struct({
-    clear: t.maybe(t.String),
-    toConfirm: t.maybe(t.String)
-  }),
-  icon: t.struct({
-    clear: t.maybe(ReactChild),
-    toConfirm: t.maybe(ReactChild)
-  }),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 export type State = {
   focused: boolean;
   hoveringConfirm: boolean;
   value: string;
 };
 
-@props(Props, { strict: false })
 export class ConfirmationInput extends React.PureComponent<
   ConfirmationInput.Props,
   State

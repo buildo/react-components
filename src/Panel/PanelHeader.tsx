@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, stateClassUtil, ReactChildren, Children } from "../utils";
+import { stateClassUtil, Children } from "../utils";
 import FlexView from "react-flexview";
 import * as cx from "classnames";
 
@@ -82,22 +82,6 @@ const icons = {
   right: [angleRightIcon, angleLeftIcon]
 };
 
-const headerSizes = ["tiny", "small", "medium"];
-export const HeaderSize = t.enums.of(headerSizes, "HeaderSize");
-
-@props({
-  collapse: t.maybe(
-    t.struct({
-      isExpanded: t.Boolean,
-      direction: t.enums.of(Object.keys(icons)),
-      onToggleExpanded: t.Function
-    })
-  ),
-  size: HeaderSize,
-  title: t.maybe(ReactChildren),
-  content: t.maybe(ReactChildren),
-  menu: t.maybe(ReactChildren)
-})
 export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
   static defaultProps: PanelHeaderDefaultProps = {
     size: "small"
@@ -119,12 +103,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
     const renderTitle = !!title && renderInnerHeader;
     const renderContent = !!content && renderInnerHeader;
     const renderMenu = menu && renderInnerHeader;
-    const height =
-      size === HeaderSize("tiny")
-        ? 40
-        : size === HeaderSize("medium")
-        ? 56
-        : 48;
+    const height = size === "tiny" ? 40 : size === "medium" ? 56 : 48;
     const className = cx("panel-header", stateClassUtil([size]));
 
     return (

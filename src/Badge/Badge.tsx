@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactNode, Children } from "../utils";
+import { Children } from "../utils";
 import FlexView from "react-flexview";
 
 export namespace Badge {
@@ -16,14 +16,6 @@ export namespace Badge {
   };
 }
 
-export const Props = {
-  label: ReactNode,
-  active: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class Badge extends React.PureComponent<Badge.Props> {
   render() {
     const { label, active, className: _className, style } = this.props;

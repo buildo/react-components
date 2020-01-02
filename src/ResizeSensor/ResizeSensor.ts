@@ -1,14 +1,7 @@
 import * as React from "react";
 import _debounce = require("lodash/debounce");
-import { props, t, ReactChildren } from "../utils";
 import _ResizeSensor = require("css-element-queries/src/ResizeSensor");
 import { findDOMNode } from "../utils";
-
-export const Props = {
-  children: ReactChildren,
-  onResize: t.Function,
-  debounce: t.maybe(t.Integer)
-};
 
 export namespace ResizeSensor {
   export type Props = {
@@ -28,7 +21,6 @@ interface ResizeSensorElement extends Element {
 /**
  * A component that exposes an `onResize` callback called whenever his parent's size changes.
  */
-@props(Props)
 export class ResizeSensor extends React.Component<ResizeSensor.Props> {
   private elementQueries: boolean = false;
   private resizeSensor: {} | null = null;

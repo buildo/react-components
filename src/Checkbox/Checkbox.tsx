@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
-import { props, t } from "../utils";
 
 export type CheckboxRequiredProps = {
   /** value */
@@ -30,20 +29,6 @@ export namespace Checkbox {
   export type Props = CheckboxRequiredProps & Partial<CheckboxDefaultProps>;
 }
 
-export const Props = {
-  value: t.Boolean,
-  onChange: t.Function,
-  text: t.maybe(t.String),
-  onFocus: t.maybe(t.Function),
-  onBlur: t.maybe(t.Function),
-  disabled: t.maybe(t.Boolean),
-  readOnly: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class Checkbox extends React.PureComponent<Checkbox.Props> {
   static defaultProps: CheckboxDefaultProps = {
     disabled: false,

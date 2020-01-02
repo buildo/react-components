@@ -1,26 +1,10 @@
 import * as React from "react";
 import omit = require("lodash/omit");
 import debounce = require("lodash/debounce");
-import { props, t, ObjectOverwrite, Children } from "../utils";
+import { ObjectOverwrite, Children } from "../utils";
 import { warn } from "../utils/log";
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
 import { Popover } from "../Popover/Popover";
-
-export const Props = {
-  children: t.maybe(t.Function),
-  label: t.maybe(t.union([t.String, t.Number])),
-  popover: t.maybe(
-    t.interface({
-      position: t.maybe(t.enums.of(["top", "bottom", "left", "right"])),
-      content: t.Nil
-    })
-  ),
-  lazy: t.maybe(t.Boolean),
-  delayWhenLazy: t.maybe(t.Integer),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
 
 export type TextOverflowDefaultProps = {
   /** tooltip delay if the component is lazy */
@@ -61,7 +45,6 @@ export type State = {
 /**
  * Text view which, if string content is too large, trims it and shows the full content on "hover".
  */
-@props(Props, { strict: false })
 export class TextOverflow extends React.Component<TextOverflow.Props, State> {
   private text: HTMLSpanElement | null = null;
   private textWithoutEllipsis: HTMLSpanElement | null = null;

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t, ReactElement } from "../utils";
 import * as cx from "classnames";
 import View from "react-flexview";
 
@@ -23,21 +22,7 @@ export namespace AsyncStatusIndicator {
   };
 }
 
-export const AsyncStatusIndicatorState = t.enums.of(
-  ["ready", "processing", "success", "error"],
-  "AsyncStatusIndicatorState"
-);
-
-export const Props = {
-  state: AsyncStatusIndicatorState,
-  icons: t.dict(AsyncStatusIndicatorState, ReactElement),
-  labels: t.dict(AsyncStatusIndicatorState, t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /** A component that shows the status of an async operation */
-@props(Props)
 export class AsyncStatusIndicator extends React.PureComponent<
   AsyncStatusIndicator.Props
 > {

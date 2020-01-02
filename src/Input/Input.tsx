@@ -1,12 +1,11 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, ObjectOverwrite, Children } from "../utils";
+import { ObjectOverwrite, Children } from "../utils";
 import omit = require("lodash/omit");
 import InputChildren from "react-input-children";
 import View from "react-flexview";
 
 export type InputStatus = "success" | "failure";
-const InputStatusT = t.enums.of(["success", "failure"]);
 
 export type InputRequiredProps = ObjectOverwrite<
   InputChildren.Props,
@@ -47,19 +46,6 @@ const failureIcon = (
   </svg>
 );
 
-export const Props = {
-  value: t.String,
-  onChange: t.Function,
-  placeholder: t.maybe(t.String),
-  disabled: t.maybe(t.Boolean),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object),
-  children: t.maybe(ReactChildren),
-  status: t.maybe(InputStatusT)
-};
-
-@props(Props, { strict: false })
 export class Input extends React.PureComponent<Input.Props> {
   static defaultProps: InputDefaultProps = {
     disabled: false

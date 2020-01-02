@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, Children } from "../utils";
-import { PanelHeader, HeaderSize } from "./PanelHeader";
+import { Children } from "../utils";
+import { PanelHeader } from "./PanelHeader";
 import capitalize = require("lodash/capitalize");
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import FlexView from "react-flexview";
@@ -48,54 +48,16 @@ export namespace Panel {
       isCollapsed?: boolean;
     };
     size?: PanelHeader.Props["size"];
-    content?: any; // TODO: t.ReactChildren
+    content?: Children;
     title?: any; // TODO(typo): wtf
     hideTitleWhenExpanded?: boolean;
-    menu?: any; // TODO: t.ReactChildren
+    menu?: Children;
   };
 
   export type Props = PanelRequiredProps & Partial<PanelDefaultProps>;
 }
 
-export const Props = {
-  type: t.enums.of([
-    "docked-top",
-    "docked-left",
-    "docked-right",
-    "docked-bottom",
-    "floating"
-  ]),
-  header: t.maybe(
-    t.struct({
-      collapse: t.maybe(
-        t.struct({
-          direction: t.enums.of(["up", "left", "right", "down"]),
-          onExpand: t.Function,
-          onCollapse: t.Function,
-          isCollapsed: t.maybe(t.Boolean)
-        })
-      ),
-      size: t.maybe(HeaderSize),
-      content: t.maybe(ReactChildren),
-      title: t.maybe(ReactChildren),
-      hideTitleWhenExpanded: t.maybe(t.Boolean),
-      menu: t.maybe(ReactChildren)
-    })
-  ),
-  loading: t.maybe(t.Boolean),
-  dark: t.maybe(t.Boolean),
-  softLoading: t.maybe(t.Boolean),
-  softLoadingDelay: t.maybe(
-    t.refinement(t.Number, v => v >= 0, "NonNegativeNumber")
-  ),
-  children: ReactChildren,
-  className: t.maybe(t.String),
-  clearMargin: t.maybe(t.enums.of(["top", "left", "right", "bottom"])),
-  style: t.maybe(t.Object)
-};
-
 /** A simple component used to group elements in a box. */
-@props(Props)
 export class Panel extends React.PureComponent<Panel.Props> {
   static defaultProps: PanelDefaultProps = {
     style: {},

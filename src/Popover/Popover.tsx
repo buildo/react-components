@@ -3,48 +3,9 @@ import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import debounce = require("lodash/debounce");
 import uniq = require("lodash/uniq");
-import { props, t, ReactChildren, getContextWrapper, Children } from "../utils";
+import { getContextWrapper, Children } from "../utils";
 
 const NO_SIZE_WRAPPER = "no-size-wrapper";
-
-export const Props = {
-  children: ReactChildren,
-  popover: t.struct({
-    content: ReactChildren,
-    auto: t.maybe(t.Boolean),
-    attachToBody: t.maybe(t.Boolean),
-    position: t.maybe(t.enums.of(["top", "bottom", "left", "right"])),
-    anchor: t.maybe(t.enums.of(["start", "center", "end"])),
-    event: t.maybe(t.enums.of(["click", "hover"])),
-    onShow: t.maybe(t.Function),
-    onHide: t.maybe(t.Function),
-    onToggle: t.maybe(t.Function),
-    dismissOnScroll: t.maybe(t.Boolean),
-    dismissOnClickOutside: t.maybe(t.Boolean),
-    className: t.maybe(t.String),
-    style: t.maybe(t.Object),
-    id: t.maybe(t.String),
-    maxWidth: t.maybe(t.union([t.Number, t.String])),
-    distance: t.maybe(t.Number),
-    offsetX: t.maybe(t.Number),
-    offsetY: t.maybe(t.Number),
-    isOpen: t.maybe(t.Boolean),
-    delay: t.maybe(
-      t.union([
-        t.Integer,
-        t.interface({
-          whenClosed: t.maybe(t.Integer),
-          whenOpen: t.maybe(t.Integer)
-        })
-      ])
-    ),
-    contextTypes: t.maybe(t.Object),
-    context: t.maybe(t.Object)
-  }),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
 
 export type State = {
   isOpen: boolean;
@@ -129,7 +90,6 @@ type PopoverStyle = React.CSSProperties & {
  * Composed of two children: trigger (children) and popover. After a particular event on the trigger
  * (usually "hover" or "click") it renders the popover and positions it relative to it.
  */
-@props(Props)
 export class Popover extends React.Component<Popover.Props, State> {
   private children: HTMLDivElement | null = null;
   private initialized: boolean = false;
