@@ -1,7 +1,8 @@
 import * as React from "react";
 import omit = require("lodash/omit");
-import { props, t, ReactChildren, Children } from "../utils";
+import { Children } from "../utils";
 import easing, { EasingType } from "./easingFunctions";
+import isFunction = require("lodash/isFunction");
 
 export type ScrollViewDefaultProps = {
   /** enable horizontal scrolling */
@@ -38,14 +39,17 @@ export namespace ScrollView {
     React.HTMLAttributes<HTMLDivElement>;
 }
 
-export const Props = {
-  children: t.union([ReactChildren, t.Function]),
-  scrollX: t.maybe(t.Boolean),
-  scrollY: t.maybe(t.Boolean),
-  scrollPropagation: t.maybe(t.Boolean),
-  easing: t.maybe(t.enums.of(Object.keys(easing))),
-  onScroll: t.maybe(t.Function),
-  style: t.maybe(t.Object)
+const Props: Record<
+  keyof ScrollViewRequiredProps | keyof ScrollViewDefaultProps,
+  true
+> = {
+  children: true,
+  scrollX: true,
+  scrollY: true,
+  scrollPropagation: true,
+  easing: true,
+  onScroll: true,
+  style: true
 };
 
 /**
@@ -54,7 +58,6 @@ export const Props = {
  * - smooth programmatic scroll with 22 easing functions (see `easingFunctions.js`)
  * - out of the box momentum scrolling on iOS
  */
-@props(Props, { strict: false })
 export class ScrollView extends React.Component<ScrollView.Props> {
   private scrollView: HTMLDivElement | null = null;
   private lastY: number = 0;
@@ -176,8 +179,8 @@ export class ScrollView extends React.Component<ScrollView.Props> {
       const easingFunction = easing[easingType];
 
       if (
-        (t.Number.is(x) && scrollLeft !== x) ||
-        (t.Number.is(y) && scrollTop !== y)
+        (typeof x === "number" && scrollLeft !== x) ||
+        (typeof y === "number" && scrollTop !== y)
       ) {
         const currentTime = Math.min(scrollDuration, Date.now() - startTime);
         const distanceX = x - startX;
@@ -223,7 +226,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
           this.scrollView = sv;
         }}
       >
-        {t.Function.is(children) ? children(this.scrollTo) : children}
+        {isFunction(children) ? children(this.scrollTo) : children}
       </div>
     );
   }
