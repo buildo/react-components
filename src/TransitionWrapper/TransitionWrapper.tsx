@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
 import omit = require("lodash/omit");
-import { props, t, ReactChildren } from "../utils";
 
 export type TransitionWrapperDefaultProps<CP> = {
   /** object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case) */
@@ -50,38 +49,24 @@ export type State = {
   transitionClassName?: string;
 };
 
-const ReactClass = t.irreducible(
-  "ReactClass",
-  x =>
-    x &&
-    x.prototype &&
-    (x.prototype instanceof React.Component ||
-      t.Function.is(x.prototype.render))
-);
-
-export const Props = {
-  children: ReactChildren,
-  component: t.maybe(t.union([ReactClass, t.String])),
-  transitionStyles: t.maybe(
-    t.struct({
-      enter: t.maybe(t.Object),
-      enterActive: t.maybe(t.Object),
-      default: t.maybe(t.Object),
-      leave: t.maybe(t.Object),
-      leaveActive: t.maybe(t.Object)
-    })
-  ),
-  transitionEnterTimeout: t.Number,
-  transitionLeaveTimeout: t.Number,
-  onLeave: t.maybe(t.Function),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
+const Props: Record<
+  | keyof TransitionWrapperRequiredProps
+  | keyof TransitionWrapperDefaultProps<unknown>,
+  true
+> = {
+  children: true,
+  component: true,
+  transitionStyles: true,
+  transitionEnterTimeout: true,
+  transitionLeaveTimeout: true,
+  onLeave: true,
+  className: true,
+  style: true
 };
 
 /**
  * To be used with `ReactTransitionGroup` to show transitions for a component
  */
-@props(Props, { strict: false })
 export class TransitionWrapper<CP extends {}> extends React.PureComponent<
   TransitionWrapper.Props<CP>,
   State
