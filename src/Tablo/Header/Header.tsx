@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, Children } from "../../utils";
+import { Children } from "../../utils";
 import FlexView from "react-flexview";
 
 export type FDTIntrinsic = {
@@ -19,19 +19,6 @@ export namespace Header {
 }
 export type HeaderIntrinsicProps = Header.Props & Intrinsic & FDTIntrinsic;
 
-const { maybe } = t;
-
-const propsTypes = {
-  children: ReactChildren,
-  rowIndex: maybe(t.Number),
-  columnKey: maybe(t.String),
-  width: maybe(t.Number),
-  fixed: maybe(t.Boolean),
-  height: maybe(t.Number),
-  onClick: maybe(t.Function)
-};
-
-@props(propsTypes)
 export class Header extends React.PureComponent<Header.Props> {
   render() {
     const { fixed, onClick: onClick, children } = this

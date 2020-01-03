@@ -1,5 +1,5 @@
 import * as React from "react";
-import { props, t, find } from "../../../utils";
+import { find } from "../../../utils";
 
 import * as cx from "classnames";
 import sortBy = require("lodash/sortBy");
@@ -18,8 +18,6 @@ import ColumnGroup from "../../ColumnGroup";
 import Header, { defaultHeader } from "../../Header";
 import DNDHeader from "./DNDHeader";
 import { getArrayChildren } from "../../utils";
-
-const { maybe, list } = t;
 
 export default <T extends {}>(
   Grid: React.ComponentClass<Tablo.Props<T>>
@@ -162,17 +160,6 @@ export default <T extends {}>(
       return <Grid {...this.getLocals(this.props)} />;
     }
   }
-
-  props(
-    {
-      // transform, manipulate
-      className: maybe(t.String),
-      // add
-      columnsOrder: maybe(list(t.String)),
-      onColumnsReorder: maybe(t.Function)
-    },
-    { strict: false }
-  )(ColumnsReorderGrid);
 
   return dragDropContextHTML5Backend(ColumnsReorderGrid);
 };

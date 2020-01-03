@@ -8,7 +8,7 @@ import {
   DragSourceSpec,
   DragSourceCollector
 } from "react-dnd";
-import { props, t, ReactChildren, Children } from "../../../utils";
+import { Children } from "../../../utils";
 import FlexView from "react-flexview";
 import { findDOMNode } from "../../../utils";
 
@@ -119,24 +119,6 @@ const columnType = ({ tabloUniqueId }: DNDHeader.Props) =>
 
 @(DragSource(columnType, columnSource, collectSource) as any)
 @(DropTarget(columnType, columnTarget, collectTarget) as any)
-@props({
-  connectDragSource: t.Function,
-  connectDragPreview: t.Function,
-  isDragAllowed: t.Boolean,
-  isDragging: t.Boolean,
-  //
-  connectDropTarget: t.Function,
-  isOver: t.Boolean,
-  canDrop: t.Boolean,
-  onDrop: t.maybe(t.Function),
-  onDragHover: t.maybe(t.Function),
-  //
-  name: t.String,
-  index: t.Integer,
-  isDropAllowed: t.Function,
-  tabloUniqueId: t.String,
-  children: ReactChildren
-})
 export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
   render() {
     const {
