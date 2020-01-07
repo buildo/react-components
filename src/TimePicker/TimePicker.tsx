@@ -59,7 +59,7 @@ function validProps({ value, minTime, maxTime }: TimePicker.Props): boolean {
     (minTime == null || isTime(minTime)) &&
     (maxTime == null || isTime(maxTime));
   const minMaxCoherent =
-    minTime != null && maxTime != null && lteTime(minTime, maxTime);
+    minTime == null || maxTime == null || lteTime(minTime, maxTime);
   const valueMoreThanMin =
     value == null || minTime == null || lteTime(minTime, value);
   const valueLessThanMax =

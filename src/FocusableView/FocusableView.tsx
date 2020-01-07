@@ -2,7 +2,6 @@ import * as React from "react";
 import * as cx from "classnames";
 import debounce = require("lodash/debounce");
 import { Children } from "../utils";
-import isFunction = require("lodash/isFunction");
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
@@ -121,7 +120,7 @@ export class FocusableView extends React.Component<FocusableView.Props> {
     return React.createElement(
       component as any,
       locals,
-      isFunction(children) ? children(focused) : children
+      typeof children === "function" ? children(focused) : children
     );
   }
 }
