@@ -2,7 +2,6 @@ import * as React from "react";
 import omit = require("lodash/omit");
 import { Children } from "../utils";
 import easing, { EasingType } from "./easingFunctions";
-import isFunction = require("lodash/isFunction");
 
 export type ScrollViewDefaultProps = {
   /** enable horizontal scrolling */
@@ -226,7 +225,9 @@ export class ScrollView extends React.Component<ScrollView.Props> {
           this.scrollView = sv;
         }}
       >
-        {isFunction(children) ? children(this.scrollTo) : children}
+        {typeof children === "function"
+          ? (children as any)(this.scrollTo)
+          : children}
       </div>
     );
   }

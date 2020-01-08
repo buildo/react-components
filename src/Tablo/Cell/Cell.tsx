@@ -3,7 +3,6 @@ import * as cx from "classnames";
 import { Children } from "../../utils";
 import FlexView from "react-flexview";
 import { Cell as CellFDT } from "fixed-data-table-2";
-import isFunction = require("lodash/isFunction");
 
 export type Intrinsic<T, K> = {
   data: K extends keyof T ? T[K] : never;
@@ -85,7 +84,9 @@ export function Cell<T extends {}, K extends keyof T | never = never>(
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
-          {isFunction(render) ? render(data, rowData, rowIndex) : render}
+          {typeof render === "function"
+            ? render(data, rowData, rowIndex)
+            : render}
         </FlexView>
       </FlexView>
     </CellFDT>
