@@ -1,7 +1,7 @@
 import * as React from "react";
-import pick = require("lodash/pick");
-import { props, t, ObjectOmit } from "../utils";
-import { Button, ButtonPropTypes } from "./Button";
+import { ObjectOmit } from "../utils";
+import { Button } from "./Button";
+import { warn } from "../utils/log";
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -68,12 +68,6 @@ export type State = {
   internalState: "error" | "processing" | "success" | null;
 };
 
-@props({
-  ...ButtonPropTypes,
-  baseState: t.maybe(t.enums.of(["ready", "success", "not-allowed"])),
-  stableSuccess: t.maybe(t.Boolean),
-  timerMillis: t.maybe(t.Number)
-})
 export class StatefulButton extends React.PureComponent<
   StatefulButton.Props,
   State
@@ -115,7 +109,11 @@ export class StatefulButton extends React.PureComponent<
 
   componentWillReceiveProps(props: StatefulButton.Props) {
     if (process.env.NODE_ENV !== "production") {
-      t.assert(props.stableSuccess === this.props.stableSuccess);
+      if (props.stableSuccess !== this.props.stableSuccess) {
+        warn(
+          'StatefulButton: changing the "stableSuccess" prop is not supported'
+        );
+      }
     }
 
     if (props.buttonState) {
@@ -190,11 +188,19 @@ export class StatefulButton extends React.PureComponent<
   };
 
   render() {
-    const buttonProps: Button.Props = {
-      ...pick(this.props, Object.keys(ButtonPropTypes) as [keyof Button.Props]),
-      onClick: this.onClick
-    };
+    const {
+      baseState,
+      stableSuccess,
+      timerMillis,
+      ...buttonProps
+    } = this.props;
 
-    return <Button {...buttonProps} buttonState={this.getButtonState()} />;
+    return (
+      <Button
+        {...buttonProps}
+        onClick={this.onClick}
+        buttonState={this.getButtonState()}
+      />
+    );
   }
 }

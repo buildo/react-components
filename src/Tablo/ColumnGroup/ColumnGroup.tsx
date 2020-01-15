@@ -1,5 +1,4 @@
 import * as React from "react";
-import { t, ReactChildren } from "../../utils";
 import find = require("lodash/find");
 
 import { ColumnGroup as ColumnGroupFDT } from "fixed-data-table-2";
@@ -16,18 +15,8 @@ export namespace ColumnGroup {
   };
 }
 
-const { union, maybe, struct } = t;
-const argsTypes = struct(
-  {
-    key: union([t.String, t.Number]),
-    fixed: maybe(t.Boolean),
-    children: ReactChildren
-  },
-  { strict: true, name: "ColumnGroupProps" }
-);
-
 export function ColumnGroup<T>(args: ColumnGroup.Props<T>) {
-  const { key, fixed, children } = argsTypes(args) as ColumnGroup.Props<T>;
+  const { key, fixed, children } = args;
 
   const header =
     find(children, child => child.type === Header) || defaultHeader("");

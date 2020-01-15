@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import { props, t, ReactChildren } from "../utils";
 import TransitionWrapper from "../TransitionWrapper";
 
 let containerNode: Element | null = null;
@@ -21,21 +20,11 @@ export namespace ModalPortal {
   };
 }
 
-export const Props = {
-  children: ReactChildren,
-  transitionEnterTimeout: t.Number,
-  transitionLeaveTimeout: t.Number,
-  className: t.maybe(t.String),
-  childContextTypes: t.maybe(t.Object),
-  getChildContext: t.maybe(t.Function)
-};
-
 type ContextWrapperProps = {
   modal: () => JSX.Element;
   getChildContext?: () => object;
 };
 
-@props(Props)
 export class ModalPortal extends React.Component<ModalPortal.Props> {
   private isOpen: boolean = false;
 

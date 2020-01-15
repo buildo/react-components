@@ -1,7 +1,7 @@
 import * as React from "react";
-import { TooltipTouch, Props } from "../Tooltip/TooltipTouch";
+import { TooltipTouch } from "../Tooltip/TooltipTouch";
 import { Tooltip } from "../Tooltip/Tooltip";
-import { props, ObjectOverwrite } from "../utils";
+import { ObjectOverwrite } from "../utils";
 
 export namespace TextOverflowTouch {
   export type Props = {
@@ -16,8 +16,6 @@ export namespace TextOverflowTouch {
     style?: object;
   };
 }
-
-@props(Props)
 export class TextOverflowTouch extends React.PureComponent<
   TextOverflowTouch.Props
 > {
@@ -36,5 +34,3 @@ export class TextOverflowTouch extends React.PureComponent<
     );
   }
 }
-
-export { Props };

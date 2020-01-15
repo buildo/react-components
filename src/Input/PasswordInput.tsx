@@ -1,11 +1,5 @@
 import * as React from "react";
-import { props, t } from "../utils";
-import {
-  Input,
-  InputRequiredProps,
-  InputDefaultProps,
-  Props as InputPropsT
-} from "../Input/Input";
+import { Input, InputRequiredProps, InputDefaultProps } from "../Input/Input";
 import View from "react-flexview";
 
 export type PasswordInputRequiredProps = InputRequiredProps;
@@ -24,17 +18,10 @@ export namespace PasswordInput {
 type PasswordInputDefaultedProps = PasswordInputRequiredProps &
   PasswordInputDefaultProps;
 
-export const Props = {
-  ...InputPropsT,
-  hideText: t.maybe(t.String),
-  showText: t.maybe(t.String)
-};
-
 export type State = {
   show: boolean;
 };
 
-@props(Props, { strict: false })
 export class PasswordInput extends React.PureComponent<
   PasswordInput.Props,
   State

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import * as cx from "classnames";
 
 export type DividerDefaultProps = {
@@ -20,23 +19,9 @@ export namespace Divider {
 }
 type DividerDefaultedProps = DividerDefaultProps;
 
-const orientation = t.enums.of(["horizontal", "vertical"], "orientation");
-const sizeType = t.enums.of(
-  ["small", "medium", "large", "no-margin"],
-  "sizeType"
-);
-
-export const Props = {
-  orientation: t.maybe(orientation),
-  style: t.maybe(t.Object),
-  size: t.maybe(sizeType),
-  className: t.maybe(t.String)
-};
-
 /**
  * A simple component used to visually divide UI elements
  */
-@props(Props)
 export class Divider extends React.PureComponent<Divider.Props> {
   static defaultProps: DividerDefaultProps = {
     orientation: "vertical",

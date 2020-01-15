@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import getUrl from "./getUrl";
 
 export namespace Image {
@@ -17,16 +16,7 @@ export namespace Image {
   } & React.HTMLAttributes<HTMLImageElement>;
 }
 
-export const Props = {
-  src: t.String,
-  width: t.maybe(t.Number),
-  height: t.maybe(t.Number),
-  quality: t.maybe(t.union([t.Number, t.enums.of(["auto"])])),
-  format: t.maybe(t.enums.of(["jpeg", "png", "wdp", "gif", "auto"]))
-};
-
 /** A replacement for `<img>` to serve optimized images through a CDN in production */
-@props(Props, { strict: false })
 export class Image extends React.Component<Image.Props> {
   render() {
     const { src, width, height, quality, ...props } = this.props;

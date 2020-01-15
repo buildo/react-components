@@ -57,8 +57,6 @@
     "react-select": "2.4.1",
     "react-transition-group": "1.2.0",
     "sass-flex-mixins": "0.1.0",
-    "tcomb": "3.2.22",
-    "tcomb-react": "0.9.3",
     "tlds": "1.194.0"
   },
   "devDependencies": {

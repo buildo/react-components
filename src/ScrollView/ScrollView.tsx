@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
 import GeminiScrollbar = require("gemini-scrollbar");
 import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
 import { findDOMNode } from "../utils";
@@ -45,20 +44,7 @@ export namespace ScrollView {
     Partial<ScrollViewDefaultProps<CP, ICP>>;
 }
 
-export const Props = {
-  children: ReactChildren,
-  autoshow: t.maybe(t.Boolean),
-  forceGemini: t.maybe(t.Boolean),
-  component: t.maybe(t.union([t.Function, t.String])),
-  componentProps: t.maybe(t.Object),
-  innerComponent: t.maybe(t.union([t.Function, t.String])),
-  innerComponentProps: t.maybe(t.Object),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /** A scrollable view to be used in projects where you want the same scrollbar style across different browsers */
-@props(Props)
 export class ScrollView<
   CP extends React.HTMLAttributes<any>,
   ICP extends React.HTMLAttributes<any>

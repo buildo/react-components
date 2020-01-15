@@ -1,8 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, ReactChild } from "../utils";
 import omit = require("lodash/omit");
-import { ModalPortal, Props as PortalProps } from "./ModalPortal";
+import { ModalPortal } from "./ModalPortal";
 import FlexView from "react-flexview";
 import { BackgroundDimmer } from "./BackgroundDimmer";
 
@@ -47,28 +46,22 @@ export namespace Modal {
     Partial<ModalDefaultProps>;
 }
 
-const LocalProps = {
-  children: ReactChildren,
-  title: t.maybe(t.String),
-  footer: t.maybe(ReactChildren),
-  iconClose: t.maybe(ReactChild),
-  overlay: t.interface({
-    color: t.maybe(t.String),
-    alpha: t.maybe(t.Number)
-  }),
-  dismissOnClickOutside: t.maybe(t.Boolean),
-  onDismiss: t.maybe(t.Function),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object),
-  id: t.maybe(t.String)
+const LocalProps: Record<
+  keyof ModalRequiredProps | keyof ModalDefaultProps,
+  true
+> = {
+  children: true,
+  title: true,
+  footer: true,
+  iconClose: true,
+  overlay: true,
+  dismissOnClickOutside: true,
+  onDismiss: true,
+  className: true,
+  style: true,
+  id: true
 };
 
-export const Props = {
-  ...PortalProps,
-  ...LocalProps
-};
-
-@props(Props)
 export class Modal extends React.Component<Modal.Props> {
   static defaultProps: ModalDefaultProps = {
     onDismiss: () => {},

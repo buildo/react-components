@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t } from "../utils";
 import { warn } from "../utils/log";
 
 export type LoadingSpinnerDefaultProps = {
@@ -31,26 +30,9 @@ export namespace LoadingSpinner {
 type LoadingSpinnerDefaultedProps = LoadingSpinnerRequiredProps &
   LoadingSpinnerDefaultProps;
 
-export const Props = {
-  size: t.maybe(t.union([t.String, t.Number])),
-  color: t.maybe(t.String),
-  message: t.maybe(
-    t.struct({
-      content: t.String,
-      color: t.maybe(t.String),
-      size: t.maybe(t.union([t.String, t.Number]))
-    })
-  ),
-  overlayColor: t.maybe(t.String),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /**
  * Absolute dimmed layer with loading spinner in the center
  */
-@props(Props)
 export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
   private loadingSpinner: HTMLDivElement | null = null;
 

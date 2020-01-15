@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, Children } from "../utils";
+import { Children } from "../utils";
 import FlexView from "react-flexview";
 
 export namespace NavBar {
@@ -28,21 +28,6 @@ export namespace NavBar {
   };
 }
 
-export const Props = {
-  content: t.struct({
-    left: t.maybe(ReactChildren),
-    center: t.maybe(ReactChildren),
-    right: t.maybe(ReactChildren),
-    maxWidth: t.maybe(t.union([t.String, t.Number]))
-  }),
-  fixed: t.maybe(t.Boolean),
-  height: t.maybe(t.union([t.String, t.Number])),
-  background: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class NavBar extends React.PureComponent<NavBar.Props> {
   render() {
     const {

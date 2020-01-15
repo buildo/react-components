@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
 import partial = require("lodash/partial");
 import FlexView from "react-flexview";
 import { Divider } from "../Divider/Divider";
@@ -36,31 +35,11 @@ export type State = {
   height: number | null;
 };
 
-export const optionType = t.struct(
-  {
-    type: t.enums.of(["title", "item", "divider"]),
-    title: t.maybe(ReactChildren),
-    metadata: t.Any,
-    selected: t.maybe(t.Boolean),
-    disabled: t.maybe(t.Boolean),
-    onClick: t.maybe(t.Function)
-  },
-  "optionType"
-);
-
-export const Props = {
-  style: t.maybe(t.Object),
-  maxHeight: t.maybe(t.Number),
-  options: t.maybe(t.list(optionType)),
-  onClick: t.maybe(t.Function)
-};
-
 const defaultProps: ActionsMenuDefaultProps = {
   style: {},
   onClick: () => {}
 };
 
-@props(Props)
 export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
   constructor(props: ActionsMenu.Props) {
     super(props);

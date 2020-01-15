@@ -2,27 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as cx from "classnames";
 import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import { props, t, ReactChildren, findDOMNode, Children } from "../utils";
+import { findDOMNode, Children } from "../utils";
 import { warn } from "../utils/log";
 import { TransitionWrapper } from "../TransitionWrapper/TransitionWrapper";
-
-export const Props = {
-  children: ReactChildren,
-  attachTo: t.maybe(t.String),
-  transitionGroup: t.maybe(t.Object),
-  transitionStyles: t.maybe(t.Object),
-  transitionEnterTimeout: t.Number,
-  transitionLeaveTimeout: t.Number,
-  position: t.enums.of([
-    "top-left",
-    "top-right",
-    "bottom-left",
-    "bottom-right"
-  ]),
-  id: t.maybe(t.String),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
 
 export type ToasterDefaultProps = {
   /** custom settings for `ReactTransitionGroup` */
@@ -55,7 +37,6 @@ type ToasterDefaultedProps = ToasterRequiredProps & ToasterDefaultProps;
 /**
  * Renders and animates toasts (children) inline or in a portal
  */
-@props(Props)
 export class Toaster extends React.Component<Toaster.Props> {
   private toaster: HTMLElement | null = null;
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren, Children } from "../../utils";
+import { Children } from "../../utils";
 import FlexView from "react-flexview";
 import { Cell as CellFDT } from "fixed-data-table-2";
 
@@ -48,24 +48,7 @@ type CellDefaultedIntrinsicProps<T, K extends keyof T | never> = Required<
   Default &
   Intrinsic<T, K>;
 
-const { maybe, enums, union } = t;
-
-const propsTypes = {
-  data: t.Any,
-  fixed: maybe(t.Boolean),
-  rowData: t.Any,
-  rowIndex: maybe(t.Integer),
-  render: union([t.Function, ReactChildren]),
-  backgroundColor: maybe(t.String),
-  color: maybe(t.String),
-  vAlignContent: maybe(enums.of(["top", "center", "bottom"])),
-  hAlignContent: maybe(enums.of(["left", "center", "right"])),
-  contentStyle: maybe(t.Object),
-  style: maybe(t.Object),
-  grow: maybe(t.Boolean)
-};
-
-export function _Cell<T extends {}, K extends keyof T | never = never>(
+export function Cell<T extends {}, K extends keyof T | never = never>(
   props: Cell.Props<T, K>
 ): React.ReactElement<Cell.Props<T, K>> {
   const {
@@ -101,15 +84,13 @@ export function _Cell<T extends {}, K extends keyof T | never = never>(
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
-          {t.Function.is(render) ? render(data, rowData, rowIndex) : render}
+          {typeof render === "function"
+            ? render(data, rowData, rowIndex)
+            : render}
         </FlexView>
       </FlexView>
     </CellFDT>
   );
 }
-
-props(propsTypes)(_Cell);
-
-export const Cell = _Cell;
 
 export const defaultCell = <Cell<any, any> render={dataCell => dataCell} />;

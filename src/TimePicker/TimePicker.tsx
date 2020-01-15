@@ -1,5 +1,4 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import * as cx from "classnames";
 import { SingleDropdown } from "../Dropdown";
 import range = require("lodash/range");
@@ -9,6 +8,7 @@ import uniqBy = require("lodash/uniqBy");
 import sortBy = require("lodash/sortBy");
 import { components } from "react-select";
 import find = require("lodash/find");
+import { warn } from "../utils/log";
 
 export const H24 = "24h";
 export const H12 = "12h";
@@ -25,23 +25,18 @@ const lteTime = (minTime: TimePicker.Time, maxTime: TimePicker.Time) =>
   maxTime.hours > minTime.hours ||
   (maxTime.hours === minTime.hours && maxTime.minutes >= minTime.minutes);
 
-const Integer = t.refinement(t.Number, n => n % 1 === 0, "Integer");
-const Hour = t.refinement(Integer, n => n >= 0 && n <= 23, "Hour");
-const Hour12 = t.refinement(Integer, n => n >= 1 && n <= 12, "Hour12");
-const Minute = t.refinement(Integer, n => n >= 0 && n <= 59, "Minute");
-const TimeFormat = t.enums.of([H12, H24], "TimeFormat");
-const Time = t.struct(
-  {
-    hours: Hour,
-    minutes: Minute
-  },
-  "Time"
-);
+const isInteger = (n: number): boolean => n % 1 === 0;
+const isHour = (n: number): boolean => isInteger(n) && n >= 0 && n <= 23;
+const isHour12 = (n: number): boolean => isInteger(n) && n >= 0 && n <= 12;
+const isMinute = (n: number): boolean => isInteger(n) && n >= 0 && n <= 59;
+const isTime = (time: TimePicker.Props["value"]): boolean =>
+  time != null && isHour(time.hours) && isMinute(time.minutes);
 
 const isValidHoursInTimeFormat = (
   hours: number | null,
   timeFormat: TimePicker.TimeFormat
-): hours is number => (timeFormat === H24 ? Hour.is(hours) : Hour12.is(hours));
+): hours is number =>
+  hours == null ? false : timeFormat === H24 ? isHour(hours) : isHour12(hours);
 
 const getComponents = (
   timeFormatter?: TimePicker.TimeFormatter
@@ -58,28 +53,19 @@ const getComponents = (
     : {};
 };
 
-const Props = t.refinement(
-  t.struct({
-    onChange: t.Function,
-    value: t.maybe(Time),
-    minTime: t.maybe(Time),
-    maxTime: t.maybe(Time),
-    placeholder: t.maybe(t.String),
-    timeFormat: t.maybe(TimeFormat),
-    timeFormatter: t.maybe(t.Function),
-    searchable: t.Boolean,
-    size: t.enums.of(["medium", "small"]),
-    id: t.maybe(t.String),
-    className: t.maybe(t.String),
-    style: t.maybe(t.Object),
-    menuPosition: t.enums.of(["bottom", "top"]),
-    disabled: t.maybe(t.Boolean)
-  }),
-  ({ value, minTime, maxTime }: any) =>
-    lteTime(minTime, maxTime) &&
-    (!value || (lteTime(value, maxTime) && lteTime(minTime, value))),
-  "Props"
-);
+function validProps({ value, minTime, maxTime }: TimePicker.Props): boolean {
+  const validTimes =
+    (value == null || isTime(value)) &&
+    (minTime == null || isTime(minTime)) &&
+    (maxTime == null || isTime(maxTime));
+  const minMaxCoherent =
+    minTime == null || maxTime == null || lteTime(minTime, maxTime);
+  const valueMoreThanMin =
+    value == null || minTime == null || lteTime(minTime, value);
+  const valueLessThanMax =
+    value == null || maxTime == null || lteTime(value, maxTime);
+  return validTimes && minMaxCoherent && valueMoreThanMin && valueLessThanMax;
+}
 
 const formatTime24 = ({ hours, minutes }: TimePicker.Time) =>
   `${pad(hours)}:${pad(minutes)}`;
@@ -149,7 +135,11 @@ const parseInTimeFormat = (
   const minutes =
     !_minutes || numberRegex.test(_minutes) ? parseInt(_minutes, 10) : null;
 
-  if (isValidHoursInTimeFormat(hours, timeFormat) && Minute.is(minutes)) {
+  if (
+    isValidHoursInTimeFormat(hours, timeFormat) &&
+    minutes != null &&
+    isMinute(minutes)
+  ) {
     return { hours, minutes, originalInput: cleanedInput };
   } else if (isValidHoursInTimeFormat(hours, timeFormat)) {
     return { originalInput: cleanedInput };
@@ -162,7 +152,11 @@ const createTimeList = (
   { hours, minutes }: TimePicker.Time,
   timeFormat: TimePicker.TimeFormat
 ): Array<TimePicker.TimeAndFormat> => {
-  if (!isValidHoursInTimeFormat(hours, timeFormat) || !Minute.is(minutes)) {
+  if (
+    !isValidHoursInTimeFormat(hours, timeFormat) ||
+    !minutes ||
+    !isMinute(minutes)
+  ) {
     const hoursList = range(0, 24);
     const minutesList = range(0, 60, interval);
     return flatten(
@@ -283,7 +277,6 @@ type TimeDropdownOption = {
   label: string;
 };
 
-@props(Props)
 export class TimePicker extends React.Component<
   TimePicker.Props,
   { inputValue: string }
@@ -299,6 +292,16 @@ export class TimePicker extends React.Component<
   };
 
   state = { inputValue: "" };
+
+  componentDidMount() {
+    if (process.env.NODE_ENV !== "production") {
+      if (!validProps(this.props)) {
+        warn(
+          "Invalid props provided: `value`, `minTime` or `maxTime` are not valid times or not coherent"
+        );
+      }
+    }
+  }
 
   _onChange = (value: TimeDropdownOption) => {
     // interface with component user is always in H24
@@ -356,13 +359,4 @@ export class TimePicker extends React.Component<
 }
 
 // must be exported after TimePicker class in order to be compatible with react-styleguide (see #1153)
-export {
-  toOption,
-  parseInTimeFormat,
-  createTimeList,
-  filterTime,
-  makeOptions,
-  TimeFormat,
-  Time,
-  Props
-};
+export { toOption, parseInTimeFormat, createTimeList, filterTime, makeOptions };

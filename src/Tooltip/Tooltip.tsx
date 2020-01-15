@@ -1,13 +1,6 @@
 import * as React from "react";
 import * as cx from "classnames";
-import {
-  t,
-  ReactChildren,
-  stateClassUtil,
-  props,
-  ObjectOverwrite,
-  Children
-} from "../utils";
+import { stateClassUtil, ObjectOverwrite, Children } from "../utils";
 import { FormattedText } from "../FormattedText/FormattedText";
 import { Popover } from "../Popover/Popover";
 
@@ -46,20 +39,6 @@ export namespace Tooltip {
 
 type TooltipDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
-export const Props = {
-  children: ReactChildren,
-  popover: t.refinement<Popover.Props["popover"]>(
-    t.Object,
-    p => t.String.is(p.content) && t.Nil.is(p.event)
-  ),
-  type: t.enums.of(["light", "dark"]),
-  size: t.enums.of(["small", "big"]),
-  className: t.maybe(t.String),
-  id: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
-@props(Props)
 export class Tooltip extends React.PureComponent<Tooltip.Props> {
   static defaultProps: TooltipDefaultProps = {
     type: "dark",

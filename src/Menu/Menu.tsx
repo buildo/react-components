@@ -1,6 +1,5 @@
 import * as React from "react";
-import { props, t, ReactChildren } from "../utils";
-import { ActionsMenu, optionType } from "./ActionsMenu";
+import { ActionsMenu } from "./ActionsMenu";
 import FlexView from "react-flexview";
 import { Popover } from "../Popover/Popover";
 import * as cx from "classnames";
@@ -39,24 +38,9 @@ export namespace Menu {
 }
 type MenuDefaultedProps = MenuRequiredProps & MenuDefaultProps;
 
-export const Props = {
-  children: t.maybe(ReactChildren),
-  menuRenderer: t.maybe(t.Function),
-  options: t.list(optionType),
-  isOpen: t.maybe(t.Boolean),
-  onOpen: t.Function,
-  onClose: t.Function,
-  dismissOnClickOutside: t.maybe(t.Boolean),
-  size: t.maybe(t.enums.of(["small", "medium", "large"])),
-  position: t.maybe(t.enums.of(["top", "bottom"])),
-  maxHeight: t.maybe(t.Number),
-  className: t.maybe(t.String)
-};
-
 /**
  *  A menu with actions
  */
-@props(Props)
 export class Menu extends React.PureComponent<Menu.Props> {
   static defaultProps: MenuDefaultProps = {
     isOpen: false,

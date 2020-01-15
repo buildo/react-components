@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as MobileDetect from "mobile-detect";
-import { props, t } from "../utils";
 import * as PropTypes from "prop-types";
 
 export namespace MobileDetector {
@@ -21,16 +20,9 @@ export namespace MobileDetector {
   };
 }
 
-export const Props = {
-  children: t.Function,
-  forceDesktop: t.maybe(t.Boolean),
-  userAgent: t.maybe(t.String)
-};
-
 /**
  * Top-level component which detects device type and passes this info to children as context
  */
-@props(Props)
 export class MobileDetector extends React.Component<MobileDetector.Props> {
   static childContextTypes = {
     isDesktop: PropTypes.bool.isRequired,

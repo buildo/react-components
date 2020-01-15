@@ -1,6 +1,5 @@
 import * as React from "react";
 import find = require("lodash/find");
-import { t, ReactChildren } from "../../utils";
 import { getArrayChildren } from "../utils";
 
 import { Column as ColumnFDT } from "fixed-data-table-2";
@@ -42,24 +41,7 @@ export type ColumnDefaultedIntrinsicProps<T> = Required<T> &
   Intrinsic<T>;
 export type ColumnIntrinsicProps<T extends {}> = Column.Props<T> & Intrinsic<T>;
 
-const { union, maybe, struct } = t;
 export const defaultWidth = 200;
-
-const argsTypes = struct(
-  {
-    key: union([t.String, t.Number]),
-    width: maybe(t.Number),
-    data: maybe(t.Array),
-    name: t.String,
-    fixed: maybe(t.Boolean),
-    flexGrow: maybe(t.Number),
-    children: ReactChildren,
-    allowCellsRecycling: maybe(t.Boolean),
-    sortable: maybe(t.Boolean),
-    isResizable: maybe(t.Boolean)
-  },
-  { strict: true }
-);
 
 export const Column = <T extends {}>(
   args: Column.Props<T>
@@ -74,7 +56,7 @@ export const Column = <T extends {}>(
     isResizable,
     children = [],
     allowCellsRecycling = true
-  } = argsTypes(args) as ColumnDefaultedIntrinsicProps<T>;
+  } = args as ColumnDefaultedIntrinsicProps<T>;
 
   const cell = ({
     rowIndex,

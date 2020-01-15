@@ -1,18 +1,6 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import * as cx from "classnames";
 import { warn } from "../utils/log";
-
-export const Props = {
-  value: t.maybe(t.Boolean),
-  onChange: t.maybe(t.Function),
-  disabled: t.maybe(t.Boolean),
-  size: t.maybe(t.union([t.String, t.Number])),
-  onFocus: t.maybe(t.Function),
-  onBlur: t.maybe(t.Function),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
 
 export type ToggleDefaultProps = {};
 
@@ -41,7 +29,6 @@ type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 /**
  * A nice animated Toggle rendered using only CSS
  */
-@props(Props)
 export class Toggle extends React.PureComponent<Toggle.Props> {
   private checkbox: HTMLInputElement | null = null;
 
@@ -60,7 +47,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
   };
 
   getHalfSize(size: string | number) {
-    if (t.String.is(size)) {
+    if (typeof size === "string") {
       const unitMatch = /[a-z]+$/.exec(size); // only match characters at the end
       const number = parseFloat(size);
       const unit = unitMatch ? unitMatch[0] : "";

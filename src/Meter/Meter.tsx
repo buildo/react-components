@@ -1,62 +1,28 @@
 import * as React from "react";
-import { props, t } from "../utils";
 import { warn } from "../utils/log";
 import * as cx from "classnames";
 import FlexView from "react-flexview";
 import find = require("lodash/find");
 import every = require("lodash/every");
+import some = require("lodash/some");
 import isEqual = require("lodash/isEqual");
 import sortBy = require("lodash/sortBy");
 
-const RangeT = t.refinement(
-  t.struct({
-    startValue: t.Number,
-    endValue: t.Number,
-    fillingColor: t.maybe(t.String),
-    labelColor: t.maybe(t.String),
-    backgroundColor: t.maybe(t.String)
-  }),
-  (r: any) => r.startValue < r.endValue,
-  "Range"
-); // FIXME: any
+function noOverlappingRanges(rangeList: Array<Meter.Range>): boolean {
+  const isOverlapped = (range1: Meter.Range, range2: Meter.Range) =>
+    Math.max(range1.startValue, range2.startValue) <
+    Math.min(range1.endValue, range2.endValue);
 
-const Ranges = t.refinement(
-  t.list(RangeT),
-  rangeList => {
-    const isOverlapped = (range1: Meter.Range, range2: Meter.Range) =>
-      Math.max(range1.startValue, range2.startValue) <
-      Math.min(range1.endValue, range2.endValue);
-
-    const noOverlappingRanges = (ranges: Meter.Range[]) => {
-      return every(ranges, (range1, i) => {
-        return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
-          return !isOverlapped(range1, range2);
-        });
+  const noOverlappingRanges = (ranges: Meter.Range[]) => {
+    return every(ranges, (range1, i) => {
+      return every(ranges.slice(0, i).concat(ranges.slice(i + 1)), range2 => {
+        return !isOverlapped(range1, range2);
       });
-    };
+    });
+  };
 
-    return noOverlappingRanges(rangeList);
-  },
-  "Ranges"
-);
-
-const Props = t.refinement(
-  t.struct({
-    value: t.Number,
-    min: t.maybe(t.Number),
-    max: t.maybe(t.Number),
-    labelFormatter: t.maybe(t.Function),
-    ranges: t.maybe(Ranges),
-    baseLabelColor: t.maybe(t.String),
-    baseFillingColor: t.maybe(t.String),
-    baseBackgroundColor: t.maybe(t.String),
-    id: t.maybe(t.String),
-    className: t.maybe(t.String),
-    style: t.maybe(t.Object)
-  }),
-  ({ min, max }: any) => min < max,
-  "Props"
-);
+  return noOverlappingRanges(rangeList);
+}
 
 const isFullyFilled = (
   ranges: Meter.Range[] | void,
@@ -123,7 +89,6 @@ type MeterDefaultedProps = MeterRequiredProps & MeterDefaultProps;
 /**
  * A Meter displays a measurement (usually a percentage) on a known scale.
  */
-@props(Props)
 export class Meter extends React.PureComponent<Meter.Props> {
   static defaultProps: MeterDefaultProps = {
     min: 0,
@@ -138,6 +103,24 @@ export class Meter extends React.PureComponent<Meter.Props> {
   logWarnings = () => {
     const { ranges, max, min, baseFillingColor, baseBackgroundColor } = this
       .props as MeterDefaultedProps;
+    warn(() => {
+      if (min >= max) {
+        return "min should be less than max";
+      }
+      return undefined;
+    });
+    warn(() => {
+      if (some(ranges, r => r.startValue >= r.endValue)) {
+        return "malformed range received (startValue >= endValue)";
+      }
+      return undefined;
+    });
+    warn(() => {
+      if (ranges && !noOverlappingRanges(ranges)) {
+        return "some ranges overlap";
+      }
+      return undefined;
+    });
     warn(() => {
       if (
         isFullyFilled(ranges, min, max) &&
@@ -225,6 +208,3 @@ export class Meter extends React.PureComponent<Meter.Props> {
     );
   }
 }
-
-// must be exported after Meeter class in order to be compatible with react-styleguide (see #1153)
-export { Props };

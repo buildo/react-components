@@ -1,13 +1,12 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t } from "../utils";
-import { Panel, Props as panelProps } from "./Panel";
+import { Panel } from "./Panel";
 import FlexView from "react-flexview";
 
 export namespace TabbedPanel {
   export type Tabs = {
     basis?: number;
-    headers: string[];
+    headers: string[] & { 0: string };
     activeIndex?: number;
     onSetActiveTab: (x: number) => void;
   };
@@ -17,20 +16,6 @@ export namespace TabbedPanel {
   } & Panel.Props;
 }
 
-export const Props = t.refinement(
-  t.struct({
-    ...panelProps,
-    tabs: t.struct({
-      basis: t.maybe(t.Number),
-      headers: t.list(t.String),
-      activeIndex: t.maybe(t.Number),
-      onSetActiveTab: t.maybe(t.Function)
-    })
-  }),
-  ({ tabs }: any) => tabs.headers.length > 0
-);
-
-@props(Props)
 export class TabbedPanel extends React.PureComponent<TabbedPanel.Props> {
   onSetActiveTab = (activeTabIndex: number) => {
     const {

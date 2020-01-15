@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
 import debounce = require("lodash/debounce");
-import { props, t, ReactChildren, Children } from "../utils";
+import { Children } from "../utils";
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
@@ -33,22 +33,9 @@ export namespace FocusableView {
 type FocusableViewDefaultedProps = FocusableViewRequiredProps &
   FocusableViewDefaultProps;
 
-export const Props = {
-  children: t.union([ReactChildren, t.Function]),
-  onFocus: t.maybe(t.Function),
-  onBlur: t.maybe(t.Function),
-  tabIndex: t.maybe(t.Number),
-  component: t.maybe(t.union([t.Function, t.String])),
-  ignoreFocus: t.maybe(t.Boolean),
-  debounce: t.maybe(t.Integer),
-  className: t.maybe(t.String),
-  style: t.maybe(t.Object)
-};
-
 /**
  * A panel that can get focus
  */
-@props(Props, { strict: false })
 export class FocusableView extends React.Component<FocusableView.Props> {
   static defaultProps: FocusableViewDefaultProps = {
     ignoreFocus: false,
@@ -104,7 +91,7 @@ export class FocusableView extends React.Component<FocusableView.Props> {
   );
 
   onFocusBlurEvent = ({ type }: React.FocusEvent<HTMLElement>) =>
-    !t.Nil.is(this.defaultedProps().debounce)
+    this.defaultedProps().debounce != null
       ? this.onFocusBlurEventDebounced(type)
       : this._onFocusBlurEvent(type);
 
@@ -133,7 +120,7 @@ export class FocusableView extends React.Component<FocusableView.Props> {
     return React.createElement(
       component as any,
       locals,
-      t.Function.is(children) ? children(focused) : children
+      typeof children === "function" ? children(focused) : children
     );
   }
 }

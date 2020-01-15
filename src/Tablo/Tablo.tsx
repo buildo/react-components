@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as cx from "classnames";
-import { props, t, ReactChildren } from "../utils";
 import { Table, TableProps } from "fixed-data-table-2";
 import Column, { defaultColumns, updateColumns } from "./Column";
 import FlexView from "react-flexview";
@@ -14,6 +13,7 @@ import {
   sortable
 } from "./plugins";
 import omit = require("lodash/omit");
+import { warn } from "../utils/log";
 
 import "./patch-fixed-data-table-2";
 
@@ -107,34 +107,6 @@ export namespace Tablo {
     Partial<TabloDefaultProps>;
 }
 
-const { maybe } = t;
-@props({
-  // public
-  autosize: maybe(t.Boolean),
-  className: maybe(t.String),
-  data: t.Array,
-  width: t.Number,
-  height: t.Number,
-  rowHeight: maybe(t.Number),
-  headerHeight: maybe(t.Number),
-  groupHeaderHeight: maybe(t.Number),
-  footerHeight: maybe(t.Number),
-  onRowMouseEnter: maybe(t.Function),
-  onRowMouseLeave: maybe(t.Function),
-  scrollLeft: maybe(t.Integer),
-  scrollTop: maybe(t.Integer),
-  onScrollStart: maybe(t.Function),
-  onScrollEnd: maybe(t.Function),
-  children: ReactChildren,
-  rowClassNameGetter: maybe(t.Function),
-  touchScrollEnabled: maybe(t.Boolean),
-
-  // private
-  scrollToRow: maybe(t.Integer),
-  onRowClick: maybe(t.Function),
-  onColumnResizeEndCallback: maybe(t.Function),
-  isColumnResizing: maybe(t.Boolean)
-})
 class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
   static defaultProps: TabloDefaultProps = {
     rowClassNameGetter: () => "",
@@ -163,11 +135,14 @@ class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
       }
     ).map((ch, key) => (ch.type as React.SFC<any>)({ key, ...ch.props }));
 
-    t.assert(
-      columnsOrGroups.length ===
-        ([] as any[]).concat(children || Object.keys(data[0])).length,
-      "There are extraneous children in the Grid. One should use only Column or ColumnGroup"
-    );
+    if (
+      columnsOrGroups.length !==
+      ([] as any[]).concat(children || Object.keys(data[0])).length
+    ) {
+      warn(
+        "There are extraneous children in the Grid. One should use only Column or ColumnGroup"
+      );
+    }
 
     const rowClassNameGetter = (index: number) => {
       return cx(
