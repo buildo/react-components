@@ -14,12 +14,8 @@ export namespace DatePicker {
   export type Props = {
     /** an optional id to pass to top level element of the component */
     id?: string;
-    /** current date */
-    value?: LocalDate;
     /** default date */
     defaultValue?: LocalDate;
-    /** called when value changes */
-    onChange?: (date?: LocalDate) => void;
     /** called when datepicker is closed */
     onHide?: () => void;
     /** MomentJS format used to display current date */
@@ -52,7 +48,23 @@ export namespace DatePicker {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-  };
+  } & (
+    | {
+        /** whether the user can remove the selected date */
+        isClearable: true;
+        /** current date */
+        value?: LocalDate;
+        /** called when value changes */
+        onChange?: (date?: LocalDate) => void;
+      }
+    | {
+        /** whether the user can remove the selected date */
+        isClearable?: false;
+        /** current date */
+        value: LocalDate;
+        /** called when value changes */
+        onChange?: (date: LocalDate) => void;
+      });
 }
 
 export type State = {
@@ -141,13 +153,18 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
 
   _onChange = (value: moment.Moment | null) => {
     const { defaultValue, onChange } = this.props;
+
     if (!value) {
-      this.setState(
-        {
-          value: valueToMomentDate(defaultValue)
-        },
-        () => onChange && onChange(undefined)
-      );
+      if (this.props.isClearable) {
+        const __onChange = this.props.onChange;
+        this.setState(
+          { value: valueToMomentDate(defaultValue) },
+          () => __onChange && __onChange(undefined)
+        );
+      } else {
+        // this should never happens, if it's not clearable the is always an
+        // initial value and the picker doesn't let the use remove a selection
+      }
     } else {
       this.setState(
         { value },
@@ -283,7 +300,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           isDayBlocked={this.isDayBlocked}
           renderDayContents={this.dayRenderer}
           onClose={this.onClose}
-          showClearDate
+          showClearDate={this.props.isClearable}
           enableOutsideDays
           daySize={30}
           hideKeyboardShortcutsPanel

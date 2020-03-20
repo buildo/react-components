@@ -39,20 +39,11 @@ export class DatePickerField extends React.PureComponent<InternalProps> {
       required,
       className: _className,
       viewProps,
-      id,
       disabled,
       hint,
-      onChange,
-      datePickerRenderer,
-      ..._datePickerProps
+      datePickerRenderer
     } = this.props;
     const className = cx("date-picker-field", _className);
-    const datePickerProps = {
-      ..._datePickerProps,
-      onChange,
-      id,
-      disabled
-    };
 
     return (
       <FormField
@@ -64,7 +55,7 @@ export class DatePickerField extends React.PureComponent<InternalProps> {
         hint={hint}
         render={(onFocus, onBlur) =>
           datePickerRenderer({
-            ...datePickerProps,
+            ...this.props,
             onFocusChange: focus => {
               focus ? onFocus() : onBlur();
             }
