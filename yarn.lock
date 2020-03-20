@@ -7923,12 +7923,10 @@ react-input-autosize@^2.2.1:
   dependencies:
     prop-types "^15.5.8"
 
-react-input-children@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-input-children/-/react-input-children-4.0.1.tgz#422e69b23dcab568a37a1c2b289ceb4c341b51ce"
-  integrity sha512-mPEPt0nMNURuAV3bpQ+OQchh0xcKCwVbU5A+1eOKPxuqJwl2WhuWxu32JTWR7MA0DH9X/rhwQzaKRY9RIYEx5w==
-  dependencies:
-    prop-types "^15.6.0"
+react-input-children@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-input-children/-/react-input-children-4.0.2.tgz#052a5f716e362d9d5c2e0e505735a9db948e2e70"
+  integrity sha512-gGwGzwT8/FhCNjygxyjaNShA42uPfoR9kZ4oc9uw+vzqlgzpfubEpaBU6JrUh5o3I3A/S/Xc/Mb1h2HvZUH3XQ==
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.3:
   version "16.8.3"
