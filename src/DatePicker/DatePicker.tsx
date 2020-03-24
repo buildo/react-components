@@ -58,11 +58,11 @@ export namespace DatePicker {
         onChange?: (date?: LocalDate) => void;
       }
     | {
-        /** whether the user can remove the selected date */
+        /* whether the user can remove the selected date */
         isClearable?: false;
-        /** current date */
+        /* current date */
         value: LocalDate;
-        /** called when value changes */
+        /* called when value changes */
         onChange?: (date: LocalDate) => void;
       });
 }
@@ -162,7 +162,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           () => __onChange && __onChange(undefined)
         );
       } else {
-        // this should never happens, if it's not clearable the is always an
+        // this should never happen, if it's not clearable the is always an
         // initial value and the picker doesn't let the use remove a selection
       }
     } else {
