@@ -161,10 +161,8 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           { value: valueToMomentDate(defaultValue) },
           () => __onChange && __onChange(undefined)
         );
-      } else {
-        // this should never happen, if it's not clearable the is always an
-        // initial value and the picker doesn't let the use remove a selection
       }
+      // if it's not clearable value will never be null or undefined
     } else {
       this.setState(
         { value },
