@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
 import { PasswordInput } from "../Input";
 import { FormField } from "./FormField";
@@ -9,7 +8,7 @@ type DefaultProps = {
   passwordInputRenderer: (props: PasswordInput.Props) => JSX.Element;
 };
 
-type FieldProps = {
+type NonDefaultProps = {
   /** the label for the field */
   label: FormField.Props["label"];
   /** whether the field is required */
@@ -22,10 +21,9 @@ type FieldProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
+  /** the properties of password input */
+  passwordInputProps: PasswordInput.Props;
 };
-
-type NonDefaultProps = FieldProps &
-  ObjectOmit<PasswordInput.Props, keyof FieldProps>;
 
 type InternalProps = NonDefaultProps & DefaultProps;
 
@@ -42,29 +40,23 @@ export class PasswordInputField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       viewProps,
-      disabled,
       hint,
       passwordInputRenderer,
-      ..._inputProps
+      passwordInputProps
     } = this.props;
-    const className = cx("password-input-field", _className);
-    const inputProps = {
-      ..._inputProps,
-      disabled
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("password-input-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={passwordInputProps.disabled}
         hint={hint}
         render={(onFocus, onBlur) =>
-          passwordInputRenderer({ ...inputProps, onFocus, onBlur })
+          passwordInputRenderer({ ...passwordInputProps, onFocus, onBlur })
         }
       />
     );
