@@ -21,7 +21,7 @@ type NonDefaultProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
-  /** the properties fo the input */
+  /** the properties of the input */
   inputProps: Input.Props;
 };
 

@@ -21,7 +21,7 @@ type NonDefaultProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
-  /** the properties of password input */
+  /** the properties of the password input */
   passwordInputProps: PasswordInput.Props;
 };
 
