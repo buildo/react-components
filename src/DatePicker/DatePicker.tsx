@@ -14,12 +14,8 @@ export namespace DatePicker {
   export type Props = {
     /** an optional id to pass to top level element of the component */
     id?: string;
-    /** current date */
-    value?: LocalDate;
     /** default date */
     defaultValue?: LocalDate;
-    /** called when value changes */
-    onChange?: (date?: LocalDate) => void;
     /** called when datepicker is closed */
     onHide?: () => void;
     /** MomentJS format used to display current date */
@@ -52,18 +48,34 @@ export namespace DatePicker {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-  };
+  } & (
+    | {
+        /** whether the user can remove the selected date */
+        isClearable: true;
+        /** current date */
+        value: LocalDate | null;
+        /** called when value changes */
+        onChange?: (date: LocalDate | null) => void;
+      }
+    | {
+        /* whether the user can remove the selected date */
+        isClearable?: false;
+        /* current date */
+        value: LocalDate;
+        /* called when value changes */
+        onChange?: (date: LocalDate) => void;
+      });
 }
 
 export type State = {
-  value?: moment.Moment;
+  value: moment.Moment | null;
   hoveredDay?: moment.Moment;
   focused: boolean;
 };
 
 const valueToMomentDate: (
-  value?: LocalDate
-) => moment.Moment | undefined = value => (!value ? undefined : moment(value));
+  value?: LocalDate | null
+) => moment.Moment | null = value => (!value ? null : moment(value));
 
 const angleLeftIcon = (
   <svg width="10" height="10" viewBox="0 0 32 32">
@@ -141,13 +153,16 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
 
   _onChange = (value: moment.Moment | null) => {
     const { defaultValue, onChange } = this.props;
+
     if (!value) {
-      this.setState(
-        {
-          value: valueToMomentDate(defaultValue)
-        },
-        () => onChange && onChange(undefined)
-      );
+      if (this.props.isClearable) {
+        const __onChange = this.props.onChange;
+        this.setState(
+          { value: valueToMomentDate(defaultValue) },
+          () => __onChange && __onChange(null)
+        );
+      }
+      // if it's not clearable value will never be null or undefined
     } else {
       this.setState(
         { value },
@@ -185,7 +200,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
     });
   };
 
-  isInRange = (day: moment.Moment, referenceDay?: moment.Moment) => {
+  isInRange = (day: moment.Moment, referenceDay?: moment.Moment | null) => {
     const {
       props: { fromDate: _fromDate, toDate: _toDate }
     } = this;
@@ -283,7 +298,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           isDayBlocked={this.isDayBlocked}
           renderDayContents={this.dayRenderer}
           onClose={this.onClose}
-          showClearDate
+          showClearDate={this.props.isClearable}
           enableOutsideDays
           daySize={30}
           hideKeyboardShortcutsPanel
