@@ -21,7 +21,9 @@ type NonDefaultProps = {
   style?: React.CSSProperties;
   /** an optional id passed to the input component */
   id?: string;
-} & RadioGroup.Props;
+  /** the properties of the radio group */
+  radioGroupProps: RadioGroup.Props;
+};
 
 type InternalProps = NonDefaultProps & DefaultProps;
 
@@ -40,26 +42,20 @@ export class RadioGroupField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       id,
       viewProps,
-      disabled,
       radioGroupRenderer,
-      ..._radioGroupProps
+      radioGroupProps
     } = this.props;
-    const className = cx("radio-group-field", _className);
-    const radioGroupProps = {
-      ..._radioGroupProps,
-      disabled
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("radio-group-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={radioGroupProps.disabled}
         id={id}
         render={() => radioGroupRenderer({ ...radioGroupProps })}
       />

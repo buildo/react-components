@@ -23,7 +23,9 @@ type NonDefaultProps<OptionType> = {
   style?: React.CSSProperties;
   /** an optional id passed to the dropdown component */
   id?: string;
-} & Dropdown.Props<OptionType>;
+  /** the properties of the dropwdown */
+  dropdownProps: Dropdown.Props<OptionType>;
+};
 
 type InternalProps<OptionType> = NonDefaultProps<OptionType> &
   DefaultProps<OptionType>;
@@ -44,29 +46,20 @@ export class MultiDropdownField<OptionType> extends React.PureComponent<
     const {
       label,
       required,
-      className: _className,
+      className,
       viewProps,
-      isDisabled,
       hint,
       dropdownRenderer,
-      id,
-      ..._dropdownProps
+      dropdownProps
     } = this.props;
-    const className = cx("dropdown-field", _className);
-
-    const dropdownProps = {
-      ..._dropdownProps,
-      isDisabled,
-      id
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("dropdown-field", className)}
         viewProps={viewProps}
-        disabled={isDisabled}
+        disabled={dropdownProps.isDisabled}
         hint={hint}
         render={(onFocus, onBlur) =>
           dropdownRenderer({ ...dropdownProps, onFocus, onBlur })

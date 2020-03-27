@@ -21,7 +21,9 @@ type NonDefaultProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
-} & DatePicker.Props;
+  /** the properties of the datepicker */
+  datePickerProps: DatePicker.Props;
+};
 
 type InternalProps = DefaultProps & NonDefaultProps;
 
@@ -37,25 +39,24 @@ export class DatePickerField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       viewProps,
-      disabled,
       hint,
-      datePickerRenderer
+      datePickerRenderer,
+      datePickerProps
     } = this.props;
-    const className = cx("date-picker-field", _className);
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("date-picker-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={datePickerProps.disabled}
         hint={hint}
         render={(onFocus, onBlur) =>
           datePickerRenderer({
-            ...this.props,
+            ...datePickerProps,
             onFocusChange: focus => {
               focus ? onFocus() : onBlur();
             }

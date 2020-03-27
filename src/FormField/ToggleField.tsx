@@ -21,7 +21,9 @@ type NonDefaultProps = {
   style?: React.CSSProperties;
   /** an optional id passed to the input component */
   id?: string;
-} & Toggle.Props;
+  /** the properties of the toggle */
+  toggleProps: Toggle.Props;
+};
 
 type InternalProps = NonDefaultProps & DefaultProps;
 
@@ -38,26 +40,20 @@ export class ToggleField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       id,
       viewProps,
-      disabled,
       toggleRenderer,
-      ..._toggleProps
+      toggleProps
     } = this.props;
-    const className = cx("toggle-field", _className);
-    const toggleProps = {
-      ..._toggleProps,
-      disabled
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("toggle-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={toggleProps.disabled}
         id={id}
         horizontal
         onLabelClick={() => toggleProps.onChange(!toggleProps.value)}

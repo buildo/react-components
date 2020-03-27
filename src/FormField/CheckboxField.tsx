@@ -21,7 +21,9 @@ type NonDefaultProps = {
   style?: React.CSSProperties;
   /** an optional id passed to the input component */
   id?: string;
-} & Checkbox.Props;
+  /** the properties of the checkbox*/
+  checkboxProps: Checkbox.Props;
+};
 
 type InternalProps = DefaultProps & NonDefaultProps;
 
@@ -38,26 +40,20 @@ export class CheckboxField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       id,
       viewProps,
-      disabled,
       checkboxRenderer,
-      ..._checkboxProps
+      checkboxProps
     } = this.props;
-    const className = cx("checkbox-field", _className);
-    const checkboxProps = {
-      ..._checkboxProps,
-      disabled
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("checkbox-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={checkboxProps.disabled}
         id={id}
         horizontal
         onLabelClick={() => checkboxProps.onChange(!checkboxProps.value)}

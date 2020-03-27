@@ -21,7 +21,9 @@ type NonDefaultProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
-} & TimePicker.Props;
+  /** the properties of the time picker */
+  timePickerProps: TimePicker.Props;
+};
 
 type InternalProps = NonDefaultProps & DefaultProps;
 
@@ -38,26 +40,20 @@ export class TimePickerField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       viewProps,
-      disabled,
       hint,
       timePickerRenderer,
-      ..._timePickerProps
+      timePickerProps
     } = this.props;
-    const className = cx("time-picker-field", _className);
-    const timePickerProps = {
-      ..._timePickerProps,
-      disabled
-    };
 
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("time-picker-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={timePickerProps.disabled}
         hint={hint}
         render={() => timePickerRenderer({ ...timePickerProps })}
       />
