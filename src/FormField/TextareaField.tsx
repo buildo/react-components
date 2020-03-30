@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ObjectOmit } from "../utils";
 import * as cx from "classnames";
 import Textarea from "../Textarea";
 import { FormField } from "./FormField";
@@ -9,7 +8,7 @@ type DefaultProps = {
   textareaRenderer: (props: Textarea.Props) => JSX.Element;
 };
 
-type FieldProps = {
+type NonDefaultProps = {
   /** the label for the field */
   label: FormField.Props["label"];
   /** whether the field is required */
@@ -22,10 +21,10 @@ type FieldProps = {
   className?: string;
   /** an optional style object to pass to top level element of the component */
   style?: React.CSSProperties;
+  /** the properties of the text area */
+  textareaProps: Textarea.Props;
 };
 
-type NonDefaultProps = FieldProps &
-  ObjectOmit<Textarea.Props, keyof FieldProps>;
 type InternalProps = NonDefaultProps & DefaultProps;
 
 export namespace TextareaField {
@@ -41,25 +40,19 @@ export class TextareaField extends React.PureComponent<InternalProps> {
     const {
       label,
       required,
-      className: _className,
+      className,
       viewProps,
-      disabled,
       hint,
       textareaRenderer,
-      ..._textareaProps
+      textareaProps
     } = this.props;
-    const className = cx("textarea-field", _className);
-    const textareaProps: Textarea.Props = {
-      ..._textareaProps,
-      disabled
-    };
     return (
       <FormField
         label={label}
         required={required}
-        className={className}
+        className={cx("textarea-field", className)}
         viewProps={viewProps}
-        disabled={disabled}
+        disabled={textareaProps.disabled}
         hint={hint}
         render={(onFocus, onBlur) =>
           textareaRenderer({ ...textareaProps, onFocus, onBlur })
