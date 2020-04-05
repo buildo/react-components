@@ -30,22 +30,20 @@ export namespace Dropdown {
 }
 
 export class Dropdown<OptionType> extends React.PureComponent<
-  NonDefaultProps<OptionType> & DefaultProps
+  Dropdown.Props<OptionType>
 > {
   static defaultProps = defaultProps;
 
   render() {
     const {
-      props: {
-        className,
-        components: customComponents,
-        innerRef,
-        allowCreate,
-        size,
-        flat,
-        ...props
-      }
-    } = this;
+      className,
+      components: customComponents,
+      innerRef,
+      allowCreate,
+      size,
+      flat,
+      ...props
+    } = this.props as NonDefaultProps<OptionType> & DefaultProps;
 
     const Component: any = allowCreate ? Creatable : Select;
 

@@ -103,7 +103,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     if (isGroupedOptionsArray(options)) {
       return [{ options: [this.selectAllOption] }, ...options];
     } else {
-      return [this.selectAllOption, ...options];
+      return [this.selectAllOption, ...options] as Array<
+        OptionType | SelectAllOptionType
+      >;
     }
   };
 
