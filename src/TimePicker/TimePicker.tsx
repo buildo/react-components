@@ -348,7 +348,7 @@ export class TimePicker extends React.Component<
         className={className}
         style={style}
         isSearchable={searchable}
-        value={find(options, (o) => o.value === value)!}
+        value={find(options, o => o.value === value)!}
         onChange={onChange}
         options={options}
         components={{ ...computedComponents, ...userComponents }}

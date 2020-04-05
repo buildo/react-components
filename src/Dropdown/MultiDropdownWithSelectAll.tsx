@@ -143,9 +143,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
       }
     } = this;
 
-    const Component: React.ComponentType<
-      Props<OptionType | SelectAllOptionType>
-    > = allowCreate ? Creatable : Select;
+    const Component: React.ComponentType<Props<
+      OptionType | SelectAllOptionType
+    >> = allowCreate ? Creatable : Select;
 
     const dropdownValue = selectAllValue
       ? selectAllValue.type === "AllSelected"

@@ -22,7 +22,8 @@ export type NonDefaultProps<OptionType> = CommonProps<OptionType> &
         isClearable?: false;
         value: OptionType;
         onChange: (value: OptionType) => void;
-      });
+      }
+  );
 
 export namespace Dropdown {
   export type Props<OptionType> = NonDefaultProps<OptionType> &

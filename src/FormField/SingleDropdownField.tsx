@@ -39,7 +39,7 @@ export class SingleDropdownField<OptionType> extends React.PureComponent<
   InternalProps<OptionType>
 > {
   static defaultProps: DefaultProps<unknown> = {
-    dropdownRenderer: (props) => <Dropdown {...props} />,
+    dropdownRenderer: props => <Dropdown {...props} />
   };
 
   render() {

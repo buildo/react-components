@@ -25,7 +25,8 @@ export type CommonProps<OptionType> = ObjectOmit<
       } & CreatableProps<OptionType>)
     | {
         allowCreate?: never;
-      });
+      }
+  );
 
 export const defaultProps: DefaultProps = {
   delimiter: ",",
