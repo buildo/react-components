@@ -2,12 +2,12 @@
 
 exports[`Dropdown renders correctly 1`] = `
 <div
-  className="css-10nd86i dropdown is-medium fancy-class-name"
+  className="css-1pcexqc-container dropdown is-medium fancy-class-name"
   id="12345"
   onKeyDown={[Function]}
 >
   <div
-    className="css-vj8t7z dropdown__control"
+    className="css-bg1rzq-control dropdown__control"
     onMouseDown={[Function]}
     onTouchEnd={[Function]}
   >
@@ -15,12 +15,12 @@ exports[`Dropdown renders correctly 1`] = `
       className="css-1hwfws3 dropdown__value-container dropdown__value-container--has-value"
     >
       <div
-        className="css-xp4uvy dropdown__single-value"
+        className="css-dvua67-singleValue dropdown__single-value"
       >
         Test
       </div>
       <input
-        className="css-14uuagi"
+        className="css-gj7qu5-dummyInput"
         disabled={false}
         id="react-select-2-input"
         onBlur={[Function]}
@@ -36,7 +36,7 @@ exports[`Dropdown renders correctly 1`] = `
     >
       <div
         aria-hidden="true"
-        className="css-1ep9fjw dropdown__indicator dropdown__dropdown-indicator"
+        className="css-16pqwjk-indicatorContainer dropdown__indicator dropdown__dropdown-indicator"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
