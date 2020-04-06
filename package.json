@@ -8,7 +8,7 @@
     "test-dev": "npm test -- --watch",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && tsc",
     "preversion": "npm run prettier-check && npm run test && npm run dtslint",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "start": "styleguidist server",
     "build-styleguidist": "styleguidist build",
     "typecheck": "tsc --noEmit --pretty",
