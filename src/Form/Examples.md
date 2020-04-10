@@ -15,13 +15,17 @@ const onChange = key => value => setState({ [key]: value });
     <FlexView column grow>
       <InputField
         label="First name"
-        value={state.firstName}
-        onChange={onChange("firstName")}
+        inputProps={{
+          value: state.firstName,
+          onChange: onChange("firstName")
+        }}
       />
       <InputField
         label="Last name"
-        value={state.lastName}
-        onChange={onChange("lastName")}
+        inputProps={{
+          value: state.lastName,
+          onChange: onChange("lastName")
+        }}
       />
       <FlexView marginLeft="auto">
         <Button style={{ width: "100px" }} label="Cancel" onClick={() => {}} />
