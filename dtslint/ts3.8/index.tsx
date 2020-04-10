@@ -1,6 +1,15 @@
 import * as React from "react";
 
-import { SingleDropdown, MultiDropdown } from "../../src/Dropdown";
+import {
+  SingleDropdown,
+  MultiDropdown,
+  MultiDropdownWithSelectAll
+} from "../../src/Dropdown";
+import {
+  allSelected,
+  someSelected,
+  SelectAllValue
+} from "../../src/Dropdown/MultiDropdownWithSelectAll";
 
 <SingleDropdown />; // $ExpectError
 
@@ -69,4 +78,48 @@ import { SingleDropdown, MultiDropdown } from "../../src/Dropdown";
   options={["foo"]}
   value={["foo"]}
   onChange={(_: string[]) => {}}
+/>;
+
+<MultiDropdownWithSelectAll selectAllLabel="all" />; // $ExpectError
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={[]}
+  value={allSelected()}
+  onChange={_ => {}}
+/>;
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={[]}
+  value={someSelected([])} // could be nice to prevent this error at type level
+  onChange={_ => {}}
+/>;
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={["foo"]}
+  value={someSelected(["foo"])}
+  onChange={_ => {}}
+/>;
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={[2]}
+  value={someSelected(["foo"])} // $ExpectError
+  onChange={_ => {}}
+/>;
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={[2]}
+  value={someSelected([2])}
+  onChange={(_: number) => {}} // $ExpectError
+/>;
+
+<MultiDropdownWithSelectAll
+  selectAllLabel="all"
+  options={[2]}
+  value={someSelected([2])}
+  onChange={(_: SelectAllValue<number>) => {}}
 />;

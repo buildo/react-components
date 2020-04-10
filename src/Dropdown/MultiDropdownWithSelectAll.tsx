@@ -56,7 +56,7 @@ function isGroupedOptionsArray<OptionType>(
 }
 
 export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
-  NonDefaultProps<OptionType> & DefaultProps
+  MultiDropdownWithSelectAll.Props<OptionType>
 > {
   static defaultProps = defaultProps;
 
@@ -130,18 +130,16 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
 
   render() {
     const {
-      props: {
-        className,
-        components: customComponents,
-        allowCreate,
-        size,
-        flat,
-        options: _options,
-        innerRef,
-        value: selectAllValue,
-        ...props
-      }
-    } = this;
+      className,
+      components: customComponents,
+      allowCreate,
+      size,
+      flat,
+      options: _options,
+      innerRef,
+      value: selectAllValue,
+      ...props
+    } = this.props as NonDefaultProps<OptionType> & DefaultProps;
 
     const Component: React.ComponentType<Props<
       OptionType | SelectAllOptionType
