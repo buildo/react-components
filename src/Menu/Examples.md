@@ -35,8 +35,7 @@ const menuProps = {
   onOpen: toggleOpen,
   onClose: toggleOpen,
   isOpen,
-  options,
-  position: "bottom"
+  options
 };
 
 const icon = isOpen ? (

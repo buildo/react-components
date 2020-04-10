@@ -27,9 +27,9 @@ export type MenuDefaultProps = {
   isOpen: boolean;
   /** whether the menu should be closed when clicking outside */
   dismissOnClickOutside: boolean;
-  /** wheter the menu should be rendered on top or at the bottom of the trigger */
+  /** wheter the menu should be rendered on top or at the bottom of the trigger (bottom by default) */
   position: "top" | "bottom";
-  /** wheter the menu should be aligned with the start, the end or the center of the trigger */
+  /** wheter the menu should be aligned with the start, the end or the center of the trigger (end by default) */
   anchor: "start" | "center" | "end";
 };
 
@@ -84,8 +84,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
         popover={{
           isOpen,
           dismissOnClickOutside,
-          position,
-          anchor,
+          position: position ? position : "bottom",
+          anchor: anchor ? anchor : "end",
           onShow: onOpen,
           onHide: onClose,
           event: "click",
