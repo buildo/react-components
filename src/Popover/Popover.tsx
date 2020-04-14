@@ -450,10 +450,17 @@ export class Popover extends React.Component<Popover.Props, State> {
     if (this.isStateful()) {
       this.setState({ isOpen }, this.onPopoverStateChange);
     } else {
-      const { onShow, onHide, onToggle } = this.getPopoverProps();
+      const {
+        onShow,
+        onHide,
+        onToggle,
+        isOpen: _isOpen
+      } = this.getPopoverProps();
       const cb = isOpen ? onShow : onHide;
       cb();
-      onToggle();
+      if (_isOpen != isOpen) {
+        onToggle();
+      }
     }
   };
 
