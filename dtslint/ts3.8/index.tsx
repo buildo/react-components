@@ -92,7 +92,7 @@ import {
 <MultiDropdownWithSelectAll
   selectAllLabel="all"
   options={[]}
-  value={someSelected([])} // could be nice to prevent this error at type level
+  value={someSelected([])} // legit if the dropdown isClearable, and MultiWithSelectAll is always clearable
   onChange={_ => {}}
 />;
 
