@@ -56,7 +56,7 @@ function isGroupedOptionsArray<OptionType>(
 }
 
 export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
-  NonDefaultProps<OptionType> & DefaultProps
+  MultiDropdownWithSelectAll.Props<OptionType>
 > {
   static defaultProps = defaultProps;
 
@@ -103,7 +103,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     if (isGroupedOptionsArray(options)) {
       return [{ options: [this.selectAllOption] }, ...options];
     } else {
-      return [this.selectAllOption, ...options];
+      return [this.selectAllOption, ...options] as Array<
+        OptionType | SelectAllOptionType
+      >;
     }
   };
 
@@ -128,22 +130,20 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
 
   render() {
     const {
-      props: {
-        className,
-        components: customComponents,
-        allowCreate,
-        size,
-        flat,
-        options: _options,
-        innerRef,
-        value: selectAllValue,
-        ...props
-      }
-    } = this;
+      className,
+      components: customComponents,
+      allowCreate,
+      size,
+      flat,
+      options: _options,
+      innerRef,
+      value: selectAllValue,
+      ...props
+    } = this.props as NonDefaultProps<OptionType> & DefaultProps;
 
-    const Component: React.ComponentType<
-      Props<OptionType | SelectAllOptionType>
-    > = allowCreate ? Creatable : Select;
+    const Component: React.ComponentType<Props<
+      OptionType | SelectAllOptionType
+    >> = allowCreate ? Creatable : Select;
 
     const dropdownValue = selectAllValue
       ? selectAllValue.type === "AllSelected"

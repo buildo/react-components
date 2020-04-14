@@ -5,6 +5,5 @@ set -e
 cd react-components
 
 yarn install --no-progress
-yarn typecheck
-yarn prettier-check
-yarn test
+yarn preversion
+# omitting prepublish (aka build) because a build is already run as part of this package tests

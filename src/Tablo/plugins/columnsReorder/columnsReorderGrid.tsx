@@ -62,7 +62,7 @@ export default <T extends {}>(
       const orderedChildren = sortBy(_children, doOrderColumns);
 
       const moveColumn = (
-        list: (string)[] = [],
+        list: string[] = [],
         source: string,
         target: string
       ) => {

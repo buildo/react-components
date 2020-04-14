@@ -9,6 +9,8 @@ import sortBy = require("lodash/sortBy");
 import { components } from "react-select";
 import find = require("lodash/find");
 import { warn } from "../utils/log";
+import { OptionProps } from "react-select/lib/components/Option";
+import { SingleValueProps } from "react-select/lib/components/SingleValue";
 
 export const H24 = "24h";
 export const H12 = "12h";
@@ -43,12 +45,13 @@ const getComponents = (
 ): NonNullable<TimePicker.Props["components"]> => {
   return timeFormatter
     ? {
-        Option: props => (
+        Option: (props: OptionProps<any>) => (
           <components.Option {...props}>
             {timeFormatter(props.data.time)}
           </components.Option>
         ),
-        SingleValue: props => timeFormatter(props.data.time)
+        SingleValue: (props: SingleValueProps<any>) =>
+          timeFormatter(props.data.time)
       }
     : {};
 };
@@ -341,7 +344,9 @@ export class TimePicker extends React.Component<
 
     return (
       <SingleDropdown
-        {...{ id, className, style }}
+        id={id}
+        className={className}
+        style={style}
         isSearchable={searchable}
         value={find(options, o => o.value === value)!}
         onChange={onChange}

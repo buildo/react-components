@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "noEmit": true,
     "strict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -14,6 +13,5 @@
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
     "jsx": "react"
-  },
-  "include": [".", "../../src/**/*", "../../typings"]
+  }
 }

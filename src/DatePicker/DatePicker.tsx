@@ -64,7 +64,8 @@ export namespace DatePicker {
         value: LocalDate;
         /* called when value changes */
         onChange?: (date: LocalDate) => void;
-      });
+      }
+  );
 }
 
 export type State = {
@@ -273,11 +274,9 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
       autoClose = true
     } = this.props;
 
-    const SingleDatePicker: React.ComponentClass<
-      SingleDatePickerShape & {
-        horizontalMonthPadding?: number;
-      }
-    > = _SingleDatePicker;
+    const SingleDatePicker: React.ComponentClass<SingleDatePickerShape & {
+      horizontalMonthPadding?: number;
+    }> = _SingleDatePicker;
 
     return (
       <FlexView

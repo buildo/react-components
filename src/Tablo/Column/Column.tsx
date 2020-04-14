@@ -33,7 +33,8 @@ export namespace Column {
   export type ColumnChildren<T extends {}> = (
     | React.ReactElement<Header.Props>
     | React.ReactElement<Footer.Props>
-    | React.ReactElement<Cell.Props<T, keyof T>>)[];
+    | React.ReactElement<Cell.Props<T, keyof T>>
+  )[];
   export type Props<T extends {}> = Required<T> & Partial<Default>;
 }
 export type ColumnDefaultedIntrinsicProps<T> = Required<T> &
