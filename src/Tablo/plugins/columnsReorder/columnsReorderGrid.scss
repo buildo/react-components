@@ -1,6 +1,6 @@
-@import "../../../utils/theme/variables.scss";
-@import "~sass-flex-mixins/src/sass-flex-mixins.scss";
-@import "../../tabloVariables.scss";
+@import '../../../utils/theme/variables.scss';
+@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+@import '../../tabloVariables.scss';
 
 .columns-reorderable-tablo {
   .dndHeader {
@@ -8,7 +8,7 @@
     height: 100%;
 
     @include display_flex();
-    @include flex_align-items("center");
+    @include flex_align-items('center');
 
     &.isDragging {
       opacity: $columns-reorder-header-opacity-is-dragging;

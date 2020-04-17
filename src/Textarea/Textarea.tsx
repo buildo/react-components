@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ObjectOverwrite } from "../utils";
-import TextareaAutosize from "react-autosize-textarea";
+import * as React from 'react';
+import { ObjectOverwrite } from '../utils';
+import TextareaAutosize from 'react-autosize-textarea';
 
 export type TextareaRequiredProps = ObjectOverwrite<
   TextareaAutosize.Props,
@@ -28,9 +28,8 @@ export class Textarea extends React.PureComponent<Textarea.Props> {
     disabled: false
   };
 
-  _onChange: React.ChangeEventHandler<HTMLTextAreaElement> = ({
-    target: { value }
-  }) => this.props.onChange(value);
+  _onChange: React.ChangeEventHandler<HTMLTextAreaElement> = ({ target: { value } }) =>
+    this.props.onChange(value);
 
   render() {
     const textareaProps = {

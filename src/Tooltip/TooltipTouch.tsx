@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Tooltip, TooltipDefaultProps, TooltipRequiredProps } from "./Tooltip";
-import View from "react-flexview";
-import { findDOMNode } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Tooltip, TooltipDefaultProps, TooltipRequiredProps } from './Tooltip';
+import View from 'react-flexview';
+import { findDOMNode } from '../utils';
 
 export type State = {
   tooltipLeft: number;
@@ -20,8 +20,8 @@ type TooltipTouchDefaultedProps = TooltipRequiredProps & TooltipDefaultProps;
 
 export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
   static defaultProps: TooltipDefaultProps = {
-    type: "dark",
-    size: "small"
+    type: 'dark',
+    size: 'small'
   };
 
   state = {
@@ -37,7 +37,7 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
   timeout!: number;
 
   componentWillUnmount() {
-    if (typeof this.timeout !== "undefined") {
+    if (typeof this.timeout !== 'undefined') {
       clearTimeout(this.timeout);
     }
   }
@@ -62,13 +62,7 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
   };
 
   onTouchMove: React.TouchEventHandler<HTMLDivElement> = e => {
-    const {
-      tooltipLeft,
-      tooltipTop,
-      tooltipBottom,
-      tooltipRight,
-      isOpen
-    } = this.state;
+    const { tooltipLeft, tooltipTop, tooltipBottom, tooltipRight, isOpen } = this.state;
 
     if (isOpen) {
       const { pageX: eventX, pageY: eventY } = e.touches[0];
@@ -110,14 +104,14 @@ export class TooltipTouch extends React.PureComponent<Tooltip.Props, State> {
       popover: {
         ...popover,
         isOpen,
-        className: cx(popover.className, "tooltip-touch")
+        className: cx(popover.className, 'tooltip-touch')
       },
       children
     };
     const spanStyle: React.CSSProperties | undefined = isOpen
       ? {
-          display: "hidden",
-          position: "fixed",
+          display: 'hidden',
+          position: 'fixed',
           top: -1000
         }
       : undefined;

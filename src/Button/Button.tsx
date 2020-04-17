@@ -1,11 +1,11 @@
-import * as React from "react";
-import * as cx from "classnames";
-import every = require("lodash/every");
-import { stateClassUtil } from "../utils";
-import { TextOverflow } from "../TextOverflow/TextOverflow";
-import FlexView from "react-flexview";
-import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { warn } from "../utils/log";
+import * as React from 'react';
+import * as cx from 'classnames';
+import every = require('lodash/every');
+import { stateClassUtil } from '../utils';
+import { TextOverflow } from '../TextOverflow/TextOverflow';
+import FlexView from 'react-flexview';
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
+import { warn } from '../utils/log';
 
 export type ButtonRequiredProps = {
   /** callback */
@@ -42,23 +42,11 @@ export type ButtonDefaultProps = {
 };
 
 export namespace Button {
-  export type TextOverflowCompatibleComponent = React.ComponentClass<
-    TextOverflow.Props
-  >;
+  export type TextOverflowCompatibleComponent = React.ComponentClass<TextOverflow.Props>;
   export type ButtonStateMap<T> = { [key in Button.ButtonState]?: T };
-  export type ButtonState =
-    | "ready"
-    | "not-allowed"
-    | "processing"
-    | "error"
-    | "success";
-  export type ButtonType =
-    | "default"
-    | "primary"
-    | "positive"
-    | "negative"
-    | "flat";
-  export type ButtonSize = "tiny" | "small" | "medium";
+  export type ButtonState = 'ready' | 'not-allowed' | 'processing' | 'error' | 'success';
+  export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
+  export type ButtonSize = 'tiny' | 'small' | 'medium';
 
   export type Props = ButtonRequiredProps & Partial<ButtonDefaultProps>;
 }
@@ -81,29 +69,19 @@ const propsInvariants: Array<(props: Button.Props) => boolean> = [
 ];
 
 const defaultLabels: Button.ButtonStateMap<string> = {
-  success: "success",
-  error: "error",
-  processing: "processing"
+  success: 'success',
+  error: 'error',
+  processing: 'processing'
 };
 
 const defaultSuccessIcon = (
-  <svg
-    className="default-success-icon"
-    width="16"
-    height="16"
-    viewBox="0 0 28 28"
-  >
+  <svg className="default-success-icon" width="16" height="16" viewBox="0 0 28 28">
     <title>check</title>
     <path d="M26.109 8.844q0 0.625-0.438 1.062l-13.438 13.438q-0.438 0.438-1.062 0.438t-1.062-0.438l-7.781-7.781q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.609 10.25-10.266q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.437 0.438 1.062z" />
   </svg>
 );
 const defaultErrorIcon = (
-  <svg
-    className="default-error-icon"
-    width="10"
-    height="16"
-    viewBox="0 0 10 28"
-  >
+  <svg className="default-error-icon" width="10" height="16" viewBox="0 0 10 28">
     <title>exclamation</title>
     <path d="M8 19.5v3.5q0 0.406-0.297 0.703t-0.703 0.297h-4q-0.406 0-0.703-0.297t-0.297-0.703v-3.5q0-0.406 0.297-0.703t0.703-0.297h4q0.406 0 0.703 0.297t0.297 0.703zM8.469 3l-0.438 12q-0.016 0.406-0.32 0.703t-0.711 0.297h-4q-0.406 0-0.711-0.297t-0.32-0.703l-0.438-12q-0.016-0.406 0.273-0.703t0.695-0.297h5q0.406 0 0.695 0.297t0.273 0.703z" />
   </svg>
@@ -117,19 +95,19 @@ const defaultIcons: Button.ButtonStateMap<JSX.Element> = {
 export class Button extends React.PureComponent<Button.Props> {
   static defaultProps: ButtonDefaultProps = {
     textOverflow: TextOverflow,
-    buttonState: "ready",
-    size: "small",
+    buttonState: 'ready',
+    size: 'small',
     fluid: false,
     primary: false,
     circular: false,
-    className: "",
+    className: '',
     style: {}
   };
 
   componentDidMount() {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== 'production') {
       if (!satisfyAll(...propsInvariants)(this.props)) {
-        warn("Button: some prop invariant is not satisfied");
+        warn('Button: some prop invariant is not satisfied');
       }
     }
   }
@@ -152,10 +130,7 @@ export class Button extends React.PureComponent<Button.Props> {
   );
 
   // TODO: the popover props is not handled by TextOverflow
-  templateLabel = (
-    label: string,
-    TextOverflow: Button.TextOverflowCompatibleComponent
-  ) => (
+  templateLabel = (label: string, TextOverflow: Button.TextOverflowCompatibleComponent) => (
     <FlexView
       className="button-label"
       column
@@ -189,29 +164,26 @@ export class Button extends React.PureComponent<Button.Props> {
 
     const labels = {
       ...defaultLabels,
-      ...(typeof l === "string" ? { ready: l, "not-allowed": l } : l)
+      ...(typeof l === 'string' ? { ready: l, 'not-allowed': l } : l)
     };
 
     const icons = {
       ...defaultIcons,
-      ...(_icon && React.isValidElement(_icon)
-        ? { ready: _icon, "not-allowed": _icon }
-        : _icon)
+      ...(_icon && React.isValidElement(_icon) ? { ready: _icon, 'not-allowed': _icon } : _icon)
     };
 
-    const getButtonType = () =>
-      type || (primary && "primary") || (flat && "flat") || "default";
+    const getButtonType = () => type || (primary && 'primary') || (flat && 'flat') || 'default';
 
     const wrapperStyle = {
-      display: fluid ? "block" : "inline-block",
-      width: fluid ? "100%" : undefined
+      display: fluid ? 'block' : 'inline-block',
+      width: fluid ? '100%' : undefined
     };
 
     const isIconButton = (): boolean => !!_icon && !_label;
 
     const className = cx(
       stateClassUtil([getButtonType()]),
-      { "icon-button": isIconButton() },
+      { 'icon-button': isIconButton() },
       { circular },
       stateClassUtil([size]),
       _className
@@ -219,19 +191,15 @@ export class Button extends React.PureComponent<Button.Props> {
 
     const label = labels[buttonState];
     const icon = icons[buttonState];
-    const loading = buttonState === "processing";
+    const loading = buttonState === 'processing';
 
     return (
       <div className="button" style={wrapperStyle}>
         <FlexView
-          className={cx(
-            "button-inner",
-            className,
-            stateClassUtil([buttonState])
-          )}
+          className={cx('button-inner', className, stateClassUtil([buttonState]))}
           vAlignContent="center"
           hAlignContent="center"
-          onClick={buttonState === "ready" ? onClick : () => {}}
+          onClick={buttonState === 'ready' ? onClick : () => {}}
           style={style}
         >
           {loading && this.templateLoading()}

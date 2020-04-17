@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as MobileDetect from "mobile-detect";
-import * as PropTypes from "prop-types";
+import * as React from 'react';
+import * as MobileDetect from 'mobile-detect';
+import * as PropTypes from 'prop-types';
 
 export namespace MobileDetector {
   export type ChildrenArgs = {
@@ -34,9 +34,7 @@ export class MobileDetector extends React.Component<MobileDetector.Props> {
   getChildContext = () => this.getEnvironmentInfo();
 
   getEnvironmentInfo = () => {
-    const md = new MobileDetect(
-      this.props.userAgent || window.navigator.userAgent
-    );
+    const md = new MobileDetect(this.props.userAgent || window.navigator.userAgent);
     return {
       isDesktop: !this.isMobile(md),
       isMobile: this.isMobile(md),

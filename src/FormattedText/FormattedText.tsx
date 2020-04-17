@@ -1,10 +1,10 @@
-import * as React from "react";
-import flattenDeep = require("lodash/flattenDeep");
-import * as _linkify from "linkify-it";
-import { LinkifyIt } from "linkify-it";
+import * as React from 'react';
+import flattenDeep = require('lodash/flattenDeep');
+import * as _linkify from 'linkify-it';
+import { LinkifyIt } from 'linkify-it';
 
 // TODO: replace "require" with "import"... for some reason they're workin only with "require"
-const tlds = require("tlds");
+const tlds = require('tlds');
 const linkify: LinkifyIt = _linkify();
 linkify.tlds(tlds);
 
@@ -43,7 +43,7 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
   replaceLinksWithA(children: React.ReactNode[]): React.ReactNode[] {
     return flattenDeep(
       children.map(child => {
-        if (typeof child === "string") {
+        if (typeof child === 'string') {
           return this.linkify(child);
         } else {
           return child;
@@ -57,9 +57,7 @@ export class FormattedText extends React.PureComponent<FormattedText.Props> {
     return flattenDeep(
       paragraphs.map((paragraph, i) => {
         const br = <br key={`br-${i}`} />;
-        const p = (
-          <React.Fragment key={`paragraph-${i}`}>{paragraph}</React.Fragment>
-        );
+        const p = <React.Fragment key={`paragraph-${i}`}>{paragraph}</React.Fragment>;
         if (paragraph.length === 0) {
           return br;
         } else if (i < paragraphs.length - 1) {

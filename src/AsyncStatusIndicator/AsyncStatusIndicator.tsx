@@ -1,13 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import View from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import View from 'react-flexview';
 
 export namespace AsyncStatusIndicator {
-  export type AsyncStatusIndicatorState =
-    | "ready"
-    | "processing"
-    | "success"
-    | "error";
+  export type AsyncStatusIndicatorState = 'ready' | 'processing' | 'success' | 'error';
   export type Props = {
     /** The state of the component */
     state: AsyncStatusIndicatorState;
@@ -23,18 +19,16 @@ export namespace AsyncStatusIndicator {
 }
 
 /** A component that shows the status of an async operation */
-export class AsyncStatusIndicator extends React.PureComponent<
-  AsyncStatusIndicator.Props
-> {
+export class AsyncStatusIndicator extends React.PureComponent<AsyncStatusIndicator.Props> {
   render() {
     const { state, icons, labels, className, style } = this.props;
     const icon = icons[state] || null;
-    const label = labels[state] || "";
+    const label = labels[state] || '';
 
     return (
       <View
         vAlignContent="center"
-        className={cx("async-status-indicator", state, className)}
+        className={cx('async-status-indicator', state, className)}
         style={style}
       >
         {icon && (

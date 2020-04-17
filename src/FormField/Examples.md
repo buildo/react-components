@@ -4,12 +4,12 @@
 
 ```js
 initialState = {
-  input: "",
-  textarea: "",
-  password: "",
+  input: '',
+  textarea: '',
+  password: '',
   toggle: false,
   checkbox: false,
-  radioGroup: "first"
+  radioGroup: 'first'
 };
 
 function onChange(field, value) {
@@ -22,13 +22,13 @@ function onChange(field, value) {
       id="input"
       label="LABEL"
       hint={{
-        type: "label",
-        content: "Input Hint"
+        type: 'label',
+        content: 'Input Hint'
       }}
       inputProps={{
-        placeholder: "Type here...",
+        placeholder: 'Type here...',
         value: state.input,
-        onChange: value => onChange("input", value)
+        onChange: value => onChange('input', value)
       }}
     />
   </FlexView>
@@ -37,13 +37,13 @@ function onChange(field, value) {
       id="textarea"
       label="LABEL"
       hint={{
-        type: "label",
-        content: "Textarea hint"
+        type: 'label',
+        content: 'Textarea hint'
       }}
       textareaProps={{
-        placeholder: "Type here...",
+        placeholder: 'Type here...',
         value: state.textarea,
-        onChange: value => onChange("textarea", value),
+        onChange: value => onChange('textarea', value),
         rows: 5
       }}
     />
@@ -55,7 +55,7 @@ function onChange(field, value) {
         label="Checkbox text"
         checkboxProps={{
           value: state.checkbox,
-          onChange: value => onChange("checkbox", value)
+          onChange: value => onChange('checkbox', value)
         }}
       />
     </FlexView>
@@ -67,7 +67,7 @@ function onChange(field, value) {
         label="Toggle text"
         toggleProps={{
           value: state.toggle,
-          onChange: value => onChange("toggle", value)
+          onChange: value => onChange('toggle', value)
         }}
       />
     </FlexView>
@@ -80,20 +80,20 @@ function onChange(field, value) {
         radioGroupProps={{
           options: [
             {
-              label: "First",
-              value: "first"
+              label: 'First',
+              value: 'first'
             },
             {
-              label: "Second",
-              value: "second"
+              label: 'Second',
+              value: 'second'
             },
             {
-              label: "Other",
-              value: "other"
+              label: 'Other',
+              value: 'other'
             }
           ],
           value: state.radioGroup,
-          onChange: value => onChange("radioGroup", value)
+          onChange: value => onChange('radioGroup', value)
         }}
       />
     </FlexView>
@@ -103,18 +103,18 @@ function onChange(field, value) {
       id="dropdown"
       label="LABEL"
       hint={{
-        type: "label",
-        content: "Dropdown hint"
+        type: 'label',
+        content: 'Dropdown hint'
       }}
       dropdownProps={{
         value: state.dropdown,
         options: [
-          { value: "male", label: "Male" },
-          { value: "female", label: "Female" }
+          { value: 'male', label: 'Male' },
+          { value: 'female', label: 'Female' }
         ],
         dropdownRenderer: props => <SingleDropdown {...props} isSearchable />,
-        onChange: value => onChange("dropdown", value),
-        placeholder: "Select"
+        onChange: value => onChange('dropdown', value),
+        placeholder: 'Select'
       }}
     />
   </FlexView>
@@ -125,12 +125,12 @@ function onChange(field, value) {
         label="LABEL"
         viewProps={{ grow: false }}
         hint={{
-          type: "label",
-          content: "DatePicker hint"
+          type: 'label',
+          content: 'DatePicker hint'
         }}
         datePickerProps={{
           value: state.datePicker,
-          onChange: value => onChange("datePicker", value)
+          onChange: value => onChange('datePicker', value)
         }}
       />
     </FlexView>
@@ -139,12 +139,12 @@ function onChange(field, value) {
         id="timePicker"
         label="LABEL"
         hint={{
-          type: "label",
-          content: "TimePicker hint"
+          type: 'label',
+          content: 'TimePicker hint'
         }}
         timePickerProps={{
           value: state.timePicker,
-          onChange: value => onChange("timePicker", value)
+          onChange: value => onChange('timePicker', value)
         }}
       />
     </FlexView>
@@ -154,12 +154,12 @@ function onChange(field, value) {
       id="password"
       label="LABEL"
       hint={{
-        type: "label",
-        content: "PasswordInput hint"
+        type: 'label',
+        content: 'PasswordInput hint'
       }}
       passwordInputProps={{
         value: state.password,
-        onChange: value => onChange("password", value)
+        onChange: value => onChange('password', value)
       }}
     />
   </FlexView>
@@ -170,8 +170,8 @@ function onChange(field, value) {
 
 ```js
 initialState = {
-  input: "",
-  textarea: ""
+  input: '',
+  textarea: ''
 };
 
 function onChange(field, value) {
@@ -184,9 +184,9 @@ function onChange(field, value) {
       id="input-required"
       label="LABEL"
       inputProps={{
-        placeholder: "Type here...",
+        placeholder: 'Type here...',
         value: state.input,
-        onChange: value => onChange("input", value)
+        onChange: value => onChange('input', value)
       }}
       required
     />
@@ -196,9 +196,9 @@ function onChange(field, value) {
       id="textarea-required"
       label="LABEL"
       textareaProps={{
-        placeholder: "Type here...",
+        placeholder: 'Type here...',
         value: state.textarea,
-        onChange: value => onChange("textarea", value),
+        onChange: value => onChange('textarea', value),
         rows: 5
       }}
       required
@@ -218,7 +218,7 @@ Based on the form design, the hint could have different styles:
 
 ```js
 initialState = {
-  input: ""
+  input: ''
 };
 
 function onChange(field, value) {
@@ -228,13 +228,13 @@ function onChange(field, value) {
 <InputField
   label="ADDRESS"
   hint={{
-    type: "label",
-    content: "e.g. 8156 Old Arlington Road"
+    type: 'label',
+    content: 'e.g. 8156 Old Arlington Road'
   }}
   inputProps={{
-    placeholder: "Type here...",
+    placeholder: 'Type here...',
     value: state.input,
-    onChange: value => onChange("input", value)
+    onChange: value => onChange('input', value)
   }}
 />;
 ```
@@ -243,7 +243,7 @@ function onChange(field, value) {
 
 ```js
 initialState = {
-  input: ""
+  input: ''
 };
 
 function onChange(field, value) {
@@ -254,13 +254,13 @@ function onChange(field, value) {
   viewProps={{ width: 300 }}
   label="ADDRESS"
   hint={{
-    type: "tooltip",
-    content: "e.g. 8156 Old Arlington Road"
+    type: 'tooltip',
+    content: 'e.g. 8156 Old Arlington Road'
   }}
   inputProps={{
-    placeholde: "Type here...",
+    placeholde: 'Type here...',
     value: state.input,
-    onChange: value => onChange("input", value)
+    onChange: value => onChange('input', value)
   }}
 />;
 ```
@@ -269,7 +269,7 @@ function onChange(field, value) {
 
 ```js
 initialState = {
-  input: ""
+  input: ''
 };
 
 function onChange(field, value) {
@@ -280,13 +280,13 @@ function onChange(field, value) {
   viewProps={{ width: 500 }}
   label="ADDRESS"
   hint={{
-    type: "box",
-    content: "e.g. 8156 Old Arlington Road"
+    type: 'box',
+    content: 'e.g. 8156 Old Arlington Road'
   }}
   inputProps={{
-    placeholder: "Type here...",
+    placeholder: 'Type here...',
     value: state.input,
-    onChange: value => onChange("input", value)
+    onChange: value => onChange('input', value)
   }}
 />;
 ```

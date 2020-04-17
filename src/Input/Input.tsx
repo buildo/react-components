@@ -1,11 +1,11 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { ObjectOverwrite, Children } from "../utils";
-import omit = require("lodash/omit");
-import InputChildren from "react-input-children";
-import View from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { ObjectOverwrite, Children } from '../utils';
+import omit = require('lodash/omit');
+import InputChildren from 'react-input-children';
+import View from 'react-flexview';
 
-export type InputStatus = "success" | "failure";
+export type InputStatus = 'success' | 'failure';
 
 export type InputRequiredProps = ObjectOverwrite<
   InputChildren.Props,
@@ -51,17 +51,15 @@ export class Input extends React.PureComponent<Input.Props> {
     disabled: false
   };
 
-  _onChange: React.ChangeEventHandler<HTMLInputElement> = ({
-    target: { value }
-  }) => this.props.onChange(value);
+  _onChange: React.ChangeEventHandler<HTMLInputElement> = ({ target: { value } }) =>
+    this.props.onChange(value);
 
   render() {
-    const { className, value, status, wrapper = {}, ...props } = this
-      .props as InputDefaultedProps;
+    const { className, value, status, wrapper = {}, ...props } = this.props as InputDefaultedProps;
     const { _onChange: onChange } = this;
 
-    const isSuccess = status === "success";
-    const isFailure = status === "failure";
+    const isSuccess = status === 'success';
+    const isFailure = status === 'failure';
     const children =
       this.props.children ||
       (isSuccess ? (
@@ -73,18 +71,18 @@ export class Input extends React.PureComponent<Input.Props> {
       ));
 
     const inputProps = {
-      ...omit(props, ["onChange", "status", "children", "wrapper"]),
+      ...omit(props, ['onChange', 'status', 'children', 'wrapper']),
       children,
       value,
       onChange,
       wrapper: {
         ...wrapper,
         className: cx(
-          "input",
+          'input',
           {
-            "has-value": value !== "",
-            "is-success": isSuccess,
-            "is-failure": isFailure
+            'has-value': value !== '',
+            'is-success': isSuccess,
+            'is-failure': isFailure
           },
           wrapper.className,
           className

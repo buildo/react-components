@@ -1,4 +1,4 @@
-@import "../utils/theme/variables.scss";
+@import '../utils/theme/variables.scss';
 $background-dark: $brc-darkGreyBlue !default;
 $background-light: $brc-white !default;
 $border-radius: 5px !default;
@@ -44,7 +44,7 @@ $arrow-color: $brc-darkGreyBlue !default;
 
   &::after,
   &::before {
-    content: " ";
+    content: ' ';
     position: absolute;
     border: solid transparent;
     border-width: $arrow-size;

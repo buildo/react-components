@@ -1,2 +1,2 @@
-import { AsyncStatusIndicator } from "./AsyncStatusIndicator";
+import { AsyncStatusIndicator } from './AsyncStatusIndicator';
 export default AsyncStatusIndicator;

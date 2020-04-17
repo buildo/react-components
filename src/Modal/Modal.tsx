@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import omit = require("lodash/omit");
-import { ModalPortal } from "./ModalPortal";
-import FlexView from "react-flexview";
-import { BackgroundDimmer } from "./BackgroundDimmer";
+import * as React from 'react';
+import * as cx from 'classnames';
+import omit = require('lodash/omit');
+import { ModalPortal } from './ModalPortal';
+import FlexView from 'react-flexview';
+import { BackgroundDimmer } from './BackgroundDimmer';
 
 export type ModalDefaultProps = {
   /** whether the modal should be dismissed when clicking outside it */
@@ -36,20 +36,13 @@ export type ModalRequiredProps = {
   id?: string;
 };
 
-export type ModalDefaultedProps = ModalPortal.Props &
-  ModalRequiredProps &
-  ModalDefaultProps;
+export type ModalDefaultedProps = ModalPortal.Props & ModalRequiredProps & ModalDefaultProps;
 
 export namespace Modal {
-  export type Props = ModalPortal.Props &
-    ModalRequiredProps &
-    Partial<ModalDefaultProps>;
+  export type Props = ModalPortal.Props & ModalRequiredProps & Partial<ModalDefaultProps>;
 }
 
-const LocalProps: Record<
-  keyof ModalRequiredProps | keyof ModalDefaultProps,
-  true
-> = {
+const LocalProps: Record<keyof ModalRequiredProps | keyof ModalDefaultProps, true> = {
   children: true,
   title: true,
   footer: true,
@@ -67,7 +60,7 @@ export class Modal extends React.Component<Modal.Props> {
     onDismiss: () => {},
     dismissOnClickOutside: true,
     overlay: {
-      color: "black",
+      color: 'black',
       alpha: 0.85
     }
   };
@@ -91,7 +84,7 @@ export class Modal extends React.Component<Modal.Props> {
 
     const modalPortalProps: ModalPortal.Props = {
       ...omit(props, Object.keys(LocalProps)),
-      className: cx("modal", className)
+      className: cx('modal', className)
     } as ModalPortal.Props;
 
     return (
@@ -103,12 +96,8 @@ export class Modal extends React.Component<Modal.Props> {
         >
           <FlexView className="modal-content" column grow>
             {shouldRenderHeader && (
-              <FlexView
-                className="modal-header"
-                shrink={false}
-                vAlignContent="center"
-              >
-                <FlexView className={cx("modal-title")} grow>
+              <FlexView className="modal-header" shrink={false} vAlignContent="center">
+                <FlexView className={cx('modal-title')} grow>
                   {title}
                 </FlexView>
                 {iconClose && (

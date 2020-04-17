@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import Checkbox from "../Checkbox";
-import { FormField } from "./FormField";
+import * as React from 'react';
+import * as cx from 'classnames';
+import Checkbox from '../Checkbox';
+import { FormField } from './FormField';
 
 type DefaultProps = {
   /** an optional custom renderer for Checkbox */
@@ -10,11 +10,11 @@ type DefaultProps = {
 
 type NonDefaultProps = {
   /** the label for the field */
-  label: FormField.Props["label"];
+  label: FormField.Props['label'];
   /** whether the field is required */
-  required?: FormField.Props["required"];
+  required?: FormField.Props['required'];
   /** optional props to pass to the wrapping View */
-  viewProps?: FormField.Props["viewProps"];
+  viewProps?: FormField.Props['viewProps'];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -51,15 +51,13 @@ export class CheckboxField extends React.PureComponent<InternalProps> {
       <FormField
         label={label}
         required={required}
-        className={cx("checkbox-field", className)}
+        className={cx('checkbox-field', className)}
         viewProps={viewProps}
         disabled={checkboxProps.disabled}
         id={id}
         horizontal
         onLabelClick={() => checkboxProps.onChange(!checkboxProps.value)}
-        render={(onFocus, onBlur) =>
-          checkboxRenderer({ ...checkboxProps, onFocus, onBlur })
-        }
+        render={(onFocus, onBlur) => checkboxRenderer({ ...checkboxProps, onFocus, onBlur })}
       />
     );
   }

@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as cx from "classnames";
+import * as React from 'react';
+import * as cx from 'classnames';
 import {
   DropTarget,
   DragSource,
@@ -7,10 +7,10 @@ import {
   DropTargetCollector,
   DragSourceSpec,
   DragSourceCollector
-} from "react-dnd";
-import { Children } from "../../../utils";
-import FlexView from "react-flexview";
-import { findDOMNode } from "../../../utils";
+} from 'react-dnd';
+import { Children } from '../../../utils';
+import FlexView from 'react-flexview';
+import { findDOMNode } from '../../../utils';
 
 export namespace DNDHeader {
   export type Props = {
@@ -48,20 +48,13 @@ const columnTarget: DropTargetSpec<DNDHeaderIntrinsicProps> = {
       return false;
     }
   },
-  hover(
-    { isDropAllowed, onDragHover, name: target, index: hoverIndex },
-    monitor,
-    component
-  ) {
+  hover({ isDropAllowed, onDragHover, name: target, index: hoverIndex }, monitor, component) {
     if (monitor && component) {
       const item = monitor.getItem() as DNDMonitorItem;
       const source = item.name;
       if (onDragHover && isDropAllowed(source, target)) {
-        const hoverBoundingRect = findDOMNode(
-          component
-        ).getBoundingClientRect();
-        const hoverMiddleX =
-          (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
+        const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+        const hoverMiddleX = (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
         const clientOffset = monitor.getClientOffset();
         const hoverClientX = clientOffset.x - hoverBoundingRect.left;
         const dragIndex = item.index;
@@ -114,8 +107,7 @@ const collectSource: DragSourceCollector = (connect, monitor) => {
   };
 };
 
-const columnType = ({ tabloUniqueId }: DNDHeader.Props) =>
-  `${tabloUniqueId}_column`;
+const columnType = ({ tabloUniqueId }: DNDHeader.Props) => `${tabloUniqueId}_column`;
 
 @(DragSource(columnType, columnSource, collectSource) as any)
 @(DropTarget(columnType, columnTarget, collectTarget) as any)
@@ -132,7 +124,7 @@ export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
     } = this.props as DNDHeaderIntrinsicProps;
 
     const header = (
-      <div className={cx("dndHeader", { isDragging, canDrop, isOver })}>
+      <div className={cx('dndHeader', { isDragging, canDrop, isOver })}>
         <FlexView vAlignContent="center" width="100%" height="100%">
           <FlexView grow height="100%" vAlignContent="center">
             {children}
@@ -141,8 +133,6 @@ export default class DNDHeader extends React.PureComponent<DNDHeader.Props> {
       </div>
     );
 
-    return isDragAllowed
-      ? connectDropTarget(connectDragSource(header))
-      : (header as any);
+    return isDragAllowed ? connectDropTarget(connectDragSource(header)) : (header as any);
   }
 }

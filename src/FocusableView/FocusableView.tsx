@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import debounce = require("lodash/debounce");
-import { Children } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import debounce = require('lodash/debounce');
+import { Children } from '../utils';
 
 export type FocusableViewRequiredProps = {
   /** FocusableView content. If a function it gets called with the boolean "focused" */
@@ -26,12 +26,10 @@ export type FocusableViewDefaultProps = {
 };
 
 export namespace FocusableView {
-  export type Props = Partial<FocusableViewDefaultProps> &
-    FocusableViewRequiredProps;
+  export type Props = Partial<FocusableViewDefaultProps> & FocusableViewRequiredProps;
 }
 
-type FocusableViewDefaultedProps = FocusableViewRequiredProps &
-  FocusableViewDefaultProps;
+type FocusableViewDefaultedProps = FocusableViewRequiredProps & FocusableViewDefaultProps;
 
 /**
  * A panel that can get focus
@@ -39,7 +37,7 @@ type FocusableViewDefaultedProps = FocusableViewRequiredProps &
 export class FocusableView extends React.Component<FocusableView.Props> {
   static defaultProps: FocusableViewDefaultProps = {
     ignoreFocus: false,
-    component: "div",
+    component: 'div',
     tabIndex: 0,
     onFocus: () => {},
     onBlur: () => {}
@@ -78,9 +76,9 @@ export class FocusableView extends React.Component<FocusableView.Props> {
       return;
     }
 
-    if (type === "blur" && focused) {
+    if (type === 'blur' && focused) {
       this._onBlur();
-    } else if (type === "focus" && !focused) {
+    } else if (type === 'focus' && !focused) {
       this._onFocus();
     }
   };
@@ -120,7 +118,7 @@ export class FocusableView extends React.Component<FocusableView.Props> {
     return React.createElement(
       component as any,
       locals,
-      typeof children === "function" ? children(focused) : children
+      typeof children === 'function' ? children(focused) : children
     );
   }
 }

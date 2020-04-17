@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import View from "react-flexview";
-import Button, { StatefulButton } from "../Button";
-import { findDOMNode, Children } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import View from 'react-flexview';
+import Button, { StatefulButton } from '../Button';
+import { findDOMNode, Children } from '../utils';
 
 export namespace Form {
   export type Props = View.Props & {
@@ -17,7 +17,7 @@ export class Form extends React.PureComponent<Form.Props> {
   onFormSubmit: React.ReactEventHandler<HTMLFormElement> = e => {
     if (!this.props.noSubmitOnEnter && this.buttonRef.current) {
       const buttonDiv = findDOMNode(this.buttonRef.current);
-      const clickable = buttonDiv.querySelector(".button-inner");
+      const clickable = buttonDiv.querySelector('.button-inner');
       if (clickable) {
         (clickable as HTMLDivElement).click();
       }
@@ -27,21 +27,15 @@ export class Form extends React.PureComponent<Form.Props> {
   };
 
   render() {
-    const {
-      className,
-      style,
-      render,
-      noSubmitOnEnter,
-      ...viewProps
-    } = this.props;
+    const { className, style, render, noSubmitOnEnter, ...viewProps } = this.props;
     return (
       <form
-        className={cx("form", className)}
+        className={cx('form', className)}
         onSubmit={this.onFormSubmit}
-        style={{ width: "100%", ...style }}
+        style={{ width: '100%', ...style }}
       >
         <View {...viewProps}>{render(this.buttonRef)}</View>
-        <input type="submit" style={{ display: "none" }} />
+        <input type="submit" style={{ display: 'none' }} />
       </form>
     );
   }

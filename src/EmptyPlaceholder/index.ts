@@ -1,2 +1,2 @@
-import { EmptyPlaceholder } from "./EmptyPlaceholder";
+import { EmptyPlaceholder } from './EmptyPlaceholder';
 export default EmptyPlaceholder;

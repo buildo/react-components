@@ -1,4 +1,4 @@
-@import "../utils/theme/variables.scss";
+@import '../utils/theme/variables.scss';
 
 .popover-content {
   &.baloon {
@@ -43,7 +43,7 @@
 
     &::after,
     &::before {
-      content: " ";
+      content: ' ';
       position: absolute;
       border: solid transparent;
       border-width: 8px;

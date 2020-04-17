@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Table, TableProps } from "fixed-data-table-2";
-import Column, { defaultColumns, updateColumns } from "./Column";
-import FlexView from "react-flexview";
-import ColumnGroup from "./ColumnGroup";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Table, TableProps } from 'fixed-data-table-2';
+import Column, { defaultColumns, updateColumns } from './Column';
+import FlexView from 'react-flexview';
+import ColumnGroup from './ColumnGroup';
 import {
   autosize,
   columnsResize,
@@ -11,11 +11,11 @@ import {
   scrollable,
   selectable,
   sortable
-} from "./plugins";
-import omit = require("lodash/omit");
-import { warn } from "../utils/log";
+} from './plugins';
+import omit = require('lodash/omit');
+import { warn } from '../utils/log';
 
-import "./patch-fixed-data-table-2";
+import './patch-fixed-data-table-2';
 
 export type TabloDefaultProps = {
   /** height in pixel of every row */
@@ -65,7 +65,7 @@ export type TabloRequiredProps<T> = {
   /** callback to be called when the currently selected rows change */
   onRowsSelect?: (selectedRows: number[]) => void;
   /** single = only one selected row at a time, multi = multiple selection, none = selection disabled */
-  selectionType?: "single" | "multi" | "none";
+  selectionType?: 'single' | 'multi' | 'none';
   /** the id of the hovered row */
   hoveredRowIndex?: number;
   /** callback to be called when the hovered row changes */
@@ -95,7 +95,7 @@ export type TabloDefaultedIntrinsicProps<T> = TabloRequiredProps<T> &
   TabloIntrinsicProps;
 
 export namespace Tablo {
-  export type SortDir = "asc" | "desc";
+  export type SortDir = 'asc' | 'desc';
   export type Sort<K> = {
     sortBy?: K;
     sortDir?: SortDir;
@@ -103,13 +103,12 @@ export namespace Tablo {
   export type ColumnChild<T> = React.ReactElement<Column.Props<T>>;
   export type ColumnGroupChild<T> = React.ReactElement<ColumnGroup.Props<T>>;
 
-  export type Props<T extends {}> = TabloRequiredProps<T> &
-    Partial<TabloDefaultProps>;
+  export type Props<T extends {}> = TabloRequiredProps<T> & Partial<TabloDefaultProps>;
 }
 
 class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
   static defaultProps: TabloDefaultProps = {
-    rowClassNameGetter: () => "",
+    rowClassNameGetter: () => '',
     rowHeight: 30,
     headerHeight: 40,
     groupHeaderHeight: 50,
@@ -118,49 +117,37 @@ class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
   };
 
   render() {
-    const {
-      data,
-      children,
-      rowClassNameGetter: rcnGetter,
-      className,
-      ..._tableProps
-    } = this.props as TabloDefaultedIntrinsicProps<T>;
+    const { data, children, rowClassNameGetter: rcnGetter, className, ..._tableProps } = this
+      .props as TabloDefaultedIntrinsicProps<T>;
 
     const columnsOrGroups = updateColumns(
       children || defaultColumns(data),
       ({ col }: { col: Tablo.ColumnChild<T> }) => {
-        return (
-          <Column {...{ key: col.props.name as any, ...col.props, data }} />
-        );
+        return <Column {...{ key: col.props.name as any, ...col.props, data }} />;
       }
     ).map((ch, key) => (ch.type as React.SFC<any>)({ key, ...ch.props }));
 
-    if (
-      columnsOrGroups.length !==
-      ([] as any[]).concat(children || Object.keys(data[0])).length
-    ) {
-      warn(
-        "There are extraneous children in the Grid. One should use only Column or ColumnGroup"
-      );
+    if (columnsOrGroups.length !== ([] as any[]).concat(children || Object.keys(data[0])).length) {
+      warn('There are extraneous children in the Grid. One should use only Column or ColumnGroup');
     }
 
     const rowClassNameGetter = (index: number) => {
       return cx(
-        "tablo-row",
-        { "tablo-row-even": index % 2 === 0, "tablo-row-odd": index % 2 === 1 },
+        'tablo-row',
+        { 'tablo-row-even': index % 2 === 0, 'tablo-row-odd': index % 2 === 1 },
         rcnGetter(index)
       );
     };
 
     const rowsCount = data.length;
     const tableProps: TableProps = {
-      ...omit(_tableProps, ["columnsOrder", "autosize"]),
+      ...omit(_tableProps, ['columnsOrder', 'autosize']),
       rowsCount,
       rowClassNameGetter
     } as TableProps;
 
     return (
-      <FlexView column grow className={cx("tablo", className)}>
+      <FlexView column grow className={cx('tablo', className)}>
         <Table {...tableProps}>{columnsOrGroups}</Table>
       </FlexView>
     );
@@ -168,14 +155,10 @@ class TabloComponent<T extends {}> extends React.PureComponent<Tablo.Props<T>> {
 }
 
 const _Component = autosize(
-  columnsResize(
-    columnsReorder(scrollable(selectable(sortable(TabloComponent as any))))
-  )
+  columnsResize(columnsReorder(scrollable(selectable(sortable(TabloComponent as any)))))
 );
 
-export function Tablo<T extends {}>(
-  props: Tablo.Props<T>
-): React.ReactElement<Tablo.Props<T>> {
+export function Tablo<T extends {}>(props: Tablo.Props<T>): React.ReactElement<Tablo.Props<T>> {
   const Component = (_Component as any) as React.ComponentClass<Tablo.Props<T>>;
   return <Component {...props} />;
 }

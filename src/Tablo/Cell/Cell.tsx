@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Children } from "../../utils";
-import FlexView from "react-flexview";
-import { Cell as CellFDT } from "fixed-data-table-2";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Children } from '../../utils';
+import FlexView from 'react-flexview';
+import { Cell as CellFDT } from 'fixed-data-table-2';
 
 export type Intrinsic<T, K> = {
   data: K extends keyof T ? T[K] : never;
@@ -15,36 +15,24 @@ export type Intrinsic<T, K> = {
 };
 
 export type Default = {
-  vAlignContent: "top" | "center" | "bottom";
-  hAlignContent: "left" | "center" | "right";
+  vAlignContent: 'top' | 'center' | 'bottom';
+  hAlignContent: 'left' | 'center' | 'right';
   grow: boolean;
 };
 
 export type Required<T, K> = {
-  render: (
-    data: K extends keyof T ? T[K] : never,
-    rowData: T,
-    rowIndex: number
-  ) => Children;
-  backgroundColor?: React.CSSProperties["backgroundColor"];
-  color?: React.CSSProperties["color"];
+  render: (data: K extends keyof T ? T[K] : never, rowData: T, rowIndex: number) => Children;
+  backgroundColor?: React.CSSProperties['backgroundColor'];
+  color?: React.CSSProperties['color'];
   contentStyle?: React.CSSProperties;
   style?: React.CSSProperties;
 };
 
 export namespace Cell {
-  export type Props<T, K extends keyof T | never> = Required<T, K> &
-    Partial<Default>;
+  export type Props<T, K extends keyof T | never> = Required<T, K> & Partial<Default>;
 }
-export type CellIntrinsicProps<T, K extends keyof T | never> = Cell.Props<
-  T,
-  K
-> &
-  Intrinsic<T, K>;
-type CellDefaultedIntrinsicProps<T, K extends keyof T | never> = Required<
-  T,
-  K
-> &
+export type CellIntrinsicProps<T, K extends keyof T | never> = Cell.Props<T, K> & Intrinsic<T, K>;
+type CellDefaultedIntrinsicProps<T, K extends keyof T | never> = Required<T, K> &
   Default &
   Intrinsic<T, K>;
 
@@ -59,8 +47,8 @@ export function Cell<T extends {}, K extends keyof T | never = never>(
     render,
     backgroundColor,
     color,
-    vAlignContent = "center",
-    hAlignContent = "left",
+    vAlignContent = 'center',
+    hAlignContent = 'left',
     grow = true,
     contentStyle,
     style
@@ -69,10 +57,10 @@ export function Cell<T extends {}, K extends keyof T | never = never>(
   return (
     <CellFDT>
       <FlexView
-        className={cx("tablo-cell", {
-          "tablo-cell-fixed": fixed,
-          "tablo-cell-even-row": rowIndex % 2 === 0,
-          "tablo-cell-odd-row": rowIndex % 2 === 1
+        className={cx('tablo-cell', {
+          'tablo-cell-fixed': fixed,
+          'tablo-cell-even-row': rowIndex % 2 === 0,
+          'tablo-cell-odd-row': rowIndex % 2 === 1
         })}
         style={{ backgroundColor, color, ...style }}
         grow={grow}
@@ -84,9 +72,7 @@ export function Cell<T extends {}, K extends keyof T | never = never>(
           vAlignContent={vAlignContent}
           hAlignContent={hAlignContent}
         >
-          {typeof render === "function"
-            ? render(data, rowData, rowIndex)
-            : render}
+          {typeof render === 'function' ? render(data, rowData, rowIndex) : render}
         </FlexView>
       </FlexView>
     </CellFDT>

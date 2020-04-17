@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
-import { Children } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
+import { Children } from '../utils';
 
 export namespace MoreOrLess {
   export type Props = {
@@ -56,7 +56,7 @@ export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
       toggleExpanded
     } = this;
 
-    const panelState = expanded ? "more" : "less";
+    const panelState = expanded ? 'more' : 'less';
     const icon = expanded ? icons.expanded : icons.collapsed;
 
     return (
@@ -65,7 +65,7 @@ export class MoreOrLess extends React.PureComponent<MoreOrLess.Props> {
         shrink={false}
         {...wrapperProps}
         style={style}
-        className={cx("more-or-less", panelState, className)}
+        className={cx('more-or-less', panelState, className)}
       >
         {children}
         {this.templateExpandButton(icon, toggleExpanded)}

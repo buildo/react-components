@@ -4,16 +4,19 @@
 intialState = { isOpen: false };
 
 function open() {
-  setState({ isOpen: true })
+  setState({ isOpen: true });
 }
 
 function close() {
-  setState({ isOpen: false })
+  setState({ isOpen: false });
 }
 
 const closeIcon = (
-  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
-    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 22 28">
+    <path
+      fill="#9098a7"
+      d="M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z"
+    ></path>
   </svg>
 );
 
@@ -23,11 +26,15 @@ const getModal = () => (
     transitionLeaveTimeout={500}
     onDismiss={close}
     iconClose={closeIcon}
-    title='Send Message'
+    title="Send Message"
     footer={
-      <FlexView hAlignContent='right'>
-        <Button size='small' style={{ marginRight: 10 }} onClick={close}>Cancel</Button>
-        <Button primary size='small' onClick={close}>Confirm</Button>
+      <FlexView hAlignContent="right">
+        <Button size="small" style={{ marginRight: 10 }} onClick={close}>
+          Cancel
+        </Button>
+        <Button primary size="small" onClick={close}>
+          Confirm
+        </Button>
       </FlexView>
     }
   >
@@ -38,9 +45,8 @@ const getModal = () => (
 <div>
   <Button onClick={open}>Open modal</Button>
   {state.isOpen && getModal()}
-</div>
+</div>;
 ```
-
 
 #### Modal without header
 
@@ -48,11 +54,11 @@ const getModal = () => (
 intialState = { isOpen: false };
 
 function open() {
-  setState({ isOpen: true })
+  setState({ isOpen: true });
 }
 
 function close() {
-  setState({ isOpen: false })
+  setState({ isOpen: false });
 }
 
 const getModal = () => (
@@ -61,9 +67,13 @@ const getModal = () => (
     transitionLeaveTimeout={500}
     onDismiss={close}
     footer={
-      <FlexView hAlignContent='right'>
-        <Button size='small' style={{ marginRight: 10 }} onClick={close}>Cancel</Button>
-        <Button primary size='small' onClick={close}>Confirm</Button>
+      <FlexView hAlignContent="right">
+        <Button size="small" style={{ marginRight: 10 }} onClick={close}>
+          Cancel
+        </Button>
+        <Button primary size="small" onClick={close}>
+          Confirm
+        </Button>
       </FlexView>
     }
   >
@@ -74,9 +84,8 @@ const getModal = () => (
 <div>
   <Button onClick={open}>Open modal</Button>
   {state.isOpen && getModal()}
-</div>
+</div>;
 ```
-
 
 #### Modal without footer
 
@@ -84,16 +93,19 @@ const getModal = () => (
 intialState = { isOpen: false };
 
 function open() {
-  setState({ isOpen: true })
+  setState({ isOpen: true });
 }
 
 function close() {
-  setState({ isOpen: false })
+  setState({ isOpen: false });
 }
 
 const closeIcon = (
-  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
-    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 22 28">
+    <path
+      fill="#9098a7"
+      d="M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z"
+    ></path>
   </svg>
 );
 
@@ -103,7 +115,7 @@ const getModal = () => (
     transitionLeaveTimeout={500}
     onDismiss={close}
     iconClose={closeIcon}
-    title='Informative Modal'
+    title="Informative Modal"
   >
     This modal contains just info. So it is not possible to perform an action.
   </Modal>
@@ -112,22 +124,25 @@ const getModal = () => (
 <div>
   <Button onClick={open}>Open modal</Button>
   {state.isOpen && getModal()}
-</div>
+</div>;
 ```
 
-
 #### Passing arbitrary React context
+
 Modal renders through a "portal", so React context is not propagated as expected.
 
-*We know context isn't a public api, but it is required for [widely](https://github.com/reactjs/react-redux) [used](https://github.com/yahoo/react-intl) libraries to work. We also know there's `renderSubtreeIntoContainer`, which is unfortunately even more unstable.*
+_We know context isn't a public api, but it is required for [widely](https://github.com/reactjs/react-redux) [used](https://github.com/yahoo/react-intl) libraries to work. We also know there's `renderSubtreeIntoContainer`, which is unfortunately even more unstable._
 
 To solve this problem we export a handy `modalWithContext` that easily allows to pass context down correctly (look at the code!).
 
 ```js
 const FooType = React.PropTypes.string.isRequired;
 const closeIcon = (
-  <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='12' viewBox='0 0 22 28'>
-    <path fill='#9098a7' d='M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z'></path>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 22 28">
+    <path
+      fill="#9098a7"
+      d="M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z"
+    ></path>
   </svg>
 );
 
@@ -144,10 +159,9 @@ ComponentAccessingContext.contextTypes = {
 };
 
 class Component extends React.Component {
-
   getChildContext() {
     return { foo: 'this comes from context!' };
-  };
+  }
 
   constructor() {
     this.state = { isOpen: false };
@@ -156,11 +170,11 @@ class Component extends React.Component {
   }
 
   open() {
-    this.setState({ isOpen: true })
+    this.setState({ isOpen: true });
   }
 
   close() {
-    this.setState({ isOpen: false })
+    this.setState({ isOpen: false });
   }
 
   getModal() {
@@ -170,21 +184,13 @@ class Component extends React.Component {
         transitionLeaveTimeout={500}
         onDismiss={this.close}
         iconClose={closeIcon}
-        title='Send Message'
+        title="Send Message"
         footer={
-          <FlexView hAlignContent='right'>
-            <Button
-              size='small'
-              style={{ marginRight: 10 }}
-              onClick={this.close}
-            >
+          <FlexView hAlignContent="right">
+            <Button size="small" style={{ marginRight: 10 }} onClick={this.close}>
               Cancel
             </Button>
-            <Button
-              primary
-              size='small'
-              onClick={this.close}
-            >
+            <Button primary size="small" onClick={this.close}>
               Confirm
             </Button>
           </FlexView>
@@ -209,5 +215,5 @@ Component.childContextTypes = {
   foo: FooType
 };
 
-<Component />
+<Component />;
 ```

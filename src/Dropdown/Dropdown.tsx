@@ -1,7 +1,7 @@
-import * as React from "react";
-import Select from "react-select";
-import Creatable from "react-select/lib/Creatable";
-import * as cx from "classnames";
+import * as React from 'react';
+import Select from 'react-select';
+import Creatable from 'react-select/lib/Creatable';
+import * as cx from 'classnames';
 import {
   CommonProps,
   defaultProps,
@@ -9,7 +9,7 @@ import {
   defaultStyle,
   getCommonClassnames,
   DefaultProps
-} from "./commons";
+} from './commons';
 
 export type NonDefaultProps<OptionType> = CommonProps<OptionType> &
   (
@@ -26,13 +26,10 @@ export type NonDefaultProps<OptionType> = CommonProps<OptionType> &
   );
 
 export namespace Dropdown {
-  export type Props<OptionType> = NonDefaultProps<OptionType> &
-    Partial<DefaultProps>;
+  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
 }
 
-export class Dropdown<OptionType> extends React.PureComponent<
-  Dropdown.Props<OptionType>
-> {
+export class Dropdown<OptionType> extends React.PureComponent<Dropdown.Props<OptionType>> {
   static defaultProps = defaultProps;
 
   render() {
@@ -57,10 +54,7 @@ export class Dropdown<OptionType> extends React.PureComponent<
           ...defaultComponents<OptionType>(),
           ...customComponents
         }}
-        className={cx(
-          getCommonClassnames(size, flat || false, props.isSearchable),
-          className
-        )}
+        className={cx(getCommonClassnames(size, flat || false, props.isSearchable), className)}
         ref={innerRef}
         isSearchable={allowCreate || props.isSearchable}
       />

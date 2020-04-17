@@ -1,5 +1,5 @@
-import * as React from "react";
-import getUrl from "./getUrl";
+import * as React from 'react';
+import getUrl from './getUrl';
 
 export namespace Image {
   export type Props = {
@@ -10,9 +10,9 @@ export namespace Image {
     /** used to resize the image to this height before downloading it */
     height?: number;
     /** can be a number from 1 to 100 or "auto". Use "auto" to let cloudinary decide the quality for you */
-    quality?: number | "auto";
+    quality?: number | 'auto';
     /** which format the image should be. Use "auto" to let cloudinary decide the format for you */
-    format?: "jpeg" | "png" | "wdp" | "gif" | "auto";
+    format?: 'jpeg' | 'png' | 'wdp' | 'gif' | 'auto';
   } & React.HTMLAttributes<HTMLImageElement>;
 }
 

@@ -1,8 +1,8 @@
-import * as React from "react";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import FlexView from 'react-flexview';
 
 export type Props = {
-  arrowDir: "up" | "down" | "up-down";
+  arrowDir: 'up' | 'down' | 'up-down';
 };
 
 export default class Arrow extends React.PureComponent<Props> {
@@ -11,12 +11,10 @@ export default class Arrow extends React.PureComponent<Props> {
 
     return (
       <FlexView column vAlignContent="center" height="100%" className="arrow">
-        {arrowDir !== "down" && (
-          <FlexView className="up" marginBottom={arrowDir !== "up" ? 2 : 0} />
+        {arrowDir !== 'down' && (
+          <FlexView className="up" marginBottom={arrowDir !== 'up' ? 2 : 0} />
         )}
-        {arrowDir !== "up" && (
-          <FlexView className="down" marginTop={arrowDir !== "down" ? 2 : 0} />
-        )}
+        {arrowDir !== 'up' && <FlexView className="down" marginTop={arrowDir !== 'down' ? 2 : 0} />}
       </FlexView>
     );
   }

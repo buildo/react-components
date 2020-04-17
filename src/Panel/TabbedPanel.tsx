@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Panel } from "./Panel";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Panel } from './Panel';
+import FlexView from 'react-flexview';
 
 export namespace TabbedPanel {
   export type Tabs = {
@@ -24,20 +24,15 @@ export class TabbedPanel extends React.PureComponent<TabbedPanel.Props> {
     onSetActiveTab(activeTabIndex);
   };
 
-  headerTemplate({
-    headers,
-    activeIndex,
-    onSetActiveTab,
-    basis
-  }: TabbedPanel.Tabs) {
+  headerTemplate({ headers, activeIndex, onSetActiveTab, basis }: TabbedPanel.Tabs) {
     return (
       <FlexView grow className="tabbed-panel-tabs">
         {headers.map((header, i) => (
           <FlexView
             shrink
-            basis={basis || "100%"}
+            basis={basis || '100%'}
             key={i}
-            className={cx("tabbed-panel-tab", { active: activeIndex === i })}
+            className={cx('tabbed-panel-tab', { active: activeIndex === i })}
             hAlignContent="center"
             vAlignContent="center"
             onClick={onSetActiveTab.bind(null, i)}
@@ -51,20 +46,14 @@ export class TabbedPanel extends React.PureComponent<TabbedPanel.Props> {
 
   render() {
     const {
-      props: {
-        tabs,
-        children,
-        header: panelHeader,
-        className,
-        ...otherPanelProps
-      },
+      props: { tabs, children, header: panelHeader, className, ...otherPanelProps },
       onSetActiveTab
     } = this;
     const { headers, basis, activeIndex } = tabs;
 
     return (
       <Panel
-        className={cx("tabbed-panel", className)}
+        className={cx('tabbed-panel', className)}
         {...otherPanelProps}
         header={{
           collapse: panelHeader ? panelHeader.collapse : undefined,

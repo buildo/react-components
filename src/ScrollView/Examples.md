@@ -9,9 +9,17 @@ const Card = () => (
     <div style={{ fontSize: 14, color: '#313d4f', marginBottom: 10 }}>
       by <span style={{ color: '#1a91eb' }}>Luella Todd</span> | 7th of March
     </div>
-    <img width='100%' style={{ marginBottom: 10 }} src='scroll.gif' />
+    <img width="100%" style={{ marginBottom: 10 }} src="scroll.gif" />
     <div style={{ fontSize: 18, lineHeight: 1.4, color: '#727a86' }}>
-      Vinyl pug cray meh, pabst lyft retro fashion axe pickled. Tbh seitan unicorn, raw denim wayfarers edison bulb letterpress shoreditch put a bird on it lomo. Helvetica scenester cronut, trust fund lumbersexual normcore cray pour-over pinterest single-origin coffee pug glossier. Godard slow-carb kitsch, heirloom pug intelligentsia art party cornhole chicharrones lumbersexual man bun. Subway tile shabby chic narwhal, hella pour-over paleo coloring book intelligentsia bushwick selvage migas gentrify single-origin coffee. Schlitz chicharrones fanny pack trust fund green juice, gochujang hexagon drinking vinegar slow-carb truffaut pabst pitchfork. Retro gentrify synth, pop-up snackwave lo-fi blue bottle bicycle rights fanny pack iceland.
+      Vinyl pug cray meh, pabst lyft retro fashion axe pickled. Tbh seitan unicorn, raw denim
+      wayfarers edison bulb letterpress shoreditch put a bird on it lomo. Helvetica scenester
+      cronut, trust fund lumbersexual normcore cray pour-over pinterest single-origin coffee pug
+      glossier. Godard slow-carb kitsch, heirloom pug intelligentsia art party cornhole chicharrones
+      lumbersexual man bun. Subway tile shabby chic narwhal, hella pour-over paleo coloring book
+      intelligentsia bushwick selvage migas gentrify single-origin coffee. Schlitz chicharrones
+      fanny pack trust fund green juice, gochujang hexagon drinking vinegar slow-carb truffaut pabst
+      pitchfork. Retro gentrify synth, pop-up snackwave lo-fi blue bottle bicycle rights fanny pack
+      iceland.
     </div>
   </FlexView>
 );
@@ -20,5 +28,5 @@ const Card = () => (
   <ScrollView>
     <Card />
   </ScrollView>
-</FlexView>
+</FlexView>;
 ```

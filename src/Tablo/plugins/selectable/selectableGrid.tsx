@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import includes = require("lodash/includes");
-import { Tablo } from "../../Tablo";
-import { Table } from "fixed-data-table-2";
+import * as React from 'react';
+import * as cx from 'classnames';
+import includes = require('lodash/includes');
+import { Tablo } from '../../Tablo';
+import { Table } from 'fixed-data-table-2';
 
 export default <T extends {}>(
   Grid: React.ComponentClass<Tablo.Props<T>>
@@ -12,20 +12,17 @@ export default <T extends {}>(
       const {
         selectedRows = [],
         onRowsSelect,
-        selectionType = "none",
+        selectionType = 'none',
         className,
-        rowClassNameGetter: rcnGetter = () => "",
+        rowClassNameGetter: rcnGetter = () => '',
         ...gridProps
       } = this.props;
 
-      const onRowClick = (
-        { ctrlKey, metaKey }: React.MouseEvent<Table>,
-        index: number
-      ) => {
-        if (selectionType === "none" || !onRowsSelect) {
+      const onRowClick = ({ ctrlKey, metaKey }: React.MouseEvent<Table>, index: number) => {
+        if (selectionType === 'none' || !onRowsSelect) {
           return;
         }
-        if (selectionType === "multi" && (ctrlKey || metaKey)) {
+        if (selectionType === 'multi' && (ctrlKey || metaKey)) {
           if (includes(selectedRows, index)) {
             onRowsSelect(selectedRows.filter(idx => idx !== index));
           } else {
@@ -44,11 +41,7 @@ export default <T extends {}>(
       const scrollToRow = !gridProps.scrollTop ? selectedRows[0] : undefined;
 
       const tabloProps = {
-        className: cx(
-          "selectable-tablo",
-          { selectable: selectionType !== "none" },
-          className
-        ),
+        className: cx('selectable-tablo', { selectable: selectionType !== 'none' }, className),
         scrollToRow,
         onRowClick,
         rowClassNameGetter,

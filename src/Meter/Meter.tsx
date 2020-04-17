@@ -1,17 +1,16 @@
-import * as React from "react";
-import { warn } from "../utils/log";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
-import find = require("lodash/find");
-import every = require("lodash/every");
-import some = require("lodash/some");
-import isEqual = require("lodash/isEqual");
-import sortBy = require("lodash/sortBy");
+import * as React from 'react';
+import { warn } from '../utils/log';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
+import find = require('lodash/find');
+import every = require('lodash/every');
+import some = require('lodash/some');
+import isEqual = require('lodash/isEqual');
+import sortBy = require('lodash/sortBy');
 
 function noOverlappingRanges(rangeList: Array<Meter.Range>): boolean {
   const isOverlapped = (range1: Meter.Range, range2: Meter.Range) =>
-    Math.max(range1.startValue, range2.startValue) <
-    Math.min(range1.endValue, range2.endValue);
+    Math.max(range1.startValue, range2.startValue) < Math.min(range1.endValue, range2.endValue);
 
   const noOverlappingRanges = (ranges: Meter.Range[]) => {
     return every(ranges, (range1, i) => {
@@ -24,21 +23,15 @@ function noOverlappingRanges(rangeList: Array<Meter.Range>): boolean {
   return noOverlappingRanges(rangeList);
 }
 
-const isFullyFilled = (
-  ranges: Meter.Range[] | void,
-  min: number,
-  max: number
-) => {
+const isFullyFilled = (ranges: Meter.Range[] | void, min: number, max: number) => {
   if (!ranges) {
     return false;
   }
   const comparableRanges = ranges.concat({ startValue: max, endValue: min });
-  const sortedStartValueList = sortBy(comparableRanges, "startValue").map(
+  const sortedStartValueList = sortBy(comparableRanges, 'startValue').map(
     range => range.startValue
   );
-  const sortedEndValueList = sortBy(comparableRanges, "endValue").map(
-    range => range.endValue
-  );
+  const sortedEndValueList = sortBy(comparableRanges, 'endValue').map(range => range.endValue);
   return isEqual(sortedStartValueList, sortedEndValueList);
 };
 
@@ -105,54 +98,39 @@ export class Meter extends React.PureComponent<Meter.Props> {
       .props as MeterDefaultedProps;
     warn(() => {
       if (min >= max) {
-        return "min should be less than max";
+        return 'min should be less than max';
       }
       return undefined;
     });
     warn(() => {
       if (some(ranges, r => r.startValue >= r.endValue)) {
-        return "malformed range received (startValue >= endValue)";
+        return 'malformed range received (startValue >= endValue)';
       }
       return undefined;
     });
     warn(() => {
       if (ranges && !noOverlappingRanges(ranges)) {
-        return "some ranges overlap";
+        return 'some ranges overlap';
       }
       return undefined;
     });
     warn(() => {
-      if (
-        isFullyFilled(ranges, min, max) &&
-        (baseFillingColor || baseBackgroundColor)
-      ) {
-        return "baseFillingColor or baseBackgroundColor is not needed, ranges are fully filled";
+      if (isFullyFilled(ranges, min, max) && (baseFillingColor || baseBackgroundColor)) {
+        return 'baseFillingColor or baseBackgroundColor is not needed, ranges are fully filled';
       }
       return undefined;
     });
     warn(() => {
-      if (
-        !(
-          isFullyFilled(ranges, min, max) ||
-          (baseFillingColor && baseBackgroundColor)
-        )
-      ) {
-        return "You should pass both baseFillingColor and baseBackgroundColor, ranges are not fully filled";
+      if (!(isFullyFilled(ranges, min, max) || (baseFillingColor && baseBackgroundColor))) {
+        return 'You should pass both baseFillingColor and baseBackgroundColor, ranges are not fully filled';
       }
       return undefined;
     });
   };
 
   computeStyles = () => {
-    const {
-      value,
-      min,
-      max,
-      ranges,
-      baseFillingColor,
-      baseLabelColor,
-      baseBackgroundColor
-    } = this.props as MeterDefaultedProps;
+    const { value, min, max, ranges, baseFillingColor, baseLabelColor, baseBackgroundColor } = this
+      .props as MeterDefaultedProps;
 
     const range = find(
       ranges,
@@ -173,33 +151,17 @@ export class Meter extends React.PureComponent<Meter.Props> {
   };
 
   render() {
-    const {
-      id,
-      style,
-      className: _className,
-      labelFormatter,
-      value,
-      min,
-      max
-    } = this.props as MeterDefaultedProps;
+    const { id, style, className: _className, labelFormatter, value, min, max } = this
+      .props as MeterDefaultedProps;
 
-    const {
-      basisSize,
-      fillingStyle,
-      labelStyle,
-      barStyle
-    } = this.computeStyles();
-    const className = cx("meter", _className);
+    const { basisSize, fillingStyle, labelStyle, barStyle } = this.computeStyles();
+    const className = cx('meter', _className);
     const formattedLabel = labelFormatter(value, min, max);
 
     return (
       <FlexView {...{ id, className, style }} grow vAlignContent="center">
         <FlexView className="bar" grow style={barStyle}>
-          <FlexView
-            className="filling"
-            basis={basisSize}
-            style={fillingStyle}
-          />
+          <FlexView className="filling" basis={basisSize} style={fillingStyle} />
         </FlexView>
         <FlexView className="label" shrink={false} style={labelStyle}>
           {formattedLabel}

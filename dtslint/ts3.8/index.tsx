@@ -1,71 +1,37 @@
-import * as React from "react";
+import * as React from 'react';
 
-import {
-  SingleDropdown,
-  MultiDropdown,
-  MultiDropdownWithSelectAll
-} from "../../src/Dropdown";
+import { SingleDropdown, MultiDropdown, MultiDropdownWithSelectAll } from '../../src/Dropdown';
 import {
   allSelected,
   someSelected,
   SelectAllValue
-} from "../../src/Dropdown/MultiDropdownWithSelectAll";
+} from '../../src/Dropdown/MultiDropdownWithSelectAll';
 
 <SingleDropdown />; // $ExpectError
 
 // isClearable: true
 
-<SingleDropdown
-  isClearable
-  options={[]}
-  value={null}
-  onChange={(_: null) => {}}
-/>;
+<SingleDropdown isClearable options={[]} value={null} onChange={(_: null) => {}} />;
 
 // $ExpectError
-<SingleDropdown
-  isClearable
-  options={["foo"]}
-  value={null}
-  onChange={(_: string) => {}}
-/>;
+<SingleDropdown isClearable options={['foo']} value={null} onChange={(_: string) => {}} />;
 
-<SingleDropdown
-  isClearable
-  options={["foo"]}
-  value={null}
-  onChange={(_: string | null) => {}}
-/>;
+<SingleDropdown isClearable options={['foo']} value={null} onChange={(_: string | null) => {}} />;
 
 // $ExpectError
-<SingleDropdown
-  isClearable
-  options={["foo"]}
-  value={"foo"}
-  onChange={(_: string) => {}}
-/>;
+<SingleDropdown isClearable options={['foo']} value={'foo'} onChange={(_: string) => {}} />;
 
 // $ExpectError
-<SingleDropdown
-  isClearable
-  options={["foo"]}
-  value={"foo"}
-  onChange={(_: number) => {}}
-/>;
+<SingleDropdown isClearable options={['foo']} value={'foo'} onChange={(_: number) => {}} />;
 
-<SingleDropdown
-  isClearable
-  options={["foo"]}
-  value={"foo"}
-  onChange={(_: string | null) => {}}
-/>;
+<SingleDropdown isClearable options={['foo']} value={'foo'} onChange={(_: string | null) => {}} />;
 
 // isClearable: false
 
-<SingleDropdown options={["foo"]} value={"foo"} onChange={(_: string) => {}} />;
+<SingleDropdown options={['foo']} value={'foo'} onChange={(_: string) => {}} />;
 
 // $ExpectError
-<SingleDropdown options={["foo"]} value={"foo"} onChange={(_: number) => {}} />;
+<SingleDropdown options={['foo']} value={'foo'} onChange={(_: number) => {}} />;
 
 // the reason why `Option` is strictly better than `| null`:
 <SingleDropdown options={[]} value={null} onChange={(_: null) => {}} />;
@@ -74,11 +40,7 @@ import {
 
 <MultiDropdown options={[]} value={[]} onChange={(_: unknown[]) => {}} />;
 
-<MultiDropdown
-  options={["foo"]}
-  value={["foo"]}
-  onChange={(_: string[]) => {}}
-/>;
+<MultiDropdown options={['foo']} value={['foo']} onChange={(_: string[]) => {}} />;
 
 <MultiDropdownWithSelectAll selectAllLabel="all" />; // $ExpectError
 
@@ -98,15 +60,15 @@ import {
 
 <MultiDropdownWithSelectAll
   selectAllLabel="all"
-  options={["foo"]}
-  value={someSelected(["foo"])}
+  options={['foo']}
+  value={someSelected(['foo'])}
   onChange={_ => {}}
 />;
 
 <MultiDropdownWithSelectAll
   selectAllLabel="all"
   options={[2]}
-  value={someSelected(["foo"])} // $ExpectError
+  value={someSelected(['foo'])} // $ExpectError
   onChange={_ => {}}
 />;
 

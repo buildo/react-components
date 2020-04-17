@@ -1,6 +1,6 @@
-import * as React from "react";
-import some = require("lodash/some");
-import * as bowser from "bowser";
+import * as React from 'react';
+import some = require('lodash/some');
+import * as bowser from 'bowser';
 
 export namespace BrowserDetector {
   export type Browser = keyof bowser.IBowserVersions;
@@ -21,9 +21,7 @@ export namespace BrowserDetector {
  * Top-level component which detects browser and renders children/placeholder
  * based on a given whitelist of supported browsers.
  */
-export class BrowserDetector extends React.PureComponent<
-  BrowserDetector.Props
-> {
+export class BrowserDetector extends React.PureComponent<BrowserDetector.Props> {
   detectBrowser(userAgent: string): BrowserDetector.DetectedBrowser {
     return bowser._detect(userAgent);
   }
@@ -32,10 +30,7 @@ export class BrowserDetector extends React.PureComponent<
     supportedBrowsers: BrowserDetector.Browser[],
     detectedBrowser: BrowserDetector.DetectedBrowser
   ): boolean {
-    return (
-      supportedBrowsers &&
-      !some(supportedBrowsers, b => (detectedBrowser as any)[b])
-    );
+    return supportedBrowsers && !some(supportedBrowsers, b => (detectedBrowser as any)[b]);
   }
 
   render() {
@@ -44,13 +39,8 @@ export class BrowserDetector extends React.PureComponent<
       shouldRenderPlaceholder,
       detectBrowser
     } = this;
-    const detectedBrowser = detectBrowser(
-      userAgent || window.navigator.userAgent
-    );
-    const shouldRenderChildren = !shouldRenderPlaceholder(
-      supportedBrowsers,
-      detectedBrowser
-    );
+    const detectedBrowser = detectBrowser(userAgent || window.navigator.userAgent);
+    const shouldRenderChildren = !shouldRenderPlaceholder(supportedBrowsers, detectedBrowser);
 
     return shouldRenderChildren ? children : placeholder(detectedBrowser);
   }

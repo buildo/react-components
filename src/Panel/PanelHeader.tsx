@@ -1,7 +1,7 @@
-import * as React from "react";
-import { stateClassUtil, Children } from "../utils";
-import FlexView from "react-flexview";
-import * as cx from "classnames";
+import * as React from 'react';
+import { stateClassUtil, Children } from '../utils';
+import FlexView from 'react-flexview';
+import * as cx from 'classnames';
 
 export type PanelHeaderDefaultProps = {
   size: PanelHeader.HeaderSize;
@@ -14,20 +14,18 @@ export type PanelHeaderRequiredProps = {
   menu?: Children;
 };
 
-export type PanelHeaderDefaultedProps = PanelHeaderRequiredProps &
-  PanelHeaderDefaultProps;
+export type PanelHeaderDefaultedProps = PanelHeaderRequiredProps & PanelHeaderDefaultProps;
 
 export namespace PanelHeader {
-  export type CollapseDirection = "up" | "left" | "down" | "right";
-  export type HeaderSize = "tiny" | "small" | "medium";
+  export type CollapseDirection = 'up' | 'left' | 'down' | 'right';
+  export type HeaderSize = 'tiny' | 'small' | 'medium';
   export type Collapse = {
     direction: CollapseDirection;
     onToggleExpanded: () => void;
     isExpanded?: boolean;
   };
 
-  export type Props = PanelHeaderRequiredProps &
-    Partial<PanelHeaderDefaultProps>;
+  export type Props = PanelHeaderRequiredProps & Partial<PanelHeaderDefaultProps>;
 }
 
 const angleUpIcon = (
@@ -84,7 +82,7 @@ const icons = {
 
 export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
   static defaultProps: PanelHeaderDefaultProps = {
-    size: "small"
+    size: 'small'
   };
 
   getIcon = (collapse: PanelHeader.Collapse) => {
@@ -93,18 +91,15 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
   };
 
   render() {
-    const { collapse, size, content, title, menu } = this
-      .props as PanelHeaderDefaultedProps;
+    const { collapse, size, content, title, menu } = this.props as PanelHeaderDefaultedProps;
     const verticalDirection =
-      !!collapse &&
-      (collapse.direction === "up" || collapse.direction === "down");
-    const renderInnerHeader =
-      !collapse || (collapse && (collapse.isExpanded || verticalDirection));
+      !!collapse && (collapse.direction === 'up' || collapse.direction === 'down');
+    const renderInnerHeader = !collapse || (collapse && (collapse.isExpanded || verticalDirection));
     const renderTitle = !!title && renderInnerHeader;
     const renderContent = !!content && renderInnerHeader;
     const renderMenu = menu && renderInnerHeader;
-    const height = size === "tiny" ? 40 : size === "medium" ? 56 : 48;
-    const className = cx("panel-header", stateClassUtil([size]));
+    const height = size === 'tiny' ? 40 : size === 'medium' ? 56 : 48;
+    const className = cx('panel-header', stateClassUtil([size]));
 
     return (
       <FlexView className={className} basis={height}>
@@ -117,11 +112,7 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
 
   templateExpandIcon = (collapse: PanelHeader.Collapse) => {
     return (
-      <FlexView
-        vAlignContent="center"
-        hAlignContent="center"
-        className="panel-header-icon"
-      >
+      <FlexView vAlignContent="center" hAlignContent="center" className="panel-header-icon">
         {this.getIcon(collapse)}
       </FlexView>
     );
@@ -140,35 +131,18 @@ export class PanelHeader extends React.PureComponent<PanelHeader.Props> {
       <FlexView
         vAlignContent="center"
         shrink={false}
-        onClick={
-          !!collapse && collapse.isExpanded
-            ? collapse.onToggleExpanded
-            : undefined
-        }
+        onClick={!!collapse && collapse.isExpanded ? collapse.onToggleExpanded : undefined}
         className="panel-header-title-wrapper"
       >
         {collapse && this.templateExpandIcon(collapse)}
-        {renderTitle && (
-          <FlexView className="panel-header-title">{title}</FlexView>
-        )}
+        {renderTitle && <FlexView className="panel-header-title">{title}</FlexView>}
       </FlexView>
     );
   };
 
-  templateContent = ({
-    renderContent,
-    content
-  }: {
-    renderContent: boolean;
-    content: Children;
-  }) => {
+  templateContent = ({ renderContent, content }: { renderContent: boolean; content: Children }) => {
     return renderContent ? (
-      <FlexView
-        className="panel-header-content"
-        vAlignContent="center"
-        grow
-        shrink={false}
-      >
+      <FlexView className="panel-header-content" vAlignContent="center" grow shrink={false}>
         {content}
       </FlexView>
     ) : null;

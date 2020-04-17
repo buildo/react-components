@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-const getContent = (focused) => (
+const getContent = focused => (
   <FlexView
     grow
     height={50}
@@ -15,5 +15,5 @@ const getContent = (focused) => (
 
 <FocusableView component={FlexView} style={{ outline: 'none' }}>
   {getContent}
-</FocusableView>
+</FocusableView>;
 ```

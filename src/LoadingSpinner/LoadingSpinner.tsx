@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { warn } from "../utils/log";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { warn } from '../utils/log';
 
 export type LoadingSpinnerDefaultProps = {
   /** spinner size */
@@ -24,11 +24,9 @@ export type LoadingSpinnerRequiredProps = {
 };
 
 export namespace LoadingSpinner {
-  export type Props = LoadingSpinnerRequiredProps &
-    Partial<LoadingSpinnerDefaultProps>;
+  export type Props = LoadingSpinnerRequiredProps & Partial<LoadingSpinnerDefaultProps>;
 }
-type LoadingSpinnerDefaultedProps = LoadingSpinnerRequiredProps &
-  LoadingSpinnerDefaultProps;
+type LoadingSpinnerDefaultedProps = LoadingSpinnerRequiredProps & LoadingSpinnerDefaultProps;
 
 /**
  * Absolute dimmed layer with loading spinner in the center
@@ -37,8 +35,8 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
   private loadingSpinner: HTMLDivElement | null = null;
 
   static defaultProps: LoadingSpinnerDefaultProps = {
-    size: "3em",
-    overlayColor: "rgba(255, 255, 255, .9)",
+    size: '3em',
+    overlayColor: 'rgba(255, 255, 255, .9)',
     style: {}
   };
 
@@ -69,7 +67,7 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
       if (!this.loadingSpinner) return undefined;
       const { parentElement } = this.loadingSpinner;
       const { position } = window.getComputedStyle(parentElement!);
-      if (position !== "relative" && position !== "absolute") {
+      if (position !== 'relative' && position !== 'absolute') {
         return [
           'LoadingSpinner\'s parent node style should have "position: relative" or "position: absolute"',
           parentElement
@@ -88,7 +86,7 @@ export class LoadingSpinner extends React.PureComponent<LoadingSpinner.Props> {
       fontSize: size,
       color
     };
-    const className = cx("loading-spinner", _className);
+    const className = cx('loading-spinner', _className);
 
     return (
       <div

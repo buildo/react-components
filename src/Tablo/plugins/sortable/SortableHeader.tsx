@@ -1,19 +1,18 @@
-import * as React from "react";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
-import Arrow from "./Arrow";
-import { Children } from "../../../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
+import Arrow from './Arrow';
+import { Children } from '../../../utils';
 
 export type Props = {
-  sortDir?: "asc" | "desc";
+  sortDir?: 'asc' | 'desc';
   children: Children;
 };
 
 export default class SortableHeader extends React.PureComponent<Props> {
   render() {
     const { sortDir, children } = this.props;
-    const arrowDir =
-      sortDir === "asc" ? "up" : sortDir === "desc" ? "down" : "up-down";
+    const arrowDir = sortDir === 'asc' ? 'up' : sortDir === 'desc' ? 'down' : 'up-down';
     const classNames = cx({
       sorted: !!sortDir,
       [`sort-${sortDir}`]: !!sortDir
@@ -21,7 +20,7 @@ export default class SortableHeader extends React.PureComponent<Props> {
 
     return (
       <FlexView
-        className={cx("sortable-header", classNames)}
+        className={cx('sortable-header', classNames)}
         vAlignContent="center"
         grow
         height="100%"

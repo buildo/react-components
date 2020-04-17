@@ -1,5 +1,5 @@
-import * as React from "react";
-import omit = require("lodash/omit");
+import * as React from 'react';
+import omit = require('lodash/omit');
 
 export type TimerToastProps = {
   children: JSX.Element;
@@ -51,7 +51,7 @@ export class TimerToast extends React.Component<TimerToastProps, State> {
     const { children, ...props } = this.props;
     return (
       <div
-        {...omit(props, ["onTimeout", "duration", "uniqueKey"])}
+        {...omit(props, ['onTimeout', 'duration', 'uniqueKey'])}
         onMouseEnter={this.clearTimer}
         onMouseLeave={this.resetTimer}
       >

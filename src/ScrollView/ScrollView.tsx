@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import GeminiScrollbar = require("gemini-scrollbar");
-import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
-import { findDOMNode } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import GeminiScrollbar = require('gemini-scrollbar');
+import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
+import { findDOMNode } from '../utils';
 
 export type ScrollViewDefaultProps<
   CP extends React.HTMLAttributes<any>,
@@ -40,8 +40,7 @@ export type ScrollViewDefaultedProps<CP, ICP> = ScrollViewRequiredProps &
   ScrollViewDefaultProps<CP, ICP>;
 
 export namespace ScrollView {
-  export type Props<CP, ICP> = ScrollViewRequiredProps &
-    Partial<ScrollViewDefaultProps<CP, ICP>>;
+  export type Props<CP, ICP> = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps<CP, ICP>>;
 }
 
 /** A scrollable view to be used in projects where you want the same scrollbar style across different browsers */
@@ -53,10 +52,10 @@ export class ScrollView<
     React.HTMLAttributes<HTMLDivElement>,
     React.HTMLAttributes<HTMLDivElement>
   > = {
-    component: "div",
+    component: 'div',
     componentProps: {},
     forceGemini: true,
-    innerComponent: "div",
+    innerComponent: 'div',
     innerComponentProps: {},
     style: {}
   };
@@ -98,12 +97,12 @@ export class ScrollView<
     const isVerticalScrollbarVisible = !!(
       this.verticalThumb &&
       this.verticalThumb.style.height &&
-      this.verticalThumb.style.height !== "0px"
+      this.verticalThumb.style.height !== '0px'
     );
     const isHorizontalScrollbarVisible = !!(
       this.horizontalThumb &&
       this.horizontalThumb.style.width &&
-      this.horizontalThumb.style.width !== "0px"
+      this.horizontalThumb.style.width !== '0px'
     );
 
     if (
@@ -125,43 +124,22 @@ export class ScrollView<
   };
 
   innerWrapperRenderer = (props: ICP) => {
-    const { children, ...innerWrapperProps } = props as React.HTMLAttributes<
-      any
-    >;
+    const { children, ...innerWrapperProps } = props as React.HTMLAttributes<any>;
     const { innerComponent } = this.props as ScrollViewDefaultedProps<CP, ICP>;
-    return React.createElement(
-      innerComponent as any,
-      innerWrapperProps,
-      children
-    );
+    return React.createElement(innerComponent as any, innerWrapperProps, children);
   };
 
   render() {
-    const {
-      componentProps,
-      innerComponentProps,
-      className,
-      style,
-      children
-    } = this.props as ScrollViewDefaultedProps<CP, ICP>;
-    const {
-      isVerticalScrollbarVisible,
-      isHorizontalScrollbarVisible
-    } = this.state;
-    const {
-      wrapperRenderer: Wrapper,
-      innerWrapperRenderer: InnerWrapper
-    } = this;
+    const { componentProps, innerComponentProps, className, style, children } = this
+      .props as ScrollViewDefaultedProps<CP, ICP>;
+    const { isVerticalScrollbarVisible, isHorizontalScrollbarVisible } = this.state;
+    const { wrapperRenderer: Wrapper, innerWrapperRenderer: InnerWrapper } = this;
 
     return (
       <ResizeSensor onResize={() => this.forceUpdate()}>
-        <Wrapper
-          {...componentProps}
-          style={style}
-          className={cx("scrollview", className)}
-        >
+        <Wrapper {...componentProps} style={style} className={cx('scrollview', className)}>
           <div
-            className={cx("gm-scrollbar -vertical", {
+            className={cx('gm-scrollbar -vertical', {
               visible: isVerticalScrollbarVisible
             })}
           >
@@ -173,7 +151,7 @@ export class ScrollView<
             />
           </div>
           <div
-            className={cx("gm-scrollbar -horizontal", {
+            className={cx('gm-scrollbar -horizontal', {
               visible: isHorizontalScrollbarVisible
             })}
           >

@@ -1,7 +1,7 @@
-import * as React from "react";
-import every = require("lodash/every");
-import * as cx from "classnames";
-import View from "react-flexview";
+import * as React from 'react';
+import every = require('lodash/every');
+import * as cx from 'classnames';
+import View from 'react-flexview';
 
 export namespace DateField {
   export type Props = {
@@ -45,9 +45,9 @@ function parseDate(date: Date) {
 }
 
 const initialState: State = {
-  day: "",
-  month: "",
-  year: "",
+  day: '',
+  month: '',
+  year: '',
   isDirty: false,
   isValid: false
 };
@@ -67,7 +67,7 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
   componentWillReceiveProps(nextProps: DateField.Props) {
     if (!nextProps.value && this.props.value) {
       // "value" has become "undefined"
-      this.setState({ day: "", month: "", year: "", isValid: false });
+      this.setState({ day: '', month: '', year: '', isValid: false });
     } else if (
       (nextProps.value && !this.props.value) ||
       (nextProps.value &&
@@ -93,10 +93,8 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
   }
 
   onChange: (
-    key: "day" | "month" | "year"
-  ) => React.ChangeEventHandler<HTMLInputElement> = key => ({
-    target: { value }
-  }) => {
+    key: 'day' | 'month' | 'year'
+  ) => React.ChangeEventHandler<HTMLInputElement> = key => ({ target: { value } }) => {
     if (value.length === 0) {
       this.setState({
         ...this.state,
@@ -129,10 +127,7 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
     this.setState({ isValid, ...patch, isDirty: true }, () => {
       if (
         isValid &&
-        every(
-          [this.state.day, this.state.month, this.state.year],
-          s => s.length > 0
-        )
+        every([this.state.day, this.state.month, this.state.year], s => s.length > 0)
       ) {
         this.props.onChange(
           new Date(
@@ -156,23 +151,17 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
 
   render() {
     const {
-      props: {
-        className,
-        id,
-        style,
-        placeholders = {},
-        inputTypeNumber = false
-      },
+      props: { className, id, style, placeholders = {}, inputTypeNumber = false },
       state: { day, month, year, isValid, isDirty },
       onChange
     } = this;
 
-    const type = inputTypeNumber ? "number" : undefined;
+    const type = inputTypeNumber ? 'number' : undefined;
 
     return (
       <View
-        className={cx("date-field", className, {
-          "is-invalid": isDirty && !isValid
+        className={cx('date-field', className, {
+          'is-invalid': isDirty && !isValid
         })}
         id={id}
         style={style}
@@ -181,21 +170,21 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
           className="day-field"
           value={day}
           placeholder={placeholders.day}
-          onChange={onChange("day")}
+          onChange={onChange('day')}
           type={type}
         />
         <input
           className="month-field"
           value={month}
           placeholder={placeholders.month}
-          onChange={onChange("month")}
+          onChange={onChange('month')}
           type={type}
         />
         <input
           className="year-field"
           value={year}
           placeholder={placeholders.year}
-          onChange={onChange("year")}
+          onChange={onChange('year')}
           type={type}
         />
       </View>

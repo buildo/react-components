@@ -1,7 +1,7 @@
-import * as React from "react";
-import _debounce = require("lodash/debounce");
-import _ResizeSensor = require("css-element-queries/src/ResizeSensor");
-import { findDOMNode } from "../utils";
+import * as React from 'react';
+import _debounce = require('lodash/debounce');
+import _ResizeSensor = require('css-element-queries/src/ResizeSensor');
+import { findDOMNode } from '../utils';
 
 export namespace ResizeSensor {
   export type Props = {
@@ -38,13 +38,13 @@ export class ResizeSensor extends React.Component<ResizeSensor.Props> {
 
   initElementQueries = () => {
     if (!this.elementQueries) {
-      require("css-element-queries/src/ElementQueries").listen();
+      require('css-element-queries/src/ElementQueries').listen();
       this.elementQueries = true;
     }
   };
 
   updateSensorAndQueries = () => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       this.initElementQueries();
       this.attachResizeSensor();
     }

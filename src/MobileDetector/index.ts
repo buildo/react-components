@@ -1,2 +1,2 @@
-import { MobileDetector } from "./MobileDetector";
+import { MobileDetector } from './MobileDetector';
 export default MobileDetector;

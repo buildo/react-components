@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import partial = require("lodash/partial");
-import FlexView from "react-flexview";
-import { Divider } from "../Divider/Divider";
-import { findDOMNode } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import partial = require('lodash/partial');
+import FlexView from 'react-flexview';
+import { Divider } from '../Divider/Divider';
+import { findDOMNode } from '../utils';
 
 export type ActionsMenuRequiredProps = {
   options?: ActionsMenu.Option[];
@@ -17,7 +17,7 @@ export type ActionsMenuDefaultProps = {
 
 export namespace ActionsMenu {
   export type Option = {
-    type: "title" | "item" | "divider";
+    type: 'title' | 'item' | 'divider';
     title?: JSX.Element | string;
     metadata?: JSX.Element | string;
     selected?: boolean;
@@ -27,8 +27,7 @@ export namespace ActionsMenu {
 
   export type OptionClickHandler = (o: Option) => void;
 
-  export type Props = ActionsMenuRequiredProps &
-    Partial<ActionsMenuDefaultProps>;
+  export type Props = ActionsMenuRequiredProps & Partial<ActionsMenuDefaultProps>;
 }
 
 export type State = {
@@ -53,12 +52,8 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
   }
 
   componentDidMount() {
-    const { top: scrollTop, height } = findDOMNode(
-      this
-    ).getBoundingClientRect();
-    const {
-      height: wHeight
-    } = document.documentElement!.getBoundingClientRect();
+    const { top: scrollTop, height } = findDOMNode(this).getBoundingClientRect();
+    const { height: wHeight } = document.documentElement!.getBoundingClientRect();
     if (wHeight - (scrollTop + height) < 20) {
       this.setState({
         // eslint-disable-line react/no-did-mount-set-state
@@ -81,7 +76,7 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
   ) => {
     return (
       <FlexView
-        className={cx("menu-action", {
+        className={cx('menu-action', {
           disabled: option.disabled,
           selected: option.selected
         })}
@@ -91,12 +86,7 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
         <FlexView grow shrink className="menu-action-title">
           {option.title}
         </FlexView>
-        <FlexView
-          grow
-          shrink={false}
-          className="menu-action-metadata"
-          hAlignContent="right"
-        >
+        <FlexView grow shrink={false} className="menu-action-metadata" hAlignContent="right">
           {option.metadata}
         </FlexView>
       </FlexView>
@@ -114,12 +104,9 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
       options &&
       options.map((option, i) => (
         <div className="menu-row" key={i}>
-          {option.type === "title" && (
-            <div className="menu-title">{option.title}</div>
-          )}
-          {option.type === "item" &&
-            this.menuActionTemplate(option, onOptionClick)}
-          {option.type === "divider" && <Divider />}
+          {option.type === 'title' && <div className="menu-title">{option.title}</div>}
+          {option.type === 'item' && this.menuActionTemplate(option, onOptionClick)}
+          {option.type === 'divider' && <Divider />}
         </div>
       ))
     );

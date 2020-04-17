@@ -1,35 +1,30 @@
 /*eslint-disable */
 
 export type EasingType =
-  | "linear"
-  | "easeInQuad"
-  | "easeOutQuad"
-  | "easeInOutQuad"
-  | "easeInCubic"
-  | "easeOutCubic"
-  | "easeInOutCubic"
-  | "easeInQuart"
-  | "easeOutQuart"
-  | "easeInOutQuart"
-  | "easeInQuint"
-  | "easeOutQuint"
-  | "easeInOutQuint"
-  | "easeInSine"
-  | "easeOutSine"
-  | "easeInOutSine"
-  | "easeInExpo"
-  | "easeOutExpo"
-  | "easeInOutExpo"
-  | "easeInCirc"
-  | "easeOutCirc"
-  | "easeInOutCirc";
+  | 'linear'
+  | 'easeInQuad'
+  | 'easeOutQuad'
+  | 'easeInOutQuad'
+  | 'easeInCubic'
+  | 'easeOutCubic'
+  | 'easeInOutCubic'
+  | 'easeInQuart'
+  | 'easeOutQuart'
+  | 'easeInOutQuart'
+  | 'easeInQuint'
+  | 'easeOutQuint'
+  | 'easeInOutQuint'
+  | 'easeInSine'
+  | 'easeOutSine'
+  | 'easeInOutSine'
+  | 'easeInExpo'
+  | 'easeOutExpo'
+  | 'easeInOutExpo'
+  | 'easeInCirc'
+  | 'easeOutCirc'
+  | 'easeInOutCirc';
 
-export type EasingFunction = (
-  t: number,
-  b: number,
-  c: number,
-  d: number
-) => number;
+export type EasingFunction = (t: number, b: number, c: number, d: number) => number;
 
 // easing functions taken from http://gizma.com/easing/
 const easing: { [k in EasingType]: EasingFunction } = {

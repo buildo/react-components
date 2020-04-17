@@ -16,8 +16,6 @@ CheckContext.contextTypes = {
 };
 
 <div>
-  <MobileDetector>
-    {() => <CheckContext />}
-  </MobileDetector>
-</div>
+  <MobileDetector>{() => <CheckContext />}</MobileDetector>
+</div>;
 ```

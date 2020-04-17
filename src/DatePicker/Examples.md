@@ -1,11 +1,12 @@
 ### Examples
 
 #### A typical usage
+
 ```js
-initialState = {}
+initialState = {};
 
 function onChange(value) {
-  setState({ value })
+  setState({ value });
 }
 
 <FlexView column grow>
@@ -13,9 +14,9 @@ function onChange(value) {
   <DatePicker
     value={state.value}
     onChange={onChange}
-    displayFormat='MMMM Do YYYY'
-    locale='en'
+    displayFormat="MMMM Do YYYY"
+    locale="en"
     minDate={new Date()}
   />
-</FlexView>
+</FlexView>;
 ```
