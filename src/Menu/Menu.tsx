@@ -27,10 +27,10 @@ export type MenuDefaultProps = {
   isOpen: boolean;
   /** whether the menu should be closed when clicking outside */
   dismissOnClickOutside: boolean;
-  /** wheter the menu should be rendered on top or at the bottom of the trigger (bottom by default) */
+  /** whether the menu should be rendered on top or at the bottom of the trigger (bottom by default) */
   position: "top" | "bottom";
-  /** wheter the menu should be aligned with the start, the end or the center of the trigger (end by default) */
-  anchor: "start" | "center" | "end";
+  /** whether the menu should be aligned with the start, the end or the center of the trigger (end by default) */
+  anchor: Popover.Props["popover"]["anchor"];
 };
 
 export namespace Menu {
