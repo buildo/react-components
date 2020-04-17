@@ -3,9 +3,12 @@ A Meter is a simple UI component used to display a measurement (usually a percen
 ![cover](https://user-images.githubusercontent.com/10867086/36546429-4d6179f2-17e3-11e8-8cc7-04d362304f7c.jpg)
 
 Typically, there are two use cases for this component:
+
 - display a value, such as a battery charge indicator
 - display the progress of an action
+
 # Usage
+
 ## Display a value
 
 In this use case, the value can go up and down based on the semantics of the real world object.
@@ -23,12 +26,13 @@ In this use case, the value starts from 0 and can only go up, typically to 100%.
 ![progressbar](https://user-images.githubusercontent.com/10867086/36546608-c77eb2fe-17e3-11e8-9f72-5bac98150877.jpg)
 
 Follow these high-level rules:
+
 - do not show a progress indicator for actions that typically require less than a second
-  - *example: loading a simple modal view*
+  - _example: loading a simple modal view_
 - show a simple indicator (no label) for actions that typically require less than 10 seconds
-  - *example: preparing a PDF document for download*
+  - _example: preparing a PDF document for download_
 - show a full indicator with the percentage for longer actions and, if possible, a time estimate
-  - *example: upgrading an on-premises application via a web admin console*
+  - _example: upgrading an on-premises application via a web admin console_
 
 Only use one color for the progress indicator.
 

@@ -23,4 +23,3 @@ When attached to another UI element (typically an icon or a menu item), a Badge 
 <img width="122" alt="screen shot 2018-04-06 at 16 14 50" src="https://user-images.githubusercontent.com/10867086/38429265-3838387a-39be-11e8-8378-cfa93bde9e3f.jpg">
 
 In this case, the counter Badge is typically only shown when the number is greater than 0, to draw user's attention.
-

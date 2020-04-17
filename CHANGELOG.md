@@ -1,8 +1,7 @@
-#  Change Log
-
-
+# Change Log
 
 ## [v0.45.0](https://github.com/buildo/react-components/tree/v0.45.0) (2019-08-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.44.1...v0.45.0)
 
 #### Breaking:
@@ -14,9 +13,11 @@
 - fix-wrong-import [#1354](https://github.com/buildo/react-components/issues/1354)
 
 ## [v0.44.1](https://github.com/buildo/react-components/tree/v0.44.1) (2019-05-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.44.0...v0.44.1)
 
 ## [v0.44.0](https://github.com/buildo/react-components/tree/v0.44.0) (2019-05-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.43.0...v0.44.0)
 
 #### New features:
@@ -29,6 +30,7 @@
 - Remove returnFormat prop from DatePicker [#1347](https://github.com/buildo/react-components/issues/1347)
 
 ## [v0.43.0](https://github.com/buildo/react-components/tree/v0.43.0) (2019-05-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.8...v0.43.0)
 
 #### Breaking:
@@ -36,6 +38,7 @@
 - Form defects and refinements [#1349](https://github.com/buildo/react-components/issues/1349)
 
 ## [v0.42.8](https://github.com/buildo/react-components/tree/v0.42.8) (2019-05-02)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.7...v0.42.8)
 
 #### New features:
@@ -43,6 +46,7 @@
 - Form with "submit on enter" behavior [#1344](https://github.com/buildo/react-components/issues/1344)
 
 ## [v0.42.7](https://github.com/buildo/react-components/tree/v0.42.7) (2019-03-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.6...v0.42.7)
 
 #### Fixes (bugs & defects):
@@ -50,6 +54,7 @@
 - Modal header height is broken after upgrade of flexview [#1337](https://github.com/buildo/react-components/issues/1337)
 
 ## [v0.42.6](https://github.com/buildo/react-components/tree/v0.42.6) (2019-03-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.5...v0.42.6)
 
 #### New features:
@@ -61,6 +66,7 @@
 - Dropdown heights are inconsistent with CSS parameter [#1334](https://github.com/buildo/react-components/issues/1334)
 
 ## [v0.42.5](https://github.com/buildo/react-components/tree/v0.42.5) (2019-03-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.4...v0.42.5)
 
 #### New features:
@@ -69,6 +75,7 @@
 - bring back Timepicker in showroom [#1329](https://github.com/buildo/react-components/issues/1329)
 
 ## [v0.42.4](https://github.com/buildo/react-components/tree/v0.42.4) (2019-03-05)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.3...v0.42.4)
 
 #### Fixes (bugs & defects):
@@ -76,6 +83,7 @@
 - Dropdown doesn't type-check with some valid prop combinations [#1327](https://github.com/buildo/react-components/issues/1327)
 
 ## [v0.42.3](https://github.com/buildo/react-components/tree/v0.42.3) (2019-03-05)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.2...v0.42.3)
 
 #### New features:
@@ -91,6 +99,7 @@
 - Dropdown: options list doesn't scroll when moving using arrows [#743](https://github.com/buildo/react-components/issues/743)
 
 ## [v0.42.2](https://github.com/buildo/react-components/tree/v0.42.2) (2019-02-28)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.1...v0.42.2)
 
 #### New features:
@@ -102,6 +111,7 @@
 - stateless+attachToBody props make Popover crash on open [#1313](https://github.com/buildo/react-components/issues/1313)
 
 ## [v0.42.1](https://github.com/buildo/react-components/tree/v0.42.1) (2019-02-26)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.0...v0.42.1)
 
 #### Fixes (bugs & defects):
@@ -109,6 +119,7 @@
 - Fix Dropdown errors [#1315](https://github.com/buildo/react-components/issues/1315)
 
 ## [v0.42.0](https://github.com/buildo/react-components/tree/v0.42.0) (2019-02-26)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.4...v0.42.0)
 
 #### New features:
@@ -120,6 +131,7 @@
 - Upgrade react-select to 2.x [#1285](https://github.com/buildo/react-components/issues/1285)
 
 ## [v0.41.4](https://github.com/buildo/react-components/tree/v0.41.4) (2019-01-25)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.3...v0.41.4)
 
 #### Fixes (bugs & defects):
@@ -128,6 +140,7 @@
 - Horizontal FormField should not set flex-direction: row-reverse [#1306](https://github.com/buildo/react-components/issues/1306)
 
 ## [v0.41.3](https://github.com/buildo/react-components/tree/v0.41.3) (2019-01-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.2...v0.41.3)
 
 #### Fixes (bugs & defects):
@@ -135,6 +148,7 @@
 - FormField style is broken (always rendered as horizontal) [#1304](https://github.com/buildo/react-components/issues/1304)
 
 ## [v0.41.2](https://github.com/buildo/react-components/tree/v0.41.2) (2019-01-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.1...v0.41.2)
 
 #### Fixes (bugs & defects):
@@ -148,6 +162,7 @@
 - Switch CI from Drone to concourse [#1295](https://github.com/buildo/react-components/issues/1295)
 
 ## [v0.41.1](https://github.com/buildo/react-components/tree/v0.41.1) (2019-01-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.0...v0.41.1)
 
 #### Fixes (bugs & defects):
@@ -155,6 +170,7 @@
 - Checkbox and Toggle are missing tcomb props for onFocus, onBlur [#1290](https://github.com/buildo/react-components/issues/1290)
 
 ## [v0.41.0](https://github.com/buildo/react-components/tree/v0.41.0) (2019-01-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.40.2...v0.41.0)
 
 #### Breaking:
@@ -162,6 +178,7 @@
 - "focus" handling for Checkbox and Toggle [#1288](https://github.com/buildo/react-components/issues/1288)
 
 ## [v0.40.2](https://github.com/buildo/react-components/tree/v0.40.2) (2019-01-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.40.1...v0.40.2)
 
 #### Fixes (bugs & defects):
@@ -173,6 +190,7 @@
 - Implement RadioGroup [#781](https://github.com/buildo/react-components/issues/781)
 
 ## [v0.40.1](https://github.com/buildo/react-components/tree/v0.40.1) (2018-12-19)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.40.0...v0.40.1)
 
 #### New features:
@@ -184,6 +202,7 @@
 - TimePicker should allow to "localize" am/pm [#644](https://github.com/buildo/react-components/issues/644)
 
 ## [v0.40.0](https://github.com/buildo/react-components/tree/v0.40.0) (2018-12-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.39.0...v0.40.0)
 
 #### Breaking:
@@ -195,6 +214,7 @@
 - Fix DatePicker style and add TextAreaField [#1273](https://github.com/buildo/react-components/issues/1273)
 
 ## [v0.39.0](https://github.com/buildo/react-components/tree/v0.39.0) (2018-11-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.38.3...v0.39.0)
 
 #### New features:
@@ -212,6 +232,7 @@
 - Drop support for React 15 (and refactor Tablo) [#1167](https://github.com/buildo/react-components/issues/1167)
 
 ## [v0.38.3](https://github.com/buildo/react-components/tree/v0.38.3) (2018-08-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.38.2...v0.38.3)
 
 #### New features:
@@ -219,6 +240,7 @@
 - DatePicker doesn't allow to select past days [#1266](https://github.com/buildo/react-components/issues/1266)
 
 ## [v0.38.2](https://github.com/buildo/react-components/tree/v0.38.2) (2018-08-08)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.38.1...v0.38.2)
 
 #### New features:
@@ -228,6 +250,7 @@
 - Icon color props doesn't seem to have any effect [#1172](https://github.com/buildo/react-components/issues/1172)
 
 ## [v0.38.1](https://github.com/buildo/react-components/tree/v0.38.1) (2018-07-20)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.38.0...v0.38.1)
 
 #### New features:
@@ -235,6 +258,7 @@
 - Implement FormField [#1255](https://github.com/buildo/react-components/issues/1255)
 
 ## [v0.38.0](https://github.com/buildo/react-components/tree/v0.38.0) (2018-07-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.37.3...v0.38.0)
 
 #### Breaking:
@@ -246,6 +270,7 @@
 - PasswordInput typings do not allow a "ref" prop [#1252](https://github.com/buildo/react-components/issues/1252)
 
 ## [v0.37.3](https://github.com/buildo/react-components/tree/v0.37.3) (2018-06-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.37.2...v0.37.3)
 
 #### New features:
@@ -253,6 +278,7 @@
 - input border radius should be customizable [#1249](https://github.com/buildo/react-components/issues/1249)
 
 ## [v0.37.2](https://github.com/buildo/react-components/tree/v0.37.2) (2018-05-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.37.1...v0.37.2)
 
 #### Fixes (bugs & defects):
@@ -260,6 +286,7 @@
 - Tablo Column does not accept sortable prop [#1211](https://github.com/buildo/react-components/issues/1211)
 
 ## [v0.37.1](https://github.com/buildo/react-components/tree/v0.37.1) (2018-05-21)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.37.0...v0.37.1)
 
 #### Fixes (bugs & defects):
@@ -267,6 +294,7 @@
 - Tablo with autosize on renders nothing [#1245](https://github.com/buildo/react-components/issues/1245)
 
 ## [v0.37.0](https://github.com/buildo/react-components/tree/v0.37.0) (2018-05-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.36.3...v0.37.0)
 
 #### Breaking:
@@ -274,6 +302,7 @@
 - One `Menu` to rule them all [#1239](https://github.com/buildo/react-components/issues/1239)
 
 ## [v0.36.3](https://github.com/buildo/react-components/tree/v0.36.3) (2018-05-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.36.2...v0.36.3)
 
 #### New features:
@@ -281,6 +310,7 @@
 - Update all string refs [#1237](https://github.com/buildo/react-components/issues/1237)
 
 ## [v0.36.2](https://github.com/buildo/react-components/tree/v0.36.2) (2018-04-19)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.36.1...v0.36.2)
 
 #### New features:
@@ -288,6 +318,7 @@
 - remove (unused) react-skinnable dependency [#1232](https://github.com/buildo/react-components/issues/1232)
 
 ## [v0.36.1](https://github.com/buildo/react-components/tree/v0.36.1) (2018-04-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.36.0...v0.36.1)
 
 #### Fixes (bugs & defects):
@@ -295,6 +326,7 @@
 - Dropdown: Fix ref error when testing with Enzyme [#1230](https://github.com/buildo/react-components/issues/1230)
 
 ## [v0.36.0](https://github.com/buildo/react-components/tree/v0.36.0) (2018-04-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.35.0...v0.36.0)
 
 #### New features:
@@ -306,6 +338,7 @@
 - scss double imports cause duplication and possibly broken style depending on order of imports [#1220](https://github.com/buildo/react-components/issues/1220)
 
 ## [v0.35.0](https://github.com/buildo/react-components/tree/v0.35.0) (2018-04-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.34.0...v0.35.0)
 
 #### New features:
@@ -322,6 +355,7 @@
 - Add PasswordInput component [#1212](https://github.com/buildo/react-components/issues/1212)
 
 ## [v0.34.0](https://github.com/buildo/react-components/tree/v0.34.0) (2018-03-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.33.0...v0.34.0)
 
 #### New features:
@@ -341,6 +375,7 @@
 - FormattedText detects some words as urls incorectly [#1178](https://github.com/buildo/react-components/issues/1178)
 
 ## [v0.33.0](https://github.com/buildo/react-components/tree/v0.33.0) (2018-01-26)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.32.0...v0.33.0)
 
 #### Breaking:
@@ -348,6 +383,7 @@
 - upgrade typescript version to 2.6.2 [#1170](https://github.com/buildo/react-components/issues/1170)
 
 ## [v0.32.0](https://github.com/buildo/react-components/tree/v0.32.0) (2018-01-19)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.31.0...v0.32.0)
 
 #### Breaking:
@@ -359,6 +395,7 @@
 - Popover does not work on React16 when attached to body [#1164](https://github.com/buildo/react-components/issues/1164)
 
 ## [v0.31.0](https://github.com/buildo/react-components/tree/v0.31.0) (2017-12-05)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.30.0...v0.31.0)
 
 #### Breaking:
@@ -366,6 +403,7 @@
 - Refactor build script, start script and examples [#1162](https://github.com/buildo/react-components/issues/1162)
 
 ## [v0.30.0](https://github.com/buildo/react-components/tree/v0.30.0) (2017-11-27)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.29.0...v0.30.0)
 
 #### Breaking:
@@ -377,6 +415,7 @@
 - Panel inside TabbedPanel has wrong style [#1155](https://github.com/buildo/react-components/issues/1155)
 
 ## [v0.29.0](https://github.com/buildo/react-components/tree/v0.29.0) (2017-11-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.28.1...v0.29.0)
 
 #### Breaking:
@@ -384,6 +423,7 @@
 - Add support for React 16 [#1151](https://github.com/buildo/react-components/issues/1151)
 
 ## [v0.28.1](https://github.com/buildo/react-components/tree/v0.28.1) (2017-11-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.28.0...v0.28.1)
 
 #### New features:
@@ -391,11 +431,12 @@
 - Allow custom prefixes for icons (in Icon and Button) [#1150](https://github.com/buildo/react-components/issues/1150)
 
 ## [v0.28.0](https://github.com/buildo/react-components/tree/v0.28.0) (2017-10-27)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.1...v0.28.0)
 
 #### Breaking:
 
-- [Typo] Tablo  [#1134](https://github.com/buildo/react-components/issues/1134)
+- [Typo] Tablo [#1134](https://github.com/buildo/react-components/issues/1134)
 - Use TS namespaces for exported types [#1083](https://github.com/buildo/react-components/issues/1083)
 - [Typo] convert the whole codebase to TypeScript [#1034](https://github.com/buildo/react-components/issues/1034)
 
@@ -404,6 +445,7 @@
 - Dropdown: clearing returns `null` to `onChange` when `multi = true` [#1133](https://github.com/buildo/react-components/issues/1133)
 
 ## [v0.27.1](https://github.com/buildo/react-components/tree/v0.27.1) (2017-08-22)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0...v0.27.1)
 
 #### New features:
@@ -418,6 +460,7 @@
 - [Typo] AsyncStatusIndicator [#1040](https://github.com/buildo/react-components/issues/1040)
 
 ## [v0.27.0](https://github.com/buildo/react-components/tree/v0.27.0) (2017-08-21)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.27.0-1...v0.27.0)
 
 #### New features:
@@ -429,6 +472,7 @@
 - [Typo] add support for TypeScript [#1035](https://github.com/buildo/react-components/issues/1035)
 
 ## [v0.27.0-1](https://github.com/buildo/react-components/tree/v0.27.0-1) (2017-10-11)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.4...v0.27.0-1)
 
 #### Breaking:
@@ -478,6 +522,7 @@
 - The hitchhiker's guide to default props with TypeScript [#1082](https://github.com/buildo/react-components/issues/1082)
 
 ## [v0.26.4](https://github.com/buildo/react-components/tree/v0.26.4) (2017-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.3...v0.26.4)
 
 #### New features:
@@ -485,6 +530,7 @@
 - Image's props should not be strict [#1037](https://github.com/buildo/react-components/issues/1037)
 
 ## [v0.26.3](https://github.com/buildo/react-components/tree/v0.26.3) (2017-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.2...v0.26.3)
 
 #### New features:
@@ -492,6 +538,7 @@
 - Image: copy-paste Image from buildo.io [#1032](https://github.com/buildo/react-components/issues/1032)
 
 ## [v0.26.2](https://github.com/buildo/react-components/tree/v0.26.2) (2017-08-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.1...v0.26.2)
 
 #### New features:
@@ -499,6 +546,7 @@
 - ScrollView: scrollbars are visible even when thumb is hidden [#1029](https://github.com/buildo/react-components/issues/1029)
 
 ## [v0.26.1](https://github.com/buildo/react-components/tree/v0.26.1) (2017-08-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.26.0...v0.26.1)
 
 #### New features:
@@ -507,6 +555,7 @@
 - Implement `ComponentOverflow` [#1025](https://github.com/buildo/react-components/issues/1025)
 
 ## [v0.26.0](https://github.com/buildo/react-components/tree/v0.26.0) (2017-08-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.25.0...v0.26.0)
 
 #### Breaking:
@@ -514,6 +563,7 @@
 - Popover: add logic to position it completely automatically [#1023](https://github.com/buildo/react-components/issues/1023)
 
 ## [v0.25.0](https://github.com/buildo/react-components/tree/v0.25.0) (2017-08-02)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.5...v0.25.0)
 
 #### New features:
@@ -521,6 +571,7 @@
 - Dropdown typings for `optionRenderer` and `optionGroupRenderer` are slightly broken [#1014](https://github.com/buildo/react-components/issues/1014)
 
 ## [v0.24.5](https://github.com/buildo/react-components/tree/v0.24.5) (2017-08-02)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.4...v0.24.5)
 
 #### New features:
@@ -528,6 +579,7 @@
 - add disabled prop to Toggle [#1021](https://github.com/buildo/react-components/issues/1021)
 
 ## [v0.24.4](https://github.com/buildo/react-components/tree/v0.24.4) (2017-08-01)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.3...v0.24.4)
 
 #### New features:
@@ -536,6 +588,7 @@
 - Examples miss components imports [#1011](https://github.com/buildo/react-components/issues/1011)
 
 ## [v0.24.3](https://github.com/buildo/react-components/tree/v0.24.3) (2017-07-25)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.2...v0.24.3)
 
 #### New features:
@@ -543,6 +596,7 @@
 - Tooltip: wrap text with FormattedText [#1009](https://github.com/buildo/react-components/issues/1009)
 
 ## [v0.24.2](https://github.com/buildo/react-components/tree/v0.24.2) (2017-07-24)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.1...v0.24.2)
 
 #### Fixes (bugs & defects):
@@ -550,15 +604,17 @@
 - Popover sometimes not positioned correctly for a second [#1007](https://github.com/buildo/react-components/issues/1007)
 
 ## [v0.24.1](https://github.com/buildo/react-components/tree/v0.24.1) (2017-07-20)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.24.0...v0.24.1)
 
 #### New features:
 
 - update @types/react to 15.0.38 [#1005](https://github.com/buildo/react-components/issues/1005)
-- Tablo: border row should be applied to inner cells  [#1002](https://github.com/buildo/react-components/issues/1002)
+- Tablo: border row should be applied to inner cells [#1002](https://github.com/buildo/react-components/issues/1002)
 - backport mobile optimizations from alinity pro [#901](https://github.com/buildo/react-components/issues/901)
 
 ## [v0.24.0](https://github.com/buildo/react-components/tree/v0.24.0) (2017-07-17)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.12...v0.24.0)
 
 #### Breaking:
@@ -566,6 +622,7 @@
 - Components folders should all follow the same name-convention [#492](https://github.com/buildo/react-components/issues/492)
 
 ## [v0.23.12](https://github.com/buildo/react-components/tree/v0.23.12) (2017-07-14)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.11...v0.23.12)
 
 #### Fixes (bugs & defects):
@@ -573,6 +630,7 @@
 - TypeScript: StatefulButton's `onClick` should always return a Promise [#1000](https://github.com/buildo/react-components/issues/1000)
 
 ## [v0.23.11](https://github.com/buildo/react-components/tree/v0.23.11) (2017-07-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.10...v0.23.11)
 
 #### New features:
@@ -580,20 +638,23 @@
 - Missing default for contextTypes in getContextWrapper util [#996](https://github.com/buildo/react-components/issues/996)
 
 ## [v0.23.10](https://github.com/buildo/react-components/tree/v0.23.10) (2017-07-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.9...v0.23.10)
 
 #### New features:
 
-- Popover should handle context  [#993](https://github.com/buildo/react-components/issues/993)
+- Popover should handle context [#993](https://github.com/buildo/react-components/issues/993)
 
 ## [v0.23.9](https://github.com/buildo/react-components/tree/v0.23.9) (2017-07-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.8...v0.23.9)
 
 #### New features:
 
-- export $tab-border-height sass variables for tabbed panel [#990](https://github.com/buildo/react-components/issues/990)
+- export \$tab-border-height sass variables for tabbed panel [#990](https://github.com/buildo/react-components/issues/990)
 
 ## [v0.23.8](https://github.com/buildo/react-components/tree/v0.23.8) (2017-07-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.7...v0.23.8)
 
 #### New features:
@@ -602,6 +663,7 @@
 - New component: `DateField` [#219](https://github.com/buildo/react-components/issues/219)
 
 ## [v0.23.7](https://github.com/buildo/react-components/tree/v0.23.7) (2017-07-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.6...v0.23.7)
 
 #### Fixes (bugs & defects):
@@ -620,6 +682,7 @@
 - [typescript .d.ts] Create .d.ts [#908](https://github.com/buildo/react-components/issues/908)
 
 ## [v0.23.6](https://github.com/buildo/react-components/tree/v0.23.6) (2017-07-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.5...v0.23.6)
 
 #### New features:
@@ -627,6 +690,7 @@
 - [typescript .d.ts] Time Picker [#938](https://github.com/buildo/react-components/issues/938)
 
 ## [v0.23.5](https://github.com/buildo/react-components/tree/v0.23.5) (2017-07-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.4...v0.23.5)
 
 #### New features:
@@ -644,9 +708,11 @@
 - [typescript .d.ts] Divider [#909](https://github.com/buildo/react-components/issues/909)
 
 ## [v0.23.4](https://github.com/buildo/react-components/tree/v0.23.4) (2017-07-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.3...v0.23.4)
 
 ## [v0.23.3](https://github.com/buildo/react-components/tree/v0.23.3) (2017-07-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.2...v0.23.3)
 
 #### New features:
@@ -663,6 +729,7 @@
 - [typescript .d.ts] ScrollView [#913](https://github.com/buildo/react-components/issues/913)
 
 ## [v0.23.2](https://github.com/buildo/react-components/tree/v0.23.2) (2017-06-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.1...v0.23.2)
 
 #### New features:
@@ -675,6 +742,7 @@
 - [typescript .d.ts] Panel [#912](https://github.com/buildo/react-components/issues/912)
 
 ## [v0.23.1](https://github.com/buildo/react-components/tree/v0.23.1) (2017-06-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.23.0...v0.23.1)
 
 #### New features:
@@ -684,6 +752,7 @@
 - React peerDependency is still <0.15 [#894](https://github.com/buildo/react-components/issues/894)
 
 ## [v0.23.0](https://github.com/buildo/react-components/tree/v0.23.0) (2017-05-31)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.22.1...v0.23.0)
 
 #### Breaking:
@@ -691,6 +760,7 @@
 - Remove Table [#895](https://github.com/buildo/react-components/issues/895)
 
 ## [v0.22.1](https://github.com/buildo/react-components/tree/v0.22.1) (2017-05-30)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.22.0...v0.22.1)
 
 #### New features:
@@ -698,6 +768,7 @@
 - Dropdown: export defaultMenuRenderer [#891](https://github.com/buildo/react-components/issues/891)
 
 ## [v0.22.0](https://github.com/buildo/react-components/tree/v0.22.0) (2017-05-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.21.0...v0.22.0)
 
 #### Breaking:
@@ -710,6 +781,7 @@
 - ScrollView: replace onWheel with onScroll [#243](https://github.com/buildo/react-components/issues/243)
 
 ## [v0.21.0](https://github.com/buildo/react-components/tree/v0.21.0) (2017-04-19)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.3...v0.21.0)
 
 #### Breaking:
@@ -721,6 +793,7 @@
 - Use scriptoni [#870](https://github.com/buildo/react-components/issues/870)
 
 ## [v0.20.3](https://github.com/buildo/react-components/tree/v0.20.3) (2017-04-15)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.2...v0.20.3)
 
 #### New features:
@@ -728,6 +801,7 @@
 - Implement FormattedParagraph [#737](https://github.com/buildo/react-components/issues/737)
 
 ## [v0.20.2](https://github.com/buildo/react-components/tree/v0.20.2) (2017-04-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.1...v0.20.2)
 
 #### New features:
@@ -740,16 +814,19 @@
 - PanelMenu: clicking near a menu item may close the menu without calling the item's action [#836](https://github.com/buildo/react-components/issues/836)
 
 ## [v0.20.1](https://github.com/buildo/react-components/tree/v0.20.1) (2017-04-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.20.0...v0.20.1)
 
 #### New features:
 
-- CollapsableSection: cannot override $border-color [#857](https://github.com/buildo/react-components/issues/857)
+- CollapsableSection: cannot override \$border-color [#857](https://github.com/buildo/react-components/issues/857)
 
 ## [v0.20.0](https://github.com/buildo/react-components/tree/v0.20.0) (2017-04-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.19.0...v0.20.0)
 
 ## [v0.19.0](https://github.com/buildo/react-components/tree/v0.19.0) (2017-04-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.18.0...v0.19.0)
 
 #### New features:
@@ -757,6 +834,7 @@
 - Dropdown: add supported props [#855](https://github.com/buildo/react-components/issues/855)
 
 ## [v0.18.0](https://github.com/buildo/react-components/tree/v0.18.0) (2017-04-05)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.17.1...v0.18.0)
 
 #### New features:
@@ -768,6 +846,7 @@
 - Dropdown: no style for focus [#850](https://github.com/buildo/react-components/issues/850)
 
 ## [v0.17.1](https://github.com/buildo/react-components/tree/v0.17.1) (2017-04-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.17.0...v0.17.1)
 
 #### New features:
@@ -775,6 +854,7 @@
 - add `onInputChange`, `onBlur` and `onFocus` to Dropdown proptypes [#848](https://github.com/buildo/react-components/issues/848)
 
 ## [v0.17.0](https://github.com/buildo/react-components/tree/v0.17.0) (2017-04-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.8...v0.17.0)
 
 #### Breaking:
@@ -782,6 +862,7 @@
 - Define and export strict Dropdown's Props types [#846](https://github.com/buildo/react-components/issues/846)
 
 ## [v0.16.8](https://github.com/buildo/react-components/tree/v0.16.8) (2017-04-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.7...v0.16.8)
 
 #### New features:
@@ -789,6 +870,7 @@
 - Tablo: never pass onColumnResize down directly [#844](https://github.com/buildo/react-components/issues/844)
 
 ## [v0.16.7](https://github.com/buildo/react-components/tree/v0.16.7) (2017-04-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.6...v0.16.7)
 
 #### New features:
@@ -796,6 +878,7 @@
 - Tablo: resizing plugin should be disabled if onColumnsResize is missing [#842](https://github.com/buildo/react-components/issues/842)
 
 ## [v0.16.6](https://github.com/buildo/react-components/tree/v0.16.6) (2017-04-03)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.5...v0.16.6)
 
 #### Fixes (bugs & defects):
@@ -803,6 +886,7 @@
 - Dropdown: on IE11, values in multi-select mode are not vertically aligned when in single line [#830](https://github.com/buildo/react-components/issues/830)
 
 ## [v0.16.5](https://github.com/buildo/react-components/tree/v0.16.5) (2017-03-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.4...v0.16.5)
 
 #### New features:
@@ -810,6 +894,7 @@
 - Add touchScrollEnabled prop to Tablo component [#831](https://github.com/buildo/react-components/issues/831)
 
 ## [v0.16.4](https://github.com/buildo/react-components/tree/v0.16.4) (2017-03-27)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.3...v0.16.4)
 
 #### New features:
@@ -817,6 +902,7 @@
 - dropdown:`Select-multi-value-wrapper` should be vertically centered [#827](https://github.com/buildo/react-components/issues/827)
 
 ## [v0.16.3](https://github.com/buildo/react-components/tree/v0.16.3) (2017-03-26)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.2...v0.16.3)
 
 #### New features:
@@ -824,6 +910,7 @@
 - timePicker doesn't update the options with new input value [#825](https://github.com/buildo/react-components/issues/825)
 
 ## [v0.16.2](https://github.com/buildo/react-components/tree/v0.16.2) (2017-03-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.1...v0.16.2)
 
 #### New features:
@@ -831,6 +918,7 @@
 - Dropdown: values in multi select mode are not aligned [#823](https://github.com/buildo/react-components/issues/823)
 
 ## [v0.16.1](https://github.com/buildo/react-components/tree/v0.16.1) (2017-03-22)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.16.0...v0.16.1)
 
 #### New features:
@@ -838,6 +926,7 @@
 - AsyncStatusIndicator should export `SavingState` model [#817](https://github.com/buildo/react-components/issues/817)
 
 ## [v0.16.0](https://github.com/buildo/react-components/tree/v0.16.0) (2017-03-20)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.15.0...v0.16.0)
 
 #### Breaking:
@@ -845,6 +934,7 @@
 - dropdown: sass variables for `.Select-value-label` is overridden [#814](https://github.com/buildo/react-components/issues/814)
 
 ## [v0.15.0](https://github.com/buildo/react-components/tree/v0.15.0) (2017-03-20)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.4...v0.15.0)
 
 #### Breaking:
@@ -852,6 +942,7 @@
 - Dropdown: in multi mode, values should wrap and input height should adapt size [#810](https://github.com/buildo/react-components/issues/810)
 
 ## [v0.14.4](https://github.com/buildo/react-components/tree/v0.14.4) (2017-03-16)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.3...v0.14.4)
 
 #### New features:
@@ -859,6 +950,7 @@
 - implement async status indicator component [#799](https://github.com/buildo/react-components/issues/799)
 
 ## [v0.14.3](https://github.com/buildo/react-components/tree/v0.14.3) (2017-03-14)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.2...v0.14.3)
 
 #### New features:
@@ -867,6 +959,7 @@
 - Dropdown: implement grouped options [#798](https://github.com/buildo/react-components/issues/798)
 
 ## [v0.14.2](https://github.com/buildo/react-components/tree/v0.14.2) (2017-03-08)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.1...v0.14.2)
 
 #### New features:
@@ -879,6 +972,7 @@
 - Meter: ranges should have a default value [#753](https://github.com/buildo/react-components/issues/753)
 
 ## [v0.14.1](https://github.com/buildo/react-components/tree/v0.14.1) (2017-03-02)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.14.0...v0.14.1)
 
 #### New features:
@@ -889,6 +983,7 @@
 - Dropdown: text color should not change on hover [#724](https://github.com/buildo/react-components/issues/724)
 
 ## [v0.14.0](https://github.com/buildo/react-components/tree/v0.14.0) (2017-02-27)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.3...v0.14.0)
 
 #### New features:
@@ -900,11 +995,12 @@
 - Tablo: redefine variables for borders [#770](https://github.com/buildo/react-components/issues/770)
 
 ## [v0.13.3](https://github.com/buildo/react-components/tree/v0.13.3) (2017-02-24)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.2...v0.13.3)
 
 #### New features:
 
-- Be compatible with `consistent-return` eslint rule  [#784](https://github.com/buildo/react-components/issues/784)
+- Be compatible with `consistent-return` eslint rule [#784](https://github.com/buildo/react-components/issues/784)
 - Tablo: scroll to selected row not working correctly [#777](https://github.com/buildo/react-components/issues/777)
 - `faker` and `debug` should be devDependencies [#745](https://github.com/buildo/react-components/issues/745)
 
@@ -913,6 +1009,7 @@
 - Popover: debounced events are not canceled when component unmounts [#727](https://github.com/buildo/react-components/issues/727)
 
 ## [v0.13.2](https://github.com/buildo/react-components/tree/v0.13.2) (2017-02-16)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.1...v0.13.2)
 
 #### New features:
@@ -924,6 +1021,7 @@
 - Tablo: Cell content should use grow, vAlignContent, hAlignContent [#768](https://github.com/buildo/react-components/issues/768)
 
 ## [v0.13.1](https://github.com/buildo/react-components/tree/v0.13.1) (2017-02-14)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.13.0...v0.13.1)
 
 #### New features:
@@ -933,6 +1031,7 @@
 - Tablo: Cell children shoul take the entire row as second argument [#758](https://github.com/buildo/react-components/issues/758)
 
 ## [v0.13.0](https://github.com/buildo/react-components/tree/v0.13.0) (2017-02-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.12.0...v0.13.0)
 
 #### Breaking:
@@ -945,6 +1044,7 @@
 - Tablo: expose `rowClassNameGetter` [#741](https://github.com/buildo/react-components/issues/741)
 
 ## [v0.12.0](https://github.com/buildo/react-components/tree/v0.12.0) (2017-01-31)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.11.0...v0.12.0)
 
 #### New features:
@@ -960,6 +1060,7 @@
 - Modal renders header/footer even when not necessary [#671](https://github.com/buildo/react-components/issues/671)
 
 ## [v0.11.0](https://github.com/buildo/react-components/tree/v0.11.0) (2016-12-29)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.1...v0.11.0)
 
 #### Breaking:
@@ -972,13 +1073,14 @@
 - [Tablo Perf] onRowMouseEnter/Leave are always passed to fdt2 [#715](https://github.com/buildo/react-components/issues/715)
 - [Tablo Perf] horizontal virtualization should be settable and on by default [#713](https://github.com/buildo/react-components/issues/713)
 - [Tablo Perf] disable prop validation for fixed-data-table-2 also in development [#712](https://github.com/buildo/react-components/issues/712)
-- [Tablo Perf] [#711](https://github.com/buildo/react-components/issues/711)
+- [Tablo Perf][#711](https://github.com/buildo/react-components/issues/711)
 - An in-range update of debug is breaking the build 🚨 [#709](https://github.com/buildo/react-components/issues/709)
 - An in-range update of stylelint is breaking the build 🚨 [#705](https://github.com/buildo/react-components/issues/705)
 - Popover: delay prop validation always fails if you pass an object [#701](https://github.com/buildo/react-components/issues/701)
 - An in-range update of debug is breaking the build 🚨 [#698](https://github.com/buildo/react-components/issues/698)
 
 ## [v0.10.1](https://github.com/buildo/react-components/tree/v0.10.1) (2016-12-09)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.10.0...v0.10.1)
 
 #### Fixes (bugs & defects):
@@ -993,6 +1095,7 @@
 - [tablo perf] - Tablo performances [#662](https://github.com/buildo/react-components/issues/662)
 
 ## [v0.10.0](https://github.com/buildo/react-components/tree/v0.10.0) (2016-11-16)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.2...v0.10.0)
 
 #### Fixes (bugs & defects):
@@ -1005,12 +1108,13 @@
 - LoadingSpinner should enforce box-sizing: border-box [#649](https://github.com/buildo/react-components/issues/649)
 
 ## [v0.9.2](https://github.com/buildo/react-components/tree/v0.9.2) (2016-10-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.1...v0.9.2)
 
 #### New features:
 
-- Dropdown: add sass variable $option-background-selected [#635](https://github.com/buildo/react-components/issues/635)
-- Dropdown: $text-color-* variables have no effect [#625](https://github.com/buildo/react-components/issues/625)
+- Dropdown: add sass variable \$option-background-selected [#635](https://github.com/buildo/react-components/issues/635)
+- Dropdown: \$text-color-\* variables have no effect [#625](https://github.com/buildo/react-components/issues/625)
 - Dropdown: menu-background should be applied also to option [#623](https://github.com/buildo/react-components/issues/623)
 - TimePicker selection, keyboard selection and focus [#612](https://github.com/buildo/react-components/issues/612)
 - Dropdown box-sizing shouldn't be `border-box` [#611](https://github.com/buildo/react-components/issues/611)
@@ -1025,6 +1129,7 @@
 - Dropdown: multi value support is broken [#423](https://github.com/buildo/react-components/issues/423)
 
 ## [v0.9.1](https://github.com/buildo/react-components/tree/v0.9.1) (2016-09-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.9.0...v0.9.1)
 
 #### Fixes (bugs & defects):
@@ -1032,6 +1137,7 @@
 - Remove dot sh from npm ignore [#608](https://github.com/buildo/react-components/issues/608)
 
 ## [v0.9.0](https://github.com/buildo/react-components/tree/v0.9.0) (2016-09-12)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.8.0...v0.9.0)
 
 #### Fixes (bugs & defects):
@@ -1049,6 +1155,7 @@
 - LoadingSpinner style should be called loadingSpinner.scss [#525](https://github.com/buildo/react-components/issues/525)
 
 ## [v0.8.0](https://github.com/buildo/react-components/tree/v0.8.0) (2016-09-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.7.0...v0.8.0)
 
 #### Breaking:
@@ -1056,6 +1163,7 @@
 - Update react-select to v1.0.0-rc1 [#517](https://github.com/buildo/react-components/issues/517)
 
 ## [v0.7.0](https://github.com/buildo/react-components/tree/v0.7.0) (2016-09-05)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.6.0...v0.7.0)
 
 #### Breaking:
@@ -1063,6 +1171,7 @@
 - Remove FlexView from b-r-c [#545](https://github.com/buildo/react-components/issues/545)
 
 ## [v0.6.0](https://github.com/buildo/react-components/tree/v0.6.0) (2016-09-01)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.1...v0.6.0)
 
 #### Fixes (bugs & defects):
@@ -1081,6 +1190,7 @@
 - [KitchenSink] Default style for components [#529](https://github.com/buildo/react-components/issues/529)
 
 ## [v0.5.1](https://github.com/buildo/react-components/tree/v0.5.1) (2016-08-25)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.5.0...v0.5.1)
 
 #### Breaking:
@@ -1093,6 +1203,7 @@
 - add table's scrollbars customization [#509](https://github.com/buildo/react-components/issues/509)
 
 ## [v0.5.0](https://github.com/buildo/react-components/tree/v0.5.0) (2016-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.5...v0.5.0)
 
 #### Breaking:
@@ -1100,9 +1211,11 @@
 - Remove styles import [#505](https://github.com/buildo/react-components/issues/505)
 
 ## [v0.4.5](https://github.com/buildo/react-components/tree/v0.4.5) (2016-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.4...v0.4.5)
 
 ## [v0.4.4](https://github.com/buildo/react-components/tree/v0.4.4) (2016-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.3...v0.4.4)
 
 #### New features:
@@ -1111,6 +1224,7 @@
 - Update Babel to v6.x [#500](https://github.com/buildo/react-components/issues/500)
 
 ## [v0.4.3](https://github.com/buildo/react-components/tree/v0.4.3) (2016-08-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.2...v0.4.3)
 
 #### New features:
@@ -1126,14 +1240,15 @@
 - Button should be clickable only when is ready [#486](https://github.com/buildo/react-components/issues/486)
 
 ## [v0.4.2](https://github.com/buildo/react-components/tree/v0.4.2) (2016-07-11)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.1...v0.4.2)
 
 #### New features:
 
 - Collapsed Panel content may overflow in IE [#484](https://github.com/buildo/react-components/issues/484)
 - Flat Dropdown should have border in normal state [#482](https://github.com/buildo/react-components/issues/482)
-- TimePicker: Make TimePicker searchable  [#478](https://github.com/buildo/react-components/issues/478)
-- Table: Add scrollToColumn and scrollToRow props  [#476](https://github.com/buildo/react-components/issues/476)
+- TimePicker: Make TimePicker searchable [#478](https://github.com/buildo/react-components/issues/478)
+- Table: Add scrollToColumn and scrollToRow props [#476](https://github.com/buildo/react-components/issues/476)
 - Meter: Range background color [#472](https://github.com/buildo/react-components/issues/472)
 - Add optional delay to TextOverflow [#470](https://github.com/buildo/react-components/issues/470)
 - make TextOverflow optionally lazy [#468](https://github.com/buildo/react-components/issues/468)
@@ -1151,6 +1266,7 @@
 - [ResizeSensor] not isomorphic [#451](https://github.com/buildo/react-components/issues/451)
 
 ## [v0.4.1](https://github.com/buildo/react-components/tree/v0.4.1) (2016-06-01)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.4.0...v0.4.1)
 
 #### New features:
@@ -1197,7 +1313,7 @@
 - [dependencies] update lodash [#323](https://github.com/buildo/react-components/issues/323)
 - not sortable columns should have header with cursor default [#321](https://github.com/buildo/react-components/issues/321)
 - [Accordion] rename in Section [#308](https://github.com/buildo/react-components/issues/308)
-- [FlexView]  if basis='auto' throw warning [#306](https://github.com/buildo/react-components/issues/306)
+- [FlexView] if basis='auto' throw warning [#306](https://github.com/buildo/react-components/issues/306)
 - getChildrenProps in DropDown doesn't work as expected [#299](https://github.com/buildo/react-components/issues/299)
 - TimePicker [#277](https://github.com/buildo/react-components/issues/277)
 - FocusableView [#265](https://github.com/buildo/react-components/issues/265)
@@ -1217,7 +1333,7 @@
 - [Table] scrollToRow interacts poorly with autoSize [#381](https://github.com/buildo/react-components/issues/381)
 - [TextOverflow] Failed to execute 'getComputedStyle' on 'Window': parameter 1 is not of type 'Element'. [#356](https://github.com/buildo/react-components/issues/356)
 - [TextOverflow] - treats not overflowed text as such [#346](https://github.com/buildo/react-components/issues/346)
-- [BackgroundDimmer] [#266](https://github.com/buildo/react-components/issues/266)
+- [BackgroundDimmer][#266](https://github.com/buildo/react-components/issues/266)
 
 #### Breaking:
 
@@ -1225,6 +1341,7 @@
 - [MoreOrLess] MoreOrLess should use flexbox to render its children properly [#420](https://github.com/buildo/react-components/issues/420)
 
 ## [v0.4.0](https://github.com/buildo/react-components/tree/v0.4.0) (2016-02-17)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.3.1...v0.4.0)
 
 #### New features:
@@ -1254,6 +1371,7 @@
 - Test all the things [#9](https://github.com/buildo/react-components/issues/9)
 
 ## [v0.3.1](https://github.com/buildo/react-components/tree/v0.3.1) (2016-02-01)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.3.0...v0.3.1)
 
 #### New features:
@@ -1304,6 +1422,7 @@
 - [TransitionWrapper] improve `component` prop evaluation [#103](https://github.com/buildo/react-components/issues/103)
 
 ## [v0.3.0](https://github.com/buildo/react-components/tree/v0.3.0) (2016-01-11)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.2.1...v0.3.0)
 
 #### New features:
@@ -1344,6 +1463,7 @@
 - [TextOverflow] TextOverflow is too fragile and risky [#117](https://github.com/buildo/react-components/issues/117)
 
 ## [v0.2.1](https://github.com/buildo/react-components/tree/v0.2.1) (2015-11-09)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.2.0...v0.2.1)
 
 #### New features:
@@ -1357,6 +1477,7 @@
 - add checkbox [#4](https://github.com/buildo/react-components/issues/4)
 
 ## [v0.2.0](https://github.com/buildo/react-components/tree/v0.2.0) (2015-10-23)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.9...v0.2.0)
 
 #### New features:
@@ -1364,17 +1485,20 @@
 - Popover crashes if isOpen={true} from start [#71](https://github.com/buildo/react-components/issues/71)
 - [Popover] - Statelessness [#64](https://github.com/buildo/react-components/issues/64)
 - [Popover] add dismissOnClickOut [#63](https://github.com/buildo/react-components/issues/63)
-- [Popover] Improve positioning  [#62](https://github.com/buildo/react-components/issues/62)
+- [Popover] Improve positioning [#62](https://github.com/buildo/react-components/issues/62)
 - [Popover] margin offset should be customizable inline [#59](https://github.com/buildo/react-components/issues/59)
 - create Scrollable wrapper component [#50](https://github.com/buildo/react-components/issues/50)
 
 ## [v0.1.9](https://github.com/buildo/react-components/tree/v0.1.9) (2015-10-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.8...v0.1.9)
 
 ## [v0.1.8](https://github.com/buildo/react-components/tree/v0.1.8) (2015-10-08)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.7...v0.1.8)
 
 ## [v0.1.7](https://github.com/buildo/react-components/tree/v0.1.7) (2015-10-08)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.6...v0.1.7)
 
 #### New features:
@@ -1382,6 +1506,7 @@
 - Explicit react in peerDependencies [#57](https://github.com/buildo/react-components/issues/57)
 
 ## [v0.1.6](https://github.com/buildo/react-components/tree/v0.1.6) (2015-10-08)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.5...v0.1.6)
 
 #### New features:
@@ -1389,6 +1514,7 @@
 - Shrinkwrap [#55](https://github.com/buildo/react-components/issues/55)
 
 ## [v0.1.5](https://github.com/buildo/react-components/tree/v0.1.5) (2015-10-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.4...v0.1.5)
 
 #### New features:
@@ -1398,6 +1524,7 @@
 - add scrollable mode [#25](https://github.com/buildo/react-components/issues/25)
 
 ## [v0.1.4](https://github.com/buildo/react-components/tree/v0.1.4) (2015-09-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.3...v0.1.4)
 
 #### New features:
@@ -1405,6 +1532,7 @@
 - remove basis=100% default when auto or shrink are set [#46](https://github.com/buildo/react-components/issues/46)
 
 ## [v0.1.3](https://github.com/buildo/react-components/tree/v0.1.3) (2015-09-10)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.2...v0.1.3)
 
 #### New features:
@@ -1412,12 +1540,15 @@
 - add shrink to FlexView [#16](https://github.com/buildo/react-components/issues/16)
 
 ## [v0.1.2](https://github.com/buildo/react-components/tree/v0.1.2) (2015-09-07)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.1...v0.1.2)
 
 ## [v0.1.1](https://github.com/buildo/react-components/tree/v0.1.1) (2015-09-04)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.1.0...v0.1.1)
 
 ## [v0.1.0](https://github.com/buildo/react-components/tree/v0.1.0) (2015-09-02)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.7...v0.1.0)
 
 #### New features:
@@ -1431,6 +1562,7 @@
 - [FlexView] add flex components to README [#15](https://github.com/buildo/react-components/issues/15)
 
 ## [v0.0.7](https://github.com/buildo/react-components/tree/v0.0.7) (2015-08-18)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.6...v0.0.7)
 
 #### New features:
@@ -1438,6 +1570,7 @@
 - package import is too verbose [#24](https://github.com/buildo/react-components/issues/24)
 
 ## [v0.0.6](https://github.com/buildo/react-components/tree/v0.0.6) (2015-08-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.5...v0.0.6)
 
 #### New features:
@@ -1447,6 +1580,7 @@
 - Add FlexView to KitchenSink [#8](https://github.com/buildo/react-components/issues/8)
 
 ## [v0.0.5](https://github.com/buildo/react-components/tree/v0.0.5) (2015-08-11)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.4...v0.0.5)
 
 #### New features:
@@ -1455,6 +1589,7 @@
 - [FlexView] add centerHorizontally to FlexView [#14](https://github.com/buildo/react-components/issues/14)
 
 ## [v0.0.4](https://github.com/buildo/react-components/tree/v0.0.4) (2015-07-21)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.3...v0.0.4)
 
 #### New features:
@@ -1462,6 +1597,7 @@
 - FlexView.grow should be either number or bool [#12](https://github.com/buildo/react-components/issues/12)
 
 ## [v0.0.3](https://github.com/buildo/react-components/tree/v0.0.3) (2015-07-21)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.2...v0.0.3)
 
 #### New features:
@@ -1470,6 +1606,7 @@
 - add FlexView [#6](https://github.com/buildo/react-components/issues/6)
 
 ## [v0.0.2](https://github.com/buildo/react-components/tree/v0.0.2) (2015-07-13)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.0.1...v0.0.2)
 
 #### New features:
@@ -1477,10 +1614,10 @@
 - remove semantic from popover [#2](https://github.com/buildo/react-components/issues/2)
 
 ## [v0.0.1](https://github.com/buildo/react-components/tree/v0.0.1) (2015-07-06)
+
 [Full Changelog](https://github.com/buildo/react-components/compare/hail-0...v0.0.1)
 
 ## [hail-0](https://github.com/buildo/react-components/tree/hail-0) (2016-02-25)
-
 
 #### New features:
 

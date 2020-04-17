@@ -1,9 +1,9 @@
-
 A wrapper to make any component focusable.
 
 ![group 2](https://user-images.githubusercontent.com/10867086/38426863-0d032dd2-39b8-11e8-821b-2449db29692f.jpg)
 
 # Usage
+
 Whenever a component can react to user inputs, you should focus that component or its parent view by adding a colored border.
 
 `FocusableView` makes this easy as it receives any focus event generated within its component tree enabling you to change the style of itself or any of its children based on the current focus state.

@@ -13,7 +13,7 @@ To help the user understand which information is loading, the dimmed layer shoul
 # Variants
 
 ## Message
+
 If the content is taking a long time to load, you should add a message to reassure the user there is no error and possibly to explain what is happening:
 
 ![image](https://user-images.githubusercontent.com/4029499/39043948-0c0f4ea6-448f-11e8-9256-735bb0733321.png)
-

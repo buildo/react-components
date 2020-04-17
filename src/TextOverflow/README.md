@@ -2,7 +2,7 @@ A wrapper to automatically "ellipsise" strings based on the currently available 
 
 # Usage
 
-`TextOverflow` can be used to show a single-line label whenever it is ok to assume that the full string may not appear complete at all times. The user *can* then show the complete label by "hovering" on the ellipsised one.
+`TextOverflow` can be used to show a single-line label whenever it is ok to assume that the full string may not appear complete at all times. The user _can_ then show the complete label by "hovering" on the ellipsised one.
 
 As shown in the various examples, the complete view can be presented in a `Tooltip` customized as needed (typically, you'll reuse the custom `Tooltip` you use everywhere in the app).
 

@@ -6,7 +6,6 @@ UI component to show/hide a menu of actions or links.
 
 In its simplest form, Menu renders a show/hide icon that can be customized, shows the list of options provided when the user clicks the icon, and hides the menu when the user selects an action or dismisses by clicking anywhere outside the menu.
 
-
 ![tooltip-icon](https://user-images.githubusercontent.com/10867086/39931260-2686248a-553d-11e8-90a0-26cac110b57e.jpg)
 
 ### Customizing the show/hide UI
