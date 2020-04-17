@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as cx from "classnames";
+import * as React from 'react';
+import * as cx from 'classnames';
 
 export type DividerDefaultProps = {
   /** divider orientation (vertical | horizontal) */
@@ -13,8 +13,8 @@ export type DividerDefaultProps = {
 };
 
 export namespace Divider {
-  export type Orientation = "horizontal" | "vertical";
-  export type Size = "small" | "medium" | "large" | "no-margin";
+  export type Orientation = 'horizontal' | 'vertical';
+  export type Size = 'small' | 'medium' | 'large' | 'no-margin';
   export type Props = Partial<DividerDefaultProps>;
 }
 type DividerDefaultedProps = DividerDefaultProps;
@@ -24,19 +24,13 @@ type DividerDefaultedProps = DividerDefaultProps;
  */
 export class Divider extends React.PureComponent<Divider.Props> {
   static defaultProps: DividerDefaultProps = {
-    orientation: "vertical",
-    size: "small",
+    orientation: 'vertical',
+    size: 'small',
     style: {}
   };
 
   render() {
-    const { orientation, style, size, className } = this
-      .props as DividerDefaultedProps;
-    return (
-      <div
-        className={cx("divider", className, orientation, size)}
-        style={style}
-      />
-    );
+    const { orientation, style, size, className } = this.props as DividerDefaultedProps;
+    return <div className={cx('divider', className, orientation, size)} style={style} />;
   }
 }

@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
 
 export type RadioOption = {
   label: string;
@@ -46,15 +46,7 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
   };
 
   render() {
-    const {
-      id,
-      className,
-      style,
-      disabled,
-      options,
-      value,
-      horizontal
-    } = this.props;
+    const { id, className, style, disabled, options, value, horizontal } = this.props;
     return (
       <FlexView
         shrink={false}
@@ -63,10 +55,10 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
         column={!horizontal}
         role="radiogroup"
         className={cx(
-          "radio-group",
+          'radio-group',
           {
-            "is-disabled": disabled,
-            "is-horizontal": horizontal
+            'is-disabled': disabled,
+            'is-horizontal': horizontal
           },
           className
         )}
@@ -75,31 +67,18 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
           <FlexView
             key={option.value}
             vAlignContent="center"
-            className={cx("radio-group-option", {
-              "is-checked": option.value === value
+            className={cx('radio-group-option', {
+              'is-checked': option.value === value
             })}
           >
             <svg viewBox="0 0 16 16" onClick={this.onChange(option)}>
               <g>
-                <circle
-                  className="radio-group-circle-outer"
-                  cx="8"
-                  cy="8"
-                  r="8"
-                />
+                <circle className="radio-group-circle-outer" cx="8" cy="8" r="8" />
                 <circle className="radio-group-circle" cx="8" cy="8" r="7" />
-                <circle
-                  className="radio-group-circle-inner"
-                  cx="8"
-                  cy="8"
-                  r="5"
-                />
+                <circle className="radio-group-circle-inner" cx="8" cy="8" r="5" />
               </g>
             </svg>
-            <FlexView
-              className="radio-group-label"
-              onClick={this.onChange(option)}
-            >
+            <FlexView className="radio-group-label" onClick={this.onChange(option)}>
               {option.label}
             </FlexView>
           </FlexView>

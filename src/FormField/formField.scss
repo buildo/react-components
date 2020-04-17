@@ -1,4 +1,4 @@
-@import "../utils/theme/variables.scss";
+@import '../utils/theme/variables.scss';
 
 $label-color: $brc-darkGreyBlue !default;
 $hint-label-color: $brc-coolGrey !default;
@@ -59,7 +59,7 @@ $required-badge-position: left !default;
     .form-field-label {
       @if ($required-badge-position == left) {
         > ::before {
-          content: "*";
+          content: '*';
           color: $required-badge-color;
           font-size: 18px;
           font-weight: $brc-regular;
@@ -69,7 +69,7 @@ $required-badge-position: left !default;
 
       @if ($required-badge-position == right) {
         > ::after {
-          content: "*";
+          content: '*';
           color: $required-badge-color;
           font-size: 18px;
           font-weight: $brc-regular;

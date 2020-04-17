@@ -1,4 +1,4 @@
-@import "../utils/theme/variables.scss";
+@import '../utils/theme/variables.scss';
 $size: 1em;
 $period: 1s;
 $easing: linear;
@@ -36,7 +36,7 @@ $thickness: 0.1em;
       box-sizing: border-box;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 50%;

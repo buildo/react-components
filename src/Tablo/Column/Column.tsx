@@ -1,16 +1,16 @@
-import * as React from "react";
-import find = require("lodash/find");
-import { getArrayChildren } from "../utils";
+import * as React from 'react';
+import find = require('lodash/find');
+import { getArrayChildren } from '../utils';
 
-import { Column as ColumnFDT } from "fixed-data-table-2";
+import { Column as ColumnFDT } from 'fixed-data-table-2';
 
-import { Cell, defaultCell } from "../Cell/Cell";
-import { Header, defaultHeader, HeaderIntrinsicProps } from "../Header/Header";
-import Footer from "../Footer";
+import { Cell, defaultCell } from '../Cell/Cell';
+import { Header, defaultHeader, HeaderIntrinsicProps } from '../Header/Header';
+import Footer from '../Footer';
 
 export type Intrinsic<T> = {
   data?: T[];
-  sortDir?: "asc" | "desc";
+  sortDir?: 'asc' | 'desc';
   onHeaderClick: () => void;
 };
 
@@ -37,9 +37,7 @@ export namespace Column {
   )[];
   export type Props<T extends {}> = Required<T> & Partial<Default>;
 }
-export type ColumnDefaultedIntrinsicProps<T> = Required<T> &
-  Default &
-  Intrinsic<T>;
+export type ColumnDefaultedIntrinsicProps<T> = Required<T> & Default & Intrinsic<T>;
 export type ColumnIntrinsicProps<T extends {}> = Column.Props<T> & Intrinsic<T>;
 
 export const defaultWidth = 200;
@@ -59,18 +57,10 @@ export const Column = <T extends {}>(
     allowCellsRecycling = true
   } = args as ColumnDefaultedIntrinsicProps<T>;
 
-  const cell = ({
-    rowIndex,
-    columnKey
-  }: {
-    rowIndex: number;
-    columnKey?: string;
-  }) => {
-    const elem =
-      find(getArrayChildren(children), child => child.type === Cell) ||
-      defaultCell;
+  const cell = ({ rowIndex, columnKey }: { rowIndex: number; columnKey?: string }) => {
+    const elem = find(getArrayChildren(children), child => child.type === Cell) || defaultCell;
     const rowData = data[rowIndex] || {};
-    const dataCell = (rowData as any)[columnKey || ""];
+    const dataCell = (rowData as any)[columnKey || ''];
     return React.cloneElement<any, any>(elem as any, {
       data: dataCell,
       rowData,
@@ -80,14 +70,12 @@ export const Column = <T extends {}>(
   };
 
   const header = React.cloneElement<HeaderIntrinsicProps>(
-    find(getArrayChildren(children), child => child.type === Header) ||
-      defaultHeader(name),
+    find(getArrayChildren(children), child => child.type === Header) || defaultHeader(name),
     { fixed }
   );
-  const footer = find(
-    getArrayChildren(children),
-    child => child.type === Footer
-  ) as React.ReactElement<Footer.Props> | undefined; // TODO onFooterClick
+  const footer = find(getArrayChildren(children), child => child.type === Footer) as
+    | React.ReactElement<Footer.Props>
+    | undefined; // TODO onFooterClick
 
   return (
     <ColumnFDT

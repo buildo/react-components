@@ -1,7 +1,7 @@
-import * as React from "react";
-import omit = require("lodash/omit");
-import { Children } from "../utils";
-import easing, { EasingType } from "./easingFunctions";
+import * as React from 'react';
+import omit = require('lodash/omit');
+import { Children } from '../utils';
+import easing, { EasingType } from './easingFunctions';
 
 export type ScrollViewDefaultProps = {
   /** enable horizontal scrolling */
@@ -17,11 +17,7 @@ export type ScrollViewDefaultProps = {
   style: React.CSSProperties;
 };
 
-export type ScrollTo = (
-  _x?: number | null,
-  _y?: number | null,
-  scrollDuration?: number
-) => void;
+export type ScrollTo = (_x?: number | null, _y?: number | null, scrollDuration?: number) => void;
 
 export type ScrollViewRequiredProps = {
   /** components/nodes content. If you need to scroll programmatically pass a function and save `scrollTo(x, y, milliseconds)` callback for later use (it will be passed as first argument) ex: `(scrollTo) => { this.scrollTo = scrollTo; return <MyScrollViewContent />; }` */
@@ -38,10 +34,7 @@ export namespace ScrollView {
     React.HTMLAttributes<HTMLDivElement>;
 }
 
-const Props: Record<
-  keyof ScrollViewRequiredProps | keyof ScrollViewDefaultProps,
-  true
-> = {
+const Props: Record<keyof ScrollViewRequiredProps | keyof ScrollViewDefaultProps, true> = {
   children: true,
   scrollX: true,
   scrollY: true,
@@ -65,7 +58,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     scrollX: true,
     scrollY: true,
     scrollPropagation: true,
-    easing: "easeInOutQuad",
+    easing: 'easeInOutQuad',
     onScroll: () => {},
     style: {}
   };
@@ -90,9 +83,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     }
   };
 
-  initializeTouchEventDirection: React.TouchEventHandler<
-    HTMLDivElement
-  > = e => {
+  initializeTouchEventDirection: React.TouchEventHandler<HTMLDivElement> = e => {
     this.lastY = e.touches[0].clientY;
   };
 
@@ -100,9 +91,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     this.lastY = 0;
   };
 
-  stopScrollPropagation: React.ReactEventHandler<HTMLDivElement> = ({
-    nativeEvent: e
-  }) => {
+  stopScrollPropagation: React.ReactEventHandler<HTMLDivElement> = ({ nativeEvent: e }) => {
     const el = (e.target || e.srcElement) as Element;
     const isEventInsideScrollView = this.isEventInsideScrollView(el);
     if (isEventInsideScrollView) {
@@ -136,13 +125,9 @@ export class ScrollView extends React.Component<ScrollView.Props> {
   computeStyle: () => React.CSSProperties = () => {
     const { scrollX, scrollY, style } = this.props;
     return {
-      overflowY: scrollY
-        ? "scroll"
-        : undefined /* has to be scroll for iOS, not auto */,
-      overflowX: scrollX
-        ? "scroll"
-        : undefined /* has to be scroll for iOS, not auto */,
-      WebkitOverflowScrolling: "touch",
+      overflowY: scrollY ? 'scroll' : undefined /* has to be scroll for iOS, not auto */,
+      overflowX: scrollX ? 'scroll' : undefined /* has to be scroll for iOS, not auto */,
+      WebkitOverflowScrolling: 'touch',
       ...style
     };
   };
@@ -153,14 +138,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
     const x = _x || scrollLeft;
     const y = _y || scrollTop;
 
-    this._scrollTo(
-      x,
-      y,
-      scrollDuration || 0,
-      Date.now(),
-      scrollLeft,
-      scrollTop
-    );
+    this._scrollTo(x, y, scrollDuration || 0, Date.now(), scrollLeft, scrollTop);
   };
 
   _scrollTo = (
@@ -178,24 +156,14 @@ export class ScrollView extends React.Component<ScrollView.Props> {
       const easingFunction = easing[easingType];
 
       if (
-        (typeof x === "number" && scrollLeft !== x) ||
-        (typeof y === "number" && scrollTop !== y)
+        (typeof x === 'number' && scrollLeft !== x) ||
+        (typeof y === 'number' && scrollTop !== y)
       ) {
         const currentTime = Math.min(scrollDuration, Date.now() - startTime);
         const distanceX = x - startX;
         const distanceY = y - startY;
-        this.scrollView.scrollLeft = easingFunction(
-          currentTime,
-          startX,
-          distanceX,
-          scrollDuration
-        );
-        this.scrollView.scrollTop = easingFunction(
-          currentTime,
-          startY,
-          distanceY,
-          scrollDuration
-        );
+        this.scrollView.scrollLeft = easingFunction(currentTime, startX, distanceX, scrollDuration);
+        this.scrollView.scrollTop = easingFunction(currentTime, startY, distanceY, scrollDuration);
 
         requestAnimationFrame(() =>
           this._scrollTo(x, y, scrollDuration, startTime, startX, startY)
@@ -225,9 +193,7 @@ export class ScrollView extends React.Component<ScrollView.Props> {
           this.scrollView = sv;
         }}
       >
-        {typeof children === "function"
-          ? (children as any)(this.scrollTo)
-          : children}
+        {typeof children === 'function' ? (children as any)(this.scrollTo) : children}
       </div>
     );
   }

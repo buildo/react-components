@@ -1,10 +1,10 @@
-import * as React from "react";
-import find = require("lodash/find");
+import * as React from 'react';
+import find = require('lodash/find');
 
-import { ColumnGroup as ColumnGroupFDT } from "fixed-data-table-2";
+import { ColumnGroup as ColumnGroupFDT } from 'fixed-data-table-2';
 
-import Header, { defaultHeader } from "../Header";
-import Column from "../Column";
+import Header, { defaultHeader } from '../Header';
+import Column from '../Column';
 
 export namespace ColumnGroup {
   export type Props<T> = {
@@ -18,8 +18,7 @@ export namespace ColumnGroup {
 export function ColumnGroup<T>(args: ColumnGroup.Props<T>) {
   const { key, fixed, children } = args;
 
-  const header =
-    find(children, child => child.type === Header) || defaultHeader("");
+  const header = find(children, child => child.type === Header) || defaultHeader('');
   const columns = children
     .filter(ch => ch.type === Column)
     .map((col, key) => {

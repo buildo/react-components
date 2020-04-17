@@ -6,11 +6,11 @@ initialState = {};
 const onChange = value => setState({ value });
 
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' }
 ];
 
 <SingleDropdown
@@ -33,30 +33,30 @@ const onChange = stateVar => value => setState({ [stateVar]: value });
 const { value, value2 } = state;
 
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' }
 ];
 const options2 = [
-  { value: "cabbage", label: "Cabbage" },
-  { value: "carrot", label: "Carrot" },
-  { value: "peas", label: "Peas" },
-  { value: "tomato", label: "Tomato" },
-  { value: "cucumber", label: "Cucumber" }
+  { value: 'cabbage', label: 'Cabbage' },
+  { value: 'carrot', label: 'Carrot' },
+  { value: 'peas', label: 'Peas' },
+  { value: 'tomato', label: 'Tomato' },
+  { value: 'cucumber', label: 'Cucumber' }
 ];
 
 <FlexView vAlignContent="center" className="dropdown-list">
   <SingleDropdown
     value={state.value}
-    onChange={onChange("value")}
+    onChange={onChange('value')}
     placeholder="Select some fruit"
     options={options}
   />
   <SingleDropdown
     value={value2}
-    onChange={onChange("value2")}
+    onChange={onChange('value2')}
     placeholder="Select some vegetables"
     options={options2}
     size="small"
@@ -74,11 +74,11 @@ initialState = {};
 const onChange = value => setState({ value });
 
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' }
 ];
 
 <SingleDropdown
@@ -100,16 +100,16 @@ initialState = {};
 const onChange = value => setState({ value });
 
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" },
-  { value: "lime", label: "Lime" },
-  { value: "peach", label: "Peach" },
-  { value: "apricot", label: "Apricot" },
-  { value: "pineapple", label: "Pineapple" },
-  { value: "banana", label: "Banana" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' },
+  { value: 'lime', label: 'Lime' },
+  { value: 'peach', label: 'Peach' },
+  { value: 'apricot', label: 'Apricot' },
+  { value: 'pineapple', label: 'Pineapple' },
+  { value: 'banana', label: 'Banana' }
 ];
 
 <SingleDropdown
@@ -134,11 +134,11 @@ initialState = {};
 const onChange = value => setState({ value });
 
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' }
 ];
 
 <MultiDropdown
@@ -158,17 +158,17 @@ Using a `MultiDropdownWithSelectAll` component, it's possible to automatically a
 ```js
 initialState = {};
 const onChange = newVal => {
-  if (newVal.type === "AllSelected") {
-    console.log("ALL selected!");
+  if (newVal.type === 'AllSelected') {
+    console.log('ALL selected!');
   }
   setState({ value: newVal });
 };
 const options = [
-  { value: "apple", label: "Apple" },
-  { value: "avocado", label: "Avocado" },
-  { value: "orange", label: "Orange" },
-  { value: "lemon", label: "Lemon" },
-  { value: "mandarin", label: "Mandarin" }
+  { value: 'apple', label: 'Apple' },
+  { value: 'avocado', label: 'Avocado' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'lemon', label: 'Lemon' },
+  { value: 'mandarin', label: 'Mandarin' }
 ];
 <MultiDropdownWithSelectAll
   className="custom"
@@ -216,8 +216,8 @@ const onInputChange = inputString => {
 };
 
 const onChange = newVal => {
-  if (newVal.type === "AllSelected") {
-    console.log("ALL selected!");
+  if (newVal.type === 'AllSelected') {
+    console.log('ALL selected!');
   }
   setState({ value: newVal });
 };
@@ -246,24 +246,24 @@ const onChange = value => setState({ value });
 
 const options = [
   {
-    label: "Vegetable",
+    label: 'Vegetable',
     options: [
-      { value: "cucumber", label: "Cucumber" },
-      { value: "onion", label: "Onion" },
-      { value: "tomato", label: "Tomato" }
+      { value: 'cucumber', label: 'Cucumber' },
+      { value: 'onion', label: 'Onion' },
+      { value: 'tomato', label: 'Tomato' }
     ]
   },
   {
-    label: "Fruit",
+    label: 'Fruit',
     options: [
-      { value: "apple", label: "Apple" },
-      { value: "orange", label: "Orange" },
-      { value: "mandarin", label: "Mandarin" },
-      { value: "peach", label: "Peach" },
-      { value: "apricot", label: "Apricot" },
-      { value: "pineapple", label: "Pineapple" },
-      { value: "banana", label: "Banana" },
-      { value: "meat", label: "Meat" }
+      { value: 'apple', label: 'Apple' },
+      { value: 'orange', label: 'Orange' },
+      { value: 'mandarin', label: 'Mandarin' },
+      { value: 'peach', label: 'Peach' },
+      { value: 'apricot', label: 'Apricot' },
+      { value: 'pineapple', label: 'Pineapple' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'meat', label: 'Meat' }
     ]
   }
 ];

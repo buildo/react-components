@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import * as ReactTransitionGroup from "react-transition-group/TransitionGroup";
-import TransitionWrapper from "../TransitionWrapper";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
+import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode: Element | null = null;
 
@@ -71,7 +71,7 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
 
   _render() {
     if (!containerNode) {
-      containerNode = document.createElement("div");
+      containerNode = document.createElement('div');
       document.body.appendChild(containerNode);
     }
 
@@ -81,12 +81,7 @@ export class ModalPortal extends React.Component<ModalPortal.Props> {
   }
 
   _renderModal() {
-    const {
-      className,
-      children,
-      transitionEnterTimeout,
-      transitionLeaveTimeout
-    } = this.props;
+    const { className, children, transitionEnterTimeout, transitionLeaveTimeout } = this.props;
 
     return () => (
       <ReactTransitionGroup>

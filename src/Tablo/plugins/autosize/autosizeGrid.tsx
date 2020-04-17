@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
-import { ResizeSensor } from "../../../ResizeSensor/ResizeSensor";
-import { Tablo } from "../../Tablo";
-import { findDOMNode } from "../../../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
+import { ResizeSensor } from '../../../ResizeSensor/ResizeSensor';
+import { Tablo } from '../../Tablo';
+import { findDOMNode } from '../../../utils';
 
 type AutosizeGridState = {
   width?: number;
@@ -13,10 +13,7 @@ type AutosizeGridState = {
 export default <T extends {}>(
   Grid: React.ComponentClass<Tablo.Props<T>>
 ): React.ComponentClass<Tablo.Props<T>> => {
-  return class AutosizeGrid extends React.PureComponent<
-    Tablo.Props<T>,
-    AutosizeGridState
-  > {
+  return class AutosizeGrid extends React.PureComponent<Tablo.Props<T>, AutosizeGridState> {
     private gridWrapper: FlexView | null = null;
     state: AutosizeGridState = {};
 
@@ -40,7 +37,7 @@ export default <T extends {}>(
     render() {
       const { autosize, className: _className, ..._tableProps } = this.props;
       const { width = 0, height = 0 } = autosize ? this.state : {};
-      const className = cx("autosize-tablo", _className);
+      const className = cx('autosize-tablo', _className);
       const tableProps = {
         width,
         height,
@@ -61,11 +58,7 @@ export default <T extends {}>(
         </FlexView>
       );
 
-      return autosize ? (
-        <ResizeSensor onResize={this.updateSize}>{content}</ResizeSensor>
-      ) : (
-        content
-      );
+      return autosize ? <ResizeSensor onResize={this.updateSize}>{content}</ResizeSensor> : content;
     }
   };
 };

@@ -1,7 +1,7 @@
-import * as React from "react";
-import Select from "react-select";
-import Creatable from "react-select/lib/Creatable";
-import * as cx from "classnames";
+import * as React from 'react';
+import Select from 'react-select';
+import Creatable from 'react-select/lib/Creatable';
+import * as cx from 'classnames';
 import {
   CommonProps,
   defaultProps,
@@ -9,7 +9,7 @@ import {
   defaultStyle,
   getCommonClassnames,
   DefaultProps
-} from "./commons";
+} from './commons';
 
 type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
   value: OptionType[];
@@ -17,8 +17,7 @@ type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
 };
 
 export namespace MultiDropdown {
-  export type Props<OptionType> = NonDefaultProps<OptionType> &
-    Partial<DefaultProps>;
+  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
 }
 
 export class MultiDropdown<OptionType> extends React.PureComponent<
@@ -50,7 +49,7 @@ export class MultiDropdown<OptionType> extends React.PureComponent<
         }}
         className={cx(
           getCommonClassnames(size, flat || false, props.isSearchable),
-          "is-multi",
+          'is-multi',
           className
         )}
         ref={innerRef}

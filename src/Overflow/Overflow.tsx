@@ -1,5 +1,5 @@
-import * as React from "react";
-import { ResizeSensor } from "../ResizeSensor/ResizeSensor";
+import * as React from 'react';
+import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 
 export namespace Overflow {
   export type Props = {
@@ -32,14 +32,14 @@ export class Overflow extends React.Component<Overflow.Props, State> {
   }
 
   getElementWidth(element: Element): number {
-    if (element && typeof window !== "undefined") {
-      return parseFloat(window.getComputedStyle(element).width || "");
+    if (element && typeof window !== 'undefined') {
+      return parseFloat(window.getComputedStyle(element).width || '');
     }
     return 0;
   }
 
   verifyOverflow() {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const node = this.ref;
 
       if (node && node.children) {
@@ -64,7 +64,7 @@ export class Overflow extends React.Component<Overflow.Props, State> {
       <ResizeSensor debounce={10} onResize={this.onResize}>
         <div
           {...{ className, id }}
-          style={{ ...style, width: "100%" }}
+          style={{ ...style, width: '100%' }}
           ref={ref => {
             this.ref = ref;
           }}

@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Children } from "../../utils";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Children } from '../../utils';
+import FlexView from 'react-flexview';
 
 export type FDTIntrinsic = {
   columnKey: string;
@@ -21,12 +21,11 @@ export type HeaderIntrinsicProps = Header.Props & Intrinsic & FDTIntrinsic;
 
 export class Header extends React.PureComponent<Header.Props> {
   render() {
-    const { fixed, onClick: onClick, children } = this
-      .props as HeaderIntrinsicProps;
+    const { fixed, onClick: onClick, children } = this.props as HeaderIntrinsicProps;
 
     return (
       <FlexView
-        className={cx("tablo-header", { "tablo-header-fixed": fixed })}
+        className={cx('tablo-header', { 'tablo-header-fixed': fixed })}
         height="100%"
         width="100%"
         vAlignContent="center"

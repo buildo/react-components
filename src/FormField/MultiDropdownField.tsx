@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { MultiDropdown as Dropdown } from "../Dropdown";
-import { FormField } from "./FormField";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { MultiDropdown as Dropdown } from '../Dropdown';
+import { FormField } from './FormField';
 
 type DefaultProps<OptionType> = {
   /** An optional custom renderer for Dropdown */
@@ -10,13 +10,13 @@ type DefaultProps<OptionType> = {
 
 type NonDefaultProps<OptionType> = {
   /** the label for the field */
-  label: FormField.Props["label"];
+  label: FormField.Props['label'];
   /** whether the field is required */
-  required?: FormField.Props["required"];
+  required?: FormField.Props['required'];
   /** optional props to pass to the wrapping View */
-  viewProps?: FormField.Props["viewProps"];
+  viewProps?: FormField.Props['viewProps'];
   /** an optional hint describing what's the expected value for the field (e.g. sample value or short description) */
-  hint?: FormField.Props["hint"];
+  hint?: FormField.Props['hint'];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -27,17 +27,13 @@ type NonDefaultProps<OptionType> = {
   dropdownProps: Dropdown.Props<OptionType>;
 };
 
-type InternalProps<OptionType> = NonDefaultProps<OptionType> &
-  DefaultProps<OptionType>;
+type InternalProps<OptionType> = NonDefaultProps<OptionType> & DefaultProps<OptionType>;
 
 export namespace MultiDropdownField {
-  export type Props<OptionType> = NonDefaultProps<OptionType> &
-    Partial<DefaultProps<OptionType>>;
+  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps<OptionType>>;
 }
 
-export class MultiDropdownField<OptionType> extends React.PureComponent<
-  InternalProps<OptionType>
-> {
+export class MultiDropdownField<OptionType> extends React.PureComponent<InternalProps<OptionType>> {
   static defaultProps: DefaultProps<unknown> = {
     dropdownRenderer: props => <Dropdown {...props} />
   };
@@ -57,13 +53,11 @@ export class MultiDropdownField<OptionType> extends React.PureComponent<
       <FormField
         label={label}
         required={required}
-        className={cx("dropdown-field", className)}
+        className={cx('dropdown-field', className)}
         viewProps={viewProps}
         disabled={dropdownProps.isDisabled}
         hint={hint}
-        render={(onFocus, onBlur) =>
-          dropdownRenderer({ ...dropdownProps, onFocus, onBlur })
-        }
+        render={(onFocus, onBlur) => dropdownRenderer({ ...dropdownProps, onFocus, onBlur })}
       />
     );
   }

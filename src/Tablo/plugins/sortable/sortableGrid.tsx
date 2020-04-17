@@ -1,21 +1,20 @@
-import * as React from "react";
-import * as cx from "classnames";
-import omitBy = require("lodash/omitBy");
+import * as React from 'react';
+import * as cx from 'classnames';
+import omitBy = require('lodash/omitBy');
 import {
   defaultColumns,
   updateColumns,
   UpdateColumnsHandler,
   ColumnIntrinsicProps
-} from "../../Column";
-import cSortable from "./columnSortable";
-import ColumnGroup from "../../ColumnGroup";
-import { Tablo, TabloDefaultedIntrinsicProps } from "../../Tablo";
-import { getArrayChildren } from "../../utils";
+} from '../../Column';
+import cSortable from './columnSortable';
+import ColumnGroup from '../../ColumnGroup';
+import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { getArrayChildren } from '../../utils';
 
 export const clean = <T extends {}>(
   columnProps: ColumnIntrinsicProps<T>
-): ColumnIntrinsicProps<T> =>
-  omitBy(columnProps, x => typeof x === "undefined") as any;
+): ColumnIntrinsicProps<T> => omitBy(columnProps, x => typeof x === 'undefined') as any;
 
 const getLocals = <T extends {}>({
   className,
@@ -29,12 +28,12 @@ const getLocals = <T extends {}>({
     const prevSortDir = newSortBy === sortBy ? sortDir : undefined;
     const newSortDir = (() => {
       switch (prevSortDir) {
-        case "asc":
-          return "desc";
-        case "desc":
+        case 'asc':
+          return 'desc';
+        case 'desc':
           return undefined;
         default:
-          return "asc";
+          return 'asc';
       }
     })();
     return {
@@ -51,24 +50,17 @@ const getLocals = <T extends {}>({
     onSortChange({ sortBy, sortDir });
   };
 
-  const _children =
-    getArrayChildren(children) || defaultColumns(gridProps.data);
+  const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
   const addSortableProps: UpdateColumnsHandler<T> = ({ col, colGroup }) => {
     const colGroupSortable = colGroup ? colGroup.props.sortable : undefined;
     return cSortable(
       clean({
         key: col.props.name as any,
-        sortable:
-          typeof colGroupSortable !== "undefined"
-            ? colGroupSortable
-            : !!onSortChange,
+        sortable: typeof colGroupSortable !== 'undefined' ? colGroupSortable : !!onSortChange,
         ...col.props,
         onHeaderClick: onHeaderClick(col.props.name),
-        sortDir:
-          sortBy === col.props.name || col.type === ColumnGroup
-            ? sortDir
-            : undefined
+        sortDir: sortBy === col.props.name || col.type === ColumnGroup ? sortDir : undefined
       })
     );
   };
@@ -76,7 +68,7 @@ const getLocals = <T extends {}>({
   const __children = updateColumns(_children, addSortableProps);
 
   return {
-    className: cx("sortable-tablo", className),
+    className: cx('sortable-tablo', className),
     children: __children,
     ...gridProps
   };

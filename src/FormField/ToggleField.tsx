@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import Toggle from "../Toggle";
-import { FormField } from "./FormField";
+import * as React from 'react';
+import * as cx from 'classnames';
+import Toggle from '../Toggle';
+import { FormField } from './FormField';
 
 type DefaultProps = {
   /** an optional custom renderer for Toggle */
@@ -10,11 +10,11 @@ type DefaultProps = {
 
 type NonDefaultProps = {
   /** the label for the field */
-  label: FormField.Props["label"];
+  label: FormField.Props['label'];
   /** whether the field is required */
-  required?: FormField.Props["required"];
+  required?: FormField.Props['required'];
   /** optional props to pass to the wrapping View */
-  viewProps?: FormField.Props["viewProps"];
+  viewProps?: FormField.Props['viewProps'];
   /** an optional class name to pass to top level element of the component */
   className?: string;
   /** an optional style object to pass to top level element of the component */
@@ -37,29 +37,19 @@ export class ToggleField extends React.PureComponent<InternalProps> {
   };
 
   render() {
-    const {
-      label,
-      required,
-      className,
-      id,
-      viewProps,
-      toggleRenderer,
-      toggleProps
-    } = this.props;
+    const { label, required, className, id, viewProps, toggleRenderer, toggleProps } = this.props;
 
     return (
       <FormField
         label={label}
         required={required}
-        className={cx("toggle-field", className)}
+        className={cx('toggle-field', className)}
         viewProps={viewProps}
         disabled={toggleProps.disabled}
         id={id}
         horizontal
         onLabelClick={() => toggleProps.onChange(!toggleProps.value)}
-        render={(onFocus, onBlur) =>
-          toggleRenderer({ ...toggleProps, onFocus, onBlur })
-        }
+        render={(onFocus, onBlur) => toggleRenderer({ ...toggleProps, onFocus, onBlur })}
       />
     );
   }

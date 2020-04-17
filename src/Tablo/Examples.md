@@ -2,8 +2,8 @@
 
 ```js
 initialState = {
-  sortBy: "name",
-  sortDir: "asc",
+  sortBy: 'name',
+  sortDir: 'asc',
   columnWidths: {},
   columnsOrder: []
 };
@@ -31,19 +31,13 @@ function onColumnsReorder(columnsOrder) {
   setState({ columnsOrder });
 }
 
-const {
-  sortBy: sortByField,
-  sortDir,
-  columnWidths,
-  selectedRows,
-  columnsOrder
-} = state;
+const { sortBy: sortByField, sortDir, columnWidths, selectedRows, columnsOrder } = state;
 const sortedData = sortBy(tabloData, sortByField);
 
-<FlexView style={{ height: 300, width: "100%" }}>
+<FlexView style={{ height: 300, width: '100%' }}>
   <Tablo
     rowClassNameGetter={index => `row-${index}`}
-    data={sortDir === "desc" ? sortedData.reverse() : sortedData}
+    data={sortDir === 'desc' ? sortedData.reverse() : sortedData}
     rowHeight={rowHeight}
     onSortChange={onSortChange}
     sortBy={sortByField}
@@ -55,13 +49,7 @@ const sortedData = sortBy(tabloData, sortByField);
     columnsOrder={columnsOrder}
     onColumnsReorder={onColumnsReorder}
   >
-    <TabloColumn
-      name="index"
-      fixed
-      width={40}
-      isResizable={false}
-      sortable={false}
-    >
+    <TabloColumn name="index" fixed width={40} isResizable={false} sortable={false}>
       <Header />
       <Cell render={(_, __, index) => index} />
     </TabloColumn>
@@ -70,21 +58,15 @@ const sortedData = sortBy(tabloData, sortByField);
       <Header>Salutation</Header>
       <Cell
         render={(_, { name, city }) => (
-          <span style={{ fontStyle: "italic" }}>
-            "Hello! I am {name.split(" ")[0]} from {city}
+          <span style={{ fontStyle: 'italic' }}>
+            "Hello! I am {name.split(' ')[0]} from {city}
             !"
           </span>
         )}
       />
     </TabloColumn>
 
-    <TabloColumn
-      name="avatar"
-      fixed
-      width={40}
-      sortable={false}
-      isResizable={false}
-    >
+    <TabloColumn name="avatar" fixed width={40} sortable={false} isResizable={false}>
       <Header />
       <Cell render={avatar => <img src={avatar} height={40} width={40} />} />
     </TabloColumn>
@@ -104,10 +86,7 @@ const sortedData = sortBy(tabloData, sortByField);
         render={email => (
           <TextOverflow lazy label={email}>
             {self => (
-              <Tooltip
-                popover={{ content: email, attachToBody: true }}
-                style={{ width: "100%" }}
-              >
+              <Tooltip popover={{ content: email, attachToBody: true }} style={{ width: '100%' }}>
                 {self}
               </Tooltip>
             )}
@@ -154,8 +133,7 @@ const keyHandlerMap = {
       setState({ selectedRows: [selectedRow] });
     }
   },
-  [ARROW_LEFT]: () =>
-    setState({ scrollLeft: Math.max(state.scrollLeft - 40, 0) }),
+  [ARROW_LEFT]: () => setState({ scrollLeft: Math.max(state.scrollLeft - 40, 0) }),
   [ARROW_RIGHT]: () => setState({ scrollLeft: state.scrollLeft + 40 })
 };
 

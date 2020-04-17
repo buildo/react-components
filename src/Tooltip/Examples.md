@@ -9,10 +9,11 @@ const popover = {
 
 <Tooltip popover={popover}>
   <span>Hover me!</span>
-</Tooltip>
+</Tooltip>;
 ```
 
 #### Size
+
 Tooltip comes in two different sizes
 
 ```js
@@ -24,17 +25,18 @@ const popover = {
 };
 
 <FlexView style={{ paddingBottom: 100 }}>
-  <Tooltip popover={popover} size='small'>
+  <Tooltip popover={popover} size="small">
     <span>Small tooltip!</span>
   </Tooltip>
-  <Divider size='large' orientation='horizontal' />
-  <Tooltip popover={popover} size='big'>
+  <Divider size="large" orientation="horizontal" />
+  <Tooltip popover={popover} size="big">
     <span style={{ fontSize: 16 }}>Big tooltip!</span>
   </Tooltip>
-</FlexView>
+</FlexView>;
 ```
 
 #### Positions
+
 You can also set the position ('top', 'bottom', 'left', 'right') and the anchor point ('start', 'center', 'end') of the tooltip:
 
 ```js
@@ -59,7 +61,11 @@ const commonPopoverProps = { content: 'Tooltip', isOpen: true };
       <Tooltip {...tooltipProps} popover={{ position: 'top', ...commonPopoverProps }}>
         <span>Position: top</span>
       </Tooltip>
-      <Tooltip {...tooltipProps} style={{ marginTop: -40 }} popover={{ position: 'bottom', offsetY: -40, ...commonPopoverProps }}>
+      <Tooltip
+        {...tooltipProps}
+        style={{ marginTop: -40 }}
+        popover={{ position: 'bottom', offsetY: -40, ...commonPopoverProps }}
+      >
         <span>Position: bottom</span>
       </Tooltip>
     </FlexView>
@@ -67,21 +73,27 @@ const commonPopoverProps = { content: 'Tooltip', isOpen: true };
       <Tooltip popover={{ position: 'right', offsetX: -60, ...commonPopoverProps }}>
         <span>Position: right</span>
       </Tooltip>
-      <Tooltip style={{ marginTop: 20, marginLeft: 70 }} popover={{ position: 'left', ...commonPopoverProps }}>
+      <Tooltip
+        style={{ marginTop: 20, marginLeft: 70 }}
+        popover={{ position: 'left', ...commonPopoverProps }}
+      >
         <span>Position: left</span>
       </Tooltip>
     </FlexView>
   </FlexView>
-</FlexView>
+</FlexView>;
 ```
 
 #### Trigger events
+
 By default, the tooltip is triggered when the mouse moves over the wrapped component. Using the `isOpen` prop you can also decide to manually control when the tooltip should appear:
 
 ```js
 initialState = { isOpen: false };
 
-onClick = () => { setState({ isOpen: !state.isOpen }); };
+onClick = () => {
+  setState({ isOpen: !state.isOpen });
+};
 
 const popover = {
   position: 'top',
@@ -91,13 +103,13 @@ const popover = {
 
 const { isOpen } = state;
 
-<FlexView vAlignContent='center'>
+<FlexView vAlignContent="center">
   <Tooltip popover={popover}>
     <span>Hover me!</span>
   </Tooltip>
-  <Divider size='large' orientation='horizontal' />
+  <Divider size="large" orientation="horizontal" />
   <Tooltip popover={{ ...popover, isOpen }}>
-    <Button flat size='tiny' onClick={onClick} label='Click me!' />
+    <Button flat size="tiny" onClick={onClick} label="Click me!" />
   </Tooltip>
-</FlexView>
+</FlexView>;
 ```

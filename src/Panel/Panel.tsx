@@ -1,10 +1,10 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Children } from "../utils";
-import { PanelHeader } from "./PanelHeader";
-import capitalize = require("lodash/capitalize");
-import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Children } from '../utils';
+import { PanelHeader } from './PanelHeader';
+import capitalize = require('lodash/capitalize');
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
+import FlexView from 'react-flexview';
 
 export type PanelDefaultProps = {
   style: React.CSSProperties;
@@ -34,20 +34,20 @@ export type PanelDefaultedProps = PanelRequiredProps & PanelDefaultProps;
 
 export namespace Panel {
   export type PanelType =
-    | "docked-top"
-    | "docked-left"
-    | "docked-bottom"
-    | "docked-bottom"
-    | "floating";
-  export type ClearMargin = "top" | "left" | "bottom" | "right";
+    | 'docked-top'
+    | 'docked-left'
+    | 'docked-bottom'
+    | 'docked-bottom'
+    | 'floating';
+  export type ClearMargin = 'top' | 'left' | 'bottom' | 'right';
   export type Header = {
     collapse?: {
-      direction: "up" | "left" | "down" | "right";
+      direction: 'up' | 'left' | 'down' | 'right';
       onExpand: () => void;
       onCollapse: () => void;
       isCollapsed?: boolean;
     };
-    size?: PanelHeader.Props["size"];
+    size?: PanelHeader.Props['size'];
     content?: Children;
     title?: any; // TODO(typo): wtf
     hideTitleWhenExpanded?: boolean;
@@ -156,9 +156,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
   }) => {
     return header ? (
       <PanelHeader
-        title={
-          header.hideTitleWhenExpanded && isExpanded ? undefined : header.title
-        }
+        title={header.hideTitleWhenExpanded && isExpanded ? undefined : header.title}
         size={header.size}
         content={header.content}
         menu={header.menu}
@@ -175,20 +173,9 @@ export class Panel extends React.PureComponent<Panel.Props> {
     ) : null;
   };
 
-  templateExpandedContent = ({
-    children,
-    loading
-  }: {
-    children: Children;
-    loading: boolean;
-  }) => {
+  templateExpandedContent = ({ children, loading }: { children: Children; loading: boolean }) => {
     return (
-      <FlexView
-        className="panel-content"
-        column
-        grow
-        style={{ position: "relative" }}
-      >
+      <FlexView className="panel-content" column grow style={{ position: 'relative' }}>
         {children}
         {loading && <LoadingSpinner />}
       </FlexView>
@@ -224,17 +211,14 @@ export class Panel extends React.PureComponent<Panel.Props> {
     } = this.props as PanelDefaultedProps;
     const collapsable = !!header && !!header.collapse;
     const isExpanded = !collapsable || !header!.collapse!.isCollapsed;
-    const panelState = isExpanded ? "expanded" : "collapsed";
-    const directionClass = collapsable
-      ? `collapse-${header!.collapse!.direction}`
-      : "";
+    const panelState = isExpanded ? 'expanded' : 'collapsed';
+    const directionClass = collapsable ? `collapse-${header!.collapse!.direction}` : '';
     const verticalDirection =
       collapsable &&
-      (header!.collapse!.direction === "up" ||
-        header!.collapse!.direction === "down");
-    const themeType = dark ? "is-dark" : "is-light";
+      (header!.collapse!.direction === 'up' || header!.collapse!.direction === 'down');
+    const themeType = dark ? 'is-dark' : 'is-light';
     const className = cx(
-      "panel",
+      'panel',
       type,
       { collapsable },
       themeType,

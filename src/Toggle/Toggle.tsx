@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { warn } from "../utils/log";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { warn } from '../utils/log';
 
 export type ToggleDefaultProps = {};
 
@@ -47,15 +47,15 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
   };
 
   getHalfSize(size: string | number) {
-    if (typeof size === "string") {
+    if (typeof size === 'string') {
       const unitMatch = /[a-z]+$/.exec(size); // only match characters at the end
       const number = parseFloat(size);
-      const unit = unitMatch ? unitMatch[0] : "";
+      const unit = unitMatch ? unitMatch[0] : '';
       if (isFinite(number)) {
         // we can still get NaN from parseFloat
         return `${number / 2}${unit}`;
       } else {
-        warn("Invalid size");
+        warn('Invalid size');
         return 0;
       }
     } else {
@@ -84,8 +84,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
 
     const buttonProps = {
       onClick: disabled ? undefined : onButtonClick,
-      onMouseDown: (e: React.MouseEvent<HTMLLabelElement>) =>
-        e.preventDefault(), // prevents "focus" when clicking
+      onMouseDown: (e: React.MouseEvent<HTMLLabelElement>) => e.preventDefault(), // prevents "focus" when clicking
       onKeyDown: this.toggleOnSpace,
       style: size
         ? {
@@ -95,7 +94,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
           }
         : undefined
     };
-    const className = cx("toggle", { disabled }, _className);
+    const className = cx('toggle', { disabled }, _className);
 
     return (
       <div {...{ className, style }}>

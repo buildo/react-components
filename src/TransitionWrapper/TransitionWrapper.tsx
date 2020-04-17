@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as cx from "classnames";
-import omit = require("lodash/omit");
+import * as React from 'react';
+import * as cx from 'classnames';
+import omit = require('lodash/omit');
 
 export type TransitionWrapperDefaultProps<CP> = {
   /** object with inline-style for each transition event. It's also possible to use `css` classes (formatted in kebab-case) */
@@ -22,9 +22,7 @@ export type TransitionWrapperRequiredProps = {
   className?: string;
 };
 
-export type TransitionWrapperDefaultedProps<
-  CP
-> = TransitionWrapperRequiredProps &
+export type TransitionWrapperDefaultedProps<CP> = TransitionWrapperRequiredProps &
   TransitionWrapperDefaultProps<CP> &
   { [k in keyof CP]: CP[k] };
 
@@ -50,8 +48,7 @@ export type State = {
 };
 
 const Props: Record<
-  | keyof TransitionWrapperRequiredProps
-  | keyof TransitionWrapperDefaultProps<unknown>,
+  keyof TransitionWrapperRequiredProps | keyof TransitionWrapperDefaultProps<unknown>,
   true
 > = {
   children: true,
@@ -71,12 +68,10 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
   TransitionWrapper.Props<CP>,
   State
 > {
-  static defaultProps: TransitionWrapperDefaultProps<
-    React.HTMLAttributes<HTMLDivElement>
-  > = {
+  static defaultProps: TransitionWrapperDefaultProps<React.HTMLAttributes<HTMLDivElement>> = {
     transitionStyles: {},
     style: {},
-    component: "div",
+    component: 'div',
     onLeave: () => {}
   };
 
@@ -85,14 +80,8 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
     this.forceUpdate();
   };
 
-  startAnimation(
-    anim: "enter" | "leave",
-    timeout: number,
-    callback: () => void
-  ) {
-    const { transitionStyles } = this.props as TransitionWrapperDefaultedProps<
-      CP
-    >;
+  startAnimation(anim: 'enter' | 'leave', timeout: number, callback: () => void) {
+    const { transitionStyles } = this.props as TransitionWrapperDefaultedProps<CP>;
     const animationStart = transitionStyles[anim];
     const animationEnd = (transitionStyles as any)[`${anim}Active`];
 
@@ -109,23 +98,20 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
     }, 30); // if the render is too fast the animation fails... 30ms is an empiric value.
   }
 
-  componentWillAppear = (callback: () => void) =>
-    this.componentWillEnter(callback);
+  componentWillAppear = (callback: () => void) => this.componentWillEnter(callback);
 
   componentDidAppear = () => this.componentDidEnter();
 
   componentWillEnter = (callback: () => void) =>
-    this.startAnimation("enter", this.props.transitionEnterTimeout, callback);
+    this.startAnimation('enter', this.props.transitionEnterTimeout, callback);
 
   componentDidEnter = () => {
-    const { transitionStyles } = this.props as TransitionWrapperDefaultedProps<
-      CP
-    >;
+    const { transitionStyles } = this.props as TransitionWrapperDefaultedProps<CP>;
     return this._replaceState({ defaultStyle: transitionStyles.default });
   };
 
   componentWillLeave = (callback: () => void) =>
-    this.startAnimation("leave", this.props.transitionLeaveTimeout, callback);
+    this.startAnimation('leave', this.props.transitionLeaveTimeout, callback);
 
   componentDidLeave = () => {
     const { onLeave } = this.props as TransitionWrapperDefaultedProps<CP>;
@@ -135,8 +121,7 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
   getStyle = () => {
     const { style } = this.props as TransitionWrapperDefaultedProps<CP>;
     const { animationStart, animationEnd, defaultStyle } = this.state;
-    const userTransform = (animationEnd || animationStart || defaultStyle || {})
-      .transform;
+    const userTransform = (animationEnd || animationStart || defaultStyle || {}).transform;
 
     return {
       ...style,
@@ -151,8 +136,7 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
     if (!this.state) {
       return null;
     }
-    const { children, className, component } = this
-      .props as TransitionWrapperDefaultedProps<CP>;
+    const { children, className, component } = this.props as TransitionWrapperDefaultedProps<CP>;
     const { transitionClassName } = this.state;
 
     const props = {

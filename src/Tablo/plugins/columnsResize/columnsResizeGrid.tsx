@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as cx from "classnames";
-import Column, { defaultColumns, updateColumns } from "../../Column";
-import { Tablo, TabloDefaultedIntrinsicProps } from "../../Tablo";
-import { UpdateColumnsProps } from "../../Column/columnUtility";
-import { getArrayChildren } from "../../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import Column, { defaultColumns, updateColumns } from '../../Column';
+import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
+import { UpdateColumnsProps } from '../../Column/columnUtility';
+import { getArrayChildren } from '../../utils';
 
 const addSizeProps = <T extends {}>(
   { col }: UpdateColumnsProps<T> //eslint-disable-line
@@ -24,13 +24,12 @@ const getLocals = <T extends {}>({
     onColumnResize({ width, key });
   };
 
-  const _children =
-    getArrayChildren(children) || defaultColumns(gridProps.data);
+  const _children = getArrayChildren(children) || defaultColumns(gridProps.data);
 
   const __children = updateColumns(_children, addSizeProps);
 
   return {
-    className: cx("columns-resize", className),
+    className: cx('columns-resize', className),
     onColumnResizeEndCallback,
     isColumnResizing: false,
     children: __children,

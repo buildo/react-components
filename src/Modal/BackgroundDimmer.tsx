@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import FlexView from "react-flexview";
-import omit = require("lodash/omit");
-import { findDOMNode, Children } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import FlexView from 'react-flexview';
+import omit = require('lodash/omit');
+import { findDOMNode, Children } from '../utils';
 
 export type BackgroundDimmerRequiredProps = {
   /** children nodes/elements */
@@ -36,27 +36,23 @@ export type BackgroundDimmerDefaultProps = {
   stopScrollPropagation: boolean;
 };
 
-type BackgroundDimmerDefaultedProps = BackgroundDimmerRequiredProps &
-  BackgroundDimmerDefaultProps;
+type BackgroundDimmerDefaultedProps = BackgroundDimmerRequiredProps & BackgroundDimmerDefaultProps;
 
 export namespace BackgroundDimmer {
-  export type Props = BackgroundDimmerRequiredProps &
-    Partial<BackgroundDimmerDefaultProps>;
+  export type Props = BackgroundDimmerRequiredProps & Partial<BackgroundDimmerDefaultProps>;
 }
 
-export class BackgroundDimmer extends React.PureComponent<
-  BackgroundDimmer.Props
-> {
+export class BackgroundDimmer extends React.PureComponent<BackgroundDimmer.Props> {
   private mainContentWrapper: FlexView | null = null;
 
   static defaultProps: BackgroundDimmerDefaultProps = {
-    color: "black",
+    color: 'black',
     alpha: 0.5,
     zIndex: 99999,
-    width: "auto",
-    maxWidth: "90%",
-    height: "auto",
-    maxHeight: "90%",
+    width: 'auto',
+    maxWidth: '90%',
+    height: 'auto',
+    maxHeight: '90%',
     stopScrollPropagation: false
   };
 
@@ -67,9 +63,7 @@ export class BackgroundDimmer extends React.PureComponent<
     e: React.SyntheticEvent<HTMLDivElement> & { srcElement?: EventTarget }
   ) => {
     const el = e.target || e.srcElement;
-    return (
-      this.mainContentWrapper && el === findDOMNode(this.mainContentWrapper)
-    );
+    return this.mainContentWrapper && el === findDOMNode(this.mainContentWrapper);
   };
 
   onClick = (e: React.SyntheticEvent<HTMLDivElement>) => {
@@ -79,11 +73,9 @@ export class BackgroundDimmer extends React.PureComponent<
     }
   };
 
-  stopPropagation = (e: React.SyntheticEvent<HTMLDivElement>) =>
-    e.stopPropagation();
+  stopPropagation = (e: React.SyntheticEvent<HTMLDivElement>) => e.stopPropagation();
 
-  preventDefault = (e: React.SyntheticEvent<HTMLDivElement>) =>
-    e.preventDefault();
+  preventDefault = (e: React.SyntheticEvent<HTMLDivElement>) => e.preventDefault();
 
   stopScrollPropagation = (e: React.SyntheticEvent<HTMLDivElement>) => {
     if (this.props.stopScrollPropagation && this.isEventOutsideChildren(e)) {
@@ -107,7 +99,7 @@ export class BackgroundDimmer extends React.PureComponent<
     const { onClick, stopPropagation, stopScrollPropagation } = this;
 
     const fixedStyle: React.CSSProperties = {
-      position: "fixed",
+      position: 'fixed',
       top: 0,
       left: 0,
       right: 0,
@@ -128,15 +120,15 @@ export class BackgroundDimmer extends React.PureComponent<
       onWheel: stopScrollPropagation,
       onTouchMove: stopScrollPropagation,
       style: { ...fixedStyle, zIndex: zIndex + 1 },
-      className: "main-content-wrapper",
-      vAlignContent: "center",
-      hAlignContent: "center",
+      className: 'main-content-wrapper',
+      vAlignContent: 'center',
+      hAlignContent: 'center',
       ref: ref => {
         this.mainContentWrapper = ref;
       }
     };
     const centeredContentWrapperProps = {
-      className: "centered-content-wrapper",
+      className: 'centered-content-wrapper',
       style: { width, maxWidth, height, maxHeight },
       onClick: stopPropagation,
       column: true
@@ -144,8 +136,8 @@ export class BackgroundDimmer extends React.PureComponent<
 
     return (
       <div
-        className={cx("background-dimmer", className)}
-        {...omit(props, ["onClickOutside", "stopScrollPropagation"])}
+        className={cx('background-dimmer', className)}
+        {...omit(props, ['onClickOutside', 'stopScrollPropagation'])}
       >
         <div {...overlayProps} />
         <FlexView {...mainContentWrapperProps}>

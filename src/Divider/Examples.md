@@ -1,6 +1,7 @@
 ### Examples
 
 #### Vertical divider
+
 ```js
 <div>
   UP
@@ -10,6 +11,7 @@
 ```
 
 #### Horizontal divider
+
 ```js
 <FlexView>
   LEFT

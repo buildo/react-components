@@ -1,4 +1,4 @@
-@import "../utils/theme/variables.scss";
+@import '../utils/theme/variables.scss';
 $size: 3em !default;
 $background: $brc-cloudyGrey !default;
 $checked-background: $brc-gradientAzure !default;
@@ -48,7 +48,7 @@ $border-color-focused: $brc-waterBlue !default;
 
     &::after,
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: relative;
       height: 100%;

@@ -1,2 +1,2 @@
-import { Overflow } from "./Overflow";
+import { Overflow } from './Overflow';
 export default Overflow;

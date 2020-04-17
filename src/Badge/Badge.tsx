@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Children } from "../utils";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Children } from '../utils';
+import FlexView from 'react-flexview';
 
 export namespace Badge {
   export type Props = {
@@ -19,14 +19,10 @@ export namespace Badge {
 export class Badge extends React.PureComponent<Badge.Props> {
   render() {
     const { label, active, className: _className, style } = this.props;
-    const className = cx("badge", { active }, _className);
+    const className = cx('badge', { active }, _className);
 
     return (
-      <FlexView
-        vAlignContent="center"
-        hAlignContent="center"
-        {...{ className, style }}
-      >
+      <FlexView vAlignContent="center" hAlignContent="center" {...{ className, style }}>
         <span className="badge-label">{label}</span>
       </FlexView>
     );

@@ -4,7 +4,7 @@ import {
   defaultWidth,
   ColumnDefaultedIntrinsicProps,
   ColumnIntrinsicProps
-} from "./Column";
+} from './Column';
 
 export default Column;
 export {
@@ -12,10 +12,5 @@ export {
   getColumnList,
   UpdateColumnsHandler,
   UpdateColumnsProps
-} from "./columnUtility";
-export {
-  defaultColumns,
-  defaultWidth,
-  ColumnDefaultedIntrinsicProps,
-  ColumnIntrinsicProps
-};
+} from './columnUtility';
+export { defaultColumns, defaultWidth, ColumnDefaultedIntrinsicProps, ColumnIntrinsicProps };

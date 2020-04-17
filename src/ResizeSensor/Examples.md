@@ -2,7 +2,6 @@
 
 ```js
 class Component extends React.Component {
-
   constructor() {
     this.state = { width: '' };
     this.onResize = this.onResize.bind(this);
@@ -22,8 +21,8 @@ class Component extends React.Component {
         <FlexView
           grow
           height={50}
-          hAlignContent='center'
-          vAlignContent='center'
+          hAlignContent="center"
+          vAlignContent="center"
           style={{ background: '#1a91eb', fontSize: 18, fontWeight: '600', color: 'white' }}
         >
           Width: {this.state.width}
@@ -31,8 +30,7 @@ class Component extends React.Component {
       </ResizeSensor>
     );
   }
-
 }
 
-<Component />
+<Component />;
 ```

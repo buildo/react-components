@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import omit = require("lodash/omit");
-import { Input } from "../Input/Input";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import omit = require('lodash/omit');
+import { Input } from '../Input/Input';
+import FlexView from 'react-flexview';
 
 export type ConfirmationInputRequiredProps = {
   /** input placeholder */
@@ -48,8 +48,7 @@ export namespace ConfirmationInput {
         onMouseLeave: () => void;
       }
     | undefined;
-  export type Props = ConfirmationInputRequiredProps &
-    Partial<ConfirmationInputDefaultProps>;
+  export type Props = ConfirmationInputRequiredProps & Partial<ConfirmationInputDefaultProps>;
 }
 type ConfirmationInputDefaultedProps = ConfirmationInputRequiredProps &
   ConfirmationInputDefaultProps;
@@ -60,12 +59,9 @@ export type State = {
   value: string;
 };
 
-export class ConfirmationInput extends React.PureComponent<
-  ConfirmationInput.Props,
-  State
-> {
+export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Props, State> {
   static defaultProps: ConfirmationInputDefaultProps = {
-    initialValue: "",
+    initialValue: '',
     disabled: false,
     onChange: () => {},
     onConfirm: () => {},
@@ -75,13 +71,13 @@ export class ConfirmationInput extends React.PureComponent<
   state = {
     focused: false,
     hoveringConfirm: false,
-    value: this.props.initialValue || ""
+    value: this.props.initialValue || ''
   };
 
   componentWillReceiveProps({ initialValue }: ConfirmationInput.Props) {
     if (initialValue !== this.props.initialValue) {
       this.setState({
-        value: initialValue || ""
+        value: initialValue || ''
       });
     }
   }
@@ -111,8 +107,7 @@ export class ConfirmationInput extends React.PureComponent<
   onMouseLeave = () => this.setState({ hoveringConfirm: false });
 
   _onConfirm = () => {
-    const { initialValue, onConfirm, onChange } = this
-      .props as ConfirmationInputDefaultedProps;
+    const { initialValue, onConfirm, onChange } = this.props as ConfirmationInputDefaultedProps;
     const {
       state: { value },
       onMouseLeave
@@ -131,7 +126,7 @@ export class ConfirmationInput extends React.PureComponent<
   _onClear = () => {
     const { onClear, onChange } = this.props as ConfirmationInputDefaultedProps;
     onClear();
-    onChange(""); // props.onChange should always receive a string
+    onChange(''); // props.onChange should always receive a string
     this.onMouseLeave(); // on clear `templateConfirm` disappears -> onMouseLeave never called
   };
 
@@ -155,12 +150,12 @@ export class ConfirmationInput extends React.PureComponent<
     const confirmProps =
       showToConfirm || showClear
         ? {
-            text: text[confirmed ? "clear" : "toConfirm"],
-            icon: icon[confirmed ? "clear" : "toConfirm"],
+            text: text[confirmed ? 'clear' : 'toConfirm'],
+            icon: icon[confirmed ? 'clear' : 'toConfirm'],
             wrapper: {
-              style: { cursor: "pointer" },
-              className: "confirmation",
-              vAlignContent: "center" as "center",
+              style: { cursor: 'pointer' },
+              className: 'confirmation',
+              vAlignContent: 'center' as 'center',
               onMouseDown: showClear ? onClear : onConfirm,
               onMouseEnter,
               onMouseLeave
@@ -169,13 +164,13 @@ export class ConfirmationInput extends React.PureComponent<
         : undefined;
 
     const inputProps = {
-      ...omit(props, "onChange", "onConfirm", "onClear"),
+      ...omit(props, 'onChange', 'onConfirm', 'onClear'),
       value,
       onChange,
       onKeyUp: this.onEnter,
       onBlur: this.onBlur,
       onFocus: this.onFocus,
-      className: cx("confirmation-input", { focused }, className)
+      className: cx('confirmation-input', { focused }, className)
     };
 
     return (

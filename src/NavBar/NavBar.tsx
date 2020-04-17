@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as cx from "classnames";
-import { Children } from "../utils";
-import FlexView from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { Children } from '../utils';
+import FlexView from 'react-flexview';
 
 export namespace NavBar {
   export type Props = {
@@ -30,33 +30,21 @@ export namespace NavBar {
 
 export class NavBar extends React.PureComponent<NavBar.Props> {
   render() {
-    const {
-      className: _className,
-      style: _style,
-      fixed,
-      height,
-      background,
-      content
-    } = this.props;
+    const { className: _className, style: _style, fixed, height, background, content } = this.props;
     const style: React.CSSProperties = {
       ..._style,
-      position: fixed ? "fixed" : undefined,
+      position: fixed ? 'fixed' : undefined,
       top: fixed ? 0 : undefined,
       zIndex: fixed ? 99999 : undefined,
-      width: "100%",
+      width: '100%',
       height,
       background
     };
-    const className = cx("nav-bar", _className);
+    const className = cx('nav-bar', _className);
     const { left, center, right, maxWidth } = content;
 
     return (
-      <FlexView
-        className={className}
-        style={style}
-        vAlignContent="center"
-        hAlignContent="center"
-      >
+      <FlexView className={className} style={style} vAlignContent="center" hAlignContent="center">
         <FlexView
           vAlignContent="center"
           hAlignContent="center"
@@ -73,12 +61,7 @@ export class NavBar extends React.PureComponent<NavBar.Props> {
           >
             {left}
           </FlexView>
-          <FlexView
-            vAlignContent="center"
-            hAlignContent="center"
-            className="center"
-            grow
-          >
+          <FlexView vAlignContent="center" hAlignContent="center" className="center" grow>
             {center}
           </FlexView>
           <FlexView

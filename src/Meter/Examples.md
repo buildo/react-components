@@ -4,7 +4,13 @@ You can customize the style (colors) of Meter based on the range in which the cu
 
 ```js
 const ranges = [
-  { startValue: 0, endValue: 30, fillingColor: '#ed1c24', labelColor: '#ed1c24', backgroundColor: '#feeced' },
+  {
+    startValue: 0,
+    endValue: 30,
+    fillingColor: '#ed1c24',
+    labelColor: '#ed1c24',
+    backgroundColor: '#feeced'
+  },
   { startValue: 30, endValue: 70, fillingColor: '#fdc018', labelColor: '#fdc018' },
   { startValue: 70, endValue: 100, fillingColor: '#34aa44', labelColor: '#34aa44' }
 ];
@@ -15,28 +21,17 @@ const meterProps = {
   style: { marginBottom: 20 }
 };
 
-<FlexView width='100%' column>
-  <Meter
-    {...meterProps}
-    value={30}
-  />
-  <Meter
-    {...meterProps}
-    value={45}
-  />
-  <Meter
-    {...meterProps}
-    value={100}
-  />
-</FlexView>
+<FlexView width="100%" column>
+  <Meter {...meterProps} value={30} />
+  <Meter {...meterProps} value={45} />
+  <Meter {...meterProps} value={100} />
+</FlexView>;
 ```
 
 Ranges could also have holes between them. If the current value doesn't fall in any of the given ranges, it will use a base style you can configure as you like:
 
 ```js
-const ranges = [
-  { startValue: 40, endValue: 60, fillingColor: '#34aa44', labelColor: '#34aa44' },
-];
+const ranges = [{ startValue: 40, endValue: 60, fillingColor: '#34aa44', labelColor: '#34aa44' }];
 
 const meterProps = {
   ranges,
@@ -46,28 +41,20 @@ const meterProps = {
 };
 
 <FlexView column>
-  <Meter
-    {...meterProps}
-    value={20}
-  />
-  <Meter
-    {...meterProps}
-    value={50}
-  />
-  <Meter
-    {...meterProps}
-    value={80}
-  />
-</FlexView>
+  <Meter {...meterProps} value={20} />
+  <Meter {...meterProps} value={50} />
+  <Meter {...meterProps} value={80} />
+</FlexView>;
 ```
 
 #### Custom labels
+
 By default, Meter display an auto-calculated percentage next to the bar. You can customize your own label formatter in order to show whathever you like:
 
 ```js
 function labelFormatter1(curr, min, max) {
-  return +(Math.round(curr + 'e+2')  + 'e-2');
-};
+  return +(Math.round(curr + 'e+2') + 'e-2');
+}
 
 function labelFormatter2(curr, min, max) {
   return `${curr}/${max}`;
@@ -92,20 +79,8 @@ const meterProps = {
 };
 
 <FlexView column>
-  <Meter
-    {...meterProps}
-    value={432.315}
-    labelFormatter={labelFormatter1}
-  />
-  <Meter
-    {...meterProps}
-    value={666}
-    labelFormatter={labelFormatter2}
-  />
-  <Meter
-    {...meterProps}
-    value={690}
-    labelFormatter={labelFormatter3}
-  />
-</FlexView>
+  <Meter {...meterProps} value={432.315} labelFormatter={labelFormatter1} />
+  <Meter {...meterProps} value={666} labelFormatter={labelFormatter2} />
+  <Meter {...meterProps} value={690} labelFormatter={labelFormatter3} />
+</FlexView>;
 ```

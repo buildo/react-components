@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as cx from "classnames";
-import View from "react-flexview";
-import Popover from "../Popover";
-import { ObjectOmit } from "../utils";
+import * as React from 'react';
+import * as cx from 'classnames';
+import View from 'react-flexview';
+import Popover from '../Popover';
+import { ObjectOmit } from '../utils';
 
 export namespace FormField {
   export type Props = {
@@ -30,23 +30,18 @@ export namespace FormField {
     hint?:
       | {
           content: NonNullable<React.ReactElement>;
-          type: "box" | "label";
+          type: 'box' | 'label';
         }
       | {
           content: NonNullable<React.ReactElement>;
-          type: "tooltip";
-          popover?: ObjectOmit<Popover.Props["popover"], "content">;
+          type: 'tooltip';
+          popover?: ObjectOmit<Popover.Props['popover'], 'content'>;
         };
   };
 }
 
 const leftArrow = (
-  <svg
-    className="form-field-hint-left-arrow"
-    width="5.75"
-    height="12"
-    viewBox="0 0 5.75 12"
-  >
+  <svg className="form-field-hint-left-arrow" width="5.75" height="12" viewBox="0 0 5.75 12">
     <path d="M5.75 0.67L5.68 11.86L0.06 6.17L5.75 0.67Z" />
   </svg>
 );
@@ -63,53 +58,42 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
     this.setState(s => ({ ...s, [k]: value }));
   };
 
-  renderFieldWithHint = (
-    render: FormField.Props["render"],
-    hint: FormField.Props["hint"]
-  ) => {
+  renderFieldWithHint = (render: FormField.Props['render'], hint: FormField.Props['hint']) => {
     const Field = (
       <React.Fragment key="no-hint">
-        {render(
-          this.stateChange("focused", true),
-          this.stateChange("focused", false)
-        )}
+        {render(this.stateChange('focused', true), this.stateChange('focused', false))}
       </React.Fragment>
     );
     if (hint) {
       switch (hint.type) {
-        case "label":
+        case 'label':
           return (
             <View grow column key="label-hint">
               {Field}
-              <View className={cx("form-field-hint", "form-field-hint-label")}>
-                {hint.content}
-              </View>
+              <View className={cx('form-field-hint', 'form-field-hint-label')}>{hint.content}</View>
             </View>
           );
-        case "box":
+        case 'box':
           return (
             <View grow key="box-hint">
               {Field}
-              <View
-                shrink={false}
-                className={cx("form-field-hint", "form-field-hint-box")}
-              >
+              <View shrink={false} className={cx('form-field-hint', 'form-field-hint-box')}>
                 {hint.content}
               </View>
             </View>
           );
-        case "tooltip":
+        case 'tooltip':
           return (
             <Popover
               key="popover-hint"
-              className={cx("form-field-hint", "form-field-hint-tooltip")}
+              className={cx('form-field-hint', 'form-field-hint-tooltip')}
               popover={{
-                position: "right",
-                anchor: "start",
+                position: 'right',
+                anchor: 'start',
                 isOpen: this.state.focused || this.state.mouseover,
                 ...hint.popover,
                 content: (
-                  <View style={{ pointerEvents: "none" }}>
+                  <View style={{ pointerEvents: 'none' }}>
                     <View shrink={false}>{leftArrow}</View>
                     <View grow className="form-field-hint-content">
                       {hint.content}
@@ -138,13 +122,13 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
       render,
       hint
     } = this.props;
-    const className = cx("form-field", _className, {
-      "is-disabled": disabled,
-      "is-required": required,
-      "is-horizontal": horizontal
+    const className = cx('form-field', _className, {
+      'is-disabled': disabled,
+      'is-required': required,
+      'is-horizontal': horizontal
     });
     const labelStyle: React.CSSProperties = onLabelClick
-      ? { cursor: "pointer", userSelect: "none" }
+      ? { cursor: 'pointer', userSelect: 'none' }
       : {};
 
     const labelComponent = (
@@ -162,13 +146,11 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
         grow={!horizontal}
         {..._viewProps}
         className={className}
-        onMouseOver={this.stateChange("mouseover", true)}
-        onMouseOut={this.stateChange("mouseover", false)}
+        onMouseOver={this.stateChange('mouseover', true)}
+        onMouseOut={this.stateChange('mouseover', false)}
       >
         <View grow column={!horizontal}>
-          {horizontal
-            ? [fieldComponent, labelComponent]
-            : [labelComponent, fieldComponent]}
+          {horizontal ? [fieldComponent, labelComponent] : [labelComponent, fieldComponent]}
         </View>
       </View>
     );

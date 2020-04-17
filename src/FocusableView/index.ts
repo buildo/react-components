@@ -1,2 +1,2 @@
-import { FocusableView } from "./FocusableView";
+import { FocusableView } from './FocusableView';
 export default FocusableView;

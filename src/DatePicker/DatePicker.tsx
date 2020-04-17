@@ -1,14 +1,11 @@
-import "react-dates/initialize";
+import 'react-dates/initialize';
 
-import * as React from "react";
-import * as cx from "classnames";
-import {
-  SingleDatePicker as _SingleDatePicker,
-  SingleDatePickerShape
-} from "react-dates";
-import FlexView from "react-flexview";
-import * as moment from "moment";
-import { LocalDate } from "local-date";
+import * as React from 'react';
+import * as cx from 'classnames';
+import { SingleDatePicker as _SingleDatePicker, SingleDatePickerShape } from 'react-dates';
+import FlexView from 'react-flexview';
+import * as moment from 'moment';
+import { LocalDate } from 'local-date';
 
 export namespace DatePicker {
   export type Props = {
@@ -29,7 +26,7 @@ export namespace DatePicker {
     /** if set, the datepicker will highlight days in the range starting from the hovered or selected date to this value */
     toDate?: LocalDate;
     /** whether the datepicker should be rendered above or below the input field */
-    position?: "up" | "down";
+    position?: 'up' | 'down';
     /** whether the input box should be small or not */
     small?: boolean;
     /** the icon to show in the input field */
@@ -74,9 +71,8 @@ export type State = {
   focused: boolean;
 };
 
-const valueToMomentDate: (
-  value?: LocalDate | null
-) => moment.Moment | null = value => (!value ? null : moment(value));
+const valueToMomentDate: (value?: LocalDate | null) => moment.Moment | null = value =>
+  !value ? null : moment(value);
 
 const angleLeftIcon = (
   <svg width="10" height="10" viewBox="0 0 32 32">
@@ -99,12 +95,7 @@ const angleRightIcon = (
 );
 
 const calendarIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
     <path
       fill="#9098a7"
       fillRule="evenodd"
@@ -114,12 +105,7 @@ const calendarIcon = (
 );
 
 const clearIcon = (
-  <svg
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    height="12"
-    viewBox="0 0 22 28"
-  >
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 22 28">
     <path
       fill="#9098a7"
       d="M20.281 20.656q0 0.625-0.438 1.062l-2.125 2.125q-0.438 0.438-1.062 0.438t-1.062-0.438l-4.594-4.594-4.594 4.594q-0.438 0.438-1.062 0.438t-1.062-0.438l-2.125-2.125q-0.438-0.438-0.438-1.062t0.438-1.062l4.594-4.594-4.594-4.594q-0.438-0.438-0.438-1.062t0.438-1.062l2.125-2.125q0.438-0.438 1.062-0.438t1.062 0.438l4.594 4.594 4.594-4.594q0.438-0.438 1.062-0.438t1.062 0.438l2.125 2.125q0.438 0.438 0.438 1.062t-0.438 1.062l-4.594 4.594 4.594 4.594q0.438 0.438 0.438 1.062z"
@@ -167,7 +153,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
     } else {
       this.setState(
         { value },
-        () => onChange && onChange(new LocalDate(value.format("YYYY-MM-DD")))
+        () => onChange && onChange(new LocalDate(value.format('YYYY-MM-DD')))
       );
     }
   };
@@ -233,21 +219,15 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
         <FlexView
           grow
           onMouseEnter={
-            this.props.fromDate || this.props.toDate
-              ? this.onDayMouseEnter(day)
-              : undefined
+            this.props.fromDate || this.props.toDate ? this.onDayMouseEnter(day) : undefined
           }
-          onMouseLeave={
-            this.props.fromDate || this.props.toDate
-              ? this.onDayMouseLeave
-              : undefined
-          }
+          onMouseLeave={this.props.fromDate || this.props.toDate ? this.onDayMouseLeave : undefined}
           vAlignContent="center"
           hAlignContent="center"
           height="100%"
           className={className}
         >
-          {day.format("D")}
+          {day.format('D')}
         </FlexView>
       );
     };
@@ -280,14 +260,14 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
 
     return (
       <FlexView
-        className={cx("date-picker", className, {
-          "is-small": small,
-          "has-focus": this.state.focused
+        className={cx('date-picker', className, {
+          'is-small': small,
+          'has-focus': this.state.focused
         })}
         style={style}
       >
         <SingleDatePicker
-          id={id || ""}
+          id={id || ''}
           date={this.state.value || null}
           onDateChange={this._onChange}
           focused={this.state.focused}
@@ -301,23 +281,11 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           enableOutsideDays
           daySize={30}
           hideKeyboardShortcutsPanel
-          navPrev={
-            <FlexView className="DayPickerNavigation_prev">
-              {angleLeftIcon}
-            </FlexView>
-          }
-          navNext={
-            <FlexView className="DayPickerNavigation_next">
-              {angleRightIcon}
-            </FlexView>
-          }
-          customInputIcon={
-            <FlexView vAlignContent="center">{icon || calendarIcon}</FlexView>
-          }
+          navPrev={<FlexView className="DayPickerNavigation_prev">{angleLeftIcon}</FlexView>}
+          navNext={<FlexView className="DayPickerNavigation_next">{angleRightIcon}</FlexView>}
+          customInputIcon={<FlexView vAlignContent="center">{icon || calendarIcon}</FlexView>}
           inputIconPosition="after"
-          customCloseIcon={
-            <FlexView vAlignContent="center">{clearIcon}</FlexView>
-          }
+          customCloseIcon={<FlexView vAlignContent="center">{clearIcon}</FlexView>}
           isOutsideRange={() => false}
           openDirection={position}
           initialVisibleMonth={this.initialVisibleMonth}

@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as cx from "classnames";
-import View from "react-flexview";
+import * as React from 'react';
+import * as cx from 'classnames';
+import View from 'react-flexview';
 
 export namespace EmptyPlaceholder {
   export type Props = {
@@ -13,30 +13,19 @@ export namespace EmptyPlaceholder {
   };
 }
 
-export class EmptyPlaceholder extends React.PureComponent<
-  EmptyPlaceholder.Props
-> {
+export class EmptyPlaceholder extends React.PureComponent<EmptyPlaceholder.Props> {
   render() {
-    const {
-      icon,
-      primaryText,
-      secondaryText,
-      action,
-      className,
-      viewProps
-    } = this.props;
+    const { icon, primaryText, secondaryText, action, className, viewProps } = this.props;
     return (
       <View
-        className={cx("empty-placeholder", className)}
+        className={cx('empty-placeholder', className)}
         column
         hAlignContent="center"
         {...viewProps}
       >
         <View className="icon">{icon}</View>
         <View className="primary-text">{primaryText}</View>
-        {secondaryText && (
-          <View className="secondary-text">{secondaryText}</View>
-        )}
+        {secondaryText && <View className="secondary-text">{secondaryText}</View>}
         {action && <View className="action">{action}</View>}
       </View>
     );

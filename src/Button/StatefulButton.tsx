@@ -1,7 +1,7 @@
-import * as React from "react";
-import { ObjectOmit } from "../utils";
-import { Button } from "./Button";
-import { warn } from "../utils/log";
+import * as React from 'react';
+import { ObjectOmit } from '../utils';
+import { Button } from './Button';
+import { warn } from '../utils/log';
 
 // const PromiseType = t.irreducible('Promise', x => x instanceof Promise);
 
@@ -58,20 +58,17 @@ export interface StatefulButtonDefaultProps {
 }
 
 export namespace StatefulButton {
-  export type ButtonBaseState = "ready" | "success" | "not-allowed";
-  export type Props = ObjectOmit<Button.Props, "onClick"> &
+  export type ButtonBaseState = 'ready' | 'success' | 'not-allowed';
+  export type Props = ObjectOmit<Button.Props, 'onClick'> &
     StatefulButtonRequiredProps &
     Partial<StatefulButtonDefaultProps>;
 }
 
 export type State = {
-  internalState: "error" | "processing" | "success" | null;
+  internalState: 'error' | 'processing' | 'success' | null;
 };
 
-export class StatefulButton extends React.PureComponent<
-  StatefulButton.Props,
-  State
-> {
+export class StatefulButton extends React.PureComponent<StatefulButton.Props, State> {
   private timeoutId: number | null;
   private resetInternalStateAfterProcessing: boolean;
   private _isMounted: boolean = false;
@@ -108,11 +105,9 @@ export class StatefulButton extends React.PureComponent<
   };
 
   componentWillReceiveProps(props: StatefulButton.Props) {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== 'production') {
       if (props.stableSuccess !== this.props.stableSuccess) {
-        warn(
-          'StatefulButton: changing the "stableSuccess" prop is not supported'
-        );
+        warn('StatefulButton: changing the "stableSuccess" prop is not supported');
       }
     }
 
@@ -123,7 +118,7 @@ export class StatefulButton extends React.PureComponent<
       }
     }
     if (props.baseState !== this.props.baseState) {
-      if (this.state.internalState === "processing") {
+      if (this.state.internalState === 'processing') {
         this.resetInternalStateAfterProcessing = true;
       } else {
         this.doResetInternalState();
@@ -145,7 +140,7 @@ export class StatefulButton extends React.PureComponent<
           this._isMounted &&
           this.setState(
             {
-              internalState: "success"
+              internalState: 'success'
             },
             () => {
               if (!this.props.stableSuccess) {
@@ -161,7 +156,7 @@ export class StatefulButton extends React.PureComponent<
         if (this._isMounted) {
           this.setState(
             {
-              internalState: "error"
+              internalState: 'error'
             },
             () => this.doResetInternalStateAfterTimer()
           );
@@ -169,17 +164,16 @@ export class StatefulButton extends React.PureComponent<
       });
   };
 
-  getButtonState = () =>
-    this.props.buttonState || this.state.internalState || this.props.baseState;
+  getButtonState = () => this.props.buttonState || this.state.internalState || this.props.baseState;
 
   onClick = (e: React.SyntheticEvent<HTMLDivElement>) => {
-    if (this.getButtonState() === "ready") {
+    if (this.getButtonState() === 'ready') {
       this.resetInternalStateAfterProcessing = false;
       const promise = this.props.onClick(e);
       if (!this.props.buttonState) {
         this.setState(
           {
-            internalState: "processing"
+            internalState: 'processing'
           },
           () => this.attachPromiseHandlers(promise)
         );
@@ -188,19 +182,8 @@ export class StatefulButton extends React.PureComponent<
   };
 
   render() {
-    const {
-      baseState,
-      stableSuccess,
-      timerMillis,
-      ...buttonProps
-    } = this.props;
+    const { baseState, stableSuccess, timerMillis, ...buttonProps } = this.props;
 
-    return (
-      <Button
-        {...buttonProps}
-        onClick={this.onClick}
-        buttonState={this.getButtonState()}
-      />
-    );
+    return <Button {...buttonProps} onClick={this.onClick} buttonState={this.getButtonState()} />;
   }
 }
