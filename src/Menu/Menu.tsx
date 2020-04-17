@@ -27,8 +27,10 @@ export type MenuDefaultProps = {
   isOpen: boolean;
   /** whether the menu should be closed when clicking outside */
   dismissOnClickOutside: boolean;
-  /** wheter the menu should be rendered on top or at the bottom of the trigger */
+  /** whether the menu should be rendered on top or at the bottom of the trigger (bottom by default) */
   position: "top" | "bottom";
+  /** whether the menu should be aligned with the start, the end or the center of the trigger (end by default) */
+  anchor: Popover.Props["popover"]["anchor"];
 };
 
 export namespace Menu {
@@ -42,12 +44,6 @@ type MenuDefaultedProps = MenuRequiredProps & MenuDefaultProps;
  *  A menu with actions
  */
 export class Menu extends React.PureComponent<Menu.Props> {
-  static defaultProps: MenuDefaultProps = {
-    isOpen: false,
-    dismissOnClickOutside: true,
-    position: "bottom"
-  };
-
   getActionsMenuMaxHeight = (): number | undefined => {
     if (this.props.maxHeight) {
       return this.props.maxHeight;
@@ -77,7 +73,8 @@ export class Menu extends React.PureComponent<Menu.Props> {
       isOpen,
       onClose,
       onOpen,
-      position
+      position,
+      anchor
     } = this.props as MenuDefaultedProps;
 
     const maxHeight = this.getActionsMenuMaxHeight();
@@ -87,11 +84,11 @@ export class Menu extends React.PureComponent<Menu.Props> {
         popover={{
           isOpen,
           dismissOnClickOutside,
-          position,
+          position: position ? position : "bottom",
+          anchor: anchor ? anchor : "end",
           onShow: onOpen,
           onHide: onClose,
           event: "click",
-          anchor: "end",
           className: "actions-menu-popover",
           dismissOnScroll: false,
           content: menuRenderer ? (
