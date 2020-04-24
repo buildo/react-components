@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit --pretty",
     "prettier-fix": "prettier \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\" --write",
     "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\"",
-    "release-version": "smooth-release --validations --npm-version --npm-publish",
+    "release-version": "smooth-release",
     "postinstall": "rm -rf node_modules/**/node_modules/@types/react",
     "dtslint": "dtslint dtslint"
   },
