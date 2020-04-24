@@ -2,6 +2,117 @@
 
 
 
+## [v0.48.2](https://github.com/buildo/react-components/tree/v0.48.2) (2020-04-24)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.1...v0.48.2)
+
+#### New features:
+
+- include .md files to prettier-fix script [#1442](https://github.com/buildo/react-components/issues/1442)
+- fix overall inconsistency of examples [#1439](https://github.com/buildo/react-components/issues/1439)
+
+## [v0.48.1](https://github.com/buildo/react-components/tree/v0.48.1) (2020-04-17)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.0...v0.48.1)
+
+#### New features:
+
+- Add parameter to customize anchor of Menu component [#1436](https://github.com/buildo/react-components/issues/1436)
+- Showroom examples for InputField is broken [#1432](https://github.com/buildo/react-components/issues/1432)
+- proposal: stop pinning dependencies [#1430](https://github.com/buildo/react-components/issues/1430)
+
+#### Fixes (bugs & defects):
+
+- [Popover] Losing focus in the content when Popover is controlled [#1433](https://github.com/buildo/react-components/issues/1433)
+
+## [v0.48.0](https://github.com/buildo/react-components/tree/v0.48.0) (2020-04-03)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.47.2...v0.48.0)
+
+#### Breaking:
+
+- FormField components should have a prop packing all inner component's props instead of spreading them [#1427](https://github.com/buildo/react-components/issues/1427)
+- DatePicker should have clearable option [#1423](https://github.com/buildo/react-components/issues/1423)
+
+## [v0.47.2](https://github.com/buildo/react-components/tree/v0.47.2) (2020-03-20)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.47.1...v0.47.2)
+
+#### New features:
+
+- update react-input-children version [#1424](https://github.com/buildo/react-components/issues/1424)
+- proposal: remove runtime prop types checking [#1360](https://github.com/buildo/react-components/issues/1360)
+- componente datepicker con inizio e fine [#1343](https://github.com/buildo/react-components/issues/1343)
+- Implement SuggestionsInput [#948](https://github.com/buildo/react-components/issues/948)
+
+## [v0.47.1](https://github.com/buildo/react-components/tree/v0.47.1) (2019-12-17)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.47.0...v0.47.1)
+
+#### New features:
+
+- MultiDropdownWithSelectAll defects when options are loaded async [#1410](https://github.com/buildo/react-components/issues/1410)
+- Fix return type for TextOverflow's render method [#1407](https://github.com/buildo/react-components/issues/1407)
+- Fix EmptyPlaceholder example [#1401](https://github.com/buildo/react-components/issues/1401)
+
+#### Fixes (bugs & defects):
+
+- React missing unique key warning in FormField [#1405](https://github.com/buildo/react-components/issues/1405)
+- The way Form passes props down to the View causes React warnings [#1403](https://github.com/buildo/react-components/issues/1403)
+
+## [v0.47.0](https://github.com/buildo/react-components/tree/v0.47.0) (2019-11-15)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.46.3...v0.47.0)
+
+#### New features:
+
+- [Tablo] Scrolling rows scrolls the underlying page too [#1397](https://github.com/buildo/react-components/issues/1397)
+- Dropdown: SelectAll in multi mode [#947](https://github.com/buildo/react-components/issues/947)
+
+#### Fixes (bugs & defects):
+
+- [Showroom] Form example not working [#1395](https://github.com/buildo/react-components/issues/1395)
+- Dropdown disabled not working [#1384](https://github.com/buildo/react-components/issues/1384)
+
+#### Breaking:
+
+- Split dropdown in "single" and "multi" components [#1380](https://github.com/buildo/react-components/issues/1380)
+
+## [v0.46.3](https://github.com/buildo/react-components/tree/v0.46.3) (2019-11-13)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.46.2...v0.46.3)
+
+#### Fixes (bugs & defects):
+
+- [Showroom] EmptyPlaceholder example not working [#1392](https://github.com/buildo/react-components/issues/1392)
+
+## [v0.46.2](https://github.com/buildo/react-components/tree/v0.46.2) (2019-11-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.46.1...v0.46.2)
+
+#### Fixes (bugs & defects):
+
+- noSubmitOnEnter in Form shall be optional [#1394](https://github.com/buildo/react-components/issues/1394)
+
+## [v0.46.1](https://github.com/buildo/react-components/tree/v0.46.1) (2019-11-12)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.46.0...v0.46.1)
+
+#### Fixes (bugs & defects):
+
+- [Showroom] Toggle example is not working [#1390](https://github.com/buildo/react-components/issues/1390)
+
+#### New features:
+
+- Allow to disable submit on enter in Form [#1387](https://github.com/buildo/react-components/issues/1387)
+- Add "empty states" component [#1386](https://github.com/buildo/react-components/issues/1386)
+- typings regression on TextOverflow children/label props [#1378](https://github.com/buildo/react-components/issues/1378)
+
+## [v0.46.0](https://github.com/buildo/react-components/tree/v0.46.0) (2019-09-24)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.46.0-1...v0.46.0)
+
+#### Breaking:
+
+- use LocalDate in place of Date in DatePicker component [#1375](https://github.com/buildo/react-components/issues/1375)
+
+## [v0.46.0-1](https://github.com/buildo/react-components/tree/v0.46.0-1) (2019-09-24)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.45.0...v0.46.0-1)
+
+#### Breaking:
+
+- avoid using React.ReactNode in prop typings [#1373](https://github.com/buildo/react-components/issues/1373)
+
 ## [v0.45.0](https://github.com/buildo/react-components/tree/v0.45.0) (2019-08-23)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.44.1...v0.45.0)
 
@@ -17,7 +128,7 @@
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.44.0...v0.44.1)
 
 ## [v0.44.0](https://github.com/buildo/react-components/tree/v0.44.0) (2019-05-29)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.43.0...v0.44.0)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.43.2...v0.44.0)
 
 #### New features:
 
@@ -27,6 +138,12 @@
 #### Breaking:
 
 - Remove returnFormat prop from DatePicker [#1347](https://github.com/buildo/react-components/issues/1347)
+
+## [v0.43.2](https://github.com/buildo/react-components/tree/v0.43.2) (2019-09-30)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.43.1...v0.43.2)
+
+## [v0.43.1](https://github.com/buildo/react-components/tree/v0.43.1) (2019-09-29)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.43.0...v0.43.1)
 
 ## [v0.43.0](https://github.com/buildo/react-components/tree/v0.43.0) (2019-05-07)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.42.8...v0.43.0)

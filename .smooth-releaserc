@@ -1,7 +1,19 @@
 {
   "github": {
     "changelog": {
-      "ignoredLabels": ["internal", "invalid", "duplicate"]
+      "ignoredLabels": [
+        "internal",
+        "invalid",
+        "duplicate"
+      ]
     }
+  },
+  "tasks": {
+    "validations": true,
+    "npm-publish": true,
+    "npm-version": true,
+    "gh-release": true,
+    "gh-release-all": false,
+    "changelog": true
   }
 }
