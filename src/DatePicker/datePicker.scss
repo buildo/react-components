@@ -131,6 +131,10 @@ $date-picker-outside-day-background: $brc-white !default;
     z-index: $date-picker-z-index;
 
     .DayPicker {
+      width: 229px !important;
+      height: 199px !important;
+      box-shadow: none !important;
+
       .DayPicker_weekHeaders {
         margin-left: 0;
 
