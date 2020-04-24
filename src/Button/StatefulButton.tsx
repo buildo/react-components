@@ -104,20 +104,20 @@ export class StatefulButton extends React.PureComponent<StatefulButton.Props, St
     }
   };
 
-  componentWillReceiveProps(props: StatefulButton.Props) {
+  componentDidUpdate(prevProps: StatefulButton.Props) {
     if (process.env.NODE_ENV !== 'production') {
-      if (props.stableSuccess !== this.props.stableSuccess) {
+      if (this.props.stableSuccess !== prevProps.stableSuccess) {
         warn('StatefulButton: changing the "stableSuccess" prop is not supported');
       }
     }
 
-    if (props.buttonState) {
+    if (this.props.buttonState) {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);
         this.timeoutId = null;
       }
     }
-    if (props.baseState !== this.props.baseState) {
+    if (this.props.baseState !== prevProps.baseState) {
       if (this.state.internalState === 'processing') {
         this.resetInternalStateAfterProcessing = true;
       } else {

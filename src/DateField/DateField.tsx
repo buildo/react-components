@@ -64,18 +64,18 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
       }
     : initialState;
 
-  componentWillReceiveProps(nextProps: DateField.Props) {
-    if (!nextProps.value && this.props.value) {
+  componentDidUpdate(prevProps: DateField.Props) {
+    if (!this.props.value && prevProps.value) {
       // "value" has become "undefined"
       this.setState({ day: '', month: '', year: '', isValid: false });
     } else if (
-      (nextProps.value && !this.props.value) ||
-      (nextProps.value &&
-        this.props.value &&
-        nextProps.value.getTime() !== this.props.value.getTime())
+      (this.props.value && !prevProps.value) ||
+      (this.props.value &&
+        prevProps.value &&
+        this.props.value.getTime() !== prevProps.value.getTime())
     ) {
       // "value" exists and has changed
-      const { day, month, year } = parseDate(nextProps.value);
+      const { day, month, year } = parseDate(this.props.value);
 
       // this logic is needed to avoid transforming the user input "07" in the parsed number "7"
       if (

@@ -74,10 +74,10 @@ export class ConfirmationInput extends React.PureComponent<ConfirmationInput.Pro
     value: this.props.initialValue || ''
   };
 
-  componentWillReceiveProps({ initialValue }: ConfirmationInput.Props) {
-    if (initialValue !== this.props.initialValue) {
+  componentDidUpdate(prevProps: ConfirmationInput.Props) {
+    if (this.props.initialValue !== prevProps.initialValue) {
       this.setState({
-        value: initialValue || ''
+        value: this.props.initialValue || ''
       });
     }
   }

@@ -115,14 +115,14 @@ export class Popover extends React.Component<Popover.Props, State> {
     }
   }
 
-  componentWillReceiveProps(nextProps: Popover.Props) {
-    this.updateDebouncedMousedEvents(nextProps);
+  componendDidUpdate() {
+    this.updateDebouncedMousedEvents(this.props);
     this.saveValuesFromNodeTree();
 
-    const isOpenChanged = this.getPopoverProps().isOpen !== this.getPopoverProps(nextProps).isOpen;
+    const isOpenChanged = this.getPopoverProps().isOpen !== this.getPopoverProps(this.props).isOpen;
 
     if (!this.isStateful() && isOpenChanged) {
-      this.onPopoverOpenChange(nextProps);
+      this.onPopoverOpenChange(this.props);
     }
   }
 

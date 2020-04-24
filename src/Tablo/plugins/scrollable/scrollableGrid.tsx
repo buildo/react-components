@@ -14,14 +14,14 @@ export default <T extends {}>(
       scrollTop: this.props.scrollTop
     };
 
-    componentWillReceiveProps(nextProps: Tablo.Props<T>) {
-      const scrollTopDidntChanged = nextProps.scrollTop === this.props.scrollTop;
+    componentDidUpdate(prevProps: Tablo.Props<T>) {
+      const scrollTopDidntChanged = this.props.scrollTop === prevProps.scrollTop;
       const rowsSelectionChanged =
-        nextProps.selectedRows &&
         this.props.selectedRows &&
-        nextProps.selectedRows[0] !== this.props.selectedRows[0];
+        prevProps.selectedRows &&
+        this.props.selectedRows[0] !== prevProps.selectedRows[0];
       this.setState({
-        scrollTop: scrollTopDidntChanged && rowsSelectionChanged ? undefined : nextProps.scrollTop
+        scrollTop: scrollTopDidntChanged && rowsSelectionChanged ? undefined : this.props.scrollTop
       });
     }
 
