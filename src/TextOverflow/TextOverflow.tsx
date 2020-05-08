@@ -58,8 +58,8 @@ export class TextOverflow extends React.Component<TextOverflow.Props, State> {
     !this.props.lazy && this.verifyOverflow();
   }
 
-  componentWillReceiveProps(nextProps: TextOverflow.Props) {
-    if (!this.props.lazy && nextProps.label !== this.props.label) {
+  componentDidUpdate(prevProps: TextOverflow.Props) {
+    if (!prevProps.lazy && this.props.label !== prevProps.label) {
       this.reset();
     }
   }

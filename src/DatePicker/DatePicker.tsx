@@ -126,9 +126,9 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
     this.dayRenderer = this.dayRendererFactory();
   }
 
-  componentWillReceiveProps(newProps: DatePicker.Props) {
-    if (newProps.locale !== this.props.locale) {
-      moment.locale(newProps.locale);
+  componentDidUpdate(prevProps: DatePicker.Props) {
+    if (this.props.locale !== prevProps.locale) {
+      moment.locale(this.props.locale);
     }
   }
 

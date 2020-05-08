@@ -151,13 +151,10 @@ export class Toaster extends React.Component<Toaster.Props> {
     }
   }
 
-  componentDidUpdate() {
-    this.renderToaster();
-  }
-
-  componentWillReceiveProps(nextProps: Toaster.Props) {
-    if (this.props.attachTo !== nextProps.attachTo) {
+  componentDidUpdate(prevProps: Toaster.Props) {
+    if (prevProps.attachTo !== this.props.attachTo) {
       warn('You can\'t change "attachTo" prop after the first render!');
     }
+    this.renderToaster();
   }
 }

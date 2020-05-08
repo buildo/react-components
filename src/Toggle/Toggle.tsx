@@ -36,8 +36,8 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
     this.updateCheckbox(this.props as ToggleDefaultedProps);
   }
 
-  componentWillReceiveProps(nextProps: Toggle.Props) {
-    this.updateCheckbox(nextProps as ToggleDefaultedProps);
+  componentDidUpdate() {
+    this.updateCheckbox(this.props as ToggleDefaultedProps);
   }
 
   updateCheckbox = (props: ToggleDefaultedProps) => {
