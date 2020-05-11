@@ -131,6 +131,9 @@ $date-picker-outside-day-background: $brc-white !default;
     z-index: $date-picker-z-index;
 
     .DayPicker {
+      width: 229px !important;
+      box-shadow: none !important;
+
       .DayPicker_weekHeaders {
         margin-left: 0;
 
@@ -170,9 +173,8 @@ $date-picker-outside-day-background: $brc-white !default;
         right: 10px;
       }
 
-      // HACK to hide the bottom padding
       .DayPicker_transitionContainer {
-        height: 200px !important;
+        height: 199px !important;
       }
 
       .CalendarDay {
