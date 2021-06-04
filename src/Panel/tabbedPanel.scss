@@ -7,6 +7,7 @@ $tab-border-height: 1px !default;
 $tab-border-height-active: 3px !default;
 $tab-color: $brc-coolGrey !default;
 $tab-color-active: $brc-darkGreyBlue !default;
+$tab-icon-margin-right: 8px !default;
 
 @import '~sass-flex-mixins/src/sass-flex-mixins.scss';
 
@@ -27,10 +28,15 @@ $tab-color-active: $brc-darkGreyBlue !default;
       background: $tab-background;
       cursor: pointer;
       color: $tab-color;
+      fill: currentColor;
 
       &.active {
         border-bottom: $tab-border-height-active solid $tab-border-color-active;
         color: $tab-color-active;
+      }
+
+      .tabbed-panel-tab-icon {
+        margin-right: $tab-icon-margin-right;
       }
     }
   }
