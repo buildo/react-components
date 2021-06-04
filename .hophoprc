@@ -1,3 +1,6 @@
 toggl: n
 branchPrefix: n
 branchSuffix: y
+kaiten:
+  - boardId: 79712
+    backlogColumnId: 272479
