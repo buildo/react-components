@@ -2,6 +2,19 @@
 
 
 
+## [v0.48.3](https://github.com/buildo/react-components/tree/v0.48.3) (2021-08-31)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.2...v0.48.3)
+
+#### New features:
+
+- Form images are broken in showroom [#1454](https://github.com/buildo/react-components/issues/1454)
+- CHANGELOG is out of date [#1441](https://github.com/buildo/react-components/issues/1441)
+- componentWillReceiveProps has been renamed [#1435](https://github.com/buildo/react-components/issues/1435)
+
+#### Fixes (bugs & defects):
+
+- DatePicker has 1px left border on open calendar [#1409](https://github.com/buildo/react-components/issues/1409)
+
 ## [v0.48.2](https://github.com/buildo/react-components/tree/v0.48.2) (2020-04-24)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.48.1...v0.48.2)
 
@@ -261,8 +274,8 @@
 
 #### New features:
 
-- Continuous deploy after updates on component repos [#1298](https://github.com/buildo/react-components/issues/1298)
 - Switch CI from Drone to concourse [#1295](https://github.com/buildo/react-components/issues/1295)
+- Continuous deploy after updates on component repos [#1298](https://github.com/buildo/react-components/issues/1298)
 
 ## [v0.41.1](https://github.com/buildo/react-components/tree/v0.41.1) (2019-01-04)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.41.0...v0.41.1)
