@@ -15,7 +15,7 @@
     "prettier-fix": "prettier \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\" --write",
     "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\"",
     "release-version": "smooth-release",
-    "postinstall": "rm -rf node_modules/**/node_modules/@types/react",
+    "postinstall": "rm -rf node_modules/**/node_modules/@types/react 2> /dev/null || true",
     "dtslint": "dtslint dtslint"
   },
   "repository": {
@@ -56,6 +56,7 @@
     "react-input-children": "^4.0.3",
     "react-select": "^2.4.1",
     "react-transition-group": "^1.2.0",
+    "rimraf": "^3.0.2",
     "sass-flex-mixins": "^0.1.0",
     "tlds": "^1.194.0"
   },
