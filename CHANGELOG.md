@@ -2,6 +2,13 @@
 
 
 
+## [v0.48.5](https://github.com/buildo/react-components/tree/v0.48.5) (2021-09-24)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.4...v0.48.5)
+
+#### New features:
+
+- RadioGroup doesn't support custom values [#1476](https://github.com/buildo/react-components/issues/1476)
+
 ## [v0.48.4](https://github.com/buildo/react-components/tree/v0.48.4) (2021-09-01)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.48.3...v0.48.4)
 
