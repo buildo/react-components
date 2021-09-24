@@ -34,20 +34,26 @@ const onChange = value => setState({ value });
 const options = [
   {
     label: 'First',
-    value: 'first'
+    value: { position: 'first' }
   },
   {
     label: 'Second',
-    value: 'second'
+    value: { position: 'second' }
   },
   {
     label: 'Other',
-    value: 'other'
+    value: { position: 'other' }
   }
 ];
 
 <form className="ui form">
-  <RadioGroup horizontal value={state.value} onChange={onChange} options={options} />
-  <div style={{ marginTop: 20 }}>Selected: {state.value}</div>
+  <RadioGroup
+    horizontal
+    value={state.value}
+    onChange={onChange}
+    getValueKey={value => value.position}
+    options={options}
+  />
+  <div style={{ marginTop: 20 }}>Selected: {state.value ? state.value.position : state.value}</div>
 </form>;
 ```
