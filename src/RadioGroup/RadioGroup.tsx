@@ -2,18 +2,19 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import FlexView from 'react-flexview';
 
-export type RadioOption = {
+export type RadioOption<T> = {
   label: string;
-  value: string;
+  value: T;
 };
 
-export type RadioGroupRequiredProps = {
+export type RadioGroupRequiredProps<T> = {
   /** value */
-  value?: string;
+  value?: T;
   /** onChange */
-  onChange: (value: string) => void;
+  onChange: (value: T) => void;
+  getValueKey?: (value: T) => string;
   /** text displayed on the right of the checkbox */
-  options: Array<RadioOption>;
+  options: Array<RadioOption<T>>;
   className?: string;
   id?: string;
   style?: React.CSSProperties;
@@ -27,16 +28,16 @@ export type RadioGroupDefaultProps = {
 };
 
 export namespace RadioGroup {
-  export type Props = RadioGroupRequiredProps & Partial<RadioGroupDefaultProps>;
+  export type Props<T> = RadioGroupRequiredProps<T> & Partial<RadioGroupDefaultProps>;
 }
 
-export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
+export class RadioGroup<T> extends React.PureComponent<RadioGroup.Props<T>> {
   static defaultProps: RadioGroupDefaultProps = {
     disabled: false,
     horizontal: false
   };
 
-  onChange = (option: RadioOption): React.EventHandler<any> => {
+  onChange = (option: RadioOption<T>): React.EventHandler<any> => {
     return e => {
       e.stopPropagation();
       if (!this.props.disabled) {
@@ -47,6 +48,9 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
 
   render() {
     const { id, className, style, disabled, options, value, horizontal } = this.props;
+    const defaultedGetValueKey = this.props.getValueKey
+      ? this.props.getValueKey
+      : (value: T) => value;
     return (
       <FlexView
         shrink={false}
@@ -65,10 +69,11 @@ export class RadioGroup extends React.PureComponent<RadioGroup.Props> {
       >
         {options.map(option => (
           <FlexView
-            key={option.value}
+            key={option.label}
             vAlignContent="center"
             className={cx('radio-group-option', {
-              'is-checked': option.value === value
+              'is-checked':
+                value && defaultedGetValueKey(option.value) === defaultedGetValueKey(value)
             })}
           >
             <svg viewBox="0 0 16 16" onClick={this.onChange(option)}>
