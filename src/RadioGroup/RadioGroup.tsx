@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import FlexView from 'react-flexview';
 
-export type RadioOption<T = string> = {
+export type RadioOption<T> = {
   label: string;
   value: T;
 };
 
-export type RadioGroupRequiredProps<T = string> = {
+export type RadioGroupRequiredProps<T> = {
   /** value */
   value?: T;
   /** onChange */
