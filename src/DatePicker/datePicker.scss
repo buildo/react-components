@@ -1,5 +1,5 @@
 @import '../utils/theme/variables.scss';
-@import 'react-dates/lib/css/_datepicker';
+@import '~react-dates/lib/css/_datepicker.css';
 
 $date-picker-width-input: 150px !default;
 $date-picker-month-header-background: $brc-azure !default;
