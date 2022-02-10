@@ -87,7 +87,7 @@
     "file-loader": "^1.1.5",
     "jest": "^20.0.4",
     "json-loader": "^0.5.7",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prettier": "^1.14.3",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react": "^16.5.0",
