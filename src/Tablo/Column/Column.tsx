@@ -30,19 +30,19 @@ export type Required<T> = {
 };
 
 export namespace Column {
-  export type ColumnChildren<T extends {}> = (
+  export type ColumnChildren<T> = (
     | React.ReactElement<Header.Props>
     | React.ReactElement<Footer.Props>
     | React.ReactElement<Cell.Props<T, keyof T>>
   )[];
-  export type Props<T extends {}> = Required<T> & Partial<Default>;
+  export type Props<T> = Required<T> & Partial<Default>;
 }
 export type ColumnDefaultedIntrinsicProps<T> = Required<T> & Default & Intrinsic<T>;
 export type ColumnIntrinsicProps<T extends {}> = Column.Props<T> & Intrinsic<T>;
 
 export const defaultWidth = 200;
 
-export const Column = <T extends {}>(
+export const Column = <T extends unknown>(
   args: Column.Props<T>
 ): React.ReactElement<Column.Props<T>> => {
   const {

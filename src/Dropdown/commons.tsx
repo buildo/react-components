@@ -35,7 +35,7 @@ export const defaultProps: DefaultProps = {
   menuPlacement: 'bottom'
 };
 
-export const defaultComponents = <OptionType extends {}>(): SelectNS.Props<
+export const defaultComponents = <OptionType extends unknown>(): SelectNS.Props<
   OptionType
 >['components'] => ({
   IndicatorSeparator: () => null
