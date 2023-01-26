@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select from 'react-select';
-import Creatable from 'react-select/lib/Creatable';
+import Creatable from 'react-select/creatable';
 import * as cx from 'classnames';
 import {
   CommonProps,
@@ -11,7 +11,7 @@ import {
   DefaultProps
 } from './commons';
 
-type NonDefaultProps<OptionType> = CommonProps<OptionType> & {
+type NonDefaultProps<OptionType> = CommonProps<OptionType, true> & {
   value: OptionType[];
   onChange: (value: OptionType[]) => void;
 };
@@ -44,7 +44,7 @@ export class MultiDropdown<OptionType> extends React.PureComponent<
         {...props}
         classNamePrefix="dropdown"
         components={{
-          ...defaultComponents<OptionType>(),
+          ...defaultComponents<OptionType, true>(),
           ...customComponents
         }}
         className={cx(

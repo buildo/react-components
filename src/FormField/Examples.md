@@ -3,14 +3,17 @@
 #### A typical usage
 
 ```js
-initialState = {
+const [state, setState] = React.useState({
   input: '',
   textarea: '',
   password: '',
   toggle: false,
   checkbox: false,
-  radioGroup: 'first'
-};
+  radioGroup: 'first',
+  dropdown: undefined,
+  datePicker: undefined,
+  timePicker: undefined
+});
 
 function onChange(field, value) {
   setState({ [field]: value });
@@ -169,10 +172,7 @@ function onChange(field, value) {
 #### Required fields
 
 ```js
-initialState = {
-  input: '',
-  textarea: ''
-};
+const [state, setState] = React.useState({ input: '', textarea: '' });
 
 function onChange(field, value) {
   setState({ [field]: value });
@@ -217,9 +217,7 @@ Based on the form design, the hint could have different styles:
 **always visible under a field**
 
 ```js
-initialState = {
-  input: ''
-};
+const [state, setState] = React.useState({ input: '' });
 
 function onChange(field, value) {
   setState({ [field]: value });
@@ -242,9 +240,7 @@ function onChange(field, value) {
 **inside a tooltip** that appears on hover or on focus
 
 ```js
-initialState = {
-  input: ''
-};
+const [state, setState] = React.useState({ input: '' });
 
 function onChange(field, value) {
   setState({ [field]: value });
@@ -268,9 +264,7 @@ function onChange(field, value) {
 **always visible in a box** on the right
 
 ```js
-initialState = {
-  input: ''
-};
+const [state, setState] = React.useState({ input: '' });
 
 function onChange(field, value) {
   setState({ [field]: value });

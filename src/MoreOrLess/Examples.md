@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = { expanded: false };
+const [state, setState] = React.useState({ expanded: false });
 
 function onExpandedChange() {
   setState({ expanded: !state.expanded });

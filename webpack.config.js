@@ -15,7 +15,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['buildo', { env: 'react' }]]
+              presets: ['@babel/preset-env', '@babel/preset-react']
             }
           },
           {
@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader', { loader: 'css-loader', options: { modules: true } }]
+        use: ['style-loader', { loader: 'css-loader', options: { modules: true } }]
       },
       {
         test: /\.scss$/,
@@ -36,10 +36,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        use: [{ loader: 'file-loader', options: { name: '[name].[ext]' } }]
       }
     ]
   }

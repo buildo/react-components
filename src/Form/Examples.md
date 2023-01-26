@@ -3,10 +3,7 @@
 Simple wrapper for form that adds "submit on Enter" behavior
 
 ```js
-initialState = {
-  firstName: '',
-  lastName: ''
-};
+const [state, setState] = React.useState({ firstName: '', lastName: '' });
 
 const onChange = key => value => setState({ [key]: value });
 

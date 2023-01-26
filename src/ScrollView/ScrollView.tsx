@@ -36,11 +36,16 @@ export type State = {
   isHorizontalScrollbarVisible: boolean;
 };
 
-export type ScrollViewDefaultedProps<CP, ICP> = ScrollViewRequiredProps &
-  ScrollViewDefaultProps<CP, ICP>;
+export type ScrollViewDefaultedProps<
+  CP extends React.HTMLAttributes<any>,
+  ICP extends React.HTMLAttributes<any>
+> = ScrollViewRequiredProps & ScrollViewDefaultProps<CP, ICP>;
 
 export namespace ScrollView {
-  export type Props<CP, ICP> = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps<CP, ICP>>;
+  export type Props<
+    CP extends React.HTMLAttributes<any>,
+    ICP extends React.HTMLAttributes<any>
+  > = ScrollViewRequiredProps & Partial<ScrollViewDefaultProps<CP, ICP>>;
 }
 
 /** A scrollable view to be used in projects where you want the same scrollbar style across different browsers */

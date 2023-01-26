@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const onChange = value => setState({ value });
 
@@ -26,7 +26,7 @@ const options = [
 Dropdown comes in two different sizes: medium and small
 
 ```js
-initialState = {};
+const [state, setState] = React.useState(42);
 
 const onChange = stateVar => value => setState({ [stateVar]: value });
 
@@ -69,7 +69,7 @@ const options2 = [
 When needed (e.g. when there isn't enough space under the dropdown to render the menu), it's possible to force the menu to open on top
 
 ```js
-initialState = {};
+const [state, setState] = React.useState(42);
 
 const onChange = value => setState({ value });
 
@@ -95,7 +95,7 @@ const options = [
 - When the `isSearchable` prop is used, it's possible to search the desired value by writing into the dropdown.\n\* Use `isClearable` if it should be possible to reset the selected value clicking on the `delete` icon that will appear once a value is selected and `backspaceRemovesValue` if you want to be able to remove the last value selected with the backspace button.
 
 ```js
-initialState = {};
+const [state, setState] = React.useState(42);
 
 const onChange = value => setState({ value });
 
@@ -129,7 +129,7 @@ const options = [
 Dropdown could also allow the selection of multiple values
 
 ```js
-initialState = {};
+const [state, setState] = React.useState(42);
 
 const onChange = value => setState({ value });
 
@@ -156,7 +156,8 @@ const options = [
 Using a `MultiDropdownWithSelectAll` component, it's possible to automatically add an "all" option that will select all the available options at once.
 
 ```js
-initialState = {};
+const [state, setState] = React.useState(42);
+
 const onChange = newVal => {
   if (newVal.type === 'AllSelected') {
     console.log('ALL selected!');
@@ -185,11 +186,11 @@ const options = [
 It is also possible to load the dropdown options asynchronously as the user types in the search input box:
 
 ```js
-initialState = {
+const [state, setState] = React.useState({
   options: [],
   value: null,
   loading: false
-};
+});
 
 var timeout = null;
 
@@ -240,7 +241,7 @@ const onChange = newVal => {
 Dropdown could also allow the grouping
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const onChange = value => setState({ value });
 

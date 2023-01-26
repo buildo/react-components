@@ -3,7 +3,7 @@
 #### A typical usage
 
 ```js
-initialState = { state: 'ready' };
+const [state, setState] = React.useState({ state: 'ready' });
 
 const labels = {
   success: 'Success',

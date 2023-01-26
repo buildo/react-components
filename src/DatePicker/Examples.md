@@ -3,7 +3,7 @@
 #### A typical usage
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 function onChange(value) {
   setState({ value });

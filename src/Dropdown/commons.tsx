@@ -1,28 +1,27 @@
-import Select from 'react-select';
-import * as SelectNS from 'react-select/lib/Select';
-import { CreatableProps } from 'react-select/lib/Creatable';
+import Select, { GroupBase, Props as SelectProps } from 'react-select';
+import { CreatableProps } from 'react-select/creatable';
 import { ObjectOmit } from '../utils';
 import * as cx from 'classnames';
 
 export type DefaultProps = {
-  delimiter: NonNullable<SelectNS.Props['delimiter']>;
+  delimiter: NonNullable<SelectProps['delimiter']>;
   size: 'medium' | 'small';
-  isSearchable: NonNullable<SelectNS.Props['isSearchable']>;
-  menuPlacement: NonNullable<SelectNS.Props['menuPlacement']>;
+  isSearchable: NonNullable<SelectProps['isSearchable']>;
+  menuPlacement: NonNullable<SelectProps['menuPlacement']>;
 };
 
-export type CommonProps<OptionType> = ObjectOmit<
-  SelectNS.Props<OptionType>,
+export type CommonProps<OptionType, IsMulti extends boolean> = ObjectOmit<
+  SelectProps<OptionType, IsMulti>,
   'isMulti' | 'onChange' | 'value' | 'disabled' | 'options'
 > & {
   flat?: boolean;
-  innerRef?: (ref: Select<OptionType> | null) => void;
-  options: NonNullable<SelectNS.Props<OptionType>['options']>;
+  innerRef?: (ref: Select | null) => void;
+  options: NonNullable<SelectProps<OptionType>['options']>;
 } & (
     | ({
         allowCreate: true;
         isSearchable?: never;
-      } & CreatableProps<OptionType>)
+      } & CreatableProps<OptionType, false, GroupBase<OptionType>>)
     | {
         allowCreate?: never;
       }
@@ -35,9 +34,10 @@ export const defaultProps: DefaultProps = {
   menuPlacement: 'bottom'
 };
 
-export const defaultComponents = <OptionType extends {}>(): SelectNS.Props<
-  OptionType
->['components'] => ({
+export const defaultComponents = <
+  OptionType extends unknown,
+  IsMulti extends boolean
+>(): SelectProps<OptionType, IsMulti>['components'] => ({
   IndicatorSeparator: () => null
 });
 

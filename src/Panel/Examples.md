@@ -199,7 +199,7 @@ const panelProps = {
 A tabbed panel will show content based on the currently selected tab.
 
 ```js
-initialState = { activeTabIndex: 0 };
+const [state, setState] = React.useState({ activeTabIndex: 0 });
 
 function onSetActiveTab(activeTabIndex) {
   setState({ activeTabIndex });

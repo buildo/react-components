@@ -1,8 +1,13 @@
 import * as React from 'react';
-import Select, { components } from 'react-select';
+import Select, {
+  ActionMeta,
+  components,
+  GroupBase,
+  MultiValue,
+  ValueContainerProps
+} from 'react-select';
 
-import Creatable from 'react-select/lib/Creatable';
-import { Props } from 'react-select/lib/Creatable';
+import Creatable, { CreatableProps } from 'react-select/creatable';
 import * as cx from 'classnames';
 import {
   CommonProps,
@@ -12,8 +17,7 @@ import {
   getCommonClassnames,
   DefaultProps
 } from './commons';
-import { GroupType, ValueType } from 'react-select/lib/types';
-import { ValueContainerProps } from 'react-select/lib/components/containers';
+// import { GroupType, ValueType } from 'react-select/types';
 
 export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: 'AllSelected' };
@@ -33,11 +37,11 @@ export type SelectAllValue<OptionType> =
       values: OptionType[];
     };
 
-type NonDefaultProps<OptionType> = CommonProps<OptionType | SelectAllOptionType> & {
+type NonDefaultProps<OptionType> = CommonProps<OptionType | SelectAllOptionType, true> & {
   selectAllLabel: string;
   value: SelectAllValue<OptionType>;
   onChange: (value: SelectAllValue<OptionType>) => void;
-  options: CommonProps<OptionType>['options'];
+  options: CommonProps<OptionType, true>['options'];
 };
 
 export namespace MultiDropdownWithSelectAll {
@@ -46,7 +50,7 @@ export namespace MultiDropdownWithSelectAll {
 
 function isGroupedOptionsArray<OptionType>(
   options: MultiDropdownWithSelectAll.Props<OptionType>['options']
-): options is Array<GroupType<OptionType>> {
+): options is Array<GroupBase<OptionType>> {
   return options.length > 0 && (options[0] as any).hasOwnProperty('options');
 }
 
@@ -62,7 +66,9 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
 
   // if this component is defined inside the render method, the search input will lose focus
   // every time the component is re-rendered (e.g. every time we set new async options)
-  valueContainer = (valueContainerProps: ValueContainerProps<OptionType | SelectAllOptionType>) => {
+  valueContainer = (
+    valueContainerProps: ValueContainerProps<OptionType | SelectAllOptionType, true>
+  ) => {
     if (this.props.value && this.props.value.type === 'AllSelected') {
       const { children, ...otherProps } = valueContainerProps;
       const childrenWithoutValues = React.Children.toArray(children).filter(
@@ -92,7 +98,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     options: MultiDropdownWithSelectAll.Props<OptionType>['options']
   ):
     | Array<OptionType | SelectAllOptionType>
-    | Array<GroupType<OptionType | SelectAllOptionType>> => {
+    | Array<GroupBase<OptionType | SelectAllOptionType>> => {
     if (isGroupedOptionsArray(options)) {
       return [{ options: [this.selectAllOption] }, ...options];
     } else {
@@ -100,9 +106,12 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
     }
   };
 
-  onChange = (value: ValueType<SelectAllOptionType | OptionType>) => {
+  onChange = (
+    newValue: MultiValue<SelectAllOptionType | OptionType>,
+    _meta: ActionMeta<OptionType | SelectAllOptionType>
+  ) => {
     const valueArray: (OptionType | SelectAllOptionType)[] =
-      value && Array.isArray(value) ? value : [];
+      newValue && Array.isArray(newValue) ? newValue : [];
 
     if (valueArray.length > 0 && valueArray[valueArray.length - 1] == this.selectAllOption) {
       this.props.onChange({ type: 'AllSelected' });
@@ -127,9 +136,12 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
       ...props
     } = this.props as NonDefaultProps<OptionType> & DefaultProps;
 
-    const Component: React.ComponentType<Props<OptionType | SelectAllOptionType>> = allowCreate
-      ? Creatable
-      : Select;
+    const Component: React.ComponentType<CreatableProps<
+      OptionType | SelectAllOptionType,
+      true,
+      GroupBase<OptionType | SelectAllOptionType>
+    > &
+      React.RefAttributes<any>> = allowCreate ? Creatable : Select;
 
     const dropdownValue = selectAllValue
       ? selectAllValue.type === 'AllSelected'
@@ -151,7 +163,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
         onChange={this.onChange}
         options={this.injectSelectAllOptions(_options)}
         components={{
-          ...defaultComponents<OptionType | SelectAllOptionType>(),
+          ...defaultComponents<OptionType | SelectAllOptionType, true>(),
           ValueContainer: this.valueContainer,
           ...customComponents
         }}

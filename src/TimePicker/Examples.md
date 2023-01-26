@@ -3,7 +3,7 @@
 #### 12h time format
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 function onChange(value) {
   setState({ value });
@@ -15,7 +15,7 @@ function onChange(value) {
 #### 24h time format (bounded range)
 
 ```js
-initialState = { value: { hours: 11, minutes: 23 } };
+const [state, setState] = React.useState({ value: { hours: 11, minutes: 23 }}});
 
 const minTime = { hours: 8, minutes: 30 };
 const maxTime = { hours: 18, minutes: 30 };

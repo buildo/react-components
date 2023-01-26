@@ -1,6 +1,8 @@
 ### Examples
 
 ```js
+const [state, setState] = React.useState({ checked: false });
+
 function onChange(checked) {
   setState({ checked });
 }

@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = { value: true };
+const [state, setState] = React.useState(true);
 
 const onChange = value => setState({ value });
 

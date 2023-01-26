@@ -11,6 +11,8 @@ const brcComponents = fs
   .filter(c => ['index.ts', '.DS_Store', 'utils', 'Scroll', 'TransitionWrapper'].indexOf(c) === -1)
   .map(brc);
 
+console.log(brcComponents);
+
 module.exports = {
   // build
   serverPort: 8080,
@@ -25,16 +27,15 @@ module.exports = {
 
   // content
   title: 'buildo-react-components',
-  template: 'styleguide/index.html',
+  // template: 'styleguide/index.html',
   propsParser: require('react-docgen-typescript').parse, // detect docs using TS information
   sections: [
     {
       name: 'Components',
-      components: () => brcComponents
+      components: 'src/**/[A-Z]*.tsx'
     }
   ],
-  showCode: true,
-  showUsage: false, // show props by default
+  exampleMode: 'expand',
   getExampleFilename(componentPath) {
     const name = endsWith(componentPath, '.tsx')
       ? path.basename(componentPath, '.tsx')
