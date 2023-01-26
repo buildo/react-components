@@ -17,7 +17,6 @@ import {
   getCommonClassnames,
   DefaultProps
 } from './commons';
-// import { GroupType, ValueType } from 'react-select/types';
 
 export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: 'AllSelected' };
@@ -37,25 +36,27 @@ export type SelectAllValue<OptionType> =
       values: OptionType[];
     };
 
-type NonDefaultProps<OptionType> = CommonProps<OptionType | SelectAllOptionType, true> & {
+type NonDefaultProps<OptionType> = Omit<
+  CommonProps<OptionType | SelectAllOptionType, true>,
+  'isMulti'
+> & {
   selectAllLabel: string;
   value: SelectAllValue<OptionType>;
   onChange: (value: SelectAllValue<OptionType>) => void;
   options: CommonProps<OptionType, true>['options'];
 };
 
-export namespace MultiDropdownWithSelectAll {
-  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
-}
+export type MultiDropdownWithSelectAllProps<OptionType> = NonDefaultProps<OptionType> &
+  Partial<DefaultProps>;
 
 function isGroupedOptionsArray<OptionType>(
-  options: MultiDropdownWithSelectAll.Props<OptionType>['options']
+  options: MultiDropdownWithSelectAllProps<OptionType>['options']
 ): options is Array<GroupBase<OptionType>> {
   return options.length > 0 && (options[0] as any).hasOwnProperty('options');
 }
 
 export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
-  MultiDropdownWithSelectAll.Props<OptionType>
+  MultiDropdownWithSelectAllProps<OptionType>
 > {
   static defaultProps = defaultProps;
 
@@ -95,7 +96,7 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
   };
 
   injectSelectAllOptions = (
-    options: MultiDropdownWithSelectAll.Props<OptionType>['options']
+    options: MultiDropdownWithSelectAllProps<OptionType>['options']
   ):
     | Array<OptionType | SelectAllOptionType>
     | Array<GroupBase<OptionType | SelectAllOptionType>> => {
