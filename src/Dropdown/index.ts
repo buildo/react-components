@@ -1,4 +1,10 @@
-import { Dropdown as SingleDropdown } from './Dropdown';
-import { MultiDropdown } from './MultiDropdown';
+import { Dropdown as SingleDropdown, DropdownProps as SingleDropdownProps } from './Dropdown';
+import { MultiDropdown, MultiDropdownProps } from './MultiDropdown';
 import { MultiDropdownWithSelectAll } from './MultiDropdownWithSelectAll';
-export { SingleDropdown, MultiDropdown, MultiDropdownWithSelectAll };
+export {
+  SingleDropdown,
+  SingleDropdownProps,
+  MultiDropdown,
+  MultiDropdownWithSelectAll,
+  MultiDropdownProps
+};

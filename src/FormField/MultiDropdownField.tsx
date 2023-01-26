@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { MultiDropdown as Dropdown } from '../Dropdown';
+import { MultiDropdown as Dropdown, MultiDropdownProps as DropdownProps } from '../Dropdown';
 import { FormField } from './FormField';
 
 type DefaultProps<OptionType> = {
   /** An optional custom renderer for Dropdown */
-  dropdownRenderer: (props: Dropdown.Props<OptionType>) => JSX.Element;
+  dropdownRenderer: (props: DropdownProps<OptionType>) => JSX.Element;
 };
 
 type NonDefaultProps<OptionType> = {
@@ -24,7 +24,7 @@ type NonDefaultProps<OptionType> = {
   /** an optional id passed to the dropdown component */
   id?: string;
   /** the properties of the dropwdown */
-  dropdownProps: Dropdown.Props<OptionType>;
+  dropdownProps: DropdownProps<OptionType>;
 };
 
 type InternalProps<OptionType> = NonDefaultProps<OptionType> & DefaultProps<OptionType>;

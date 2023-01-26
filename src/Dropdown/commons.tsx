@@ -16,6 +16,7 @@ export type CommonProps<OptionType, IsMulti extends boolean> = Omit<
   flat?: boolean;
   innerRef?: (ref: Select | null) => void;
   options: NonNullable<SelectProps<OptionType>['options']>;
+  style?: React.CSSProperties;
 } & (
     | ({
         allowCreate: true;

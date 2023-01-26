@@ -2,7 +2,10 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import { SingleDropdown as Dropdown } from '../../src/Dropdown';
+import {
+  SingleDropdown as Dropdown,
+  SingleDropdownProps as DropdownProps
+} from '../../src/Dropdown';
 
 let consoleError: jest.SpyInstance<{}>;
 
@@ -14,7 +17,7 @@ afterEach(() => {
   expect(consoleError).not.toHaveBeenCalled();
 });
 
-const exampleProps: Dropdown.Props = {
+const exampleProps: DropdownProps<any> = {
   id: '12345',
   className: 'fancy-class-name',
   style: { margin: 10, position: 'relative' },

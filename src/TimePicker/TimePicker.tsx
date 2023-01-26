@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { SingleDropdown } from '../Dropdown';
+import { SingleDropdown, SingleDropdownProps } from '../Dropdown';
 import range = require('lodash/range');
 import flatten = require('lodash/flatten');
 import compact = require('lodash/compact');
@@ -216,9 +216,9 @@ export interface DefaultProps {
   /** dropdown size */
   size: 'medium' | 'small';
   /** whether the menu should open on top or bottom */
-  menuPosition: SingleDropdown.Props<TimeDropdownOption>['menuPlacement'];
+  menuPosition: SingleDropdownProps<TimeDropdownOption>['menuPlacement'];
   /** object of custom compoents for react select */
-  components: SingleDropdown.Props<TimeDropdownOption>['components'];
+  components: SingleDropdownProps<TimeDropdownOption>['components'];
 }
 
 export namespace TimePicker {
