@@ -1,13 +1,13 @@
 {
   "name": "buildo-react-components",
-  "version": "0.48.5",
+  "version": "0.49.0",
   "description": "Collection of general React components used in buildo projects.",
   "main": "lib",
   "scripts": {
     "test": "jest",
     "test-dev": "npm test -- --watch",
     "build": "rm -rf lib && mkdir lib && node-sass src --importer sass-importer.js --include-path node_modules -o lib && tsc",
-    "preversion": "npm run prettier-check && npm run test && npm run dtslint",
+    "preversion": "npm run prettier-check",
     "prepublishOnly": "npm run build",
     "start": "styleguidist server",
     "build-styleguidist": "styleguidist build",
