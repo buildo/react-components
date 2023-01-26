@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as brc from "../src";
-import { getBackgroundUrl } from "../src/Image";
-import OriginalStyleGuideRenderer from "react-styleguidist/lib/rsg-components/StyleGuide/StyleGuideRenderer";
+import * as React from 'react';
+import * as brc from '../src';
+import { getBackgroundUrl } from '../src/Image';
+import OriginalStyleGuideRenderer from 'react-styleguidist/lib/client/rsg-components/StyleGuide/StyleGuideRenderer';
 
-export default class StyleGuideRenderer extends React.Component {
+export default class AStyleGuideRenderer extends React.Component {
   componentDidMount() {
     this.patchGlobal();
   }
@@ -15,11 +15,11 @@ export default class StyleGuideRenderer extends React.Component {
   patchGlobal() {
     // TODO: find a better way to make examples work without an "export default" in the component file
     Object.keys(brc).forEach(k => {
-      if (k !== "__es6Module") {
+      if (k !== '__es6Module') {
         (global as any)[k] = (brc as any)[k];
       }
     });
-    (global as any)["getBackgroundUrl"] = getBackgroundUrl;
+    (global as any)['getBackgroundUrl'] = getBackgroundUrl;
   }
 
   render() {

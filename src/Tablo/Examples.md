@@ -1,12 +1,12 @@
 ### Examples
 
 ```js
-initialState = {
+const [state, setState] = React.useState({
   sortBy: 'name',
   sortDir: 'asc',
   columnWidths: {},
   columnsOrder: []
-};
+});
 
 const rowHeight = 40;
 

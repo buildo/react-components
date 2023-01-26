@@ -3,7 +3,7 @@
 Empty component to represent an empty state (e.g., in a list) and allow the user to perform an action (e.g., create an item).
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const icon = (
   <svg height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

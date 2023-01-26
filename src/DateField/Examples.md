@@ -3,7 +3,7 @@
 #### A typical usage
 
 ```js
-initialState = { value: undefined };
+const [state, setState] = React.useState({ value: undefined });
 
 function onChange(value) {
   setState({ value });
@@ -17,10 +17,10 @@ function onChange(value) {
 #### Handle date validation
 
 ```js
-initialState = {
+const [state, setState] = React.useState({
   value: new Date(),
   isValid: true
-};
+});
 
 function onChange(value) {
   setState({ value });

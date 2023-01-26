@@ -118,7 +118,7 @@ export class TransitionWrapper<CP extends {}> extends React.PureComponent<
     onLeave();
   };
 
-  getStyle = () => {
+  getStyle = (): React.CSSProperties => {
     const { style } = this.props as TransitionWrapperDefaultedProps<CP>;
     const { animationStart, animationEnd, defaultStyle } = this.state;
     const userTransform = (animationEnd || animationStart || defaultStyle || {}).transform;

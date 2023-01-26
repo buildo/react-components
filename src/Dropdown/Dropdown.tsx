@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select from 'react-select';
-import Creatable from 'react-select/lib/Creatable';
+import Creatable from 'react-select/creatable';
 import * as cx from 'classnames';
 import {
   CommonProps,
@@ -11,7 +11,7 @@ import {
   DefaultProps
 } from './commons';
 
-export type NonDefaultProps<OptionType> = CommonProps<OptionType> &
+export type NonDefaultProps<OptionType> = CommonProps<OptionType, false> &
   (
     | {
         isClearable: true;
@@ -51,7 +51,7 @@ export class Dropdown<OptionType> extends React.PureComponent<Dropdown.Props<Opt
         {...props}
         classNamePrefix="dropdown"
         components={{
-          ...defaultComponents<OptionType>(),
+          ...defaultComponents<OptionType, false>(),
           ...customComponents
         }}
         className={cx(getCommonClassnames(size, flat || false, props.isSearchable), className)}

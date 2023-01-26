@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const onChange = value => setState({ value });
 
@@ -27,7 +27,7 @@ const options = [
 ```
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const onChange = value => setState({ value });
 

@@ -6,11 +6,9 @@ import flatten = require('lodash/flatten');
 import compact = require('lodash/compact');
 import uniqBy = require('lodash/uniqBy');
 import sortBy = require('lodash/sortBy');
-import { components } from 'react-select';
+import { components, OptionProps, SingleValueProps } from 'react-select';
 import find = require('lodash/find');
 import { warn } from '../utils/log';
-import { OptionProps } from 'react-select/lib/components/Option';
-import { SingleValueProps } from 'react-select/lib/components/SingleValue';
 
 export const H24 = '24h';
 export const H12 = '12h';
@@ -203,7 +201,6 @@ export interface RequiredProps {
   disabled?: boolean;
   className?: string;
   id?: string;
-  style?: React.CSSProperties;
 }
 export interface DefaultProps {
   /** field placeholder, displayed when there's no value. Default[--:--] */
@@ -282,7 +279,6 @@ export class TimePicker extends React.Component<TimePicker.Props, { inputValue: 
     const {
       className: _className,
       id,
-      style,
       minTime,
       maxTime,
       timeFormat,
@@ -307,7 +303,6 @@ export class TimePicker extends React.Component<TimePicker.Props, { inputValue: 
       <SingleDropdown
         id={id}
         className={className}
-        style={style}
         isSearchable={searchable}
         value={find(options, o => o.value === value)!}
         onChange={onChange}

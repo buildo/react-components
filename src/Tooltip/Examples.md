@@ -89,7 +89,7 @@ const commonPopoverProps = { content: 'Tooltip', isOpen: true };
 By default, the tooltip is triggered when the mouse moves over the wrapped component. Using the `isOpen` prop you can also decide to manually control when the tooltip should appear:
 
 ```js
-initialState = { isOpen: false };
+const [state, setState] = React.useState({ isOpen: false });
 
 onClick = () => {
   setState({ isOpen: !state.isOpen });

@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-initialState = { value: '' };
+const [state, setState] = React.useState({ value: '' });
 
 const onChange = value => setState({ value });
 
@@ -13,7 +13,7 @@ const value = state.value;
 ```
 
 ```js
-initialState = { valueSuccess: 'success', valueFailure: 'failure' };
+const [state, setState] = React.useState({ valueSuccess: 'success', valueFailure: 'failure' });
 
 const onChangeSuccess = valueSuccess => setState({ valueSuccess });
 const onChangeFailure = valueFailure => setState({ valueFailure });
@@ -43,7 +43,7 @@ const wrapperProps = { style: { marginRight: '10px', width: '150px' } };
 #### Password Input
 
 ```js
-initialState = { value: '' };
+const [state, setState] = React.useState({ value: '' });
 
 const onChange = value => setState({ value });
 
@@ -53,7 +53,7 @@ const onChange = value => setState({ value });
 #### Confirmation Input
 
 ```js
-initialState = {};
+const [state, setState] = React.useState({});
 
 const onConfirm = value => console.log(`confirmed: ${value}`);
 const onClear = () => console.log('cleared!');
