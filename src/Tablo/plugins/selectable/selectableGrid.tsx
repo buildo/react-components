@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import includes = require('lodash/includes');
 import { Tablo } from '../../Tablo';
 import { Table } from 'fixed-data-table-2';

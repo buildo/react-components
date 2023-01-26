@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { stateClassUtil, ObjectOverwrite, Children } from '../utils';
 import { FormattedText } from '../FormattedText/FormattedText';
 import { Popover } from '../Popover/Popover';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ActionsMenu } from './ActionsMenu';
 import FlexView from 'react-flexview';
 import { Popover } from '../Popover/Popover';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 export type MenuRequiredProps = {
   /** custom content for the menu trigger */

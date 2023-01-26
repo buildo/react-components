@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import DatePicker from '../DatePicker';
 import { FormField } from './FormField';
 

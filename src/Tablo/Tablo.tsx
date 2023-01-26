@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { Table, TableProps } from 'fixed-data-table-2';
 import Column, { defaultColumns, updateColumns } from './Column';
 import FlexView from 'react-flexview';

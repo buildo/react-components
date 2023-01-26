@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import GeminiScrollbar = require('gemini-scrollbar');
 import { ResizeSensor } from '../ResizeSensor/ResizeSensor';
 import { findDOMNode } from '../utils';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import partial = require('lodash/partial');
 import FlexView from 'react-flexview';
 import { Divider } from '../Divider/Divider';

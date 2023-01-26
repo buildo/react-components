@@ -1,6 +1,6 @@
 import * as React from 'react';
 import flattenDeep = require('lodash/flattenDeep');
-import * as _linkify from 'linkify-it';
+import _linkify from 'linkify-it';
 import { LinkifyIt } from 'linkify-it';
 
 // TODO: replace "require" with "import"... for some reason they're workin only with "require"

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTransitionGroup from 'react-transition-group/TransitionGroup';
+import ReactTransitionGroup from 'react-transition-group/TransitionGroup';
 import TransitionWrapper from '../TransitionWrapper';
 
 let containerNode: Element | null = null;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { Tooltip, TooltipDefaultProps, TooltipRequiredProps } from './Tooltip';
 import View from 'react-flexview';
 import { findDOMNode } from '../utils';

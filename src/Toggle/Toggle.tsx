@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { warn } from '../utils/log';
 
 export type ToggleDefaultProps = {};

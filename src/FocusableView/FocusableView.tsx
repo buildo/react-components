@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import debounce = require('lodash/debounce');
 import { Children } from '../utils';
 

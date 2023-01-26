@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { MultiDropdown as Dropdown, MultiDropdownProps as DropdownProps } from '../Dropdown';
 import { FormField } from './FormField';
 

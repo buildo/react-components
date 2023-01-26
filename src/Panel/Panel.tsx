@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { Children } from '../utils';
 import { PanelHeader } from './PanelHeader';
 import capitalize = require('lodash/capitalize');

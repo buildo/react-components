@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Select from 'react-select';
 import Creatable from 'react-select/creatable';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import {
   CommonProps,
   defaultProps,

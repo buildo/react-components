@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import omit = require('lodash/omit');
 import { Input } from '../Input/Input';
 import FlexView from 'react-flexview';

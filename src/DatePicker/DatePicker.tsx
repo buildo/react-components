@@ -1,10 +1,10 @@
 import 'react-dates/initialize';
 
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { SingleDatePicker as _SingleDatePicker, SingleDatePickerShape } from 'react-dates';
 import FlexView from 'react-flexview';
-import * as moment from 'moment';
+import moment from 'moment';
 import { LocalDate } from 'local-date';
 
 export namespace DatePicker {

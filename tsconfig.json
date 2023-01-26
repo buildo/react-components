@@ -15,7 +15,8 @@
     "sourceMap": false,
     "alwaysStrict": true,
     "jsx": "react",
-    "lib": ["dom", "es6"]
+    "lib": ["dom", "es6"],
+    "esModuleInterop": true
   },
   "include": ["src/**/*", "typings"]
 }

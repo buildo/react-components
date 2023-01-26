@@ -8,7 +8,7 @@ import Select, {
 } from 'react-select';
 
 import Creatable, { CreatableProps } from 'react-select/creatable';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import {
   CommonProps,
   defaultProps,

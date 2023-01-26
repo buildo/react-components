@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { Children } from '../../utils';
 import FlexView from 'react-flexview';
 import { Cell as CellFDT } from 'fixed-data-table-2';

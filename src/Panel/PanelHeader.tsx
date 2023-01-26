@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { stateClassUtil, Children } from '../utils';
 import FlexView from 'react-flexview';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 export type PanelHeaderDefaultProps = {
   size: PanelHeader.HeaderSize;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as MobileDetect from 'mobile-detect';
+import MobileDetect from 'mobile-detect';
 import * as PropTypes from 'prop-types';
 
 export namespace MobileDetector {

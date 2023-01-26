@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { ObjectOverwrite, Children } from '../utils';
 import omit = require('lodash/omit');
 import InputChildren from 'react-input-children';

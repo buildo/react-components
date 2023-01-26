@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { find } from '../../../utils';
 
-import * as cx from 'classnames';
+import cx from 'classnames';
 import sortBy = require('lodash/sortBy');
 import findIndex = require('lodash/findIndex');
 import once = require('lodash/once');

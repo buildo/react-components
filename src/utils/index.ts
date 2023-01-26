@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import _find = require('lodash/find');
 
 export const stateClassUtil = (classes: string[]): string => cx(classes.map(cl => `is-${cl}`));

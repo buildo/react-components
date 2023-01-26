@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import Column, { defaultColumns, updateColumns } from '../../Column';
 import { Tablo, TabloDefaultedIntrinsicProps } from '../../Tablo';
 import { UpdateColumnsProps } from '../../Column/columnUtility';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 export type DividerDefaultProps = {
   /** divider orientation (vertical | horizontal) */

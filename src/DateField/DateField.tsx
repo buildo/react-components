@@ -1,6 +1,6 @@
 import * as React from 'react';
 import every = require('lodash/every');
-import * as cx from 'classnames';
+import cx from 'classnames';
 import View from 'react-flexview';
 
 export namespace DateField {

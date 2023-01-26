@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import View from 'react-flexview';
 import Button, { StatefulButton } from '../Button';
 import { findDOMNode, Children } from '../utils';

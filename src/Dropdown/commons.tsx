@@ -1,6 +1,6 @@
 import Select, { GroupBase, Props as SelectProps } from 'react-select';
 import { CreatableProps } from 'react-select/creatable';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 export type DefaultProps = {
   delimiter: NonNullable<SelectProps['delimiter']>;
