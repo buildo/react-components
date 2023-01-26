@@ -1,6 +1,5 @@
 import Select, { GroupBase, Props as SelectProps } from 'react-select';
 import { CreatableProps } from 'react-select/creatable';
-import { ObjectOmit } from '../utils';
 import * as cx from 'classnames';
 
 export type DefaultProps = {
@@ -10,9 +9,9 @@ export type DefaultProps = {
   menuPlacement: NonNullable<SelectProps['menuPlacement']>;
 };
 
-export type CommonProps<OptionType, IsMulti extends boolean> = ObjectOmit<
+export type CommonProps<OptionType, IsMulti extends boolean> = Omit<
   SelectProps<OptionType, IsMulti>,
-  'isMulti' | 'onChange' | 'value' | 'disabled' | 'options'
+  'onChange' | 'value' | 'disabled' | 'options'
 > & {
   flat?: boolean;
   innerRef?: (ref: Select | null) => void;

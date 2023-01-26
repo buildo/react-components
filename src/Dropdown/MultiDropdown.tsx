@@ -11,18 +11,14 @@ import {
   DefaultProps
 } from './commons';
 
-type NonDefaultProps<OptionType> = CommonProps<OptionType, true> & {
+type NonDefaultProps<OptionType> = Omit<CommonProps<OptionType, true>, 'isMulti'> & {
   value: OptionType[];
   onChange: (value: OptionType[]) => void;
 };
 
-export namespace MultiDropdown {
-  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
-}
+export type MultiDropdownProps<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
 
-export class MultiDropdown<OptionType> extends React.PureComponent<
-  MultiDropdown.Props<OptionType>
-> {
+export class MultiDropdown<OptionType> extends React.PureComponent<MultiDropdownProps<OptionType>> {
   static defaultProps = defaultProps;
 
   render() {

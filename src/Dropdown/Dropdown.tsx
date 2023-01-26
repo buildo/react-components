@@ -11,7 +11,7 @@ import {
   DefaultProps
 } from './commons';
 
-export type NonDefaultProps<OptionType> = CommonProps<OptionType, false> &
+export type NonDefaultProps<OptionType> = Omit<CommonProps<OptionType, false>, 'isMulti'> &
   (
     | {
         isClearable: true;
@@ -25,11 +25,9 @@ export type NonDefaultProps<OptionType> = CommonProps<OptionType, false> &
       }
   );
 
-export namespace Dropdown {
-  export type Props<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
-}
+export type DropdownProps<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
 
-export class Dropdown<OptionType> extends React.PureComponent<Dropdown.Props<OptionType>> {
+export class Dropdown<OptionType> extends React.PureComponent<DropdownProps<OptionType>> {
   static defaultProps = defaultProps;
 
   render() {
