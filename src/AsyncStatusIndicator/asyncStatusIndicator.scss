@@ -29,6 +29,6 @@ $font-size: 14px !default;
   .async-status-indicator-icon {
     position: relative;
     width: $font-size;
-    margin-right: $font-size * 0.5;
+    margin-right: $font-size / 2;
   }
 }
