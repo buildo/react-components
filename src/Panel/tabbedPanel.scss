@@ -9,7 +9,7 @@ $tab-color: $brc-coolGrey !default;
 $tab-color-active: $brc-darkGreyBlue !default;
 $tab-icon-margin-right: 8px !default;
 
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
+@import 'sass-flex-mixins/src/sass-flex-mixins.scss';
 
 .panel.tabbed-panel {
   > .panel-header {
