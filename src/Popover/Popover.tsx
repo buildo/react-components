@@ -115,18 +115,15 @@ export class Popover extends React.Component<Popover.Props, State> {
     }
   }
 
-  componendDidUpdate() {
+  componentDidUpdate(prevProps: Popover.Props) {
     this.updateDebouncedMousedEvents(this.props);
     this.saveValuesFromNodeTree();
 
-    const isOpenChanged = this.getPopoverProps().isOpen !== this.getPopoverProps(this.props).isOpen;
+    const isOpenChanged = this.getPopoverProps(prevProps).isOpen !== this.getPopoverProps().isOpen;
 
     if (!this.isStateful() && isOpenChanged) {
       this.onPopoverOpenChange(this.props);
     }
-  }
-
-  componentDidUpdate() {
     if (this.containerNode && this.state.popover) {
       const popover = this.getVisiblePopover();
       const { context } = this.getPopoverProps();
@@ -215,13 +212,13 @@ export class Popover extends React.Component<Popover.Props, State> {
       onShow: () => {},
       onHide: () => {},
       onToggle: () => {},
-      dismissOnClickOutside: true,
-      dismissOnScroll: true,
       className: '',
       distance: 5,
       offsetX: 0,
       offsetY: 0,
-      ...props.popover
+      ...props.popover,
+      dismissOnClickOutside: props.popover.dismissOnClickOutside !== false,
+      dismissOnScroll: props.popover.dismissOnScroll !== false
     };
   };
 

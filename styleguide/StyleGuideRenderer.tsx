@@ -3,7 +3,9 @@ import * as brc from '../src';
 import { getBackgroundUrl } from '../src/Image';
 import OriginalStyleGuideRenderer from 'react-styleguidist/lib/client/rsg-components/StyleGuide/StyleGuideRenderer';
 
-export default class AStyleGuideRenderer extends React.Component {
+export default class AStyleGuideRenderer extends React.Component<
+  React.ComponentProps<typeof OriginalStyleGuideRenderer>
+> {
   componentDidMount() {
     this.patchGlobal();
   }

@@ -1,7 +1,7 @@
 ### Examples
 
 ```js
-intialState = { isOpen: false };
+const [state, setState] = React.useState({ isOpen: false });
 
 function toggleOpen() {
   setState({ isOpen: !state.isOpen });
