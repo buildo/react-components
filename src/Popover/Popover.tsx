@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import cx from 'classnames';
 import debounce = require('lodash/debounce');
 import uniq = require('lodash/uniq');
+import isEqual = require('lodash/isEqual');
 import { getContextWrapper, Children } from '../utils';
 
 const NO_SIZE_WRAPPER = 'no-size-wrapper';
@@ -259,7 +260,7 @@ export class Popover extends React.Component<Popover.Props, State> {
       const { top: childY, left: childX } = this.getOffsetRect(this.children);
       const { top: popoverY, left: popoverX } = this.getOffsetRect(popoverNode);
 
-      this.setState({
+      const newState = {
         child: {
           width: childWidth,
           height: childHeight,
@@ -272,7 +273,14 @@ export class Popover extends React.Component<Popover.Props, State> {
           x: popoverX,
           y: popoverY
         }
-      });
+      };
+
+      if (
+        !isEqual(this.state.child, newState.child) ||
+        !isEqual(this.state.popover, newState.popover)
+      ) {
+        this.setState(newState);
+      }
     }
   };
 
