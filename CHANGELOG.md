@@ -2,8 +2,35 @@
 
 
 
+## [v0.49.9](https://github.com/buildo/react-components/tree/v0.49.9) (2023-05-04)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.8...v0.49.9)
+
 ## [v0.49.8](https://github.com/buildo/react-components/tree/v0.49.8) (2023-04-27)
-[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.5...v0.49.8)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.7...v0.49.8)
+
+## [v0.49.7](https://github.com/buildo/react-components/tree/v0.49.7) (2023-01-30)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.6...v0.49.7)
+
+## [v0.49.6](https://github.com/buildo/react-components/tree/v0.49.6) (2023-01-30)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.5...v0.49.6)
+
+## [v0.49.5](https://github.com/buildo/react-components/tree/v0.49.5) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.4...v0.49.5)
+
+## [v0.49.4](https://github.com/buildo/react-components/tree/v0.49.4) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.3...v0.49.4)
+
+## [v0.49.3](https://github.com/buildo/react-components/tree/v0.49.3) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.2...v0.49.3)
+
+## [v0.49.2](https://github.com/buildo/react-components/tree/v0.49.2) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.1...v0.49.2)
+
+## [v0.49.1](https://github.com/buildo/react-components/tree/v0.49.1) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.0...v0.49.1)
+
+## [v0.49.0](https://github.com/buildo/react-components/tree/v0.49.0) (2023-01-26)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.48.5...v0.49.0)
 
 ## [v0.48.5](https://github.com/buildo/react-components/tree/v0.48.5) (2021-09-24)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.48.4...v0.48.5)
