@@ -4,14 +4,14 @@ import Creatable from 'react-select/creatable';
 import cx from 'classnames';
 import {
   CommonProps,
+  DataAttributesContext,
   defaultProps,
   defaultComponents,
   defaultStyle,
   getCommonClassnames,
-  renderWithDataAttributes,
   DefaultProps
 } from './commons';
-import { DataAttributes } from '../utils';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type NonDefaultProps<OptionType> = Omit<CommonProps<OptionType, false>, 'isMulti'> &
   (
@@ -47,20 +47,21 @@ export class Dropdown<OptionType> extends React.PureComponent<DropdownProps<Opti
 
     const Component: any = allowCreate ? Creatable : Select;
 
-    return renderWithDataAttributes(
-      this.props,
-      <Component
-        styles={defaultStyle}
-        {...props}
-        classNamePrefix="dropdown"
-        components={{
-          ...defaultComponents<OptionType, false>(),
-          ...customComponents
-        }}
-        className={cx(getCommonClassnames(size, flat || false, props.isSearchable), className)}
-        ref={innerRef}
-        isSearchable={allowCreate || props.isSearchable}
-      />
+    return (
+      <DataAttributesContext.Provider value={pickDataAttributes(this.props)}>
+        <Component
+          styles={defaultStyle}
+          {...props}
+          classNamePrefix="dropdown"
+          components={{
+            ...defaultComponents<OptionType, false>(),
+            ...customComponents
+          }}
+          className={cx(getCommonClassnames(size, flat || false, props.isSearchable), className)}
+          ref={innerRef}
+          isSearchable={allowCreate || props.isSearchable}
+        />
+      </DataAttributesContext.Provider>
     );
   }
 }

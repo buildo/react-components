@@ -1,8 +1,13 @@
 import * as React from 'react';
-import Select, { GroupBase, Props as SelectProps } from 'react-select';
+import Select, {
+  components as RSComponents,
+  ContainerProps,
+  GroupBase,
+  Props as SelectProps
+} from 'react-select';
 import { CreatableProps } from 'react-select/creatable';
 import cx from 'classnames';
-import { pickDataAttributes } from '../utils';
+import { DataAttributes } from '../utils';
 
 export type DefaultProps = {
   delimiter: NonNullable<SelectProps['delimiter']>;
@@ -36,11 +41,38 @@ export const defaultProps: DefaultProps = {
   menuPlacement: 'bottom'
 };
 
+/**
+ * Carries consumer-supplied `data-*` attributes from the dropdown variants
+ * down to the default SelectContainer below, which spreads them onto
+ * react-select's own root element. Consumers who override
+ * `components.SelectContainer` should also read this context to preserve
+ * data-* forwarding.
+ */
+export const DataAttributesContext = React.createContext<DataAttributes>({});
+
+const IndicatorSeparator = () => null;
+
+const SelectContainerWithDataAttributes: React.ComponentType<ContainerProps<
+  any,
+  any
+>> = props => {
+  const dataAttrs = React.useContext(DataAttributesContext);
+  return (
+    <RSComponents.SelectContainer
+      {...props}
+      innerProps={{ ...props.innerProps, ...dataAttrs } as ContainerProps<any, any>['innerProps']}
+    />
+  );
+};
+
 export const defaultComponents = <
   OptionType extends unknown,
   IsMulti extends boolean
 >(): SelectProps<OptionType, IsMulti>['components'] => ({
-  IndicatorSeparator: () => null
+  IndicatorSeparator,
+  SelectContainer: SelectContainerWithDataAttributes as NonNullable<
+    SelectProps<OptionType, IsMulti>['components']
+  >['SelectContainer']
 });
 
 export const getCommonClassnames = (
@@ -60,25 +92,3 @@ export const getCommonClassnames = (
 export const defaultStyle = {
   input: () => ({ margin: 0, padding: 0 })
 };
-
-/**
- * react-select does not forward unknown props (including data-*) to its root
- * element. When the consumer passes any data-* attribute, wrap the select in a
- * layout-neutral element (display: contents) so the attribute lands in the DOM
- * without affecting layout. When no data-* are present, render the select
- * as-is to preserve the existing DOM shape.
- */
-export function renderWithDataAttributes(
-  props: object,
-  node: React.ReactElement
-): React.ReactElement {
-  const dataAttrs = pickDataAttributes(props);
-  if (Object.keys(dataAttrs).length === 0) {
-    return node;
-  }
-  return (
-    <div style={{ display: 'contents' }} {...dataAttrs}>
-      {node}
-    </div>
-  );
-}
