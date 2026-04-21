@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type DividerDefaultProps = {
   /** divider orientation (vertical | horizontal) */
@@ -15,7 +16,7 @@ export type DividerDefaultProps = {
 export namespace Divider {
   export type Orientation = 'horizontal' | 'vertical';
   export type Size = 'small' | 'medium' | 'large' | 'no-margin';
-  export type Props = Partial<DividerDefaultProps>;
+  export type Props = Partial<DividerDefaultProps> & DataAttributes;
 }
 type DividerDefaultedProps = DividerDefaultProps;
 
@@ -31,6 +32,12 @@ export class Divider extends React.PureComponent<Divider.Props> {
 
   render() {
     const { orientation, style, size, className } = this.props as DividerDefaultedProps;
-    return <div className={cx('divider', className, orientation, size)} style={style} />;
+    return (
+      <div
+        className={cx('divider', className, orientation, size)}
+        style={style}
+        {...pickDataAttributes(this.props)}
+      />
+    );
   }
 }
