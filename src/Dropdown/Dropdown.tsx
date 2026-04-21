@@ -8,8 +8,10 @@ import {
   defaultComponents,
   defaultStyle,
   getCommonClassnames,
+  renderWithDataAttributes,
   DefaultProps
 } from './commons';
+import { DataAttributes } from '../utils';
 
 export type NonDefaultProps<OptionType> = Omit<CommonProps<OptionType, false>, 'isMulti'> &
   (
@@ -25,7 +27,9 @@ export type NonDefaultProps<OptionType> = Omit<CommonProps<OptionType, false>, '
       }
   );
 
-export type DropdownProps<OptionType> = NonDefaultProps<OptionType> & Partial<DefaultProps>;
+export type DropdownProps<OptionType> = NonDefaultProps<OptionType> &
+  Partial<DefaultProps> &
+  DataAttributes;
 
 export class Dropdown<OptionType> extends React.PureComponent<DropdownProps<OptionType>> {
   static defaultProps = defaultProps;
@@ -43,7 +47,8 @@ export class Dropdown<OptionType> extends React.PureComponent<DropdownProps<Opti
 
     const Component: any = allowCreate ? Creatable : Select;
 
-    return (
+    return renderWithDataAttributes(
+      this.props,
       <Component
         styles={defaultStyle}
         {...props}

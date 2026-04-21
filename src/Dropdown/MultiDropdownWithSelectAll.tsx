@@ -15,8 +15,10 @@ import {
   defaultComponents,
   defaultStyle,
   getCommonClassnames,
+  renderWithDataAttributes,
   DefaultProps
 } from './commons';
+import { DataAttributes } from '../utils';
 
 export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: 'AllSelected' };
@@ -47,7 +49,8 @@ type NonDefaultProps<OptionType> = Omit<
 };
 
 export type MultiDropdownWithSelectAllProps<OptionType> = NonDefaultProps<OptionType> &
-  Partial<DefaultProps>;
+  Partial<DefaultProps> &
+  DataAttributes;
 
 function isGroupedOptionsArray<OptionType>(
   options: MultiDropdownWithSelectAllProps<OptionType>['options']
@@ -150,7 +153,8 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
         : selectAllValue.values
       : [];
 
-    return (
+    return renderWithDataAttributes(
+      this.props,
       <Component
         classNamePrefix="dropdown"
         className={cx(
