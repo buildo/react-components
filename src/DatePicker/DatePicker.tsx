@@ -6,6 +6,7 @@ import { SingleDatePicker as _SingleDatePicker, SingleDatePickerShape } from 're
 import FlexView from 'react-flexview';
 import moment from 'moment';
 import { LocalDate } from 'local-date';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export namespace DatePicker {
   export type Props = {
@@ -62,7 +63,8 @@ export namespace DatePicker {
         /* called when value changes */
         onChange?: (date: LocalDate) => void;
       }
-  );
+  ) &
+    DataAttributes;
 }
 
 export type State = {
@@ -265,6 +267,7 @@ export class DatePicker extends React.PureComponent<DatePicker.Props, State> {
           'has-focus': this.state.focused
         })}
         style={style}
+        {...pickDataAttributes(this.props)}
       >
         <SingleDatePicker
           id={id || ''}

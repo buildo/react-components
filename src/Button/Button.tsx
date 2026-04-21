@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import every = require('lodash/every');
-import { stateClassUtil } from '../utils';
+import { DataAttributes, pickDataAttributes, stateClassUtil } from '../utils';
 import { TextOverflow } from '../TextOverflow/TextOverflow';
 import FlexView from 'react-flexview';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
@@ -48,7 +48,7 @@ export namespace Button {
   export type ButtonType = 'default' | 'primary' | 'positive' | 'negative' | 'flat';
   export type ButtonSize = 'tiny' | 'small' | 'medium';
 
-  export type Props = ButtonRequiredProps & Partial<ButtonDefaultProps>;
+  export type Props = ButtonRequiredProps & Partial<ButtonDefaultProps> & DataAttributes;
 }
 
 type ButtonDefaultedProps = ButtonRequiredProps & ButtonDefaultProps;
@@ -194,7 +194,12 @@ export class Button extends React.PureComponent<Button.Props> {
     const loading = buttonState === 'processing';
 
     return (
-      <div className="button" style={wrapperStyle}>
+      <div
+        className="button"
+        role="button"
+        style={wrapperStyle}
+        {...pickDataAttributes(this.props)}
+      >
         <FlexView
           className={cx('button-inner', className, stateClassUtil([buttonState]))}
           vAlignContent="center"

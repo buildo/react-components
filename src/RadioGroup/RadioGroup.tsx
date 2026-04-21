@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type RadioOption<T> = {
   label: string;
@@ -28,7 +29,9 @@ export type RadioGroupDefaultProps = {
 };
 
 export namespace RadioGroup {
-  export type Props<T> = RadioGroupRequiredProps<T> & Partial<RadioGroupDefaultProps>;
+  export type Props<T> = RadioGroupRequiredProps<T> &
+    Partial<RadioGroupDefaultProps> &
+    DataAttributes;
 }
 
 export class RadioGroup<T> extends React.PureComponent<RadioGroup.Props<T>> {
@@ -66,6 +69,7 @@ export class RadioGroup<T> extends React.PureComponent<RadioGroup.Props<T>> {
           },
           className
         )}
+        {...pickDataAttributes(this.props)}
       >
         {options.map(option => (
           <FlexView

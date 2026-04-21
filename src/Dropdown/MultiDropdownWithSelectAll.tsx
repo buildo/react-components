@@ -11,12 +11,14 @@ import Creatable, { CreatableProps } from 'react-select/creatable';
 import cx from 'classnames';
 import {
   CommonProps,
+  DataAttributesContext,
   defaultProps,
   defaultComponents,
   defaultStyle,
   getCommonClassnames,
   DefaultProps
 } from './commons';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export function allSelected<OptionType = never>(): SelectAllValue<OptionType> {
   return { type: 'AllSelected' };
@@ -47,7 +49,8 @@ type NonDefaultProps<OptionType> = Omit<
 };
 
 export type MultiDropdownWithSelectAllProps<OptionType> = NonDefaultProps<OptionType> &
-  Partial<DefaultProps>;
+  Partial<DefaultProps> &
+  DataAttributes;
 
 function isGroupedOptionsArray<OptionType>(
   options: MultiDropdownWithSelectAllProps<OptionType>['options']
@@ -151,27 +154,29 @@ export class MultiDropdownWithSelectAll<OptionType> extends React.PureComponent<
       : [];
 
     return (
-      <Component
-        classNamePrefix="dropdown"
-        className={cx(
-          getCommonClassnames(size, flat || false, props.isSearchable),
-          'is-multi',
-          className
-        )}
-        styles={defaultStyle}
-        {...props}
-        value={dropdownValue}
-        onChange={this.onChange}
-        options={this.injectSelectAllOptions(_options)}
-        components={{
-          ...defaultComponents<OptionType | SelectAllOptionType, true>(),
-          ValueContainer: this.valueContainer,
-          ...customComponents
-        }}
-        ref={innerRef}
-        isSearchable={allowCreate || props.isSearchable}
-        isMulti
-      />
+      <DataAttributesContext.Provider value={pickDataAttributes(this.props)}>
+        <Component
+          classNamePrefix="dropdown"
+          className={cx(
+            getCommonClassnames(size, flat || false, props.isSearchable),
+            'is-multi',
+            className
+          )}
+          styles={defaultStyle}
+          {...props}
+          value={dropdownValue}
+          onChange={this.onChange}
+          options={this.injectSelectAllOptions(_options)}
+          components={{
+            ...defaultComponents<OptionType | SelectAllOptionType, true>(),
+            ValueContainer: this.valueContainer,
+            ...customComponents
+          }}
+          ref={innerRef}
+          isSearchable={allowCreate || props.isSearchable}
+          isMulti
+        />
+      </DataAttributesContext.Provider>
     );
   }
 }

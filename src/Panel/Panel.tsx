@@ -5,6 +5,7 @@ import { PanelHeader } from './PanelHeader';
 import capitalize = require('lodash/capitalize');
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import FlexView from 'react-flexview';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type PanelDefaultProps = {
   style: React.CSSProperties;
@@ -54,7 +55,7 @@ export namespace Panel {
     menu?: Children;
   };
 
-  export type Props = PanelRequiredProps & Partial<PanelDefaultProps>;
+  export type Props = PanelRequiredProps & Partial<PanelDefaultProps> & DataAttributes;
 }
 
 /** A simple component used to group elements in a box. */
@@ -237,6 +238,7 @@ export class Panel extends React.PureComponent<Panel.Props> {
         style={style}
         column
         onClick={!isExpanded ? toggleExpanded : undefined}
+        {...pickDataAttributes(this.props)}
       >
         {this.templateSoftLoading({ softLoading, isExpanded })}
         {this.templateHeader({ header, isExpanded, toggleExpanded })}

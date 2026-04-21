@@ -9,6 +9,7 @@ import sortBy = require('lodash/sortBy');
 import { components, OptionProps, SingleValueProps } from 'react-select';
 import find = require('lodash/find');
 import { warn } from '../utils/log';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export const H24 = '24h';
 export const H12 = '12h';
@@ -235,7 +236,7 @@ export namespace TimePicker {
     originalInput?: string;
   } & Partial<Time>;
 
-  export type Props = RequiredProps & Partial<DefaultProps>;
+  export type Props = RequiredProps & Partial<DefaultProps> & DataAttributes;
 }
 type TimePickerDefaultedProps = RequiredProps & DefaultProps;
 type TimeDropdownOption = {
@@ -314,6 +315,7 @@ export class TimePicker extends React.Component<TimePicker.Props, { inputValue: 
         onBlur={() => this.forceUpdate()}
         menuPlacement={menuPosition}
         isDisabled={disabled}
+        {...pickDataAttributes(this.props)}
       />
     );
   }

@@ -1,6 +1,13 @@
-import Select, { GroupBase, Props as SelectProps } from 'react-select';
+import * as React from 'react';
+import Select, {
+  components as RSComponents,
+  ContainerProps,
+  GroupBase,
+  Props as SelectProps
+} from 'react-select';
 import { CreatableProps } from 'react-select/creatable';
 import cx from 'classnames';
+import { DataAttributes } from '../utils';
 
 export type DefaultProps = {
   delimiter: NonNullable<SelectProps['delimiter']>;
@@ -34,11 +41,38 @@ export const defaultProps: DefaultProps = {
   menuPlacement: 'bottom'
 };
 
+/**
+ * Carries consumer-supplied `data-*` attributes from the dropdown variants
+ * down to the default SelectContainer below, which spreads them onto
+ * react-select's own root element. Consumers who override
+ * `components.SelectContainer` should also read this context to preserve
+ * data-* forwarding.
+ */
+export const DataAttributesContext = React.createContext<DataAttributes>({});
+
+const IndicatorSeparator = () => null;
+
+const SelectContainerWithDataAttributes: React.ComponentType<ContainerProps<
+  any,
+  any
+>> = props => {
+  const dataAttrs = React.useContext(DataAttributesContext);
+  return (
+    <RSComponents.SelectContainer
+      {...props}
+      innerProps={{ ...props.innerProps, ...dataAttrs } as ContainerProps<any, any>['innerProps']}
+    />
+  );
+};
+
 export const defaultComponents = <
   OptionType extends unknown,
   IsMulti extends boolean
 >(): SelectProps<OptionType, IsMulti>['components'] => ({
-  IndicatorSeparator: () => null
+  IndicatorSeparator,
+  SelectContainer: SelectContainerWithDataAttributes as NonNullable<
+    SelectProps<OptionType, IsMulti>['components']
+  >['SelectContainer']
 });
 
 export const getCommonClassnames = (

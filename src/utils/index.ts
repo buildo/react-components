@@ -24,6 +24,8 @@ export const getContextWrapper = (contextTypes = {}): React.ComponentType<Props>
   return ContextWrapper;
 };
 
+export { DataAttributes, pickDataAttributes } from './pickDataAttributes';
+
 export type ObjectOmit<O, K extends string> = Pick<O, Exclude<keyof O, K>>;
 
 export type ObjectOverwrite<O1, O2> = Pick<O1, Exclude<keyof O1, keyof O2>> & O2;
