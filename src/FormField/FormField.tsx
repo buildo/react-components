@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import View from 'react-flexview';
 import Popover from '../Popover';
-import { ObjectOmit } from '../utils';
+import { DataAttributes, ObjectOmit, pickDataAttributes } from '../utils';
 
 export namespace FormField {
   export type Props = {
@@ -37,7 +37,7 @@ export namespace FormField {
           type: 'tooltip';
           popover?: ObjectOmit<Popover.Props['popover'], 'content'>;
         };
-  };
+  } & DataAttributes;
 }
 
 const leftArrow = (
@@ -148,6 +148,7 @@ export class FormField extends React.PureComponent<FormField.Props, State> {
         className={className}
         onMouseOver={this.stateChange('mouseover', true)}
         onMouseOut={this.stateChange('mouseover', false)}
+        {...pickDataAttributes(this.props)}
       >
         <View grow column={!horizontal}>
           {horizontal ? [fieldComponent, labelComponent] : [labelComponent, fieldComponent]}
