@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Children } from '../utils';
+import { Children, DataAttributes, pickDataAttributes } from '../utils';
 import FlexView from 'react-flexview';
 
 export namespace NavBar {
@@ -25,7 +25,7 @@ export namespace NavBar {
     className?: string;
     /** add custom css style */
     style?: React.CSSProperties;
-  };
+  } & DataAttributes;
 }
 
 export class NavBar extends React.PureComponent<NavBar.Props> {
@@ -44,7 +44,13 @@ export class NavBar extends React.PureComponent<NavBar.Props> {
     const { left, center, right, maxWidth } = content;
 
     return (
-      <FlexView className={className} style={style} vAlignContent="center" hAlignContent="center">
+      <FlexView
+        className={className}
+        style={style}
+        vAlignContent="center"
+        hAlignContent="center"
+        {...pickDataAttributes(this.props)}
+      >
         <FlexView
           vAlignContent="center"
           hAlignContent="center"
