@@ -34,6 +34,8 @@ export class Divider extends React.PureComponent<Divider.Props> {
     const { orientation, style, size, className } = this.props as DividerDefaultedProps;
     return (
       <div
+        role="separator"
+        aria-orientation={orientation}
         className={cx('divider', className, orientation, size)}
         style={style}
         {...pickDataAttributes(this.props)}
