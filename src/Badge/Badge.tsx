@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Children } from '../utils';
+import { Children, DataAttributes, pickDataAttributes } from '../utils';
 import FlexView from 'react-flexview';
 
 export namespace Badge {
@@ -13,7 +13,7 @@ export namespace Badge {
     className?: string;
     /** an optional style object to pass to top level element of the component */
     style?: React.CSSProperties;
-  };
+  } & DataAttributes;
 }
 
 export class Badge extends React.PureComponent<Badge.Props> {
@@ -22,7 +22,12 @@ export class Badge extends React.PureComponent<Badge.Props> {
     const className = cx('badge', { active }, _className);
 
     return (
-      <FlexView vAlignContent="center" hAlignContent="center" {...{ className, style }}>
+      <FlexView
+        vAlignContent="center"
+        hAlignContent="center"
+        {...{ className, style }}
+        {...pickDataAttributes(this.props)}
+      >
         <span className="badge-label">{label}</span>
       </FlexView>
     );
