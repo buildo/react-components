@@ -52,10 +52,7 @@ export const DataAttributesContext = React.createContext<DataAttributes>({});
 
 const IndicatorSeparator = () => null;
 
-const SelectContainerWithDataAttributes: React.ComponentType<ContainerProps<
-  any,
-  any
->> = props => {
+const SelectContainerWithDataAttributes: React.ComponentType<ContainerProps<any, any>> = props => {
   const dataAttrs = React.useContext(DataAttributesContext);
   return (
     <RSComponents.SelectContainer
