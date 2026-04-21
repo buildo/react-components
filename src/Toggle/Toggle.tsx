@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { warn } from '../utils/log';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type ToggleDefaultProps = {};
 
@@ -22,7 +23,7 @@ export type ToggleRequiredProps = {
 };
 
 export namespace Toggle {
-  export type Props = ToggleRequiredProps & Partial<ToggleDefaultProps>;
+  export type Props = ToggleRequiredProps & Partial<ToggleDefaultProps> & DataAttributes;
 }
 type ToggleDefaultedProps = ToggleRequiredProps & ToggleDefaultProps;
 
@@ -97,7 +98,7 @@ export class Toggle extends React.PureComponent<Toggle.Props> {
     const className = cx('toggle', { disabled }, _className);
 
     return (
-      <div {...{ className, style }}>
+      <div {...{ className, style }} {...pickDataAttributes(this.props)}>
         <input
           className="toggle-input"
           type="checkbox"
