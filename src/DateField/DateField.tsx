@@ -2,6 +2,7 @@ import * as React from 'react';
 import every = require('lodash/every');
 import cx from 'classnames';
 import View from 'react-flexview';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export namespace DateField {
   export type Props = {
@@ -25,7 +26,7 @@ export namespace DateField {
     style?: React.CSSProperties;
     /** an optional id to pass to top level element of the component */
     id?: string;
-  };
+  } & DataAttributes;
 }
 
 export type State = {
@@ -165,6 +166,7 @@ export class DateField extends React.PureComponent<DateField.Props, State> {
         })}
         id={id}
         style={style}
+        {...pickDataAttributes(this.props)}
       >
         <input
           className="day-field"
