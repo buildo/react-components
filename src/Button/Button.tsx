@@ -194,7 +194,12 @@ export class Button extends React.PureComponent<Button.Props> {
     const loading = buttonState === 'processing';
 
     return (
-      <div className="button" style={wrapperStyle} {...pickDataAttributes(this.props)}>
+      <div
+        className="button"
+        role="button"
+        style={wrapperStyle}
+        {...pickDataAttributes(this.props)}
+      >
         <FlexView
           className={cx('button-inner', className, stateClassUtil([buttonState]))}
           vAlignContent="center"
