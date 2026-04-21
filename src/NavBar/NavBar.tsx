@@ -45,6 +45,7 @@ export class NavBar extends React.PureComponent<NavBar.Props> {
 
     return (
       <FlexView
+        role="navigation"
         className={className}
         style={style}
         vAlignContent="center"
