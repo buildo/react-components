@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import FlexView from 'react-flexview';
+import { DataAttributes, pickDataAttributes } from '../utils';
 
 export type CheckboxRequiredProps = {
   /** value */
@@ -26,7 +27,7 @@ export type CheckboxDefaultProps = {
 };
 
 export namespace Checkbox {
-  export type Props = CheckboxRequiredProps & Partial<CheckboxDefaultProps>;
+  export type Props = CheckboxRequiredProps & Partial<CheckboxDefaultProps> & DataAttributes;
 }
 
 export class Checkbox extends React.PureComponent<Checkbox.Props> {
@@ -66,6 +67,7 @@ export class Checkbox extends React.PureComponent<Checkbox.Props> {
         )}
         id={id}
         style={style}
+        {...pickDataAttributes(this.props)}
       >
         <FlexView
           shrink={false}
