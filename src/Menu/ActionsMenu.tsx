@@ -3,7 +3,7 @@ import cx from 'classnames';
 import partial = require('lodash/partial');
 import FlexView from 'react-flexview';
 import { Divider } from '../Divider/Divider';
-import { findDOMNode } from '../utils';
+import { DataAttributes, findDOMNode, pickDataAttributes } from '../utils';
 
 export type ActionsMenuRequiredProps = {
   options?: ActionsMenu.Option[];
@@ -27,7 +27,7 @@ export namespace ActionsMenu {
 
   export type OptionClickHandler = (o: Option) => void;
 
-  export type Props = ActionsMenuRequiredProps & Partial<ActionsMenuDefaultProps>;
+  export type Props = ActionsMenuRequiredProps & Partial<ActionsMenuDefaultProps> & DataAttributes;
 }
 
 export type State = {
@@ -118,7 +118,11 @@ export class ActionsMenu extends React.PureComponent<ActionsMenu.Props, State> {
     const { onOptionClick } = this;
 
     return (
-      <div className="actions-menu" style={{ ...style, maxHeight }}>
+      <div
+        className="actions-menu"
+        style={{ ...style, maxHeight }}
+        {...pickDataAttributes(this.props)}
+      >
         {this.templateRenderedOptions({ options, onOptionClick })}
       </div>
     );
