@@ -1,5 +1,6 @@
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
+@use 'sass:color';
+@use 'sass-flex-mixins/src/sass-flex-mixins.scss' as *;
+@use '../utils/theme/variables.scss' as *;
 $background: $brc-gradientGrey !default;
 $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;
@@ -39,9 +40,9 @@ $multiple-value-icon-color: $multiple-value-color !default;
 $multiple-value-icon-background-color: $multiple-value-background-color !default;
 $multiple-value-icon-border-color: $multiple-value-icon-color !default;
 $multiple-value-icon-color-hover: $brc-red !default;
-$multiple-value-icon-background-color-hover: darken(
+$multiple-value-icon-background-color-hover: color.adjust(
   $multiple-value-icon-background-color,
-  10%
+  $lightness: -10%
 ) !default;
 $multiple-value-icon-border-color-hover: $multiple-value-icon-border-color !default;
 $disabled-opacity: 0.6 !default;

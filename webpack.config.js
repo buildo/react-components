@@ -32,7 +32,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              api: 'modern',
+              implementation: require('sass'),
+              sassOptions: {
+                loadPaths: [path.resolve(__dirname, 'node_modules')]
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,

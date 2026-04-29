@@ -1,6 +1,7 @@
-@import '~gemini-scrollbar/gemini-scrollbar.css';
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
+@use 'sass:math';
+@use 'sass-flex-mixins/src/sass-flex-mixins.scss' as *;
+@use '../utils/theme/variables.scss' as *;
+@import 'gemini-scrollbar/gemini-scrollbar.css';
 $scrollbar-size: 7px !default;
 $scrollbar-size-hover: $scrollbar-size * 1.25 !default;
 $scrollbar-color: $brc-coolGrey !default;
@@ -92,7 +93,7 @@ body > div::-webkit-scrollbar {
     }
 
     .thumb {
-      border-radius: $scrollbar-size / 2;
+      border-radius: math.div($scrollbar-size, 2);
       background-color: rgba($scrollbar-color, 0.6);
 
       &:hover {

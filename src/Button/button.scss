@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 $horizontal-padding: 16px !default;
 $font-size: 14px !default;
 $height: 36px !default;
