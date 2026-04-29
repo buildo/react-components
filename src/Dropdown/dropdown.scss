@@ -1,5 +1,5 @@
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../utils/theme/variables.scss';
+@use 'sass-flex-mixins/src/sass-flex-mixins.scss' as *;
+@use '../utils/theme/variables.scss' as *;
 $background: $brc-gradientGrey !default;
 $background-hover: $brc-gradientDarkGrey !default;
 $background-open: $brc-gradientDarkGrey !default;

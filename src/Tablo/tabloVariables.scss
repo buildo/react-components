@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 
 $border-color: $brc-silver !default;
 $border-width: 1px !default;

@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 $background: $brc-gradientAzure !default;
 $border-radius: 32px !default;
 $padding: 3px 16px !default;
