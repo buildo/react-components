@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../utils/theme/variables.scss' as *;
 $size: 1em;
 $period: 1s;
@@ -26,8 +27,8 @@ $thickness: 0.1em;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
-      margin-top: -$size / 2;
-      margin-left: -$size / 2;
+      margin-top: math.div(-$size, 2);
+      margin-left: math.div(-$size, 2);
       border-top-color: transparent;
       border-right-color: transparent;
       border-left-color: transparent;
@@ -41,8 +42,8 @@ $thickness: 0.1em;
         top: 50%;
         left: 50%;
         box-sizing: border-box;
-        margin-top: -$size / 2;
-        margin-left: -$size / 2;
+        margin-top: math.div(-$size, 2);
+        margin-left: math.div(-$size, 2);
         border-bottom-color: transparent;
         opacity: 0.2;
       }

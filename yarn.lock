@@ -5761,11 +5761,6 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-klona@^2.0.4:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.6.tgz#85bffbf819c03b2f53270412420a4555ef882e22"
-  integrity sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==
-
 latest-version@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"
@@ -8058,12 +8053,11 @@ sass-flex-mixins@^0.1.0:
   resolved "https://registry.yarnpkg.com/sass-flex-mixins/-/sass-flex-mixins-0.1.0.tgz#bd1b8cbd0b080692b57ca258f403a355d553008f"
   integrity sha1-vRuMvQsIBpK1fKJY9AOjVdVTAI8=
 
-sass-loader@^13.2.0:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-13.2.0.tgz#80195050f58c9aac63b792fa52acb6f5e0f6bdc3"
-  integrity sha512-JWEp48djQA4nbZxmgC02/Wh0eroSUutulROUusYJO9P9zltRbNN80JCBHqRGzjd4cmZCa/r88xgfkjGD0TXsHg==
+sass-loader@^16.0.0:
+  version "16.0.7"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-16.0.7.tgz#d1f8723b795805831d41b5825e3d9cd72cb939e7"
+  integrity sha512-w6q+fRHourZ+e+xA1kcsF27iGM6jdB8teexYCfdUw0sYgcDNeZESnDNT9sUmmPm3ooziwUJXGwZJSTF3kOdBfA==
   dependencies:
-    klona "^2.0.4"
     neo-async "^2.6.2"
 
 sass@^1.77.0:
