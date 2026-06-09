@@ -1,6 +1,6 @@
-@import '../../../utils/theme/variables.scss';
-@import '~sass-flex-mixins/src/sass-flex-mixins.scss';
-@import '../../tabloVariables.scss';
+@use '../../../utils/theme/variables.scss' as *;
+@use 'sass-flex-mixins/src/sass-flex-mixins.scss' as *;
+@use '../../tabloVariables.scss' as *;
 
 .columns-reorderable-tablo {
   .dndHeader {

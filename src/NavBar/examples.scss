@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 
 .nav-bar {
   padding: 0 30px;

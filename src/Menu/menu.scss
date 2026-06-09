@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 $text-color: $brc-coolGrey !default;
 $text-color-hover: $brc-battleshipGrey !default;
 $icon-color: $text-color !default;

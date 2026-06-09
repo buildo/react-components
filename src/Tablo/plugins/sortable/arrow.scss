@@ -1,5 +1,5 @@
-@import '../../../utils/theme/variables.scss';
-@import '../../tabloVariables.scss';
+@use '../../../utils/theme/variables.scss' as *;
+@use '../../tabloVariables.scss' as *;
 
 @mixin triangle($side, $size, $color) {
   border-left: $size solid transparent;

@@ -1,4 +1,4 @@
-@import '../utils/theme/variables.scss';
+@use '../utils/theme/variables.scss' as *;
 
 $font-size: 14px !default;
 $font-weight: $brc-semibold !default;

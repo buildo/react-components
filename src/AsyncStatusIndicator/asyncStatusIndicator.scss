@@ -1,4 +1,5 @@
-@import '../utils/theme/variables.scss';
+@use 'sass:math';
+@use '../utils/theme/variables.scss' as *;
 
 $color-ready: $brc-darkGreyBlue !default;
 $color-processing: $brc-darkGreyBlue !default;
@@ -29,6 +30,6 @@ $font-size: 14px !default;
   .async-status-indicator-icon {
     position: relative;
     width: $font-size;
-    margin-right: $font-size / 2;
+    margin-right: math.div($font-size, 2);
   }
 }
