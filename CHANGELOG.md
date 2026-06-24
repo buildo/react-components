@@ -1,6 +1,7 @@
 #  Change Log
 
-
+## [v0.50.0](https://github.com/buildo/react-components/tree/v0.50.0) (2026-06-24)
+[Full Changelog](https://github.com/buildo/react-components/compare/v0.49.10...v0.50.0)
 
 ## [v0.49.10](https://github.com/buildo/react-components/tree/v0.49.10) (2026-04-21)
 [Full Changelog](https://github.com/buildo/react-components/compare/v0.49.9...v0.49.10)
