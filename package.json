@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit --pretty",
     "prettier-fix": "prettier \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\" --write",
     "prettier-check": "prettier --list-different \"{src/**/*,test/**/*,dtslint/**/*,*}.{js,ts,tsx,scss}\" \"**/Examples.md\"",
-    "release-version": "smooth-release",
+    "release": "ci/release.sh",
     "postinstall": "rm -rf node_modules/**/node_modules/@types/react 2> /dev/null || true",
     "dtslint": "dtslint dtslint"
   },
@@ -97,7 +97,6 @@
     "react-test-renderer": "^16.2.0",
     "sass": "^1.77.0",
     "sass-loader": "^16.0.0",
-    "smooth-release": "^8.0.9",
     "style-loader": "^2.0.0",
     "ts-jest": "^20.0.10",
     "ts-loader": "^9.4.2",

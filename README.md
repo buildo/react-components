@@ -31,18 +31,35 @@ Until `buildo-react-components` reaches a 1.0 release, breaking changes will be 
 Every change (new features, fixes and breaking changes) is listed in `CHANGELOG.md`. To know more read the [changelog section](https://github.com/buildo/react-components#changelog)
 
 #### Publish on npm
-To publish a new version you must:
-- be authenticated in `npm` and authorized to publish buildo libraries
-- run `npm run release`
+Releases are handled by [`ci/release.sh`](ci/release.sh), a self-contained script that
+talks to GitHub through the [`gh` CLI](https://cli.github.com/) (so it works with modern
+2FA/fine-grained tokens) and publishes with plain `npm`.
 
-a powerful `node` script will do the rest for you :)
-- throw error if not on "master"
-- throw error if not in sync with "remote"
-- automatically detect if release should be "breaking"
-- run linters and tests
-- increase version (breaking|patch)
-- publish new version on `npm`
-- push work on origin
+**Requirements:**
+- the `gh`, `jq`, `node`, `npm` and `yarn` CLIs installed (the script checks for them)
+- be authenticated with GitHub: `gh auth login`
+- be authenticated in `npm` and authorized to publish buildo libraries: `npm login`
+
+**To release:**
+```sh
+yarn release             # auto-compute the next version and release
+yarn release --dry-run   # preview every step without changing/pushing/publishing anything
+```
+
+The script will:
+- throw an error if not on "master", or not in sync with "remote", or the tree isn't clean
+- automatically detect if the release should be "breaking" (from closed issue labels) and
+  increase the version accordingly (`breaking` ⇒ minor while `< 1.0`, otherwise patch)
+- prepend a new section to `CHANGELOG.md`
+- commit, tag, and push to origin
+- create the GitHub release
+- build and publish the new version on `npm` (prompting for a 2FA one-time password if needed)
+
+**Useful flags:**
+- `--version X.Y.Z` — publish an explicit version instead of the computed one
+- `--otp 123456` — pass the npm 2FA one-time password up front
+- `--yes` — skip the version-bump confirmation prompt
+- `--skip-publish` — do everything except `npm publish`
 
 ## Changelog
 [CHANGELOG.md](https://github.com/buildo/react-components/blob/master/CHANGELOG.md)
